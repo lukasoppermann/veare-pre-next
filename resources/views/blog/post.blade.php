@@ -1,7 +1,9 @@
 @extends('template')
 @section('content')
     <a class="o-link o-link--back" href="{{url('blog/')}}">Back to overview</a>
-    {!!$post!!}
+    <article class="o-post-content">
+        {!!$post!!}
+    </article>
     <div class="o-footer">
         <a class="o-link o-link--back" href="{{url('blog/')}}">Back to overview</a>
     </div>
