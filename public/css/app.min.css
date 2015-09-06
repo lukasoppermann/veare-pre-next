@@ -1,0 +1,115 @@
+html, body {
+    height: 100%;
+    background-color: rgb(255, 255, 252);
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
+}
+body {
+    color: rgb(50, 50, 55);
+    font-family: 'Open sans', serif;
+    font-weight: 400;
+}
+.o-container{
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 900px;
+    padding: 0 20px 50px 40px;
+    margin: 0 auto;
+    overflow: auto;
+}
+h1, h2{
+    position: relative;
+    font-weight: 700;
+}
+h2{
+    margin-top: 40px;
+}
+h1::before, h2::before{
+    content: '#';
+    color: rgb(200, 200, 200);
+    position: absolute;
+    left: -10px;
+    top: 0;
+    transform: translateX(-100%);
+}
+h2::before{
+    content: "##";
+}
+code{
+    display: inline-block;
+    font-family: 'Fira Mono';
+}
+pre code{
+    background: none;
+}
+pre{
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    padding: 10px 5px;
+    overflow-x: scroll;
+}
+a{
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+}
+a::after{
+    content: "";
+    background-color: rgb(240, 170, 30);
+    display: block;
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 0;
+}
+.o-link{
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+    position: relative;
+}
+.o-link::after{
+    content: "";
+    background-color: rgb(240, 170, 30);
+    display: block;
+    height: 3px;
+    width: 0%;
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    transition: width 1s ease;
+}
+.o-link:hover::after{
+    width: 100%;
+}
+.o-link--back{
+    display: inline-block;
+    margin: 10px 0;
+}
+.o-link--back::before{
+    font-family: 'Fira Mono';
+    content: '← ';
+    color: rgb(200, 200, 200);
+    position: absolute;
+    left: -25px;
+}
+.o-list--none{
+    list-style: none;
+}
+.c-post-preview-time{
+    color: rgb(200, 200, 200);
+    padding-right: 10px;
+}
+.c-blog-intro{
+    font-size: 22px;
+}
+.o-footer{
+    display:block;
+    margin-top: 30px;
+}
