@@ -10,8 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('/', function(){
-    return 'yp';
-});
+
+
 Route::get('/blog', 'BlogController@index');
 Route::get('/blog/{article}', 'BlogController@show');

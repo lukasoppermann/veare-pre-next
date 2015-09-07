@@ -33,8 +33,8 @@ class BlogController extends Controller
                 'date' => $this->getDate(pathinfo($path)['filename']),
             ], $metadata);
         }
-
-        return view('blog.overview', ['files' =>  $file_list]);
+        $file_list = isset($file_list) ? $file_list: [];
+        return view('blog.overview', ['files' => $file_list]);
     }
 
     private function getDate($filename)
