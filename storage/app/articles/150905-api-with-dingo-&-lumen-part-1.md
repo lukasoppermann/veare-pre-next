@@ -1,14 +1,14 @@
 ---
-title: API with dingo & lumen - PART 1
+title: API with lumen & dingo/api - PART 1
 tags: tag1, tag2
 ---
 # API with dingo & lumen - PART 1
 
-In this series we will write a well tested api using [lumen](http://lumen.laravel.com/) and the [dingo/api](https://github.com/dingo/api) package. We are going to build an api for storing and retrieving posts, which are organized in collections.
+In this series we will write a well tested api using [lumen](http://lumen.laravel.com/) and the [dingo/api](https://github.com/dingo/api) package. We are going to build a well-tested api for storing and retrieving posts.
 
 ## Install lumen & dingo/api
 
-I assume you have composer installed on your machine and a basic knowlege of how to use the command-line.
+I assume you have composer installed on your machine and a basic knowledge of how to use the commandline.
 So lets start installing lumen via the composer `create-project` command.
 ```
 composer create-project laravel/lumen --prefer-dist myLumenApi
@@ -44,67 +44,82 @@ $app->register(Dingo\Api\Provider\LumenServiceProvider::class);
 ## Setting up homestead
 I expect you to have a working version of homestead on your machine, if not, follow the instructions on the [homestead installation page](http://laravel.com/docs/master/homestead) and setup homestead. Once you are done we need to add a new domain to it, so lets move over to the terminal.
 
+First we need to edit the `/etc/hosts` file, run `atom /etc/hosts` in your command line. You can substitude `atom` for any editor you have installed which has a cli implementation, like sublime or textmate. Add the following line to this file and save it.
+
 ```
-homestead edit
+192.168.10.10  api.mylumenapi.app
 ```
-Now you should have the `Homestead.yaml` file open in your default IDE. Add a new entry under the `sites` section.
+
+Now open the `Homestead.yaml` file with the following command `homestead edit`. Add a new entry under the `sites` section.
 
 ```
 - map: api.mylumenapi.app
   to: /home/vagrant/Code/mylumenapi/public
 ```
 
-To finish up we add this domain to our hosts file. Open it with the following command.
-
+You might need to destroy your vm and restart it, to get this to work. Do this by running the following commands in your command line:
 ```
-atom /etc/hosts
-```
-You can substitude `atom` for any editor you have installed which has a cli implementation, like sublime or textmate. Add the following line to this file and save it.
-
-```
-192.168.10.10  api.mylumenapi.app
+homestead destroy
+homestead up
 ```
 
+If everything went according to plan, you should be able to see the lumen welcome page when accessing your domain `api.mylumenapi.app`.
 
 ## Configure dingo/api
 
-In your .env file, add the following:
+Configuring dingo is fairly easy: open your `.env` file and lets get started. The [ding/api documentation](https://github.com/dingo/api/wiki/Configuration) is actually pretty good for most cases.
 
 
-API_STANDARDS_TREE=vnd
-API_SUBTYPE=yourVendorName
+**API_STANDARDS_TREE=vnd**   
+If your api is publically available or at any point will be, use the vendor tree `vnd`. The personal tree `prs`, is meant for not distributed projects.
 
-API_PREFIX=/
+**API_SUBTYPE=yourVendorName**
+This is the name of your project or application. Github for e.g. uses `github`
 
-API_VERSION=v1
+**API_PREFIX=/**
+For dingo to work you need to provide either a prefix or a subdomain, but subdomain routing does not work under lumen and in any case this app is nothing else but an api, so we choose a prefix of `/` which basically means our base url for the api is our url (api.mylumenapi.app).
 
-API_NAME=YourApiName API
+**API_VERSION=v1**
+The version option specifies our default version, that is used whenever a request does not specify a version. This should always track your most recent version. Make sure to advise your api user that they should always specify an api version so they are not suprised by breaking changes that come with a new version.
 
-API_STRICT=false
+**API_NAME=YourApiName API**
+This option is used as your api name when generating your api documentation via the `api:docs` command.
 
-API_DEBUG=true
+**API_STRICT=false**
+When strict mode is enabled, requests need to specify an `Accept` header. If none is provided an exception will be thrown, instead of using the specified default version. This means you are not able to view your api via your the browser. You would possibly turn this on, but for developing it is quite handy to quickly view your api in the browser, so we set it to false for now.
 
+**API_DEBUG=true**
+Just remember to turn this off in your production app.
 
-## Setup for your tests
+There are more options available but we do not need to set them at the moment. If you are interested, head over to the [docs](https://github.com/dingo/api/wiki/Configuration), to read all of them.
 
-I am going to use a somewhat TDD style to build this, so I start by writing a basic test, but firstly, install the following to get some more readable status codes (Phil Sturgeon wrote about why https://philsturgeon.uk/http/2015/08/16/avoid-hardcoding-http-status-codes/)
+## Preparing the test setup with phpunit
 
-> composer require lukasoppermann/http-status --prefer-dist
+Our tests are going to run against the api, so we need to install `guzzle` to make those calls, we use the `--prefer-dist` flag so that we do not get all the tests and things that are only needed for devlopment.
 
-In your TestCase.php import and implement the interface.
+```
+composer require guzzlehttp/guzzle:~6.0 --prefer-dist
+```
+
+Since our tests are also part of our documentation, we will try to be as verbose as we can. Good tests should be easy to understand, so a new developer (or yourself in a couple month) can get an idea of what you api does, by reading the tests and expected results. One part in this is using readable http status codes ([http-status package](https://github.com/lukasoppermann/http-status)) instead of magic numbers. (Phil Sturgeon [wrote more about the why](https://philsturgeon.uk/http/2015/08/16/avoid-hardcoding-http-status-codes/)).
+
+```
+composer require lukasoppermann/http-status --prefer-dist
+```
+
+Everything installed? Perfect, lets dive right in: open your `tests/TestCase.php` to import and implement the interface.
+
+```php
+<?php
 
 use Lukasoppermann\Httpstatus\Httpstatuscodes;
 
-class TestCase extends Laravel\Lumen\Testing\TestCase implements Httpstatuscodes
+class TestCase extends Laravel\Lumen\Testing\TestCase implements Httpstatuscodes{
+```
 
-Now you can use something like self::HTTP_OK in your tests, which is much easier to understand than some weird numbers.
+With this interface implementend we can use something like `self::HTTP_OK` in our tests, which is much easier to understand than the numbers. To get guzzle readay we need to add a `setUp` function to our `TestCase.php` file. Make sure you spell it correctly, as it is a special function, which is called by [phpunit](https://phpunit.de/manual/current/en/fixtures.html) before every test.
 
-We also need guzzle, because phpunit does not know how to call the routes, since dingo is using a custom router
-
-composer require guzzlehttp/guzzle:~6.0 --prefer-dist
-
-In your TestCase.php add a setUp function. If you are not familiar with it, its  a default phpunit function, which is called before every unit test. We use it to setup guzzle
-
+```
 class TestCase extends Laravel\Lumen\Testing\TestCase implements Httpstatuscodes
 {
     protected $client;
@@ -118,29 +133,54 @@ class TestCase extends Laravel\Lumen\Testing\TestCase implements Httpstatuscodes
             'exceptions' => false,
         ]);
     }
+```
 
+With this addition we can now use `$this->client` in our unit test to make guzzle calls.
 
 ## Writing your tests
 
-Now we are finally ready to write our very first test. The first thing we will need to be able to do, is to retrieve a comment stream. This happens by calling the endpoint streams/{stream} where {stream} is something like an ID of the stream.
+Now we are ready to write our very first test, so lets think about how our app will work. We will have posts which are grouped in collections like a travel collection or a tutorial collection. Our api needs to respond to `/collections/travel` with a list of posts. Create a new file in the `tests` directory named `ColectionTest.php` with this test.
 
+```php
 <?php
 
-class StreamsTest extends TestCase
+class CollectionTest extends TestCase
 {
     /**
      * @test
      */
-    public function get_a_stream_by_id()
-    {
-        $response = $this->client->get('/streams/1');
+    public function get_a_collection_by_name()
 
-        $this->assertEquals(self::HTTP_OK, $response->getStatusCode());
+        $response = $this->client->get('/collections/travel');
+
+        $this->assertEquals(self::HTTP_OK,
+            $response->getStatusCode());
 
     }
 }
+```
 
+At the moment our test only checks for a correct status code, but in the next part we will modify it to test for our desired response. Don't forget to either prefix your test functions with `test_` or, like in the example above, add the `@test` doc block, otherwise phpunit will not be able to run your tests.
 
-## Adding the route ....
+## Adding the route
+If we run our test now, we get an error like this:
 
-## Seeding & Modelfactories in the next post
+```shell
+Failed asserting that 400 matches expected 200.
+```
+
+This is to be expected, as we did not add any route yet. Adding a route is pretty simple, but in our case, have have to use the `dingo/api` router, instead lumens, default router, to get all the versioning and header stuff. Actually it is pretty straight forward we just need to add the following to our `routes.php`.
+
+```php
+$api = app('Dingo\Api\Routing\Router');
+
+$api->version('v1', function($api){
+    $api->get('collections/{collection}', function(){
+        return 'test';
+    });
+});
+```
+
+First we create a new instance of the api router that is provided with the `dingo/api` package. Afterwards we add a new version group, because the router needs to know for which version this route will be used. Afterwards we have a simple routing statement to return test when the route is called using a get request. Lumen automatically sets the status code to `OK` if we return anything, so our tests should pass.
+
+In the next part of this series we will add more tests and create our controller to return useful data.
