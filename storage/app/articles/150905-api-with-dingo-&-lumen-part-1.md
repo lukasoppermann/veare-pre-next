@@ -1,9 +1,10 @@
 ---
 title: API with lumen & dingo/api - PART 1
 tags: tag1, tag2
+author: Lukas Oppermann
 ---
 # API with dingo & lumen - PART 1
-
+{$meta}
 In this series we will write a well tested api using [lumen](http://lumen.laravel.com/) and the [dingo/api](https://github.com/dingo/api) package. We are going to build a well-tested api for storing and retrieving posts.
 
 ## Install lumen & dingo/api

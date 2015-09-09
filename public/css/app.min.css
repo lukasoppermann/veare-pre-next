@@ -103,6 +103,7 @@ a:hover::after{
     z-index: -1;
 }
 .o-link:hover::after{
+    height: 3px;
     width: 100%;
 }
 .o-link--back{
@@ -147,4 +148,10 @@ a:hover::after{
 }
 .o-post-list{
     margin-top: 30px;
+}
+.o-meta{
+    font-size: 14px;
+}
+.publication-info{
+    padding-bottom: 20px;
 }

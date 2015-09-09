@@ -71,6 +71,12 @@ class BlogController extends Controller
             }
             $converter = new CommonMarkConverter();
             $post = $converter->convertToHtml($article);
+
+
+            $metainfo = '<div class="o-meta publication-info">Published by <a class="author" href="http://vea.re/blog" rel="author">Lukas Oppermann</a>, <time datetime="'.$this->getDate($name).'" class="article_time">'.$this->getDate($name).'</time></div>';
+
+            $post = str_replace('{$meta}', $metainfo, $post);
+
             return view('blog.post', ['post' =>  $post, 'title' => $metadata['title'] ]);
         }
     }
