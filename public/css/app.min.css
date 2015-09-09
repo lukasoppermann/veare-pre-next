@@ -138,6 +138,7 @@ a:hover::after{
 }
 .c-blog-intro{
     font-size: 22px;
+    line-height: 135%;
 }
 .o-footer{
     display:block;

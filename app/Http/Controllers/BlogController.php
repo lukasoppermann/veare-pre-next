@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use League\CommonMark\CommonMarkConverter;
 use Storage;
@@ -18,12 +15,12 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $files = Storage::files('articles');
+        $articles = Storage::files('articles');
 
-        foreach($files as $path)
+        foreach($articles as $article)
         {
             $metadata = [];
-            preg_match('#---\n(.*?)---\n#is', Storage::get($path), $d);
+            preg_match('#---\n(.*?)---\n#is', Storage::get($article), $d);
             if(count($d) > 0){
                 foreach(array_filter(explode("\n", $d[1])) as $data){
                     $data = explode(':',$data);
@@ -31,14 +28,17 @@ class BlogController extends Controller
                 }
             }
 
-            $file_list[] = array_merge([
-                'link' => pathinfo($path)['filename'],
-                'date' => $this->getDate(pathinfo($path)['filename'])
+            $article_file = pathinfo($article)['filename'];
+
+            $article_list[] = array_merge([
+                'link' => $article_file,
+                'title' => $this->getTitle($article_file),
+                'date' => $this->getDate($article_file)
             ], $metadata);
         }
 
-        $file_list = isset($file_list) ? $file_list: [];
-        return view('blog.overview', ['files' => $file_list]);
+        $article_list = isset($article_list) ? $article_list: [];
+        return view('blog.overview', ['files' => $article_list]);
     }
 
     private function getDate($filename)
@@ -51,6 +51,14 @@ class BlogController extends Controller
         }
         $date = substr($filename,4,2).'.'.substr($filename,2,2).'.'.substr($filename,0,2);
         return $date;
+    }
+
+    private function getTitle($filename)
+    {
+        if(!is_numeric(substr($filename,0,6))){
+            return str_replace('-',' ',$filename);
+        }
+        return str_replace('-',' ',substr($filename,7));
     }
 
     /**
