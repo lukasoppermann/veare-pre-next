@@ -3,65 +3,63 @@ title: Why you should always write your own blogging software
 ---
 # Why you should always write your own blogging software
 {$meta}
-Okay, maybe I lied a bit. There is not "always" on the internet. But sometimes it might really be a good idea to look past the off the shelf products like wordpress or medium.
+Okay, maybe I exaggerated. There is no "always" on the internet. But sometimes it might really be a good idea to look past the off-the-shelf products like Wordpress or Medium.
 
-## The truth about blogging
-What do you think is the most important part about your blog? The SEO so people find it? Maybe its the social media integration so your articles are easy to share? Maybe its the design, that has to be perfect? Definitely not, there is only one thing that is important about your blog: **It needs good content**. Nothing else matters, everything else can be added on afterwards. If I have an idea I want to start typing immediately. This is why I choose to blog by using markdown files.
+## The important part to get right when blogging
+What do you think is the most important part about your blog? The SEO so people find it? Maybe its the social media integration so your articles are easy to share? Maybe its the design, that has to be perfect? No. The only thing that matters is **good content**. Everything else can be added afterwards.
 
-## Alternatives
-Before we dive in, lets look at the alternatives: Wordpress is pretty powerful, but also very complicated and personally I do not enjoy the writing experience using wordpress. Ghost & Medium have a much better writing experience, but they still have problems. You can not easily write offline (I once lost an entire article, because Medium lost it when coming back online). Also while you might be able to download your data, it is not always easy use it in a different system.
+If you have an idea for a post, get typing immediately, lest you lose spirit the of the moment. This is why my blog is powered by markdown files. It can write markdown in any text editor. I can be offline, in a train, on my phone. Markdown is perfect for writing, because all you can write and structure your content, no design options, no fuss. Wordpress in comparison is pretty complicated. Ghost and Medium have a pretty good writing experience, but they are not really available everywhere. You pretty much need the internet (I once lost an entire article, because Medium screwed up the sync when I came back online).
 
-## Setting a goal
-We want to get to writing posts as fast as possible, so we need to define an MVP. To start with we only need two page types, a listing of all articles and an individual article. All this is powered by markdown files. Thats it, everything else is a bonus we can add once we have our first posts online.
+When you write your blog in markdown files, you own your content. While you are able to download your articles from most plattforms, this might change, or the exported content might be hard to use in a different system. Markdown is a universal format.
 
-**Our toolset will include the following:**
-- [Laravel](http://laravel.com/) as the php framework of choice
-- The [league/commonmark](https://github.com/thephpleague/commonmark) package for parsing markdown files
+## The MVP: a barebone blog
+What we really need is a listing of all our articles and an the individual article pages. Everything else is a bonus we can add once we have our first posts online. We are using markdown files so there is no need for any database interactions.
 
-So lets get started ...
+For now we should be fine with [Laravel](http://laravel.com/) as our php framework of choice and the [league/commonmark](https://github.com/thephpleague/commonmark) package for parsing markdown files.
+
+So let's get started ...
 
 ## The setup for our blog
-First we need to install laravel and pull in the commonmark package. I am expecting you to have [composer](https://getcomposer.org/) up and running.
+First we need to install Laravel via [composer](https://getcomposer.org/) which you should already have up and running. After the Laravel is done creating the project `cd` into your directory and require the commonmark package. We are using the `--prefer-dist` flag so we don't pull in tests and other development resources.
 
-```shell
+```bash
 composer create-project laravel/laravel --prefer-dist yourBlog
 cd yourBlog
 composer require league/commonmark --prefer-dist
 ```
 
-Now we need to add our first post, so `cd` into `yourBlog` and run the following.
+With everything installed we can add the folder articles in `storage/app/` and create our first article, the title will be prefixed by todays date in the format `YYMMDD` and all spaces should be replaced with a dash. The leading date in the order year, month, day has the nice effect of automatically sorting our posts by the latest date, which should be your most recent post.
 
-```shell
+```bash
 mkdir storage/app/articles
-echo -e "#First Post\nAll in markdown, nice." >> storage/app/articles/150901-first-post.md
+echo -e "#First Post\nAll in markdown, nice." >> storage/app/articles/$(date '+%y%m%d')-first-post.md
 ```
 
-At this point to probably want to init git for versioning in this project so go ahead and do this. Once you are done, you will notice that the `git status` does not include our posts. This is a problem, because we want to track our posts in git, this is the only versioning we have. So quickly open the `storage/app/.gitignore` file in your favorite editor edit it to look like the following, afterwards you should be able to add your posts to the git history.
+At this point you probably want to `git init` your project and submit it to version control. Once you are done, you will notice that the `git status` does not include our posts. To solve this and track our posts in git, for versioning revisions we open the `storage/app/.gitignore` and edit it to look like the file below. Basically you need to add `!/articles/` to NOT ignore everthing in there and change line one `*` to `/*`. Afterwards you should be able to add your posts to the git history.
 
-```shell
+```bash
 /*
 !/articles/
 !.gitignore
 ```
 
 ## Building the article listing
-We are already very close to starting to write our first blog post, all we need to do is build the logic to list & display the posts. We will do this very dirty and look at refactoring it into a nice, clean way, later on.
+Now that we have our posts, we need to build the php logic to display them. We will do this very dirty and look at refactoring it into a nice, clean piece of code in another post.
 
-First we setup our routes, I use a path of `/blog`, as you might want to add other sections later on, when you decide to flash out the blog into a full website or add it into your current website.
+To start with we setup our routes in the `app/Http/routes.php` file. I use `/blog`, because I am actually adding this blog into my existing website. But if the list of articles is supposed to be your homepage, feel free to just use `/`.
 
 ```php
 Route::get('/blog', 'BlogController@index');
 Route::get('/blog/{article}', 'BlogController@show');
 ```
 
-Now go ahead, create the controller and open it in your favorite text editor. This can be easily done within the terminal from the project folder.
+The `BlogController` we reference in the routes does not exist yet, so we need to create it. Laravel ships with the artisan command line tool, which let's you create a new controller with a simple make command. By default artisan creates a REST-Controller, but by using the `--plain` flag we can get an empty controller.
 
-```shell
+```bash
 php artisan make:controller --plain BlogController
-open app/Http/Controllers/BlogController.php
 ```
 
-We need to add two methods to respond to our two routes: `index()` and `show()`. Lets start with `index()`, the listing of our posts. We need to be able to get the files, so we need it `use` the laravel `Storage` facade, and while we do it, we may as well import the commonmark package which we are going to use in the show method.
+The first method we reference is the `index` method, so let's open `app/Http/Controllers/BlogController.php` and add this method. We also need to add two `use` statements at the top, as we will be using the Laravel `Storage` facade, and the commonmark `CommonMarkConverter`.
 
 ```php
 <?php
@@ -74,61 +72,70 @@ use Storage;
 
 class BlogController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return view
+     */
+    public function index()
+    {
+        $articles = Storage::files('articles');
+
+        foreach($articles as $article)
+        {
+            $article_file = pathinfo($article)['filename'];
+
+            $article_list[] = [
+                'link' => $article_file,
+                'title' => $this->getTitle($article_file),
+                'date' => $this->getDate($article_file),
+            ];
+        }
+
+        return view('blog.overview', ['articles' => $article_list]);
+    }
 ```
 
-Done! Now we add the index method which loads all articles. By default it searches in `storage/app` so if we just provide `articles` as a parameter we will get every file within `atorage/app/articles`. We have to loop through all returned files to build up an `$articles_list` array, which has a link, date and title of every blog post. We prefix all our posts why a date in the format `YYMMDD` like `150901` which lets us retrieve the date from the file name and has the added advantage of automatically sorting our files by publication date (descending). After all this is done we just pass this array to the view `views/blog/overview.blade.php`, which we will create in a bit.
+The `index` method is pretty simple. First we use the `Storage` facade to find all articles. By default it searches in `storage/app`, by providing `articles` as a parameter we will get every file within `atorage/app/articles`.
+
+Then we loop through all returned files to build up an `$articles_list` array, which has a link, title and date for every post. Retrieving the date and title from the filename is done in separate private methods, which we will look into in a moment.
+
+Once the array is complete we pass it to the `views/blog/listing.blade.php` which will take care of the rest.
+
+## Extracting date & time
+We still need implementing the `getTitle` and `getDate` methods. For the title we just have to remove the first 7 characters from the file name (the date `YYMMDD` and the dash) and replace all other dashes with spaces.
+
+Retrieving the date is nearly as easy, you just need to cut the pieces of the date into the parts day, month, year and add them in the desired format. I opted for the european format `DD.MM.YY`. Just in case you forgot it, `substr` works by providing the string, the position where to start from, and the amount of characters to subtract.
 
 ```php
 /**
- * Display a listing of the resource.
- *
- * @return Response
+ * Get formated date from filename
  */
-public function index()
-{
-    $articles = Storage::files('articles');
-
-    foreach($articles as $article)
-    {
-        $article_file = pathinfo($article)['filename'];
-
-        $article_list[] = [
-            'link' => $article_file,
-            'title' => $this->getTitle($article_file),
-            'date' => $this->getDate($article_file),
-        ];
-    }
-
-    return view('blog.overview', ['articles' => $article_list]);
-}
-```
-
-We are referenceing two private methods `getTitle` and `getDate` which we will create now. To get the title we just need to remove the first 7 characters of the filename (this is the date and the dash). Afterwards we replace the dashes with spaces.
-
-```php
 private function getTitle($filename)
 {
     return str_replace('-',' ',substr($filename,7));
 }
-```
 
-Retrieving the date is nearly as easy, you just need to cut the pieces of the date into parts and add them in the desired format. I opted for the european format DD.MM.YY. If you forgot it, `substr` works by providing the string, the position where to star from, and the amount of characters to substract.
-
-```php
+/**
+ * Get formated title from filename
+ */
 private function getDate($filename)
 {
     return substr($filename,4,2).'.'.substr($filename,2,2).'.'.substr($filename,0,2);
 }
 ```
 
-All done here, we just need to add the views. We will add template view, for lack of a better name, which has our basic html like the head and loading our css, an overview template and a preview template. Previews are the individual listings and the overview is the container holding all of the items. We start with `views/template.blade.php`.
+## Building the blade views
+
+To get our post listing on the screen we need two views, a master view with out base page and a listing view. First we create `views/master.blade.php` which has the basic html, head, body, etc. and is loading our css file. The `@yield('content')` is our insertion point for the content.
 
 ```html
 <!DOCTYPE html>
 <html>
     <head>
         <title>{{$title or 'Your default title'}}</title>
-        <link href='{{asset('app.min.css')}}' rel='stylesheet' type='text/css'>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1,maximum-scale=1">
+        <link href='{{asset('app.css')}}' rel='stylesheet' type='text/css'>
         <script>
             // I would probably add google analytics
         </script>
@@ -140,7 +147,76 @@ All done here, we just need to add the views. We will add template view, for lac
     </body>
 </html>
 ```
-## Programming the article view
+
+The listing view is just a little more complicated. I suggest adding it to a subfolder, because it is only used in the blog part of our website `views/blog/listing.blade.php`. This view `@extends` our master view and defineds a `@section('content')` which will replace the `@yield('content')` statement in the master view. At the top we add a title an a description for the listing page. Afterwards we iterate through the `$articles_list` array which we passed to the view and display the date and title of each entry in a list item.
+
+```html
+@extends('master')
+@section('content')
+    <div class="o-post-list">
+        <h1>Title of your blog</h1>
+        <p class="c-blog-intro">Some introtext for your blog.</p>
+    </div>
+    <ul class="o-list o-list--none">
+        @foreach ($articles as $article)
+        <li class="o-list-item">
+            <span class="c-post-preview-time">{{$article['date']}}</span>
+            <a class="o-link c-post-preview-title" href="{{url('blog/'.$article['link'])}}">{{$article['title']}}</a>
+        </li>
+        @endforeach
+    </ul>
+@endsection
+```
+
+## Building the article view
+
+Now that we have a list of posts, let's make the individual posts work. The controller `show` method is very straight forward. First we check if a file with the provided name exists, if not we redirect to the homepage. Otherwise we retrieve the markdown file, create a new instance of the `CommonMarkConverter`, convert the markdown to html and pass the html to a view.
+
+```php
+/**
+ * Display a specific post.
+ *
+ * @param  string  $name
+ * @return view
+ */
+public function show($name)
+{
+    if( !Storage::exists('articles/'.$name.'.md') ) {
+        return redirect()->action('BlogController@index');
+    }
+
+    $post = Storage::get('articles/'.$name.'.md');
+
+    $converter = new CommonMarkConverter();
+    $post = $converter->convertToHtml($post);
+
+    return view('blog.post', ['post' =>  $post]);
+}
+```
+
+The only thing left is creating the `views/blog/post.blade.php` file. Like the listing file the post file needs to `@extend` master and define the `@section('content')`. We have a back link at the top and bottom to get back to the listing and in between an `<article>` element, which prints the post variable.
+
+```html
+@extends('master')
+@section('content')
+    <a class="o-link o-link--back" href="{{url('blog/')}}">Back to overview</a>
+    <article class="o-post-content">
+        {!!$post!!}
+    </article>
+    <div class="o-footer">
+        <a class="o-link o-link--back" href="{{url('blog/')}}">Back to overview</a>
+    </div>
+@endsection
+```
+
+That is it, all we need to do is add some minimal css to `public/css/app.css` to make it look readable. We still have much than can be improved, but this can wait until you wrote a couple posts. You will also have a much better idea of what features you would like to implement, after you have been using your blog for a while.
+
+```css
+
+```
+
+## Heed this warning
+For brevity, this code is reduced to the bare minimum. You can use it for your own blog, but it is extremely unstable. If an article has a wrong name format, everything might break down. We will look into making this system more stable, secure and useful, but this is enought to get you started. Since you control the system, you can make sure to not break it.
 
 <h2 id="a-blog-in-progress">Sidenote: a blog in progess ...</h2>
 This whole post and the entire blog is a work in progress which uses exactly this idea. I got frustrated with not publishing because of all the hassle associated with it, so now I am just writing markdown files and only concentrate on the content.

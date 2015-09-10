@@ -1,4 +1,4 @@
-@extends('template')
+@extends('master')
 @section('content')
     <div class="o-post-list">
         <h1>field notes</h1>

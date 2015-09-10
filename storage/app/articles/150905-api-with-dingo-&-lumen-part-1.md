@@ -11,12 +11,12 @@ In this series we will write a well tested api using [lumen](http://lumen.larave
 
 I assume you have composer installed on your machine and a basic knowledge of how to use the commandline.
 So lets start installing lumen via the composer `create-project` command.
-```
+```bash
 composer create-project laravel/lumen --prefer-dist myLumenApi
 ```
 
 Now we can `cd` into our project and install dingo/api.
-```
+```bash
 cd myLumenApi
 composer require dingo/api:1.0.x@dev --prefer-dist
 ```
@@ -25,20 +25,20 @@ We need to do a little configuration before we can start to build our api, so ju
 
 In lumen you can store environment variables in a file named `.env`. On your production server you would set up real environment variables, but for development this is much easier. For this to work, simply uncomment line 5 in the `app.php` file.
 
-```
+```php
 Dotenv::load(__DIR__.'/../');
 ```
 
 Lumen ships with eloquent, the excellemt ORM you know from laravel. Some people might argue that you need to implement a repository pattern to be able to easily switch out your ORM without having to edit all your controllers, but I would say that in most cases this is premature optimization. You can still implement a repository pattern the first time you actually switch out your database access layer.
 
 Anyway, eloquent will not be loaded by default, so we need to uncomment line 24 in the `app.php` file to use it.
-```
+```php
 $app->withEloquent();
 ```
 
 To get the `dingo/api` packges loaded all we need to do is register the `LumenServiceProvider` in the `app.php` file. To do so, add the following  at line 80:
 
-```
+```php
 $app->register(Dingo\Api\Provider\LumenServiceProvider::class);
 ```
 
@@ -47,19 +47,19 @@ I expect you to have a working version of homestead on your machine, if not, fol
 
 First we need to edit the `/etc/hosts` file, run `atom /etc/hosts` in your command line. You can substitude `atom` for any editor you have installed which has a cli implementation, like sublime or textmate. Add the following line to this file and save it.
 
-```
+```bash
 192.168.10.10  api.mylumenapi.app
 ```
 
 Now open the `Homestead.yaml` file with the following command `homestead edit`. Add a new entry under the `sites` section.
 
-```
+```javascript
 - map: api.mylumenapi.app
   to: /home/vagrant/Code/mylumenapi/public
 ```
 
 You might need to destroy your vm and restart it, to get this to work. Do this by running the following commands in your command line:
-```
+```bash
 homestead destroy
 homestead up
 ```
@@ -98,13 +98,13 @@ There are more options available but we do not need to set them at the moment. I
 
 Our tests are going to run against the api, so we need to install `guzzle` to make those calls, we use the `--prefer-dist` flag so that we do not get all the tests and things that are only needed for devlopment.
 
-```
+```bash
 composer require guzzlehttp/guzzle:~6.0 --prefer-dist
 ```
 
 Since our tests are also part of our documentation, we will try to be as verbose as we can. Good tests should be easy to understand, so a new developer (or yourself in a couple month) can get an idea of what you api does, by reading the tests and expected results. One part in this is using readable http status codes ([http-status package](https://github.com/lukasoppermann/http-status)) instead of magic numbers. (Phil Sturgeon [wrote more about the why](https://philsturgeon.uk/http/2015/08/16/avoid-hardcoding-http-status-codes/)).
 
-```
+```bash
 composer require lukasoppermann/http-status --prefer-dist
 ```
 
@@ -120,7 +120,7 @@ class TestCase extends Laravel\Lumen\Testing\TestCase implements Httpstatuscodes
 
 With this interface implementend we can use something like `self::HTTP_OK` in our tests, which is much easier to understand than the numbers. To get guzzle readay we need to add a `setUp` function to our `TestCase.php` file. Make sure you spell it correctly, as it is a special function, which is called by [phpunit](https://phpunit.de/manual/current/en/fixtures.html) before every test.
 
-```
+```php
 class TestCase extends Laravel\Lumen\Testing\TestCase implements Httpstatuscodes
 {
     protected $client;
@@ -166,7 +166,7 @@ At the moment our test only checks for a correct status code, but in the next pa
 ## Adding the route
 If we run our test now, we get an error like this:
 
-```shell
+```bash
 Failed asserting that 400 matches expected 200.
 ```
 

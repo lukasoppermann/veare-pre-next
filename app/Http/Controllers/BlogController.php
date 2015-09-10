@@ -38,7 +38,7 @@ class BlogController extends Controller
         }
 
         $article_list = isset($article_list) ? $article_list: [];
-        return view('blog.overview', ['files' => $article_list]);
+        return view('blog.listing', ['files' => $article_list]);
     }
 
     private function getDate($filename)
@@ -69,24 +69,26 @@ class BlogController extends Controller
      */
     public function show($name)
     {
-        if( Storage::exists('articles/'.$name.'.md') ) {
-            $article = Storage::get('articles/'.$name.'.md');
-            preg_match('#---\n(.*?)---\n#is', $article, $d);
-            $article = preg_replace('#---\n(.*?)---\n#is', '', $article);
-            foreach(array_filter(explode("\n", $d[1])) as $data){
-                $data = explode(':',$data);
-                $metadata[trim($data[0])] = trim($data[1]);
-            }
-            $converter = new CommonMarkConverter();
-            $post = $converter->convertToHtml($article);
-
-
-            $metainfo = '<div class="o-meta publication-info">Published by <a class="author" href="http://vea.re/blog" rel="author">Lukas Oppermann</a>, <time datetime="'.$this->getDate($name).'" class="article_time">'.$this->getDate($name).'</time></div>';
-
-            $post = str_replace('{$meta}', $metainfo, $post);
-
-            return view('blog.post', ['post' =>  $post, 'title' => $metadata['title'] ]);
+        if( !Storage::exists('articles/'.$name.'.md') ) {
+            return redirect()->action('BlogController@index');
         }
+
+        $article = Storage::get('articles/'.$name.'.md');
+        preg_match('#---\n(.*?)---\n#is', $article, $d);
+        $article = preg_replace('#---\n(.*?)---\n#is', '', $article);
+        foreach(array_filter(explode("\n", $d[1])) as $data){
+            $data = explode(':',$data);
+            $metadata[trim($data[0])] = trim($data[1]);
+        }
+        $converter = new CommonMarkConverter();
+        $post = $converter->convertToHtml($article);
+
+
+        $metainfo = '<div class="o-meta publication-info">Published by <a class="author" href="http://vea.re/blog" rel="author">Lukas Oppermann</a>, <time datetime="'.$this->getDate($name).'" class="article_time">'.$this->getDate($name).'</time></div>';
+
+        $post = str_replace('{$meta}', $metainfo, $post);
+
+        return view('blog.post', ['post' =>  $post, 'title' => $metadata['title'] ]);
     }
 
 }
