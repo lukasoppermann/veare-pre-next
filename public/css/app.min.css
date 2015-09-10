@@ -7,6 +7,8 @@ html, body {
     font-size: 18px;
     font-weight: 400;
     line-height: 135%;
+    word-break: break-all;
+    word-wrap: break-word;
 }
 .o-container{
     width: 100%;
@@ -50,8 +52,6 @@ code{
 pre code{
     background: none;
     color: rgb(50, 50, 55);
-    word-break: break-all;
-    word-wrap: break-word;
 }
 pre{
     background: rgba(0, 0, 0, 0.1);
