@@ -83,16 +83,18 @@ class BlogController extends Controller
 
         foreach($articles as $article)
         {
-            $article_file = pathinfo($article)['filename'];
+            if(pathinfo($article)['extension'] === 'md'){
+                $article_file = pathinfo($article)['filename'];
 
-            $article_list[] = [
-                'link' => $article_file,
-                'title' => $this->getTitle($article_file),
-                'date' => $this->getDate($article_file),
-            ];
+                $article_list[] = [
+                    'link' => $article_file,
+                    'title' => $this->getTitle($article_file),
+                    'date' => $this->getDate($article_file),
+                ];
+            }
         }
 
-        return view('blog.overview', ['articles' => $article_list]);
+        return view('blog.listing', ['articles' => $article_list]);
     }
 ```
 
@@ -212,11 +214,55 @@ The only thing left is creating the `views/blog/post.blade.php` file. Like the l
 That is it, all we need to do is add some minimal css to `public/css/app.css` to make it look readable. We still have much than can be improved, but this can wait until you wrote a couple posts. You will also have a much better idea of what features you would like to implement, after you have been using your blog for a while.
 
 ```css
-
+html, body {
+    margin: 0;
+    height: 100%;
+    color: rgb(50, 50, 55);
+    font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
+    font-size: 18px;
+    line-height: 135%;
+}
+.o-container{
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 800px;
+    padding: 20px 10px;
+    margin: 0 auto;
+}
+h1{
+    margin-top: 0;
+    font-size: 32px;
+}
+h2{
+    margin-top: 40px;
+    font-size: 26px;
+}
+code{
+    display: inline-block;
+    font-family: monospace;
+    background-color: rgba(0, 0, 0, .05);
+    padding: 0 3px;
+}
+pre code{
+    background: none;
+}
+pre{
+    background-color: rgba(0, 0, 0, .05);
+    border-radius: 3px;
+    padding: 10px 5px;
+    overflow-x: scroll;
+}
+a{
+    color: inherit;
+    text-decoration: underline;
+}
+a:hover{
+    text-decoration: none;
+}
 ```
 
 ## Heed this warning
 For brevity, this code is reduced to the bare minimum. You can use it for your own blog, but it is extremely unstable. If an article has a wrong name format, everything might break down. We will look into making this system more stable, secure and useful, but this is enought to get you started. Since you control the system, you can make sure to not break it.
 
 <h2 id="a-blog-in-progress">Sidenote: a blog in progess ...</h2>
-This whole post and the entire blog is a work in progress which uses exactly this idea. I got frustrated with not publishing because of all the hassle associated with it, so now I am just writing markdown files and only concentrate on the content.
+ am actually build this blog by exactly the same model. I started with a very basic version, just like outlined above and I am adding to it all the time. I got frustrated with not publishing anything because of all the hassle associated with it. Now I can just writing markdown files and only concentrate on the content, which works very well for me.

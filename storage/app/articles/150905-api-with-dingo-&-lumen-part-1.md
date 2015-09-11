@@ -5,83 +5,74 @@ author: Lukas Oppermann
 ---
 # API with dingo & lumen - PART 1
 {$meta}
-In this series we will write a well tested api using [lumen](http://lumen.laravel.com/) and the [dingo/api](https://github.com/dingo/api) package. We are going to build a well-tested api for storing and retrieving posts.
+In this series we will write a well tested api using [lumen](http://lumen.laravel.com/) and the [dingo/api](https://github.com/dingo/api) package.
 
 ## Install lumen & dingo/api
 
-I assume you have composer installed on your machine and a basic knowledge of how to use the commandline.
-So lets start installing lumen via the composer `create-project` command.
-```bash
-composer create-project laravel/lumen --prefer-dist myLumenApi
-```
+I am assuming you have composer installed on your machine and a basic knowledge of how to use the command line.
+So lets start installing lumen via composers `create-project` command. This command creates a new folder with the name of your project, so make sure to `cd` into your `code` directory (or wherever you store all your projects) first. Once the installation is done we can `cd` into the newly created project folder and require the `dingo/api` package using composer.
 
-Now we can `cd` into our project and install dingo/api.
 ```bash
+cd ~/code
+composer create-project laravel/lumen --prefer-dist myLumenApi
 cd myLumenApi
 composer require dingo/api:1.0.x@dev --prefer-dist
 ```
 
-We need to do a little configuration before we can start to build our api, so jump over to your IDE and open `bootstrap/app.php`.
-
-In lumen you can store environment variables in a file named `.env`. On your production server you would set up real environment variables, but for development this is much easier. For this to work, simply uncomment line 5 in the `app.php` file.
+Before we can start to build our api we need to do a little configuration, so open `bootstrap/app.php` in your text editor of choice and uncomment line 5. This will make it possible to use an `.env` file, which you can use in your development environment to simulate environment variables. You can read more about `.env` files in the [Lumen docs](http://lumen.laravel.com/docs/installation#environment-configuration).
 
 ```php
 Dotenv::load(__DIR__.'/../');
 ```
 
-Lumen ships with eloquent, the excellemt ORM you know from laravel. Some people might argue that you need to implement a repository pattern to be able to easily switch out your ORM without having to edit all your controllers, but I would say that in most cases this is premature optimization. You can still implement a repository pattern the first time you actually switch out your database access layer.
+Now uncomment line 24 to enable [Eloquent](http://laravel.com/docs/5.1/eloquent), Laravels and Lumens excellent ORM. You could instead implement a repository pattern to abstract your database layer, but I would only recommend it if you are at least 50% sure you will need this, or if your api is really huge. Otherwise you just add an overhead you might never need, and if you do need it, its not such a big pain to refactor a couple controllers to use a repository.
 
-Anyway, eloquent will not be loaded by default, so we need to uncomment line 24 in the `app.php` file to use it.
 ```php
 $app->withEloquent();
 ```
 
-To get the `dingo/api` packges loaded all we need to do is register the `LumenServiceProvider` in the `app.php` file. To do so, add the following  at line 80:
+Now we only need to load dingos service provider, which I would add at line 80. This pulls in the magic of the `dingo/api` packages for us.
 
 ```php
 $app->register(Dingo\Api\Provider\LumenServiceProvider::class);
 ```
 
 ## Setting up homestead
-I expect you to have a working version of homestead on your machine, if not, follow the instructions on the [homestead installation page](http://laravel.com/docs/master/homestead) and setup homestead. Once you are done we need to add a new domain to it, so lets move over to the terminal.
-
-First we need to edit the `/etc/hosts` file, run `atom /etc/hosts` in your command line. You can substitude `atom` for any editor you have installed which has a cli implementation, like sublime or textmate. Add the following line to this file and save it.
+I expect you to have a working version of homestead on your machine, if not, follow the instructions on the [homestead installation page](http://laravel.com/docs/master/homestead) and setup homestead. Once you are done we need to add a new domain to it, so open `/etc/hosts` by running `open /etc/hosts` in your command line and add a dev domain to it.
 
 ```bash
 192.168.10.10  api.mylumenapi.app
 ```
 
-Now open the `Homestead.yaml` file with the following command `homestead edit`. Add a new entry under the `sites` section.
+Afterwards we need to add this to homestead so run `homestead edit` from the command line and add the following entry under the `sites` section.
 
-```javascript
-- map: api.mylumenapi.app
-  to: /home/vagrant/Code/mylumenapi/public
+```bash
+sites:
+    - map: api.mylumenapi.app
+      to: /home/vagrant/Code/mylumenapi/public
 ```
 
-You might need to destroy your vm and restart it, to get this to work. Do this by running the following commands in your command line:
+You might need to destroy your vm and restart it, to get it to pick up the new domain. Do this by running the commands below in your command line. If everything went according to plan, you should be able to see the lumen welcome page when accessing your domain `api.mylumenapi.app`.
+
 ```bash
 homestead destroy
 homestead up
 ```
 
-If everything went according to plan, you should be able to see the lumen welcome page when accessing your domain `api.mylumenapi.app`.
-
 ## Configure dingo/api
-
-Configuring dingo is fairly easy: open your `.env` file and lets get started. The [ding/api documentation](https://github.com/dingo/api/wiki/Configuration) is actually pretty good for most cases.
-
+The `dingo/api` package lets you change much of its bahaviour by changing the settings via the environment variables, so open your `.env` file and add the variables described below. The [dingo/api documentation](https://github.com/dingo/api/wiki/Configuration) is actually pretty good if you want to read more about those configurations.
 
 **API_STANDARDS_TREE=vnd**   
-If your api is publically available or at any point will be, use the vendor tree `vnd`. The personal tree `prs`, is meant for not distributed projects.
+If your api is publicly available or at any point will be, use the vendor tree `vnd`. The personal tree `prs`, is meant for not distributed projects only. I recommend to always use the `vnd` tree, since it does not hurt you if your api stays private.
 
 **API_SUBTYPE=yourVendorName**
-This is the name of your project or application. Github for e.g. uses `github`
+This is the name of your project or application. Github for e.g. uses `github`. It will be part of the accept header, which will look like `vnd.yourVendorName.v1+json`.
 
 **API_PREFIX=/**
-For dingo to work you need to provide either a prefix or a subdomain, but subdomain routing does not work under lumen and in any case this app is nothing else but an api, so we choose a prefix of `/` which basically means our base url for the api is our url (api.mylumenapi.app).
+For dingo to work you need to provide either a prefix or a subdomain, but subdomain routing is only supported by laravel, not lumen. Since our app is a standalone api we can use a prefix of `/` which means our base url for the api is our urls (api.mylumenapi.app).
 
 **API_VERSION=v1**
-The version option specifies our default version, that is used whenever a request does not specify a version. This should always track your most recent version. Make sure to advise your api user that they should always specify an api version so they are not suprised by breaking changes that come with a new version.
+The version option specifies our default version, which is used whenever a request does not specify a version. This should always track your most recent version. Make sure to advise your api user to always specify an api version so they are not suprised by breaking changes that may be introduced with a new version.
 
 **API_NAME=YourApiName API**
 This option is used as your api name when generating your api documentation via the `api:docs` command.
