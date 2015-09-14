@@ -78,7 +78,7 @@ The version option specifies our default version, which is used whenever a reque
 This option is used as your api name when generating your api documentation via the `api:docs` command.
 
 **API_STRICT=false**
-When strict mode is enabled, requests need to specify an `Accept` header. If none is provided an exception will be thrown, instead of using the specified default version. This means you are not able to view your api via your the browser. You would possibly turn this on, but for developing it is quite handy to quickly view your api in the browser, so we set it to false for now.
+When strict mode is enabled, requests need to specify an `Accept` header. If none is provided an exception will be thrown, instead of using the specified default version. However, this means you will not able to view your api in the browser. You would possibly turn this on, but for developing it is quite handy to quickly view your api in the browser, so we set it to `false` for now.
 
 **API_DEBUG=true**
 Just remember to turn this off in your production app.
@@ -87,33 +87,24 @@ There are more options available but we do not need to set them at the moment. I
 
 ## Preparing the test setup with phpunit
 
-Our tests are going to run against the api, so we need to install `guzzle` to make those calls, we use the `--prefer-dist` flag so that we do not get all the tests and things that are only needed for devlopment.
+Phpunit is just one testing framework you could use, phpspec is another very good one, which a much nicer cli gui. However, since I prefere to stick to the basic functions, like `equals()` as much as possible in any case and phpunit comes preinstalled with lumen, I am not going to bother installing another framework.
+
+We are writing integration tests, which means we need to call the api. The fastest way to do so is to install `guzzle` via composer. We will also install the [http-status package](https://github.com/lukasoppermann/http-status) which lets us use strings like `HTTP_OK` or `HTTP_CREATED` instead of their magic numbers 200 or 201. This is a good practise because it makes our tests verbose and easy to read. Tests should be a kind of documentation, the easier they are, the better. Phil Sturgeon has [some thoughts about this](https://philsturgeon.uk/http/2015/08/16/avoid-hardcoding-http-status-codes/) as well, if you are interested.
 
 ```bash
 composer require guzzlehttp/guzzle:~6.0 --prefer-dist
-```
-
-Since our tests are also part of our documentation, we will try to be as verbose as we can. Good tests should be easy to understand, so a new developer (or yourself in a couple month) can get an idea of what you api does, by reading the tests and expected results. One part in this is using readable http status codes ([http-status package](https://github.com/lukasoppermann/http-status)) instead of magic numbers. (Phil Sturgeon [wrote more about the why](https://philsturgeon.uk/http/2015/08/16/avoid-hardcoding-http-status-codes/)).
-
-```bash
 composer require lukasoppermann/http-status --prefer-dist
 ```
 
-Everything installed? Perfect, lets dive right in: open your `tests/TestCase.php` to import and implement the interface.
+Once everything is installed, open `tests/TestCase.php` which is the base class that all our tests will extend. We need to import the `Httpstatuscodes` interface, initialize a new guzzle client in the `setUp` function ([learn more about setUp in phpunit](https://phpunit.de/manual/current/en/fixtures.html)) and assign it to a `protected` variable, which we name `$client`. With this done, we can interact with guzzle using the `$this->client` variable and reference status codes like this `self::HTTP_CREATED`.
 
 ```php
 <?php
 
 use Lukasoppermann\Httpstatus\Httpstatuscodes;
 
-class TestCase extends Laravel\Lumen\Testing\TestCase implements Httpstatuscodes{
-```
+class TestCase extends Laravel\Lumen\Testing\TestCase implements Httpstatuscodes {
 
-With this interface implementend we can use something like `self::HTTP_OK` in our tests, which is much easier to understand than the numbers. To get guzzle readay we need to add a `setUp` function to our `TestCase.php` file. Make sure you spell it correctly, as it is a special function, which is called by [phpunit](https://phpunit.de/manual/current/en/fixtures.html) before every test.
-
-```php
-class TestCase extends Laravel\Lumen\Testing\TestCase implements Httpstatuscodes
-{
     protected $client;
 
     public function setUp()
@@ -121,17 +112,15 @@ class TestCase extends Laravel\Lumen\Testing\TestCase implements Httpstatuscodes
         parent::setUp();
 
         $this->client = new GuzzleHttp\Client([
-            'base_uri' => 'http://api.formandsystem.app',
+            'base_uri' => 'http://api.mylumenapi.app',
             'exceptions' => false,
         ]);
     }
 ```
 
-With this addition we can now use `$this->client` in our unit test to make guzzle calls.
+## Writing the first test
 
-## Writing your tests
-
-Now we are ready to write our very first test, so lets think about how our app will work. We will have posts which are grouped in collections like a travel collection or a tutorial collection. Our api needs to respond to `/collections/travel` with a list of posts. Create a new file in the `tests` directory named `ColectionTest.php` with this test.
+We are ready to write our very first test, so lets think about how our api will actually work. Our posts will be grouped in collections, image something like a *travel* collection or a *tutorial* collection. This means our api needs to respond to `/collections/travel` with a list of posts. This is the first thing we will test, create a new file in the `tests` directory named `ColectionTest.php` with the code below.
 
 ```php
 <?php
@@ -145,23 +134,22 @@ class CollectionTest extends TestCase
 
         $response = $this->client->get('/collections/travel');
 
-        $this->assertEquals(self::HTTP_OK,
-            $response->getStatusCode());
+        $this->assertEquals(
+            self::HTTP_OK,
+            $response->getStatusCode()
+        );
 
+        $this->markTestIncomplete('add expected return data.');
     }
 }
 ```
 
-At the moment our test only checks for a correct status code, but in the next part we will modify it to test for our desired response. Don't forget to either prefix your test functions with `test_` or, like in the example above, add the `@test` doc block, otherwise phpunit will not be able to run your tests.
+At the moment our test only checks for a correct status code, but we added a `markTestIncomplete` statment, which will remind as, that we are missing a vital part that we will add in the next article in this series. Don't forget to either prefix your test functions with `test_` or, like in the example above, add the `@test` doc block, otherwise phpunit will not be able to run your tests.
 
 ## Adding the route
-If we run our test now, we get an error like this:
+If we run our test now, we get an error like `Failed asserting that 400 matches expected 200.`. Which was to be expected, since we did not add any routes. We will look into how we can improve this error message using the `http-status` package in a another post.
 
-```bash
-Failed asserting that 400 matches expected 200.
-```
-
-This is to be expected, as we did not add any route yet. Adding a route is pretty simple, but in our case, have have to use the `dingo/api` router, instead lumens, default router, to get all the versioning and header stuff. Actually it is pretty straight forward we just need to add the following to our `routes.php`.
+To add an api route in our `routes.php` we have have to use the `dingo/api` router, instead of lumens default router, to get all the versioning and header magic that dingo comes with. The process it is pretty straight forward, first we create a new instance of dingos api router, than we add a new *version group* to tell the router which api version the following routes are meant for. Within this group we just add a routing statement to return `test` when the route is called using a get request. Lumen automatically sets the status code to `OK` if we return a string, so our test should pass.
 
 ```php
 $api = app('Dingo\Api\Routing\Router');
@@ -173,6 +161,4 @@ $api->version('v1', function($api){
 });
 ```
 
-First we create a new instance of the api router that is provided with the `dingo/api` package. Afterwards we add a new version group, because the router needs to know for which version this route will be used. Afterwards we have a simple routing statement to return test when the route is called using a get request. Lumen automatically sets the status code to `OK` if we return anything, so our tests should pass.
-
-In the next part of this series we will add more tests and create our controller to return useful data.
+That's it. In the next part of this series we will add more tests and create our controller to return useful data.

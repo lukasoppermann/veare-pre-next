@@ -50,9 +50,12 @@ h2{
         content: "##";
     }
 }
+li{
+    margin: 10px 0;
+}
 code{
     display: inline-block;
-    font-family: 'Fira Mono', monospace;
+    font-family: 'Fira Mono', Times !important;
     color: rgba(50, 50, 55, .7);
     background-color: rgba(50, 50, 55, .05);
     padding: 0 3px;
