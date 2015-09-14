@@ -3,8 +3,6 @@
     <head>
         <title>{{$title or 'Web Development, User Experience & Design'}} – veare field notes</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1,maximum-scale=1">
-        <!-- <link href='https://fonts.googleapis.com/css?family=Fira+Mono:400' rel='stylesheet' type='text/css'>
-        <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'> -->
         <link href='{{asset(env("CSS_PATH").'app.min.css')}}' rel='stylesheet' type='text/css'>
         <link href='{{asset(env("CSS_PATH").'prism.css')}}' rel="stylesheet" />
         <script>
@@ -33,10 +31,12 @@
             document.addEventListener('DOMContentLoaded', fn);
           }
       }
-      ready(WebFont.load({
-        google: {
-          families: ['Lato:400,700','Fira Mono:400']
-        }
-    }));
+      ready(function(){
+          WebFont.load({
+            google: {
+              families: ['Lato:400,700']
+            }
+        })
+      });
     </script>
 </html>

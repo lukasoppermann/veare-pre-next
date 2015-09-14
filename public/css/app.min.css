@@ -4,7 +4,7 @@ html, body {
     background-color: rgb(255, 255, 252);
     color: rgb(50, 50, 55);
     font-family: 'Open sans', 'Helvetica Neue', 'Helvetica', sans-serif;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 400;
     line-height: 135%;
     word-wrap: break-word;
@@ -12,6 +12,11 @@ html, body {
     -webkit-hyphens:auto;
     -o-hyphens:auto;
     hyphens:auto;
+}
+@media (min-width: 600px) {
+    body{
+        font-size: 18px;
+    }
 }
 .o-container{
     width: 100%;
@@ -55,10 +60,11 @@ li{
 }
 code{
     display: inline-block;
-    font-family: 'Fira Mono', Times !important;
+    font-family: 'Fira Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace !important;
     color: rgba(50, 50, 55, .7);
     background-color: rgba(50, 50, 55, .05);
     padding: 0 3px;
+    word-break: break-all;
 }
 pre code{
     background: none;
