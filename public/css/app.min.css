@@ -150,6 +150,13 @@ a:hover::after{
     width: 80px;
     display: inline-block;
 }
+@media (max-width: 600px) {
+    .c-post-preview-time{
+        display: block;
+        width: 100%;
+        margin-top: 20px;
+    }
+}
 .c-blog-intro{
     font-size: 22px;
     line-height: 135%;
