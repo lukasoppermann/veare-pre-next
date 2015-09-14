@@ -95,8 +95,10 @@ a::after{
     z-index: -1;
     transition: height .3s ease;
 }
-a:hover::after{
-    height: 102%;
+@media (min-width: 600px) {
+    a:hover::after{
+        height: 102%;
+    }
 }
 .o-link{
     text-decoration: none;
@@ -116,9 +118,11 @@ a:hover::after{
     transition: width 1s ease;
     z-index: -1;
 }
-.o-link:hover::after{
-    height: 3px;
-    width: 100%;
+@media (min-width: 600px) {
+    .o-link:hover::after{
+        height: 3px;
+        width: 100%;
+    }
 }
 .o-link--back{
     display: inline-block;
