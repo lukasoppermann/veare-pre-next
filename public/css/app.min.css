@@ -59,11 +59,11 @@ li{
     margin: 10px 0;
 }
 code{
-    display: inline-block;
+    display: inline;
     font-family: 'Fira Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace !important;
     color: rgba(50, 50, 55, .7);
     background-color: rgba(50, 50, 55, .05);
-    padding: 0 3px;
+    padding: 2px 3px;
     word-break: break-all;
 }
 pre code{
