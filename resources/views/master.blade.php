@@ -21,23 +21,9 @@
         <div class="o-container">
             @yield('content')
         </div>
-    <script src='{{ asset(env("JS_PATH_PREFIX").elixir("js/prism.js")) }}'></script>
+        @include('footer')
     </body>
+    <script src='{{ asset(env("JS_PATH_PREFIX").elixir("js/prism.js")) }}'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
-    <script>
-      function ready(fn) {
-          if (document.readyState != 'loading'){
-            fn();
-          } else {
-            document.addEventListener('DOMContentLoaded', fn);
-          }
-      }
-      ready(function(){
-          WebFont.load({
-            google: {
-              families: ['Lato:400,700']
-            }
-        })
-      });
-    </script>
+    <script src='{{ asset(env("JS_PATH_PREFIX").elixir("js/fonts.js")) }}'></script>
 </html>

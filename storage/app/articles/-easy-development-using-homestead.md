@@ -14,11 +14,26 @@ The main benefit of homestead is that you have a complete setup (Nginx web serve
 
 If you haven't been living under a rock the last couple of years you probably have most of the following things installed and configured already, but if you are new to the world of programming chances are you are missing one or two of the dependencies, so I will walk you trough the process assuming you have a clean installation of your OS an nothing else. Also note that I work on a mac, if you are running linux or windows, things migth be slightly different.
 
-### GIT
-Git is already installed, but I prefere to have control over which version of git I am running, so I suggest to use your own installation. We are not going to activly use git, but git is used by vagrant so we need it. On mac there is [**homebrew**\]() which is a dependency management system for mac, which you can use to easily install & update git and other depenendcies. You can install this using ruby, which comes preinstalled in mac as well. So run the following on your command line to install homebrew and git.
+## VirtualBox & Vagrant
+Homestead is a [Vagrant](https://www.vagrantup.com/downloads.html) virtual box, Vagrant is a virtual machine that runs on [VirtualBox](https://www.virtualbox.org/wiki/Downloads). You do not really need to know how it works, if you do want to know, check out their websites. What you need to know is that homestead runs a virtual server on your machine and mirrors everything from one specific folder to your virtual server.
+
+First download and install [VirtualBox](https://www.virtualbox.org/wiki/Downloads). Just choose the version from the **VirtualBox platform packages** which corresponds to your operating system.
+
+Once you have VirtualBox installed, download and install [Vagrant](https://www.vagrantup.com/downloads.html).
+
+Now that both VirtualBox & Vagrant are installed on your machine, it's time to add homestead by simply running the following command in your command line. This may take a very long while...
 
 ```bash
-homebrew installation ...
+vagrant box add laravel/homestead
+```
+
+While we wait, let's get everything else up and running.
+
+### GIT
+Git is already installed, but I prefer to have control over which version of git I am running, so I suggest to use your own installation. We are not going to actively use git, but git is used by vagrant so we need it. On OSX you can use [**homebrew**](http://brew.sh/), a dependency management tool for mac, to easily install & update git and other dependencies. You can install this using ruby, which comes preinstalled on every mac. Just run the following on your command line to install homebrew and git.
+
+```bash
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew install git
 ```
 
@@ -38,23 +53,27 @@ export PATH="/usr/local/bin:$PATH"
 ```
 
 ### Installing composer
-Git is done, now we need [composer](http://www.getcomposer.org), which is the PHP dependency management tool. We will use this to create a new laravel installation, but even if you do not use Laravel, you should use composer to install your packages. Composer can be installed via ...???
+Git is done, now we need [composer](http://www.getcomposer.org), which is the PHP dependency management tool. We will use this to create a new laravel installation, but even if you do not use Laravel, you should use composer to install your packages.
 
 ```bash
-Installing composer
+# download & install composer
+curl -sS https://getcomposer.org/installer | php
+## move composer phar so that you can use just with composer
+mv composer.phar /usr/local/bin/composer
 ```
 
-## VirtualBox & Vagrant
-Homestead is a [Vagrant](https://www.vagrantup.com/downloads.html) virtual box, which is a virtual machine that runs on [VirtualBox](https://www.virtualbox.org/wiki/Downloads). You do not really need to know how it works, if you do, check out their websites. What you need to know is that homestead runs a virtual server on your machine and mirrors everything from one specific folder to your virtual server.
-
-First download and install [VirtualBox](https://www.virtualbox.org/wiki/Downloads). Just choose the version from the **VirtualBox platform packages** which corresponds to your operating system.
-
-Once you have VirtualBox installed, download and install [Vagrant](https://www.vagrantup.com/downloads.html).
-
-Now that both VirtualBox & Vagrant are installed on your machine, it's time to add homestead by simply running the following command in your command line. This may take a while.
+If moving `composer.phar` fails due to permissions, run the command with `sudo`.
 
 ```bash
-vagrant box add laravel/homestead
+curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+```
+
+## Creating your project
+
+All is done, we are just missing the project. If you do not already have a `Code` folder create one `mkdir ~/Code` and `cd` into it: `cd ~/Code`. Now you can create a new project using the `composer create-project` command and you should be able to see the Laravel welcome page.
+
+```bash
+composer create-project laravel/laravel --prefer-dist myApp
 ```
 
 ## Creating your ssh keys
@@ -81,7 +100,7 @@ ssh-add ~/.ssh/id_rsa
 ```
 
 ## Adding your first project url to homestead
-Wow, we are already done, now lets setup our first project. We want to locally access `http://myapp.dev` in the browser and view our app. To achieve this we need to make our mac process all requests to this url locally, which we can achieve by pointing this url to the ip `192.168.10.10` in the `/etc/hosts` file. Homestead will pick up the requests and if we configure it correctly in the `homestead.yaml` point all requests to a folder we specify. Run `open /etc/hosts` in your command line and add the following line to it.
+Once the homestead box is installed, we can move on. We want to locally access `http://myapp.dev` in the browser and view our app. To achieve this we need to make our mac process all requests to this url locally, which we can achieve by pointing this url to the ip `192.168.10.10` in the `/etc/hosts` file. Homestead will pick up the requests and if we configure it correctly in the `homestead.yaml` point all requests to a folder we specify. Run `open /etc/hosts` in your command line and add the following line to it.
 
 ```bash
 192.168.10.10  myapp.dev
@@ -105,11 +124,3 @@ sites:
 ```
 
 Every time you add a new site to homestead you need to run `homestead destroy` to terminate the virtual server and `homestead up` to start it back up again. **Be aware** that this deletes all your databases on your homestead machine! So if your app relies on some data being available you will need to `ssh` into the server and run the migration & seeding scripts.
-
-## Creating your project
-
-All is done, we are just missing the project. If you do not already have a `Code` folder create one `mkdir ~/Code` and `cd` into it: `cd ~/Code`. Now you can create a new project using the `composer create-project` command and you should be able to see the Laravel welcome page.
-
-```bash
-composer create-project laravel/laravel --prefer-dist myApp
-```
