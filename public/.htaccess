@@ -16,6 +16,9 @@
 </IfModule>
 <IfModule mod_headers.c>
     Header set Connection keep-alive
+    <FilesMatch "\.(js|css|xml|gz)$">
+        Header append Vary: Accept-Encoding
+    </FilesMatch>
 </IfModule>
 <IfModule mod_expires.c>
     ExpiresActive On
