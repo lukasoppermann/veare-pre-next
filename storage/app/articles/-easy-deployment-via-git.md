@@ -12,9 +12,10 @@ Hopefully you are already using git to track changes in your project. Git knows 
 
 ## The setup: git on our web server
 
-Of course you will need to have `ssh` access to connect to your server via the command line and the web server needs git installed. If you have a medium web server (shared hosting is often fine) you probably have or can get ssh access.
+Of course you will need to have `ssh` access to connect to your server via the command line and the web server needs git installed. If you have at least a medium priced web server (shared hosting is often fine) you probably have or can get `ssh` access.
 
-**Ssh key on server**
+### ssh keys
+
 
 - setup bare repository
 - add hook

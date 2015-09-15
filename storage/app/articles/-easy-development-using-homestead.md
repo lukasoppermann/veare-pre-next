@@ -57,7 +57,28 @@ Now that both VirtualBox & Vagrant are installed on your machine, it's time to a
 vagrant box add laravel/homestead
 ```
 
-## Creating ssh keys
+## Creating your ssh keys
+If you do not have a public/private key pair on your machine, you will need to create one. Those keys are used by homestead to authorize itself to the virtual server when transferring files. Run the following command in your command line. When asked to provide a file in which to save the key, the default `/Users/yourUser/.ssh/id_rsa` is fine, just confirm by pressing the `enter` key. Afterwards you will be asked for a passphrase, choose one you can remember and confirm with `enter`. Afterwards reenter the passphrase and confirm again. Note that the command line will not show your password (or any caracters like \*).
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "your_email@domain.com"
+
+# output will be similar to
+Your identification has been saved in /Users/yourUser/.ssh/id_rsa.
+Your public key has been saved in /Users/yourUser/.ssh/id_rsa.pub.
+The key fingerprint is:
+05:f3:41:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db your_email@domain.com
+```
+
+Now you can add the key to your `ssh-agent` so you do not have to enter your passphrase all the time. Just run the following in the command line.
+
+```bash
+# test that ssh-agent is runnung
+eval "$(ssh-agent -s)" # outputs something like; Agent pid 57640
+
+# add your ssh key
+ssh-add ~/.ssh/id_rsa
+```
 
 ## Adding your first project url to homestead
 Wow, we are already done, now lets setup our first project. We want to locally access `http://myapp.dev` in the browser and view our app. To achieve this we need to make our mac process all requests to this url locally, which we can achieve by pointing this url to the ip `192.168.10.10` in the `/etc/hosts` file. Homestead will pick up the requests and if we configure it correctly in the `homestead.yaml` point all requests to a folder we specify. Run `open /etc/hosts` in your command line and add the following line to it.

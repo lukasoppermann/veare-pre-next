@@ -3,8 +3,9 @@
     <head>
         <title>{{$title or 'Web Development, User Experience & Design'}} – veare field notes</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1,maximum-scale=1">
-        <link href='{{asset(env("CSS_PATH").'app.min.css')}}' rel='stylesheet' type='text/css'>
-        <link href='{{asset(env("CSS_PATH").'prism.css')}}' rel="stylesheet" />
+        <link href='{{ asset(env("CSS_PATH_PREFIX").elixir('css/app.min.css')) }}' rel='stylesheet' type='text/css'>
+
+        <link href='{{asset(env("CSS_PATH_PREFIX").elixir('css/prism.css'))}}' rel="stylesheet" />
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -20,7 +21,7 @@
         <div class="o-container">
             @yield('content')
         </div>
-    <script src='{{asset(env("JS_PATH").'/prism.js')}}'></script
+    <script src='{{ asset(env("JS_PATH_PREFIX").elixir("js/prism.js")) }}'></script>
     </body>
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
     <script>
