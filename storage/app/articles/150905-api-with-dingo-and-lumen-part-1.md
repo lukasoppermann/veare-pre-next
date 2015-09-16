@@ -5,7 +5,7 @@ author: Lukas Oppermann
 ---
 # API with dingo & lumen - PART 1
 {$meta}
-In this series we will write a well tested api using [lumen](http://lumen.laravel.com/) and the [dingo/api](https://github.com/dingo/api) package.
+> In this series we will write a well tested api using [lumen](http://lumen.laravel.com/) and the [dingo/api](https://github.com/dingo/api) package.
 
 ## Install lumen & dingo/api
 

@@ -1,7 +1,7 @@
 html, body {
     margin: 0;
     height: 100%;
-    background-color: rgb(255, 255, 252);
+    background-color: rgb(255, 255, 255);
     color: rgb(50, 50, 55);
     font-family: 'Lato', 'Open sans', 'Helvetica Neue', 'Helvetica', sans-serif;
     font-size: 22px;
@@ -51,6 +51,8 @@ h1, h2{
     position: relative;
     font-weight: 700;
     line-height: 135%;
+    font-family: 'Lato', 'Open sans', 'Helvetica Neue', 'Helvetica', sans-serif;
+    font-weight: 700;
 }
 h2{
     margin-top: 40px;
@@ -94,6 +96,17 @@ pre{
     border-radius: 3px;
     padding: 10px 5px;
     white-space: pre-wrap;
+}
+blockquote p{
+    font-family: 'Lato', 'Open sans', 'Helvetica Neue', 'Helvetica', sans-serif;
+    font-size: 26px;
+    color: rgb(120, 120, 125);
+    line-height: 120%;
+    font-weight: 300;
+    margin: 0;
+}
+blockquote{
+    margin: 0;
 }
 a{
     color: inherit;

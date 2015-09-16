@@ -8,7 +8,7 @@ function ready(fn) {
 ready(function(){
   WebFont.load({
     google: {
-      families: ['Lato:400,700']
+      families: ['Lato:300,400,700'] //, 'Droid Serif:400'
     }
   })
 });

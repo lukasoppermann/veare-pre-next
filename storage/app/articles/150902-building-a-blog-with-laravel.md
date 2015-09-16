@@ -3,7 +3,7 @@ title: Why you should always write your own blogging software
 ---
 # Why you should always write your own blogging software
 {$meta}
-Okay, maybe I exaggerated. There is no "always" on the internet. But sometimes it might really be a good idea to look past the off-the-shelf products like Wordpress or Medium.
+> Okay, maybe I exaggerated. There is no "always" on the internet. But sometimes it might really be a good idea to look past the off-the-shelf products like Wordpress or Medium.
 
 ## The important part to get right when blogging
 What do you think is the most important part about your blog? The SEO so people find it? Maybe its the social media integration so your articles are easy to share? Maybe its the design, that has to be perfect? No. The only thing that matters is **good content**. Everything else can be added afterwards.
