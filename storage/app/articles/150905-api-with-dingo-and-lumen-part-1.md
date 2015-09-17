@@ -38,7 +38,7 @@ $app->register(Dingo\Api\Provider\LumenServiceProvider::class);
 ```
 
 ## Setting up homestead
-I expect you to have a working version of homestead on your machine, if not, follow the instructions on the [homestead installation page](http://laravel.com/docs/master/homestead) and setup homestead. Once you are done we need to add a new domain to it, so open `/etc/hosts` by running `open /etc/hosts` in your command line and add a dev domain to it.
+I expect you to have a working version of homestead on your machine, if not, I wrote an article explaining [how to setup homestead](/blog/150917-easy-development-using-homestead). Once you are done we need to add a new domain to it, so open `/etc/hosts` by running `open /etc/hosts` in your command line and add a dev domain to it.
 
 ```bash
 192.168.10.10  api.mylumenapi.app
