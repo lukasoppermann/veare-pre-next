@@ -124,7 +124,7 @@ Once the homestead box is installed (hopefully it is done by now), we can move o
 192.168.10.10  myapp.dev
 ```
 
-Save and close the file. Now we need to init homestead and edit the `homestead.yaml` file. You can probably leave most settings as they are, but I will run you through some of them nevertheless. Run the following two commands on your command line.
+Should you get an error due to missing permissions, use vim to edit the file. In vim you navigate with the keyboard arrow keys. To go into "insert mode" and change the file, press the `i` key. Once you aer done press `Esc` to exit insert mode and type `:qw` and hit the `enter` key to save and close the file (you can close a file without saving by simply typing `:q`). Now we need to init homestead and edit the `homestead.yaml` file. You can probably leave most settings as they are, but I will run you through some of them nevertheless. Run the following two commands on your command line.
 
 ```bash
 homestead init
