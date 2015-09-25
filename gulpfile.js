@@ -4,6 +4,7 @@ var rename = require('gulp-rename');
 var rev = require('gulp-rev');
 var del = require('del');
 var prefix = require('gulp-autoprefixer');
+var less = require('gulp-less');
 
 // actions
 gulp.task('clean-buid', function(done){
@@ -13,7 +14,8 @@ gulp.task('clean-buid', function(done){
 });
 
 gulp.task('build-css', function(){
-    return gulp.src(['public/css/*.css'])
+    return gulp.src(['resources/less/*.less'])
+    .pipe(less())
     .pipe(prefix({
         browsers: ['last 4 versions', 'IE 9', 'IE 8'],
         cascade: false

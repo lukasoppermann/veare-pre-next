@@ -23,8 +23,8 @@ class BlogController extends Controller
             preg_match('#---\n(.*?)---\n#is', Storage::get($article), $d);
             if(count($d) > 0){
                 foreach(array_filter(explode("\n", $d[1])) as $data){
-                    $data = explode(':',$data);
-                    $metadata[trim($data[0])] = trim($data[1]);
+                    $data = preg_split('~\\\:(*SKIP)(*FAIL)|:~',$data);
+                    $metadata[trim($data[0])] = str_replace('\:',':',trim($data[1]));
                 }
             }
 
