@@ -1,6 +1,8 @@
 {
-  "css/app.min.css": "css/app-202b07089d.min.css",
+  "css/app.css": "css/app-63ac69295b.css",
+  "css/app.min.css": "css/app-db1ff3f71b.min.css",
+  "css/link.css": "css/link-d41d8cd98f.css",
   "css/prism.css": "css/prism-c64a5e5db8.css",
-  "js/fonts.js": "js/fonts-20f9671554.js",
+  "js/fonts.js": "js/fonts-54474ddbf2.js",
   "js/prism.js": "js/prism-6b106204a0.js"
 }
