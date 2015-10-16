@@ -162,7 +162,7 @@ git commit -m 'update gitignore and add empty readme.md'
 git push
 ```
 
-# Store your password
+## Store your password
 Because it is pretty annoying to enter your username and password every time you want to push something to github, there is a tool to deal with it. Git has a way of storing your credentials in the OSX keychain, so that you do not have to enter them manually.
 
 If you installed git via homebrew it should already be installed, you can test it by entering the following command into the terminal.
