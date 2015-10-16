@@ -3,7 +3,7 @@
     <head>
         <title>{{$title or 'Web Development, User Experience & Design'}} – veare field notes</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1,maximum-scale=1">
-        <link href='{{ asset(env("CSS_PATH_PREFIX").elixir('css/app.min.css')) }}' rel='stylesheet' type='text/css'>
+        <link href='{{ asset(env("CSS_PATH_PREFIX").elixir('css/app.css')) }}' rel='stylesheet' type='text/css'>
 
         <link href='{{asset(env("CSS_PATH_PREFIX").elixir('css/prism.css'))}}' rel="stylesheet" />
         <script>

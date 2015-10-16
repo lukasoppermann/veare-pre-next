@@ -170,6 +170,7 @@ a {
   }
 }
 .o-link--back {
+  font-family: 'Lato', 'Open sans', 'Helvetica Neue', 'Helvetica', sans-serif;
   text-decoration: none;
   display: inline-block;
   margin: 10px 0;
@@ -220,7 +221,8 @@ a {
   display: block;
   margin-top: 30px;
 }
-.o-post-content {
+.o-post__content {
+  font-family: 'Merriweather', 'Georgia', serif;
   margin-top: 30px;
 }
 .o-post-list {
@@ -233,6 +235,7 @@ a {
   padding-bottom: 20px;
 }
 .o-footer {
+  font-family: 'Lato', 'Open sans', 'Helvetica Neue', 'Helvetica', sans-serif;
   width: 100%;
   margin-top: 30px;
 }

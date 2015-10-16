@@ -1,9 +1,11 @@
+@sans-serif: 'Lato', 'Open sans', 'Helvetica Neue', 'Helvetica', sans-serif;
+@serif: 'Merriweather', 'Georgia', serif;
 html, body {
     margin: 0;
     height: 100%;
     background-color: rgb(255, 255, 255);
     color: rgb(50, 50, 55);
-    font-family: 'Lato', 'Open sans', 'Helvetica Neue', 'Helvetica', sans-serif;
+    font-family: @sans-serif;
     font-size: 22px;
     font-weight: 400;
     line-height: 135%;
@@ -57,7 +59,7 @@ h1, h2{
     position: relative;
     font-weight: 700;
     line-height: 135%;
-    font-family: 'Lato', 'Open sans', 'Helvetica Neue', 'Helvetica', sans-serif;
+    font-family: @sans-serif;
     font-weight: 700;
 }
 h2{
@@ -104,7 +106,7 @@ pre{
     white-space: pre-wrap;
 }
 blockquote p{
-    font-family: 'Lato', 'Open sans', 'Helvetica Neue', 'Helvetica', sans-serif;
+    font-family: @sans-serif;
     font-size: 26px;
     color: rgb(120, 120, 125);
     line-height: 120%;
@@ -166,6 +168,7 @@ a{
     }
 }
 .o-link--back{
+    font-family: @sans-serif;
     text-decoration: none;
     display: inline-block;
     margin: 10px 0;
@@ -213,10 +216,12 @@ a{
     line-height: 135%;
 }
 .o-footer{
+
     display:block;
     margin-top: 30px;
 }
-.o-post-content{
+.o-post__content{
+    font-family: @serif;
     margin-top: 30px;
 }
 .o-post-list{
@@ -230,6 +235,7 @@ a{
 }
 
 .o-footer{
+    font-family: @sans-serif;
     width: 100%;
     margin-top: 30px;
 }

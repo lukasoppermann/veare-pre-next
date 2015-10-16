@@ -46,7 +46,7 @@ touch ~/.bash_profile
 open ~/.bash_profile
 ```
 
-In your `.bash_profile` add (or edit) the `export PATH` line. The `PATH` variable is basically a line of paths, seperated by colons `:` which at least to me is pretty confusing, but thats the way it works. The importance is from left to right, so now we first look inside `/usr/local/bin` before we look anywhere else.
+In your `.bash_profile` add (or edit) the `export PATH` line. The `PATH` variable is basically a line of paths, separated by colons `:` which at least to me is pretty confusing, but thats the way it works. The importance is from left to right, so now we first look inside `/usr/local/bin` before we look anywhere else.
 
 ```bash
 export PATH="/usr/local/bin:$PATH"
