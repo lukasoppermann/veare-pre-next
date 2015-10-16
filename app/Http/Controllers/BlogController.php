@@ -16,6 +16,7 @@ class BlogController extends Controller
     public function index()
     {
         $articles = Storage::files('articles');
+        rsort($articles);
 
         foreach($articles as $article)
         {
