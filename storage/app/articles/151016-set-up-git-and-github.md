@@ -104,6 +104,8 @@ Since you are working with a repo on github, you most likely want to store your 
 ```bash
 # upload your committed changes to your remote (online) repository
 git push
+# if you never pushed to github before you will be asked for your github username & password
+# the password will not be displayed
 # you should see something similar to this
 > Counting objects: 1, done.
 > Delta compression using up to 8 threads.
@@ -159,6 +161,35 @@ git commit -m 'update gitignore and add empty readme.md'
 # push to remote
 git push
 ```
+
+# Store your password
+Because it is pretty annoying to enter your username and password every time you want to push something to github, there is a tool to deal with it. Git has a way of storing your credentials in the OSX keychain, so that you do not have to enter them manually.
+
+If you installed git via homebrew it should already be installed, you can test it by entering the following command into the terminal.
+
+```bash
+git credential-osxkeychain
+# output should be
+> Usage: git credential-osxkeychain <get|store|erase>
+# if you get the following it is not installed
+> git: 'credential-osxkeychain' is not a git command. See 'git --help'.
+```
+
+To install `git credential-osxkeychain` use the following curl command in your terminal. Afterwards you will need to adjust the permissions, move the file to the correct directory (same as your git installation) and set git to always use the helper.
+
+```bash
+curl -s -O https://github-media-downloads.s3.amazonaws.com/osx/git-credential-osxkeychain
+# adjust permissions
+chmod u+x git-credential-osxkeychain
+# move the git credential-osxkeychain to the path where git is installed
+sudo mv git-credential-osxkeychain "$(dirname $(which git))/git-credential-osxkeychain"
+# it will as for your password
+Password: [enter your password]
+# set git to use the osxkeychain credential helper
+git config --global credential.helper osxkeychain
+```
+
+Done. Okay, this was a little more work, but you only need to do it once. The next time you push, git will as you for the username and password and to allow the keychain to save those. Afterwards, no password ever again.
 
 ## GIT is easy
 So this it all you need for now. There is a lot more you can go with GIT and I will be writing some more articles about it. But if you understand the *add – commit – push* method you are good smaller projects, keep using it and once its second nature, learning new things you can do with GIT will be easy.
