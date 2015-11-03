@@ -124,6 +124,8 @@ Once the homestead box is installed (hopefully it is done by now), we can move o
 192.168.10.10  myapp.dev
 ```
 
+**Update:** if you are on OSX 10.11 this will not work due to the *rootless* feature. You need to edit the file using nano. To do so, run `sudo nano /etc/hosts` from your terminal. Now you can add the line above and press `ctrl + x` when you are done. Type `y` and hit `enter` when asked if you want to save.
+
 Should you get an error due to missing permissions, use vim to edit the file. In vim you navigate with the keyboard arrow keys. To go into "insert mode" and change the file, press the `i` key. Once you aer done press `Esc` to exit insert mode and type `:qw` and hit the `enter` key to save and close the file (you can close a file without saving by simply typing `:q`). Now we need to init homestead and edit the `homestead.yaml` file. You can probably leave most settings as they are, but I will run you through some of them nevertheless. Run the following two commands on your command line.
 
 ```bash
