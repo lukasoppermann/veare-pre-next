@@ -7,12 +7,12 @@ author: Lukas Oppermann
 # Getting into gulp
 > [Gulp](http://gulpjs.com/) is my favorite task runner, because it is the essence of simplicity.
 
-Before we get our hands dirty, let me quickly explain what a task runner is. Actually it is pretty straight forwards, a task runner is a very simple (commandlie) tool to run common tasks for you. Okay, but what are tasks? A task can be nearly anything: converting your less to css, minifying your javascript, optimizing your svgs, creating an svg sprite or a combination of the before mentioned.
+Before we get our hands dirty, let me quickly explain what a task runner is. Actually it is pretty straight forwards, a task runner is a very simple (commandline) tool to run common tasks for you. So, what are tasks? A task can be nearly anything: converting your less to css, minifying your javascript, optimizing your svgs, creating an svg sprite or a combination of the before mentioned.
 
-For this example we will be creating a task that watches our less files and whenever we change them, converts the less files to css, adds all needed vendor-prefixes and combines and minifies the bunch.
+For this example we will be creating a task that watches our less files and whenever we change them, converts the less files to css, adds all needed vendor-prefixes and combines the bunch.
 
 ## Install npm
-Before we can install gulp, we need a tool to install gulp, this tool is npm, the [node package manager](https://docs.npmjs.com/getting-started/what-is-npm). Installing it is as easy as [downloading](https://nodejs.org/en/) an installer and running it.
+First we need to get a tool to install gulp, this tool is npm, the [node package manager](https://docs.npmjs.com/getting-started/what-is-npm). Installing it is as easy as [downloading](https://nodejs.org/en/) the installer and running it.
 
 Now you should be able to get the current npm version by running `npm -v` in your terminal app. You can update npm via npm, with the following command in your terminal.
 
@@ -20,7 +20,8 @@ Now you should be able to get the current npm version by running `npm -v` in you
 sudo npm install npm -g
 ```
 
-`Cd` into your project so we can start setting it up.
+`cd` into your project so we can start setting it up.
+
 ```bash
 # move to the folder where you store all your projects
 cd ~/Code
@@ -40,10 +41,7 @@ Run `npm init` and hit `return` to accept the suggested values (the value in par
   "description": "Your projects description",
   "main": "index.js",
   "dependencies": {},
-  "devDependencies": {
-      "gulp": "^3.9.0",
-      "gulp-less": "^3.0.3"
-  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -51,8 +49,10 @@ Run `npm init` and hit `return` to accept the suggested values (the value in par
   "license": "MIT"
 }
 ```
+**TIP:** Check in the package.json into git, so when anyone clones down the repository, a simple `npm install` will download and install all your dependencies.
+
 ## Install gulp
-Perfect! Now that we have npm up and running lets get into gulp. You need to install gulp globally first and as a local dependency in your project as well. This is a special gulp thing, and not really important, so I won't go into it. Afterwards we need to create a `gulfile.js` in the root of our project. This file will contain all our tasks.
+Perfect! Now that we have npm up and running lets get into gulp. We need to install gulp globally and as a local dependency in our project. This is a special gulp thing, and not really important, so I won't go into it the whys. Always add the `--save-dev` flag to automatically save the dependencies to the `package.json` file.
 
 ```bash
 # install gulp globally
@@ -60,8 +60,23 @@ npm install --global gulp
 # install gulp in your project
 # make sure to cd into your project first
 npm install --save-dev gulp
+```
+
+Your `package.json` should now have gulp within the `devDependencies` section. The number after the colon is the installed version. This might differ for you, depending on the current gulp version.
+
+```javascript
+"devDependencies": {
+    "gulp": "^3.9.0",
+},
+```
+
+Moving on, we need to create a `gulfile.js` in the root of our project to contain all our gulp tasks.
+
+```bash
 # create an empty gulpfile.js
 touch gulpfile.js
+# open gulpfile.js via the terminal or by opening it in finder
+open gulpfile.js
 ```
 
 Open up the `gulfile.js` in your editor of choice. As the extension `.js` suggests, this is a normal javascript file, so if you know how to write javascript, you know how to work in this file. If not, don't worry, it's easy.
@@ -78,7 +93,7 @@ gulp.task('compile-less', function() {
 
 ## Creating the first task
 
-Perfect, so now we can start to write the actual jobs the task has to perform, but first we need to install and load all plugins we need. You can find plugins on [npm.js](http://npmjs.org). Our first step is to convert our `.less` files to `.css` and combine them into one. For this we need two plugins: `gulp-less` will be used to convert our `.less` and `gulp-concat` will be used to combine our css into one file.
+Now we can start to write the actual jobs the task has to perform, but first we need to install and load all plugins we require for it. You can find plugins on [npm.js](http://npmjs.org). Our first step is to convert our `.less` files to `.css` and combine them into one. For this we need two plugins: `gulp-less` will be used to convert our `.less` and `gulp-concat` will be used to combine our css into one file.
 
 ```bash
 # you can install multiple npm modules at once like this:
@@ -113,7 +128,7 @@ gulp.task('compile-less', function() {
 With this our first gulp task is done. You can use it by running `gulp compile-less` from your terminal. Afterwards a file named `app.css` should be created within `public/css` (or where ever you decided to have gulp save it).
 
 ## Extending our task
-Now that we have the basic working, we will add the autoprefixer to it. First we need to download the plugin for it.
+With the basics working, we will add the autoprefixer to our task. If you use css like `animation`, this plugin will automatically prefix it for the browsers you specified. First we need to download the plugin for it.
 
 ```bash
 npm install --save-dev gulp-autoprefixer
@@ -142,10 +157,8 @@ gulp.task('compile-less', function() {
 });
 ```
 
-Now if you use css like `animation` it will be automatically prefixed for the browsers you specified.
-
 ## The default task
-There are two special tasks you can create on gulp, let's start with the `default`, which you create by simply naming a task `default`. The special part about this task, is that you can call it by simply typing `gulp` without any argument into the terminal. Obviously this should be used for your most common task. In your `gulpfile.js` create the default task to call the `compile-less` task.
+The `default` task is a somewhat special task in gulp, you create it by simply naming a task `default`. The special part about this task, is that you can call it by simply typing `gulp` without any argument into the terminal. Obviously this should be used for your most common task. In your `gulpfile.js` create the default task to call the `compile-less` task.
 
 ```javascript
 // instead of a function, you can also provide an array as the tasks' argument
