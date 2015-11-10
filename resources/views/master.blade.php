@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>{{$title or 'Web Development, User Experience & Design'}} – veare field notes</title>
+        <meta http-equiv="content-language" content="en">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1,maximum-scale=1">
         <link href='{{ asset(env("CSS_PATH_PREFIX").elixir('css/app.css')) }}' rel='stylesheet' type='text/css'>
 
