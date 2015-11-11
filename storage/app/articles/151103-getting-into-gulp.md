@@ -2,6 +2,7 @@
 title: Getting into gulp
 tags: tag1, tag2
 author: Lukas Oppermann
+description: Learn how to start using gulp to improve your frontend workflow.
 ---
 
 # Getting into gulp
@@ -30,9 +31,7 @@ mkdir newProject
 # move into the new folder
 cd newProject
 ```
-Now we need to initialize npm by running `npm init`. This will create a new `package.json` file for us, which will be used to track the gulp packages we install.
-
-Run `npm init` and hit `return` to accept the suggested values (the value in parentheses) until there are no more questions. If you have no idea, just hit `return`, as you can always change those values in the package.json later on. Once you hit `return` after the question *Is this ok? (yes)* your package.json should be created and look something like the one below. If you are building a website without using node, all that really matters are the `devDependencies`.
+Now we need to initialize npm by running `npm init --yes`. This will create a new `package.json` file for us, which will be used to track the gulp packages we install. If you are building a website without using node, all that really matters are the `devDependencies` but you can update this file if you wish, mine looks like this.
 
 ```javascript
 {
