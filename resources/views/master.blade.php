@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>{{$title or 'Web Development, User Experience & Design'}} – veare field notes</title>
         <meta http-equiv="content-language" content="en">

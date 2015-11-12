@@ -85,7 +85,7 @@ class BlogController extends Controller
         $post = $converter->convertToHtml($article);
 
 
-        $metainfo = '<div class="o-meta publication-info">Published by <a class="author" href="http://vea.re/blog" rel="author">Lukas Oppermann</a>, <time datetime="'.$this->getDate($name).'" class="article_time">'.$this->getDate($name).'</time></div>';
+        $metainfo = '<div class="o-meta publication-info">Published by <a class="author" href="http://vea.re" title="about Lukas Oppermann" rel="author">Lukas Oppermann</a>, <time datetime="'.$this->getDate($name).'" class="article_time">'.$this->getDate($name).'</time></div>';
 
         $post = str_replace('{$meta}', $metainfo, $post);
 
