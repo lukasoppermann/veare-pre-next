@@ -2,6 +2,7 @@
 title: UI Design Problems\: Complexity
 tags: tag1, tag2
 author: Lukas Oppermann
+description: Why do UIs get over complicated and how to fix it.
 ---
 # UI Design Problems: Complexity
 > As a designer your job is to reduce complexity. If your solution is not dead simple, you are not done yet.

@@ -17,7 +17,6 @@ class BlogController extends Controller
     {
         $articles = Storage::files('articles');
         rsort($articles);
-
         foreach($articles as $article)
         {
             $metadata = [];
@@ -78,8 +77,8 @@ class BlogController extends Controller
         preg_match('#---\n(.*?)---\n#is', $article, $d);
         $article = preg_replace('#---\n(.*?)---\n#is', '', $article);
         foreach(array_filter(explode("\n", $d[1])) as $data){
-            $data = explode(':',$data);
-            $metadata[trim($data[0])] = trim($data[1]);
+            $data = preg_split('~\\\:(*SKIP)(*FAIL)|:~',$data);
+            $metadata[trim($data[0])] = str_replace('\:',':',trim($data[1]));
         }
         $converter = new CommonMarkConverter();
         $post = $converter->convertToHtml($article);
