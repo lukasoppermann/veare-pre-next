@@ -88,7 +88,9 @@ class BlogController extends Controller
 
         $post = str_replace('{$meta}', $metainfo, $post);
 
-        return view('blog.post', ['post' =>  $post, 'link' => $name, 'title' => $metadata['title'], 'description' => $metadata['description'] ]);
+        $postData = array_merge(['post' =>  $post, 'link' => $name], $metadata);
+
+        return view('blog.post', $postData);
     }
 
 }
