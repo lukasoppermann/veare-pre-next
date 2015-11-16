@@ -30,7 +30,7 @@ Just because you are using your mobile phone to control your heating, does not m
 
 Another wrong approach is to add configurations for everything. This means the user decides beforehand what the device should do in a given situation. One problem with this approach is, that the developer would need to think of every possible scenario, to allow for the needed configurations. Another issue is, that the user needs to decide on all heating scenarios when setting up her heating system. Imagine setting up your new heating system in July and having to predict what temperatures you want in November. This approach avoids problems for the product developers by make them the users problems, not so good.
 
-![Smart Home app heating](/media/smarthome-tkom.jpg)
+![Smart Home app heating](./media/smarthome-tkom.jpg)
 <caption>In this app the user has to set up the temperatures for every day of the week in every room in advance.</caption>
 
 ## A better approach
@@ -38,7 +38,7 @@ If letting the user do the work is not the right way, you might be wondering wha
 
 A good example of this is the Nest thermostat, a replacement for your normal thermostat. This is important because it makes it easier for you to use it, as it does not require a change in behavior. You can adjust the temperature where you always adjusted it. But the really great part about it is, that it constantly tracks your changes to learn your personal heating desire. After a couple days it can predict when you want your home to be warm and when you want it to be cold. If your heating needs change, for example because you started to do home office, nest will adjust within a couple days.
 
-![Nest](/media/nest.jpg)
+![Nest](./media/nest.jpg)
 <caption>Without a need to change behavior, the user is instantly familiar with her "new" smart heating.</caption>
 
 ## Extending upon success
