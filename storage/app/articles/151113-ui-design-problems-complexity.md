@@ -5,6 +5,7 @@ author: Lukas Oppermann
 description: Why do UIs get over complicated and how to fix it.
 ---
 # UI Design Problems: Complexity
+{$meta}
 > As a designer your job is to reduce complexity. If your solution is not dead simple, you are not done yet.
 
 As humans we have always been trying to simplify our lives. Take heating for example: First we had to collect fire wood to heat our caves. We replaced this with oil and later hot water, that was brought to our houses via pipes. All we have to do is turn the heater on when we are cold. Now the next step is to make the heater smart, so that it can turn on by itself.
