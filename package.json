@@ -7,6 +7,8 @@
     "gulp-autoprefixer": "^3.0.1",
     "gulp-less": "^3.0.3",
     "gulp-rename": "^1.2.2",
-    "gulp-rev": "^6.0.1"
+    "gulp-rev": "^6.0.1",
+    "gulp-sitemap": "^2.2.0",
+    "submit-sitemap": "^0.1.3"
   }
 }
