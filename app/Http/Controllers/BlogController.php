@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use League\CommonMark\CommonMarkConverter;
+use League\CommonMark\Converter;
+use League\CommonMark\DocParser;
+use League\CommonMark\Environment;
+use League\CommonMark\HtmlRenderer;
+use Webuni\CommonMark\AttributesExtension\AttributesExtension;
 use Storage;
 
 class BlogController extends Controller
@@ -80,7 +84,10 @@ class BlogController extends Controller
             $data = preg_split('~\\\:(*SKIP)(*FAIL)|:~',$data);
             $metadata[trim($data[0])] = str_replace('\:',':',trim($data[1]));
         }
-        $converter = new CommonMarkConverter();
+        $environment = Environment::createCommonMarkEnvironment();
+        $environment->addExtension(new AttributesExtension());
+
+        $converter = new Converter(new DocParser($environment), new HtmlRenderer($environment));
         $post = $converter->convertToHtml($article);
 
 

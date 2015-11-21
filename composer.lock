@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "43e6d42a5e25fb6477353cbb63f7f5e4",
-    "content-hash": "b377d89c903e1eae4a854c7f575037cc",
+    "hash": "7a1e0271402424a57c97d38a0611b0e7",
+    "content-hash": "158345b84afa6f3f1fbbb561756c6778",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -493,16 +493,16 @@
         },
         {
             "name": "league/commonmark",
-            "version": "0.10.0",
+            "version": "0.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/commonmark.git",
-                "reference": "984455f72d4f07669c1f5c545768f60c4e871585"
+                "reference": "3eb64850ee688623db494398a5284a7a4cdf7b47"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/984455f72d4f07669c1f5c545768f60c4e871585",
-                "reference": "984455f72d4f07669c1f5c545768f60c4e871585",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/3eb64850ee688623db494398a5284a7a4cdf7b47",
+                "reference": "3eb64850ee688623db494398a5284a7a4cdf7b47",
                 "shasum": ""
             },
             "require": {
@@ -514,17 +514,21 @@
             },
             "require-dev": {
                 "erusev/parsedown": "~1.0",
-                "jgm/commonmark": "0.21",
-                "jgm/smartpunct": "0.21",
+                "jgm/commonmark": "0.22",
+                "jgm/smartpunct": "0.22",
                 "michelf/php-markdown": "~1.4",
-                "phpunit/phpunit": "~4.3",
-                "phpunit/phpunit-mock-objects": "2.3.0",
+                "mikehaertl/php-shellcommand": "~1.1.0",
+                "phpunit/phpunit": "~4.3|~5.0",
+                "scrutinizer/ocular": "^1.1",
                 "symfony/finder": "~2.3"
             },
+            "bin": [
+                "bin/commonmark"
+            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.11-dev"
+                    "dev-master": "0.13-dev"
                 }
             },
             "autoload": {
@@ -551,7 +555,7 @@
                 "markdown",
                 "parser"
             ],
-            "time": "2015-07-25 14:37:05"
+            "time": "2015-11-04 14:24:41"
         },
         {
             "name": "league/flysystem",
@@ -1784,6 +1788,61 @@
                 "environment"
             ],
             "time": "2015-05-30 15:59:26"
+        },
+        {
+            "name": "webuni/commonmark-attributes-extension",
+            "version": "0.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webuni/commonmark-attributes-extension.git",
+                "reference": "78e98c499e636c0a38999439205c98fff44838eb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webuni/commonmark-attributes-extension/zipball/78e98c499e636c0a38999439205c98fff44838eb",
+                "reference": "78e98c499e636c0a38999439205c98fff44838eb",
+                "shasum": ""
+            },
+            "require": {
+                "league/commonmark": "^0.11|^0.12",
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "^1.9",
+                "phpunit/phpunit": "^4.3",
+                "symfony/var-dumper": "^2.7",
+                "webuni/commonmark-table-extension": "~0.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Webuni\\CommonMark\\AttributesExtension\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Martin Hasoň",
+                    "email": "martin.hason@gmail.com",
+                    "role": "Lead Developer"
+                }
+            ],
+            "description": "The attributes extension adds a syntax to define attributes on the various HTML elements in CommonMark PHP implementation.",
+            "homepage": "https://github.com/webuni/commonmark-attributes-extension",
+            "keywords": [
+                "attributes",
+                "commonmark",
+                "markdown"
+            ],
+            "time": "2015-11-05 14:51:49"
         }
     ],
     "packages-dev": [

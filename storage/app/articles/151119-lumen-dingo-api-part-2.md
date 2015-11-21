@@ -23,18 +23,18 @@ $ chmod 644 database/database.sqlite
 Now that we have our database in place we need to create the model, but where should we put it? I like to create a custom folder `Api` to group all files. You can of course use the `Http` folder if you prefer.
 
 Additionally I find it quite helpful to add version folders, I start with `V1` and if I need to create a new version, I will create a new folder `V2`. This lets me maintain separate versions side by side, without messing up my code by adding custom `if` clauses within the files. Of course this has the potential of much code duplication, because you will copy all files to a new folder. But generally I would rather have duplicate code than potentially breaking *V1* when I was changing something in *V2*. So my folder structure looks like this. You should create one like it, to follow the tutorial.
-<div class="o-list c-file-list">
 
-- myLumenApi/
-    - app/
-        - V1/
-            - Controllers/
-            - Models/
-            - Transformers/
-    - bootstrap/
-    - database/
-    - ...
-</div>
+{.o-list .c-file-list}
+- myLumenApi/ {.o-list__item .c-file-list__folder}
+    - app/ {.o-list__item .c-file-list__folder}
+        - V1/ {.o-list__item .c-file-list__folder}
+            - Controllers/ {.o-list__item .c-file-list__folder}
+            - Models/ {.o-list__item .c-file-list__folder}
+            - Transformers/ {.o-list__item .c-file-list__folder}
+    - bootstrap/ {.o-list__item .c-file-list__folder}
+    - database/ {.o-list__item .c-file-list__folder}
+    - ... {.o-list__item .c-file-list__folder}
+
 
 ## Model
 According to our new folder structure, our model will be created within `app/Api/V1/Models/`, so lets do this now.
