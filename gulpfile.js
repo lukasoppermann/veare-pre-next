@@ -5,6 +5,7 @@ var rev = require('gulp-rev');
 var del = require('del');
 var prefix = require('gulp-autoprefixer');
 var less = require('gulp-less');
+var concat = require('gulp-concat');
 var submitSitemap  = require('submit-sitemap').submitSitemap;
 
 // actions
@@ -17,6 +18,7 @@ gulp.task('clean-buid', function(done){
 gulp.task('build-css', function(){
     return gulp.src(['resources/less/*.less'])
     .pipe(less())
+    .pipe(concat('app.css'))
     .pipe(prefix({
         browsers: ['last 4 versions', 'IE 9', 'IE 8'],
         cascade: false

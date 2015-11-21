@@ -286,3 +286,14 @@ a {
 .o-input__field:focus {
   border-bottom: 2px solid #f0aa1e;
 }
+
+
+.c-file-list {
+  width: 100%;
+  background: #ebf5ff;
+  border-radius: 3px;
+  padding: 10px;
+}
+.c-file-list ul {
+  list-style: none;
+}

@@ -1,10 +1,10 @@
 ---
-title: API with dingo & lumen: Introduction - PART 1
+title: Building APIs with dingo & lumen\: Introduction - PART 1
 tags: tag1, tag2
 author: Lukas Oppermann
 description: Learn how to build a php API with dingo & lumen: setup and configuration.
 ---
-# API with dingo & lumen: Introduction
+# Building APIs with dingo & lumen: Introduction
 {$meta}
 > In this series we will write a well tested api using [lumen](http://lumen.laravel.com/) and the [dingo/api](https://github.com/dingo/api) package.
 
@@ -162,4 +162,4 @@ $api->version('v1', function($api){
 });
 ```
 
-That's it. In the next part of this series we will add more tests and create our controller to return useful data.
+That's it. In the [next part: Database, Model & Controller](151119-lumen-dingo-api-part-2) of this series we will seed our database and create the logic for retrieving this data.
