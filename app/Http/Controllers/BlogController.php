@@ -9,6 +9,7 @@ use League\CommonMark\Environment;
 use League\CommonMark\HtmlRenderer;
 use Webuni\CommonMark\AttributesExtension\AttributesExtension;
 use Storage;
+use Bookworm\Bookworm;
 
 class BlogController extends Controller
 {
@@ -44,7 +45,9 @@ class BlogController extends Controller
         $article_list = isset($article_list) ? $article_list: [];
         return view('blog.listing', ['files' => $article_list]);
     }
-
+    /**
+     * Get formatted date from filename
+     */
     private function getDate($filename)
     {
         if (!is_numeric(substr($filename,0,6))) {
@@ -57,6 +60,9 @@ class BlogController extends Controller
         return $date;
     }
 
+    /**
+     * Get formatted title from filename
+     */
     private function getTitle($filename)
     {
         if(!is_numeric(substr($filename,0,6))){
@@ -84,14 +90,18 @@ class BlogController extends Controller
             $data = preg_split('~\\\:(*SKIP)(*FAIL)|:~',$data);
             $metadata[trim($data[0])] = str_replace('\:',':',trim($data[1]));
         }
+
         $environment = Environment::createCommonMarkEnvironment();
         $environment->addExtension(new AttributesExtension());
 
         $converter = new Converter(new DocParser($environment), new HtmlRenderer($environment));
         $post = $converter->convertToHtml($article);
 
+        // reading time estimate
+        $readingTime = Bookworm::estimate($post);
+        $readingMinutes = str_replace(' min','m',$readingTime);
 
-        $metainfo = '<div class="o-meta publication-info">Published by <a class="author" href="http://vea.re" title="about Lukas Oppermann" rel="author">Lukas Oppermann</a>, <time datetime="'.$this->getDate($name).'" class="article_time">'.$this->getDate($name).'</time></div>';
+        $metainfo = '<div class="o-meta publication-info">Published by <a class="author" href="http://vea.re" title="about Lukas Oppermann" rel="author">Lukas Oppermann</a>, <time datetime="'.$this->getDate($name).'" class="article_time">'.$this->getDate($name).'</time> • <time datetime="'.$readingMinutes.'">'.$readingTime.' read</time></div>';
 
         $post = str_replace('{$meta}', $metainfo, $post);
 

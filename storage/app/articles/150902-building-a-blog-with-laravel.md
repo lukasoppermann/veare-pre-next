@@ -35,7 +35,7 @@ mkdir storage/app/articles
 echo -e "#First Post\nAll in markdown, nice." >> storage/app/articles/$(date '+%y%m%d')-first-post.md
 ```
 
-At this point you probably want to `git init` your project and submit it to version control. Once you are done, you will notice that the `git status` does not include our posts. To solve this and track our posts in git, for versioning revisions we open the `storage/app/.gitignore` and edit it to look like the file below. Basically you need to add `!/articles/` to NOT ignore everthing in there and change line one `*` to `/*`. Afterwards you should be able to add your posts to the git history.
+At this point you probably want to `git init` your project and submit it to version control. Once you are done, you will notice that the `git status` does not include our posts. To solve this and track our posts in git, for versioning revisions we open the `storage/app/.gitignore` and edit it to look like the file below. Basically you need to add `!/articles/` to NOT ignore everything in there and change line one `*` to `/*`. Afterwards you should be able to add your posts to the git history.
 
 ```bash
 /*
@@ -111,7 +111,7 @@ Retrieving the date is nearly as easy, you just need to cut the pieces of the da
 
 ```php
 /**
- * Get formated date from filename
+ * Get formatted date from filename
  */
 private function getTitle($filename)
 {
@@ -119,7 +119,7 @@ private function getTitle($filename)
 }
 
 /**
- * Get formated title from filename
+ * Get formatted title from filename
  */
 private function getDate($filename)
 {
@@ -262,7 +262,7 @@ a:hover{
 ```
 
 ## Heed this warning
-For brevity, this code is reduced to the bare minimum. You can use it for your own blog, but it is extremely unstable. If an article has a wrong name format, everything might break down. We will look into making this system more stable, secure and useful, but this is enought to get you started. Since you control the system, you can make sure to not break it.
+For brevity, this code is reduced to the bare minimum. You can use it for your own blog, but it is extremely unstable. If an article has a wrong name format, everything might break down. We will look into making this system more stable, secure and useful, but this is enough to get you started. Since you control the system, you can make sure to not break it.
 
-<h2 id="a-blog-in-progress">Sidenote: a blog in progess ...</h2>
+<h2 id="a-blog-in-progress">Sidenote: a blog in progress ...</h2>
  am actually build this blog by exactly the same model. I started with a very basic version, just like outlined above and I am adding to it all the time. I got frustrated with not publishing anything because of all the hassle associated with it. Now I can just writing markdown files and only concentrate on the content, which works very well for me.
