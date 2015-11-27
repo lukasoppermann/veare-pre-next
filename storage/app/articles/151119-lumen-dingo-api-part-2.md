@@ -130,7 +130,7 @@ This is supposed to create 50 entries within the collection table, but we a usin
 
 ```php
 $factory->define(App\Api\V1\Models\Collection::class, function ($faker) {
-    $types = ['navigation', 'news'];
+    $types = ['travel', 'news'];
     return [
         'id' => $faker->uuid,
         'type' => $faker->randomElement($types),
