@@ -94,14 +94,13 @@ class BlogController extends Controller
         $environment = Environment::createCommonMarkEnvironment();
         $environment->addExtension(new AttributesExtension());
 
+        // reading time estimate
+        $readingTime = Bookworm::estimate($article, false);
+
         $converter = new Converter(new DocParser($environment), new HtmlRenderer($environment));
         $post = $converter->convertToHtml($article);
 
-        // reading time estimate
-        $readingTime = Bookworm::estimate($post);
-        $readingMinutes = str_replace(' min','m',$readingTime);
-
-        $metainfo = '<div class="o-meta publication-info">Published by <a class="author" href="http://vea.re" title="about Lukas Oppermann" rel="author">Lukas Oppermann</a>, <time datetime="'.$this->getDate($name).'" class="article_time">'.$this->getDate($name).'</time> • <time datetime="'.$readingMinutes.'">'.$readingTime.' read</time></div>';
+        $metainfo = '<div class="o-meta publication-info">Published by <a class="author" href="http://vea.re" title="about Lukas Oppermann" rel="author">Lukas Oppermann</a>, <time datetime="'.$this->getDate($name).'" class="article_time">'.$this->getDate($name).'</time> • <time datetime="'.$readingTime.'m">'.$readingTime.' min read</time></div>';
 
         $post = str_replace('{$meta}', $metainfo, $post);
 
