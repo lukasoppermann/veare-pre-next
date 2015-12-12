@@ -7,11 +7,11 @@ description: Learn how to build a php API with dingo & lumen: transformers, unit
 # Building APIs with dingo & lumen: Transformers, Unit testing & JSON API
 {$meta}
 
-> In [Part 2 of building APIs with dingo & lumen](151119-lumen-dingo-api-part-2) we added all the database stuff but our transformer is just passing on the data from the DB, well that is stupid, so lets fix it.
+> In [Part 2 of building APIs with dingo & lumen](151119-lumen-dingo-api-part-2) we added all the database stuff but our transformer is just passing on the data from the DB. Well, that is stupid, so lets fix it.
 
 ## Tests first
 
-Before we implement the code in our transformer, we will update our test so we know when we achieved our goal. In the `CollectionTest.php` file we need to replace `$this->markTestIncomplete('add expected return data.');` with out expectation for the returned data. However we are randomly creating data using faker, so we can not validate a specific item, because we do not know the values a given item will have. All we want to specify is the type, so we need do do something like this:
+Before we implement the code in our transformer, we will update our test so we know when we achieved our goal. In the `CollectionTest.php` file we need to replace `$this->markTestIncomplete('add expected return data.');` with our expectation for the returned data. However we are randomly creating data using faker, so we can not validate a specific item, because we do not know the values a given item will have. All we want to specify is the type, so we need to do something like this:
 
 ```php
 $expected = [
@@ -26,10 +26,12 @@ $expected = [
 $this->assertValidArray($expected, $this->getResponseArray($response)['data'][0]);
 ```
 
-Awesome, right? There is only one problem with it, it does not work. Neither Laravel nor PHPUnit comes with an `assertValidArray` function. Luckily this problem can be easily solve, by extending the Laravel `TestCase`.
+Awesome, right? There is only one problem with this: it does not work. Neither Laravel nor PHPUnit comes with an `assertValidArray` function. Luckily this problem can be easily solved by extending the Laravel `TestCase`.
 
 ### Writing the TestTrait class
-We will collect our additions to the test case in a trait, which we can import into our `TestCase` class. So create and open `tests/TestTrait.php`. We need to `use` the *illuminate validator*, as it will provide the functionality of checking value types.
+We will collect our additions to the `TestCase` in a trait, which we can import into our `TestCase` class. The benefit of this is, that we have no trouble when updating Laravel or using a fresh installation. Just copy over the trait and add the `use` statement to the `TestCase` class.
+
+Create and open `tests/TestTrait.php`, in here we need to `use` the *illuminate validator*, as it will provide the functionality of checking value types. We will use a `private $errors` array to store our errors. This is necessary so we can return multiple errors at once. The `assertValidArray` method takes our *validation rules* as well as our data and runs it through our soon to be coded `validateArray` method. Afterwards it lets the assertion fail, if we have one or more errors.
 
 ```php
 <?php
