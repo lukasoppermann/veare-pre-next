@@ -62,7 +62,7 @@ trait TestTrait
 }
 ```
 
-Good, so now we have the first part sorted out we need to add the `validateArray` method. It is a little bit complex, we need to loop through all rules and if they are strings, we add them to the rule array and add a `required`, because all feeds need to be required for unit test. However, if the rule is an array, like `attributes`, we add it with just a `required` rule and run the `validateArray` on its child array again. After all is done we run the validator, which will either pass returning an empty array, or return an array of error messages. We into the `$this->errors` array adding a little command line coloring.
+Good, so now we have the first part sorted out, we need to add the `validateArray` method. It is a bit more complex, we need to loop through all rules and if they are strings, we add them to the rule array and add a `required`, because all fields need to be present for unit testing. However, if the rule is an array, like `attributes`, we add it with just a `required` rule and run the `validateArray` on its child array again. After all is done we run the validator, which will either pass, returning an empty array, or return an array of error messages. We add the errors to the `$this->errors` array including a little command line coloring. We cannot return the errors immeditaly, because this would cause the script to stop and only one error would be shown at a time.
 
 ```php
 /*
@@ -93,18 +93,19 @@ protected function validateArray($rules, $resourceData)
 }
 ```
 
-If you run your unit test now by typing `phpunit` into the terminal, you should get an error `× The attributes field is required.` This calls for our transformer, so lets build it.
+If you run your unit test by typing `phpunit` into the terminal, you should get an error `× The attributes field is required.` This calls for our transformer, so lets build it.
 
 ## Transformers
 
-A transformer changes (transforms) a value or group of values into a specified structure and type. This has a couple of advantages in contrast to using the values straight from the source e.g. Database:
+A transformer changes (transforms) a value or group of values into a specified structure and type. Using a transformer has some major advantages to using the values straight from the source e.g. Database:
 
-- only specified values are displayed, secret fields (maybe added later on) can not *spill* into the returned dataset.
+- only specified values are displayed, secret fields can not *spill* into the returned dataset.
+- showing values is an opt-in, meaning if you later on add new fields to your database you need to actively add them to the transformer. Forgetting to do so will break your script, thus altering you to a bug, while returning all database values will always work, thus potentially returning password fields, etc. that were added later on.
 - adds a layer of abstraction between the database and your code. Changes on your database or code have no influence on the other part.
 - cast values to specific types, e.g. bool or int
 - nest data and bring it into a specific format, like the *json api* format
 
-We want to return the collection in a json api standard format. The json api dictates that a [*resource object*](http://jsonapi.org/format/#document-resource-objects), must have an `id` and `type` field. An resource object represent resources, a resources is an endpoints of your api, like *collections*, or *posts*. A resource object may have an `attributes` field, representing additional data of the resource. We will use this for all additional data, as the collection table is basically a pivot table and `relationships` don't really make sense here.
+We want to return the collection in a json api standard format. The json api dictates that a [*resource object*](http://jsonapi.org/format/#document-resource-objects), must have an `id` and `type` field. A resource object represent resources, a resources is an endpoint of your api, like *collections*, or *posts*. A resource object may have an `attributes` field, representing additional data of the resource. We will use this for all additional data, as the collection table is basically a pivot table and `relationships` don't really make sense here.
 
 So open the `CollectionTransformer.php` and replace the `return $collection;` statement with the code below. Your unit tests should now pass.
 
@@ -120,22 +121,22 @@ return [
 ```
 
 ## Jsonapi standard
-We got the transformer working for us, but the result of our api is rubbish, so we need to rethink what endpoints we actually need, we will do so in the next part. However lets take a moment to discuss the [json api standard](http://jsonapi.org/).
+We got the transformer working for us, but the result of our api is rubbish, so we need to rethink what endpoints we actually need, we will do so in the next part. However lets take a moment to discuss the [json api standard](http://jsonapi.org/), which we will use as our format for data returned via the api.
 
 > JSON API is a specification for how a client should request that resources be fetched or modified, and how a server should respond to those requests.
 
-The benefit of using a standard is, that other [developers will know it](http://jsonapi.org/implementations/#client-libraries-php) and have an idea of how to work with it and what to expect. Also, since the standard is build on experience it can provide good answers to some questions, like how should I structure XYZ. I found that one tends to either overthink stuff or do it the first way one can think of. This can lead to an inconsistent API, which is definitely not what you want. When designing api responses you can run into many problems that you can't even imagine now. The json api standard provides a good solution to many of those problems, like linking resources, etc. because the people who developed it dealt with those problems before.
+The benefit of using a standard is, that other [developers will know it](http://jsonapi.org/implementations/#client-libraries-php) and have an idea of how to work with it and what to expect. Also, since the standard is build on experience it can provide good answers to some questions, like how should I structure XYZ. I found that one tends to either overthink stuff or do it the first way that comes to mind. This can lead to an inconsistent API, which is definitely not what you want. When designing api responses you can run into many problems that you can't even imagine now. The json api standard provides a good solution to many of those problems, like linking resources, etc. because the people who developed it dealt with those problems before.
 
-While I recommend reading the entire documentation, its not so long, after all, I will discuss the important objects here.
+While I recommend reading the entire [documentation](http://jsonapi.org/), its not that long after all, I will discuss the important objects below.
 
 ### Top Level
-This object MUST be returned for every request. It has at least a `data`, `errors` or `meta` member, but it can not have both a `data` and an `errors` member. Either you get the data, or you get an error.
+This object MUST be returned for every request. It has at least a `data`, `errors` or `meta` member, but it cannot have both a `data` and an `errors` member. Either you get the data, or you get an error, makes sense.
 Within the `data` member a `resource` object or a collection of `resource` objects is returned.
 
 ### Resource Object
-A "resource object" represents a single resource, our data, (e.g. a hiking route) and must at least have an `id` and `type` (no `id` is required if the object is send from the client and represents a new object, as it does not have an id yet). Resource objects can also contain the following fields:
-- **attributes:** representing the resource's data (e.g. starting position of a route)
-- **relationships:** representing relationships between the resource and other resources (e.g. the creator of a route)
+A *resource object* represents a single resource, our data, (e.g. a hiking track) and must at least have an `id` and `type` (no `id` is required if the object is send from the client (frontend) and represents a new object, as it is not persisted in the database yet and therefore does not have an id). Resource objects can also contain the following fields:
+- **attributes:** representing the resource's data (e.g. starting gps position of a track)
+- **relationships:** representing relationships between the resource and other resources (e.g. the creator of a track)
 - **links:** links related to the resource (e.g. the creators profile)
 - **meta:** non-standard meta-information about a resource that can not be represented as an attribute or relationship.
 
@@ -155,13 +156,13 @@ A "resource object" represents a single resource, our data, (e.g. a hiking route
 ```
 
 ### Resource Identifier Objects
-A "resource identifier object" represents a single resource (e.g. a hiking route), but does not include the full set of information for this resource. It must contain an `id`and `type`. It can also include a `meta` object for additional information. This is useful when you do not want to return complete objects, but just a list of items so that an individual item can be chosen from the returned indentifiers and retrieved in full. This can save a huge amount of data to transfer, for example when retrieving gpx tracks, which can be very big.
+A "resource identifier object" represents a single resource (e.g. a hiking track), but does not include the full set of information for this resource. It must contain an `id` and `type`. It can also include a `meta` object for additional information. This is useful when you do not want to return complete objects, but just a list of items so that an individual item can be chosen from the returned indentifiers and retrieved in full. This can save a huge amount of data to transfer, for example when retrieving gpx tracks, which can be very big.
 
 ```javascript
 {
   "data": {
     "id": "5",
-    "type": "route"
+    "type": "track"
   }
 }
 ```
