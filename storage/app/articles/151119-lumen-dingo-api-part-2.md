@@ -234,7 +234,7 @@ In our `CollectionsController` we need to `use` the Model as well as the newly c
 
 namespace App\Api\V1\Controllers;
 
-use App\Api\V1\Models\Stream;
+use App\Api\V1\Models\Collection;
 use App\Api\V1\Transformers\CollectionTransformer;
 
 class CollectionsController extends ApiController

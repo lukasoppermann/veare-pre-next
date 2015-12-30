@@ -204,7 +204,7 @@ A link object can either be a URL as *string* or an object containing a URL as *
 ```
 
 ### JSON API Object
-This object may include the version number of the highest supported json api version and a meta object. As changes to the json api standard are only additive, this will not be important for most apis, but it also does not hurt to include it. It is also defined that, if the version number is not present, clients should assume the server implements at least version 1.0 of the specification.
+This object may include the version number of the highest supported json api version and a meta object. As changes to the json api standard are only additive, this will not be important for most apis, but it does not hurt to include it. It is also defined that, if the version number is not present, clients should assume the server implements at least version 1.0 of the specification.
 
 ```javascript
 {
