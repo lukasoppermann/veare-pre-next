@@ -43,12 +43,7 @@ According to our new folder structure, our model will be created within `app/Api
 $ touch app/Api/V1/Models/Collection.php
 ```
 
-Our `Collection` model is pretty straight forward. We namespace it according to PSR-4 for the autoloading to work, and `use` eloquent, which provides us with the model base class, which we extend with our own implementation. All we need to do in our model is to set the `timestamp` option and the `incrementing` option to `false`.
-
-The `timestamp` option automatically adds a `created_at` and `modified_at` column to the table. As our collections have no relevance other than to group our content pieces, we are not interested in knowing about the creation and modification date of collections.
-
-With the `incrementing` option set to `true` we need to use an *auto incrementing* field as an id. However, we will be using *uuids*, so we need to set it to `false`. The benefit of a *uuid* is that it obfuscates our ids, so nobody can simply guess an id and steal all our content.
-Using incrementing ids a script could just query our api for `/collections/1`, `/collections/1`, ... which would be even worse for the actual entries within a collection. This is why I prefer to use uuids even if I am not sure if the ids will be exposed at all. If you want to know more, read [phil's post on uuids](https://philsturgeon.uk/http/2015/09/03/auto-incrementing-to-destruction/).
+Our `Collection` model is pretty straight forward. We namespace it according to *PSR-4* for the autoloading to work, and `use` eloquent, which provides us with the model base class, which we extend with our own implementation. All we need to do in our model for now is to set the `timestamp` option and the `incrementing` option to `false`.
 
 ```php
 <?php
@@ -73,6 +68,39 @@ class Collection extends Model
     public $incrementing = false;
 }
 ```
+
+### Timestamps & soft deletes
+The `timestamp` option automatically adds a `created_at` and `modified_at` column to the table. As our collections have no relevance other than to group our content pieces, we are not interested in knowing about the creation and modification date of collections. For content like posts, however those fields can be very important, to show a last modified date, or the creation date of something. Additionally you have the option to include a soft delete. This is an awesome concept for items that you might want to restore once they have been deleted, e.g. articles. Basically it adds a `deleted_at` column to the table. If it is anything other than `NULL` the entry is deleted. To restore it the `deleted_at` field of an entry has to be reset to `NULL`. Eloquent, the ORM that ships with lumen, knows how to work with soft deletes, so by default deleted items are not returned, but you can get them using the `withTrashed()` or `onlyTrashed()` methods described in the [docs](https://laravel.com/docs/5.2/eloquent#soft-deleting).
+
+To add soft deletion to your model simply load and `use` the `SoftDeletes` trait. Eloquent will take care of the rest.
+
+```php
+...
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class SomeModel extends Model
+{
+    use SoftDeletes;
+    ...
+```
+
+ All that is left to do is to add the fields to your migrations. Within the `up` call simply add the following two lines at the end.
+
+```php
+Schema::create('...', function (Blueprint $table) {
+    // your normal migration stuff
+    $table->string(...);
+    // adding timestamps
+    $table->timestamps();
+    // adding softDeletes
+	$table->softDeletes();
+});
+```
+
+### Incrementing
+With the `incrementing` option set to `true` we need to use an *auto incrementing* field as an id. However, we will be using *uuids*, so we need to set it to `false`. The benefit of a *uuid* is that it obfuscates our ids, so nobody can simply guess an id and steal all our content.
+Using incrementing ids a script could just query our API for `/collections/1`, `/collections/1`, ... which would be even worse for the actual entries within a collection. This is why I prefer to use uuids even if I am not sure if the ids will be exposed at all. If you want to know more, read [phil's post on uuids](https://philsturgeon.uk/http/2015/09/03/auto-incrementing-to-destruction/). If you are creating models for internal use only, for e.g. a `User` model, for a system where users are not available via the API, you should probably stick with incrementing ids. So you need to decide the correct value for this option for every model.
+
 ## Database migration & seeding
 Our model is in place so we can move on to our migration. Create a new migration file using the artisan helper in your terminal.
 
