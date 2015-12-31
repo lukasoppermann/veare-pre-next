@@ -233,9 +233,66 @@ class Tag extends Model
 }
 ```
 
+To get a related model simply use the *dynamic properties* like before. For both models an eloquent collection is returned, so you can either loop through the collection using a `foreach` loop or drill down with the query builder syntax.
+
 There is more you can do with pivot tables, like storing `created_at` and `updated_at` timestamps on them. If this is something you need, read the [retrieving intermediate table columns section](https://laravel.com/docs/5.2/eloquent-relationships#many-to-many) in the docs.
 
+### Many to many polymorphic relationships
+Now let's get even more crazy, imagine you have articles and videos which both are tagged using tags that are stored in the tags table. A many to many relationship would not work, because eloquent does not know which of the two is the owning model for a particular entry. So we use the same idea we used for polymorphic relationships and combine it with the pivot table from many to many relationships. In short we need a pivot table, which records the `tag_id` as well as the owning models id and the owning models type.
 
-### Many To Many Polymorphic relations
+First create the pivot table, named `taggables` by default eloquent expects the pivot table to be named like the second argument in the `morphToMany` call (ours will be `taggable`) with and additional `s` in the end. The pivot table needs three columns `tag_id`, `taggable_id` and `taggable_type`. Eloquent will automatically fill this table, and an entry will be something like ` 1 | fc9234-... | Video `, where `1` is the id of the tag, `fc92334-...` is the `uuid` of the video and `Video` is the name of the model.
+
+On our `Video` and `Article` model we define the exact same relationship to the `Tag` model.
+
+```php
+<?php
+
+namespace App\Api\V1\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Video extends Model
+{
+    /**
+     * Get all of the tags for the video.
+     */
+    public function tags()
+    {
+        return $this->morphToMany('App\Api\V1\Models\Tag', 'taggable');
+    }
+}
+```
+
+Since the `Tag` model is related to two other models, we need to define two inverse relationships.
+
+```php
+<?php
+
+namespace App\Api\V1\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Tag extends Model
+{
+    /**
+     * Get all of the videos that are assigned this tag.
+     */
+    public function videos()
+    {
+        return $this->morphedByMany('App\Api\V1\Models\Video', 'taggable');
+    }
+
+    /**
+     * Get all of the articles that are assigned this tag.
+     */
+    public function articles()
+    {
+        return $this->morphedByMany('App\Api\V1\Models\Article', 'taggable');
+    }
+}
+```
+
+Retrieving related models works just like with any other many to many relationship.
+For both *owning* models (`Video` and `Article`) defined by the `morphToMany` call an eloquent collection is returned when using the *dynmaic property* `tags`. You can either loop through the collection using a `foreach` loop or drill down with the query builder syntax. If you want to get the *owning* models from an *owned* `Tag` model you can either use the *dynmaic property* `articles` or `videos`, depending on the content you are looking for. In both cases a collection will be returned, just like before.
 
 ## Faker
