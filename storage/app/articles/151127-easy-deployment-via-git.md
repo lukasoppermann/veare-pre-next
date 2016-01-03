@@ -79,7 +79,9 @@ $ chmod +x hooks/post-receive
 $ nano hooks/post-receive
 ```
 
-Once the file is in place we need to add the command to make git checkout the new version, using the `-f` tag to force the checkout to overwrite the current files. If you are using *composer* you might want to add a `composer install` command so that every time you locally run `composer update`, the packages will be updated as well. You can also add more scripts, like the `artisan clear-compiled` if you are using Laravel. Make sure to get the correct path, you might be able to change the path, or you have to use the full path from you server. On my server by default `php` is running version 4, so I have to use `/usr/local/bin/php5-56STABLE-CLI` to run the needed php version.
+Once the file is in place we need to add the command to make git checkout the new version, using the `-f` tag to force the checkout to overwrite the current files. If you are using *composer* you might want to add a `composer install` command so that every time you locally run `composer update`, the packages will be updated as well. Make sure to commit your `composer.lock` file to your version control, otherwise composer install will have nothing new to install. Also, be very careful **NOT** to to add `composer update` to this file, as this might lead to new versions with breaking changes beeing installed on your production environment without you noticing it.
+
+You can also add more scripts, like the `artisan clear-compiled` if you are using Laravel. Make sure to get the correct path, you might be able to change the path, or you have to use the full path from you server. On my server by default `php` is running version 4, so I have to use `/usr/local/bin/php5-56STABLE-CLI` to run the needed php version.
 
 ```bash
 #!/bin/sh
