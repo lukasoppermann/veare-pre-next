@@ -295,4 +295,76 @@ class Tag extends Model
 Retrieving related models works just like with any other many to many relationship.
 For both *owning* models (`Video` and `Article`) defined by the `morphToMany` call an eloquent collection is returned when using the *dynmaic property* `tags`. You can either loop through the collection using a `foreach` loop or drill down with the query builder syntax. If you want to get the *owning* models from an *owned* `Tag` model you can either use the *dynmaic property* `articles` or `videos`, depending on the content you are looking for. In both cases a collection will be returned, just like before.
 
-## Faker
+## Faker: Database seeding with relationships
+But what about seeding? We still need to create test data and seeding with related data is always a bit more. It all happens within your `ModelFactory` class. Basically you have two different ways of seeding related data. One way is to create data in a specific order and grab random items to be related to for e.g. a collection. The other way, if you need specific items to be related, is to create the items within another models factory call.
+
+### Connect random data
+If you do not care which exact data is related, like adding tags to an article, creating tags first and retrieving random tags when creating the article is a good idea. Our tags will have an autoincrementing `id`, so we do not need to assign it. Apart from this the tag only has a name e.g. "*programming*".
+
+```php
+$factory->define(App\Api\V1\Models\Tag::class, function ($faker) {
+    return [
+        // 'id' is an autoincrementing column
+        'name' => $faker->word,
+    ];
+});
+```
+
+For this example we stick with a `uuid`, a `title`, a `body` and an `image_id` for our articles. The title consists of one to four words. I recommend to always have everything variable that will be variable in real live, as you might miss problems otherwise. Maybe in your code there is no difference with a one or four word title, so you figure the word "*title*" will do, but if you start building a design using this fake data, you may not notice, that you run into problems when a title will not fit into a single line, etc.
+For the `image_id` we use a small *hack*, by using the `random(0,1)` to randomly assign or not assign an image. You could change the `1` to `3` to make it more likely that an image will be added, currently its a 50/50 chance. What we do when we want to add an image is to get all previously seeded (!) photos from the database and select one at random and get its it. This can be used for any model you want to connect.
+
+```php
+$factory->define(App\Api\V1\Models\Article::class, function ($faker) {
+    return [
+        'id' => $faker->uuid,
+        'title' => $faker->sentence(rand(1,4)),
+        'body' => $faker->paragraph(4),
+        'image_id' => (random(0,1) === 0 ? NULL : App\Api\V1\Models\Photo::all()->random()->id),
+    ];
+});
+```
+
+Now that we have our data in place we can add tags to our pages. To facilitate the model, we need to run this code after the *artciles* have been seeded, so it needs to be placed in the `ArticleTableSeeder.php`.
+
+Let me walk you through the code. First the articles are seeded, just like we did before. Afterwards all articles are selected and one to five are removed from the selection\*. We loop through the remaining articles using `each()` and within each loop get between 2 and 5 random tags. Now we can attach our tags to the current article by looping through the tag collection and within the loop saving an individual tag by using the previously defined relationship with eloquents `save` method.
+
+\* This is done so that some articles have no tags as we want to cover this case as well. Sadly, at the time of writing Lumens collections return an item, not a collection, from the `random()` function if the value is 1, and throws an error if the value is 0, instead if returning an empty collection, so we need this work around.
+
+```php
+public function run()
+{
+    // create articles
+    factory('App\Api\V1\Models\Article', 50)->create();
+    // loop through articles
+    App\Api\V1\Models\Article::all()->slice(random(1,5))->each(function($article){
+        // get 2 to 5 random tags and connect
+        App\Api\V1\Models\Tag::all()->random(rand(2,5))->each(function($tag) use ($article){
+            $article->tags()->save($tag);
+        });
+    });
+}
+```
+
+### Connect specific data
+
+Sometimes grabbing random data pieces is not enough and you want to add specific items to a specific related item, so lets see how we could do this.
+
+```php
+$factory->define(App\Api\V1\Models\Article::class, function ($faker) {
+    // create something, use a model, or the query builder
+    $image = new App\Api\V1\Models\Image;
+    $image->id = $faker->uuid;
+    $image->name = $faker->word;
+    $image->path = 'path/to/image.png';
+    $image->save();
+
+    return [
+        'id'        => $faker->uuid,
+        'title'     => $faker->word,
+        'image'     => $image->id,
+        'body'      => $faker->paragraph(4),
+    ];
+});
+```
+
+This one is pretty easy. Within the model factory, before you run the return statement, you just create the needed resource. You can do this however you want: create a new item via the model, like shown above, you could use the query builder to insert something into the database or even create something like a text file you need. Once this is done, get the needed connector e.g. the `id` and return it with the other stuff you want to return for your model.
