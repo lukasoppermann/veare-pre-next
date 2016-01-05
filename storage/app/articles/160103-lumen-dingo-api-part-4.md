@@ -17,9 +17,9 @@ A relationship defines a connection between models, for example a *comment* that
 **NOTE:** Relationships are not a concept unique to *laravel/lumen* and work similar in other systems. However the specific way of implementing the relationship using eloquent will not work for other systems.
 
 ### One to one relationships
-The easiest relationship is a the one to one relationship, for example when **one** user has **one** profile picture (avatar).
+The easiest relationship is a the *one to one* relationship, for example when **one** user has **one** profile picture (avatar).
 
-Relationships are defined on the model, for a one to one relationship the *owning* model, `User`, needs a function *avatar* that tells eloquent which model it owns (has). Once this is defined the related record can be access using a *dynamic property*, `avatar`: `User::find(1)->avatar`.
+Relationships are defined on the model, for a *one to one* relationship the *owning* model, `User`, needs a function *avatar* that tells eloquent which model it owns (has). Once this is defined the related record can be access using a *dynamic property*, `avatar`: `User::find(1)->avatar`.
 
 ```php
 <?
@@ -40,7 +40,7 @@ class User extends Model
 }
 ```
 
-The first part is done, but how is eloquent supposed to know which of the many avatars actually belongs to a specific user? We need a *foreign key* on the *owned* models table. By default it is assumed that the avatars table has a column named `user_id` which matches the `id` on the owning user model. it is possible to change those expectations, by providing a second argument on the `hasOne` method, to change the name if the column on the related model (hasOne is on the `User` model, so the related model is `Avatar`). An additional third argument can be used to change the *local key*, if you want the user to be matched by a field other than `id`.
+The first part is done, but how is eloquent supposed to know which of the many avatars actually belongs to a specific user? We need a *foreign key* on the *owned* models table. By default it is assumed that the avatar table has a column named `user_id` which matches the `id` on the owning user model. It is possible to change those expectations, by providing a second argument on the `hasOne` method, to change the name of the column on the related model (hasOne is on the `User` model, so the related model is `Avatar`). An additional third argument can be used to change the *local key*, if you want the user to be matched by a field other than `id`.
 
 ```php
 public function avatar()
@@ -50,10 +50,10 @@ public function avatar()
 }
 ```
 
-I strongly recommend against changing the defaults for this if you have any way to get around it. Changing defaults makes it harder for you or another developer to work with your code later on, because the whole code needs to be read to understand how it works. Often, not using defaults also leads to more code, that needs to be written and maintained.
+Although possible, I strongly recommend against changing the defaults for this if you can avoid it. Changing defaults makes it harder for you or another developer to work with your code later on, because the whole code needs to be read to understand how it works. Often, not using defaults also leads to more code, that needs to be written and maintained.
 
 #### Inverse relationship
-Sometimes it makes sense to define the inverse relationship. For our example it would mean you would get the user that is connected to the current `avatar`. For this to work you need to add the `user` method to your `Avatar` model. Note the use of `belongsTo` instead of `hasOne`. This is needed so eloquent which model owns which, and thus which table to find the *foreign key* on.
+Sometimes it makes sense to define the inverse relationship. For our example it would mean you would get the user that is connected to the current `avatar`. For this to work you need to add the `user` method to your `Avatar` model. Note the use of `belongsTo` instead of `hasOne`. This is needed so eloquent knows which model owns which, and thus on which table to find the *foreign key*.
 
 ```php
 <?
@@ -75,11 +75,12 @@ class Avatar extends Model
 ```
 
 ### One to many relationships
-The next level is a relationship where for e.g. **one** `Collection` model owns **many** articles. Articles stored in the `articles` table can only be part of **one** collection. However, the **one** collection, stored in the `collections` table, can own **many** articles.
+The next level is a relationship in which **one** e.g. `Collection` model owns **many** articles. While the articles stored in the `articles` table can only be part of **one** collection, the **one** collection, stored in the `collections` table, can own **many** articles.
 
-This relationship is very similar to a one to one relationship, which the one difference, that the dynamic property returns an eloquent collection of records, where previously we returned only an individual record, this will be important when working with the related data.
+This relationship is very similar to a *one to one* relationship. The difference is that the  dynamic property returns an eloquent collection of records, where previously we returned only an individual record, this will be important when working with the related data.
 
-To set up our relationship we need to add a foreign key to the *owned* models table, articles, which by default should be named `collection_id`. Now we only need to add an `articles` method with a `hasMany` call to the *owning* `Collection` model. For the inverse relationship we add a `collection` method with a `belongsTo` call to the *owned* `Article` model. If you want to change the foreign or local key, refer to the `hasOne` method from the *One to one relationships* section, its exactly the same.
+To set up our relationship we need to add a *foreign key* to the *owned* models table, articles, which by default should be named `collection_id` (*owning_model_name* + "*\_id*").
+Now we only need to add an `articles` method with a `hasMany` call to the *owning* `Collection` model. For the inverse relationship we add a `collection` method with a `belongsTo` call to the *owned* `Article` model. If you want to change the foreign or local key, refer to the `hasOne` method from the *one to one relationships* section, its exactly the same.
 
 ```php
 // Collection Model
@@ -120,11 +121,11 @@ class Article extends Model
 }
 ```
 
-When accessing the related articles you get an eloquent collection, so you need to loop through the result to access individual items. Of course, since the returned collection is a `query builder` instance, you can also use the [query builder syntax](https://laravel.com/docs/5.2/queries) to retrieve a specific record. Since the inverse relationship is a *to one* relationship, because an article is only in **one** collection, accessing this collection is exactly the same as with the *one to one* relationship.
+When accessing the related articles you get an eloquent collection, so you need to loop through the result to access individual items. Of course, since the returned collection is a `query builder` instance, you can also use the [query builder syntax](https://laravel.com/docs/5.2/queries) to retrieve a specific record. Since the inverse relationship is a *to one* relationship, because an article is only in **one** collection, accessing the collection form an article is exactly the same as with the *one to one* relationship.
 
 
 ```php
-// looping through collection
+// looping through the articles
 $articles = App\Api\V1\Models\Collection::find(1)->articles;
 
 foreach ($articles as $articles) {
@@ -139,9 +140,9 @@ echo App\Api\V1\Models\Article::find(1)->collection->type;
 ```
 
 ### Polymorphic relationships
-This is all nice, but what if you want to have articles not only associated with collections, but also with topics? E.g. an article is in the collection *learning php* but also in the topic *programing*, while another article could be in the collection *traveling* and the topic *minimalism*. For this you need polymorphic relationships. Don't worry, it sounds more intimidating than it actually is. The solution that is polymorphic relationships is similar to a one to many relationship with an additional column stating the type of the related model (model name). So in your article table instead of the `collection_id` we need an `articleable_id` and an `articleable_type`. It sounds a little weird, but the convention is to use the model name and add an *able* to the end, thus showing its polymorphic.
+This is all nice, but what if you want to have articles not only associated with collections, but also with topics? E.g. an article is in the collection *learning php* but also in the topic *programming*, while another article could be in the collection *traveling* and the topic *minimalism*. For this you need polymorphic relationships. Don't worry, it sounds more intimidating than it actually is. It is similar to a *one to many* relationship with an additional column stating the type of the related model (*namespaced model name*). So in your article table instead of the `collection_id` we need an `articleable_id` and an `articleable_type`. It sounds a little weird, but the convention is to use the model name and add an *able* to the end, thus showing it is polymorphic.
 
-The owned model needs an `articleable` method which just calls `morphTo`.
+The *owned* model needs an `articleable` method which calls `morphTo`.
 
 ```php
 <?php
@@ -162,7 +163,7 @@ class Article extends Model
 }
 ```
 
-Both owning models need a method `articles` which calls the `morphMany` method with the fully namespaced article as the first argument and the identifier `articleable` as the second argument.
+Both *owning* models need a method `articles` which calls the `morphMany` method with the fully namespaced `Article` model as the first argument and the identifier `articleable` as the second argument.
 
 ```php
 <?php
@@ -194,7 +195,7 @@ class Topic extends Model
 }
 ```
 
-To retrieve the articles related to a topic or collection, simply access the *dynamic property* `articles` just like on the *owning* model in a one to many relationship. If you have an article, you can get the *owning* relationship by accessing the *dynamic property* `articleable`. This will return a single collection or topic just like when retrieving the the *owner* in a one to many relationship.
+To retrieve the articles related to a topic or collection, simply access the *dynamic property* `articles` just like on the *owning* model in a *one to many* relationship. If you have an article, you can get the *owning* relationship by accessing the *dynamic property* `articleable`. This will return a single collection or topic just like when retrieving the  *owner* in a *one to many* relationship.
 
 ### Many to many relationships
 When you want to connect **many** tags to **many** articles, you need a different setup. You can not put the article id on the tag, as you could have multiple tags per article, and multiple articles that have the same tag associated with them. You will need add/delete those tags and handling this all in one text field would be a nightmare. The solution: a `pivot` table, an additional `article_tag` table, that has 3 columns `id`, `article_id`, `tag_id` to connect the two models. For each relation a new entry will be added to this table, with the `article_id` field having an id from the `articles` table and the `tag_id` having an id from the `tags` table. Deleting a relationship is as easy as deleting a row. The `id` is a simple *int* as it will not be exposed via an API, thus not needing to be a *uuid*.
