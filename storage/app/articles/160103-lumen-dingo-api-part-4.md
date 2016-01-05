@@ -198,11 +198,11 @@ class Topic extends Model
 To retrieve the articles related to a topic or collection, simply access the *dynamic property* `articles` just like on the *owning* model in a *one to many* relationship. If you have an article, you can get the *owning* relationship by accessing the *dynamic property* `articleable`. This will return a single collection or topic just like when retrieving the  *owner* in a *one to many* relationship.
 
 ### Many to many relationships
-When you want to connect **many** tags to **many** articles, you need a different setup. You can not put the article id on the tag, as you could have multiple tags per article, and multiple articles that have the same tag associated with them. You will need add/delete those tags and handling this all in one text field would be a nightmare. The solution: a `pivot` table, an additional `article_tag` table, that has 3 columns `id`, `article_id`, `tag_id` to connect the two models. For each relation a new entry will be added to this table, with the `article_id` field having an id from the `articles` table and the `tag_id` having an id from the `tags` table. Deleting a relationship is as easy as deleting a row. The `id` is a simple *int* as it will not be exposed via an API, thus not needing to be a *uuid*.
+When you want to connect **many** tags to **many** articles, you need a different setup. You cannot put the article `id` on the tag, as you could have multiple tags per article, and multiple articles that have the same tag associated with them. Handling adding/deleting tags in one text field would be a nightmare. The solution: a `pivot` table, an additional `article_tag` table, that has 3 columns `id`, `article_id`, `tag_id` to connect the two models. For each relation a new entry will be added to this table, with the `article_id` field having an id from the `articles` table and the `tag_id` having an id from the `tags` table. Deleting a relationship is as easy as deleting a row. The `id` is a simple *int* as it will not be exposed via an API, thus not needing to be a *uuid*.
 
 By default, eloquent assumes the name of the pivot table to be a the names of the two models in alphabetical order, combine with an underscore *_*. While you could overwrite this behavior in the `belongsToMany` method we will be using in a bit, I highly discourage this as well, as it just means more code to maintain and more possibilities for errors. Be a chum, stick to defaults where you can.
 
-Once the `pivot` table is created, you can start defining the relationship on your models, many to many relationships are not really directional, so they are defined exactly the same for both models, just with the opposite model referenced. The `belongsToMany` method that is used, has actually three additional arguments, the first one for the `pivot` table name, the second for the *foreign key* and the third for the *local key*. If you don't add any addition arguments here, the ids are assumed like before, *modelname*_id.
+Once the `pivot` table is created, you can start defining the relationship on your models, *many to many* relationships are not really directional, so they are defined exactly the same for both models, just with the opposite model referenced. The `belongsToMany` method that is used, has actually three additional arguments, the first one for the `pivot` table name, the second for the *foreign key* and the third for the *local key*. If you don't add any addition arguments here, the ids are assumed like before, *modelname*_id.
 
 ```php
 // Article Model
@@ -239,9 +239,9 @@ To get a related model simply use the *dynamic properties* like before. For both
 There is more you can do with pivot tables, like storing `created_at` and `updated_at` timestamps on them. If this is something you need, read the [retrieving intermediate table columns section](https://laravel.com/docs/5.2/eloquent-relationships#many-to-many) in the docs.
 
 ### Many to many polymorphic relationships
-Now let's get even more crazy, imagine you have articles and videos which both are tagged using tags that are stored in the tags table. A many to many relationship would not work, because eloquent does not know which of the two is the owning model for a particular entry. So we use the same idea we used for polymorphic relationships and combine it with the pivot table from many to many relationships. In short we need a pivot table, which records the `tag_id` as well as the owning models id and the owning models type.
+Now let's get even more crazy, imagine you have articles and videos which both are tagged using tags that are stored in the tags table. A *many to many* relationship would not work, because eloquent does not know which of the two is the *owning* model for a particular entry. So we use the same idea we used for *polymorphic* relationships and combine it with the pivot table from *many to many* relationships. In short we need a pivot table, which records the `tag_id` as well as the *owning* models `id` and the *owning* models `type`.
 
-First create the pivot table, named `taggables` by default eloquent expects the pivot table to be named like the second argument in the `morphToMany` call (ours will be `taggable`) with and additional `s` in the end. The pivot table needs three columns `tag_id`, `taggable_id` and `taggable_type`. Eloquent will automatically fill this table, and an entry will be something like ` 1 | fc9234-... | Video `, where `1` is the id of the tag, `fc92334-...` is the `uuid` of the video and `Video` is the name of the model.
+First create the pivot table, named `taggables`. By default eloquent expects the pivot table to be named like the second argument in the `morphToMany` call (ours will be `taggable`) with and additional `s` in the end. The pivot table needs three columns `tag_id`, `taggable_id` and `taggable_type`. Eloquent will automatically fill this table, and an entry will be something like ` 1 | fc9234-... | App\Api\V1\Models\Video `, where `1` is the id of the tag, `fc92334-...` is the `uuid` of the video and `App\Api\V1\Models\Video` is the name of the model.
 
 On our `Video` and `Article` model we define the exact same relationship to the `Tag` model.
 
@@ -276,7 +276,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tag extends Model
 {
     /**
-     * Get all of the videos that are assigned this tag.
+     * Get all of the videos that are assigned to this tag.
      */
     public function videos()
     {
@@ -284,7 +284,7 @@ class Tag extends Model
     }
 
     /**
-     * Get all of the articles that are assigned this tag.
+     * Get all of the articles that are assigned to this tag.
      */
     public function articles()
     {
@@ -293,14 +293,14 @@ class Tag extends Model
 }
 ```
 
-Retrieving related models works just like with any other many to many relationship.
-For both *owning* models (`Video` and `Article`) defined by the `morphToMany` call an eloquent collection is returned when using the *dynmaic property* `tags`. You can either loop through the collection using a `foreach` loop or drill down with the query builder syntax. If you want to get the *owning* models from an *owned* `Tag` model you can either use the *dynmaic property* `articles` or `videos`, depending on the content you are looking for. In both cases a collection will be returned, just like before.
+Retrieving related models works just like with any other *many to many* relationship.
+For both *owning* models (`Video` and `Article`) defined by the `morphToMany` call, an eloquent collection is returned when using the *dynmaic property* `tags`. You can either loop through the collection using a `foreach` loop or drill down with the query builder syntax. If you want to get the *owning* models from an *owned* `Tag` model you can either use the *dynmaic property* `articles` or `videos`, depending on the content you are looking for. In both cases a collection will be returned, just like before.
 
 ## Faker: Database seeding with relationships
-But what about seeding? We still need to create test data and seeding with related data is always a bit more. It all happens within your `ModelFactory` class. Basically you have two different ways of seeding related data. One way is to create data in a specific order and grab random items to be related to for e.g. a collection. The other way, if you need specific items to be related, is to create the items within another models factory call.
+But what about seeding? We still need to create test data and seeding with related data is always a bit more complicated. It all happens within your `ModelFactory` class. Basically you have two different ways of seeding related data. One way is to create data in a specific order and grab random items to be related. The other way, if you need specific items to be related, is to create the items within another models factory call.
 
 ### Connect random data
-If you do not care which exact data is related, like adding tags to an article, creating tags first and retrieving random tags when creating the article is a good idea. Our tags will have an autoincrementing `id`, so we do not need to assign it. Apart from this the tag only has a name e.g. "*programming*".
+If you do not care which exact item is related, like adding tags to an article, creating tags first and retrieving random tags when creating the article is a good idea. Our tags will have an autoincrementing `id`, so we do not need to assign it. Apart from this the tag only has a name e.g. "*programming*".
 
 ```php
 $factory->define(App\Api\V1\Models\Tag::class, function ($faker) {
@@ -312,7 +312,8 @@ $factory->define(App\Api\V1\Models\Tag::class, function ($faker) {
 ```
 
 For this example we stick with a `uuid`, a `title`, a `body` and an `image_id` for our articles. The title consists of one to four words. I recommend to always have everything variable that will be variable in real live, as you might miss problems otherwise. Maybe in your code there is no difference with a one or four word title, so you figure the word "*title*" will do, but if you start building a design using this fake data, you may not notice, that you run into problems when a title will not fit into a single line, etc.
-For the `image_id` we use a small *hack*, by using the `random(0,1)` to randomly assign or not assign an image. You could change the `1` to `3` to make it more likely that an image will be added, currently its a 50/50 chance. What we do when we want to add an image is to get all previously seeded (!) photos from the database and select one at random and get its it. This can be used for any model you want to connect.
+
+For the `image_id` we use a small *hack*, by using the `random(0,1)` to randomly assign or not assign an image. You could change the `1` to `3` to make it more likely that an image will be added, currently its a 50/50 chance. What we do when we want to add an image is to get all previously seeded (!) photos from the database and select one at random and get its `id`. This can be used for any model you want to connect.
 
 ```php
 $factory->define(App\Api\V1\Models\Article::class, function ($faker) {
@@ -348,7 +349,7 @@ public function run()
 
 ### Connect specific data
 
-Sometimes grabbing random data pieces is not enough and you want to add specific items to a specific related item, so lets see how we could do this.
+Sometimes grabbing random data pieces is not enough and you want to add specific items to a specific model, so let's see how we could do this.
 
 ```php
 $factory->define(App\Api\V1\Models\Article::class, function ($faker) {
@@ -368,4 +369,4 @@ $factory->define(App\Api\V1\Models\Article::class, function ($faker) {
 });
 ```
 
-This one is pretty easy. Within the model factory, before you run the return statement, you just create the needed resource. You can do this however you want: create a new item via the model, like shown above, you could use the query builder to insert something into the database or even create something like a text file you need. Once this is done, get the needed connector e.g. the `id` and return it with the other stuff you want to return for your model.
+This one is pretty easy. Within the model factory, before you run the return statement, you just create the needed resource. You can do this however you want: create a new item via the model, like shown above, you could use the query builder to insert something into the database or even create something like a text file. Once this is done, get the needed connector e.g. the `id` and return it with the other stuff you want to return for your model.
