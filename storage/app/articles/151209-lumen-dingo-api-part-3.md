@@ -71,7 +71,7 @@ trait TestTrait
 }
 ```
 
-Good, so now we have the first part sorted out, we need to add the `validateArray` method. It is a bit more complex, we need to loop through all rules and if they are strings, we add them to the rule array and add a `required`, because all fields need to be present for unit testing. However, if the rule is an array, like `attributes`, we add it with just a `required` rule and run the `validateArray` on its child array again. After all is done we run the validator, which will either pass, returning an empty array, or return an array of error messages. We add the errors to the `$this->errors` array including a little command line coloring. We cannot return the errors immeditaly, because this would cause the script to stop and only one error would be shown at a time.
+Good, so now we have the first part sorted out, we need to add the `validateArray` method. It is a bit more complex, we need to loop through all rules and if they are strings, we add them to the rule array and add a `required`, because all fields need to be present for unit testing. However, if the rule is an array, like `attributes`, we add it with just a `required` rule and run the `validateArray` on its child array again. After all is done we run the validator, which will either pass, returning an empty array, or return an array of error messages. We add the errors to the `$this->errors` array including a little command line coloring. We cannot return the errors immediately, because this would cause the script to stop and only one error would be shown at a time.
 
 ```php
 /*
@@ -99,6 +99,44 @@ protected function validateArray($rules, $resourceData)
     foreach ($validator->messages()->toArray() as $error) {
         $this->errors[] =  "\e[1;31m× \033[0m".$error[0];
     }
+}
+```
+
+To add your `TestTrait.php` to your `TestCase.php` you can just add a `use TestTrait` statement into your `TestCase`. Make sure both files are within the same folder `tests`, otherwise you will need to add the namespace to the `use` statement. Your `TestCase.php` should look like this:
+
+```php
+<?php
+
+use Lukasoppermann\Httpstatus\Httpstatuscodes;
+use Lukasoppermann\Testing\TestTrait;
+
+class TestCase extends Laravel\Lumen\Testing\TestCase implements Httpstatuscodes
+{
+    // this includes the TestTrait
+    use TestTrait;
+
+    protected $client;
+
+    public function setUp()
+    {
+        parent::setUp();
+
+        $this->client = new GuzzleHttp\Client([
+            'base_uri' => 'http://api.mylumenapi.app',
+            'exceptions' => false,
+        ]);
+    }
+
+    /**
+     * Convert API response to array
+     *
+     * @return array
+     */
+    public function getResponseArray($response)
+    {  
+        return json_decode($response->getBody()->getContents(), true);
+    }
+
 }
 ```
 
