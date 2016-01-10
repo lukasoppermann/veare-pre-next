@@ -28,7 +28,14 @@ $expected = [
 $this->assertValidArray($expected, $this->getResponseArray($response)['data'][0]);
 ```
 
-Awesome, right? There is only one problem with this: it does not work. Neither Laravel nor PHPUnit comes with an `assertValidArray` function. Luckily this problem can be easily solved by extending the Laravel `TestCase`.
+Awesome, right? There is only one problem with this: it does not work. Neither Laravel nor PHPUnit comes with an `assertValidArray` function. Luckily this problem can be easily solved by extending the Laravel `TestCase`. But before we do this, we do this, there is another method that we need to write: `getResponseArray`. This is just an easy convenience function, that takes the response content and json_decodes it. Put this method in the `TestCase.php` so that we have it available in all our tests.
+
+```php
+public function getResponseArray($response)
+{
+    return json_decode($response->getBody()->getContents(), true);
+}
+```
 
 ### Writing the TestTrait class
 We will collect our additions to the `TestCase` in a trait, which we can import into our `TestCase` class. The benefit of this is, that we have no trouble when updating Laravel or using a fresh installation. Just copy over the trait and add the `use` statement to the `TestCase` class.
