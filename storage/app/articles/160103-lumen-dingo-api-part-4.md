@@ -3,6 +3,8 @@ title: Building APIs with dingo & lumen\: Model Relationships - PART 4
 tags: tag1, tag2
 author: Lukas Oppermann
 description: Learn how to build a php API with dingo & lumen: Model Relationships
+next: lumen-dingo-api-part-5
+previous: lumen-dingo-api-part-3
 ---
 # Building APIs with dingo & lumen: Model Relationships
 {$meta}

@@ -3,6 +3,7 @@ title: Building APIs with dingo & lumen\: Introduction - PART 1
 tags: tag1, tag2
 author: Lukas Oppermann
 description: Learn how to build a php API with dingo & lumen: setup and configuration.
+next: lumen-dingo-api-part-2
 ---
 # Building APIs with dingo & lumen: Introduction
 {$meta}

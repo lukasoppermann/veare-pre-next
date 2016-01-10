@@ -3,6 +3,8 @@ title: Building APIs with dingo & lumen\: Transformers, Unit testing & JSON API 
 tags: tag1, tag2
 author: Lukas Oppermann
 description: Learn how to build a php API with dingo & lumen: transformers, unit testing & JSON API.
+next: lumen-dingo-api-part-4
+previous: lumen-dingo-api-part-2
 ---
 # Building APIs with dingo & lumen: Transformers, Unit testing & JSON API
 {$meta}

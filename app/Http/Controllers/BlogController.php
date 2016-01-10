@@ -13,6 +13,7 @@ use Bookworm\Bookworm;
 
 class BlogController extends Controller
 {
+    private $metadata = [];
     /**
      * Display a listing of the resource.
      *
@@ -88,7 +89,7 @@ class BlogController extends Controller
         $article = preg_replace('#---\n(.*?)---\n#is', '', $article);
         foreach(array_filter(explode("\n", $d[1])) as $data){
             $data = preg_split('~\\\:(*SKIP)(*FAIL)|:~',$data);
-            $metadata[trim($data[0])] = str_replace('\:',':',trim($data[1]));
+            $this->metadata[trim($data[0])] = $metadata[trim($data[0])] = str_replace('\:',':',trim($data[1]));
         }
 
         $environment = Environment::createCommonMarkEnvironment();
@@ -104,9 +105,29 @@ class BlogController extends Controller
 
         $post = str_replace('{$meta}', $metainfo, $post);
 
-        $postData = array_merge(['post' =>  $post, 'link' => $name], $metadata);
+        $postData = array_merge([
+            'post' =>  $post,
+            'link' => $name,
+            'linkNext' => $this->getPart('next', 'link-next'),
+            'linkPrevious' => $this->getPart('previous','link-prev'),
+        ], $metadata);
 
         return view('blog.post', $postData);
+    }
+    /*
+     * get next or previous part by filename and return link
+     */
+    private function getPart($partType, $template){
+
+        if (!isset($this->metadata[$partType])) {
+            return false;
+        }
+        $file = glob(storage_path().'/app/articles/[0-9][0-9][0-9][0-9][0-9][0-9]-'.$this->metadata[$partType].'.md');
+
+        if( count($file) > 0 ){
+            $link = str_replace(storage_path().'/app/articles/','',str_replace('.md','',$file[0]));
+            return view('blog.'.$template, ['link' => $link])->render();
+        }
     }
 
 }

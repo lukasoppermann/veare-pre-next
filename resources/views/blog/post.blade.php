@@ -6,6 +6,7 @@
     </article>
     <div class="o-footer">
         <a title="Back to the list of articles" class="o-link o-link--back" href="{{url('blog/')}}">Back to overview</a>
+        {!!$linkNext!!}
     </div>
 @endsection
 

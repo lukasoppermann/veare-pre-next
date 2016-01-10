@@ -3,6 +3,8 @@ title: Building APIs with dingo & lumen\: Database, Model & Controller - PART 2
 tags: tag1, tag2
 author: Lukas Oppermann
 description: Learn how to build a php API with dingo & lumen: Database, Model & Controller.
+next: lumen-dingo-api-part-3
+previous: api-with-dingo-and-lumen-part-1
 ---
 # Building APIs with dingo & lumen: Database, Model & Controller
 {$meta}
