@@ -130,4 +130,13 @@ class BlogController extends Controller
         }
     }
 
+
+    /**
+     * Create cache of posts
+     */
+    public function createCache(){
+        // store all articles
+        $articles = $this->getArticles();
+
+    }
 }
