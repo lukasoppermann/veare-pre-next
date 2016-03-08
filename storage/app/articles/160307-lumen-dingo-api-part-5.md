@@ -78,7 +78,7 @@ We add a `private $perPage` variable to define the number of items to return. Yo
 
 ### Pagination using eloquents paginate method
 
-As always eloquent provides us with a dead simple way to paginate items, the [`paginate` method](https://laravel.com/docs/5.2/pagination#paginating-eloquent-results). When you new up a model, like `Post`, you can immediatly call the `paginate` method on it and provide the number od items per page as the only argument.
+As always eloquent provides us with a dead simple way to paginate items, the [`paginate` method](https://laravel.com/docs/5.2/pagination#paginating-eloquent-results). When you new up a model, like `Post`, you can immediatly call the `paginate` method on it and provide the number of items per page as the only argument.
 
 We got out result paginated, but we are still missing the pagination object in the api response. Luckily `dingo/api` got us covered. Instead of returning a `collection`, we just return a `paginator` using `$this->response->paginator` with the same arguments we used for the collection and the rest happens automatically.
 
