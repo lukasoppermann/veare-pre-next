@@ -127,66 +127,37 @@ class CollectionsController extends ApiController {
     // some code ...
 
     public function getPosts(Request $request, $collection_id){
-        // get the collection with the current id
-        $collection = Collection::find($collection_id);
-
-        // throw 404 exception if resource does not exists
-        // this will be converted to a jsonapi error by dingo
-        if ($collection === null) {
-            throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-        }
-
-        $this->response->collection($collection->posts, new PostTransformer ,['key' => 'posts']);
+        // getPosts code ...
     }
 }
 ```
 
-So we are half the way there, but now we need to add the actual pagination. Sadly, as we are working with a collection and not a model, the `paginate` can not be used. So we need to do the pagination ourselves by using Laravels `LengthAwarePaginator`. To start with add `use Illuminate\Pagination\LengthAwarePaginator` to the list of your imports. The `LengthAwarePaginator` will need the current page as well as the amount of items as an argument. Additionally we need to provide the set of items to display for which we will need the offset. An offset is easily calculated by multiplying the current page with the amount of items per page and substracting the items per page once, because we want to get the offset to the first item on the current page.
+First we have to get the current collection by the provided `$collection_id` and check if this collection actually exists. In case the collection does not exist, we thrown `NotFoundHttpException` which will be automatically converted to a json api error response by dingo/api.
 
 ```php
+public function getPosts(Request $request, $collection_id){
+    // get the collection with the current id
+    $collection = Collection::find($collection_id);
 
-    public function getPosts(Request $request, $collection_id){
-
-        // get the collection with the current id
-        $collection = Collection::find($collection_id);
-
-        // get current requested page or 1 for pagination
-        $page = $request->input('page', 1);
-
-        // calc offset for current page
-        $offset = ($page * $this->perPage) - $this->perPage;
-
-        // return the collection of posts with paginator
-        return $this->response->paginator(
-            new LengthAwarePaginator(...)
-        );
+    // throw 404 exception if resource does not exists
+    // this will be converted to a jsonapi error by dingo
+    if ($collection === null) {
+        throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
     }
 ```
-#### Using a length aware paginator
-Once you understand the `LengthAwarePaginator` paginator it is quite easy, especially in combination with [laravel/lumen `collections`](https://laravel.com/docs/5.2/collections#available-methods).
+Now all that is left to do is to return a `paginator` response like before. The collection will be a paginated relationship. Make sure to include the `()`, because `$collection->posts` returns a laravel `collection` while `$collection->posts()` returns a `BelongsToMany` object, which is a `Relation` object and thus has the `paginate` method. Thats it, everything else is just like before.
 
 ```php
-new LengthAwarePaginator(
-    $collection->slice($offset, $perPage), // items
-    $collection->count(), // total items
-    $this->perPage, // items per page
-    $page, // current page
-    [
-        'path' => $request->url(),
-        'query' => $request->query()
-    ]
-);
+public function getPosts(Request $request, $collection_id){
+    // ... code from above
+
+    return $this->response->paginator(
+        $collection->posts()->paginate($this->perPage),
+        new PostTransformer,
+        ['key' => 'posts']
+    );
+}
 ```
-
-**Items**: As the first argument you need to provide a `collection` of all items on the current page. This can be easily done using the `slice` method of the `collection`, which needs the `$offset` and the amount of items per page as arguments.
-
-**Total items**: Next we need the sum of all items in the `collection`, which we can easily get using the `count` method.
-
-**Items per page**: The amount if items per page has been defined before in our private `$perPage` variable.
-
-**Current page**: We already retrieved and stored the current page in the `$page` variable.
-
-**Options**: The last argument is an array with the `path` and `query`, both of which are also part of the `$request` object and can be retrieved via `$request->url()` and `$request->query()`.
 
 That's it. Posting a `GET` request to `collections/{collection_id}/posts` will return a paginated list of posts with links the api consumer can use to navigate to the next an previous page.
 
