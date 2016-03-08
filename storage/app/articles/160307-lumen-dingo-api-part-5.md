@@ -107,13 +107,13 @@ class PostsController extends ApiController {
 ```
 
 ### Relationships with pagination
-
+#### Adding the related posts route
 This was pretty easy, but what if we are retrieving the *posts* through a relationship? If we hit `/collections/{uuid-of-collection}/posts` we want the posts paginated just like before. First we need to actually set up the route in `routes.php` within the api group.
 
 ```php
 $api->get('collections/{collection_id}/posts', 'CollectionsController@getPosts');
 ```
-
+#### Adding the getPosts method
 We are calling the `getPosts` method on the `CollectionsController`, so we need to add it. Also make sure you `use` the `Illuminate\Http\Request;` and `App\Api\V1\Transformers\PostTransformer` at the top of your file. In the method we simply retrieve the `collection` with the current `collection_id` and call the `posts` relationship on it, which we discussed in [part 4: Model Relationships](160103-lumen-dingo-api-part-4). To see if it is working, we will just return a collection response, like we did before. You should get all results when you call this route.
 
 ```php
@@ -145,6 +145,8 @@ public function getPosts(Request $request, $collection_id){
         throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
     }
 ```
+
+#### Adding the pagination to the related posts
 Now all that is left to do is to return a `paginator` response like before. The collection will be a paginated relationship. Make sure to include the `()`, because `$collection->posts` returns a laravel `collection` while `$collection->posts()` returns a `BelongsToMany` object, which is a `Relation` object and thus has the `paginate` method. Thats it, everything else is just like before.
 
 ```php
