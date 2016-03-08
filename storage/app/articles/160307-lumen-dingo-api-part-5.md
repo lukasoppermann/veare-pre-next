@@ -136,7 +136,7 @@ class CollectionsController extends ApiController {
             throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
         }
 
-        $this->response->collection($collection->posts(), new PostTransformer ,['key' => 'posts']);
+        $this->response->collection($collection->posts, new PostTransformer ,['key' => 'posts']);
     }
 }
 ```
