@@ -13,13 +13,9 @@ We are building a [json api](http://jsonapi.org/format/) conform api, which mean
 
 ## Fractal Transformer & Serializer
 
-`Dingo/api` ships with fractal and fractal has a serializer system. Serializer automatically convert your data into a specific format, like json api. The included serializers let you convert your data into a json api format, an array or a `data` namespaced array.
+`Dingo/api` ships with fractal and fractal has a serializer system. Serializers automatically convert your data into a specific format, like json api. The included serializers let you convert your data into a json api format, an array or a `data` namespaced array. And if you need something special you can write a [custom serializer](http://fractal.thephpleague.com/serializers/#custom-serializers). For our example we will be using the `JsonApiSerializer`, since it is exactly what we want.
 
-If you need something special you can write a [custom serializer](http://fractal.thephpleague.com/serializers/#custom-serializers). For our example we will be using the `JsonApiSerializer`, since it is exactly what we want.
-
-Serializer are part of the transformation. Your transformers use an adapter (fractal by default) which in turn uses a serializer. So to change the serializer we need to change the adapter that the transformer uses. We will still be using fractal, but we will have fractal use the `JsonApiSerializer`.
-
-Luckily `dingo/api` is designed to let you change all this, so open up `bootstrap/app.php` and add a new part after the `Register Service Providers` section. We need to call up the transformer factory, which is the basis of all transformers you create. It has a `setAdapter` which we use to set the adapter.
+To change the default serializer you need to add this bit of code to your `bootstrap/app.php` below the `Register Service Providers`. We basically call up the transformer factory, which is the basis of all transformers you create. It has a `setAdapter` which we use. An adapter is basically a package that provides the transformation logic.
 
 ```php
 // set up default serializer
@@ -28,7 +24,7 @@ $app['Dingo\Api\Transformer\Factory']->setAdapter(function ($app) {
 });
 ```
 
-In this method we new up a new adapter (fractal manager) and a new serializer `JsonApiSerializer`. This serializer gets the api domain as an argument. This automatically triggers the addition of relationship links, which we want. Afterwards we use the `setSerializer` method of the fractal manager to tell fractal to use our new serializer.
+We need to create a new fractal manager and a new `JsonApiSerializer` with the api domain as an argument. This automatically triggers the addition of relationship links to our api responses. Afterwards we use the `setSerializer` method of the fractal manager to tell it to use our new serializer.
 
 ```php
 $fractal = new League\Fractal\Manager;
@@ -36,7 +32,7 @@ $serializer = new \App\Api\V1\Serializer\JsonApiSerializer($_ENV['API_DOMAIN']);
 $fractal->setSerializer($serializer);
 ```
 
-Finally we need to `return` a new fractal instance, which needs the fractal manager as the first argument. The other arguments are the string that is used for includes in the url, the delimiter of the includes in the url and a boolean to set [eager loading](http://fractal.thephpleague.com/transformers/#eager-loading-vs-lazy-loading) to true or false.
+Finally we need to `return` a new fractal adapter instance, which gets the fractal manager as the first argument. The other arguments are the string that is used for includes in the url, the delimiter of the includes in the url and a boolean to set [eager loading](http://fractal.thephpleague.com/transformers/#eager-loading-vs-lazy-loading) to true or false. The entire code looks like this:
 
 ```php
 // set up default serializer
@@ -53,7 +49,7 @@ Done, now whenever you return something you should get a perfectly valid json ap
 
 ## Custom error formats with dingo api
 
-We just need to add a bit more code underneath our previous code block in the `bootstrap/app.php` file. All we need to do is to call the `setErrorFormat` method on the `Dingo\Api\Exception\Handler` and provide our desired error format as the argument. The values with a `:` like `:message` are like variables and will be replaced.
+For errors we need to do something similar. Underneath the our new serializer setup in the `bootstrap/app.php` we need to call the `setErrorFormat` method on the `Dingo\Api\Exception\Handler`. The method takes the desired error format as its argument. The strings beginning with a colon (`:`) like `:message` will be replaced with the real content of the error. Now if we throw a `NOT_FOUND` exception, dingo will convert it to a valid json api error response.
 
 ```php
 // set up error format
