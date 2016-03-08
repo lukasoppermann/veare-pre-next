@@ -65,8 +65,23 @@ $app['Dingo\Api\Exception\Handler']->setErrorFormat([
 ```
 
 ## Pagination
+Now we got our format in order, but we still have a problem. When a resource is requested we currently return all items, that could eventually mean thousands of items are returned at once. This would firstly lead to potential long download times and also be a stability issue for your system. Pagination can solve this for us. The json response will have a pagination object, like the one shown below, with links to get to the previous and next set of items via an additional request.
 
-When requesting a resource you probably do not want the user to get all items at once. This would firstly lead to potential long download times and also be a stability issue for your system when thousands of items are requested at once. So we need pagination system, to control the amount of items returned per request. The json response will have a pagination object with links to get to the previous and next set of items via an additional request.
+```javascript
+"meta": {
+    "pagination": {
+        "total": 96,
+        "count": 20,
+        "per_page": 20,
+        "current_page": 1,
+        "total_pages": 5,
+        "links": [
+            "previous": "http://api.domain.app/posts?page=1",
+            "next": "http://api.domain.app/posts?page=3"
+        ]
+    }
+}
+```
 
 We will add the pagination logic to the `PostController.php` to return only 20 posts when the `index` method is called.
 
