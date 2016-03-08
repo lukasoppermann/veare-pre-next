@@ -146,10 +146,8 @@ So we are half the way there, but now we need to add the actual pagination. Sadl
         // get current requested page or 1 for pagination
         $page = $request->input('page', 1);
 
-        // set items per page
-        $perPage = 20;
         // calc offset for current page
-        $offset = ($page * $perPage) - $perPage;
+        $offset = ($page * $this->perPage) - $this->perPage;
 
         // return the collection of posts with paginator
         return $this->response->paginator(
@@ -164,7 +162,7 @@ Once you understand the `LengthAwarePaginator` paginator it is quite easy, espec
 new LengthAwarePaginator(
     $collection->slice($offset, $perPage), // items
     $collection->count(), // total items
-    $perPage, // items per page
+    $this->perPage, // items per page
     $page, // current page
     [
         'path' => $request->url(),
@@ -177,7 +175,7 @@ new LengthAwarePaginator(
 
 **Total items**: Next we need the sum of all items in the `collection`, which we can easily get using the `count` method.
 
-**Items per page**: The amount if items per page has been defined before in the `$perPage` variable.
+**Items per page**: The amount if items per page has been defined before in our private `$perPage` variable.
 
 **Current page**: We already retrieved and stored the current page in the `$page` variable.
 
