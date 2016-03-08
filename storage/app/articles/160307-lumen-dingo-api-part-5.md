@@ -83,13 +83,9 @@ Now we got our format in order, but we still have a problem. When a resource is 
 }
 ```
 
-We will add the pagination logic to the `PostController.php` to return only 20 posts when the `index` method is called.
-
-We add a `private $perPage` variable to define the number of items to return. You could set a global number but you might want to return a different amount for different resources. It might make sense to only return 20 posts, but for comments you maybe want to get 50.
-
 ### Pagination using eloquents paginate method
 
-As always eloquent provides us with a dead simple way to paginate items, the [`paginate` method](https://laravel.com/docs/5.2/pagination#paginating-eloquent-results). When you new up a model, like `Post`, you can immediatly call the `paginate` method on it and provide the number of items per page as the only argument.
+The pagination logic will be added to the `PostController.php`, we return 20 posts, which we define in the `private $perPage` variable, when the `index` method is called. In the controller we can use eloquent and as always eloquent provides us with a dead simple way to paginate items, the [`paginate` method](https://laravel.com/docs/5.2/pagination#paginating-eloquent-results). When you new up a model, like `Post`, you can immediately call the `paginate` method on it and provide the number of items per page as the only argument.
 
 We got out result paginated, but we are still missing the pagination object in the api response. Luckily `dingo/api` got us covered. Instead of returning a `collection`, we just return a `paginator` using `$this->response->paginator` with the same arguments we used for the collection and the rest happens automatically.
 
