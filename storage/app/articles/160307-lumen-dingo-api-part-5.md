@@ -6,10 +6,10 @@ description: Learn how to build a php API with dingo & lumen: json api response 
 next: lumen-dingo-api-part-6
 previous: lumen-dingo-api-part-4
 ---
-# Building APIs with dingo & lumen: Json api response formats
+# Building APIs with dingo & lumen: Json Api Response Formats & Pagination
 {$meta}
 
-You could construct json api responses with your transformers, but I find it pays to do as little work as possible, so we will let fractal do all the heavy lifting. This significantly reduce the amount of code we have to write and maintain. The more of your code that is maintained by an active open source community, the more time you have for your business specific code.
+We are building a [json api](http://jsonapi.org/format/) conform api, which means we need to somehow get our database data into the json api format. You could do it by hand within your transformers, but I find it pays to do as little work as possible, so we will let fractal do all the heavy lifting. This significantly reduce the amount of code we have to write and maintain. The more of your code that is maintained by an active open source community, the more time you have for your business specific code, which nobody will write for you.
 
 ## Fractal Transformer & Serializer
 
