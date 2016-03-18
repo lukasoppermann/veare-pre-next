@@ -6,8 +6,6 @@ description: Learn how to build a php API with dingo & lumen: Database, Model & 
 next: lumen-dingo-api-part-3
 previous: api-with-dingo-and-lumen-part-1
 ---
-# Building APIs with dingo & lumen: Database, Model & Controller
-{$meta}
 
 > In the [introduction](150905-api-with-dingo-and-lumen-part-1) of this series we set up our project environment and installed some packages. We configured the dingo/api package and setup a route as well as a basic phpunit test. In this part we will migrate and seed our database and create the controller and model.
 

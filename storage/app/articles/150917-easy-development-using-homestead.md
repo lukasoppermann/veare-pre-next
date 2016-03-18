@@ -3,8 +3,7 @@ title: Easy development using homestead
 tags: tag1, tag2
 author: Lukas Oppermann
 ---
-# Easy development using homestead
-{$meta}
+
 > In this post we will setup homestead on your machine and get a Laravel installation up an running. Note, that while homestead is created by Taylor Otwell, the guy behind Laravel & Lumen, you can use it for any php project, no matter what framework you use.
 
 ## Why should I use homestead

@@ -4,4 +4,4 @@ tags: tag1, tag2
 author: Lukas Oppermann
 ---
 
-# How big does a modern apartment need to be to live a good life?
+## How big does a modern apartment need to be to live a good life?

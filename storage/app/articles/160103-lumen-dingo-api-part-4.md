@@ -6,8 +6,6 @@ description: Learn how to build a php API with dingo & lumen: Model Relationship
 next: lumen-dingo-api-part-5
 previous: lumen-dingo-api-part-3
 ---
-# Building APIs with dingo & lumen: Model Relationships
-{$meta}
 
 > Getting your data structure right can be one of the hardest parts of building your api.
 

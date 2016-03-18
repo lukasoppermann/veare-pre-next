@@ -9,29 +9,41 @@ var concat = require('gulp-concat');
 var submitSitemap  = require('submit-sitemap').submitSitemap;
 
 // actions
-gulp.task('clean-buid', function(done){
+gulp.task('clean-build', function(done){
     del(['public/build']).then(function(){
         done();
     });
 });
 
-gulp.task('build-css', function(){
-    return gulp.src(['resources/less/*.less'])
+gulp.task('build-css', ['clean-build'], function(){
+    return gulp.src(['resources/less/*'])
     .pipe(less())
     .pipe(concat('app.css'))
     .pipe(prefix({
         browsers: ['last 4 versions', 'IE 9', 'IE 8'],
         cascade: false
     }))
-    .pipe(gulp.dest('public/css/'));
+    // needs to minimize
+    .pipe(gulp.dest('public/build/css'));
 });
 
-gulp.task('rev', ['clean-buid'], function(){
-    return gulp.src(['public/css/*.css', 'public/js/*.js'], {base: 'public'})
+gulp.task('build-js', ['clean-build'], function(){
+    return gulp.src(['resources/js/*.js'])
+    // .pipe() // needs to minimize
+    .pipe(concat('app.js'))
+    .pipe(gulp.dest('public/build/js'));
+});
+
+gulp.task('rev', ['build-js', 'build-css'], function(){
+    return gulp.src(['public/build/css/app.css', 'public/build/js/app.js'], {base: 'public/build'})
     .pipe(rev())
     .pipe(gulp.dest('public/build'))
     .pipe(rev.manifest())
     .pipe(gulp.dest('public/build'));
+});
+
+gulp.task('clean-build-step', ['rev'], function(){
+    return del(['public/build/css/app.css', 'public/build/js/app.js']);
 });
 
 // sitemap
@@ -50,4 +62,4 @@ gulp.task('css-watch', function(){
 });
 
 // gulp tasks
-gulp.task('default', ['build-css', 'css-watch','rev', 'rev-watch']);
+gulp.task('default', ['clean-build','build-css', 'build-js', 'rev', 'clean-build-step']);

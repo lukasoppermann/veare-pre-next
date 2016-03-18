@@ -3,8 +3,7 @@ title: Set up git & github
 tags: tag1, tag2
 author: Lukas Oppermann
 ---
-# Set up git & github
-{$meta}
+
 > Getting everything ready to start development can be scary, but if you take small steps it is actually quite easy.
 
 ## The idea behind GIT & github

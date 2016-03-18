@@ -3,13 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use League\CommonMark\Converter;
-use League\CommonMark\DocParser;
-use League\CommonMark\Environment;
-use League\CommonMark\HtmlRenderer;
-use Webuni\CommonMark\AttributesExtension\AttributesExtension;
+use App\Services\PostsService as Posts;
 use Storage;
-use Bookworm\Bookworm;
 
 class BlogController extends Controller
 {
@@ -19,124 +14,130 @@ class BlogController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Posts $posts)
     {
-        $articles = Storage::files('articles');
-        rsort($articles);
-        foreach($articles as $article)
-        {
-            $metadata = [];
-            preg_match('#---\n(.*?)---\n#is', Storage::get($article), $d);
-            if(count($d) > 0){
-                foreach(array_filter(explode("\n", $d[1])) as $data){
-                    $data = preg_split('~\\\:(*SKIP)(*FAIL)|:~',$data);
-                    $metadata[trim($data[0])] = str_replace('\:',':',trim($data[1]));
-                }
-            }
-
-            $article_file = pathinfo($article)['filename'];
-
-            $article_list[] = array_merge([
-                'link' => $article_file,
-                'title' => $this->getTitle($article_file),
-                'date' => $this->getDate($article_file)
-            ], $metadata);
-        }
-
-        $article_list = isset($article_list) ? $article_list: [];
-        return view('blog.listing', ['files' => $article_list]);
+        // $articles = Storage::files('articles');
+        // rsort($articles);
+        // foreach($articles as $article)
+        // {
+        //     $metadata = [];
+        //     preg_match('#---\n(.*?)---\n#is', Storage::get($article), $d);
+        //     if(count($d) > 0){
+        //         foreach(array_filter(explode("\n", $d[1])) as $data){
+        //             $data = preg_split('~\\\:(*SKIP)(*FAIL)|:~',$data);
+        //             $metadata[trim($data[0])] = str_replace('\:',':',trim($data[1]));
+        //         }
+        //     }
+        //
+        //     $article_file = pathinfo($article)['filename'];
+        //
+        //     $article_list[] = array_merge([
+        //         'link' => $article_file,
+        //         'title' => $this->getTitle($article_file),
+        //         'date' => $this->getDate($article_file)
+        //     ], $metadata);
+        // }
+        //
+        // $article_list = isset($article_list) ? $article_list: [];
+        return view('blog.listing', ['files' => $posts->all()]);
     }
-    /**
-     * Get formatted date from filename
-     */
-    private function getDate($filename)
-    {
-        if (!is_numeric(substr($filename,0,6))) {
-            if (env('APP_ENV') === 'local') {
-                return 'draft';
-            }
-            return false;
-        }
-        $date = substr($filename,4,2).'.'.substr($filename,2,2).'.'.substr($filename,0,2);
-        return $date;
-    }
-
-    /**
-     * Get formatted title from filename
-     */
-    private function getTitle($filename)
-    {
-        if(!is_numeric(substr($filename,0,6))){
-            return str_replace('-',' ',$filename);
-        }
-        return str_replace('-',' ',substr($filename,7));
-    }
-
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return Response
      */
-    public function show($name)
+    public function show(Posts $posts, $link)
     {
-        if( !Storage::exists('articles/'.$name.'.md') ) {
+
+        $post = $posts->get($link);
+
+        if( $post === false ) {
             return redirect()->action('BlogController@index');
         }
 
-        $article = Storage::get('articles/'.$name.'.md');
-        preg_match('#---\n(.*?)---\n#is', $article, $d);
-        $article = preg_replace('#---\n(.*?)---\n#is', '', $article);
-        foreach(array_filter(explode("\n", $d[1])) as $data){
-            $data = preg_split('~\\\:(*SKIP)(*FAIL)|:~',$data);
-            $this->metadata[trim($data[0])] = $metadata[trim($data[0])] = str_replace('\:',':',trim($data[1]));
-        }
-
-        $environment = Environment::createCommonMarkEnvironment();
-        $environment->addExtension(new AttributesExtension());
-
-        // reading time estimate
-        $readingTime = Bookworm::estimate($article, false);
-
-        $converter = new Converter(new DocParser($environment), new HtmlRenderer($environment));
-        $post = $converter->convertToHtml($article);
-
-        $metainfo = '<div class="o-meta publication-info">Published by <a class="author" href="http://vea.re" title="about Lukas Oppermann" rel="author">Lukas Oppermann</a>, <time datetime="'.$this->getDate($name).'" class="article_time">'.$this->getDate($name).'</time> • <time datetime="'.$readingTime.'m">'.$readingTime.' min read</time></div>';
-
-        $post = str_replace('{$meta}', $metainfo, $post);
-
-        $postData = array_merge([
-            'post' =>  $post,
-            'link' => $name,
-            'linkNext' => $this->getPart('next', 'link-next'),
-            'linkPrevious' => $this->getPart('previous','link-prev'),
-        ], $metadata);
-
-        return view('blog.post', $postData);
+        return view('blog.post', $post);
     }
     /*
-     * get next or previous part by filename and return link
+     * get post by name
      */
-    private function getPart($partType, $template){
-
-        if (!isset($this->metadata[$partType])) {
-            return false;
-        }
-        $file = glob(storage_path().'/app/articles/[0-9][0-9][0-9][0-9][0-9][0-9]-'.$this->metadata[$partType].'.md');
-
-        if( count($file) > 0 ){
-            $link = str_replace(storage_path().'/app/articles/','',str_replace('.md','',$file[0]));
-            return view('blog.'.$template, ['link' => $link])->render();
-        }
-    }
-
-
-    /**
-     * Create cache of posts
-     */
-    public function createCache(){
-        // store all articles
-        $articles = $this->getArticles();
-
-    }
+    // private function getPostContent($name){
+    //     // check if valid link
+    //     if( !Storage::exists('articles/'.$name.'.md') ) {
+    //         return false;
+    //     }
+    //     // regex to find meta info
+    //     $meta_regex = '#^---\n(.*?)---\n#is';
+    //     // get file
+    //     $file = Storage::get('articles/'.$name.'.md');
+    //     // get meta info
+    //     preg_match($meta_regex, $file, $meta);
+    //     $meta = $this->getMeta($meta);
+    //     // add date
+    //     $meta['date'] = $this->getDate($name);
+    //
+    //     return [
+    //         'link' => $name,
+    //         'title' => $this->getTitle($name, $meta),
+    //         'content' => $this->getContent(preg_replace($meta_regex,'', $file), $meta, $meta_regex),
+    //         'meta' =>  $meta
+    //     ];
+    // }
+    // /**
+    //  * get content
+    //  */
+    // private function getContent($file, $meta, $meta_regex){
+    //     // convert to html
+    //     $converter = new CommonMarkConverter();
+    //     $post = $converter->convertToHtml($file);
+    //
+    //     $metaView = view()->make('blog.meta', [
+    //         'author' => isset($meta['author']) ? $meta['author'] : false,
+    //         'date' => $meta['date'],
+    //         'readingTime' => $this->getReadingTime($post)
+    //     ]);
+    //     $metaInfo = $metaView->render();
+    //
+    //     return str_replace('{$meta}', $metaInfo, $post);
+    // }
+    // /**
+    //  * add metda info to post content
+    //  */
+    // private function getMeta($meta){
+    //     // if no meta data exists return false
+    //     if(!isset($meta[1])){
+    //         return false;
+    //     }
+    //     // split rows into array
+    //     $data = array_filter(explode("\n", $meta[1]));
+    //     // split at colon into key value pair
+    //     foreach($data as $key => $item){
+    //         unset($data[$key]);
+    //         $item = preg_split('~\\\:(*SKIP)(*FAIL)|:~',$item);
+    //         $data[$item[0]] = str_replace('\:',':',trim($item[1]));
+    //     };
+    //     // replace {$meta} with actual content
+    //     return $data;
+    // }
+    // /**
+    //  * get reading time
+    //  */
+    // private function getReadingTime($file){
+    //     return Bookworm::estimate($file, false);
+    // }
+    // /*
+    //  * get next or previous part by filename and return link
+    //  */
+    // private function getPart($partType, $template){
+    //
+    //     if (!isset($this->metadata[$partType])) {
+    //         return false;
+    //     }
+    //     $file = glob(storage_path().'/app/articles/[0-9][0-9][0-9][0-9][0-9][0-9]-'.$this->metadata[$partType].'.md');
+    //
+    //     if( count($file) > 0 ){
+    //         $link = str_replace(storage_path().'/app/articles/','',str_replace('.md','',$file[0]));
+    //         return view('blog.'.$template, ['link' => $link])->render();
+    //     }
+    // }
 }

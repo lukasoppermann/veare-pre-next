@@ -5,8 +5,7 @@ author: Lukas Oppermann
 description: Learn how to build a php API with dingo & lumen: setup and configuration.
 next: lumen-dingo-api-part-2
 ---
-# Building APIs with dingo & lumen: Introduction
-{$meta}
+
 > In this series we will write a well tested api using [lumen](http://lumen.laravel.com/) and the [dingo/api](https://github.com/dingo/api) package.
 
 ## Install lumen & dingo/api

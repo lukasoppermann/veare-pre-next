@@ -6,8 +6,6 @@ description: Learn how to build a php API with dingo & lumen: transformers, unit
 next: lumen-dingo-api-part-4
 previous: lumen-dingo-api-part-2
 ---
-# Building APIs with dingo & lumen: Transformers, Unit testing & JSON API
-{$meta}
 
 > In [Part 2 of building APIs with dingo & lumen](151119-lumen-dingo-api-part-2) we added all the database stuff but our transformer is just passing on the data from the DB. Well, that is stupid, so lets fix it.
 

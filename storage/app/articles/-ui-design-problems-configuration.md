@@ -3,7 +3,7 @@ title: UI Design Problems\: Configuration
 tags: tag1, tag2
 author: Lukas Oppermann
 ---
-# UI Design Problems: Configuration
+
 
 > TL;DR when you do not have the balls to make a decision, you add a configuration
 

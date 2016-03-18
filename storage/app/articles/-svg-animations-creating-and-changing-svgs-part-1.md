@@ -4,8 +4,7 @@ tags: tag1, tag2
 author: Lukas Oppermann
 description: learn how SVGs are created, included and changed using css.
 ---
-# SVG animations: Creating and changing SVGs
-{$meta}
+
 
 <a style="width: 100%; display: block; background: #e8f3f5; border-radius: 3px;" href="/media/svg-cloud.svg" target="_blank" download>
 <svg xmlns="http://www.w3.org/2000/svg" style="max-width: 400px; left: 50%; transform: translateX(-50%); position: relative;" width="100%" viewBox="0 0 100 100">

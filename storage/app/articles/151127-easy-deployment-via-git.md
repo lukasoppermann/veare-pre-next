@@ -4,8 +4,6 @@ tags: tag1, tag2
 author: Lukas Oppermann
 description: Learn how to setup git to very easily push changes to your live server.
 ---
-# Easy deployment via git
-{$meta}
 
 Deploying a website change via FTP can be very tedious and slow. Either you copy over the entire project, which takes time or you have to go into different folders, to upload individual files. If you forget a file the website is down and you have to figure out which file you are missing. Git offers a perfect solution for all those problems, deploying with a simple push, so lets check out how you can set it up.
 

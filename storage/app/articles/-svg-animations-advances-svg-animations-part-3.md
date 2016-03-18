@@ -4,8 +4,7 @@ tags: tag1, tag2
 author: Lukas Oppermann
 description: Learn how to do advanced SVG  animates using SIML.
 ---
-# SVG animations: Advanced SVG animations
-{$meta}
+
 
 ## Animate along a path
 <svg ...>

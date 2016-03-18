@@ -5,9 +5,8 @@
         <meta http-equiv="content-language" content="en">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1,maximum-scale=1">
         <meta name="description" content="{{$description or 'Web Development, User Experience & Design'}}">
-        <link href='{{ asset(env("CSS_PATH_PREFIX").elixir('css/app.css')) }}' rel='stylesheet' type='text/css'>
+        <link href='{{ asset(elixir('css/app.css')) }}' rel='stylesheet' type='text/css'>
 
-        <link href='{{asset(env("CSS_PATH_PREFIX").elixir('css/prism.css'))}}' rel="stylesheet" />
         @if (env('APP_ENV') !== 'local')
             <script>
               (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -28,7 +27,5 @@
         </div>
         @include('footer')
     </body>
-    <script src='{{ asset(env("JS_PATH_PREFIX").elixir("js/prism.js")) }}'></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
-    <script src='{{ asset(env("JS_PATH_PREFIX").elixir("js/fonts.js")) }}'></script>
+    <script src='{{ asset(elixir("js/app.js")) }}'></script>
 </html>

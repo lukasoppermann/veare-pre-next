@@ -3,7 +3,7 @@ title: UI Design Problems\: Precision
 tags: tag1, tag2
 author: Lukas Oppermann
 ---
-# UI Design Problems: Precision
+
 
 > TL;DR When you are not in the business of building an atomic plant, don't stress to much about precision.
 

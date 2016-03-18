@@ -4,8 +4,7 @@ tags: tag1, tag2
 author: Lukas Oppermann
 description: Learn how to animate SVGs using css animations.
 ---
-# SVG animations: CSS bases SVG animations
-{$meta}
+
 
 ## SVG properties in css
 

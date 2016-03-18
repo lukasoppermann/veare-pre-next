@@ -4,8 +4,7 @@ tags: tag1, tag2
 author: Lukas Oppermann
 description: Learn how to add a read time estimation, author, meta description and other features to your very own blogging system
 ---
-# Building a blog with Laravel: Read time estimations, descriptions and meta information
-{$meta}
+
 > Our blog is up and the first articles are published, perfect! Our goal was to get publishing as fast as possible. Now it is time to revisit the code and add some "nice to have" features.
 
 ## Adding meta information to markdown
@@ -42,31 +41,31 @@ public function show($name)
 The next thing to tackle is of course the `getPostContent` method. First we check if the article exists and return false if it does not. With the `$meta_regex` we retrieve everything between the `---` in the very beginning of your file and the next `---`, which will be our meta info. The info is store in the `$meta` variable and pass to the `getMeta` method, which returns the formatted meta info to which we append the date. Afterwards we return an array with the meta info, link, title, which is the result of the `getTitle` method and the content, which is the result from the `getContent` method. Note that we remove the meta info from the markdown content, before we pass it into the `getContent` method.
 
 ```php
-    /*
-     * get post by name
-     */
-    private function getPostContent($name){
-        // check if valid link
-        if( !Storage::exists('articles/'.$name.'.md') ) {
-            return false;
-        }
-        // regex to find meta info
-        $meta_regex = '#^---\n(.*?)---\n#is';
-        // get file
-        $file = Storage::get('articles/'.$name.'.md');
-        // get meta info
-        preg_match($meta_regex, $file, $meta);
-        $meta = $this->getMeta($meta);
-        // add date
-        $meta['date'] = $this->getDate($name);
-
-        return [
-            'link' => $name,
-            'title' => $this->getTitle($name, $meta),
-            'content' => $this->getContent(preg_replace($meta_regex,'', $file), $meta, $meta_regex),
-            'meta' =>  $meta
-        ];
+/*
+ * get post by name
+ */
+private function getPostContent($name){
+    // check if valid link
+    if( !Storage::exists('articles/'.$name.'.md') ) {
+        return false;
     }
+    // regex to find meta info
+    $meta_regex = '#^---\n(.*?)---\n#is';
+    // get file
+    $file = Storage::get('articles/'.$name.'.md');
+    // get meta info
+    preg_match($meta_regex, $file, $meta);
+    $meta = $this->getMeta($meta);
+    // add date
+    $meta['date'] = $this->getDate($name);
+
+    return [
+        'link' => $name,
+        'title' => $this->getTitle($name, $meta),
+        'content' => $this->getContent(preg_replace($meta_regex,'', $file), $meta, $meta_regex),
+        'meta' =>  $meta
+    ];
+}
 ```
 
 Next we add the `getMeta` method. First we need to check if the current article has meta information. If so, we split it by row and afterwards split at the colon `:`, using the first part as the key and the second as the value in the array we return.
@@ -134,7 +133,7 @@ private function getContent($file, $meta, $meta_regex){
     ]);
     $metaInfo = $metaView->render();
 
-    return str_replace('{$meta}', $metaInfo, $post);
+    return str_replace('', $metaInfo, $post);
 }
 ```
 

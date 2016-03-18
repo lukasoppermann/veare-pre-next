@@ -3,7 +3,6 @@ title: How to integrate mailchimp into your blog
 tags: tag1, tag2
 author: Lukas Oppermann
 ---
-# How to integrate mailchimp into your blog
 
 > In this article I will quickly walk you through the steps necessary to setup a simple mailchimp account and add a signup form to your blog or website.
 

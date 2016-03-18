@@ -1,8 +1,8 @@
 ---
 title: Why you should always write your own blogging software
+author: Lukas Oppermann
 ---
-# Why you should always write your own blogging software
-{$meta}
+
 > Okay, maybe I exaggerated. There is no "always" on the internet. But sometimes it might really be a good idea to look past the off-the-shelf products like Wordpress or Medium.
 
 ## The important part to get right when blogging
@@ -111,15 +111,14 @@ Retrieving the date is nearly as easy, you just need to cut the pieces of the da
 
 ```php
 /**
- * Get formatted date from filename
+ * Get formatted title from filename
  */
 private function getTitle($filename)
 {
     return str_replace('-',' ',substr($filename,7));
 }
-
 /**
- * Get formatted title from filename
+ * Get formatted date from filename
  */
 private function getDate($filename)
 {

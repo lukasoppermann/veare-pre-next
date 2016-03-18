@@ -5,8 +5,6 @@ author: Lukas Oppermann
 description: Learn how to start using gulp to improve your frontend workflow.
 ---
 
-# Getting into gulp
-{$meta}
 > [Gulp](http://gulpjs.com/) is my favorite task runner, because it is the essence of simplicity.
 
 Before we get our hands dirty, let me quickly explain what a task runner is. Actually it is pretty straight forwards, a task runner is a very simple (commandline) tool to run common tasks for you. So, what are tasks? A task can be nearly anything: converting your less to css, minifying your javascript, optimizing your svgs, creating an svg sprite or a combination of the before mentioned.
