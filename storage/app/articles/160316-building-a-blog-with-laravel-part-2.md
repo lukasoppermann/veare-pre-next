@@ -22,6 +22,7 @@ description: A description for the description tag
 
 The `$meta` part will later be replaces with some meta information that are supposed to be displayed in the text. We are using a variable instead of just adding it to the top, so that we can add an image or headline above the meta information, if we want to.
 
+{#extract-meta}
 ## Extracting meta information from markdown
 Now that we have a way to add it, we need to extract it again so we can work with our meta information. We will be using the meta information in our posts, so we need to get this data within the `show` method of our `BlogController`. The extraction is done in the `getPostContent` method which will return an array. If the method returns `false` the post did no exist, so we redirect to the list of posts.
 However, if the array is returned we are all set and can return the view.
