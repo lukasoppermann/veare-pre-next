@@ -1,5 +1,6 @@
 // Imports
 var gulp = require('gulp');
+var mainBowerFiles = require('main-bower-files');
 var rename = require('gulp-rename');
 var rev = require('gulp-rev');
 var del = require('del');
@@ -16,8 +17,10 @@ gulp.task('clean-build', function(done){
 });
 
 gulp.task('build-css', ['clean-build'], function(){
+
     return gulp.src(['resources/less/*'])
     .pipe(less())
+        .on('error', function() {})
     .pipe(concat('app.css'))
     .pipe(prefix({
         browsers: ['last 4 versions', 'IE 9', 'IE 8'],
@@ -28,7 +31,25 @@ gulp.task('build-css', ['clean-build'], function(){
 });
 
 gulp.task('build-js', ['clean-build'], function(){
-    return gulp.src(['resources/js/*.js'])
+    var files = mainBowerFiles(['**/*.js'],{
+        paths: {
+            bowerDirectory: 'resources/bower_components',
+            bowerJson: 'bower.json'
+        }
+        });
+    // push prism stuff
+    files.push(
+        'resources/bower_components/prism/components/prism-php.js',
+        'resources/bower_components/prism/components/prism-markup.js',
+        'resources/bower_components/prism/components/prism-css.js',
+        'resources/bower_components/prism/components/prism-bash.js',
+        'resources/bower_components/prism/components/prism-clike.js',
+        'resources/bower_components/prism/components/prism-javascript.js',
+        'resources/bower_components/prism/plugins/line-numbers/prism-line-numbers.js');
+    // push rest of js files
+    files.push('resources/js/*.js');
+
+    return gulp.src(files)
     // .pipe() // needs to minimize
     .pipe(concat('app.js'))
     .pipe(gulp.dest('public/build/js'));
@@ -54,12 +75,9 @@ gulp.task('sitemap', function(done){
 });
 
 // gulp watch
-gulp.task('rev-watch', function(){
-    gulp.watch(['public/css/*.css','public/js/*.js'], ['rev']);
-});
-gulp.task('css-watch', function(){
-    gulp.watch(['public/css/*.css'], ['build-css']);
+gulp.task('asset-watch', function(){
+    gulp.watch(['resources/less/*', 'resources/js/*'], ['build-css', 'build-js','rev', 'clean-build-step']);
 });
 
 // gulp tasks
-gulp.task('default', ['clean-build','build-css', 'build-js', 'rev', 'clean-build-step']);
+gulp.task('default', ['clean-build','build-css', 'build-js', 'rev', 'clean-build-step','asset-watch']);

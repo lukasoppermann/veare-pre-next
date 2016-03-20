@@ -10,6 +10,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-rev": "^6.0.1",
     "gulp-sitemap": "^2.2.0",
+    "main-bower-files": "^2.11.1",
     "submit-sitemap": "^0.1.3"
   }
 }

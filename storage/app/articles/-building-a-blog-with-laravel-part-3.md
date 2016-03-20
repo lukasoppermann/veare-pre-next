@@ -13,6 +13,7 @@ Since all our data is in files, we are basically working with flat file storage 
 
 Laravel already comes with a cache system, so we do not need to worry about the caching logic. Instead we will move all logic to read and parse posts into a new `PostService` class, which will include a cache. Let's start by creating the file `app/Services/PostsService.php`.
 
+{data-label-file="Services/PostsService.php"}
 ```php
 <?php
 
@@ -54,6 +55,7 @@ The `__construct` of our new class `PostsService` checks if a cache exists, if i
 ## Caching posts using Laravels cache system
 The `buildCache` method from the `__construct` method of our service class is pretty simple. All it does is delete the `posts` cache and afterwards recreate it, so updates and new articles will be included. We are using `rememberForever` which adds a cache item that never expires. This means we will need to manually clear the cache using `php artisan cache:clear` but in a later article we will automate this process to clear the `posts` cache whenever a new article or update is uploaded.
 
+{data-label-file="Services/PostsService.php"}
 ```php
 /*
  * builds up the cache with all articles
@@ -70,6 +72,7 @@ private function buildCache(){
 
 Within the `rememberForever` method we are calling `getPosts`, which is in charge of retrieving the articles and parsing them. This functionality is currently implemented in the `BlogController` and will be removed once the `PostsService` is finished. The `getPosts` method and most of the other methods following are implemented as private methods, because they are internal and should not be used outside of our service. This is beneficial as it means we can change any private method as much as we want and not break anything, as long as the public methods return stays the same.
 
+{data-label-file="Services/PostsService.php"}
 ```php
     /*
      * reads all files and returns posts as array
@@ -95,6 +98,7 @@ The `getPosts` method grabs all files from our `articles` directory using Larave
 ### Formatting date & link
 Within the `getPosts` method we calling `getLink` which returns the file name without the extension by using phps `pathinfo` function.
 
+{data-label-file="Services/PostsService.php"}
 ```php
 /**
      * Get link from filename
@@ -107,6 +111,7 @@ Within the `getPosts` method we calling `getLink` which returns the file name wi
 
 The `getDate` gets the date by passing the first 6 characters from `getLink` to `formatDate`, which will return a formatted date or `false`. We return the date if it is *not* `false`. If it is `false` we return `false`, which will make the post not show up in the list of posts. However in case we are in our local environment we return `draft` which will make the post show up, so you see your drafts locally, but not on your server.
 
+{data-label-file="Services/PostsService.php"}
 ```php
     /**
      * Get formatted date from filename
@@ -126,6 +131,7 @@ The `getDate` gets the date by passing the first 6 characters from `getLink` to 
 ### Formatting the date using Carbon
 As always, the more code you can delegate to open source, the better, so we are going to use the [`Carbon` package](http://carbon.nesbot.com/docs/) to deal with formatting our dates:
 
+{data-label-file="Services/PostsService.php"}
 ```php
 /**
      * format date
@@ -150,6 +156,7 @@ The `createFromDate` method throws an exception if the provided date is invalid.
 If the date is valid we use `Carbon`s format method, which needs a format string, which we will store in `$this->date_format` so it is easily adjustable.
 For a simple european date you can add the string below to the very top of your file. The [php datetime formats](http://php.net/manual/en/datetime.formats.date.php) page has an overview of all available formatting options.
 
+{data-label-file="Services/PostsService.php"}
 ```php
 /**
  * the format the dates will be converted to
@@ -172,6 +179,7 @@ Now lets get to `getDataFromFile`, the method which deals with everything that i
 
 We want to return an array with the content, the title and the meta information. While most meta data is retrieved in the `getMetaData` method, the reading time estimation is done here, as we have the converted html available. We just copy the `getReadingTime` method from our `BlogController` into the `PostsService` and add it within a `meta` array.
 
+{data-label-file="Services/PostsService.php"}
 ```php
 /**
  * Get data from file
@@ -192,6 +200,7 @@ private function getDataFromFile($file)
 ### Converting markdown to html using CommonMark
 As stated before the `getContent` method returns the converted html. But before we convert it, we need to remove the the meta information. For this we copy over the `$meta_regex` from the `BlogController`.
 
+{data-label-file="Services/PostsService.php"}
 ```php
 /**
  * regex to retrieve meta-info from content
@@ -208,6 +217,7 @@ In the `getContent` method we can now `preg_replace` the meta info using our `$t
 3. Create a new converter with the environment
 4. Convert to html
 
+{data-label-file="Services/PostsService.php"}
 ```php
 /**
  * Get content from string
@@ -231,6 +241,7 @@ private function getContent($fileContent)
 ### Extracting meta data from markdown
 The `getMetaData` method takes two arguments, the `$fileContent` from which to extract the meta information and a `$title` to use in case there was none provided in the meta information. For this title we use the result from the `getTitle` method. It uses the `getLink` to retrieve the filename and checks if the first 6 characters are numeric, if they are, we remove them. Afterwards we replace all `-` with spaces and `trim` the result before we return.
 
+{data-label-file="Services/PostsService.php"}
 ```php
 /**
  * Get formatted title from filename
@@ -249,6 +260,7 @@ private function getTitle($filename)
 In `getMetaData` we first extract the meta info using our `$this->meta_regex` in `preg_match`. This will give us the entire text between the two `---`. This is to passed to the `extractMetaData` method, which is our old [`getMeta` method](160316-building-a-blog-with-laravel-part-2#extract-meta) from the `BlogController`, renamed to avoid confusion.
 If the title was set in the meta section, we now replace `$title` which has been passed as the second argument with the title from the meta section.
 
+{data-label-file="Services/PostsService.php"}
 ```php
 /**
  * Get metadata from string
@@ -278,6 +290,7 @@ private function getMetaData($fileContent, $title = "No title provided")
 
 Afterwards we need to deal with the rest of the meta `$data`. For this we add a class variable `$available_meta` which is an array with the key being the meta item (e.g. *author*) and the value being a function which is used to *parse* this item.
 
+{data-label-file="Services/PostsService.php"}
 ```php
 /**
  * data that will be in meta element
@@ -296,6 +309,7 @@ protected $available_meta = [
 
 Now we can use this array in a `foreach`, run the specified function on the data and store the result in the `$meta` variable using the `$key`.
 
+{data-label-file="Services/PostsService.php"}
 ```php
 // loop through meta and run every item through defined function
 foreach($this->available_meta as $key => $function){
@@ -305,6 +319,7 @@ foreach($this->available_meta as $key => $function){
 
 As you can see above, for most items we just use the `meta_default`, which returns the item if it exists or returns `false` if the item does not exist.
 
+{data-label-file="Services/PostsService.php"}
 ```php
 /**
  * Check for existence and return
@@ -320,6 +335,7 @@ private function meta_default($data, $key){
 
 Then only other meta function we currently need is `meta_tags` (but you might have other meta information, like categories, etc.). To begin with, we pipe everything through `meta_default` and return `false` if we get a `false` back. Otherwise we `explode` the tags at the comma `,` and `trim` every entry using `array_map`. Now we return the array from wrapped in `array_filter`. With all this we ensure we get an array with no empty items, and all tags without leading and trailing spaces.
 
+{data-label-file="Services/PostsService.php"}
 ```php
 /**
  *	prepare tags
@@ -333,3 +349,5 @@ private function meta_tags($data, $key){
     return false;
 }
 ```
+
+Our `PostsService` is done for now, so lets clean up the Blog Controller.
