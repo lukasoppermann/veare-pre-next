@@ -248,14 +248,14 @@ class ApiController extends BaseController
 ```
 
 ### The resource controller
-Enough preparation, lets get into creating the collections controller which will retrieve all out entries and return them as a collection. Dingo uses the transformer idea to transform content into its final form, so lets go ahead and create the transformer file as well.
+Enough preparation, lets get into creating the collections controller which will retrieve all out entries and return them as a collection. Dingo uses the transformer idea to transform content intoit'sfinal form, so lets go ahead and create the transformer file as well.
 
 ```bash
 $ touch app/Api/V1/Controllers/CollectionsController.php
 $ touch app/Api/V1/Transformers/CollectionTransformers.php
 ```
 
-In our `CollectionsController` we need to `use` the Model as well as the newly created transformer, as we will retrieve DB data via the model and format it using the transformer. For now only one method is needed: `show`. We retrieve all entries and pass them back as a collection using the dingo helper response. The response method takes the eloquent collection as its first argument and the transformer as its second argument. The transformer will automatically be applied to each item in the collection, so we do not need to deal with iterating over the collection within our transformer.
+In our `CollectionsController` we need to `use` the Model as well as the newly created transformer, as we will retrieve DB data via the model and format it using the transformer. For now only one method is needed: `show`. We retrieve all entries and pass them back as a collection using the dingo helper response. The response method takes the eloquent collection asit'sfirst argument and the transformer asit'ssecond argument. The transformer will automatically be applied to each item in the collection, so we do not need to deal with iterating over the collection within our transformer.
 
 ```php
 <?php

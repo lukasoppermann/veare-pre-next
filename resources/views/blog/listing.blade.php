@@ -8,6 +8,6 @@
     </div>
     <ul class="o-list o-list--none">
         <lh><h2>Read my latest thoughts on design, user experience & code</h2></lh>
-        @each('blog.preview', $files, 'file')
+        @each('blog.preview', $posts, 'post')
     </ul>
 @endsection

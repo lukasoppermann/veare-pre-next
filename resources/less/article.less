@@ -1,0 +1,28 @@
+@import "includes/typography";
+@import "includes/colors";
+
+// article setup
+.o-article{
+    font-family: @serif;
+    margin-top: 30px;
+    // center elements
+    p, h1, h2, h3, h4, ol, ul{
+        max-width: 800px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+.o-article h1, h2{
+    font-family: @sans-serif;
+}
+.o-article__introduction{
+    font-family: @sans-serif;
+}
+.o-article__meta{
+    font-size: @type-sm;
+    max-width: 800px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 1rem;
+    padding-bottom: 2.5rem;
+}

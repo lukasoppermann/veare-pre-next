@@ -1,8 +1,11 @@
+@import "includes/typography";
+@import "includes/colors";
+
 code[class*="language-"],
 pre[class*="language-"] {
 	color: #f8f8f2;
 	background: none;
-	font-family: 'Fira Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-family: @monospace;
 	text-align: left;
 	white-space: pre;
 	word-spacing: normal;
@@ -24,7 +27,7 @@ pre[class*="language-"] {
 pre[class*="language-"] {
 	padding: 0;
 	margin: 5rem 0;
-	overflow-x: scroll;
+	overflow-x: auto;
 	overflow-y: visible;
 	white-space: pre-wrap;
 
@@ -32,7 +35,6 @@ pre[class*="language-"] {
 		padding-left: 2rem;
 		padding-right: 2rem;
 		display: block;
-    	color: rgb(50, 50, 55);
 	}
 }
 // Add bg to pre or code block if not within pre
@@ -61,7 +63,7 @@ code[data-label-file]:before {
 
 /* Inline code */
 :not(pre) > code {
-	padding: .2rem .3rem;
+	padding: 0rem .4rem;
 	white-space: normal;
 	word-break: break-all;
 	display: inline-block;

@@ -7,7 +7,7 @@ author: Lukas Oppermann
 > In this post we will setup homestead on your machine and get a Laravel installation up an running. Note, that while homestead is created by Taylor Otwell, the guy behind Laravel & Lumen, you can use it for any php project, no matter what framework you use.
 
 ## Why should I use homestead
-The main benefit of homestead is that you have a complete setup (Nginx web server, PHP, MySQL, Postgres, Redis, Memcached, Node, etc.) in one installation. Additonally, homestead is maintained by a community so you do not have to worry about keeping it up to date yourself. Homestead checks for updates automatically and you just need to use it. Its a dev environment without the hassle and once get a new computer, getting your dev environment setup is as easy as following this tutorial.
+The main benefit of homestead is that you have a complete setup (Nginx web server, PHP, MySQL, Postgres, Redis, Memcached, Node, etc.) in one installation. Additonally, homestead is maintained by a community so you do not have to worry about keeping it up to date yourself. Homestead checks for updates automatically and you just need to use it.it'sa dev environment without the hassle and once get a new computer, getting your dev environment setup is as easy as following this tutorial.
 
 ## Preparing your machine
 
@@ -136,7 +136,7 @@ homestead edit
 - **authorize** & **keys** are your ssh credentials, which homestead uses to mirror your files to the virtual server.
 - **folders** defines the folders that are mirrored to the virtual server, I recommend using the default of `Code` as your folder, so you do not have to change this setting every time you install homestead. `map` is the folder on your machine and `to` the folder on the virtual server.
 - **sites** defines which url will point to which folder on the virtual server.
-- **databases** are the databases homestead will create whenever it is started, note that no migrations are run, its just an empty mysql database.
+- **databases** are the databases homestead will create whenever it is started, note that no migrations are run,it'sjust an empty mysql database.
 - **variables** are environment variables that are set on the virtual server.
 
 The only change we have to make in this file whenever we add a new project is to add a new entry in the `sites` section, like the one shown below. We create a Laravel project in a folder named `myApp`. The `index.php` file for every Laravel project is always within a `public` folder so we have to point our domain to `myApp/public` on our virtual server. If you did not change the `folders` section, the `map` there should point to `/home/vagrant/Code`, we need to prepend this to our project folder. This results in the path `/home/vagrant/Code/myApp/public`.

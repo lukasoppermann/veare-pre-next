@@ -80,7 +80,7 @@ Just like with other image types, you can use svgs as background-images via css.
 But just like when using the `<img>` tag to include an SVG, using them as css backgrounds brings the same downsides. You have an additional http request and even worse, you can not change the SVG using css. An **exception** is css that is within the SVG itself. For example, you can define media queries that hide and show parts of the SVG, depending on the screen size, those will still work, even if included via the `<img>` tag or as a css background.
 
 ### Direct code include
-As you have seen above, SVGs are code itself, some kind of *xml* stuff. So shouldn't you be able to just dump this in your html files as is? Well, you are and its a pretty spiffy way of using SVGs as it does mean there is no additional http request and you will be able to manipulate the SVG via css. Also, since SVG is text, it gzips very well.
+As you have seen above, SVGs are code itself, some kind of *xml* stuff. So shouldn't you be able to just dump this in your html files as is? Well, you are and it's a pretty spiffy way of using SVGs as it does mean there is no additional http request and you will be able to manipulate the SVG via css. Also, since SVG is text, it gzips very well.
 
 You can even include something like an icon sprite on the top of your page and just reference individual items. For this you need to use the `<use>` tag and reference the ID of something like a symbol. I will talk further about this technique in a later post.
 

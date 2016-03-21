@@ -1,12 +1,13 @@
 ---
 title: Why you should always write your own blogging software
 author: Lukas Oppermann
+extract: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 ---
 
 > Okay, maybe I exaggerated. There is no "always" on the internet. But sometimes it might really be a good idea to look past the off-the-shelf products like Wordpress or Medium.
 
 ## The important part to get right when blogging
-What do you think is the most important part about your blog? The SEO so people find it? Maybe its the social media integration so your articles are easy to share? Maybe its the design, that has to be perfect? No. The only thing that matters is **good content**. Everything else can be added afterwards.
+What do you think is the most important part about your blog? The SEO so people find it? Maybeit'sthe social media integration so your articles are easy to share? Maybeit'sthe design, that has to be perfect? No. The only thing that matters is **good content**. Everything else can be added afterwards.
 
 If you have an idea for a post, get typing immediately, lest you lose spirit the of the moment. This is why my blog is powered by markdown files. It can write markdown in any text editor. I can be offline, in a train, on my phone. Markdown is perfect for writing, because all you can write and structure your content, no design options, no fuss. Wordpress in comparison is pretty complicated. Ghost and Medium have a pretty good writing experience, but they are not really available everywhere. You pretty much need the internet (I once lost an entire article, because Medium screwed up the sync when I came back online).
 
@@ -263,5 +264,6 @@ a:hover{
 ## Heed this warning
 For brevity, this code is reduced to the bare minimum. You can use it for your own blog, but it is extremely unstable. If an article has a wrong name format, everything might break down. We will look into making this system more stable, secure and useful, but this is enough to get you started. Since you control the system, you can make sure to not break it.
 
-<h2 id="a-blog-in-progress">Sidenote: a blog in progress ...</h2>
- am actually build this blog by exactly the same model. I started with a very basic version, just like outlined above and I am adding to it all the time. I got frustrated with not publishing anything because of all the hassle associated with it. Now I can just writing markdown files and only concentrate on the content, which works very well for me.
+{#a-blog-in-progress}
+## Sidenote: a blog in progress ...
+am actually build this blog by exactly the same model. I started with a very basic version, just like outlined above and I am adding to it all the time. I got frustrated with not publishing anything because of all the hassle associated with it. Now I can just writing markdown files and only concentrate on the content, which works very well for me.

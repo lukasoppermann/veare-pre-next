@@ -26,7 +26,7 @@ Before we can start to build our api we need to do a little configuration, so op
 Dotenv::load(__DIR__.'/../');
 ```
 
-Now uncomment line 24 to enable [Eloquent](http://laravel.com/docs/5.1/eloquent), Laravels and Lumens excellent ORM. You could instead implement a repository pattern to abstract your database layer, but I would only recommend it if you are at least 50% sure you will need this, or if your api is really huge. Otherwise you just add an overhead you might never need, and if you do need it, its not such a big pain to refactor a couple controllers to use a repository.
+Now uncomment line 24 to enable [Eloquent](http://laravel.com/docs/5.1/eloquent), Laravels and Lumens excellent ORM. You could instead implement a repository pattern to abstract your database layer, but I would only recommend it if you are at least 50% sure you will need this, or if your api is really huge. Otherwise you just add an overhead you might never need, and if you do need it,it'snot such a big pain to refactor a couple controllers to use a repository.
 
 ```php
 $app->withEloquent();
@@ -61,7 +61,7 @@ homestead up
 ```
 
 ## Configure dingo/api
-The `dingo/api` package lets you change much of its bahaviour by changing the settings via the environment variables, so open your `.env` file and add the variables described below. The [dingo/api documentation](https://github.com/dingo/api/wiki/Configuration) is actually pretty good if you want to read more about those configurations.
+The `dingo/api` package lets you change much ofit'sbahaviour by changing the settings via the environment variables, so open your `.env` file and add the variables described below. The [dingo/api documentation](https://github.com/dingo/api/wiki/Configuration) is actually pretty good if you want to read more about those configurations.
 
 **API_STANDARDS_TREE=vnd**   
 If your api is publicly available or at any point will be, use the vendor tree `vnd`. The personal tree `prs`, is meant for not distributed projects only. I recommend to always use the `vnd` tree, since it does not hurt you if your api stays private.

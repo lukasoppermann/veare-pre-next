@@ -7,6 +7,7 @@
     "gulp-autoprefixer": "^3.0.1",
     "gulp-concat": "^2.6.0",
     "gulp-less": "^3.0.3",
+    "gulp-plumber": "^1.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-rev": "^6.0.1",
     "gulp-sitemap": "^2.2.0",

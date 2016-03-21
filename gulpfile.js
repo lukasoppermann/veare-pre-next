@@ -8,6 +8,7 @@ var prefix = require('gulp-autoprefixer');
 var less = require('gulp-less');
 var concat = require('gulp-concat');
 var submitSitemap  = require('submit-sitemap').submitSitemap;
+var plumber = require('gulp-plumber');
 
 // actions
 gulp.task('clean-build', function(done){
@@ -19,8 +20,8 @@ gulp.task('clean-build', function(done){
 gulp.task('build-css', ['clean-build'], function(){
 
     return gulp.src(['resources/less/*'])
+    .pipe(plumber())
     .pipe(less())
-        .on('error', function() {})
     .pipe(concat('app.css'))
     .pipe(prefix({
         browsers: ['last 4 versions', 'IE 9', 'IE 8'],
@@ -76,7 +77,7 @@ gulp.task('sitemap', function(done){
 
 // gulp watch
 gulp.task('asset-watch', function(){
-    gulp.watch(['resources/less/*', 'resources/js/*'], ['build-css', 'build-js','rev', 'clean-build-step']);
+    gulp.watch(['resources/less/*','resources/less/**/*', 'resources/js/*'], ['build-css', 'build-js','rev', 'clean-build-step']);
 });
 
 // gulp tasks

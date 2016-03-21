@@ -47,7 +47,7 @@ Done, now whenever you return something you should get a perfectly valid json ap
 
 ## Custom error formats with dingo api
 
-For errors we need to do something similar. Underneath the our new serializer setup in the `bootstrap/app.php` we need to call the `setErrorFormat` method on the `Dingo\Api\Exception\Handler`. The method takes the desired error format as its argument. The strings beginning with a colon (`:`) like `:message` will be replaced with the real content of the error. Now if we throw a `NOT_FOUND` exception, dingo will convert it to a valid json api error response.
+For errors we need to do something similar. Underneath the our new serializer setup in the `bootstrap/app.php` we need to call the `setErrorFormat` method on the `Dingo\Api\Exception\Handler`. The method takes the desired error format asit'sargument. The strings beginning with a colon (`:`) like `:message` will be replaced with the real content of the error. Now if we throw a `NOT_FOUND` exception, dingo will convert it to a valid json api error response.
 
 ```php
 // set up error format

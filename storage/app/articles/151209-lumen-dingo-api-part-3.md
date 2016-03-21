@@ -69,7 +69,7 @@ trait TestTrait
 }
 ```
 
-Good, so now we have the first part sorted out, we need to add the `validateArray` method. It is a bit more complex, we need to loop through all rules and if they are strings, we add them to the rule array and add a `required`, because all fields need to be present for unit testing. However, if the rule is an array, like `attributes`, we add it with just a `required` rule and run the `validateArray` on its child array again. After all is done we run the validator, which will either pass, returning an empty array, or return an array of error messages. We add the errors to the `$this->errors` array including a little command line coloring. We cannot return the errors immediately, because this would cause the script to stop and only one error would be shown at a time.
+Good, so now we have the first part sorted out, we need to add the `validateArray` method. It is a bit more complex, we need to loop through all rules and if they are strings, we add them to the rule array and add a `required`, because all fields need to be present for unit testing. However, if the rule is an array, like `attributes`, we add it with just a `required` rule and run the `validateArray` onit'schild array again. After all is done we run the validator, which will either pass, returning an empty array, or return an array of error messages. We add the errors to the `$this->errors` array including a little command line coloring. We cannot return the errors immediately, because this would cause the script to stop and only one error would be shown at a time.
 
 ```php
 /*
@@ -172,7 +172,7 @@ We got the transformer working for us, but the result of our api is rubbish, so 
 
 The benefit of using a standard is, that other [developers will know it](http://jsonapi.org/implementations/#client-libraries-php) and have an idea of how to work with it and what to expect. Also, since the standard is build on experience it can provide good answers to some questions, like how should I structure XYZ. I found that one tends to either overthink stuff or do it the first way that comes to mind. This can lead to an inconsistent API, which is definitely not what you want. When designing api responses you can run into many problems that you can't even imagine now. The json api standard provides a good solution to many of those problems, like linking resources, etc. because the people who developed it dealt with those problems before.
 
-While I recommend reading the entire [documentation](http://jsonapi.org/), its not that long after all, I will discuss the important objects below.
+While I recommend reading the entire [documentation](http://jsonapi.org/),it'snot that long after all, I will discuss the important objects below.
 
 ### Top Level
 This object MUST be returned for every request. It has at least a `data`, `errors` or `meta` member, but it cannot have both a `data` and an `errors` member. Either you get the data, or you get an error, makes sense.

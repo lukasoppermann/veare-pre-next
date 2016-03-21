@@ -80,7 +80,7 @@ The next level is a relationship in which **one** e.g. `Collection` model owns *
 This relationship is very similar to a *one to one* relationship. The difference is that the  dynamic property returns an eloquent collection of records, where previously we returned only an individual record, this will be important when working with the related data.
 
 To set up our relationship we need to add a *foreign key* to the *owned* models table, articles, which by default should be named `collection_id` (*owning_model_name* + "*\_id*").
-Now we only need to add an `articles` method with a `hasMany` call to the *owning* `Collection` model. For the inverse relationship we add a `collection` method with a `belongsTo` call to the *owned* `Article` model. If you want to change the foreign or local key, refer to the `hasOne` method from the *one to one relationships* section, its exactly the same.
+Now we only need to add an `articles` method with a `hasMany` call to the *owning* `Collection` model. For the inverse relationship we add a `collection` method with a `belongsTo` call to the *owned* `Article` model. If you want to change the foreign or local key, refer to the `hasOne` method from the *one to one relationships* section,it'sexactly the same.
 
 ```php
 // Collection Model
@@ -313,7 +313,7 @@ $factory->define(App\Api\V1\Models\Tag::class, function ($faker) {
 
 For this example we stick with a `uuid`, a `title`, a `body` and an `image_id` for our articles. The title consists of one to four words. I recommend to always have everything variable that will be variable in real live, as you might miss problems otherwise. Maybe in your code there is no difference with a one or four word title, so you figure the word "*title*" will do, but if you start building a design using this fake data, you may not notice, that you run into problems when a title will not fit into a single line, etc.
 
-For the `image_id` we use a small *hack*, by using the `random(0,1)` to randomly assign or not assign an image. You could change the `1` to `3` to make it more likely that an image will be added, currently its a 50/50 chance. What we do when we want to add an image is to get all previously seeded (!) photos from the database and select one at random and get its `id`. This can be used for any model you want to connect.
+For the `image_id` we use a small *hack*, by using the `random(0,1)` to randomly assign or not assign an image. You could change the `1` to `3` to make it more likely that an image will be added, currentlyit'sa 50/50 chance. What we do when we want to add an image is to get all previously seeded (!) photos from the database and select one at random and getit's`id`. This can be used for any model you want to connect.
 
 ```php
 $factory->define(App\Api\V1\Models\Article::class, function ($faker) {

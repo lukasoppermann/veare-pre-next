@@ -1,15 +1,13 @@
 @extends('master')
 @section('content')
-    <a title="Back to the list of articles" class="o-link o-link--back" href="{{url('blog/')}}">Back to overview</a>
-    <article class="o-post__content">
-        <h1>{!!$title!!}</h1>
+    <article class="o-article" itemid="{{url('blog/')}}/{!!$link!!}" itemscope itemtype="http://schema.org/BlogPosting">
+        <p><a title="Back to the list of articles" class="o-link o-link--back" href="{{url('blog/')}}">Back to overview</a></p>
+
+        <h1 itemprop="headline">{!!$title!!}</h1>
         @include('blog.meta', $meta)
         {!!$content!!}
+        <p><a title="Back to the list of articles" class="o-link o-link--back" href="{{url('blog/')}}">Back to overview</a></p>
     </article>
-    <div class="o-footer">
-        <a title="Back to the list of articles" class="o-link o-link--back" href="{{url('blog/')}}">Back to overview</a>
-
-    </div>
 @endsection
 
 @section('footer')

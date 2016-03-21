@@ -1,9 +1,9 @@
-@if ($file['date'] !== false)
-<li class="o-list-item">
-    <time class="c-post-preview-time">{{$file['date']}}</time>
-    <a class="o-link c-post-preview-title" href="{{url('blog/'.$file['link'])}}">
-        {{$file['title'] or 'No title provided'}}
+@if ($post['date'] !== false)
+<li class="o-list-item o-post-preview">
+    <time class="o-post-preview__date" datetime="{{$post['machine_date']}}">{{$post['date']}}</time>
+    <a class="o-link c-post-preview-title" href="{{url('blog/'.$post['link'])}}">
+        {{$post['title'] or 'No title provided'}}
     </a>
-    <p>{{$file['extract'] or ''}}</p>
+    <p>{{$post['meta']['extract']}}</p>
 </li>
 @endif

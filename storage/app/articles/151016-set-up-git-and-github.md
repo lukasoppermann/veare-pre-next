@@ -192,4 +192,4 @@ git config --global credential.helper osxkeychain
 Done. Okay, this was a little more work, but you only need to do it once. The next time you push, git will as you for the username and password and to allow the keychain to save those. Afterwards, no password ever again.
 
 ## GIT is easy
-So this it all you need for now. There is a lot more you can go with GIT and I will be writing some more articles about it. But if you understand the *add – commit – push* method you are good smaller projects, keep using it and once its second nature, learning new things you can do with GIT will be easy.
+So this it all you need for now. There is a lot more you can go with GIT and I will be writing some more articles about it. But if you understand the *add – commit – push* method you are good smaller projects, keep using it and onceit'ssecond nature, learning new things you can do with GIT will be easy.

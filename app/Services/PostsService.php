@@ -19,7 +19,7 @@ Class PostsService {
      * @var string
      */
     // protected $date_format = 'F d, Y';
-    protected $date_format = 'd/m/y';
+    protected $date_format = 'F d, Y';
     /**
      * data that will be in meta element
      *
@@ -103,10 +103,11 @@ Class PostsService {
 
         foreach(Storage::files('articles') as $file)
         {
-            if (pathinfo($file)['extension'] == 'md') {
+            if (pathinfo($file)['extension'] === 'md') {
                 $articles[] = array_merge([
                     'link' => $this->getLink($file),
-                    'date' => $this->getDate($file),
+                    'date' => $this->getDate($file, $this->date_format),
+                    'machine_date' => $this->getDate($file, 'Y-m-d'),
                 ], $this->getDataFromFile($file));
             }
         }
@@ -143,9 +144,9 @@ Class PostsService {
     /**
      * Get formatted date from filename
      */
-    private function getDate($filename)
+    private function getDate($filename, $format)
     {
-        $date = $this->formatDate(substr($this->getLink($filename),0,6));
+        $date = $this->formatDate(substr($this->getLink($filename),0,6), $format);
 
         if ($date !== false) {
             return $date;
@@ -156,7 +157,7 @@ Class PostsService {
     /**
      * format date
      */
-    private function formatDate($date){
+    private function formatDate($date, $format){
         try {
             $date = Carbon::createFromDate('20'.substr($date,0,2), substr($date,2,2), substr($date,4,2));
         }
@@ -165,7 +166,7 @@ Class PostsService {
             return false;
         }
 
-        return $date->format($this->date_format);
+        return $date->format($format);
     }
     /**
      * Get data from file

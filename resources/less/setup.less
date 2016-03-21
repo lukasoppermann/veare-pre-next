@@ -1,14 +1,42 @@
-@sans-serif: 'Lato', 'Open sans', 'Helvetica Neue', 'Helvetica', sans-serif;
-@serif: 'Merriweather', 'Georgia', serif;
+@import "includes/typography";
+@import "includes/colors";
+
 html{
     font-size: 62.5%; /* now 1rem = 10px*/
     box-sizing: border-box;
 }
 body{
     font-family: @sans-serif;
-    font-size: 2rem;
+    font-size: @type-default;
     margin: 0;
 }
 *, *:before, *:after{
-  box-sizing: inherit;
+    box-sizing: inherit;
+}
+img{
+    max-width: 100%;
+}
+strong{
+    font-weight: 700;
+}
+h1, h2, h3, h4{
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 700;
+    line-height: 135%;
+}
+h1{
+    font-size: @type-xxl;
+}
+h2{
+    margin-top: @type-xxl;
+    font-size: @type-xl;
+}
+h3{
+    margin-top: @type-xl;
+    font-size: @type-lg;
+}
+h4{
+    margin-top: @type-lg;
+    font-size: @type-default;
 }
