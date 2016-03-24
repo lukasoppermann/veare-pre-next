@@ -29,9 +29,11 @@ Class PostsService {
         'tags'          => 'meta_tags',
         'author'        => 'meta_default',
         'description'   => 'meta_default',
-        'extract'       => 'meta_default',
+        'preview'       => 'meta_default',
+        'series'        => 'meta_series',
         'next'          => 'meta_default',
         'previous'      => 'meta_default',
+        'category'      => 'meta_category'
     ];
     /**
      * posts array
@@ -283,6 +285,38 @@ Class PostsService {
         }
 
         return false;
+    }
+    /**
+     *	prepare categories
+     */
+    private function meta_category($data, $key){
+        $categories = [
+            'life',
+            'code',
+            'design'
+        ];
+
+        $item = $this->meta_default($data, $key);
+
+        if( isset($item) && in_array($item, $categories)) {
+            return $categories[array_search($item, $categories)];
+        }
+
+        return $categories[0];
+    }
+    /**
+     *	prepare series
+     */
+    private function meta_series($data, $key){
+        $item = $this->meta_default($data, $key);
+        if( !$item || strpos($item,';') === false ){
+            return false;
+        }
+        list($series, $part) = explode(';', $item);
+        return [
+            'part' =>  isset($part) ? trim($part): 1,
+            'name' => trim($series)
+        ];
     }
 
 }

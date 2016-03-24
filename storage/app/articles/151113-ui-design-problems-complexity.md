@@ -2,6 +2,7 @@
 title: UI Design Problems\: Complexity
 tags: tag1, tag2
 author: Lukas Oppermann
+category: design
 description: Why do UIs get over complicated and how to fix it.
 ---
 

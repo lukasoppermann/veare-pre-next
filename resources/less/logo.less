@@ -1,0 +1,44 @@
+@import "includes/colors";
+
+.o-logo{
+    width: 14rem;
+    height: auto;
+    display: block;
+    position: absolute;
+    left: 4rem;
+    top: 4rem;
+    -webkit-animation: move-up 2s 1, fadein 2s 1;
+    -moz-animation:    move-up 2s 1, fadein 2s 1;
+    -o-animation:      move-up 2s 1, fadein 2s 1;
+    animation:         move-up 2s 1, fadein 2s 1;
+}
+.o-logo__form{
+    fill: rgb(240, 170, 30);
+}
+.o-logo__form--white{
+    fill: rgb(255,255,255);
+}
+@-moz-keyframes fadein {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-webkit-keyframes fadein {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes fadein {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-moz-keyframes move-up {
+  0% { transform: translate3d(0,2rem,0); }
+  100% { transform: translate3d(0,0,0); }
+}
+@-webkit-keyframes move-up {
+  0% { transform: translate3d(0,2rem,0); }
+  100% { transform: translate3d(0,0,0); }
+}
+@keyframes move-up {
+  0% { transform: translate3d(0,2rem,0); }
+  100% { transform: translate3d(0,0,0); }
+}

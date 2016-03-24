@@ -1,13 +1,16 @@
 @extends('master')
 @section('content')
-    <div class="o-post-list">
-        <h1>veare – field notes</h1>
-        <p class="c-blog-intro">I am a freelance interaction designer & web developer. I write about design, ux, code and the perfect working environment.</p>
-        <p class="c-blog-intro">This blog is a <a title="Learn how to build a blog in Laravel" href="{{url('blog/-building-a-blog-with-laravel#a-blog-in-progress')}}">work in progress</a>, I am building it as I write, because I don't want to wait with writing until I have the perfect blog coded & designed. Expect dramatic changes and updates. :)</p>
-        <p class="c-blog-intro">If you have comments to any of the articles or suggestions for improvments, please tweet me <a href="https://twitter.com/lukasoppermann" title="Follow Lukas Oppermann on Twitter">@lukasoppermann</a>.</p>
+    <div class="o-blog-listing__left">
+        <div class="o-blog-listing__about js-blogImage">
+            <a href="{{url('')}}" data-nav="#nav" class="o-logo">
+        		<svg class="o-logo__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 141 116"><path class="o-logo__form o-logo__form--white" d="M81.365 13.826l-23.37 46.318L39.73 23.95h100.725L128.37 0H0l58.01 115 51.02-101.174"/><linearGradient id="a" gradientUnits="userSpaceOnUse" x1="75.999" y1="27" x2="103.999" y2="27"><stop offset="0" stop-opacity=".25"/><stop offset="1" stop-opacity=".05"/></linearGradient><path fill="url(#a)" d="M76 24h28l-2.938 6"/></svg>
+        	</a>
+        </div>
     </div>
-    <ul class="o-list o-list--none">
-        <lh><h2>Read my latest thoughts on design, user experience & code</h2></lh>
-        @each('blog.preview', $posts, 'post')
-    </ul>
+    <div class="o-blog-listing__right">
+        <ul class="o-list o-list--none c-list-postlist">
+            @each('blog.preview', $posts, 'post')
+        </ul>
+        @include('footer')
+    </div>
 @endsection

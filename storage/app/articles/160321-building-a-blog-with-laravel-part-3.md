@@ -1,9 +1,11 @@
 ---
-title: Building a blog with Laravel\: Performance improvement by adding a cache - PART 3
+series: Building a blog with Laravel; 3
+title: Performance improvement by adding a cache
 tags: tag1, tag2
 author: Lukas Oppermann
+category: code
 description: Learn how to use laravels caching, the carbon date package and more to improve your laravel blog
-extract: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+preview: 
 ---
 {.o-article__introduction}
 > Our controller is growing and getting crowded, to get further with our blog it's best to extract some logic to a service: the PostsService which will deal with getting, processing and caching our posts.

@@ -6,6 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1,maximum-scale=1">
         <meta name="description" content="{{$description or 'Web Development, User Experience & Design'}}">
         <link href='{{ asset(elixir('css/app.css')) }}' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Merriweather:300,700%7CLato:400,700&subset=latin,latin' rel='stylesheet' type='text/css'>
+
 
         @if (env('APP_ENV') !== 'local')
             <script>
@@ -22,10 +24,10 @@
         @endif
     </head>
     <body>
-        <div class="o-container">
+        @include('navigation')
+        <main>
             @yield('content')
-        </div>
-        @include('footer')
+        </main>
     </body>
     <script src='{{ asset(elixir("js/app.js")) }}'></script>
 </html>

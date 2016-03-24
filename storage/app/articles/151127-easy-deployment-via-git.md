@@ -3,12 +3,14 @@ title: Easy deployment with git push
 tags: tag1, tag2
 author: Lukas Oppermann
 description: Learn how to setup git to very easily push changes to your live server.
+category: code
+preview: By setting up a remote repository on our server we can deploy website changes very fast, by having git transfer only the lines that changes.
 ---
 
 Deploying a website change via FTP can be very tedious and slow. Either you copy over the entire project, which takes time or you have to go into different folders, to upload individual files. If you forget a file the website is down and you have to figure out which file you are missing. Git offers a perfect solution for all those problems, deploying with a simple push, so lets check out how you can set it up.
 
 ## The idea behind this method
-Hopefully you are already using git to track changes in your project. Git knows all your files and saves only the changed lines for every new version, this makes it extremely light weight and fast. Whenever you push your changes to your remote repository e.g. on GitHub,it'spretty fast, because git only needs to transfer the changed lines. We will create a remote repository just like the one on GitHub on our web server and transfer our changes via push. If you are new to git, you might want to read the [article on setting up git and github](151016-set-up-git-and-github) first.
+Hopefully you are already using git to track changes in your project. Git knows all your files and saves only the changed lines for every new version, this makes it extremely light weight and fast. Whenever you push your changes to your remote repository e.g. on GitHub, it's pretty fast, because git only needs to transfer the changed lines. We will create a remote repository just like the one on GitHub on our web server and transfer our changes via push. If you are new to git, you might want to read the [article on setting up git and github](151016-set-up-git-and-github) first.
 
 ## Setting up your server
 You will need to have `ssh` access to connect to your server via the command line and the web server needs git installed. If you have at least a medium priced web server (shared hosting is often fine) you probably have or can get `ssh` access and git should be installed.

@@ -18,9 +18,13 @@ gulp.task('clean-build', function(done){
 });
 
 gulp.task('build-css', ['clean-build'], function(){
-
     return gulp.src(['resources/less/*'])
-    .pipe(plumber())
+    .pipe(plumber({
+        'errorHandler': function(error){
+            console.log(error);
+            this.emit('end');
+        }
+    }))
     .pipe(less())
     .pipe(concat('app.css'))
     .pipe(prefix({

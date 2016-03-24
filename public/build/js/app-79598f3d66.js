@@ -1129,21 +1129,30 @@ Prism.hooks.add('complete', function (env) {
 });
 
 }());
-var WebFontConfig = {
-	google: {
-		families: [ 'Merriweather:300,700:latin', 'Lato:300,700:latin' ]
-	},
-	timeout: 2000
-};
-
-(function(){
-	var wf = document.createElement("script");
-	wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-		'://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-	wf.async = 'true';
-	document.head.appendChild(wf);
-})();
-
 Array.prototype.forEach.call(document.querySelectorAll('pre > code'), function(item){
     item.classList.add('line-numbers');
+});
+function ready(fn) {
+  if (document.readyState != 'loading'){
+    fn();
+  } else {
+    document.addEventListener('DOMContentLoaded', fn);
+  }
+}
+ready(function(){
+    var imgContainer = document.getElementsByClassName('js-blogImage')[0];
+
+    if( imgContainer !== undefined ){
+        var img = new Image(),
+        url = "/media/veare_scooter.jpg";
+        img.onload = function () {
+            imgContainer.appendChild(img);
+            window.setTimeout(function(){
+                img.classList.add('is-loaded');
+            },1);
+        };
+        img.src = url;
+        img.classList.add('js-blog-img');
+
+    }
 });
