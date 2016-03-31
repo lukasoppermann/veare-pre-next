@@ -1,9 +1,11 @@
 ---
-title: UI Design Problems\: Complexity
+series: UI Design Problems;1
+title: The UX problem of complexity in user interfaces
 tags: tag1, tag2
 author: Lukas Oppermann
 category: design
-description: Why do UIs get over complicated and how to fix it.
+description: How user interfaces get overly complicated and how you as a UX/UI designer need to fix it.
+preview: Complicated user interfaces are a problem, especially in big organizations, with huge teams and more business minded product owners. As a UX or UI designer it is your job to fight this problem.
 ---
 
 > As a designer your job is to reduce complexity. If your solution is not dead simple, you are not done yet.

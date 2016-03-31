@@ -7,6 +7,8 @@ var del = require('del');
 var prefix = require('gulp-autoprefixer');
 var less = require('gulp-less');
 var concat = require('gulp-concat');
+var jsmin = require('gulp-jsmin');
+var minifyCSS = require('gulp-minify-css');
 var submitSitemap  = require('submit-sitemap').submitSitemap;
 var plumber = require('gulp-plumber');
 
@@ -31,7 +33,7 @@ gulp.task('build-css', ['clean-build'], function(){
         browsers: ['last 4 versions', 'IE 9', 'IE 8'],
         cascade: false
     }))
-    // needs to minimize
+    .pipe(minifyCSS())
     .pipe(gulp.dest('public/build/css'));
 });
 
@@ -55,8 +57,8 @@ gulp.task('build-js', ['clean-build'], function(){
     files.push('resources/js/*.js');
 
     return gulp.src(files)
-    // .pipe() // needs to minimize
     .pipe(concat('app.js'))
+    .pipe(jsmin())
     .pipe(gulp.dest('public/build/js'));
 });
 

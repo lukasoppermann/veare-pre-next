@@ -1,7 +1,9 @@
 ---
-title: Set up git & github
+title: Getting into git & github - a basic dev workflow
 tags: tag1, tag2
+category: code
 author: Lukas Oppermann
+preview: An easy to understand instruction to get you up an running with git and github in a matter of minutes.
 ---
 
 > Getting everything ready to start development can be scary, but if you take small steps it is actually quite easy.

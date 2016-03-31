@@ -1,10 +1,11 @@
 ---
-title: Building APIs with dingo & lumen\: Transformers, Unit testing & JSON API - PART 3
+series: Building APIs with dingo & lumen; 3
+title: Transforming responses to JSON API standard & adding api unit tests
+category: code
 tags: tag1, tag2
 author: Lukas Oppermann
 description: Learn how to build a php API with dingo & lumen: transformers, unit testing & JSON API.
-next: lumen-dingo-api-part-4
-previous: lumen-dingo-api-part-2
+preview: Working with the json api standard we use dingo to automatically convert our data into the desired format. Some additional unit tests make sure we can refactor the code with the knowledge that everything remains operational.
 ---
 
 > In [Part 2 of building APIs with dingo & lumen](151119-lumen-dingo-api-part-2) we added all the database stuff but our transformer is just passing on the data from the DB. Well, that is stupid, so lets fix it.
@@ -179,7 +180,7 @@ This object MUST be returned for every request. It has at least a `data`, `error
 Within the `data` member a `resource` object or a collection of `resource` objects is returned.
 
 ### Resource Object
-A *resource object* represents a single resource, our data, (e.g. a hiking track) and must at least have an `id` and `type` (no `id` is required if the object is send from the client (frontend) and represents a new object, as it is not persisted in the database yet and therefore does not have an id). Resource objects can also contain the following fields:
+A *resource object* represents a single resource, our data, (e.g. a hiking track) and must at least have an `id` and `type` (no `id` is required if the object is send from the client (front end) and represents a new object, as it is not persisted in the database yet and therefore does not have an id). Resource objects can also contain the following fields:
 - **attributes:** representing the resource's data (e.g. starting gps position of a track)
 - **relationships:** representing relationships between the resource and other resources (e.g. the creator of a track)
 - **links:** links related to the resource (e.g. the creators profile)

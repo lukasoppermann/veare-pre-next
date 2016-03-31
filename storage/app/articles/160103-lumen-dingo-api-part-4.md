@@ -1,10 +1,11 @@
 ---
-title: Building APIs with dingo & lumen\: Model Relationships - PART 4
+series: Building APIs with dingo & lumen;4
+title: Connecting data by using lumens model relationships
 tags: tag1, tag2
+category: code
 author: Lukas Oppermann
 description: Learn how to build a php API with dingo & lumen: Model Relationships
-next: lumen-dingo-api-part-5
-previous: lumen-dingo-api-part-3
+preview: Our database structure is separated from the desired response, so we need to add model relationships to combine different tables to form sensible api responses.
 ---
 
 > Getting your data structure right can be one of the hardest parts of building your api.

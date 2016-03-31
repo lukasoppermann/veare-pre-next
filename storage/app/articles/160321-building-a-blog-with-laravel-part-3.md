@@ -5,7 +5,7 @@ tags: tag1, tag2
 author: Lukas Oppermann
 category: code
 description: Learn how to use laravels caching, the carbon date package and more to improve your laravel blog
-preview: 
+preview: To avoid the overhead of reading all files and parsing our markdown every time we need any information, we just create a cache with all this information available. This enables us to add many nice features while boosting performance.
 ---
 {.o-article__introduction}
 > Our controller is growing and getting crowded, to get further with our blog it's best to extract some logic to a service: the PostsService which will deal with getting, processing and caching our posts.

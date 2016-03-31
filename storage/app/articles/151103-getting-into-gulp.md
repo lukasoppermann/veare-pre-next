@@ -1,13 +1,15 @@
 ---
-title: Getting into gulp
+title: Getting into gulp - nothing better ever happened to front end development
 tags: tag1, tag2
 author: Lukas Oppermann
-description: Learn how to start using gulp to improve your frontend workflow.
+category: code
+description: Learn how to start using gulp to improve your front end workflow. You will never have to convert or minimize a file by hand.
+preview: Gulp is a tool to automate all the little annoying tasks that are part of front end development, like converting, concatenating and minifying your resources. I found not having to worry about this boosts productivity quite a bit and helps you stay sane.
 ---
 
-> [Gulp](http://gulpjs.com/) is my favorite task runner, because it is the essence of simplicity.
+> [Gulp](http://gulpjs.com/) is my favorite task runner, because it is the essence of simplicity. There is really nothing better for taking care of the repetitive tasks that are converting, concatenating and minifying your assets and resources.
 
-Before we get our hands dirty, let me quickly explain what a task runner is. Actually it is pretty straight forwards, a task runner is a very simple (commandline) tool to run common tasks for you. So, what are tasks? A task can be nearly anything: converting your less to css, minifying your javascript, optimizing your svgs, creating an svg sprite or a combination of the before mentioned.
+Before we get our hands dirty, let me quickly explain what a task runner is. Actually it is pretty straight forwards, a task runner is a very simple (command line) tool to run common tasks for you. So, what are tasks? A task can be nearly anything: converting your less to css, minifying your javascript, optimizing your svgs, creating an svg sprite or a combination of the before mentioned.
 
 For this example we will be creating a task that watches our less files and whenever we change them, converts the less files to css, adds all needed vendor-prefixes and combines the bunch.
 

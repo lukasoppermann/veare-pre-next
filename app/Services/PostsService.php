@@ -47,7 +47,7 @@ Class PostsService {
      *
      * @var string
      */
-    protected $meta_regex = '#^---\n(.*?)---\n#is';
+    protected $meta_regex = '#^(?:\s)*---(?:\s)*\n(.*?)(?:\s)*---(?:\s)*\n#is';
     /**
      * prepare posts
      *
@@ -260,7 +260,7 @@ Class PostsService {
         foreach($data as $key => $item){
             unset($data[$key]);
             $item = preg_split('~\\\:(*SKIP)(*FAIL)|:~',$item);
-            $data[$item[0]] = str_replace('\:',':',trim($item[1]));
+            $data[strtolower($item[0])] = str_replace('\:',':',trim($item[1]));
         };
 
         return $data;

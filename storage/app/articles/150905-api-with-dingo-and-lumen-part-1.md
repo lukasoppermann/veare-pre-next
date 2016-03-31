@@ -1,9 +1,12 @@
 ---
-title: Building APIs with dingo & lumen\: Introduction - PART 1
+series: Building APIs with dingo & lumen;1
+title: The basics of setting up dingo api with the lumen framework
 tags: tag1, tag2
 author: Lukas Oppermann
+category: code
 description: Learn how to build a php API with dingo & lumen: setup and configuration.
 next: lumen-dingo-api-part-2
+preview: In the introduction to this series we will look into setting up dingo api with lumen on a homestead server, as well as setting up a testing environment with phpunit.
 ---
 
 > In this series we will write a well tested api using [lumen](http://lumen.laravel.com/) and the [dingo/api](https://github.com/dingo/api) package.

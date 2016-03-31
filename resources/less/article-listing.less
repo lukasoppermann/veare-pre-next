@@ -9,6 +9,11 @@
     overflow-x: hidden;
     padding: 1rem 2rem;
 }
+@media (max-width: 600px) {
+    .o-blog-listing__right{
+        width: 100%;
+    }
+}
 .o-blog-listing__left{
     position: relative;
     float: left;
@@ -17,6 +22,11 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
+}
+@media (max-width: 600px) {
+    .o-blog-listing__left{
+        display: none;
+    }
 }
 .o-blog-listing__about{
     position: relative;

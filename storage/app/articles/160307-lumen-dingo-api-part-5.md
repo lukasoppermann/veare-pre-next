@@ -1,10 +1,11 @@
 ---
-title: Building APIs with dingo & lumen\: Json Api Response Formats & Pagination  - PART 5
+series: Building APIs with dingo & lumen; 5
+title: Json API response formats & pagination
 tags: tag1, tag2
 author: Lukas Oppermann
+category: code
 description: Learn how to build a php API with dingo & lumen: Json Api Response Formats & Pagination
-next: lumen-dingo-api-part-6
-previous: lumen-dingo-api-part-4
+preview: Converting content into json api format is not fun, so we will let dingo automatically do it for us. Additionally we will learn how to return our results paginated.
 ---
 
 We are building a [json api](http://jsonapi.org/format/) conform api, which means we need to somehow get our database data into the json api format. You could do it by hand within your transformers, but I find it pays to do as little work as possible, so we will let fractal do all the heavy lifting. This significantly reduce the amount of code we have to write and maintain. The more of your code that is maintained by an active open source community, the more time you have for your business specific code, which nobody will write for you.

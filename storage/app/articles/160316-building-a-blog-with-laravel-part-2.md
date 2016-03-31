@@ -1,8 +1,11 @@
 ---
-title: Building a blog with Laravel\: Read time, descriptions and meta information - PART 2
+series: Building a blog with Laravel; 2
+title: Read time, descriptions and meta information
 tags: tag1, tag2
 author: Lukas Oppermann
+category: code
 description: Learn how to add a read time estimation, author, meta description and other features to your very own blogging system
+preview: In part 2 we are enhancing our blogging system with read time estimations & meta information while refactoring the code to prepare for extracting everything into a service.
 ---
 
 > Our blog is up and the first articles are published, perfect! Our goal was to get publishing as fast as possible. Now it is time to revisit the code and add some "nice to have" features.

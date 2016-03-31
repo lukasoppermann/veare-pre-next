@@ -3,6 +3,8 @@ title: Why you should always write your own blogging software
 author: Lukas Oppermann
 series: Building a blog with Laravel;1
 category: code
+description: Learn how to build a markdown file based blog with Laravel.
+preview: Learn how to build a markdown file based blog with Laravel, so that you can get into writing as fast as possible.
 ---
 
 > Okay, maybe I exaggerated. There is no "always" on the internet. But sometimes it might really be a good idea to look past the off-the-shelf products like Wordpress or Medium.
