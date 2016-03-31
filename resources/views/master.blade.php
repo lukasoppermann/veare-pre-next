@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1,maximum-scale=1">
         <meta name="description" content="{{$description or 'Web Development, User Experience & Design'}}">
         <meta name="theme-color" content="rgb(240, 170, 30)">
-        <link href='{{ asset(env('CSS_PATH_PREFIX').elixir('css/app.css')) }}' rel='stylesheet' type='text/css'>
+        <link href='{{ asset(env('PATH_PREFIX').elixir('css/app.css')) }}' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Merriweather:300,700%7CLato:400,700&subset=latin,latin' rel='stylesheet' type='text/css'>
 
 
@@ -30,5 +30,5 @@
             @yield('content')
         </main>
     </body>
-    <script src='{{ asset(env('JS_PATH_PREFIX').elixir("js/app.js")) }}'></script>
+    <script src='{{ asset(env('PATH_PREFIX').elixir("js/app.js")) }}'></script>
 </html>
