@@ -11,8 +11,11 @@ function ready(fn) {
 ready(function(){
     var imgContainer = document.getElementsByClassName('js-blogImage')[0];
     var leftColum = document.getElementsByClassName('o-blog-listing__left')[0];
-    var hidden = leftColum.currentStyle ? leftColum.currentStyle.display :
+    var hidden = false;
+    if( leftColum !== undefined){
+        hidden = leftColum.currentStyle ? leftColum.currentStyle.display :
                               getComputedStyle(leftColum, null).display;
+    }
     if( imgContainer !== undefined && hidden !== 'none' ){
         var img = new Image();
         img.onload = function () {
