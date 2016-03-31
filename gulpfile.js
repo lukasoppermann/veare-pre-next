@@ -43,7 +43,7 @@ gulp.task('build-js', ['clean-build'], function(){
             bowerDirectory: 'resources/bower_components',
             bowerJson: 'bower.json'
         }
-        });
+    });
     // push prism stuff
     files.push(
         'resources/bower_components/prism/components/prism-php.js',

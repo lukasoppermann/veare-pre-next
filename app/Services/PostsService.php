@@ -105,7 +105,7 @@ Class PostsService {
 
         foreach(Storage::files('articles') as $file)
         {
-            if (pathinfo($file)['extension'] === 'md') {
+            if (isset(pathinfo($file)['extension']) && pathinfo($file)['extension'] === 'md') {
                 $articles[] = array_merge([
                     'link' => $this->getLink($file),
                     'date' => $this->getDate($file, $this->date_format),
