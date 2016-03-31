@@ -4,7 +4,7 @@ title: Connecting data by using lumens model relationships
 tags: tag1, tag2
 category: code
 author: Lukas Oppermann
-description: Learn how to build a php API with dingo & lumen: Model Relationships
+description: Learn how to build a php API with dingo & lumen\: Model Relationships
 preview: Our database structure is separated from the desired response, so we need to add model relationships to combine different tables to form sensible api responses.
 ---
 

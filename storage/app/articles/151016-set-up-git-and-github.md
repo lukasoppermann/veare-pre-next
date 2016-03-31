@@ -4,6 +4,7 @@ tags: tag1, tag2
 category: code
 author: Lukas Oppermann
 preview: An easy to understand instruction to get you up an running with git and github in a matter of minutes.
+description: Get started with using git and github to improve your development workflow
 ---
 
 > Getting everything ready to start development can be scary, but if you take small steps it is actually quite easy.
