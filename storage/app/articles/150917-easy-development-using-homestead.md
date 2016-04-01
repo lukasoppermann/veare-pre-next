@@ -4,6 +4,7 @@ tags: tag1, tag2
 author: Lukas Oppermann
 category: code
 preview: The why and how of using the homestead vagrant box. A virtual machine build by Taylor Otwell, the creator of Laravel. With homestead you have a plug and play virtual box for all your php projects.
+description: Improve your development by using homestead the easiest, plug and play virutal machine for any php app.
 ---
 
 > In this post we will setup homestead on your machine and get a Laravel installation up an running. Note, that while homestead is created by Taylor Otwell, the guy behind Laravel & Lumen, you can use it for any php project, no matter what framework you use.

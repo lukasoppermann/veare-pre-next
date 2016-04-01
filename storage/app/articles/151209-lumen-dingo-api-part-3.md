@@ -4,7 +4,7 @@ title: Transforming responses to JSON API standard & adding api unit tests
 category: code
 tags: tag1, tag2
 author: Lukas Oppermann
-description: Learn how to build a php API with dingo & lumen: transformers, unit testing & JSON API.
+description: Learn how to build a php API with dingo & lumen\: transformers, unit testing & JSON API.
 preview: Working with the json api standard we use dingo to automatically convert our data into the desired format. Some additional unit tests make sure we can refactor the code with the knowledge that everything remains operational.
 ---
 

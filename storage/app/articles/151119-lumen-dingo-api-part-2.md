@@ -4,7 +4,7 @@ title: Creating the API database, models & controllers
 category: code
 tags: tag1, tag2
 author: Lukas Oppermann
-description: Learn how to build a php API with dingo & lumen: Creating the api database, models & controllers.
+description: Learn how to build a php API with dingo & lumen\: Creating the api database, models & controllers.
 preview: With the packages set up we now need to create the database and create our models and controllers to return a response when we receive an actual api call.
 ---
 

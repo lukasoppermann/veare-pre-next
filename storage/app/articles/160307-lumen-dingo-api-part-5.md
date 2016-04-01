@@ -4,7 +4,7 @@ title: Json API response formats & pagination
 tags: tag1, tag2
 author: Lukas Oppermann
 category: code
-description: Learn how to build a php API with dingo & lumen: Json Api Response Formats & Pagination
+description: Learn how to build a php API with dingo & lumen\: Json Api Response Formats & Pagination
 preview: Converting content into json api format is not fun, so we will let dingo automatically do it for us. Additionally we will learn how to return our results paginated.
 ---
 
