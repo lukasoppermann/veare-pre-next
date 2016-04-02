@@ -1,6 +1,8 @@
 @if ($post['date'] !== false)
 <li class="o-list-item o-article-preview o-article-preview--{{$post['meta']['category']}}" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
     <div class="o-article-preview__meta">
+        <meta itemprop="author" content="Lukas Oppermann" />
+        <meta itemprop="publisher" content="vea.re" />
         <time itemprop="datePublished" class="o-article-preview__date" datetime="{{$post['machine_date']}}">{{$post['date']}}</time>
         <a href="" class="o-article-preview__category o-article-preview__category--blue" date-category="{{$post['meta']['category']}}">{{$post['meta']['category']}}</a>
     </div>
