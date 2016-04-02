@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="o-blog-listing__right">
-        <ul class="o-list o-list--none c-list-postlist">
+        <ul class="o-list o-list--none c-list-postlist" itemscope itemtype="http://schema.org/Blog">
             @each('blog.preview', $posts, 'post')
         </ul>
         @include('footer')
