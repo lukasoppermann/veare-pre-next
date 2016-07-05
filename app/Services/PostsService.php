@@ -15,14 +15,14 @@ use Bookworm\Bookworm;
 class PostsService
 {
     /**
-     * the format the dates will be converted to
+     * The format the dates will be converted to.
      *
      * @var string
      */
     protected $date_format = 'F d, Y';
 
     /**
-     * data that will be in meta element
+     * Data that will be in meta element.
      *
      * @var string
      */
@@ -38,23 +38,21 @@ class PostsService
     ];
 
     /**
-     * posts array
+     * Posts array.
      *
      * @var array
      */
     protected $posts = [];
 
     /**
-     * regex to retrieve meta-info from content
+     * Regex to retrieve meta-info from content.
      *
      * @var string
      */
     protected $meta_regex = '#^(?:\s)*---(?:\s)*\n(.*?)(?:\s)*---(?:\s)*\n#is';
 
     /**
-     * prepare posts
-     *
-     * @method __construct
+     * Prepare posts.
      */
     public function __construct()
     {
@@ -67,9 +65,7 @@ class PostsService
     }
 
     /**
-     * get list of all posts as array
-     *
-     * @method all
+     * Get list of all posts as array.
      *
      * @return array
      */
@@ -79,9 +75,7 @@ class PostsService
     }
 
     /**
-     * get individual post
-     *
-     * @method get
+     * Get individual post.
      *
      * @param  string $link
      *
@@ -96,8 +90,8 @@ class PostsService
         return false;
     }
 
-    /*
-     * builds up the cache with all articles
+    /**
+     * Builds up the cache with all articles.
      */
     private function buildCache()
     {
@@ -109,8 +103,10 @@ class PostsService
         });
     }
 
-    /*
-     * gets all files and returns posts as array
+    /**
+     * Gets all files and returns posts as array.
+     *
+     * @return array
      */
     private function getPosts()
     {
@@ -127,7 +123,9 @@ class PostsService
     }
 
     /**
-     * Sort articles
+     * Sort articles.
+     *
+     * @return array
      */
     private function sortArticles($articles)
     {
@@ -148,7 +146,9 @@ class PostsService
     }
 
     /**
-     * Get link from filename
+     * Get link from filename.
+     *
+     * @return string
      */
     private function getLink($filename)
     {
@@ -156,7 +156,9 @@ class PostsService
     }
 
     /**
-     * Get formatted date from filename
+     * Get formatted date from filename.
+     *
+     * @return mixed
      */
     private function getDate($filename, $format)
     {
@@ -170,7 +172,9 @@ class PostsService
     }
 
     /**
-     * format date
+     * Format date.
+     *
+     * @return mixed
      */
     private function formatDate($date, $format)
     {
@@ -184,7 +188,9 @@ class PostsService
     }
 
     /**
-     * Get data from file
+     * Get data from file.
+     *
+     * @return array
      */
     private function getDataFromFile($file)
     {
@@ -201,7 +207,9 @@ class PostsService
     }
 
     /**
-     * get reading time
+     * Get reading time.
+     *
+     * @return string
      */
     private function getReadingTime($file)
     {
@@ -209,7 +217,9 @@ class PostsService
     }
 
     /**
-     * Get content from string
+     * Get content from string.
+     *
+     * @return string
      */
     private function getContent($fileContent)
     {
@@ -227,7 +237,9 @@ class PostsService
     }
 
     /**
-     * Get formatted title from filename
+     * Get formatted title from filename.
+     *
+     * @return string
      */
     private function getTitle($filename)
     {
@@ -241,7 +253,9 @@ class PostsService
     }
 
     /**
-     * Get metadata from string
+     * Get metadata from string.
+     *
+     * @return array
      */
     private function getMetaData($fileContent, $title = 'No title provided')
     {
@@ -266,7 +280,9 @@ class PostsService
     }
 
     /**
-     * extract meta info from string
+     * Extract meta info from string.
+     *
+     * @return array
      */
     private function extractMeta($data)
     {
@@ -287,7 +303,9 @@ class PostsService
     }
 
     /**
-     * Check for existance and return
+     * Check for existance and return.
+     *
+     * @return mixed
      */
     private function meta_default($data, $key)
     {
@@ -295,7 +313,9 @@ class PostsService
     }
 
     /**
-     *	prepare tags
+     * Prepare tags.
+     *
+     * @return mixed
      */
     private function meta_tags($data, $key)
     {
@@ -308,7 +328,9 @@ class PostsService
     }
 
     /**
-     *	prepare categories
+     * Prepare categories.
+     *
+     * @return string
      */
     private function meta_category($data, $key)
     {
@@ -328,7 +350,9 @@ class PostsService
     }
 
     /**
-     *	prepare series
+     * Prepare series.
+     *
+     * @return array
      */
     private function meta_series($data, $key)
     {
@@ -337,6 +361,7 @@ class PostsService
             return false;
         }
         list($series, $part) = explode(';', $item);
+
         return [
             'part' => isset($part) ? trim($part) : 1,
             'name' => trim($series),
