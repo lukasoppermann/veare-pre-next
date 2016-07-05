@@ -34,7 +34,7 @@ class PostsService
         'series'        => 'meta_series',
         'next'          => 'meta_default',
         'previous'      => 'meta_default',
-        'category'      => 'meta_category'
+        'category'      => 'meta_category',
     ];
 
     /**
@@ -213,7 +213,7 @@ class PostsService
      */
     private function getContent($fileContent)
     {
-        $content = preg_replace($this->meta_regex, "", $fileContent);
+        $content = preg_replace($this->meta_regex, '', $fileContent);
 
         $environment = Environment::createCommonMarkEnvironment();
         $environment->addExtension(new AttributesExtension());
@@ -243,7 +243,7 @@ class PostsService
     /**
      * Get metadata from string
      */
-    private function getMetaData($fileContent, $title = "No title provided")
+    private function getMetaData($fileContent, $title = 'No title provided')
     {
         preg_match($this->meta_regex, $fileContent, $data);
 
@@ -261,7 +261,7 @@ class PostsService
 
         return [
             'meta' => $meta,
-            'title' => $title
+            'title' => $title,
         ];
     }
 
@@ -275,7 +275,7 @@ class PostsService
             return false;
         }
         // split rows into array
-        $data = array_filter(explode("\n", $data[1]));
+        $data = array_filter(explode('\n', $data[1]));
         // split at colon into key value pair
         foreach ($data as $key => $item) {
             unset($data[$key]);
@@ -291,11 +291,7 @@ class PostsService
      */
     private function meta_default($data, $key)
     {
-        if (isset($data[$key])) {
-            return $data[$key];
-        }
-
-        return false;
+        return isset($data[$key]) ? $data[$key] : false;
     }
 
     /**
@@ -342,8 +338,8 @@ class PostsService
         }
         list($series, $part) = explode(';', $item);
         return [
-            'part' =>  isset($part) ? trim($part): 1,
-            'name' => trim($series)
+            'part' => isset($part) ? trim($part) : 1,
+            'name' => trim($series),
         ];
     }
 }
