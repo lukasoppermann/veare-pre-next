@@ -29,3 +29,8 @@ ready(function(){
 
     }
 });
+ready(function(){
+    window.setTimeout(function(){
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    },500);
+});

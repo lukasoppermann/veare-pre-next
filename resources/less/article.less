@@ -289,3 +289,21 @@
     background: @gray-light;
     margin: 2rem auto;
 }
+.o-ads__slot--wide{
+    margin-left: 50%;
+    transform: translateX(-50%);
+    width: 320px;
+    height: 100px;
+}
+@media(min-width: 500px) {
+    .o-ads__slot--wide {
+        width: 468px;
+        height: 60px;
+    }
+}
+@media(min-width: 800px) {
+    .o-ads__slot--wide {
+        width: 728px;
+        height: 90px;
+    }
+}

@@ -20,7 +20,6 @@
               ga('require', 'linkid');
               ga('send', 'pageview');
               ga('set', 'anonymizeIp', true);
-
             </script>
         @endif
     </head>
@@ -30,5 +29,6 @@
             @yield('content')
         </main>
     </body>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script src='{{ asset(env('PATH_PREFIX').elixir("js/app.js")) }}'></script>
 </html>
