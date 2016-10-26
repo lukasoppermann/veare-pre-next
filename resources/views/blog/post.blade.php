@@ -9,7 +9,7 @@
         {!!$content!!}
         <p><a title="Back to the list of articles" class="o-link o-link--back" href="{{url('blog/')}}">Back to overview</a></p>
     </article>
-    <aside>
+    <aside class="o-ads">
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <!-- Responsive Ad -->
         <ins class="adsbygoogle"
