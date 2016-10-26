@@ -8,13 +8,26 @@ preview: I noticed that I had stopped using most of my hardware and it is great.
 ---
 
 - how I work and why it is awesome
-- how I got there
 
+- how I got there
 	- lets start at the beginning: original setup (SHORT)
 	- how I improved my work setup without knowing it
-	
+
 -  how you can get there
 
+## How I work: my minimalist setup
+
+Before I start, let me give you an idea of what I do: I am an interface designer building mostly websites & apps, and drawing icons and small illustrations.
+
+That said, the only thing showing that, is my small bamboo drawing tablet, which is also the only hardware I use apart from macbook and sure headphones. While I do work very well my the internal trackpad, a tablet is more precise and faster to work with. (?? The good thing about the bamboo is that because of its small size, you can put it to the side of the notebook and only move your hand, instead of moving your entire arm, like you would with a bigger tablet.)
+
+I work from different places, like my office, client offices or on the go. This means I have to take my hardware with me and with only a macbook & tablet, this is really not a problem. The best part is, I take my entire setup with me, which has some advantages:
+
+Since my on the go setup is the same as my office setup, I do not have to get used to a different way of working when I am somewhere else and I can start being 100% productive straight away.
+
+Furthermore when I am back in the office, I also have no adjustment phase, and if I don't want to go to the office but rather work from home - no problem, as I have my entire work setup in my bag.
+
+But workspace adjustments also take place digitally. If you have a bigger monitor in the office, every time you switch, you have to rearrange your tools in photoshop, etc. and adjust / relearn how to work with the new order. I don't, because I only ever have one screen and one screen size. This means I can facilitate muscle memory so my arm already knows how to move when I need to go to the color section or change a font, etc.
 
 ## The Ever-changing work location
 
