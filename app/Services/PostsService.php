@@ -12,16 +12,17 @@ use League\CommonMark\HtmlRenderer;
 use Webuni\CommonMark\AttributesExtension\AttributesExtension;
 use Bookworm\Bookworm;
 
-Class PostsService {
+class PostsService
+{
     /**
-     * the format the dates will be converted to
+     * The format the dates will be converted to.
      *
      * @var string
      */
-    // protected $date_format = 'F d, Y';
     protected $date_format = 'F d, Y';
+
     /**
-     * data that will be in meta element
+     * Data that will be in meta element.
      *
      * @var string
      */
@@ -33,27 +34,28 @@ Class PostsService {
         'series'        => 'meta_series',
         'next'          => 'meta_default',
         'previous'      => 'meta_default',
-        'category'      => 'meta_category'
+        'category'      => 'meta_category',
     ];
+
     /**
-     * posts array
+     * Posts array.
      *
      * @var array
      */
     protected $posts = [];
 
     /**
-     * regex to retrieve meta-info from content
+     * Regex to retrieve meta-info from content.
      *
      * @var string
      */
     protected $meta_regex = '#^(?:\s)*---(?:\s)*\n(.*?)(?:\s)*---(?:\s)*\n#is';
+
     /**
-     * prepare posts
-     *
-     * @method __construct
+     * Prepare posts.
      */
-    public function __construct(){
+    public function __construct()
+    {
         // if cache does not exist: create
         if (!Cache::has('posts') || env('APP_ENV') === 'local') {
             $this->buildCache();
@@ -61,50 +63,54 @@ Class PostsService {
         // store posts from cache in class variable
         $this->posts = Cache::get('posts');
     }
+
     /**
-     * get list of all posts as array
-     *
-     * @method all
+     * Get list of all posts as array.
      *
      * @return array
      */
-    public function all(){
+    public function all()
+    {
         return $this->posts;
     }
+
     /**
-     * get individual post
-     *
-     * @method get
+     * Get individual post.
      *
      * @param  string $link
      *
      * @return array
      */
-    public function get($link){
+    public function get($link)
+    {
         $key = array_search($link, array_column($this->posts, 'link'));
-        if($key !== false){
+        if ($key !== false) {
             return $this->posts[$key];
         }
         return false;
     }
-    /*
-     * builds up the cache with all articles
+
+    /**
+     * Builds up the cache with all articles.
      */
-    private function buildCache(){
+    private function buildCache()
+    {
         // clear post cache
         Cache::forget('posts');
         // renew post cache
-        Cache::rememberForever('posts', function() {
+        Cache::rememberForever('posts', function () {
             return $this->getPosts();
         });
     }
-    /*
-     * gets all files and returns posts as array
-     */
-    private function getPosts(){
 
-        foreach(Storage::files('articles') as $file)
-        {
+    /**
+     * Gets all files and returns posts as array.
+     *
+     * @return array
+     */
+    private function getPosts()
+    {
+        foreach (Storage::files('articles') as $file) {
             if (isset(pathinfo($file)['extension']) && pathinfo($file)['extension'] === 'md') {
                 $articles[] = array_merge([
                     'link' => $this->getLink($file),
@@ -115,19 +121,21 @@ Class PostsService {
         }
         return $this->sortArticles($articles);
     }
+
     /**
-     * Sort articles
+     * Sort articles.
+     *
+     * @return array
      */
     private function sortArticles($articles)
     {
-
-        usort($articles, function($a, $b){
-            $aDate = substr(trim($a['link'],'-'),0,6);
-            $bDate = substr(trim($b['link'],'-'),0,6);
+        usort($articles, function ($a, $b) {
+            $aDate = substr(trim($a['link'], '-'), 0, 6);
+            $bDate = substr(trim($b['link'], '-'), 0, 6);
 
             if (is_numeric($aDate) && !is_numeric($bDate)) {
                 return -1;
-            } else if(!is_numeric($aDate) && is_numeric($bDate)) {
+            } elseif (!is_numeric($aDate) && is_numeric($bDate)) {
                 return 1;
             } else {
                 return ($aDate < $bDate) ? 1 : -1;
@@ -136,19 +144,25 @@ Class PostsService {
 
         return $articles;
     }
+
     /**
-     * Get link from filename
+     * Get link from filename.
+     *
+     * @return string
      */
     private function getLink($filename)
     {
         return pathinfo($filename)['filename'];
     }
+
     /**
-     * Get formatted date from filename
+     * Get formatted date from filename.
+     *
+     * @return mixed
      */
     private function getDate($filename, $format)
     {
-        $date = $this->formatDate(substr($this->getLink($filename),0,6), $format);
+        $date = $this->formatDate(substr($this->getLink($filename), 0, 6), $format);
 
         if ($date !== false) {
             return $date;
@@ -156,22 +170,27 @@ Class PostsService {
 
         return env('APP_ENV') === 'local' ? 'draft' : false;
     }
+
     /**
-     * format date
+     * Format date.
+     *
+     * @return mixed
      */
-    private function formatDate($date, $format){
+    private function formatDate($date, $format)
+    {
         try {
-            $date = Carbon::createFromDate('20'.substr($date,0,2), substr($date,2,2), substr($date,4,2));
-        }
-        catch(\InvalidArgumentException $e)
-        {
+            $date = Carbon::createFromDate('20'.substr($date, 0, 2), substr($date, 2, 2), substr($date, 4, 2));
+        } catch (\InvalidArgumentException $e) {
             return false;
         }
 
         return $date->format($format);
     }
+
     /**
-     * Get data from file
+     * Get data from file.
+     *
+     * @return array
      */
     private function getDataFromFile($file)
     {
@@ -186,18 +205,25 @@ Class PostsService {
             ],
         ], $this->getMetaData($fileContent, $this->getTitle($file)));
     }
+
     /**
-     * get reading time
+     * Get reading time.
+     *
+     * @return string
      */
-    private function getReadingTime($file){
+    private function getReadingTime($file)
+    {
         return Bookworm::estimate($file, false);
     }
+
     /**
-     * Get content from string
+     * Get content from string.
+     *
+     * @return string
      */
     private function getContent($fileContent)
     {
-        $content = preg_replace($this->meta_regex, "", $fileContent);
+        $content = preg_replace($this->meta_regex, '', $fileContent);
 
         $environment = Environment::createCommonMarkEnvironment();
         $environment->addExtension(new AttributesExtension());
@@ -209,87 +235,105 @@ Class PostsService {
 
         return $converter->convertToHtml($content);
     }
+
     /**
-     * Get formatted title from filename
+     * Get formatted title from filename.
+     *
+     * @return string
      */
     private function getTitle($filename)
     {
         $title = $this->getLink($filename);
 
-        if( is_numeric(substr($title, 0, 6)) ){
+        if (is_numeric(substr($title, 0, 6))) {
             $title = substr($title, 6);
         }
 
-        return trim(str_replace('-',' ',$title));
+        return trim(str_replace('-', ' ', $title));
     }
+
     /**
-     * Get metadata from string
+     * Get metadata from string.
+     *
+     * @return array
      */
-    private function getMetaData($fileContent, $title = "No title provided")
+    private function getMetaData($fileContent, $title = 'No title provided')
     {
         preg_match($this->meta_regex, $fileContent, $data);
 
         $data = $this->extractMeta($data);
 
         // set title if in meta info, otherwise use fallback from argument
-        if( isset($data['title']) ) {
+        if (isset($data['title'])) {
             $title = $data['title'];
         }
 
         // loop through meta and run every item through defined function
-        foreach($this->available_meta as $key => $function){
-            $meta[$key] = $this->$function( $data, $key );
+        foreach ($this->available_meta as $key => $function) {
+            $meta[$key] = $this->$function($data, $key);
         }
 
         return [
             'meta' => $meta,
-            'title' => $title
+            'title' => $title,
         ];
     }
+
     /**
-     * extract meta info from string
+     * Extract meta info from string.
+     *
+     * @return array
      */
-    private function extractMeta($data){
+    private function extractMeta($data)
+    {
         // if no meta data exists return false
-        if(!isset($data[1])){
+        if (!isset($data[1])) {
             return false;
         }
         // split rows into array
-        $data = array_filter(explode("\n", $data[1]));
+        $data = array_filter(explode('\n', $data[1]));
         // split at colon into key value pair
-        foreach($data as $key => $item){
+        foreach ($data as $key => $item) {
             unset($data[$key]);
-            $item = preg_split('~\\\:(*SKIP)(*FAIL)|:~',$item);
-            $data[strtolower($item[0])] = str_replace('\:',':',trim($item[1]));
+            $item = preg_split('~\\\:(*SKIP)(*FAIL)|:~', $item);
+            $data[strtolower($item[0])] = str_replace('\:', ':', trim($item[1]));
         };
 
         return $data;
     }
-    /**
-     * Check for existance and return
-     */
-    private function meta_default($data, $key){
-        if (isset($data[$key])){
-            return $data[$key];
-        }
 
-        return false;
-    }
     /**
-     *	prepare tags
+     * Check for existance and return.
+     *
+     * @return mixed
      */
-    private function meta_tags($data, $key){
-        if( $item = $this->meta_default($data, $key)) {
-            $tags = array_map('trim', explode(',',$item));
+    private function meta_default($data, $key)
+    {
+        return isset($data[$key]) ? $data[$key] : false;
+    }
+
+    /**
+     * Prepare tags.
+     *
+     * @return mixed
+     */
+    private function meta_tags($data, $key)
+    {
+        if ($item = $this->meta_default($data, $key)) {
+            $tags = array_map('trim', explode(',', $item));
             return array_filter($tags);
         }
 
         return false;
     }
+
     /**
-     *	prepare categories
+     * Prepare categories.
+     *
+     * @return string
      */
-    private function meta_category($data, $key){
+    private function meta_category($data, $key)
+    {
         $categories = [
             'life',
             'code',
@@ -298,25 +342,29 @@ Class PostsService {
 
         $item = $this->meta_default($data, $key);
 
-        if( isset($item) && in_array($item, $categories)) {
+        if (isset($item) && in_array($item, $categories)) {
             return $categories[array_search($item, $categories)];
         }
 
         return $categories[0];
     }
+
     /**
-     *	prepare series
+     * Prepare series.
+     *
+     * @return array
      */
-    private function meta_series($data, $key){
+    private function meta_series($data, $key)
+    {
         $item = $this->meta_default($data, $key);
-        if( !$item || strpos($item,';') === false ){
+        if (!$item || strpos($item, ';') === false) {
             return false;
         }
         list($series, $part) = explode(';', $item);
+
         return [
-            'part' =>  isset($part) ? trim($part): 1,
-            'name' => trim($series)
+            'part' => isset($part) ? trim($part) : 1,
+            'name' => trim($series),
         ];
     }
-
 }
