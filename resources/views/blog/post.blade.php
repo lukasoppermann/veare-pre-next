@@ -8,11 +8,14 @@
         @include('blog.meta', $meta)
         <aside class="o-ads-top">
             <!-- Responsive Ad -->
-            <script type="text/javascript">
-                google_ad_client = "ca-pub-7108083868453613";
-                google_ad_slot = "8120384489";
-                google_ad_width = 336;
-                google_ad_height = 280;
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- Rectangle -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:336px;height:280px"
+                 data-ad-client="ca-pub-7108083868453613"
+                 data-ad-slot="8120384489"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
             <!-- Rectangle -->
         </aside>
@@ -24,20 +27,16 @@
     </div>
     <aside class="o-ads">
         <!-- Responsive Ad -->
-        <ins class="adsbygoogle o-ads__slot--wide"
-             style="display:inline-block"
+        <!-- Responsive Ad -->
+        <ins class="adsbygoogle"
+             style="display:block"
              data-ad-client="ca-pub-7108083868453613"
              data-ad-slot="3273212487"
              {{-- data-ad-format="auto" --}}
              ></ins>
-             <script type="text/javascript"
-             src="//pagead2.googlesyndication.com/pagead/show_ads.js">
-             </script>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
     </aside>
-    <script>
-        window.setTimeout(function(){
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        },500);
-    </script>
     @include('footer')
 @endsection
