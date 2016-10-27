@@ -6,7 +6,7 @@
 
         <h1 itemprop="headline">{!!$title!!}</h1>
         @include('blog.meta', $meta)
-        {{-- <aside class="o-ads-top">
+        <aside class="o-ads-top">
             <!-- Responsive Ad -->
             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
             <!-- Rectangle -->
@@ -18,14 +18,14 @@
             (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
             <!-- Rectangle -->
-        </aside> --}}
+        </aside>
         {!!$content!!}
         <p><a title="Back to the list of articles" class="o-link o-link--back" href="{{url('blog/')}}">Back to overview</a></p>
     </article>
     <div class="o-article__comment">
         I am interested in your feedback, please share your thoughts with me <a class="o-link o-link--decorated" title="Reply to my article with a tweet" href="https://twitter.com/intent/tweet?text={{urlencode($title)}} {{url('blog/'.$link)}}%20via%20%40lukasoppermann&source=webclient">via Twitter</a>.
     </div>
-    {{-- <aside class="o-ads">
+    <aside class="o-ads">
         <!-- Responsive Ad -->
         <!-- Responsive Ad -->
         <ins class="adsbygoogle"
@@ -37,6 +37,6 @@
         <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
-    </aside> --}}
+    </aside>
     @include('footer')
 @endsection
