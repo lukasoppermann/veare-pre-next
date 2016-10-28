@@ -292,12 +292,18 @@
 }
 .o-ads-top{
     box-sizing: border-box;
-    width: 336px;
-    height: 280px;
+    width: 346px;
+    height: 290px;
     float: right;
     border: 5px solid @gray-light;
     background: @gray-light;
     margin: 0 2rem 2rem 2rem;
+}
+@media(max-width: 500px) {
+    .o-ads-top{
+        float: none;
+        margin: 2rem auto;
+    }
 }
 .o-ads__slot--wide{
     margin-left: 50%;

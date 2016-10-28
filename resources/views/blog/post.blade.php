@@ -28,12 +28,13 @@
     <aside class="o-ads">
         <!-- Responsive Ad -->
         <!-- Responsive Ad -->
-        <ins class="adsbygoogle"
+        <ins class="adsbygoogle o-ads__slot--wide"
              style="display:block"
              data-ad-client="ca-pub-7108083868453613"
              data-ad-slot="3273212487"
-
+             data-ad-format="auto"
              ></ins>
+
         <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
         </script>

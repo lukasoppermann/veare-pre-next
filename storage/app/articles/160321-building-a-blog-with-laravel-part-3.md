@@ -12,7 +12,6 @@ preview: To avoid the overhead of reading all files and parsing our markdown eve
 
 ## Service-oriented architecture: Building a service
 All our data is in files, which means we are working with flat file storage instead of a database. As we are using markdown, this adds an overhead of having to parse the files whenever we want to access information. This is especially bad on the post listing page, where many files need to be parsed at once.
-
 To add more features and improve our performance we need to add a cache which can provide us with very fast access to information like the list of posts or meta info for each post. This should also remove the need to parse the markdown every time a post is viewed.
 
 We will refactor all logic to read and parse posts into a new `PostService` class, which will include a cache, based on Laravels cache system. Let's start by creating the `app/Services/PostsService.php` file.
