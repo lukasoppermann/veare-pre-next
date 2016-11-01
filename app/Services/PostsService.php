@@ -57,9 +57,10 @@ class PostsService
     public function __construct()
     {
         // if cache does not exist: create
-        if (!Cache::has('posts') || env('APP_ENV') === 'local') {
+        if (!Cache::has('posts') || env('APP_ENV') === 'local' || count(Cache::get('posts')) !== $this->getPostCount()) {
             $this->buildCache();
         }
+        // getPostCount
         // store posts from cache in class variable
         $this->posts = Cache::get('posts');
     }
@@ -121,7 +122,21 @@ class PostsService
         }
         return $this->sortArticles($articles);
     }
-
+    /**
+     * Gets post count
+     *
+     * @return array
+     */
+    private function getPostCount()
+    {
+        $count = 0;
+        foreach (Storage::files('articles') as $file) {
+            if (isset(pathinfo($file)['extension']) && pathinfo($file)['extension'] === 'md') {
+                $count++;
+            }
+        }
+        return $count;
+    }
     /**
      * Sort articles.
      *
@@ -141,8 +156,8 @@ class PostsService
                 return ($aDate < $bDate) ? 1 : -1;
             }
         });
-
         return $articles;
+
     }
 
     /**
@@ -262,7 +277,6 @@ class PostsService
         preg_match($this->meta_regex, $fileContent, $data);
 
         $data = $this->extractMeta($data);
-
         // set title if in meta info, otherwise use fallback from argument
         if (isset($data['title'])) {
             $title = $data['title'];
@@ -291,7 +305,7 @@ class PostsService
             return false;
         }
         // split rows into array
-        $data = array_filter(explode('\n', $data[1]));
+        $data = array_filter(explode("\n", $data[1]));
         // split at colon into key value pair
         foreach ($data as $key => $item) {
             unset($data[$key]);
