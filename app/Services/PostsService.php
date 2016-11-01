@@ -298,7 +298,6 @@ class PostsService
             $item = preg_split('~\\\:(*SKIP)(*FAIL)|:~', $item);
             $data[strtolower($item[0])] = str_replace('\:', ':', trim($item[1]));
         };
-
         return $data;
     }
 
@@ -337,7 +336,8 @@ class PostsService
         $categories = [
             'life',
             'code',
-            'design'
+            'design',
+            'technology',
         ];
 
         $item = $this->meta_default($data, $key);
