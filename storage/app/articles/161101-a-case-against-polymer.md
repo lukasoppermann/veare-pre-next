@@ -13,18 +13,18 @@ preview: Polymer is supposed to accelerate to adoption of web components but it 
 ## Polymer the "library"
 Polymer is a web component **library** by Google. According to the [polymer projects website](https://www.polymer-project.org/1.0/):
 
-> The Polymer Project helps you deliver amazing user experiences by unlocking the full potential of the web platform.
+>> The Polymer Project helps you deliver amazing user experiences by unlocking the full potential of the web platform.
 
 Further on it is stated that:
 
-> Polymer sprinkles a bit of sugar over the standard Web Components APIs, making it easier for you to get great results.
+>> Polymer sprinkles a bit of sugar over the standard Web Components APIs, making it easier for you to get great results.
 
 So to sum up, Polymer is a sugaring layer on top of web components, that tries to make creating web components easier to work with.
 
 ## What are web components?
 
 MDN has a very good [summary of the idea behind web components](https://developer.mozilla.org/en-US/docs/Web/Web_Components):
-> [...] reusable user interface widgets that are created using open Web technology. They are part of the browser, and so **they do not need external libraries** like jQuery or Dojo (see also [Wikipedia](https://en.wikipedia.org/wiki/Web_Components), [Google developer page](https://developers.google.com/web/fundamentals/getting-started/primers/customelements)).
+>> [...] reusable user interface widgets that are created using open Web technology. They are part of the browser, and so **they do not need external libraries** like jQuery or Dojo (see also [Wikipedia](https://en.wikipedia.org/wiki/Web_Components), [Google developer page](https://developers.google.com/web/fundamentals/getting-started/primers/customelements)).
 
 TL;DR Web Components = (UI) components that can be reused without writing additional code and or using external libraries.
 
