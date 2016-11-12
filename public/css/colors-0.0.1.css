@@ -1,0 +1,69 @@
+/*------------------*/
+/* colors */
+/* white */
+.white{ background: rgb(255,255,255); }
+.font-white, .hovers .hover-font-white:hover{ color: rgb(255,255,255); }
+.white-pseudo:before, .white-pseudo:after{ background: rgb(255,255,255); }
+/* black */
+.black{ background: rgb(50,47,44); border-color: rgb(50,47,44);}
+.font-black{ color: rgb(50,47,44); }
+.black-pseudo:before, .black-pseudo:after{ background: rgb(50,47,44);}
+/* black */
+.dark-black{ background: rgb(30,28,25); border-color: rgb(30,28,25);}
+.font-dark-black{ color: rgb(30,28,25); }
+/* medium-gray */
+.gray{ background: rgb(175,180,180); }
+.font-gray{ color: rgb(175,180,180); }
+.gray-pseudo:before, .gray-pseudo:after{ background: rgb(175,180,180);}
+/* gray */
+.medium-gray{ background: rgb(215,220,220); }
+.font-medium-gray{ color: rgb(215,220,220); }
+.border-medium-gray{ border-color: rgb(215,220,220); }
+.medium-gray-pseudo:before, .medium-gray-pseudo:after{ background: rgb(215,220,220);}
+/* light gray */
+.light-gray{ background: rgb(235,240,240); border-color: rgb(235,240,240); }
+.font-light-gray{ color: rgb(235,240,240); }
+/* light orange */
+.orange{ background: rgb(245,150,0); border-color: rgb(245,150,0); }
+.font-orange, .hovers .hover-font-orange:hover, .active.active-font-orange{ color: rgb(245,150,0); }
+.border-orange, .hovers .hover-border-orange:hover{ border-color: rgb(245,150,0); }
+.orange-pseudo:before, .orange-pseudo:after{ background: rgb(245,150,0);}
+/* orange */
+.light-orange{ background: rgb(250,190,40); border-color: rgb(250,190,40); }
+.font-light-orange{ color: rgb(240,170,30); }
+/* turqoise */
+.turquoise{ background: rgb(105,195,160); }
+.font-turquoise, .hovers .hover-font-turquoise:hover{ color: rgb(105,195,160); }
+.border-turquoise, .hovers .hover-border-turquoise:hover{ border-color: rgb(105,195,160); }
+.turquoise-pseudo:before, .turquoise-pseudo:after{ background: rgb(105,195,160); }
+/* yellow */
+.light-yellow{ background: rgb(245,235,85); border-color: rgb(245,235,85); }
+/* yellow */
+.yellow{ background: rgb(245,215,85); border-color: rgb(245,215,85); }
+.font-yellow{ color: rgb(245,215,85); }
+/* red */
+.red{ background: rgb(245,130,105); border-color: rgb(245,130,105); }
+.border-red, .hovers .hover-border-red:hover{ border-color: rgb(245,130,105); }
+.font-red, .hovers .hover-font-red:hover{ color: rgb(245,130,105); }
+/* light red */
+.light-red{ background: rgb(235,120,95); }
+.font-light-red{ color: rgb(235,120,95); }
+.light-red-pseudo:before, .light-red-pseudo:after{ background: rgb(235,120,95); }
+/* light blue */
+.light-blue{ background: rgb(165,205,200); }
+.font-light-blue, .hovers .hover-font-light-blue:hover{ color: rgb(155,195,190); }
+.border-light-blue, .hovers .hover-border-light-blue:hover{ border-color: rgb(165,205,200); }
+.light-blue-pseudo:before, .light-blue-pseudo:after{ background: rgb(165,205,200); }
+/* blue */
+.blue{ background: rgb(70,155,180); }
+.font-blue, .hovers .hover-font-blue:hover{ color: rgb(70,155,180); }
+.border-blue, .hovers .hover-border-blue:hover{ border-color: rgb(70,155,180); }
+.blue-pseudo:before, .blue-pseudo:after{ background: rgb(70,155,180); }
+/* dark blue */
+.dark-blue{ background: rgb(5,60,95); }
+.font-dark-blue{ color: rgb(5,60,95); }
+.dark-blue-pseudo:before, .dark-blue-pseudo:after{ background: rgb(5,60,95); }
+/* pink */
+.pink{ background: rgb(235,135,175); }
+.font-pink{ color: rgb(235,135,175); }
+.pink-pseudo:before, .pink-pseudo:after{ background: rgb(235,135,175);}

@@ -1,1 +1,0 @@
-# minimize your digital tools
