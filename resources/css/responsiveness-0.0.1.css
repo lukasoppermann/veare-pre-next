@@ -1,0 +1,21 @@
+/* ---------------------------------------------------------------- */
+/* responsiveness */
+@media screen and (max-width: 800px) {
+	font-size: 120%;
+}
+@media screen and (max-width: 1100px) {
+	font-size: 110%;
+}
+body{ font-family: 'Helvetica Neue', 'Helvetica', Arial, Sans-serif; }
+@media screen and (max-width: 600px){
+	html { font-family: 'tablet-small'; }
+}
+@media screen and (max-width: 800px){
+	html { font-family: 'tablet'; }
+}
+@media screen and (max-width: 1100px) {
+	html { font-family: 'screen'; }
+}
+@media screen and (min-width: 1300px) {
+	html { font-family: 'wide-screen'; }
+}

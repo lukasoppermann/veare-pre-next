@@ -1,0 +1,356 @@
+.headline-margin-40{ margin-bottom: 40px; }
+/* ---------------------------- */
+/* Hello block */
+.veare-start .giant-headline{
+	-webkit-animation: slide-up-fade-in .6s .6s 1 ease both;
+	animation:         slide-up-fade-in .6s .6s 1 ease both;
+}
+.veare-start .big-headline{
+	-webkit-animation: slide-up-fade-in .6s .8s 1 ease both;
+	animation:         slide-up-fade-in .6s .8s 1 ease both;
+}
+.veare-start .medium-headline{
+	-webkit-animation: slide-up-fade-in .6s 1s 1 ease both;
+	animation:         slide-up-fade-in .6s 1s 1 ease both;
+}
+/* ---------------------------- */
+/* About Me block */
+.about-lukas-oppermann .coffee{
+	margin-bottom: 50px;
+}
+/* ---------------------------- */
+/* Skills */
+.skills .more-link{
+	margin-top: 10px;
+	text-decoration: none;
+	display: block;
+	position: relative;
+	background: rgba(0,0,0,0.15);
+	color: rgba(255,255,255,0.75);
+	border-width: 3px;
+}
+.hovers .skills .more-link:hover{
+	border-color: rgba(0,0,0,0.15);
+	color: rgba(50,50,47,0.5);
+}
+.skills .skill-wrapper{
+	width: 750px;
+	display: inline-block;
+}
+.skill{
+	position: relative;
+	margin-bottom: 60px;
+}
+.skill .content{
+	width: calc(100% - 305px);
+	width: -webkit-calc(100% - 305px);
+	min-width: 300px;
+	display: inline-block;
+	position: relative;
+	text-align: left;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+.skill .content.left{ padding-left: 30px; }
+.skill .content.right{ padding-right: 30px; }
+.hover-circle:before{
+	position: absolute;
+	display: block;
+	border-radius: 280px;
+	background: rgba(0,0,0,0.25);
+	height: 280px;
+	width: 280px;
+	top: 10px;
+	left: 10px;
+}
+.skills .content p{ opacity: 0.85; }
+@media screen and (max-width: 600px){
+	.skills .skill-wrapper{ width: 100%; }
+	.skill .content{
+		max-width: 500px;
+		width: 100%;
+	}
+	.skill .content.left{ padding-left: 0px; }
+	.skill .content.right{ padding-right: 0px; }
+	.skill .content{ padding-top: 300px; }
+	.skill .image{
+		position: absolute;
+		top: 0;
+		left: 50%;
+		margin-left: -150px;
+	}
+	.content .medium-headline{ text-align: center; }
+}
+/* ---------------------------- */
+/* About veare */
+.circle-big{
+	position: relative;
+	display: inline-block;
+	width: 280px;
+	height: 280px;
+	border-radius: 280px;
+}
+.circle-headline{
+	position: relative;
+	text-align: left;
+	width: 100%;
+	margin: -50px 0 20px 0;
+	padding-left: 30px;
+	box-sizing: border-box;
+}
+.circle-copy{
+	text-align: left;
+	vertical-align: top;
+	display: inline-block;
+	padding: 0 15px 0 15px;
+	width: 100%;
+	max-width: 450px;
+	box-sizing: border-box;
+}
+.plus:before{
+	content: "+";
+	width: 100px;
+	height: 100px;
+	text-align: center;
+	font-size: 150px;
+	line-height: 70px;
+	display: block;
+	position: absolute;
+	font-weight: 600;
+	left: 50%;
+	top: 40%;
+	margin: -75px 0 0 -50px;
+}
+@media screen and (max-width: 600px){
+	.circle-headline{
+		font-size: 60px;
+		text-align: center;
+	}
+	.circle-headline, .circle-copy{ padding: 0 10px; }
+	.plus:before{ display: none; }
+	.circle-copy{
+		padding: 0;
+		margin: 0 0 0 0;
+	}
+	.column{ margin-bottom: 60px; }
+}
+@media screen and (max-width: 800px){
+	.plus:before{ display: none; }
+}
+/* ---------------------------- */
+/* Contact */
+#veare_businesscard{
+	display: block;
+	text-align: left;
+	position: absolute;
+	top: 50%;
+	right: 20%;
+	margin: -175px 0 0 0;
+	z-index: 900;
+	width: 225px;
+	height: 350px;
+	background: rgb(255,255,255);
+	border: 1px solid rgba(245,150,0,.25);
+	border-top: 0;
+	border-bottom: 0; /* 3px solid rgb(245,150,0) */
+	box-shadow: 0px 2px 0px 0px rgb(245,150,0), 0px 0px 2px 0px rgba(100,100,100,0.1);
+}
+@media screen and (max-width: 600px){
+	#veare_businesscard{
+		top: 50%;
+		right: 50%;
+		margin: -175px -112px 100px 0;
+	}
+}
+#veare_businesscard .name{
+	text-transform: uppercase;
+	color: rgb(50,50,50);
+	top: 20px;
+	left: 15px;
+}
+#veare_businesscard .contact-info{
+	width: 100%;
+	bottom: 20px;
+	padding: 0 0 0 15px;
+	box-sizing: border-box;
+	color: rgb(100,100,100);
+	font-size: 16px;
+	line-height: 20px;
+}
+#veare_businesscard .contact-info .contact-item{
+	width: 100%;
+	position: relative;
+	padding: 0;
+	float: left;
+}
+#veare_businesscard .contact-info .contact-link{
+	float: left;
+	width: 100%;
+	display: block;
+	text-decoration: none;
+	padding: 0 0 0 15px;
+	top: 0px;
+	box-sizing: border-box;
+	transition: color .2s ease .1s;
+}
+#veare_businesscard .contact-info .label{
+	font-size: 80%;
+	line-height: 20px;
+	width: 15px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+#veare_businesscard .contact-info .contact-link{
+	padding: 2px 0 2px 15px;
+}
+#veare_businesscard .contact-info .label{
+	bottom: 4px;
+}
+.hovers #veare_businesscard .contact-info .contact-link:hover{ color: rgb(245,150,0); }
+.top-line{ position: absolute; }
+#veare_businesscard .veare-type{
+	height: 23px;
+	width: 90px;
+	display: block;
+	position: relative;
+}
+.visionary-design{
+	font-size: 80%;
+	padding: 2px 0 5px 0;
+}
+#veare_businesscard .top-line:before{
+	content: "";
+	display: block;
+	height: 2px;
+	background: rgb(245,150,0);
+	width: 12px;
+	position: absolute;
+	top: -6px;
+}
+.flexbox{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+.flex-column{
+	-webkit-box-flex: 0;
+	-webkit-flex: 0 0 50%;
+	-ms-flex: 0 0 50%;
+	flex: 0 0 50%;
+}
+@media screen and (max-width: 600px) {
+	.flex-column{
+		flex: 0 0 100%;
+	}
+	.coffee{
+		display: none;
+	}
+	#veare_businesscard{
+		top: 50%;
+		right: 50%;
+		margin: -175px -112px 100px 0;
+	}
+}
+/* ---------------------------- */
+/* Footer */
+.legal-footer{
+	box-sizing: border-box;
+	float:left;
+	width: 100%;
+	font-size: 16px;
+	line-height: 16px;
+	background: rgba(0,0,0,.05);
+	color: rgba(0,0,0,.5);
+	padding: 17px 0;
+	height: 50px;
+}
+.legal-footer--absolute{
+	position: absolute;
+	bottom: 0px;
+}
+.privacy .legal-footer{
+	background: rgb(150, 190, 185);
+}
+.dot-delimiter{
+	display: inline-block;
+	padding: 0 10px;
+}
+.legal-footer-link{
+	position: relative;
+	display: inline-block;
+	text-decoration: none;
+}
+.legal-footer-link:before{
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 2px;
+	bottom: -10px;
+	left: 0;
+	background-color: rgba(0,0,0,.5);
+	opacity: 0;
+	-webkit-transition: opacity .35s ease, bottom .35s ease;
+	transition: opacity .35s ease, bottom .35s ease;
+}
+.legal-footer-link:hover:before{
+	opacity: 1;
+	bottom: -5px
+}
+.info-headline-small{
+	font-size: 20px;
+	margin-bottom: 10px;
+	margin-top: 20px;
+}
+.info-box{
+	padding-top: 10%;
+	margin-bottom: 60px;
+	position: relative;
+	display: block;
+	float: left;
+	text-align: left;
+	max-width: 400px;
+}
+.info-section{
+	position: relative;
+	display: block;
+	float: left;
+	padding-bottom: 15px;
+	width: 100%;
+}
+.info-item{
+	display: block;
+	width: 100%;
+	float: left;
+	font-size: 16px;
+}
+.info-section p{
+	font-size: 14px;
+}
+.max-height{
+	height: auto;
+	min-height: 100%;
+}
+.info-box-wide{
+	padding-top: 10%;
+	margin-bottom: 60px;
+	position: relative;
+	display: block;
+	float: left;
+	text-align: left;
+	max-width: 600px;
+	margin-left: 200px;
+}
+@media screen and (max-width: 600px) {
+	.info-box-wide{
+		margin-left: 0px;
+		padding: 15px;
+		box-sizing: border-box;
+		margin-top: 60px;
+	}
+}
