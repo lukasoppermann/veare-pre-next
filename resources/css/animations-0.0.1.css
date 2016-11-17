@@ -1,7 +1,3 @@
-/*.no-flicker{
-	-webkit-transform:translate3d(0,0,0);
-	transform:translate3d(0,0,0);
-}*/
 /*------------------*/
 /* sidebar */
 #menu_icon, #sidebar, #body{
@@ -11,13 +7,13 @@
 #menu_icon{
 	transform: translate3d(0px, 0px, 100px);
 	-webkit-transform: translate3d(0px, 0px, 100px);
-	transition: transform .4s ease;   
+	transition: transform .4s ease;
 	-webkit-transition: -webkit-transform .4s ease;
 }
 .menu-active #menu_icon{
 	transform: translate3d(-250px, 0px, 100px);
 	-webkit-transform: translate3d(-250px, 0px, 100px);
-	transition: transform .4s ease;   
+	transition: transform .4s ease;
 	-webkit-transition: -webkit-transform .4s ease;
 }
 #body, #sidebar{
@@ -25,19 +21,19 @@
 	transform-style: preserve-3d;
 	transform: translate3d(0px, 0px, 90px);
 	-webkit-transform: translate3d(0px, 0px, 90px);
-	transition: transform .4s ease;   
+	transition: transform .4s ease;
 	-webkit-transition: -webkit-transform .4s ease;
 }
 .menu-active #body, .menu-active #sidebar{
 	transform: translate3d(-250px, 0px, 90px);
 	-webkit-transform: translate3d(-250px, 0px, 90px);
-	transition: transform .4s ease;   
+	transition: transform .4s ease;
 	-webkit-transition: -webkit-transform .4s ease;
 }
 /*------------------*/
 /* Fade in & Slide up animation */
 @-webkit-keyframes slide-up-fade-in {
-	0%{ 
+	0%{
 		opacity: 0;
 		-webkit-transform: translate3d(0,25px,0);
 	}
@@ -47,7 +43,7 @@
 	}
 }
 @keyframes slide-up-fade-in {
-	0%{ 
+	0%{
 		opacity: 0;
 		-webkit-transform: translate3d(0,25px,0);
 		transform: translate3d(0,25px,0);

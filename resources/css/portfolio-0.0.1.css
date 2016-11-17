@@ -4,7 +4,6 @@
 .section.portfolio{
 	padding-top: 150px;
 	padding-bottom: 125px;
-	/*margin-bottom: 125px;*/
 }
 @media screen and (max-width: 600px){
 	.section.portfolio{
@@ -62,36 +61,47 @@
 	cursor: pointer;
 	position: relative;
 	transition: color .3s ease .15s;
-	-webkit-transition: color .3s ease .15s;
 }
-.portfolio .items{
-	text-align: left;
-	display: inline-block;
+[id="tag:interface"]:target ~ .filters .filter[data-category~="interface"],
+[id="tag:print"]:target ~ .filters .filter[data-category~="print"],
+[id="tag:branding"]:target ~ .filters .filter[data-category~="branding"],
+[id="tag:infographics"]:target ~ .filters .filter[data-category~="infographics"],{
+	color: rgb(245, 150, 0);
+}
+.c-filter__target:not(:target) ~ .cards .card {
+  opacity: 1;
+  transition: opacity .5s ease;
+}
+.c-filter__target:target ~ .cards .card {
+  opacity: 0.25;
+}
+[id="tag:interface"]:target ~ .cards [data-category~="interface"],
+[id="tag:print"]:target ~ .cards [data-category~="print"],
+[id="tag:branding"]:target ~ .cards [data-category~="branding"],
+[id="tag:infographics"]:target ~ .cards [data-category~="infographics"],
+{
+	opacity: 1;
+}
+/*---------------*/
+.cards{
+	width: 100%;
+	max-width: 1080px;
+	margin: 0 auto;
 	position: relative;
 }
-@media screen and (max-width: 600px){
-	.portfolio .items{
-		width: 270px;
-	}
-}
-.tablet.small .portfolio .items{ width: 540px; }
-.tablet .portfolio .items{ width: 780px; }
-.screen .portfolio .items, .wide-screen .portfolio .items{ width: 1080px; }
-/*---------------*/
 /* card size */
 .height-tall{ min-height: 400px; }
 .height-medium{ min-height: 300px; }
 .height-small{ min-height: 250px; }
 /* card styling */
 .card {
-	display: inline-block;
+	display: block;
+	width: 250px;
 	vertical-align: top; /*helps with variable length content*/
 	position: relative;
 	overflow: hidden;
 	padding: 0px;
-	width: 250px;
 	text-decoration: none;
-	margin: 10px;
 }
 .side{
 	position: absolute;

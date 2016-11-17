@@ -11,8 +11,9 @@
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	<meta name="copyright" content="2016 " />
 	<meta http-equiv="X-UA-Compatible" content="chrome=1">
-	<!-- inject:css -->
-	<!-- endinject -->
+	<link rel="stylesheet" href="/public/build/css/app-febdf451d0.css">
+	<script type="text/javascript" defer src="/public/build/js/jquery-311slim.js"></script>
+	<script type="text/javascript" defer src="/public/build/js/javascript-1.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1,maximum-scale=1">
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="theme-color" content="rgb(240, 170, 30)">
@@ -27,36 +28,13 @@
   ga('require', 'linkid');
   ga('set', 'anonymizeIp', true);
   ga('send', 'pageview');
-
-function viewport() {
-  var myWidth = 0, myHeight = 0;
-  if( typeof( window.innerWidth ) == 'number' ) {
-  	//Non-IE
-  	myWidth = window.innerWidth;
-  	myHeight = window.innerHeight;
-  }
-	if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
-  	//IE 6+ in 'standards compliant mode'
-  	myWidth = document.documentElement.clientWidth;
-  	myHeight = document.documentElement.clientHeight;
-  }
-  ga('send', 'event', 'Viewport', 'Size', myWidth+'x'+myHeight,{'nonInteraction': 1});
-}
-
-	var trackingLink = document.querySelectorAll('[data-link-tracking]');
-	for (var i = 0; i < trackingLink.length; i++) {
-    trackingLink[i].addEventListener('click', function(event) {
-      ga('send', 'event', 'Interaction', 'Link', this.getAttribute('data-link-tracking'));
-    });
-}
-
-	</script>
+</script>
 </head>
 <body class="hovers screen white-logo" data-page_class="white-logo" id="html_body" data-url="http://vea.re/" onLoad="viewport()">
 	<div id="menu_icon" data-link-tracking="menu-icon-link"><div class="veare-sprite"></div></div>
 	<div id="body">
 		<div id="header">
-			<a href="http://vea.re/home" id="logo" class="no-flicker ajax-link" data-nav="#nav" data-link-tracking="logo-link">
+			<a href="http://vea.re/home" id="logo" data-nav="#nav" data-link-tracking="logo-link">
 <svg version="1.1" id="logo-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="141.094px" height="116.544px" viewBox="0 0 141.094 116.544" enable-background="new 0 0 141.094 116.544"
 	 xml:space="preserve">
@@ -198,9 +176,9 @@ function viewport() {
 	</div>
 </div>
 <!--+++++++++++++++++++++++++ sidebar +++++++++++++++++++++++++-->
-<div id="sidebar" class=" regular no-flicker dark-black">
+<div id="sidebar" class=" regular dark-black">
 	<!-- logo -->
-	<a href="http://vea.re/home" class="ajax-link" data-nav="#nav">
+	<a href="http://vea.re/home" data-nav="#nav">
 		<div class="logo">
 			<img class="logo-img async-img" data-src-x2="http://vea.re/layout/veare-icons@2x.png" data-src-x1="http://vea.re/layout/veare-icons.png" src="" alt="veare design studio - visionary design" />
 		</div>
@@ -208,10 +186,10 @@ function viewport() {
 	<!-- main menu -->
 
 <ul id="nav" class="menu">
-<li class='item activatable first home' data-connect="navigation"><a data-link-tracking='menu-item-Home' class='ajax-link menu-item-link' href="http://vea.re/home"><span class="veare-sprite"></span><span class="text">Home</span></a></li>
-<li class='item activatable current active portfolio arrow' data-connect="navigation"><a data-link-tracking='menu-item-Portfolio' class='ajax-link menu-item-link' href="http://vea.re/portfolio"><span class="veare-sprite"></span><span class="text">Portfolio</span></a></li>
-<li class='item activatable blog arrow' data-connect="navigation"><a data-link-tracking='menu-item-Blog' class='ajax-link menu-item-link' href="http://vea.re/blog"><span class="veare-sprite"></span><span class="text">Blog</span></a></li>
-<li class='item activatable last contact' data-connect="navigation"><a data-link-tracking='menu-item-Contact' class='ajax-link menu-item-link' href="http://vea.re/contact#contact"><span class="veare-sprite"></span><span class="text">Contact</span></a></li>
+<li class='item activatable first home' data-connect="navigation"><a data-link-tracking='menu-item-Home' class='menu-item-link' href="http://vea.re/home"><span class="veare-sprite"></span><span class="text">Home</span></a></li>
+<li class='item activatable current active portfolio arrow' data-connect="navigation"><a data-link-tracking='menu-item-Portfolio' class='menu-item-link' href="http://vea.re/portfolio"><span class="veare-sprite"></span><span class="text">Portfolio</span></a></li>
+<li class='item activatable blog arrow' data-connect="navigation"><a data-link-tracking='menu-item-Blog' class='menu-item-link' href="http://vea.re/blog"><span class="veare-sprite"></span><span class="text">Blog</span></a></li>
+<li class='item activatable last contact' data-connect="navigation"><a data-link-tracking='menu-item-Contact' class='menu-item-link' href="http://vea.re/contact#contact"><span class="veare-sprite"></span><span class="text">Contact</span></a></li>
 </ul>
 	<!-- follow nav -->
 	<div id="sidebar_bottom">

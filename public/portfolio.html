@@ -11,8 +11,9 @@
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	<meta name="copyright" content="2016 " />
 	<meta http-equiv="X-UA-Compatible" content="chrome=1">
-	<!-- inject:css -->
-	<!-- endinject -->
+	<link rel="stylesheet" href="/public/build/css/app-febdf451d0.css">
+	<script type="text/javascript" defer src="/public/build/js/jquery-311slim.js"></script>
+	<script type="text/javascript" defer src="/public/build/js/javascript-1.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1,maximum-scale=1">
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="theme-color" content="rgb(240, 170, 30)">
@@ -29,11 +30,11 @@
   ga('send', 'pageview');
 </script>
 </head>
-<body class="hovers screen " data-page_class="" id="html_body" data-url="">
+<body class="hovers screen" data-page_class="" id="html_body" data-url="">
 	<div id="menu_icon" data-link-tracking="menu-icon-link"><div class="veare-sprite"></div></div>
 	<div id="body">
 		<div id="header">
-			<a href="/home" id="logo" class="no-flicker ajax-link" data-nav="#nav" data-link-tracking="logo-link">
+			<a href="/home" id="logo" data-nav="#nav" data-link-tracking="logo-link">
 <svg version="1.1" id="logo-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="141.094px" height="116.544px" viewBox="0 0 141.094 116.544" enable-background="new 0 0 141.094 116.544"
 	 xml:space="preserve">
@@ -51,12 +52,25 @@
 			</a>
 	</div>
 	<div class="wrapper">
-		<div class="no-flicker section portfolio">
-
-			<div class="filters uppercase font-size-big font-medium-gray bold"><a class="filter hover-font-orange active-font-orange" data-category="interface" href="portfolio/tag:interface">interface</a><a class="filter hover-font-orange active-font-orange" data-category="print" href="portfolio/tag:print">print</a><a class="filter hover-font-orange active-font-orange" data-category="branding" href="portfolio/tag:branding">branding</a><a class="filter hover-font-orange active-font-orange" data-category="infographics" href="portfolio/tag:infographics">infographics</a></div>
-			<div class="items font-white"><a class="card card-link animate-flip height-medium" data-category="print" data-permalink="open-everything" href="portfolio/open-everything">
+		<div class="section portfolio">
+            <!-- Needed for filtering -->
+            <a class="c-filter__target" id="tag:interface"></a>
+            <a class="c-filter__target" id="tag:print"></a>
+            <a class="c-filter__target" id="tag:branding"></a>
+            <a class="c-filter__target" id="tag:infographics"></a>
+            <!-- END: Needed for filtering -->
+            <!-- CSS Filter NAV -->
+			<nav class="filters uppercase font-size-big font-medium-gray bold">
+                <a class="filter hover-font-orange active-font-orange" data-category="interface" href="#tag:interface">interface</a>
+                <a class="filter hover-font-orange active-font-orange" data-category="print" href="#tag:print">print</a>
+                <a class="filter hover-font-orange active-font-orange" data-category="branding" href="#tag:branding">branding</a>
+                <a class="filter hover-font-orange active-font-orange" data-category="infographics" href="#tag:infographics">infographics</a>
+            </nav>
+            <!-- END: CSS Filter NAV -->
+            <div class="cards font-white">
+                <a class="card card-link animate-flip height-medium" data-category="print" data-permalink="open-everything" href="portfolio/open-everything">
 			<div class="front side blue">
-				<img class="image async-img" data-src="media/card-open-everything.png">
+				<img class="image" src="media/card-open-everything.png">
 					</div>
 			<div class="back side align-left blue">
 				<div class="content">
@@ -66,7 +80,7 @@
 			</div>
 			</a><a class="card card-link animate-flip img-middle height-tall" data-category="branding" data-permalink="swift" href="portfolio/swift">
 			<div class="front side yellow">
-				<img class="image async-img" data-src="media/card-swift.png">
+				<img class="image" src="media/card-swift.png">
 					</div>
 			<div class="back side align-left yellow">
 				<div class="content">
@@ -76,7 +90,7 @@
 			</div>
 			</a><a class="card card-link animate-flip height-medium" data-category="interface" data-permalink="juicecontrol" href="portfolio/juicecontrol">
 			<div class="front side blue">
-				<img class="image async-img" data-src="media/card-juicecontrol.png">
+				<img class="image" src="media/card-juicecontrol.png">
 					</div>
 			<div class="back side align-left blue">
 				<div class="content">
@@ -86,7 +100,7 @@
 			</div>
 			</a><a class="card card-link animate-flip height-medium font-white img-middle" data-category="infographics" data-permalink="lufthansa-germanwings" href="portfolio/lufthansa-germanwings">
 			<div class="front side yellow">
-				<img class="image async-img" data-src="media/card-lufthansa-germanwings.png">
+				<img class="image" src="media/card-lufthansa-germanwings.png">
 					</div>
 			<div class="back side align-left yellow">
 				<div class="content">
@@ -96,7 +110,7 @@
 			</div>
 			</a><a class="card card-link animate-flip height-medium font-white img-middle" data-category="interface" data-permalink="decks" href="portfolio/decks">
 			<div class="front side red">
-				<img class="image async-img" data-src="media/card-decks.png">
+				<img class="image" src="media/card-decks.png">
 					</div>
 			<div class="back side align-left red">
 				<div class="content">
@@ -106,7 +120,7 @@
 			</div>
 			</a><a class="card card-link animate-flip height-small" data-category="interface" data-permalink="diversity-squared" href="portfolio/diversity-squared">
 			<div class="front side orange">
-				<img class="image async-img" data-src="media/card-d2.png">
+				<img class="image" src="media/card-d2.png">
 					</div>
 			<div class="back side align-left orange">
 				<div class="content">
@@ -116,7 +130,7 @@
 			</div>
 			</a><a class="card card-link animate-flip img-middle height-medium" data-category="print infographics" data-permalink="donnerwetter" href="portfolio/donnerwetter">
 			<div class="front side light-blue">
-				<img class="image async-img" data-src="media/card-donnerwetter.png">
+				<img class="image" src="media/card-donnerwetter.png">
 					</div>
 			<div class="back side align-left light-blue">
 				<div class="content">
@@ -126,7 +140,7 @@
 			</div>
 			</a><a class="card card-link animate-flip height-small" data-category="print" data-permalink="woyzeck" href="portfolio/woyzeck">
 			<div class="front side light-blue">
-				<img class="image async-img" data-src="media/card-woyzeck.png">
+				<img class="image" src="media/card-woyzeck.png">
 					</div>
 			<div class="back side align-left light-blue">
 				<div class="content">
@@ -136,7 +150,7 @@
 			</div>
 			</a><a class="card card-link animate-flip height-small" data-category="interface branding" data-permalink="movingsystems" href="portfolio/movingsystems">
 			<div class="front side light-orange">
-				<img class="image async-img" data-src="media/card-movingsystems.png">
+				<img class="image" src="media/card-movingsystems.png">
 					</div>
 			<div class="back side align-left light-orange">
 				<div class="content">
@@ -146,7 +160,7 @@
 			</div>
 			</a><a class="card card-link animate-flip height-small" data-category="interface" data-permalink="hygromatik" href="portfolio/hygromatik">
 			<div class="front side turquoise">
-				<img class="image async-img" data-src="media/card-hygromatik.png">
+				<img class="image" src="media/card-hygromatik.png">
 					</div>
 			<div class="back side align-left turquoise">
 				<div class="content">
@@ -156,7 +170,7 @@
 			</div>
 			</a><a class="card card-link animate-flip img-bottom height-small" data-category="interface" data-permalink="isbb" href="portfolio/isbb">
 			<div class="front side blue">
-				<img class="image async-img" data-src="media/card-isbb.png">
+				<img class="image" src="media/card-isbb.png">
 					</div>
 			<div class="back side align-left blue">
 				<div class="content">
@@ -166,7 +180,7 @@
 			</div>
 			</a><a class="card animate-flip height-small" target="_blank" href="http://dribbble.com/lukasoppermann">
 			<div class="front side pink">
-				<img class="image async-img" data-src="media/dribbble.png">
+				<img class="image" src="media/dribbble.png">
 					</div>
 			<div class="back side align-left pink">
 				<div class="content">
@@ -177,22 +191,22 @@
 			</a>
 			</div>
 		</div>
-		<div class="legal-footer">
-			<a href="imprint" class="legal-footer-link">imprint</a><span class="dot-delimiter">•</span><a href="privacy" class="legal-footer-link">privacy policy</a>
-		</div>
 	</div>
+<div class="legal-footer legal-footer--absolute">
+    <a href="imprint" class="legal-footer-link">imprint</a><span class="dot-delimiter">•</span><a href="privacy" class="legal-footer-link">privacy policy</a>
+</div>
 </div>
 <!--+++++++++++++++++++++++++ sidebar +++++++++++++++++++++++++-->
-<div id="sidebar" class=" regular no-flicker dark-black">
+<div id="sidebar" class=" regular dark-black">
 	<!-- logo -->
 	<a href="/home" class="logo veare-sprite" data-nav="#nav"></a>
 	<!-- main menu -->
 
 <ul id="nav" class="menu">
-<li class='item activatable current active first home' data-connect="navigation"><a data-link-tracking='menu-item-Home' class='ajax-link menu-item-link' href="/home"><span class="veare-sprite"></span><span class="text">Home</span></a></li>
-<li class='item activatable portfolio arrow' data-connect="navigation"><a data-link-tracking='menu-item-Portfolio' class='ajax-link menu-item-link' href="/portfolio"><span class="veare-sprite"></span><span class="text">Portfolio</span></a></li>
-<li class='item activatable blog arrow' data-connect="navigation"><a data-link-tracking='menu-item-Blog' class='ajax-link menu-item-link' href="/blog"><span class="veare-sprite"></span><span class="text">Blog</span></a></li>
-<li class='item activatable last contact' data-connect="navigation"><a data-link-tracking='menu-item-Contact' class='ajax-link menu-item-link' href="/contact#contact"><span class="veare-sprite"></span><span class="text">Contact</span></a></li>
+<li class='item activatable current active first home' data-connect="navigation"><a data-link-tracking='menu-item-Home' class='menu-item-link' href="/"><span class="veare-sprite"></span><span class="text">Home</span></a></li>
+<li class='item activatable portfolio arrow' data-connect="navigation"><a data-link-tracking='menu-item-Portfolio' class='menu-item-link' href="/portfolio.html"><span class="veare-sprite"></span><span class="text">Portfolio</span></a></li>
+<li class='item activatable blog arrow' data-connect="navigation"><a data-link-tracking='menu-item-Blog' class='menu-item-link' href="/blog"><span class="veare-sprite"></span><span class="text">Blog</span></a></li>
+<li class='item activatable last contact' data-connect="navigation"><a data-link-tracking='menu-item-Contact' class='menu-item-link' href="/contact.html#contact"><span class="veare-sprite"></span><span class="text">Contact</span></a></li>
 </ul>
 	<!-- follow nav -->
 	<div id="sidebar_bottom">
@@ -225,6 +239,19 @@
 		</ul>
 	</div>
 </div>
-	<script type="text/javascript" src="/public/js/cache/6c324cea1351207669f1cf290980c3d0.js.php" ></script>
 </body>
+<script src="https://unpkg.com/minigrid@3.0.6/dist/minigrid.min.js"></script>
+<script type="text/javascript">
+    var grid = new Minigrid({
+        container: '.cards',
+        item: '.card',
+        gutter: 10
+    });
+    document.addEventListener('DOMContentLoaded', function(){
+        grid.mount();
+    });
+    window.addEventListener('resize', function(){
+        grid.mount();
+    });
+</script>
 </html>

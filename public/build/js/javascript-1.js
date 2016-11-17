@@ -46,33 +46,28 @@ $(function(){
 	};
 	// -------------------------------------------------------------------------------------------------------------
 	// load images depending on ratio
-	$('.async-img').each(function(){
-		var _this 	= $(this),
-				src 		= _this.data('src-x'+pixelRatio),
-				alt_src = _this.data('src');
-
-		_this.addClass('loading').imageLoad(function()
-		{
-			if( src != undefined )
-			{
-				_this.css({'width':'auto','height':'auto'});
-				var width = this.naturalWidth/pixelRatio;
-				var height = this.naturalHeight/pixelRatio;
-				_this.css({'width':width,'height':height});
-			}
-		});
-
-
-		if( src != undefined )
-		{
-			_this.attr('src',src).addClass('loaded').removeClass('loading');
-		}
-		else if( alt_src != undefined )
-		{
-			_this.attr('src',alt_src).addClass('loaded').removeClass('loading');
-		}
-
-	});
+	// $('.async-img').each(function(){
+	// 	var _this 	= $(this),
+	// 			alt_src = _this.data('src');
+	//
+	// 	_this.addClass('loading').imageLoad(function()
+	// 	{
+	// 		if( src != undefined )
+	// 		{
+	// 			_this.css({'width':'auto','height':'auto'});
+	// 			var width = this.naturalWidth;
+	// 			var height = this.naturalHeight;
+	// 			_this.css({'width':width,'height':height});
+	// 		}
+	// 	});
+	//
+	//
+	// 	if( alt_src != undefined )
+	// 	{
+	// 		_this.attr('src',alt_src).addClass('loaded').removeClass('loading');
+	// 	}
+	//
+	// });
 	// -----------------------
 	// run min padding
 	minPadding();
