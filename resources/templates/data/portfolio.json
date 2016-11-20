@@ -1,0 +1,113 @@
+{
+    "portfolioItems": [
+        {
+            "title": "Open Everything",
+            "description": "This magazine for the re:publica conference 2013 combines different articles on the topic “Open Everything”.",
+            "src": "media/card-open-everything.png",
+            "color": "blue",
+            "size": "medium",
+            "tag": "print",
+            "link": "portfolio/open-everything.html"
+        },
+        {
+            "title": "swift / we are fast",
+            "description": "Swift is a case study of a corporate identity for an airline focusing on speed and comfort.",
+            "src": "media/card-swift.png",
+            "color": "yellow",
+            "size": "tall",
+            "tag": "branding",
+            "link": "portfolio/swift.html"
+        },
+        {
+            "title": "Juice Control",
+            "description": "Are you aware of your energy consumption? JuiceControl will help you with it.",
+            "src": "media/card-juicecontrol.png",
+            "color": "blue",
+            "size": "medium",
+            "tag": "interface",
+            "link": "portfolio/juice-control.html"
+        },
+        {
+            "title": "The new germanwings",
+            "description": "An infographic for the airline germanwings showing service changes for passengers.",
+            "src": "media/card-lufthansa-germanwings.png",
+            "color": "yellow",
+            "size": "medium",
+            "tag": "infographics",
+            "link": "portfolio/lufthansa-germanwings.html"
+        },
+        {
+            "title": "Decks",
+            "description": "Creating the future fully-fledged Operating System for touchscreen.",
+            "src": "media/card-decks.png",
+            "color": "red",
+            "size": "medium",
+            "tag": "interface",
+            "link": "portfolio/decks.html"
+        },
+        {
+            "title": "Diversity Squared",
+            "description": "An iPad magazine for people who recently moved to Berlin.",
+            "src": "media/card-d2.png",
+            "color": "orange",
+            "size": "small",
+            "tag": "interface",
+            "link": "portfolio/diversity-squared.html"
+        },
+        {
+            "title": "Donnerwetter",
+            "description": "A calendar that features an information graphic on different weather phenomenon every month.",
+            "src": "media/card-donnerwetter.png",
+            "color": "light-blue",
+            "size": "medium",
+            "tag": "print",
+            "link": "portfolio/donnerwetter.html"
+        },
+        {
+            "title": "Woyzeck – a fragment",
+            "description": "A series of typographical posters on the play “Woyzeck - Ein Fragment” by Georg Büchner.",
+            "src": "media/card-woyzeck.png",
+            "color": "light-blue",
+            "size": "small",
+            "tag": "print",
+            "link": "portfolio/woyzeck.html"
+        },
+        {
+            "title": "moving systems",
+            "description": "Movingsystems is a responsive micropage for a team of coaches.",
+            "src": "media/card-movingsystems.png",
+            "color": "light-orange",
+            "size": "small",
+            "tag": "interface",
+            "link": "portfolio/movingsystems.html"
+        },
+        {
+            "title": "HygroMatik",
+            "description": "A website for one of europe's biggest air conditioning system manufacturer.",
+            "src": "media/card-hygromatik.png",
+            "color": "turquoise",
+            "size": "small",
+            "tag": "interface",
+            "link": "portfolio/hygromatik.html"
+        },
+        {
+            "title": "ISBB",
+            "description": "Website redesign for a german institute for consultancy.",
+            "src": "media/card-isbb.png",
+            "color": "blue",
+            "size": "small",
+            "tag": "interface",
+            "link": "portfolio/isbb.html"
+        },
+        {
+            "title": "Dribbble",
+            "description": "View more of my work on dribbble.com.",
+            "src": "media/dribbble.png",
+            "color": "pink",
+            "size": "small",
+            "tag": "interface",
+            "link": "https://dribbble.com/lukasoppermann",
+            "newTab": true
+        }
+    ]
+}

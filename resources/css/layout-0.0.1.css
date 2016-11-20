@@ -34,10 +34,7 @@ section{
 /* ---------------------------- */
 /* vertical center */
 .vertical-center{
-	display: table;
-	align: center;
-}
-.vertical-center .centered{
-  display: table-cell;
-  vertical-align: middle;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }

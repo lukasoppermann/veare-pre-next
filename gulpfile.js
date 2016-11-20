@@ -1,5 +1,6 @@
 // Imports
 var gulp = require('gulp');
+var fs = require('fs');
 var rename = require('gulp-rename');
 var rev = require('gulp-rev');
 var del = require('del');
@@ -109,6 +110,13 @@ gulp.task('html', function () {
         'css': [],
         'js': []
     };
+    try{
+        var json = JSON.parse(fs.readFileSync('./resources/templates/data/portfolio.json'));
+    }catch(e){
+        console.log(e);
+        var json = {};
+    }
+
     // get files
     return gulp.src([
         'public/build/css/*-*.css',
@@ -121,14 +129,14 @@ gulp.task('html', function () {
         files[f[1]][name] = filename;
     }))
     .on('end', function(){
-        gulp.src('resources/templates/*.mustache')
-            .pipe(mustache({
-                'appcss': '<link rel="stylesheet" href="/public/build/css/'+files.css.app+'">',
-                'appjs': '<script type="text/javascript" defer src="/public/build/js/'+files.js.javascript+'"></script>',
-                'jquery': '<script type="text/javascript" defer src="/public/build/js/'+files.js.jquery+'"></script>'
-            }, {
+        json.appcss = '<link rel="stylesheet" href="/public/build/css/'+files.css.app+'">';
+        json.appjs = '<script type="text/javascript" defer src="/public/build/js/'+files.js.javascript+'"></script>';
+
+        gulp.src(['resources/templates/*.mustache','resources/templates/**/*.mustache','!resources/templates/partials/*.mustache'])
+            .pipe(mustache(json, {
                 extension: '.html'
             }))
+            .on('error', console.log)
             .pipe(gulp.dest('public'));
     });
 });

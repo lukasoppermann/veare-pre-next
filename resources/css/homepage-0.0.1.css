@@ -44,17 +44,18 @@
 	margin-left: 50%;
 	transform: translateX(-50%);
 	align-items: center;
-	display: flex;
 	flex-direction: column;
 }
 .skill{
-	flex: 0 0 100%;
+	position: relative;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	margin-bottom: 60px;
 }
 .skill .image{
+	display: block;
+	position: relative;
 	flex: 0 0 300px;
 	margin: 0;
 }
@@ -62,9 +63,10 @@
 	width: 100%;
 }
 .skill .content{
+	display: block;
+	position: relative;
 	flex: 0 0 56%;
 	min-width: 300px;
-	display: flex;
 	flex-direction: column;
 	position: relative;
 	text-align: left;
@@ -293,7 +295,8 @@
 }
 .legal-footer--absolute{
 	position: absolute;
-	bottom: 0px;
+	bottom: 0;
+	left: 0;
 }
 .privacy .legal-footer{
 	background: rgb(150, 190, 185);

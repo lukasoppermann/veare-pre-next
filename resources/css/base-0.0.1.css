@@ -2,15 +2,13 @@
 /* general */
 html, body{
 	min-height: 100vh;
+	height: auto;
 	position: relative;
 }
-.wf-active body{
-	font-family: "Source Sans Pro";
-	font-weight: 400;
-}
 body{
-	font-family: "Helvetica Neue", Helvetica, Arial, Sans-serif;
-	font-weight: normal;
+	font-family: Helvetica, Arial, sans-serif;
+	font-family: 'Source Sans Pro';
+	font-weight: 400;
 	color: rgba(0,0,0,.8);
 	background: rgb(255,255,255);
 	overflow-y: scroll;
@@ -33,20 +31,15 @@ body{
 html.menu-active{ overflow: hidden !important; }
 /*------------------*/
 /* fonts */
-.regular{ font-family: "Helvetica Neue"; }
-.bold{
-	font-family: "Helvetica Neue";
-	font-weight: bold;
-}
-.wf-active .regular{
+.regular{
 	font-family: "Source Sans Pro";
 	font-weight: 400;
 }
-.wf-active .bold{
+.bold, strong{
 	font-family: "Source Sans Pro";
 	font-weight: 600;
 }
-.wf-active strong{ font-weight: 600; }
+
 /*------------------*/
 /* Utilities */
 .float-left{ float: left !important; position: relative; }
