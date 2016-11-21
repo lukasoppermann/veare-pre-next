@@ -1,7 +1,8 @@
 {
   "name": "veare",
+  "description": "veare website",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "server.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lukasoppermann/veare.git"
@@ -12,7 +13,6 @@
     "url": "https://github.com/lukasoppermann/veare/issues"
   },
   "homepage": "https://github.com/lukasoppermann/veare#readme",
-  "description": "",
   "devDependencies": {
     "cssnano": "^3.7.0",
     "del": "^2.2.*",
@@ -41,16 +41,18 @@
     "postcss-url": "^5.1.2",
     "postcss-will-change": "^1.1.0",
     "run-sequence": "^1.2.2",
-    "simplecrawler": "^1.0.3"
-  },
-  "dependencies": {
+    "simplecrawler": "^1.0.3",
+    "nodemon": "^1.11.0",
     "bricks.js": "^1.7.0",
-    "express": "^4.14.0",
     "minigrid": "^3.0.6",
     "minireset.css": "^0.0.2",
     "open-color": "^1.4.0"
   },
+  "dependencies": {
+    "express": "^4.14.0"
+  },
   "scripts": {
-    "start": "node server.js"
+    "start": "npm server.js",
+    "nodemon": "nodemon --watch server.js"
   }
 }

@@ -1,21 +1,20 @@
 version: '2'
 services:
     node:
-        image: node:latest
-        container_name: veare_node
+        restart: always
+        image: veare/veare:latest
+        container_name: veare
         volumes:
-            - /public/
+            - ./public:/usr/src/app/public
         networks:
-            - veare_appnet
+            - docker_appnet
+        # ports:
+        #     - "8080:8080"
         # depends_on:
         #     - php
         #     - db
         #     - redis
 # used for interal communication within docker
 networks:
-    veare_appnet:
-        driver: "bridge"
-# used to store and persist data
-# volumes:
-#     apidata:
-#         driver: "local"
+    docker_appnet:
+        external: true
