@@ -129,8 +129,8 @@ gulp.task('html', function () {
         files[f[1]][name] = filename;
     }))
     .on('end', function(){
-        json.appcss = '<link rel="stylesheet" href="/public/build/css/'+files.css.app+'">';
-        json.appjs = '<script type="text/javascript" defer src="/public/build/js/'+files.js.javascript+'"></script>';
+        json.appcss = '<link rel="stylesheet" href="/build/css/'+files.css.app+'">';
+        json.appjs = '<script type="text/javascript" defer src="/build/js/'+files.js.javascript+'"></script>';
 
         gulp.src(['resources/templates/*.mustache','resources/templates/**/*.mustache','!resources/templates/partials/*.mustache'])
             .pipe(mustache(json, {
@@ -165,6 +165,22 @@ gulp.task('rev', function(done){
 		}))
         .pipe(gulp.dest('public/build'));
 });
+/* ------------------------------
+ *
+ * accessibility
+ *
+ */
+// gulp.task('checklinks', function(cb) {
+//   Crawler.crawl('http://example.com/')
+//     .on('fetch404', function(queueItem, response) {
+//       gutil.log('Resource not found linked from ' +
+//                       queueItem.referrer + ' to', queueItem.url);
+//       gutil.log('Status code: ' + response.statusCode);
+//     })
+//     .on('complete', function(queueItem) {
+//       cb();
+//     });
+// });
 /* ------------------------------
  *
  * default task

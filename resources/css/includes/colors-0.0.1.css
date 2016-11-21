@@ -40,6 +40,7 @@
 .light-yellow{ background: rgb(245,235,85); border-color: rgb(245,235,85); }
 /* yellow */
 .yellow{ background: rgb(245,215,85); border-color: rgb(245,215,85); }
+.border-yellow, .hovers .hover-border-yellow:hover{ border-color: rgb(245,215,85); }
 .font-yellow{ color: rgb(245,215,85); }
 /* red */
 .red{ background: rgb(245,130,105); border-color: rgb(245,130,105); }
