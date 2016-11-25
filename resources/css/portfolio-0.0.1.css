@@ -75,18 +75,18 @@
 [id="tag:infographics"]:target ~ .filters .filter[data-category~="infographics"],{
 	color: rgb(245, 150, 0);
 }
-.c-filter__target:not(:target) ~ .cards .o-card {
-  opacity: 1;
-  transition: all .4s ease;
+.c-filter__target:not(:target) ~ .cards .o-card__container {
+	opacity: 1;
+	transition: all .4s ease;
 }
-.c-filter__target:target ~ .cards .o-card {
-  opacity: 0.5;
+.c-filter__target:target ~ .cards .o-card__container {
+	opacity: 0.5;
 }
 [id="tag:interface"]:target ~ .cards [data-category~="interface"],
 [id="tag:print"]:target ~ .cards [data-category~="print"],
 [id="tag:branding"]:target ~ .cards [data-category~="branding"],
 [id="tag:infographics"]:target ~ .cards [data-category~="infographics"],
-.cards .o-card:hover
+.cards .o-card__container:hover
 {
 	opacity: 1 !important;
 }
@@ -102,21 +102,27 @@
 .height-medium{ height: 300px; }
 .height-small{ height: 250px; }
 /* card styling */
+.o-card__container{
+	display: block;
+	position: absolute;
+	width: 250px;
+	z-index: 1;
+}
+.o-card__container:hover{
+	z-index: 100;
+}
 .o-card {
 	display: block;
-	width: 250px;
+	width: 100%;
 	vertical-align: top;
 	text-align: left;
-	position: absolute;
 	padding: 0px;
 	text-decoration: none;
 	overflow: visible !important;
-	z-index: 1;
 	transform: scale(1,1);
 	transition: all .4s ease;
 }
-.o-card:hover{
-	z-index: 100;
+.o-card__container:hover .o-card{
 	transform: scale(1.2,1.2);
 	box-shadow: 0 10px 60px rgba(0, 15, 30, 0.3);
 	transition: all .4s ease;
@@ -127,15 +133,7 @@
 	width: 100%;
 	overflow: hidden;
 	position: relative;
-	/*transform: scale(1,1);*/
-	/*transition: box-shadow .4s ease, transform .4s ease;*/
 }
-/*.o-card:hover .o-card__sides{
-	transform: scale(1.2,1.2);
-	box-shadow: 0 10px 60px rgba(0, 15, 30, 0.3);
-	z-index: 20;
-	transition: box-shadow .4s ease, transform .4s ease;
-}*/
 .o-card__front,
 .o-card__back {
 	display: block;
@@ -151,13 +149,14 @@
 	transform: translateY(30%);
 	transition: transform .1s ease .5s, opacity .5s ease;
 }
-.o-card:hover .o-card__back{
+.o-card__container:hover .o-card__back{
 	opacity: 1;
 	transform: translateY(0);
 	transition: transform .4s ease, opacity .4s ease;
 }
-.o-card:hover .image{
+.o-card__container:hover .image{
 	opacity: 0;
+	transition: opacity .4s ease;
 }
 .o-card .image{
 	position: absolute;

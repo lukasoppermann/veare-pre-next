@@ -18,6 +18,74 @@ var size = size = require('gulp-size');
 var mustache = require("gulp-mustache");
 var filenames = require("gulp-filenames");
 var tap = require("gulp-tap");
+var babel = require('gulp-babel');
+var gulpif = require('gulp-if');
+var size = size = require('gulp-size');
+/* ------------------------------
+ *
+ * JS
+ *
+ */
+gulp.task('clean-js', function(){
+    return del([
+        'public/build/js',
+    ]);
+});
+
+gulp.task('build-js', function(done){
+    var files = {
+        common: [
+            'resources/js/analytics.js',
+            'resources/js/app.js'
+        ],
+        portfolio: [
+            'node_modules/minigrid/dist/minigrid.min.js',
+            'resources/js/cards.js'
+        ]
+    };
+    // BUILD JS
+    Object.keys(files).forEach(function(key) {
+        gulp.src(files[key])
+            .pipe(size({
+                'title':key+'.js before:',
+                'pretty':true
+            }))
+            .pipe(sourcemaps.init())
+            .pipe(gulpif('/\.babel$/b', babel({
+                presets: ['es2015']
+            })))
+            .pipe(concat(key+'.js'))
+            .pipe(uglify())
+            .pipe(size({
+                'title':key+'.js after:',
+                'pretty':true
+            }))
+            .pipe(size({
+                'title':key+'.js gzip:',
+                'pretty':true,
+                'gzip':true
+            }))
+            .pipe(sourcemaps.write('/'))
+            .pipe(gulp.dest('public/build/js'));
+    });
+    done();
+});
+// js
+gulp.task('js', function(done){
+    runSequence(
+        'clean-js',
+        'build-js',
+        'rev',
+        'html',
+        done
+    );
+});
+// watch js
+gulp.task('watch-js', function(){
+    gulp.watch([
+        'resources/js/*'
+    ], ['js']);
+});
 /* ------------------------------
  *
  * POST CSS
@@ -130,7 +198,8 @@ gulp.task('html', function () {
     }))
     .on('end', function(){
         json.appcss = '<link rel="stylesheet" href="/build/css/'+files.css.app+'">';
-        json.appjs = '<script type="text/javascript" defer src="/build/js/'+files.js.javascript+'"></script>';
+        json.appjs = '<script type="text/javascript" defer src="/build/js/'+files.js.common+'"></script>';
+        json.portfoliojs = '<script type="text/javascript" defer src="/build/js/'+files.js.portfolio+'"></script>';
 
         gulp.src(['resources/templates/*.mustache','resources/templates/**/*.mustache','!resources/templates/partials/*.mustache'])
             .pipe(mustache(json, {
@@ -154,8 +223,8 @@ gulp.task('watch-html', function(){
  */
 gulp.task('rev', function(done){
     return gulp.src([
-        'public/build/css/app.css'//,
-        // 'public/build/js/app.js',
+        'public/build/css/app.css',
+        'public/build/js/*.js'//,
         // 'public/build/svgs/svg-sprite.svg'
     ], {base: 'public/build'})
         .pipe(rev())
@@ -189,12 +258,12 @@ gulp.task('rev', function(done){
 gulp.task('default', function(done){
     runSequence(
 [
-    // 'clean-js',
+    'clean-js',
     'clean-css'//,
     // 'clean-svg'
 ],
 [
-    // 'build-js',
+    'build-js',
     'build-css'//,
     // 'svgsprite'
 ],
@@ -203,7 +272,7 @@ gulp.task('default', function(done){
 [
     // 'watch-svg',
     'watch-css',
-    // 'watch-js',
+    'watch-js',
     'watch-html'
 ],
     done

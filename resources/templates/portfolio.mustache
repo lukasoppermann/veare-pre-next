@@ -47,23 +47,5 @@
 </div>
 {{> partials/sidebar }}
 </body>
-<script type="text/javascript" src="/build/js/bricks.min.js"></script>
-<script type="text/javascript">
-	var bricks = new Bricks({
-  		container: '.js-cards',
-		packed: 'packed',
-		sizes: [
-			{ columns: 1, gutter: 10 },
-			{ mq: '600px', columns: 2, gutter: 10 },
-			{ mq: '800px', columns: 3, gutter: 10 },
-			{ mq: '1100px', columns: 4, gutter: 10 }
-		]
-	});
-    document.addEventListener('DOMContentLoaded', function(){
-		bricks.pack();
-    });
-    window.addEventListener('resize', function(){
-    	bricks.pack();
-    });
-</script>
+{{{ portfoliojs }}}
 </html>
