@@ -20,6 +20,7 @@ namespace :deploy do
         on roles(:app), in: :groups, limit:1 do
             # move to app dir + remove current (bad due to root linkage) + add new current
             execute "cd #{fetch(:deploy_to)} && rm current && ln -sfn ./releases/#{fetch(:release_timestamp)} ./current"
+            execute "cd #{fetch(:app_dir)}/nodejs && docker-compose down && docker-compose up -d"
         end
     end
 
