@@ -11,18 +11,18 @@ RUN mkdir -p /usr/app
 WORKDIR /usr/app
 
 # Install app dependencies
-#COPY package.json /usr/src/app/
-#RUN npm install --saves
+# COPY ../package.json /usr/app/
 
 # Copy server
 #COPY server.js /usr/src/app/
 
 EXPOSE 8080
 
+# Copy start.sh
+# COPY start.sh /usr/app/
+
 VOLUME ["/usr/app"]
 
-RUN npm install --save --prod
+# CMD ["docker/start.sh"]
 
-# CMD ["/start.sh"]
-
-CMD slc run
+CMD sh docker/start.sh
