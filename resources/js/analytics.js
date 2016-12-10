@@ -3,7 +3,9 @@
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-ga('create', 'UA-7074034-1', 'auto');
+ga('create', 'UA-7074034-1', 'auto', {'allowLinker': true});
+ga('require', 'linker');
+ga('linker:autoLink', ['veare.de', 'lukasoppermann.com', 'lukasoppermann.de', 'lukas-oppermann.de'] );
 ga('require', 'linkid');
 ga('set', 'anonymizeIp', true);
 ga('send', 'pageview');

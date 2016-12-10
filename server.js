@@ -10,26 +10,20 @@ const app = express();
 
 app.use(express.static('public'));
 
-app.get('/error', function (req, res) {
-    process.exit();
-});
-
 app.get(/^\/(home|contact)?$/, function (req, res) {
     res.sendFile(path.join(__dirname + '/public/index.html'));
 });
 app.get(/^\/([\w-]+)\/?$/, function (req, res) {
     res.sendFile(path.join(__dirname + '/public/'+req.params[0]+'.html'), {},function (err) {
         if (err) {
-            console.log(err);
-            res.status(err.status).end();
+            res.redirect('/');
         }
     });
 });
 app.get(/^\/portfolio\/([\w-]+)$/, function (req, res) {
         res.sendFile(path.join(__dirname + '/public/portfolio/'+req.params[0]+'.html'), {},function (err) {
             if (err) {
-                console.log(err);
-                res.status(err.status).end();
+                res.redirect('/portfolio');
             }
         });
 });
