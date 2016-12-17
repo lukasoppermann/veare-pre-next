@@ -1,18 +1,18 @@
 version: '2'
 services:
-    nodejs:
+    veare:
         container_name: veare
         restart: always
-        image: veare/veare:latest
-        #build: .
+        #image: veare/veare:latest
+        build: .
         volumes:
             - ../:/usr/app/
         networks:
-            - docker_appnet
+            - proxy_appnet
         # enable for local testing without docker proxy
         # ports:
         #     - "8080:8080"
 # used for interal communication within docker
 networks:
-    docker_appnet:
+    proxy_appnet:
         external: true

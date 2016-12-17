@@ -1,13 +1,13 @@
-FROM node:alpine
+FROM mhart/alpine-node:7.2
 
 ENV NODE_ENV production
 
-RUN npm install -g --production strongloop
+RUN npm i -g forever
 #RUN npm install pm2 -g --production
 #RUN npm install -g strong-supervisor --production
 # RUN npm install forever -g --production
 # Create app directory
-RUN mkdir -p /usr/app
+# RUN mkdir -p /usr/app
 WORKDIR /usr/app
 
 # Install app dependencies
@@ -21,7 +21,7 @@ EXPOSE 8080
 # Copy start.sh
 # COPY start.sh /usr/app/
 
-VOLUME ["/usr/app"]
+# VOLUME ["/usr/app"]
 
 # CMD ["docker/start.sh"]
 

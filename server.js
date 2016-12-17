@@ -8,7 +8,11 @@ const PORT = 8080;
 // App
 const app = express();
 
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
+
+app.get('/error', function (req, res) {
+    process.exit();
+});
 
 app.get(/^\/(home|contact)?$/, function (req, res) {
     res.sendFile(path.join(__dirname + '/public/index.html'));
