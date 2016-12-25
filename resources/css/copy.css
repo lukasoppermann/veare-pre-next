@@ -1,0 +1,18 @@
+.o-copy{
+  font-family: var(--sans-serif);
+  font-size: var(--type-default);
+  line-height: var(--type-default-line-height);
+  color: var(--type-black);
+}
+.o-copy--big{
+  font-size: var(--type-medium);
+  line-height: var(--type-medium-line-height);
+}
+.o-copy--huge{
+  font-size: var(--type-big);
+  line-height: var(--type-big-line-height);
+}
+.o-copy--serif{
+  font-family: var(--serif);
+  font-style: var(--serif-style);
+}

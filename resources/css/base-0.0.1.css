@@ -1,5 +1,8 @@
 /*------------------*/
 /* general */
+html{
+	font-size: 62.5%; /* sets 1rem = 10px */
+}
 html, body{
 	min-height: 100vh;
 	height: auto;
@@ -7,8 +10,8 @@ html, body{
 }
 body{
 	font-family: Helvetica, Arial, sans-serif;
-	font-family: 'Source Sans Pro';
-	font-weight: 400;
+	font-family: var(--sans-serif);
+	font-weight: var(--sans-serif-weight);
 	color: rgba(0,0,0,.8);
 	background: rgb(255,255,255);
 	overflow-y: scroll;
@@ -156,7 +159,7 @@ hr.strong{
 }
 /*------------------*/
 /* logo */
-#logo{
+/*#logo{
 	cursor: pointer;
 	position: relative;
 	display: block;
@@ -184,13 +187,13 @@ hr.strong{
 	width: 100%;
 	height: 100%;
 	fill: rgb(239, 170, 31);
-}
+}*/
 .white-logo #logo svg{
 	fill: rgb(255,255,255);
 }
-@media screen and (max-width: 600px){
+/*@media screen and (max-width: 600px){
 	#logo{
 		width: 50px;
 		height: 40px;
 	}
-}
+}*/

@@ -1,0 +1,24 @@
+:root{
+  /*
+  * Fonts
+  */
+  --serif: 'Noto Serif', serif;
+  --serif-style: italic;
+  --sans-serif: 'Open Sans', sans-serif;
+  --sans-serif-weight: 400;
+  /*
+  * Sizes
+  */
+  --type-giant: 12rem;
+  --type-giant-line-height: 100%;
+  --type-huge: 8rem;
+  --type-huge-line-height: 100%;
+  --type-big: 2.4rem;
+  --type-big-line-height: 135%;
+  --type-medium-big: 2rem;
+  --type-medium-big-line-height: 135%;
+  --type-medium: 1.8rem;
+  --type-medium-line-height: 135%;
+  --type-default: 1.6rem;
+  --type-default-line-height: 135%;
+}

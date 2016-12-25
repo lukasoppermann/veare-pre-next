@@ -5,7 +5,7 @@
 .font-white, .hovers .hover-font-white:hover{ color: rgb(255,255,255); }
 .white-pseudo:before, .white-pseudo:after{ background: rgb(255,255,255); }
 /* black */
-.black{ background: rgb(44,47,50); border-color: rgb(44,47,50);}
+.black{ background: rgb(35,40,55); border-color: rgb(35,40,55);}
 .font-black{ color: rgba(0,0,0,.8); }
 .black-pseudo:before, .black-pseudo:after{ background: rgb(44,47,50);}
 /* black */

@@ -1,0 +1,13 @@
+:root{
+  --veare-orange-rgb: 250, 150, 0;
+  /*
+   * main colors
+   */
+  --black: var(--oc-gray-9);
+  --veare-orange: rgb(var(--veare-orange-rgb));
+  /*
+   * type colors
+   */
+  --type-black: var(--black);
+  --type-gray: color(var(--black) alpha(40%));
+}

@@ -7,7 +7,7 @@
 .uppercase{ text-transform: Uppercase; }
 /*------------------*/
 /* Headlines */
-h1, h2, h3, h4, h5{ font-weight: 600; word-wrap: break-word; }
+h1, h2, h3, h4, h5{ word-wrap: break-word; }
 h1, .giant-headline{ font-size: 200px; line-height: 100%; }
 h2, .big-headline{ font-size: 100px; line-height: 120%; }
 h3, .medium-headline{ font-size: 40px; line-height: 120%; margin-bottom: 15px; }

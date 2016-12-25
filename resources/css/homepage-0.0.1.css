@@ -104,6 +104,9 @@
 	left: 10px;
 }
 .skills .content p{ opacity: 0.85; }
+.skills-headline{
+  margin-top: 40px;
+}
 /* ---------------------------- */
 /* About veare */
 .circle-big{
