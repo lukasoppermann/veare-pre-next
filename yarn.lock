@@ -8,11 +8,11 @@
 
 "@webcomponents/shadycss@github:webcomponents/shadycss":
   version "0.0.1"
-  resolved "https://codeload.github.com/webcomponents/shadycss/tar.gz/0a33b30d6f520ae8f4a477bd19cdaa27dcd380bd"
+  resolved "https://codeload.github.com/webcomponents/shadycss/tar.gz/6daedba04b90ba2b0753bcaf4c4b685715314da3"
 
 "@webcomponents/shadydom@github:webcomponents/shadydom":
   version "0.0.1"
-  resolved "https://codeload.github.com/webcomponents/shadydom/tar.gz/50bcf0ab420b1753d73e8ce39262222490bde0a2"
+  resolved "https://codeload.github.com/webcomponents/shadydom/tar.gz/ce87f953b151472efffda78a3c9ca6dcbbe269f7"
 
 abbrev@1:
   version "1.0.9"
@@ -106,8 +106,8 @@ anymatch@^1.3.0:
     micromatch "^2.1.5"
 
 aproba@^1.0.3:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/aproba/-/aproba-1.1.0.tgz#4d8f047a318604e18e3c06a0e52230d3d19f147b"
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/aproba/-/aproba-1.1.1.tgz#95d3600f07710aa0e9298c726ad5ecf2eacbabab"
 
 archy@^1.0.0:
   version "1.0.0"
@@ -937,21 +937,15 @@ debug-log@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/debug-log/-/debug-log-1.0.1.tgz#2307632d4c04382b8df8a32f70b895046d52745f"
 
-debug@2.X, debug@^2.1.1, debug@^2.2.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.0.tgz#bc596bcabe7617f11d9fa15361eded5608b8499b"
-  dependencies:
-    ms "0.7.2"
-
-debug@~0.7.4:
-  version "0.7.4"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-0.7.4.tgz#06e1ea8082c2cb14e39806e22e2f6f757f92af39"
-
-debug@~2.2.0:
+debug@2.X, debug@^2.1.1, debug@^2.2.0, debug@~2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.2.0.tgz#f87057e995b1a1f6ae6a4960664137bc56f039da"
   dependencies:
     ms "0.7.1"
+
+debug@~0.7.4:
+  version "0.7.4"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-0.7.4.tgz#06e1ea8082c2cb14e39806e22e2f6f757f92af39"
 
 decamelize@^1.0.0, decamelize@^1.1.2:
   version "1.2.0"
@@ -2568,8 +2562,8 @@ jspm-registry@^0.4.1:
     semver "^4.3.3"
 
 jspm@^0.17.0-beta.13:
-  version "0.17.0-beta.38"
-  resolved "https://registry.yarnpkg.com/jspm/-/jspm-0.17.0-beta.38.tgz#5b7577ce0ac571f876b34e78c959ac4b9448f6f5"
+  version "0.17.0-beta.39"
+  resolved "https://registry.yarnpkg.com/jspm/-/jspm-0.17.0-beta.39.tgz#a08db5477d7b3a1625a6a9d446382062e8bbe005"
   dependencies:
     bluebird "^3.0.5"
     chalk "^1.1.1"
@@ -2588,8 +2582,8 @@ jspm@^0.17.0-beta.13:
     rimraf "^2.4.4"
     sane "^1.3.3"
     semver "^5.1.0"
-    systemjs "0.20.5"
-    systemjs-builder "0.16.2"
+    systemjs "0.20.7"
+    systemjs-builder "0.16.3"
     traceur "0.0.105"
     uglify-js "^2.6.1"
 
@@ -3481,7 +3475,7 @@ package-json@^1.0.0:
 
 "page-sections@github:nuclei/page-sections#master":
   version "0.0.4"
-  resolved "https://codeload.github.com/nuclei/page-sections/tar.gz/fc08931c570bc13a628c0bd4d5b86eddfca1708e"
+  resolved "https://codeload.github.com/nuclei/page-sections/tar.gz/6a0e18807d98d18522f3793b59a7561b0191cc85"
 
 parse-filepath@^1.0.1:
   version "1.0.1"
@@ -4888,9 +4882,9 @@ svgo@^0.7.0:
     sax "~1.2.1"
     whet.extend "~0.9.9"
 
-systemjs-builder@0.16.2:
-  version "0.16.2"
-  resolved "https://registry.yarnpkg.com/systemjs-builder/-/systemjs-builder-0.16.2.tgz#088d6fa3d1691e2e87dfbe3ced653a0988983598"
+systemjs-builder@0.16.3:
+  version "0.16.3"
+  resolved "https://registry.yarnpkg.com/systemjs-builder/-/systemjs-builder-0.16.3.tgz#7dc830f816cf2a86d03019d057ca1bd096659c18"
   dependencies:
     babel-core "^6.18.2"
     babel-plugin-transform-amd-system-wrapper "^0.3.3"
@@ -4909,9 +4903,9 @@ systemjs-builder@0.16.2:
     traceur "0.0.105"
     uglify-js "^2.6.1"
 
-systemjs@0.20.5:
-  version "0.20.5"
-  resolved "https://registry.yarnpkg.com/systemjs/-/systemjs-0.20.5.tgz#42dca26b521019faaf7c3e30be4e5ca1708841b2"
+systemjs@0.20.7:
+  version "0.20.7"
+  resolved "https://registry.yarnpkg.com/systemjs/-/systemjs-0.20.7.tgz#09e0b69180a84446bd4b7d2d2602ff4e567434bd"
 
 systemjs@^0.19.46:
   version "0.19.46"
@@ -5162,8 +5156,8 @@ update-notifier@0.5.0:
     string-length "^1.0.0"
 
 urijs@^1.16.1:
-  version "1.18.5"
-  resolved "https://registry.yarnpkg.com/urijs/-/urijs-1.18.5.tgz#d709e2238c549f65230f4fc3535806a589689ac5"
+  version "1.18.6"
+  resolved "https://registry.yarnpkg.com/urijs/-/urijs-1.18.6.tgz#333ad964ff6ef951fea8d04bec342641550c6125"
 
 urix@^0.1.0, urix@~0.1.0:
   version "0.1.0"
@@ -5335,13 +5329,9 @@ window-size@0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/window-size/-/window-size-0.1.0.tgz#5438cd2ea93b202efa3a19fe8887aee7c94f9c9d"
 
-wordwrap@0.0.2:
+wordwrap@0.0.2, wordwrap@~0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/wordwrap/-/wordwrap-0.0.2.tgz#b79669bb42ecb409f83d583cad52ca17eaa1643f"
-
-wordwrap@~0.0.2:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/wordwrap/-/wordwrap-0.0.3.tgz#a3d5da6cd5c0bc0008d37234bbaf1bed63059107"
 
 wordwrap@~1.0.0:
   version "1.0.0"
