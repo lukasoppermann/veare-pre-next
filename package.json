@@ -14,6 +14,11 @@
   },
   "homepage": "https://github.com/lukasoppermann/veare#readme",
   "devDependencies": {
+    "@webcomponents/custom-elements": "^1.0.0-alpha.3",
+    "@webcomponents/shadycss": "github:webcomponents/shadycss",
+    "@webcomponents/shadydom": "github:webcomponents/shadydom",
+    "babel-plugin-transform-custom-element-classes": "^0.1.0",
+    "page-sections": "github:nuclei/page-sections#master",
     "cssnano": "^3.7.0",
     "del": "^2.2.*",
     "flex-layout-attribute": "^1.0.3",
@@ -54,13 +59,8 @@
     "standard": "^8.6.0"
   },
   "dependencies": {
-    "@webcomponents/custom-elements": "^1.0.0-alpha.3",
-    "@webcomponents/shadycss": "github:webcomponents/shadycss#6daedba04b90ba2b0753bcaf4c4b685715314da3",
-    "@webcomponents/shadydom": "github:webcomponents/shadydom",
-    "babel-plugin-transform-custom-element-classes": "^0.1.0",
     "express": "^4.14.0",
-    "node-cache": "^4.1.1",
-    "page-sections": "github:nuclei/page-sections#master"
+    "node-cache": "^4.1.1"
   },
   "scripts": {
     "start": "node server.js",
