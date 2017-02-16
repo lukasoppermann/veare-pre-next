@@ -6,13 +6,17 @@
   version "1.0.0-alpha.3"
   resolved "https://registry.yarnpkg.com/@webcomponents/custom-elements/-/custom-elements-1.0.0-alpha.3.tgz#340d8cc8307730540ac92276c9a49149f6fc0116"
 
-"@webcomponents/shadycss@github:webcomponents/shadycss":
+"@webcomponents/shadycss@github:webcomponents/shadycss#6daedba04b90ba2b0753bcaf4c4b685715314da3":
   version "0.0.1"
   resolved "https://codeload.github.com/webcomponents/shadycss/tar.gz/6daedba04b90ba2b0753bcaf4c4b685715314da3"
 
-"@webcomponents/shadydom@github:webcomponents/shadydom":
+"@webcomponents/shadydom@github:webcomponents/shadydom#8b29e706ec2c45ace10cfd60ea14c74e67f58fd2":
   version "0.0.1"
-  resolved "https://codeload.github.com/webcomponents/shadydom/tar.gz/ce87f953b151472efffda78a3c9ca6dcbbe269f7"
+  resolved "https://codeload.github.com/webcomponents/shadydom/tar.gz/8b29e706ec2c45ace10cfd60ea14c74e67f58fd2"
+
+"@webcomponents/template@github:webcomponents/template":
+  version "0.0.1"
+  resolved "https://codeload.github.com/webcomponents/template/tar.gz/0973368e5433527663c5e492a6ead39dfc0b4019"
 
 abbrev@1:
   version "1.0.9"

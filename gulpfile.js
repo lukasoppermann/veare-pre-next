@@ -45,6 +45,7 @@ gulp.task('build-js', function (done) {
       'resources/js/cards.js'
     ],
     webcomponents: [
+      'node_modules/@webcomponents/template/template.js',
       'node_modules/@webcomponents/custom-elements/custom-elements.min.js',
       'node_modules/@webcomponents/shadydom/shadydom.min.js',
       'node_modules/@webcomponents/shadycss/shadycss.min.js'
@@ -133,7 +134,7 @@ gulp.task('build-css', function () {
             // autoprefixer: false,
             discardComments: {
               removeAll: true
-            },
+            }
             // zindex: false
           }),
           require('postcss-cssnext')({
