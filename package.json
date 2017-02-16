@@ -55,7 +55,7 @@
   },
   "dependencies": {
     "@webcomponents/custom-elements": "^1.0.0-alpha.3",
-    "@webcomponents/shadycss": "github:webcomponents/shadycss",
+    "@webcomponents/shadycss": "github:webcomponents/shadycss#6daedba04b90ba2b0753bcaf4c4b685715314da3",
     "@webcomponents/shadydom": "github:webcomponents/shadydom",
     "babel-plugin-transform-custom-element-classes": "^0.1.0",
     "express": "^4.14.0",
