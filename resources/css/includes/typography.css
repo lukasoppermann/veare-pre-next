@@ -9,16 +9,16 @@
   /*
   * Sizes
   */
-  --type-giant: 12rem;
+  --type-giant: var(--ms_a5);
   --type-giant-line-height: 100%;
-  --type-huge: 8rem;
+  --type-huge: calc(var(--ms_a3) + var(--ms_a-1));
   --type-huge-line-height: 100%;
-  --type-big: 2.4rem;
+  --type-big: var(--ms_a1);/* calc(var(--ms_b0) + var(--ms_a-3)); */
   --type-big-line-height: 135%;
-  --type-medium-big: 2rem;
+  --type-medium-big: var(--ms_b0);
   --type-medium-big-line-height: 135%;
   --type-medium: 1.8rem;
   --type-medium-line-height: 135%;
-  --type-default: 1.6rem;
+  --type-default: var(--ms_a0);
   --type-default-line-height: 135%;
 }

@@ -1,26 +1,26 @@
 :root{
-  --sand-rgb: 246,245,243;
-  --sand: rgb(var(--sand-rgb));
+  --color-sand: rgb(246,245,243);
 }
 .o-section{
   text-align: left;
   box-sizing: border-box;
 }
 .c-section--intro{
-  background-color: var(--sand);
-  border: 2rem solid rgb(255, 255, 255);
-  border-top: 6rem solid rgb(255, 255, 255);
+  background-color: var(--color-sand);
+  border: var(--ms_a0) solid rgb(255, 255, 255);
+  border-top: var(--ms_a3) solid rgb(255, 255, 255);
+  height: 700px;
 }
 .c-section--intro .c-svg--logo{
-  margin: 85px 0 0 45px;
+  margin: var(--ms_a4) 0 0 var(--ms_a2);
 }
 .c-intro-content{
-  margin-left: 11.5rem;
-  margin-top: 22rem;
+  margin-left: var(--ms_a4);
+  margin-top: calc(var(--ms_a5) + var(--ms_a2)); /* to get close to 22rem */
   position: relative;
   z-index: 10;
   flex-grow: 1;
-  max-width: 75rem;
+  max-width: var(--ms_a8);
 }
 .c-intro-main-headline-container{
   width: 100%;
@@ -49,7 +49,7 @@
 }
 .c-intro-main-subline::before{
   content: "";
-  width: 10rem;
+  width: var(--ms_a4);
   height: 1.3rem;
   background-color: var(--veare-orange);
   display: block;
@@ -62,7 +62,7 @@
   max-width: 70rem;
 }
 .c-intro--slogan{
-  width: 23rem;
+  width: calc(var(--ms_b5) + var(--ms_b0));
   font-family: var(--sans-serif);
   font-size: var(--type-medium-big);
   line-height: var(--type-medium-big-line-height);
@@ -72,7 +72,7 @@
   position: relative;
 }
 .c-intro--services{
-  width: 35rem;
+  width: var(--ms_b6);
   font-family: var(--serif);
   font-style: var(--serif-style);
   font-size: var(--type-big);
