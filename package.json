@@ -15,9 +15,10 @@
   "homepage": "https://github.com/lukasoppermann/veare#readme",
   "devDependencies": {
     "@webcomponents/custom-elements": "^1.0.0-alpha.3",
-    "@webcomponents/shadycss": "github:webcomponents/shadycss#6daedba04b90ba2b0753bcaf4c4b685715314da3",
-    "@webcomponents/shadydom": "github:webcomponents/shadydom#8b29e706ec2c45ace10cfd60ea14c74e67f58fd2",
+    "@webcomponents/shadycss": "github:webcomponents/shadycss",
+    "@webcomponents/shadydom": "github:webcomponents/shadydom",
     "@webcomponents/template": "github:webcomponents/template",
+    "@webcomponents/webcomponentsjs": "github:webcomponents/webcomponentsjs#v1",
     "babel-plugin-transform-custom-element-classes": "^0.1.0",
     "cssnano": "^3.7.0",
     "del": "^2.2.*",

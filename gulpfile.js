@@ -33,7 +33,7 @@ gulp.task('clean-js', function () {
 })
 
 gulp.task('build-js', function (done) {
-  var files = {
+  let files = {
     common: [
       'resources/js/analytics.js',
       'resources/js/app.js',
@@ -45,13 +45,22 @@ gulp.task('build-js', function (done) {
       'resources/js/cards.js'
     ],
     webcomponents: [
-      'node_modules/@webcomponents/template/template.js',
-      'node_modules/@webcomponents/custom-elements/custom-elements.min.js',
-      'node_modules/@webcomponents/shadydom/shadydom.min.js',
-      'node_modules/@webcomponents/shadycss/shadycss.min.js'
+      'node_modules/webcomponents.js/webcomponents-loader.js'
+      // 'node_modules/@webcomponents/template/template.js',
+      // 'node_modules/@webcomponents/custom-elements/custom-elements.min.js',
+      // 'node_modules/@webcomponents/shadydom/shadydom.min.js',
+      // 'node_modules/@webcomponents/shadycss/scoping-shim.js',
+      // 'node_modules/@webcomponents/shadycss/apply-shim.js',
+      // 'node_modules/@webcomponents/shadycss/custom-style-interface.js'
     ]
   }
-    // BUILD JS
+  let moveFiles = [
+    'node_modules/webcomponents.js/webcomponents-hi-sd-ce.js'
+  ]
+  // MOVE files
+  gulp.src(moveFiles)
+    .pipe(gulp.dest('public/build/js'))
+  // BUILD JS
   Object.keys(files).forEach(function (key) {
     gulp.src(files[key])
         .pipe(size({

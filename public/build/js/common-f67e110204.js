@@ -224,7 +224,7 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 							if (typeof ShadyCSS !== 'undefined') {
 								ShadyCSS.prepareTemplate(template, 'page-sections'); // eslint-disable-line no-undef
 								// apply css polyfill
-								ShadyCSS.applyStyle(_this); // eslint-disable-line no-undef
+								ShadyCSS.styleElement(_this); // eslint-disable-line no-undef
 							}
 							// add content to shadowRoot
 							shadowRoot.appendChild(document.importNode(template.content, true));
@@ -270,15 +270,14 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 									this._setActive();
 									// Get all child elements and activate visible ones
 									// stop once an inactive item follows an active item
-									var elements = this.querySelectorAll('page-section');
-									for (var i = 0; elements.length > i; ++i) {
-										elements[i].parent = this;
-										elements[i].setActiveState();
+									Array.prototype.slice.call(this.querySelectorAll('page-section')).map(function (item, index, array) {
+										item.parent = item;
+										item.setActiveState();
 										// abort if current element is NOT in view, but previous was in view
-										if (i > 0 && !elements[i].hasAttribute('active') && elements[i - 1].hasAttribute('active')) {
+										if (index > 0 && !item.hasAttribute('active') && array[index - 1].hasAttribute('active')) {
 											return;
 										}
-									}
+									});
 								} else {
 									this._setUnactive();
 								}
@@ -355,7 +354,7 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 							if (typeof ShadyCSS !== 'undefined') {
 								ShadyCSS.prepareTemplate(template, 'page-section'); // eslint-disable-line no-undef
 								// apply css polyfill
-								ShadyCSS.applyStyle(_this2); // eslint-disable-line no-undef
+								ShadyCSS.styleElement(_this2); // eslint-disable-line no-undef
 							}
 							// add content to shadowRoot
 							shadowRoot.appendChild(document.importNode(template.content, true));
