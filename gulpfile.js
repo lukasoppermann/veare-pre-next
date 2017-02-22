@@ -123,6 +123,7 @@ gulp.task('build-css', function () {
     'node_modules/minireset.css/minireset.css',
     'node_modules/open-color/open-color.css',
     'node_modules/flex-layout-attribute/css/flex-layout-attribute.css',
+    'node_modules/modular-scale-css/modular-scale.css',
     // includes
     'resources/css/includes/*.css',
     // main files
@@ -139,6 +140,7 @@ gulp.task('build-css', function () {
         .pipe(postcss([
           require('postcss-import')(),
           require('postcss-will-change'),
+          require('postcss-discard-comments'),
           require('cssnano')({
             // autoprefixer: false,
             discardComments: {

@@ -1,4 +1,10 @@
 /*------------------*/
+/* setup */
+:root{
+  --ms-base-a: 16px;
+  --ms-base-b: 20px;
+}
+/*------------------*/
 /* general */
 html{
 	font-size: 62.5%; /* sets 1rem = 10px */
