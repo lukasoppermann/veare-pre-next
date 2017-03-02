@@ -6,16 +6,17 @@
   box-sizing: border-box;
 }
 .c-section--intro{
+  position: relative;
   background-color: var(--color-sand);
   border: var(--ms_a0) solid rgb(255, 255, 255);
   border-top: var(--ms_a3) solid rgb(255, 255, 255);
   height: 700px;
 }
 .c-section--intro .c-svg--logo{
-  margin: var(--ms_a4) 0 0 var(--ms_a2);
+  margin: var(--ms_b1) 0 0 var(--ms_a1);
 }
 .c-intro-content{
-  margin-left: var(--ms_a4);
+  margin-left: var(--ms_b3);
   margin-top: calc(var(--ms_a5) + var(--ms_a2)); /* to get close to 22rem */
   position: relative;
   z-index: 10;
@@ -50,16 +51,16 @@
 .c-intro-main-subline::before{
   content: "";
   width: var(--ms_a4);
-  height: 1.3rem;
+  height: var(--ms_b-1);
   background-color: var(--veare-orange);
   display: block;
   position: absolute;
-  bottom: -4rem;
+  bottom: calc(-1 * var(--ms_a2));
   left: 0;
 }
 .c-intro-copy-container{
-  margin-top: 8rem;
-  max-width: 70rem;
+  margin-top: var(--ms_b3);
+  width: calc(var(--ms_a8) - var(--ms_b2));
 }
 .c-intro--slogan{
   width: calc(var(--ms_b5) + var(--ms_b0));
@@ -81,7 +82,7 @@
 }
 .c-intro--services-description{
   position: absolute;
-  top: -2rem;
+  top: calc(-1 * var(--ms_b0));
 }
 .c-intro--services-description,
 .c-intro--services-description-veare{
@@ -93,57 +94,45 @@
 }
 .c-intro-image{
   max-width: 500px;
+  height: 100%;
   z-index: 1;
   position: absolute;
   right: 5%;
-}
-@media screen and (max-width: 1300px){
-  .c-intro-content{
-    margin-left: 9rem;
-  }
+  overflow: hidden;
 }
 @media screen and (max-width: 1250px){
   .c-intro-copy-container{
-    max-width: 60rem;
+    max-width: var(--ms_b7);
   }
   .c-intro-image{
     max-width: 45rem;
   }
   .c-intro-main-headline{
-    width: 55rem;
+    width: var(--ms_b7);
   }
   .c-intro-main-subline{
-    margin-top: 1rem;
-    font-size: 7rem;
+    margin-top: var(--ms_a-1);
+    font-size: var(--ms_a3);
   }
   .c-intro--slogan{
-    width: 23rem;
+    width: calc(var(--ms_b5) + var(--ms_b-1));
     font-size: var(--type-medium-big);
     line-height: var(--type-medium-big-line-height);
   }
   .c-intro--services{
-    width: 29rem;
+    width: var(--ms_a6);
     font-size: var(--type-medium-big);
     line-height: var(--type-medium-big-line-height);
   }
 }
-@media screen and (max-width: 1150px){
-  .c-intro-content{
-    margin-left: 8rem;
-    margin-top: 24rem;
-    max-width: 60rem;
-  }
-  .c-intro-image{
-    position: absolute;
-    right: 5%;
-  }
-}
 @media screen and (max-width: 1100px){
   .c-intro-content{
-    margin-top: 20rem;
+    margin-left: var(--ms_b3);
+    margin-top: calc(var(--ms_b5) - var(--ms_b0));
+    max-width: calc(var(--ms_b7) + var(--ms_b0));
   }
   .c-intro-copy-container{
-    margin-top: 6rem;
+    margin-top: var(--ms_a3);
     flex-direction: column;
   }
   .c-intro--services-description{
@@ -151,52 +140,53 @@
     top: auto;
   }
   .c-intro--services-container{
-    margin-top: 2rem;
+    margin-top: var(--ms_b0);
+  }
+  .c-intro-image{
+    position: absolute;
+    right: 5%;
   }
 }
 @media screen and (max-width: 800px){
   .c-intro-content{
-    margin-left: 3rem;
-    margin-top: 20rem;
+    max-width: calc(var(--ms_b7) + var(--ms_b0));
+  }
+  .c-intro-main-headline{
+    margin-bottom: 0;
+    width: calc( 100% - var(--ms_a1));
   }
 }
-@media screen and (max-width: 650px){
+@media screen and (max-width: 700px){
+  .c-intro-content{
+    margin-left: var(--ms_b1);
+    width: calc( 100% - var(--ms_b2));
+  }
   .c-intro-main-headline{
-    width: calc( 100% - 3rem);
     margin-bottom: 0;
+    width: calc( 100% - var(--ms_a1));
   }
   .c-intro-main-subline{
-    font-size: 6rem;
+    font-size: var(--ms_a3);
     letter-spacing: 0;
-    left: -.2rem;
+    left: calc(-1 * var(--ms_a-4));
   }
 }
 @media screen and (max-width: 500px){
-  .c-section--intro{
-    border: 1.5rem solid rgb(255, 255, 255);
-    border-top: 6rem solid rgb(255, 255, 255);
-    position: relative;
-  }
   .c-section--intro .c-svg--logo{
-    top: -4.5rem;
+    top: calc(-1 * var(--ms_b2));
     left: 0;
-    width: 4.5rem;
-    height: 3.5rem;
+    width: var(--ms_b2);
+    height: var(--ms_a2);
     margin: 0;
   }
   .c-intro-content{
-    margin-left: 1.5rem;
-    margin-top: 20rem;
+    margin-left: var(--ms_a0);
+    margin-top: var(--ms_b5);
   }
   .c-intro-main-subline{
-    font-size: 3.5rem;
+    font-size: var(--type-medium-huge);
     letter-spacing: 0;
     left: -.2rem;
-  }
-}
-@media screen and (max-width: 500px){
-  .c-intro-content{
-    margin-top: 15rem;
   }
   .c-intro--slogan{
     font-size: var(--type-medium);
@@ -205,10 +195,6 @@
   .c-intro--services{
     font-size: var(--type-medium);
     line-height: var(--type-medium-line-height);
-    width: auto;
-    padding-bottom: 2rem;
-  }
-  .c-intro--services-container{
-    max-width: calc( 100% - 3rem);
+    padding-bottom: var(--ms_b0);
   }
 }

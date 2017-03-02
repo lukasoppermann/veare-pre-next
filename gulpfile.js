@@ -37,15 +37,14 @@ gulp.task('build-js', function (done) {
     common: [
       'resources/js/analytics.js',
       'resources/js/app.js',
-      'node_modules/page-sections/dist/page-sections.js',
-      'node_modules/page-sections/dist/page-section.js'
+      'node_modules/page-sections/dist/page-sections.js'
     ],
     portfolio: [
       'node_modules/minigrid/dist/minigrid.min.js',
       'resources/js/cards.js'
     ],
     webcomponents: [
-      'node_modules/webcomponents.js/webcomponents-loader.js'
+      'node_modules/webcomponentsjs/webcomponents-loader.js'
       // 'node_modules/@webcomponents/template/template.js',
       // 'node_modules/@webcomponents/custom-elements/custom-elements.min.js',
       // 'node_modules/@webcomponents/shadydom/shadydom.min.js',

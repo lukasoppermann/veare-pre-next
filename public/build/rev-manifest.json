@@ -1,7 +1,5 @@
 {
-  "css/app.css": "css/app-64a23729c7.css",
+  "css/app.css": "css/app-b14a4d0e00.css",
   "js/common.js": "js/common-f67e110204.js",
-  "js/portfolio.js": "js/portfolio-bc65150b50.js",
-  "js/webcomponents-hi-sd-ce.js": "js/webcomponents-hi-sd-ce-ba8e35b145.js",
-  "js/webcomponents.js": "js/webcomponents-4ca2d7423c.js"
+  "js/portfolio.js": "js/portfolio-bc65150b50.js"
 }

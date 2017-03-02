@@ -13,7 +13,9 @@
   --type-giant-line-height: 100%;
   --type-huge: calc(var(--ms_a3) + var(--ms_a-1));
   --type-huge-line-height: 100%;
-  --type-big: var(--ms_a1);/* calc(var(--ms_b0) + var(--ms_a-3)); */
+  --type-medium-huge: var(--ms_a2);
+  --type-medium-huge-line-height: 135%;
+  --type-big: var(--ms_a1);
   --type-big-line-height: 135%;
   --type-medium-big: var(--ms_b0);
   --type-medium-big-line-height: 135%;
