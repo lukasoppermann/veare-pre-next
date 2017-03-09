@@ -18,7 +18,7 @@
     "@webcomponents/shadycss": "github:webcomponents/shadycss",
     "@webcomponents/shadydom": "github:webcomponents/shadydom",
     "@webcomponents/template": "github:webcomponents/template",
-    "@webcomponents/webcomponentsjs": "github:webcomponents/webcomponentsjs#v1.0.0-rc.1",
+    "@webcomponents/webcomponentsjs": "github:webcomponents/webcomponentsjs#v1.0.0-rc.5",
     "babel-plugin-transform-custom-element-classes": "^0.1.0",
     "cssnano": "^3.7.0",
     "del": "^2.2.*",

@@ -18,9 +18,9 @@
   version "0.0.1"
   resolved "https://codeload.github.com/webcomponents/template/tar.gz/60d743e6a760f880caea02a8565aa1759e1de779"
 
-"@webcomponents/webcomponentsjs@github:webcomponents/webcomponentsjs#v1.0.0-rc.1":
-  version "0.7.22"
-  resolved "https://codeload.github.com/webcomponents/webcomponentsjs/tar.gz/6762d3891f57ab106952ebf5fc25d7348278b17f"
+"@webcomponents/webcomponentsjs@github:webcomponents/webcomponentsjs#v1.0.0-rc.5":
+  version "0.7.24"
+  resolved "https://codeload.github.com/webcomponents/webcomponentsjs/tar.gz/8c9be5dcc1a70fc4777e6d04204b375d5eda7e30"
 
 abbrev@1:
   version "1.1.0"

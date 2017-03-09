@@ -44,7 +44,6 @@ gulp.task('build-js', function (done) {
       'resources/js/cards.js'
     ],
     webcomponents: [
-      'node_modules/webcomponentsjs/webcomponents-loader.js'
       // 'node_modules/@webcomponents/template/template.js',
       // 'node_modules/@webcomponents/custom-elements/custom-elements.min.js',
       // 'node_modules/@webcomponents/shadydom/shadydom.min.js',
@@ -54,7 +53,17 @@ gulp.task('build-js', function (done) {
     ]
   }
   let moveFiles = [
-    'node_modules/webcomponents.js/webcomponents-hi-sd-ce.js'
+    'node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js',
+    'node_modules/@webcomponents/webcomponentsjs/webcomponents-hi-sd-ce.js',
+    'node_modules/@webcomponents/webcomponentsjs/webcomponents-hi-ce.js',
+    'node_modules/@webcomponents/webcomponentsjs/webcomponents-hi.js',
+    'node_modules/@webcomponents/webcomponentsjs/webcomponents-lite.js',
+    'node_modules/@webcomponents/webcomponentsjs/webcomponents-sd-ce.js',
+    'node_modules/@webcomponents/webcomponentsjs/webcomponents-hi-sd-ce.js.map',
+    'node_modules/@webcomponents/webcomponentsjs/webcomponents-hi-ce.js.map',
+    'node_modules/@webcomponents/webcomponentsjs/webcomponents-hi.js.map',
+    'node_modules/@webcomponents/webcomponentsjs/webcomponents-lite.js.map',
+    'node_modules/@webcomponents/webcomponentsjs/webcomponents-sd-ce.js.map'
   ]
   // MOVE files
   gulp.src(moveFiles)
@@ -129,7 +138,7 @@ gulp.task('build-css', function () {
     'resources/css/*.css',
     'resources/css/pages/*.css'
   ])
-        .pipe(sourcemaps.init())
+        // .pipe(sourcemaps.init())
         .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
         .pipe(concat('app.css'))
         .pipe(size({
@@ -148,9 +157,10 @@ gulp.task('build-css', function () {
             // zindex: false
           }),
           require('postcss-cssnext')({
-            browsers: ['last 2 versions']
+            browsers: ['last 3 versions']
           }),
           require('postcss-color-function'),
+          require('postcss-calc-function').default(),
           require('postcss-reporter')({
             plugins: [
               'postcss-color-function'
@@ -166,7 +176,7 @@ gulp.task('build-css', function () {
           'pretty': true,
           'gzip': true
         }))
-        .pipe(sourcemaps.write('/'))
+        // .pipe(sourcemaps.write('/'))
         .pipe(gulp.dest('public/build/css'))
 })
 // css
