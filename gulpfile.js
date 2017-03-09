@@ -149,18 +149,16 @@ gulp.task('build-css', function () {
           require('postcss-import')(),
           require('postcss-will-change'),
           require('postcss-discard-comments'),
+          require('postcss-cssnext')({
+            browsers: ['last 2 versions']
+          }),
           require('cssnano')({
-            // autoprefixer: false,
+            autoprefixer: false,
             discardComments: {
               removeAll: true
             }
             // zindex: false
           }),
-          require('postcss-cssnext')({
-            browsers: ['last 3 versions']
-          }),
-          require('postcss-color-function'),
-          require('postcss-calc-function').default(),
           require('postcss-reporter')({
             plugins: [
               'postcss-color-function'
