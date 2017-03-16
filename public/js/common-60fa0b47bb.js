@@ -1,53 +1,78 @@
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+'use strict';
 
-ga('create', 'UA-7074034-1', 'auto', {'allowLinker': true});
+(function (i, s, o, g, r, a, m) {
+  i['GoogleAnalyticsObject'] = r;i[r] = i[r] || function () {
+    (i[r].q = i[r].q || []).push(arguments);
+  }, i[r].l = 1 * new Date();a = s.createElement(o), m = s.getElementsByTagName(o)[0];a.async = 1;a.src = g;m.parentNode.insertBefore(a, m);
+})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+ga('create', 'UA-7074034-1', 'auto', { 'allowLinker': true });
 ga('require', 'linker');
-ga('linker:autoLink', ['veare.de', 'lukasoppermann.com', 'lukasoppermann.de', 'lukas-oppermann.de'] );
+ga('linker:autoLink', ['veare.de', 'lukasoppermann.com', 'lukasoppermann.de', 'lukas-oppermann.de']);
 ga('require', 'linkid');
 ga('set', 'anonymizeIp', true);
 ga('send', 'pageview');
+'use strict';
 
 function ready(fn) {
-  if (document.readyState != 'loading'){
-    fn();
-  } else {
-    document.addEventListener('DOMContentLoaded', fn);
-  }
+	if (document.readyState != 'loading') {
+		fn();
+	} else {
+		document.addEventListener('DOMContentLoaded', fn);
+	}
 }
 // -----------------------
 // open sidebar
-ready(function(){
-	document.querySelector('#menu_icon').addEventListener('click', function(e)
-	{
+ready(function () {
+	document.querySelector('#menu_icon').addEventListener('click', function (e) {
 		var $body = document.querySelector('body');
-		if( $body.classList.contains('menu-active') )
-		{
+		if ($body.classList.contains('menu-active')) {
 			$body.classList.remove('menu-active');
-		}
-		else
-		{
+		} else {
 			$body.classList.add('menu-active');
 		}
 	});
 });
-
 "use strict";
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _createClass = function () {
+	function defineProperties(target, props) {
+		for (var i = 0; i < props.length; i++) {
+			var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+		}
+	}return function (Constructor, protoProps, staticProps) {
+		if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	};
+}();
+
+var _typeof = typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol" ? function (obj) {
+	return typeof obj === "undefined" ? "undefined" : _typeof2(obj);
+} : function (obj) {
+	return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2(obj);
+};
 
 var _templateObject = _taggedTemplateLiteral(["<style>\n\t\t\t\t      :host{\n\t\t\t\t        display: flex;\n\t\t\t\t        flex-direction: column;\n\t\t\t\t        flex-wrap: nowrap;\n\t\t\t\t      }\n\t\t\t\t    </style>\n\t\t\t\t    <slot></slot>\n\t\t\t\t  "], ["<style>\n\t\t\t\t      :host{\n\t\t\t\t        display: flex;\n\t\t\t\t        flex-direction: column;\n\t\t\t\t        flex-wrap: nowrap;\n\t\t\t\t      }\n\t\t\t\t    </style>\n\t\t\t\t    <slot></slot>\n\t\t\t\t  "]),
     _templateObject2 = _taggedTemplateLiteral(["<style>\n\t\t\t\t      :host{\n\t\t\t\t          display: inline-block;\n\t\t\t\t          flex: 0 1 auto;\n\t\t\t\t      }\n\t\t\t\t      :host(:not([flexible])){\n\t\t\t\t          box-sizing: border-box;\n\t\t\t\t          width: 100%;\n\t\t\t\t          min-height: 100vh;\n\t\t\t\t      }\n\t\t\t\t      :host([flexible]){\n\t\t\t\t          margin-left: 50%;\n\t\t\t\t          transform: translateX(-50%);\n\t\t\t\t      }\n\t\t\t\t    </style>\n\t\t\t\t    <slot></slot>\n\t\t\t\t  "], ["<style>\n\t\t\t\t      :host{\n\t\t\t\t          display: inline-block;\n\t\t\t\t          flex: 0 1 auto;\n\t\t\t\t      }\n\t\t\t\t      :host(:not([flexible])){\n\t\t\t\t          box-sizing: border-box;\n\t\t\t\t          width: 100%;\n\t\t\t\t          min-height: 100vh;\n\t\t\t\t      }\n\t\t\t\t      :host([flexible]){\n\t\t\t\t          margin-left: 50%;\n\t\t\t\t          transform: translateX(-50%);\n\t\t\t\t      }\n\t\t\t\t    </style>\n\t\t\t\t    <slot></slot>\n\t\t\t\t  "]);
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck(instance, Constructor) {
+	if (!(instance instanceof Constructor)) {
+		throw new TypeError("Cannot call a class as a function");
+	}
+}
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+function _possibleConstructorReturn(self, call) {
+	if (!self) {
+		throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+	}return call && ((typeof call === "undefined" ? "undefined" : _typeof2(call)) === "object" || typeof call === "function") ? call : self;
+}
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) {
+	if (typeof superClass !== "function" && superClass !== null) {
+		throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof2(superClass)));
+	}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+}
 
 function _CustomElement() {
 	return Reflect.construct(HTMLElement, [], this.__proto__.constructor);
@@ -57,7 +82,9 @@ function _CustomElement() {
 Object.setPrototypeOf(_CustomElement.prototype, HTMLElement.prototype);
 Object.setPrototypeOf(_CustomElement, HTMLElement);
 
-function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+function _taggedTemplateLiteral(strings, raw) {
+	return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } }));
+}
 
 // This file was generated by modules-webmake (modules for web) project.
 // See: https://github.com/medikoo/modules-webmake
@@ -235,7 +262,6 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
       * @description When element is added to DOM
        */
 
-
 						_createClass(PageSections, [{
 							key: "connectedCallback",
 							value: function connectedCallback() {
@@ -326,7 +352,6 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
       * export for commonjs module
       */
 
-
 					module.exports = PageSections;
 				})();
 			},
@@ -364,7 +389,6 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
        * @method _inView
        * @description check if element is in view
        */
-
 
 						_createClass(PageSection, [{
 							key: "setActiveState",
@@ -436,7 +460,6 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
       * export for commonjs module
       */
 
-
 					module.exports = PageSection;
 				})();
 			},
@@ -453,5 +476,4 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 	}
 })("page-sections/src/page-sections");
 //# sourceMappingURL=page-sections.js.map
-
 //# sourceMappingURL=common.js.map

@@ -1,17 +1,19 @@
 // Imports
 const gulp = require('gulp')
 const fs = require('fs')
+const chalk = require('chalk')
+const gutil = require('gulp-util')
 // var rename = require('gulp-rename')
 const rev = require('gulp-rev')
 const del = require('del')
 const postcss = require('gulp-postcss')
 const concat = require('gulp-concat')
 // var uglify = require('gulp-uglify')
-const plumber = require('gulp-plumber')
+const refresh = require('gulp-refresh')
+const nodemon = require('gulp-nodemon')
 // var svgmin = require('gulp-svgmin')
 // var svgstore = require('gulp-svgstore')
 // var cheerio = require('gulp-cheerio')
-const notify = require('gulp-notify')
 const sourcemaps = require('gulp-sourcemaps')
 const runSequence = require('run-sequence')
 const size = require('gulp-size')
@@ -20,7 +22,12 @@ const mustache = require('gulp-mustache')
 const tap = require('gulp-tap')
 const path = require('path')
 const babel = require('gulp-babel')
-const gulpif = require('gulp-if')
+
+function swallowError (error) {
+  // If you want details of the error in the console
+  console.log(error.toString())
+  this.emit('end')
+}
 /* ------------------------------
  *
  * JS
@@ -28,7 +35,7 @@ const gulpif = require('gulp-if')
  */
 gulp.task('clean-js', function () {
   return del([
-    'public/build/js'
+    'public/js'
   ])
 })
 
@@ -43,13 +50,8 @@ gulp.task('build-js', function (done) {
       'node_modules/minigrid/dist/minigrid.min.js',
       'resources/js/cards.js'
     ],
-    webcomponents: [
-      // 'node_modules/@webcomponents/template/template.js',
-      // 'node_modules/@webcomponents/custom-elements/custom-elements.min.js',
-      // 'node_modules/@webcomponents/shadydom/shadydom.min.js',
-      // 'node_modules/@webcomponents/shadycss/scoping-shim.js',
-      // 'node_modules/@webcomponents/shadycss/apply-shim.js',
-      // 'node_modules/@webcomponents/shadycss/custom-style-interface.js'
+    'registerServiceWorker': [
+      'resources/js/register-sw.js'
     ]
   }
   let moveFiles = [
@@ -67,21 +69,23 @@ gulp.task('build-js', function (done) {
   ]
   // MOVE files
   gulp.src(moveFiles)
-    .pipe(gulp.dest('public/build/js'))
+    .pipe(gulp.dest('public/js'))
   // BUILD JS
   Object.keys(files).forEach(function (key) {
+    const sizes = {
+      'before': size(),
+      'after': size(),
+      'gzip': size()
+    }
     gulp.src(files[key])
-        .pipe(size({
-          'title': key + '.js before:',
-          'pretty': true
-        }))
+        .pipe(sizes.before)
         .pipe(sourcemaps.init())
-        .pipe(gulpif('/.babel$/b', babel({
+        .pipe(babel({
           presets: ['es2015'],
           plugins: ['transform-custom-element-classes']
-        })))
+        }))
+        .on('error', swallowError)
         .pipe(concat(key + '.js'))
-        // .pipe(uglify())
         .pipe(size({
           'title': key + '.js after:',
           'pretty': true
@@ -92,7 +96,7 @@ gulp.task('build-js', function (done) {
           'gzip': true
         }))
         .pipe(sourcemaps.write('/'))
-        .pipe(gulp.dest('public/build/js'))
+        .pipe(gulp.dest('public/js'))
   })
   done()
 })
@@ -119,13 +123,18 @@ gulp.task('watch-js', function () {
  */
 gulp.task('clean-css', function (done) {
   return del([
-    'public/build/css/app.css',
-    'public/build/css/app.css.map',
-    'public/build/css/app-*.css'
+    'public/css'
   ])
 })
 
 gulp.task('build-css', function () {
+  const sizes = {
+    'before': size(),
+    'after': size(),
+    'gzip': size({
+      gzip: true
+    })
+  }
   return gulp.src([
     // npm resources
     'node_modules/minireset.css/minireset.css',
@@ -139,43 +148,39 @@ gulp.task('build-css', function () {
     'resources/css/pages/*.css'
   ])
         // .pipe(sourcemaps.init())
-        .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
         .pipe(concat('app.css'))
-        .pipe(size({
-          'title': 'app.css before:',
-          'pretty': true
-        }))
+        .pipe(sizes.before)
         .pipe(postcss([
           require('postcss-import')(),
           require('postcss-will-change'),
           require('postcss-discard-comments'),
-          // require('postcss-cssnext')({
-          //   browsers: ['last 2 versions']
-          // }),
-          // require('cssnano')({
-          //   autoprefixer: false,
-          //   discardComments: {
-          //     removeAll: true
-          //   }
-          //   // zindex: false
-          // }),
+          require('postcss-cssnext')({
+            browsers: ['last 2 versions'],
+            features: {
+              rem: false
+            }
+          }),
+          require('cssnano')({
+            autoprefixer: false,
+            discardComments: {
+              removeAll: true
+            }
+            // zindex: false
+          }),
           require('postcss-reporter')({
             plugins: [
               'postcss-color-function'
             ]
           })
         ]))
-        .pipe(size({
-          'title': 'app.css after:',
-          'pretty': true
-        }))
-        .pipe(size({
-          'title': 'app.css gzip:',
-          'pretty': true,
-          'gzip': true
-        }))
+        .pipe(sizes.after)
+        .pipe(sizes.gzip)
         // .pipe(sourcemaps.write('/'))
-        .pipe(gulp.dest('public/build/css'))
+        .pipe(gulp.dest('public/css'))
+        .on('end', function () {
+          let decrease = Math.floor(((sizes.before.size - sizes.after.size) / sizes.before.size * 100))
+          gutil.log(chalk.white.bgGreen.bold(`${decrease}% saved`) + ` Total size ${sizes.after.prettySize} / ` + chalk.green.bold(`${sizes.gzip.prettySize} (gzip)`))
+        })
 })
 // css
 gulp.task('css', function (done) {
@@ -205,13 +210,13 @@ gulp.task('html', function () {
   json.js = {}
     // get files
   return gulp.src([
-    'public/build/css/*-*.css',
-    'public/build/js/*-*.js'
+    'public/css/*-*.css',
+    'public/js/*-*.js'
   ], {read: false})
     .pipe(tap(function (file) {
       let filename = path.basename(file.path)
       let [name, ext] = filename.split('.')
-      json[ext][name.split('-').shift()] = '/build/' + ext + '/' + filename
+      json[ext][name.split('-').shift()] = '/' + ext + '/' + filename
     }))
     .on('end', function () {
       gulp.src(['resources/templates/*.mustache', 'resources/templates/**/*.mustache', '!resources/templates/partials/*.mustache'])
@@ -220,6 +225,7 @@ gulp.task('html', function () {
         }))
         .on('error', console.log)
         .pipe(gulp.dest('public'))
+        .pipe(refresh())
     })
 })
 // watch css
@@ -235,21 +241,40 @@ gulp.task('watch-html', function () {
  *
  */
 gulp.task('rev', function (done) {
-    // delete old files in a snycronus manor
-  var manifest = fs.readFileSync('public/build/rev-manifest.json', 'utf8')
-  del.sync(Object.values(JSON.parse(manifest)), {'cwd': 'public/build/'})
+  // delete old files in a snycronus manor
+  if (fs.existsSync('public/rev-manifest.json')) {
+    var manifest = fs.readFileSync('public/rev-manifest.json', 'utf8')
+    del.sync(Object.values(JSON.parse(manifest)), {'cwd': 'public/'})
+  }
 
   return gulp.src([
-    'public/build/css/app.css',
-    'public/build/js/*.js'
-        // 'public/build/svgs/svg-sprite.svg'
-  ], {base: 'public/build'})
+    'public/css/app.css',
+    'public/js/*.js'
+        // 'public/svgs/svg-sprite.svg'
+  ], {base: 'public'})
         .pipe(rev())
-        .pipe(gulp.dest('public/build'))
+        .pipe(gulp.dest('public'))
         .pipe(rev.manifest({
           merge: true // merge with the existing manifest (if one exists)
         }))
-        .pipe(gulp.dest('public/build'))
+        .pipe(gulp.dest('public'))
+})
+/* ------------------------------
+ *
+ * live reload
+ *
+ */
+gulp.task('serve', function () {
+  nodemon({
+    script: 'server.js',
+    watch: 'server.js',
+    delay: '1000'
+  })
+  .on('start', function () {
+    setTimeout(function () {
+      refresh()
+    }, 2000) // wait for the server to finish loading before restarting the browsers
+  })
 })
 /* ------------------------------
  *
@@ -257,6 +282,7 @@ gulp.task('rev', function (done) {
  *
  */
 gulp.task('default', function (done) {
+  refresh.listen()
   runSequence(
     [
       'clean-js',
