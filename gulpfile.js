@@ -147,11 +147,10 @@ gulp.task('build-css', function () {
     'resources/css/*.css',
     'resources/css/pages/*.css'
   ])
-        // .pipe(sourcemaps.init())
+        .pipe(sourcemaps.init())
         .pipe(concat('app.css'))
         .pipe(sizes.before)
         .pipe(postcss([
-          require('postcss-import')(),
           require('postcss-will-change'),
           require('postcss-discard-comments'),
           require('postcss-cssnext')({
@@ -160,6 +159,7 @@ gulp.task('build-css', function () {
               rem: false
             }
           }),
+          require('postcss-round-subpixels'),
           require('cssnano')({
             autoprefixer: false,
             discardComments: {
@@ -175,7 +175,7 @@ gulp.task('build-css', function () {
         ]))
         .pipe(sizes.after)
         .pipe(sizes.gzip)
-        // .pipe(sourcemaps.write('/'))
+        .pipe(sourcemaps.write('/'))
         .pipe(gulp.dest('public/css'))
         .on('end', function () {
           let decrease = Math.floor(((sizes.before.size - sizes.after.size) / sizes.before.size * 100))
