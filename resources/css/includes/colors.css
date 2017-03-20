@@ -3,7 +3,7 @@
   /*
    * main colors
    */
-  --black: var(--oc-gray-9);
+  --black: rgb(33,37,41);
   --veare-orange: rgb(var(--veare-orange-rgb));
   /*
    * type colors
