@@ -51,7 +51,7 @@ gulp.task('build-js', function (done) {
       'resources/js/cards.js'
     ],
     'registerServiceWorker': [
-      'resources/js/register-sw.js'
+      'resources/js/register-service-worker.js'
     ]
   }
   let moveFiles = [
@@ -261,6 +261,46 @@ gulp.task('rev', function (done) {
 })
 /* ------------------------------
  *
+ * service-worker
+ *
+ */
+gulp.task('service-worker', function (done) {
+  let swPrecache = require('sw-precache')
+  let rootDir = 'public'
+  let fileHashes = {}
+  // urls to prefetch
+  let urlsToPrefetch = [
+    '/media/veare-icons@2x.png',
+    '/media/lukas-oppermann@2x.png',
+    '/css/app.css'
+  ]
+
+  // get revisioned file version if exists in manifest
+  if (fs.existsSync(rootDir + '/rev-manifests.json')) {
+    let manifest = fs.readFileSync(rootDir + '/rev-manifest.json', 'utf8')
+    fileHashes = JSON.parse(manifest)
+  }
+  // replace url with revisioned url in urlsToPrefetch
+  urlsToPrefetch = urlsToPrefetch.map(function (item) {
+    let key = item.replace(/^\//g, '')
+
+    if (typeof fileHashes[key] !== 'undefined') {
+      return rootDir + '/' + fileHashes[key]
+    }
+    return rootDir + '/' + item
+  })
+  // create service worker
+  swPrecache.write(`${rootDir}/service-worker.js`, {
+    staticFileGlobs: urlsToPrefetch,
+    stripPrefix: rootDir,
+    runtimeCaching: [{
+      urlPattern: '/(.*)',
+      handler: 'cacheFirst'
+    }]
+  }, done)
+})
+/* ------------------------------
+ *
  * live reload
  *
  */
@@ -296,6 +336,7 @@ gulp.task('default', function (done) {
     ],
     'rev',
     'html',
+    'service-worker',
     [
     // 'watch-svg',
       'watch-css',
