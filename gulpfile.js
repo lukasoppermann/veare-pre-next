@@ -8,7 +8,7 @@ const rev = require('gulp-rev')
 const del = require('del')
 const postcss = require('gulp-postcss')
 const concat = require('gulp-concat')
-// var uglify = require('gulp-uglify')
+var uglify = require('gulp-uglify')
 const refresh = require('gulp-refresh')
 const nodemon = require('gulp-nodemon')
 // var svgmin = require('gulp-svgmin')
@@ -27,6 +27,11 @@ function swallowError (error) {
   // If you want details of the error in the console
   console.log(error.toString())
   this.emit('end')
+}
+
+function reportSavings (sizes, prefix) {
+  let decrease = Math.floor(((sizes.before.size - sizes.after.size) / sizes.before.size * 100))
+  gutil.log(prefix + ' ' + chalk.white.bgGreen.bold(` ${decrease}% saved `) + ` Total size ${sizes.after.prettySize} / ` + chalk.green.bold(`${sizes.gzip.prettySize} (gzip)`))
 }
 /* ------------------------------
  *
@@ -73,12 +78,14 @@ gulp.task('build-js', function (done) {
   // BUILD JS
   Object.keys(files).forEach(function (key) {
     const sizes = {
-      'before': size(),
-      'after': size(),
-      'gzip': size()
+      'before': size({showTotal: false}),
+      'after': size({showTotal: false}),
+      'gzip': size({
+        showTotal: false,
+        gzip: true
+      })
     }
     gulp.src(files[key])
-        .pipe(sizes.before)
         .pipe(sourcemaps.init())
         .pipe(babel({
           presets: ['es2015'],
@@ -86,17 +93,15 @@ gulp.task('build-js', function (done) {
         }))
         .on('error', swallowError)
         .pipe(concat(key + '.js'))
-        .pipe(size({
-          'title': key + '.js after:',
-          'pretty': true
-        }))
-        .pipe(size({
-          'title': key + '.js gzip:',
-          'pretty': true,
-          'gzip': true
-        }))
+        .pipe(sizes.before)
+        .pipe(uglify())
+        .pipe(sizes.after)
+        .pipe(sizes.gzip)
         .pipe(sourcemaps.write('/'))
         .pipe(gulp.dest('public/js'))
+        .on('end', function () {
+          reportSavings(sizes, 'JS (' + key + '):')
+        })
   })
   done()
 })
@@ -129,10 +134,11 @@ gulp.task('clean-css', function (done) {
 
 gulp.task('build-css', function () {
   const sizes = {
-    'before': size(),
-    'after': size(),
+    'before': size({showTotal: false}),
+    'after': size({showTotal: false}),
     'gzip': size({
-      gzip: true
+      gzip: true,
+      showTotal: false
     })
   }
   return gulp.src([
@@ -178,8 +184,7 @@ gulp.task('build-css', function () {
         .pipe(sourcemaps.write('/'))
         .pipe(gulp.dest('public/css'))
         .on('end', function () {
-          let decrease = Math.floor(((sizes.before.size - sizes.after.size) / sizes.before.size * 100))
-          gutil.log(chalk.white.bgGreen.bold(`${decrease}% saved`) + ` Total size ${sizes.after.prettySize} / ` + chalk.green.bold(`${sizes.gzip.prettySize} (gzip)`))
+          reportSavings(sizes, 'CSS:')
         })
 })
 // css
