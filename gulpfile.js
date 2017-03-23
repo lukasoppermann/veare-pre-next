@@ -88,13 +88,13 @@ gulp.task('build-js', function (done) {
     gulp.src(files[key])
         .pipe(sourcemaps.init())
         .pipe(babel({
-          presets: ['es2015'],
+          presets: [ [ 'es2015', { modules: false } ] ],
           plugins: ['transform-custom-element-classes']
         }))
         .on('error', swallowError)
         .pipe(concat(key + '.js'))
         .pipe(sizes.before)
-        .pipe(uglify())
+        // .pipe(uglify())
         .pipe(sizes.after)
         .pipe(sizes.gzip)
         .pipe(sourcemaps.write('/'))
