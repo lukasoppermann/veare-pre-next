@@ -1,0 +1,36 @@
+{
+  "short_name": "veare",
+  "name": "veare – interface design",
+  "icons": [
+    {
+      "src": "media/veare-icon.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "media/veare-icon@1,5x.png",
+      "type": "image/png",
+      "sizes": "72x72"
+    },
+    {
+      "src": "media/veare-icon@2x.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "media/veare-icon@3x.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "media/veare-icon@4x.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "/?utm_source=homescreen",
+  "background_color": "rgb(246,245,243)",
+  "theme_color": "rgb(240, 170, 30)",
+  "display": "standalone",
+  "orientation": "portrait"
+}

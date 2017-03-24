@@ -283,6 +283,7 @@ self.addEventListener('fetch', function(event) {
 
 // Runtime cache configuration, using the sw-toolbox library.
 
+toolbox.router.get(/\.googleapis\.com\//, toolbox.cacheFirst, {});
 toolbox.router.get("/(.*)", toolbox.cacheFirst, {});
 
 

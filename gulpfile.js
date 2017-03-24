@@ -94,7 +94,7 @@ gulp.task('build-js', function (done) {
         .on('error', swallowError)
         .pipe(concat(key + '.js'))
         .pipe(sizes.before)
-        // .pipe(uglify())
+        .pipe(uglify())
         .pipe(sizes.after)
         .pipe(sizes.gzip)
         .pipe(sourcemaps.write('/'))
@@ -277,7 +277,8 @@ gulp.task('service-worker', function (done) {
   let urlsToPrefetch = [
     '/media/veare-icons@2x.png',
     '/media/lukas-oppermann@2x.png',
-    '/css/app.css'
+    '/css/app.css',
+    'https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,Noto+Serif:400i'
   ]
 
   // get revisioned file version if exists in manifest
@@ -287,6 +288,10 @@ gulp.task('service-worker', function (done) {
   }
   // replace url with revisioned url in urlsToPrefetch
   urlsToPrefetch = urlsToPrefetch.map(function (item) {
+    if (item.substring(0, 4) === 'http') {
+      return item
+    }
+
     let key = item.replace(/^\//g, '')
 
     if (typeof fileHashes[key] !== 'undefined') {
@@ -299,6 +304,9 @@ gulp.task('service-worker', function (done) {
     staticFileGlobs: urlsToPrefetch,
     stripPrefix: rootDir,
     runtimeCaching: [{
+      urlPattern: /\.googleapis\.com\//,
+      handler: 'cacheFirst'
+    }, {
       urlPattern: '/(.*)',
       handler: 'cacheFirst'
     }]
