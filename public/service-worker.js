@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["/css/app.css","a3270f963c63fc4ce801dbdc92261ae5"],["/media/lukas-oppermann@2x.png","b0798a4bd072ce38912e0f4122b99bf3"],["/media/veare-icons@2x.png","840ca69f8618221264cc6dcbd031a90f"]];
+var precacheConfig = [["/css/app.css","f361dd1bdd7dcab936f2b1504911c7f0"],["/media/lukas-oppermann@2x.png","b0798a4bd072ce38912e0f4122b99bf3"],["/media/veare-icons@2x.png","840ca69f8618221264cc6dcbd031a90f"]];
 var cacheName = 'sw-precache-v3--' + (self.registration ? self.registration.scope : '');
 
 

@@ -43,6 +43,7 @@
   font-family: var(--serif);
   font-style: var(--serif-style);
   font-size: var(--type-huge);
+  font-weight: 400;
   line-height: var(--type-huge-line-height);
   color: var(--type-gray);
   display: inline-block;
