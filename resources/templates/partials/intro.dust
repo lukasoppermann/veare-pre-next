@@ -1,6 +1,6 @@
 <page-section class="o-section c-section--intro" layout="row top-left">
 
-    {{> logo-svg }}
+    {>"partials/logo-svg"/}
     <div class="c-intro-content">
       <h3 class="c-intro-main-headline-container">
         <svg class="c-intro-main-headline" viewBox="161 304 640 89" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

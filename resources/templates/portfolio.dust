@@ -1,11 +1,11 @@
-{{> partials/head }}
+{>"partials/head"/}
 <body class="hovers screen">
 	<div id="menu_icon" data-link-tracking="menu-icon-link">
 		<div class="veare-sprite"></div>
 	</div>
 	<div id="body">
 		<div id="header">
-			{{> partials/logo }}
+			{>"partials/logo"/}
 		</div>
 	<div class="wrapper">
 		<div class="section portfolio">
@@ -24,15 +24,15 @@
             </nav>
             <!-- END: CSS Filter NAV -->
             <div class="js-cards cards font-white">
-                {{#portfolioItems}}
-                    {{> partials/portfolio-item}}
-                {{/portfolioItems}}
+                {#portfolioItems}
+                    {>"partials/portfolio-item"/}
+                {/portfolioItems}
 						</div>
 		</div>
 	</div>
-    {{> partials/footer }}
+    {>"partials/footer"/}
 </div>
-{{> partials/sidebar }}
+{>"partials/sidebar"/}
 </body>
-<script src="{{{ js.portfolio }}}"></script>
+<script src="/{portfolio_js}"></script>
 </html>

@@ -1,4 +1,4 @@
-{{> partials/head }}
+{>"partials/head"/}
 <body class="hovers white-logo">
 	<div id="menu_icon" data-link-tracking="menu-icon-link">
 		<div class="veare-sprite"></div>
@@ -105,10 +105,10 @@
 					</div>
 
 				</div>
-			{{> partials/footer }}
+			{>"partials/footer"/}
 			</article>
 		</div>
 	</div>
-{{> partials/sidebar }}
+{>"partials/sidebar"/}
 </body>
 </html>

@@ -1,4 +1,4 @@
-{{> partials/head }}
+{>"partials/head"/}
 <body class="hovers white-logo">
 	<div id="menu_icon" data-link-tracking="menu-icon-link">
 		<div class="veare-sprite"></div>
@@ -24,27 +24,25 @@
 		<div class="wrapper">
 			<article class="portfolio-item">
 
-				<div class="stage light-blue type-centered font-white padding-top-wide padding-bottom-medium padding-sides-small">
-					<img class="centered image" src="/media/donnerwetter-stage.png" alt="Donnerwetter" />	</div>
-
+				<div class="stage yellow type-centered font-white padding-top-wide padding-bottom-medium padding-sides-small">
+					<img class="centered image" src="/media/lufthansa_germanwings_infographic.png" alt="The new germanwings" />	</div>
 
 				<div class="grid content-box inline-block max-width-1000 padding-top-small padding-sides-small"><div class="span-4 mobile-span-12 tablet-small-span-8">
-						<h2 class="text-size medium-headline align-left font-light-blue uppercase">Donnerwetter</h2>
+						<h2 class="text-size medium-headline align-left font-yellow uppercase">The new germanwings </h2>
 						<div class="copy-small font-gray aside">
-							<ul class="roles"><li class="role"><span class="tag-marker">#</span>information design</li><li class="role"><span class="tag-marker">#</span>print design</li><li class="role"><span class="tag-marker">#</span>concept</li></ul><div class='created'><span class="year">2010</span> </div><div class='tags'><span class="link tag" href=""><span class="tag-marker">#</span>infographics</span><span class="link tag" href=""><span class="tag-marker">#</span>poster</span><span class="link tag" href=""><span class="tag-marker">#</span>calendar</span></div>			</div>
+							<ul class="roles"><li class="role"><span class="tag-marker">#</span>concept</li><li class="role"><span class="tag-marker">#</span>information design</li></ul><div class='created'><span class="year">2013</span> <div class='team'>for <a class="link partner" rel="nofollow" target="_blank" href="http://tlgg.de">TLGG</a></div></div>			</div>
 					</div>
-								<div class="span-8 mobile-span-12"><p class="copy dark-gray">This calendar consists of 12 posters, one per month. Every poster visualises a different kind of weather information in an information graphic. The dates rotate like the arm of a clock visualizing the time of the year.</p>
-						</div>
+					<div class="span-8 mobile-span-12"><p class="copy dark-gray">After germanwings was acquired by Lufthansa they underwent some changes in structure and services. This infographic was produced for their facebook page to inform their customers about the most important changes.</p></div>
 
 					<div>
-						<a class="button copy-small light-blue hover-border-light-blue hover-font-light-blue font-white float-left margin-top-tiny" href="/portfolio">&larr; return to overview</a>
+						<a class="button copy-small yellow hover-border-yellow hover-font-yellow font-white float-left margin-top-tiny" href="/portfolio">&larr; return to overview</a>
 					</div>
 
 				</div>
-			{{> partials/footer }}
+			{>"partials/footer"/}
 			</article>
 		</div>
 	</div>
-{{> partials/sidebar }}
+{>"partials/sidebar"/}
 </body>
 </html>

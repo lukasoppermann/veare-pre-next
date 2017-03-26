@@ -885,6 +885,21 @@ chokidar@^1.4.3:
   optionalDependencies:
     fsevents "^1.0.0"
 
+chokidar@~1.5.1:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-1.5.2.tgz#293e728640cc93dd8277424334b3c6d4ad3a348a"
+  dependencies:
+    anymatch "^1.3.0"
+    async-each "^1.0.0"
+    glob-parent "^2.0.0"
+    inherits "^2.0.1"
+    is-binary-path "^1.0.0"
+    is-glob "^2.0.0"
+    path-is-absolute "^1.0.0"
+    readdirp "^2.0.0"
+  optionalDependencies:
+    fsevents "^1.0.0"
+
 circular-json@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/circular-json/-/circular-json-0.3.1.tgz#be8b36aefccde8b3ca7aa2d6afc07a37242c0d2d"
@@ -908,6 +923,13 @@ cli-cursor@^1.0.1:
 cli-width@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/cli-width/-/cli-width-2.1.0.tgz#b234ca209b29ef66fc518d9b98d5847b00edf00a"
+
+cli@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/cli/-/cli-1.0.1.tgz#22817534f24bfa4950c34d532d48ecbc621b8c14"
+  dependencies:
+    exit "0.1.2"
+    glob "^7.1.1"
 
 cliui@^2.1.0:
   version "2.1.0"
@@ -1513,6 +1535,13 @@ duplexify@^3.2.0:
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
 
+dustjs-linkedin@^2.7.5:
+  version "2.7.5"
+  resolved "https://registry.yarnpkg.com/dustjs-linkedin/-/dustjs-linkedin-2.7.5.tgz#618f063f72c19b78c8055ac2301c75b7b6bbdccc"
+  dependencies:
+    chokidar "~1.5.1"
+    cli "^1.0.1"
+
 ecc-jsbn@~0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/ecc-jsbn/-/ecc-jsbn-0.1.1.tgz#0fc73a9ed5f0d53c38193398523ef7e543777505"
@@ -1775,6 +1804,10 @@ event-stream@~3.1.0:
 exit-hook@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/exit-hook/-/exit-hook-1.1.1.tgz#f05ca233b48c05d54fff07765df8507e95c02ff8"
+
+exit@0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/exit/-/exit-0.1.2.tgz#0632638f8d877cc82107d30a0fff1a17cba1cd0c"
 
 expand-brackets@^0.1.4:
   version "0.1.5"
@@ -2304,6 +2337,13 @@ gulp-connect@^5.0.0:
     gulp-util "^3.0.6"
     tiny-lr "^0.2.1"
 
+gulp-dust-html@0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/gulp-dust-html/-/gulp-dust-html-0.0.5.tgz#cc479dc738cd026d3bcc5134b84e7173ced9bbcd"
+  dependencies:
+    gulp-util "~2.2.16"
+    through2 "~0.5.1"
+
 gulp-filenames@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/gulp-filenames/-/gulp-filenames-4.0.1.tgz#e569a4777baf758b39dfd9120c660c0d09b32ce1"
@@ -2458,7 +2498,7 @@ gulp-util@*, gulp-util@>=2.2.0, gulp-util@^3.0.0, gulp-util@^3.0.2, gulp-util@^3
     through2 "^2.0.0"
     vinyl "^0.5.0"
 
-gulp-util@~2.2.10:
+gulp-util@~2.2.10, gulp-util@~2.2.16:
   version "2.2.20"
   resolved "https://registry.yarnpkg.com/gulp-util/-/gulp-util-2.2.20.tgz#d7146e5728910bd8f047a6b0b1e549bc22dbd64c"
   dependencies:
@@ -4852,18 +4892,6 @@ robots-parser@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/robots-parser/-/robots-parser-1.0.1.tgz#79e32e3e5cb4066de501404207a8eb1232970020"
 
-rollup-plugin-uglify@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-uglify/-/rollup-plugin-uglify-1.0.1.tgz#11d0b0c8bcd2d07e6908f74fd16b0152390b922a"
-  dependencies:
-    uglify-js "^2.6.1"
-
-rollup@^0.41.6:
-  version "0.41.6"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.41.6.tgz#e0d05497877a398c104d816d2733a718a7a94e2a"
-  dependencies:
-    source-map-support "^0.4.0"
-
 run-async@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/run-async/-/run-async-0.1.0.tgz#c8ad4a5e110661e402a7d21b530e009f25f8e389"
@@ -5070,7 +5098,7 @@ source-map-resolve@^0.3.0:
     source-map-url "~0.3.0"
     urix "~0.1.0"
 
-source-map-support@^0.4.0, source-map-support@^0.4.2:
+source-map-support@^0.4.2:
   version "0.4.11"
   resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.4.11.tgz#647f939978b38535909530885303daf23279f322"
   dependencies:
@@ -5374,7 +5402,7 @@ through2@*, through2@2.X, through2@^2.0.0, through2@^2.0.1:
     readable-stream "^2.1.5"
     xtend "~4.0.1"
 
-through2@^0.5.0:
+through2@^0.5.0, through2@~0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/through2/-/through2-0.5.1.tgz#dfdd012eb9c700e2323fd334f38ac622ab372da7"
   dependencies:
@@ -5480,7 +5508,7 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
-uglify-js@^2.6.1, uglify-js@~2.8.10:
+uglify-js@~2.8.10:
   version "2.8.12"
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.8.12.tgz#8a50f5d482243650b7108f6080aa3a6afe2a6c55"
   dependencies:

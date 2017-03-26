@@ -1,12 +1,12 @@
-{{> partials/head }}
+{>"partials/head"/}
 <body class="hovers screen header-absolute">
 	<div id="menu_icon" data-link-tracking="menu-icon-link"><div class="veare-sprite"></div></div>
 	<div id="body">
 		<div class="wrapper">
 		<page-sections>
-			{{> partials/intro}}
+			{>"partials/intro"/}
 
-			{{> partials/skills }}
+			{>"partials/skills"/}
 
 			<section class="about-veare light-yellow font-white vertical-center min-padding" data-minpadding="50" data-minpadding-mobile="30">
 				<div class="section-content centered fixed">
@@ -186,11 +186,11 @@
 					</div>
 					</div>
 				</div>
-				{{> partials/footer }}
+				{>"partials/footer"/}
 			</section>
 		</page-sections>
 		</div>
 	</div>
-	{{> partials/sidebar }}
+	{>"partials/sidebar"/}
 </body>
 </html>

@@ -14,10 +14,10 @@
 	<meta name="copyright" content="2016 " />
 	<meta http-equiv="X-UA-Compatible" content="chrome=1">
 	<link href="https://fonts.googleapis.com/css?family=Noto+Serif:400i|Source+Sans+Pro:400,600" rel="stylesheet">
-  <link href="{{{ css.app }}}" rel="stylesheet">
-  <script async src="{{{ js.registerServiceWorker }}}"></script>
+  <link href="/{app_css}" rel="stylesheet">
+  <script async src="/{registerServiceWorker_js}"></script>
   <script src="/js/webcomponents-lite.js"></script>
-  <script src="{{{ js.common }}}"></script>
+  <script src="/{common_js}"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1,maximum-scale=1">
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="theme-color" content="rgb(240, 170, 30)">
