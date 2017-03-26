@@ -1,5 +1,4 @@
-{
-  "portfolioItems": [
+[
       {
           "title": "Open Everything",
           "description": "This magazine for the re:publica conference 2013 combines different articles on the topic “Open Everything”.",
@@ -110,4 +109,3 @@
           "newTab": true
       }
   ]
-}

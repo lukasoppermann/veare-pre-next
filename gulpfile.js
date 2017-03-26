@@ -17,7 +17,7 @@ const nodemon = require('gulp-nodemon')
 const sourcemaps = require('gulp-sourcemaps')
 const runSequence = require('run-sequence')
 const size = require('gulp-size')
-const mustache = require('gulp-mustache')
+const dust = require('gulp-dust-html')
 // var filenames = require('gulp-filenames')
 const tap = require('gulp-tap')
 const path = require('path')
@@ -206,32 +206,28 @@ gulp.task('watch-css', function () {
 })
 /* ------------------------------
  *
- * HTML
+ * DUST
  *
  */
 gulp.task('html', function () {
-  let json = JSON.parse(fs.readFileSync('./resources/templates/data/portfolio.json'))
-  json.css = {}
-  json.js = {}
-    // get files
-  return gulp.src([
-    'public/css/*-*.css',
-    'public/js/*-*.js'
-  ], {read: false})
-    .pipe(tap(function (file) {
-      let filename = path.basename(file.path)
-      let [name, ext] = filename.split('.')
-      json[ext][name.split('-').shift()] = '/' + ext + '/' + filename
-    }))
-    .on('end', function () {
-      gulp.src(['resources/templates/*.mustache', 'resources/templates/**/*.mustache', '!resources/templates/partials/*.mustache'])
-        .pipe(mustache(json, {
-          extension: '.html'
-        }))
-        .on('error', console.log)
-        .pipe(gulp.dest('public'))
-        .pipe(refresh())
-    })
+  // preapre files
+  const files = JSON.parse(fs.readFileSync('public/rev-manifest.json', 'utf8'))
+  let data = {}
+  Object.keys(files).map(function (key, index) {
+    data[key.replace('.', '_').replace(/^[a-z]+\//, '')] = files[key]
+  })
+  // add portfolio data
+  data.portfolioItems = JSON.parse(fs.readFileSync('resources/templates/data/portfolio.json'))
+
+  return gulp.src(['resources/templates/*.dust', 'resources/templates/**/*.dust', '!resources/templates/partials/*.dust'])
+      .pipe(dust({
+        basePath: 'resources/templates',
+        whitespace: true,
+        data: data
+      }))
+      .on('error', swallowError)
+      .pipe(gulp.dest('public'))
+      .pipe(refresh())
 })
 // watch css
 gulp.task('watch-html', function () {

@@ -69,10 +69,10 @@
 	cursor: pointer;
 	transition: color .3s ease .15s;
 }
-[id="tag:interface"]:target ~ .filters .filter[data-category~="interface"],
-[id="tag:print"]:target ~ .filters .filter[data-category~="print"],
-[id="tag:branding"]:target ~ .filters .filter[data-category~="branding"],
-[id="tag:infographics"]:target ~ .filters .filter[data-category~="infographics"],{
+[id="tag:interface"]:target ~ .filters .filter[data-category="interface"],
+[id="tag:print"]:target ~ .filters .filter[data-category="print"],
+[id="tag:branding"]:target ~ .filters .filter[data-category="branding"],
+[id="tag:infographics"]:target ~ .filters .filter[data-category="infographics"]{
 	color: rgb(245, 150, 0);
 }
 .c-filter__target:not(:target) ~ .cards .o-card__container {

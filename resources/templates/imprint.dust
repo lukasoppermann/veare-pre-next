@@ -1,4 +1,4 @@
-{{> partials/head }}
+{>"partials/head"/}
 <body class="hovers screen white-logo">
 	<div id="menu_icon" data-link-tracking="menu-icon-link"><div class="veare-sprite"></div></div>
 	<div id="body">
@@ -138,10 +138,10 @@
 			<p>Wir behalten uns vor, ohne Ankündigung Änderungen oder Ergänzungen der bereitgestellten Informationen oder Daten vorzunehmen.</p>
 		</div>
 	</div>
-	{{> partials/footer }}
+	{>"partials/footer"/}
 </section>
 	</div>
 </div>
-{{> partials/sidebar }}
+{>"partials/sidebar"/}
 </body>
 </html>
