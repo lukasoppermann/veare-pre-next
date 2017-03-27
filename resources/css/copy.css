@@ -16,3 +16,9 @@
   font-family: var(--serif);
   font-style: var(--serif-style);
 }
+.o-copy--muted{
+  color: var(--semi-black);
+}
+.o-headline--primary{
+  color: var(--blue);
+}

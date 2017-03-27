@@ -1,0 +1,9 @@
+:root{
+  --shadow-floating-one: 0 5px 15px -5px;
+  --shadow-floating-two: 0 5px 20px 3px;
+  --shadow-floating: var(--shadow-floating-one) rgba(0,0,0,.2), var(--shadow-floating-two) rgba(0,0,0,.05);
+
+  --shadow-floating-flat-one: 0 5px 10px -5px;
+  --shadow-floating-flat-two: 0 2px 10px 0px;
+  --shadow-floating-flat: var(--shadow-floating-flat-one) rgba(0,0,0,.2), var(--shadow-floating-flat-two) rgba(0,0,0,.05);
+}

@@ -5,7 +5,8 @@
   --serif: 'Noto Serif', serif;
   --serif-style: italic;
   --sans-serif: 'Source Sans Pro', sans-serif;
-  --sans-serif-weight: 400;
+  --sans-serif-normal: 400;
+  --sans-serif-bold: 700;
   /*
   * Sizes
   */

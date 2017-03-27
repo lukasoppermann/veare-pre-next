@@ -1,6 +1,5 @@
 {>"partials/head"/}
 <body class="hovers screen white-logo">
-	<div id="menu_icon" data-link-tracking="menu-icon-link"><div class="veare-sprite"></div></div>
 	<div id="body">
 		<div id="header">
 			<a href="/" id="logo" data-nav="#nav" data-link-tracking="logo-link">
