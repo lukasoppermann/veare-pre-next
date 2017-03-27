@@ -19,8 +19,6 @@ const runSequence = require('run-sequence')
 const size = require('gulp-size')
 const dust = require('gulp-dust-html')
 // var filenames = require('gulp-filenames')
-const tap = require('gulp-tap')
-const path = require('path')
 const babel = require('gulp-babel')
 
 function swallowError (error) {
