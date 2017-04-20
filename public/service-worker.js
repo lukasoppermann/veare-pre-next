@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["/css/app-0c49126490.css","0c49126490ec364a4c54d9541737e449"],["/media/lukas-oppermann@2x.png","b0798a4bd072ce38912e0f4122b99bf3"],["/media/veare-icons@2x.png","840ca69f8618221264cc6dcbd031a90f"]];
+var precacheConfig = [["/css/app.css","aa50833f98fddce69c659573285be479"],["/media/lukas-oppermann@2x.png","b0798a4bd072ce38912e0f4122b99bf3"],["/media/veare-icons@2x.png","840ca69f8618221264cc6dcbd031a90f"]];
 var cacheName = 'sw-precache-v3--' + (self.registration ? self.registration.scope : '');
 
 
@@ -283,8 +283,8 @@ self.addEventListener('fetch', function(event) {
 
 // Runtime cache configuration, using the sw-toolbox library.
 
-toolbox.router.get("/(.*)", toolbox.cacheFirst, {});
 toolbox.router.get(/\.googleapis\.com\//, toolbox.cacheFirst, {});
+toolbox.router.get("/(.*)", toolbox.cacheFirst, {});
 
 
 
