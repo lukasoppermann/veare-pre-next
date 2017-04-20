@@ -33,8 +33,6 @@
     polyfills = ['lite'];
   }
 
-  // NOTE: we stub HTMLImports to enable WCT to wait for "WebComponentsReady" event.
-  window['HTMLImports'] = {};
   if (polyfills.length) {
     var script = document.querySelector('script[src*="' + name +'"]');
     var newScript = document.createElement('script');
@@ -46,8 +44,6 @@
   } else {
     // Ensure `WebComponentsReady` is fired also when there are no polyfills loaded.
     requestAnimationFrame(function() {
-      // Reset the HTMLImports stub.
-      window['HTMLImports'] = null;
       window.dispatchEvent(new CustomEvent('WebComponentsReady'));
     });
   }
