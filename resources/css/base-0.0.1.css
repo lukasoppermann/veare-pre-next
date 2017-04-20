@@ -17,7 +17,7 @@ html, body{
 body{
 	font-family: Helvetica, Arial, sans-serif;
 	font-family: var(--sans-serif);
-	font-weight: var(--sans-serif-weight);
+	font-weight: var(--sans-serif-normal);
 	color: rgba(0,0,0,.8);
 	background: rgb(255,255,255);
 	overflow-y: scroll;

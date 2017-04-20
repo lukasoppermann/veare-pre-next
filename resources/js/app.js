@@ -1,23 +1,19 @@
-function ready(fn) {
-  if (document.readyState != 'loading'){
-    fn();
-  } else {
-    document.addEventListener('DOMContentLoaded', fn);
-  }
-}
-// -----------------------
-// open sidebar
+(function(document, window){
+    window.ready = function(fn) {
+        if (document.readyState != 'loading'){
+            fn();
+        } else {
+            document.addEventListener('DOMContentLoaded', fn);
+        }
+    }
+}(document, window));
+
 ready(function(){
-	document.querySelector('#menu_icon').addEventListener('click', function(e)
-	{
-		var $body = document.querySelector('body');
-		if( $body.classList.contains('menu-active') )
-		{
-			$body.classList.remove('menu-active');
-		}
-		else
-		{
-			$body.classList.add('menu-active');
-		}
-	});
-});
+  const menu = new Menu('.o-nav')
+  menu.transitionOnScroll()
+
+  document.querySelector('.o-nav__icon').addEventListener('click', function(){
+    document.body.classList.toggle('o-overlay-menu__active')
+    this.classList.toggle('o-nav__icon--active');
+  })
+})

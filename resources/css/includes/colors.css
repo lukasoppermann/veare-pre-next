@@ -1,10 +1,16 @@
 :root{
   --veare-orange-rgb: 250, 150, 0;
+  --black-rgb: 33,37,41;
+  --white-rgb: 255, 255, 255;
+  --blue-rgb: 40, 80, 235;
   /*
    * main colors
    */
-  --black: rgb(33,37,41);
+  --black: rgb(var(--black-rgb));
+  --semi-black: rgba(var(--black-rgb),.5);
+  --white: rgb(var(--white-rgb));
   --veare-orange: rgb(var(--veare-orange-rgb));
+  --blue: rgb(var(--blue-rgb));
   /*
    * type colors
    */

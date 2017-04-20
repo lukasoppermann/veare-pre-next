@@ -1,0 +1,9 @@
+.o-link{
+  font-size: inherit;
+  text-decoration: none;
+  color: inherit;
+}
+.o-link:hover{
+  text-decoration: underline;
+  color: var(--blue);
+}

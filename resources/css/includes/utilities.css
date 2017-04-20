@@ -1,0 +1,15 @@
+.u-margin-bottom-sm{
+  margin-bottom: var(--ms_a-2);
+}
+.u-margin-top-md{
+  margin-top: var(--ms_a0);
+}
+.u-margin-bottom-md{
+  margin-bottom: var(--ms_a0);
+}
+.u-margin-bottom-lg{
+  margin-bottom: var(--ms_a1);
+}
+.u-margin-bottom-xl{
+  margin-bottom: var(--ms_a2);
+}

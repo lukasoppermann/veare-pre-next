@@ -54,8 +54,8 @@ img{
 	border: 0;
 	position: relative;
 }
-a, span, .hovers a:hover, a:active, a:focus{
-	color: inherit;
+a, span, a:active, a:focus{
+  color: inherit;
 	display: inline-block;
 	outline: 0;
 	-webkit-tap-highlight-color: transparent;

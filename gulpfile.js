@@ -5,6 +5,7 @@ const chalk = require('chalk')
 const gutil = require('gulp-util')
 // var rename = require('gulp-rename')
 const rev = require('gulp-rev')
+const revdel = require('gulp-rev-delete-original')
 const del = require('del')
 const postcss = require('gulp-postcss')
 const concat = require('gulp-concat')
@@ -18,7 +19,6 @@ const sourcemaps = require('gulp-sourcemaps')
 const runSequence = require('run-sequence')
 const size = require('gulp-size')
 const dust = require('gulp-dust-html')
-// var filenames = require('gulp-filenames')
 const babel = require('gulp-babel')
 
 function swallowError (error) {
@@ -46,6 +46,7 @@ gulp.task('build-js', function (done) {
   let files = {
     common: [
       'resources/js/analytics.js',
+      'resources/js/menu.js',
       'resources/js/app.js',
       'node_modules/page-sections/dist/page-sections.js'
     ],
@@ -110,6 +111,7 @@ gulp.task('js', function (done) {
         'build-js',
         'rev',
         'html',
+        'service-worker',
         done
     )
 })
@@ -151,39 +153,43 @@ gulp.task('build-css', function () {
     'resources/css/*.css',
     'resources/css/pages/*.css'
   ])
-        .pipe(sourcemaps.init())
-        .pipe(concat('app.css'))
-        .pipe(sizes.before)
-        .pipe(postcss([
-          require('postcss-will-change'),
-          require('postcss-discard-comments'),
-          require('postcss-cssnext')({
-            browsers: ['last 2 versions'],
-            features: {
-              rem: false
-            }
-          }),
-          require('postcss-round-subpixels'),
-          require('cssnano')({
-            autoprefixer: false,
-            discardComments: {
-              removeAll: true
-            }
-            // zindex: false
-          }),
-          require('postcss-reporter')({
-            plugins: [
-              'postcss-color-function'
-            ]
-          })
-        ]))
-        .pipe(sizes.after)
-        .pipe(sizes.gzip)
-        .pipe(sourcemaps.write('/'))
-        .pipe(gulp.dest('public/css'))
-        .on('end', function () {
-          reportSavings(sizes, 'CSS:')
-        })
+    .pipe(sourcemaps.init())
+    .pipe(concat('app.css'))
+    .pipe(sizes.before)
+    .pipe(postcss([
+      require('postcss-will-change'),
+      require('postcss-discard-comments'),
+      // require('postcss-cssnext')({
+      //   browsers: ['last 2 versions'],
+      //   features: {
+      //     rem: false,
+      //     customProperties: {
+      //       preserve: true
+      //     }
+      //   }
+      // }),
+      require('postcss-round-subpixels'),
+      require('cssnano')({
+        autoprefixer: false,
+        discardComments: {
+          removeAll: true
+        }
+        // zindex: false
+      }),
+      require('postcss-reporter')({
+        plugins: [
+          'postcss-color-function'
+        ]
+      })
+    ]))
+    .on('error', swallowError)
+    .pipe(sizes.after)
+    .pipe(sizes.gzip)
+    .pipe(sourcemaps.write('/'))
+    .pipe(gulp.dest('public/css'))
+    .on('end', function () {
+      reportSavings(sizes, 'CSS:')
+    })
 })
 // css
 gulp.task('css', function (done) {
@@ -192,6 +198,7 @@ gulp.task('css', function (done) {
         'build-css',
         'rev',
         'html',
+        'service-worker',
         done
     )
 })
@@ -200,7 +207,7 @@ gulp.task('watch-css', function () {
   gulp.watch([
     'resources/css/*',
     'resources/css/**/*'
-  ], ['css'])
+  ], ['default'])
 })
 /* ------------------------------
  *
@@ -208,14 +215,15 @@ gulp.task('watch-css', function () {
  *
  */
 gulp.task('html', function () {
+  // load portfolio data
+  let data = {
+    'portfolioItems': JSON.parse(fs.readFileSync('resources/templates/data/portfolio.json'))
+  }
   // preapre files
   const files = JSON.parse(fs.readFileSync('public/rev-manifest.json', 'utf8'))
-  let data = {}
   Object.keys(files).map(function (key, index) {
     data[key.replace('.', '_').replace(/^[a-z]+\//, '')] = files[key]
   })
-  // add portfolio data
-  data.portfolioItems = JSON.parse(fs.readFileSync('resources/templates/data/portfolio.json'))
 
   return gulp.src(['resources/templates/*.dust', 'resources/templates/**/*.dust', '!resources/templates/partials/*.dust'])
       .pipe(dust({
@@ -240,7 +248,7 @@ gulp.task('watch-html', function () {
  *
  */
 gulp.task('rev', function (done) {
-  // delete old files in a snycronus manor
+  // synchronously delete old files
   if (fs.existsSync('public/rev-manifest.json')) {
     var manifest = fs.readFileSync('public/rev-manifest.json', 'utf8')
     del.sync(Object.values(JSON.parse(manifest)), {'cwd': 'public/'})
@@ -253,9 +261,8 @@ gulp.task('rev', function (done) {
   ], {base: 'public'})
         .pipe(rev())
         .pipe(gulp.dest('public'))
-        .pipe(rev.manifest({
-          merge: true // merge with the existing manifest (if one exists)
-        }))
+        .pipe(revdel())
+        .pipe(rev.manifest())
         .pipe(gulp.dest('public'))
 })
 /* ------------------------------
@@ -264,44 +271,35 @@ gulp.task('rev', function (done) {
  *
  */
 gulp.task('service-worker', function (done) {
-  let swPrecache = require('sw-precache')
-  let rootDir = 'public'
-  let fileHashes = {}
+  const swPrecache = require('sw-precache')
+  const rootDir = 'public'
   // urls to prefetch
   let urlsToPrefetch = [
-    '/media/veare-icons@2x.png',
-    '/media/lukas-oppermann@2x.png',
-    '/css/app.css',
-    'https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,Noto+Serif:400i'
+    'media/veare-icons@2x.png',
+    'media/lukas-oppermann@2x.png',
+    'css/app.css'
   ]
 
   // get revisioned file version if exists in manifest
-  if (fs.existsSync(rootDir + '/rev-manifests.json')) {
-    let manifest = fs.readFileSync(rootDir + '/rev-manifest.json', 'utf8')
-    fileHashes = JSON.parse(manifest)
-  }
+  const fileHashes = JSON.parse(fs.readFileSync(`${rootDir}/rev-manifest.json`, 'utf8'))
   // replace url with revisioned url in urlsToPrefetch
   urlsToPrefetch = urlsToPrefetch.map(function (item) {
-    if (item.substring(0, 4) === 'http') {
-      return item
+    // replace item with revisioned item
+    if (typeof fileHashes[item] !== 'undefined') {
+      return `${rootDir}/${fileHashes[item]}`
     }
-
-    let key = item.replace(/^\//g, '')
-
-    if (typeof fileHashes[key] !== 'undefined') {
-      return rootDir + '/' + fileHashes[key]
-    }
-    return rootDir + '/' + item
+    // return item if no revision is available
+    return `${rootDir}/${item}`
   })
   // create service worker
   swPrecache.write(`${rootDir}/service-worker.js`, {
     staticFileGlobs: urlsToPrefetch,
     stripPrefix: rootDir,
     runtimeCaching: [{
-      urlPattern: /\.googleapis\.com\//,
+      urlPattern: '/(.*)',
       handler: 'cacheFirst'
     }, {
-      urlPattern: '/(.*)',
+      urlPattern: /\.googleapis\.com\//,
       handler: 'cacheFirst'
     }]
   }, done)

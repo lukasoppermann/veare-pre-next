@@ -1,0 +1,32 @@
+.o-button{
+  text-decoration: none;
+  border: none;
+  box-shadow: var(--shadow-floating-one) rgba(var(--shadow-color-rgb, var(--black-rgb)),.3), var(--shadow-floating-two) rgba(var(--shadow-color-rgb, var(--black-rgb)),.1);
+  font-size: var(--ms_a0);
+  padding: var(--ms_a0);
+  background-color: var(--white);
+  color: var(--black);
+  cursor: pointer;
+  transition: box-shadow .3s ease, color .3s ease, background-color .3s ease;
+}
+.o-button:focus{
+  outline: none;
+  box-shadow: var(--shadow-floating-flat-one) rgba(var(--shadow-color-rgb, var(--black-rgb)),.3), var(--shadow-floating-flat-two) rgba(var(--shadow-color-rgb, var(--black-rgb)),.1), inset 0 0 0 2px var(--blue);
+  color: var(--blue);
+}
+.o-button:hover{
+  --shadow-color-rgb: var(--blue-rgb);
+  color: var(--blue);
+  box-shadow: var(--shadow-floating-flat-one) rgba(var(--shadow-color-rgb, var(--black-rgb)),.2), var(--shadow-floating-flat-two) rgba(var(--shadow-color-rgb, var(--black-rgb)),.05);
+}
+.o-button--primary{
+  --shadow-color-rgb: var(--blue-rgb);
+  background-color: var(--blue);
+  color: var(--white);
+}
+.o-button--primary:focus,
+.o-button--primary:hover{
+  background-color: var(--white);
+  color: var(--blue);
+  box-shadow: var(--shadow-floating-flat-one) rgba(var(--shadow-color-rgb, var(--black-rgb)),.3), var(--shadow-floating-flat-two) rgba(var(--shadow-color-rgb, var(--black-rgb)),.1), inset 0 0 0 2px var(--blue);
+}
