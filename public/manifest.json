@@ -1,6 +1,6 @@
 {
-  "short_name": "veare",
-  "name": "veare – interface design",
+  "background_color": "rgb(246,245,243)",
+  "display": "standalone",
   "icons": [
     {
       "src": "media/veare-icon.png",
@@ -28,9 +28,9 @@
       "sizes": "192x192"
     }
   ],
+  "name": "veare – interface design",
+  "orientation": "portrait",
+  "short_name": "veare",
   "start_url": "/?utm_source=homescreen",
-  "background_color": "rgb(246,245,243)",
-  "theme_color": "rgb(240, 170, 30)",
-  "display": "standalone",
-  "orientation": "portrait"
+  "theme_color": "rgb(240, 170, 30)"
 }

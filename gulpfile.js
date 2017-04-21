@@ -31,6 +31,35 @@ function reportSavings (sizes, prefix) {
   let decrease = Math.floor(((sizes.before.size - sizes.after.size) / sizes.before.size * 100))
   gutil.log(prefix + ' ' + chalk.white.bgGreen.bold(` ${decrease}% saved `) + ` Total size ${sizes.after.prettySize} / ` + chalk.green.bold(`${sizes.gzip.prettySize} (gzip)`))
 }
+
+let filesJS = {
+  common: [
+    'resources/js/analytics.js',
+    'resources/js/menu.js',
+    'resources/js/app.js',
+    'node_modules/page-sections/dist/page-sections.js'
+  ],
+  portfolio: [
+    'node_modules/minigrid/dist/minigrid.min.js',
+    'resources/js/cards.js'
+  ],
+  'registerServiceWorker': [
+    'resources/js/register-service-worker.js'
+  ]
+}
+let moveFilesJS = [
+  'node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js',
+  'node_modules/@webcomponents/webcomponentsjs/webcomponents-hi-sd-ce.js',
+  'node_modules/@webcomponents/webcomponentsjs/webcomponents-hi-ce.js',
+  'node_modules/@webcomponents/webcomponentsjs/webcomponents-hi.js',
+  'node_modules/@webcomponents/webcomponentsjs/webcomponents-lite.js',
+  'node_modules/@webcomponents/webcomponentsjs/webcomponents-sd-ce.js',
+  'node_modules/@webcomponents/webcomponentsjs/webcomponents-hi-sd-ce.js.map',
+  'node_modules/@webcomponents/webcomponentsjs/webcomponents-hi-ce.js.map',
+  'node_modules/@webcomponents/webcomponentsjs/webcomponents-hi.js.map',
+  'node_modules/@webcomponents/webcomponentsjs/webcomponents-lite.js.map',
+  'node_modules/@webcomponents/webcomponentsjs/webcomponents-sd-ce.js.map'
+]
 /* ------------------------------
  *
  * JS
@@ -43,39 +72,11 @@ gulp.task('clean-js', function () {
 })
 
 gulp.task('build-js', function (done) {
-  let files = {
-    common: [
-      'resources/js/analytics.js',
-      'resources/js/menu.js',
-      'resources/js/app.js',
-      'node_modules/page-sections/dist/page-sections.js'
-    ],
-    portfolio: [
-      'node_modules/minigrid/dist/minigrid.min.js',
-      'resources/js/cards.js'
-    ],
-    'registerServiceWorker': [
-      'resources/js/register-service-worker.js'
-    ]
-  }
-  let moveFiles = [
-    'node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js',
-    'node_modules/@webcomponents/webcomponentsjs/webcomponents-hi-sd-ce.js',
-    'node_modules/@webcomponents/webcomponentsjs/webcomponents-hi-ce.js',
-    'node_modules/@webcomponents/webcomponentsjs/webcomponents-hi.js',
-    'node_modules/@webcomponents/webcomponentsjs/webcomponents-lite.js',
-    'node_modules/@webcomponents/webcomponentsjs/webcomponents-sd-ce.js',
-    'node_modules/@webcomponents/webcomponentsjs/webcomponents-hi-sd-ce.js.map',
-    'node_modules/@webcomponents/webcomponentsjs/webcomponents-hi-ce.js.map',
-    'node_modules/@webcomponents/webcomponentsjs/webcomponents-hi.js.map',
-    'node_modules/@webcomponents/webcomponentsjs/webcomponents-lite.js.map',
-    'node_modules/@webcomponents/webcomponentsjs/webcomponents-sd-ce.js.map'
-  ]
   // MOVE files
-  gulp.src(moveFiles)
+  gulp.src(moveFilesJS)
     .pipe(gulp.dest('public/js'))
-  // BUILD JS
-  Object.keys(files).forEach(function (key) {
+
+  Object.keys(filesJS).forEach(function (key) {
     const sizes = {
       'before': size({showTotal: false}),
       'after': size({showTotal: false}),
@@ -84,7 +85,8 @@ gulp.task('build-js', function (done) {
         gzip: true
       })
     }
-    gulp.src(files[key])
+
+    gulp.src(filesJS[key])
         .pipe(sourcemaps.init())
         .pipe(babel({
           presets: [ [ 'es2015', { modules: false } ] ],
@@ -102,14 +104,30 @@ gulp.task('build-js', function (done) {
           reportSavings(sizes, 'JS (' + key + '):')
         })
   })
+
   done()
+})
+
+gulp.task('rev-js', function () {
+  let revFiles = Object.keys(filesJS)
+  revFiles = revFiles.map((file) => `public/js/${file}.js`)
+
+  return gulp.src(revFiles, {base: 'public'})
+    .pipe(rev())
+    .pipe(gulp.dest('public'))
+    .pipe(revdel())
+    .pipe(rev.manifest('rev-manifest.json', {
+      cwd: 'public',
+      merge: true
+    }))
+    .pipe(gulp.dest('public'))
 })
 // js
 gulp.task('js', function (done) {
   runSequence(
         'clean-js',
         'build-js',
-        'rev',
+        'rev-js',
         'html',
         'service-worker',
         done
@@ -250,21 +268,24 @@ gulp.task('watch-html', function () {
  */
 gulp.task('rev', function (done) {
   // synchronously delete old files
-  if (fs.existsSync('public/rev-manifest.json')) {
-    var manifest = fs.readFileSync('public/rev-manifest.json', 'utf8')
-    del.sync(Object.values(JSON.parse(manifest)), {'cwd': 'public/'})
-  }
+  // if (fs.existsSync('public/rev-manifest.json')) {
+  //   var manifest = fs.readFileSync('public/rev-manifest.json', 'utf8')
+  //   del.sync(Object.values(JSON.parse(manifest)), {'cwd': 'public/'})
+  // }
 
   return gulp.src([
-    'public/css/app.css',
-    'public/js/*.js'
-        // 'public/svgs/svg-sprite.svg'
+    'public/css/app.css'
+      // 'public/js/*.js'
+      // 'public/svgs/svg-sprite.svg'
   ], {base: 'public'})
-        .pipe(rev())
-        .pipe(gulp.dest('public'))
-        .pipe(revdel())
-        .pipe(rev.manifest())
-        .pipe(gulp.dest('public'))
+    .pipe(rev())
+    .pipe(gulp.dest('public'))
+    .pipe(revdel())
+    .pipe(rev.manifest('rev-manifest.json', {
+      cwd: 'public',
+      merge: true
+    }))
+    .pipe(gulp.dest('public'))
 })
 /* ------------------------------
  *
@@ -368,6 +389,7 @@ gulp.task('default', function (done) {
       'build-css'
     // 'svgsprite'
     ],
+    'rev-js',
     'rev',
     'html',
     'service-worker',

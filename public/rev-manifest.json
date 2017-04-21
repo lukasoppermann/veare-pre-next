@@ -1,12 +1,6 @@
 {
   "css/app.css": "css/app-ebf2b01bd8.css",
-  "js/common.js": "js/common-3cb42ab617.js",
-  "js/portfolio.js": "js/portfolio-9754347e78.js",
-  "js/registerServiceWorker.js": "js/registerServiceWorker-e7f4914a51.js",
-  "js/webcomponents-hi-ce.js": "js/webcomponents-hi-ce-10c4a55b23.js",
-  "js/webcomponents-hi-sd-ce.js": "js/webcomponents-hi-sd-ce-e237be1a20.js",
-  "js/webcomponents-hi.js": "js/webcomponents-hi-9d635f86b0.js",
-  "js/webcomponents-lite.js": "js/webcomponents-lite-c6ec3a570e.js",
-  "js/webcomponents-loader.js": "js/webcomponents-loader-af79808d80.js",
-  "js/webcomponents-sd-ce.js": "js/webcomponents-sd-ce-9b671aa0d0.js"
+  "js/common.js": "js/common-ffde834ba5.js",
+  "js/portfolio.js": "js/portfolio-a0929f7158.js",
+  "js/registerServiceWorker.js": "js/registerServiceWorker-e7f4914a51.js"
 }
