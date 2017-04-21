@@ -3,7 +3,7 @@ const gulp = require('gulp')
 const fs = require('fs')
 const chalk = require('chalk')
 const gutil = require('gulp-util')
-// var rename = require('gulp-rename')
+const checkPages = require('check-pages')
 const rev = require('gulp-rev')
 const revdel = require('gulp-rev-delete-original')
 const del = require('del')
@@ -239,7 +239,8 @@ gulp.task('html', function () {
 gulp.task('watch-html', function () {
   gulp.watch([
     'resources/templates/*',
-    'resources/templates/**/*'
+    'resources/templates/partials/*',
+    'resources/templates/portfolio/*'
   ], ['html'])
 })
 /* ------------------------------
@@ -279,7 +280,6 @@ gulp.task('service-worker', function (done) {
     'media/lukas-oppermann@2x.png',
     'css/app.css'
   ]
-
   // get revisioned file version if exists in manifest
   const fileHashes = JSON.parse(fs.readFileSync(`${rootDir}/rev-manifest.json`, 'utf8'))
   // replace url with revisioned url in urlsToPrefetch
@@ -320,6 +320,35 @@ gulp.task('serve', function () {
       refresh()
     }, 2000) // wait for the server to finish loading before restarting the browsers
   })
+})
+/* ------------------------------
+ *
+ * check links
+ *
+ */
+gulp.task('checkLinks', function (callback) {
+  var options = {
+    pageUrls: [
+      'http://localhost:8080/',
+      'http://localhost:8080/blog',
+      'http://localhost:8080/portfolio'
+    ],
+    checkLinks: true,
+    noEmptyFragments: true,
+    noLocalLinks: true,
+    noRedirects: true,
+    onlySameDomain: true,
+    preferSecure: true,
+    queryHashes: true,
+    checkCaching: true,
+    checkCompression: true,
+    checkXhtml: true,
+    summary: true,
+    terse: true,
+    maxResponseTime: 200,
+    userAgent: 'custom-user-agent/1.2.3'
+  }
+  checkPages(console, options, callback)
 })
 /* ------------------------------
  *
