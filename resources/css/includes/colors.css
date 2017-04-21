@@ -3,6 +3,8 @@
   --black-rgb: 33,37,41;
   --white-rgb: 255, 255, 255;
   --blue-rgb: 40, 80, 235;
+  --green-rgb: 60, 200, 160;
+  --light-grey-rgb: 240, 240, 245;
   /*
    * main colors
    */
@@ -11,10 +13,12 @@
   --white: rgb(var(--white-rgb));
   --veare-orange: rgb(var(--veare-orange-rgb));
   --blue: rgb(var(--blue-rgb));
+  --green: rgb(var(--green-rgb));
+  --light-grey: rgb(var(--light-grey-rgb));
   /*
    * type colors
    */
-  
+
   --type-black: var(--black);
   --type-gray: color(var(--black) alpha(40%));
 }

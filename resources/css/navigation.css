@@ -4,6 +4,7 @@
   top: 0;
   left: 0;
   z-index: 990;
+  transform: translateZ(100px); /* safari hack */
   font-size: var(--ms_b0);
   height: var(--ms_a3);
   width: 100vw;
@@ -124,6 +125,7 @@
   width: 100vw;
   background: rgb(255,255,255);
   z-index: 900;
+  transform: translateZ(100px); /* safari hack */
   animation: fadeInFromNone .5s ease;
   animation-fill-mode: forwards;
   animation-direction: reverse;

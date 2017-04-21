@@ -1,0 +1,19 @@
+.c-about{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  z-index: 100;
+  transform: translateZ(100px);
+}
+.c-about-container{
+  margin: var(--ms_a0) var(--ms_a0) calc(-1 * var(--ms_a2)) var(--ms_a0);
+  padding: var(--ms_a1) 0;
+  background: var(--green);
+  box-shadow: var(--shadow-floating);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.c-about .circle-big{
+  background-color: rgba(0, 0, 0, 0.1);
+}

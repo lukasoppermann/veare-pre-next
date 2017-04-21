@@ -36,7 +36,9 @@ let filesJS = {
   common: [
     'resources/js/analytics.js',
     'resources/js/menu.js',
-    'resources/js/app.js',
+    'resources/js/app.js'
+  ],
+  webcomponents: [
     'node_modules/page-sections/dist/page-sections.js'
   ],
   portfolio: [
@@ -95,7 +97,7 @@ gulp.task('build-js', function (done) {
         .on('error', swallowError)
         .pipe(concat(key + '.js'))
         .pipe(sizes.before)
-        .pipe(uglify())
+        // .pipe(uglify())
         .pipe(sizes.after)
         .pipe(sizes.gzip)
         .pipe(sourcemaps.write('/'))

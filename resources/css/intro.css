@@ -10,7 +10,8 @@
   background-color: var(--color-sand);
   border: var(--ms_a0) solid rgb(255, 255, 255);
   border-top: var(--ms_a3) solid rgb(255, 255, 255);
-  height: 700px;
+  min-height: 700px;
+  height: 100vh;
 }
 .c-section--intro .c-svg--logo{
   margin: var(--ms_b1) 0 0 var(--ms_a1);
