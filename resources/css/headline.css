@@ -1,0 +1,13 @@
+.o-headline{
+  display: block;
+}
+.o-headline-2{
+  font-size: var(--type-medium-huge);
+}
+.o-headline-3{
+  font-size: var(--type-big);
+}
+
+.o-headline--primary{
+  color: var(--blue);
+}

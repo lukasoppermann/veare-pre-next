@@ -7,9 +7,13 @@
   line-height: var(--type-default-line-height);
   color: var(--type-black);
 }
-.o-copy--big{
+.o-copy--medium{
   font-size: var(--type-medium);
   line-height: var(--type-medium-line-height);
+}
+.o-copy--big{
+  font-size: var(--type-medium-big);
+  line-height: var(--type-medium-big-line-height);
 }
 .o-copy--huge{
   font-size: var(--type-big);
@@ -22,6 +26,10 @@
 .o-copy--muted{
   color: var(--semi-black);
 }
-.o-headline--primary{
-  color: var(--blue);
+.o-copy-intro{
+  font-family: var(--serif);
+  font-style: var(--serif-style);
+  font-size: var(--type-big);
+  line-height: var(--type-big-line-height);
+  color: var(--semi-black);
 }

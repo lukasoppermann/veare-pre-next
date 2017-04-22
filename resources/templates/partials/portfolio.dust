@@ -1,0 +1,10 @@
+<div class="wrapper c-portfolio">
+	<div class="section">
+    <div class="js-cards cards font-white">
+        {#portfolioItems}
+            {>"partials/portfolio-item"/}
+        {/portfolioItems}
+		</div>
+	</div>
+</div>
+<script src="/{portfolio_js}"></script>

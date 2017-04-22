@@ -8,8 +8,9 @@
 .c-about-container{
   margin: var(--ms_a0) var(--ms_a0) calc(-1 * var(--ms_a2)) var(--ms_a0);
   padding: var(--ms_a1) 0;
-  background: var(--green);
+  background: var(--blue-muted);
   box-shadow: var(--shadow-floating);
+  color: rgb(255,255,255);
   display: flex;
   justify-content: center;
   align-items: center;

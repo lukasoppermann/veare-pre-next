@@ -1,0 +1,21 @@
+.c-skills{
+  --media-spacing: var(--ms_a2);
+  color: var(--black);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: var(--ms_a3);
+}
+.c-skill{
+  margin-top: var(--ms_a3);
+  margin-left: var(--ms_a2);
+  margin-right: var(--ms_a2);
+}
+.c-skill__content{
+  text-align: left;
+  max-width: var(--ms_b7);
+}
+.c-skill__figure{
+  min-width: 100px;
+}

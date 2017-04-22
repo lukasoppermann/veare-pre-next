@@ -46,9 +46,9 @@ var Menu = function () {
 
       var toggleClass = function toggleClass(posY) {
         if (posY > 150) {
-          menu.classList.add('o-nav--hidden');
+          menu.classList.add('is-hidden');
         } else {
-          menu.classList.remove('o-nav--hidden');
+          menu.classList.remove('is-hidden');
         }
       };
 
@@ -95,8 +95,8 @@ ready(function () {
     menu.transitionOnScroll();
 
     document.querySelector('.o-nav__icon').addEventListener('click', function () {
-        document.body.classList.toggle('o-overlay-menu__active');
-        this.classList.toggle('o-nav__icon--active');
+        document.body.classList.toggle('is-active--overlay-menu');
+        this.classList.toggle('is-active');
     });
 });
 //# sourceMappingURL=common.js.map

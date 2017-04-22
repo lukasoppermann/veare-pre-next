@@ -18,7 +18,7 @@
   <script type="text/javascript">
     window.addEventListener('WebComponentsReady', function () {
       let script = document.createElement('script')
-      script.setAttribute('src', '{webcomponents_js}')
+      script.setAttribute('src', '/{webcomponents_js}')
       document.body.appendChild(script)
     })
   </script>

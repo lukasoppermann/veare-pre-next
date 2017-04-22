@@ -5,6 +5,8 @@
 		<page-sections>
 			{>"partials/intro"/}
 
+      {>"partials/portfolio"/}
+
 			{>"partials/skills"/}
 
       {>"partials/about"/}

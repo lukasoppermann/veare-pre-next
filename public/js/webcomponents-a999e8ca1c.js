@@ -433,15 +433,8 @@ function _taggedTemplateLiteral(strings, raw) {
 					var PageSectionContainer = require('./page-section-container');
 					var PageSection = require('./page-section');
 
-					if (_typeof2(window.customElements) === undefined) {
-						window.customElements.define('page-sections', PageSectionContainer);
-						window.customElements.define('page-section', PageSection);
-					} else {
-						window.addEventListener('WebComponentsReady', function () {
-							window.customElements.define('page-sections', PageSectionContainer);
-							window.customElements.define('page-section', PageSection);
-						});
-					}
+					window.customElements.define('page-sections', PageSectionContainer);
+					window.customElements.define('page-section', PageSection);
 				})();
 			}
 		}

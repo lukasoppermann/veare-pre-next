@@ -1,0 +1,25 @@
+.c-contact{
+  position: relative;
+  background-color: transparent;
+  padding-top: var(--ms_a2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.c-contact-content{
+  z-index: 10;
+}
+.o-svg-bg{
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  height: calc(100% + var(--ms_a1));
+  top: calc(-1 * var(--ms_a1));
+  left: 0;
+}
+.o-svg-bg--light-grey{
+  fill: var(--light-grey);
+}
+.legal-footer{
+  z-index: 10;
+}

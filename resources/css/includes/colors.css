@@ -3,6 +3,7 @@
   --black-rgb: 33,37,41;
   --white-rgb: 255, 255, 255;
   --blue-rgb: 40, 80, 235;
+  --blue-muted-hsl: 228, 75%, 54%;
   --green-rgb: 60, 200, 160;
   --light-grey-rgb: 240, 240, 245;
   /*
@@ -13,6 +14,7 @@
   --white: rgb(var(--white-rgb));
   --veare-orange: rgb(var(--veare-orange-rgb));
   --blue: rgb(var(--blue-rgb));
+  --blue-muted: hsl(var(--blue-muted-hsl));
   --green: rgb(var(--green-rgb));
   --light-grey: rgb(var(--light-grey-rgb));
   /*

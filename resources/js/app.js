@@ -12,8 +12,8 @@ ready(function(){
   const menu = new Menu('.o-nav')
   menu.transitionOnScroll()
 
-  document.querySelector('.o-nav__icon').addEventListener('click', function(){
-    document.body.classList.toggle('o-overlay-menu__active')
-    this.classList.toggle('o-nav__icon--active');
+  document.querySelector('.o-nav__icon').addEventListener('click', function () {
+    document.body.classList.toggle('is-active--overlay-menu')
+    this.classList.toggle('is-active')
   })
 })

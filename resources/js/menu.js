@@ -1,18 +1,18 @@
 function throttle (callback, limit) {
-    var wait = false;                 // Initially, we're not waiting
-    return function () {              // We return a throttled function
-        if (!wait) {                  // If we're not waiting
-            callback.call();          // Execute users function
-            wait = true;              // Prevent future invocations
-            setTimeout(function () {  // After a period of time
-                wait = false;         // And allow future invocations
-            }, limit);
-        }
+  let wait = false                 // Initially, we're not waiting
+  return function () {              // We return a throttled function
+    if (!wait) {                  // If we're not waiting
+      callback.call()          // Execute users function
+      wait = true               // Prevent future invocations
+      setTimeout(function () {  // After a period of time
+        wait = false         // And allow future invocations
+      }, limit)
     }
+  }
 }
 
-class Menu{
-  constructor(menuSelector){
+class Menu {
+  constructor(menuSelector) {
     this._menu = document.querySelector(menuSelector)
   }
 
@@ -26,9 +26,9 @@ class Menu{
 
     let toggleClass = (posY) => {
       if(posY > 150){
-        menu.classList.add('o-nav--hidden')
+        menu.classList.add('is-hidden')
       }else{
-        menu.classList.remove('o-nav--hidden')
+        menu.classList.remove('is-hidden')
       }
     }
 

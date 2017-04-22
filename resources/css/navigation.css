@@ -50,11 +50,11 @@
   flex-direction: row;
   align-items: center;
 }
-.o-nav.o-nav--hidden .o-nav__list{
+.o-nav.is-hidden .o-nav__list{
   top: -37px;
   opacity: 0;
 }
-.o-nav.o-nav--hidden .o-nav__icon{
+.o-nav.is-hidden .o-nav__icon{
   display: flex;
   top: 30px;
   padding-right: 10px;
@@ -72,7 +72,7 @@
   stroke-dashoffset: 240px;
   opacity: 0;
 }
-.o-nav.o-nav--hidden .o-nav__icon path{
+.o-nav.is-hidden .o-nav__icon path{
   stroke-dashoffset: 0;
   opacity: 1;
   transition: opacity .5s .2s ease, stroke-dashoffset .5s .2s ease;
@@ -84,15 +84,15 @@
 .o-nav__icon path#middle {
   stroke-dasharray: 270px 270px;
 }
-.o-nav__icon.o-nav__icon--active path#top,
-.o-nav__icon.o-nav__icon--active path#bottom {
+.o-nav__icon.is-active path#top,
+.o-nav__icon.is-active path#bottom {
   stroke-dashoffset: -666px;
 }
-.o-nav__icon.o-nav__icon--active path#middle {
+.o-nav__icon.is-active path#middle {
   stroke-dashoffset: -270px; /* -115px */
   /*stroke-dasharray: 1px 220px;*/
 }
-.o-nav__icon.o-nav__icon--active path{
+.o-nav__icon.is-active path{
   stroke: rgb(255,255,255);
 }
 @media(max-width: 700px){
@@ -131,14 +131,14 @@
   animation-direction: reverse;
   opacity: 0;
 }
-.o-overlay-menu__active .o-overlay-menu{
+.is-active--overlay-menu > .o-overlay-menu{
   display: flex;
   opacity: 1;
   animation: fadeInFromNone .5s ease;
   animation-fill-mode: forwards;
   animation-direction: normal;
 }
-.o-overlay-menu__active{
+.is-active--overlay-menu{
   overflow: hidden;
 }
 .o-overlay-nav{

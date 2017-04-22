@@ -1,6 +1,5 @@
 <section class="c-about about-veare font-white">
   <div class="c-about-container">
-    <a name="about"> </a>
     <div class="section-content centered fixed">
       <div class="grid plus inline-block max-width-1200">
         <div class="column span-5 tablet-small-span-12 mobile-span-12 align-center">
@@ -29,7 +28,7 @@
               </svg>
             </figure>
                       </div>
-                      <div class="circle-copy copy font-black">
+                      <div class="circle-copy copy">
                         <h3 class="bold circle-headline font-white">visionary</h3>
                         <p><strong>visionary design</strong> means creating a lasting design approach that grows with your company.
                         </p>
@@ -80,7 +79,7 @@
               </svg>
             </figure>
           </div>
-          <div class="circle-copy copy font-black"><h3 class="bold circle-headline font-white">intelligent</h3>
+          <div class="circle-copy copy"><h3 class="bold circle-headline font-white">intelligent</h3>
             <p><strong>intelligent design</strong> focuses on usability and user experience.</p>
             <p>Any design process starts with a need for information architecture. By structuring and connecting information intelligently I create designs that support the user in consuming and understand what you want them to know.
             </p>

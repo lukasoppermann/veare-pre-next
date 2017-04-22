@@ -189,6 +189,10 @@ gulp.task('build-css', function () {
       //   }
       // }),
       require('postcss-round-subpixels'),
+      // require('postcss-uncss')({
+      //   html: ['public/*.html', 'public/portfolio/*.html'],
+      //   ignore: [/.is-(.*)/]
+      // }),
       require('cssnano')({
         autoprefixer: false,
         discardComments: {
@@ -255,13 +259,28 @@ gulp.task('html', function () {
       .pipe(gulp.dest('public'))
       .pipe(refresh())
 })
+
 // watch css
 gulp.task('watch-html', function () {
   gulp.watch([
     'resources/templates/*',
     'resources/templates/partials/*',
     'resources/templates/portfolio/*'
-  ], ['html'])
+  ], () => {
+    runSequence(
+      'html',
+      'service-worker'
+    )
+  })
+})
+/* ------------------------------
+ *
+ * SVG
+ *
+ */
+gulp.task('svg', () => {
+  gulp.src(['resources/svgs/*'])
+    .pipe(gulp.dest('public/svgs'))
 })
 /* ------------------------------
  *
