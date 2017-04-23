@@ -22,7 +22,6 @@
     "cssnano": "^3.7.0",
     "del": "^2.2.*",
     "dustjs-linkedin": "^2.7.5",
-    "eslint-plugin-typescript": "^0.1.0",
     "flex-layout-attribute": "^1.0.3",
     "gulp": "^3.*.*",
     "gulp-babel": "^6.1.2",
