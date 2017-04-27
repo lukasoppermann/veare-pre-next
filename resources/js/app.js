@@ -16,4 +16,6 @@ ready(function(){
     document.body.classList.toggle('is-active--overlay-menu')
     this.classList.toggle('is-active')
   })
+
+  lazyImg()
 })

@@ -1,0 +1,24 @@
+.o-figure {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+  max-width: calc(100vw - var(--ms_a3));
+}
+.o-figure__inner{
+  position: relative;
+  padding-bottom: 62.5%;
+  height: 0;
+  background: var(--sand-grey);
+}
+.o-figure__img {
+  opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+  transition: opacity .5s ease;
+}
+.is-loaded .o-figure__img{
+  opacity: 1;
+}

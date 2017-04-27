@@ -27,7 +27,7 @@ app.get(/^\/([\w-]+)\/?$/, function (req, res) {
 app.get(/^\/portfolio\/([\w-]+)$/, function (req, res) {
         res.sendFile(path.join(__dirname + '/public/portfolio/'+req.params[0]+'.html'), {},function (err) {
             if (err) {
-                res.redirect('/portfolio');
+                res.redirect('/#portfolio');
             }
         });
 });

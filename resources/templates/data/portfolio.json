@@ -70,42 +70,5 @@
           "size": "small",
           "tag": "print",
           "link": "/portfolio/woyzeck"
-      },
-      {
-          "title": "moving systems",
-          "description": "Movingsystems is a responsive micropage for a team of coaches.",
-          "src": "/media/card-movingsystems.png",
-          "color": "light-orange",
-          "size": "small",
-          "tag": "interface",
-          "link": "/portfolio/movingsystems"
-      },
-      {
-          "title": "HygroMatik",
-          "description": "A website for one of europe's biggest air conditioning system manufacturer.",
-          "src": "/media/card-hygromatik.png",
-          "color": "turquoise",
-          "size": "small",
-          "tag": "interface",
-          "link": "/portfolio/hygromatik"
-      },
-      {
-          "title": "ISBB",
-          "description": "Website redesign for a german institute for consultancy.",
-          "src": "/media/card-isbb.png",
-          "color": "blue",
-          "size": "small",
-          "tag": "interface",
-          "link": "/portfolio/isbb"
-      },
-      {
-          "title": "Dribbble",
-          "description": "View more of my work on dribbble.com.",
-          "src": "/media/dribbble.png",
-          "color": "pink",
-          "size": "small",
-          "tag": "interface",
-          "link": "https://dribbble.com/lukasoppermann",
-          "newTab": true
       }
   ]

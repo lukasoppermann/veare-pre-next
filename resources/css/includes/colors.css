@@ -6,6 +6,8 @@
   --blue-muted-hsl: 228, 75%, 54%;
   --green-rgb: 60, 200, 160;
   --light-grey-rgb: 240, 240, 245;
+  --white-grey-rgb: 250, 250, 255;
+  --sand-grey-rgb: 246,245,243;
   /*
    * main colors
    */
@@ -17,6 +19,9 @@
   --blue-muted: hsl(var(--blue-muted-hsl));
   --green: rgb(var(--green-rgb));
   --light-grey: rgb(var(--light-grey-rgb));
+  --white-grey: rgb(var(--white-grey-rgb));
+  --sand-grey: rgb(var(--sand-grey-rgb));
+  --color-sand: var(--sand-grey);
   /*
    * type colors
    */

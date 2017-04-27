@@ -80,6 +80,21 @@ var Menu = function () {
 
   return Menu;
 }();
+var lazyImg = function lazyImg() {
+  var imgs = document.querySelectorAll('.o-figure--lazy-load');
+
+  imgs.forEach(function (container) {
+    var downloadingImage = new Image();
+    var img = container.querySelector('.o-figure__img');
+    downloadingImage.onload = function () {
+      img.src = this.src;
+      setTimeout(function () {
+        container.classList.add('is-loaded');
+      }, 10);
+    };
+    downloadingImage.src = img.getAttribute('img-src');
+  });
+};
 (function (document, window) {
     window.ready = function (fn) {
         if (document.readyState != 'loading') {
@@ -98,5 +113,7 @@ ready(function () {
         document.body.classList.toggle('is-active--overlay-menu');
         this.classList.toggle('is-active');
     });
+
+    lazyImg();
 });
 //# sourceMappingURL=common.js.map

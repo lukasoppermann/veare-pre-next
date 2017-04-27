@@ -18,6 +18,7 @@ gulp.task(require('./gulp-tasks/bundleJs.js')({
   common: [
     'resources/js/analytics.js',
     'resources/js/menu.js',
+    'resources/js/img.js',
     'resources/js/app.js'
   ],
   webcomponents: [

@@ -17,8 +17,8 @@
   top: calc(-1 * var(--ms_a1));
   left: 0;
 }
-.o-svg-bg--light-grey{
-  fill: var(--light-grey);
+.o-svg-bg--white-grey{
+  fill: var(--white-grey);
 }
 .legal-footer{
   z-index: 10;

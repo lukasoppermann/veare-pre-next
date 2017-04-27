@@ -11,10 +11,10 @@
       <a class='o-nav__link' href="/">Home</a>
     </li>
     <li class='o-nav__item'>
-      <a class='o-nav__link' href="/portfolio/">Portfolio</a>
+      <a class='o-nav__link' href="/#portfolio">Portfolio</a>
     </li>
     <li class='o-nav__item'>
-      <a class='o-nav__link' href="/about/#about">About</a>
+      <a class='o-nav__link' href="/#about">About</a>
     </li>
     <li class='o-nav__item'>
       <a class='o-nav__link' href="/blog/">Blog</a>
