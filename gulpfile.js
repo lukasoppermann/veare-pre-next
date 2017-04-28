@@ -87,14 +87,14 @@ gulp.task('html', require('./gulp-tasks/html.js')(
 ))
 
 // watch html
-gulp.task('watch-html', function () {
+gulp.task('watchHtml', function () {
   gulp.watch([
     'resources/templates/*',
     'resources/templates/partials/*',
     'resources/templates/portfolio/*'
   ], gulp.series(
       'html',
-      'service-worker',
+      'serviceWorker',
       'refresh'
     )
   )
@@ -182,5 +182,5 @@ gulp.task('default', gulp.series(
   gulp.parallel('revJs', 'revCss'),
   'html',
   'serviceWorker',
-  gulp.parallel('watchJs', 'watchCss')
+  gulp.parallel('watchJs', 'watchCss', 'watchHtml')
 ))

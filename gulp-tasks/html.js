@@ -14,7 +14,10 @@ module.exports = function (templates, data) {
       .pipe(dust({
         basePath: 'resources/templates',
         whitespace: true,
-        data: data
+        data: data,
+        config: {
+          cache: false
+        }
       }))
       .on('error', error)
       .pipe(gulp.dest('public'))
