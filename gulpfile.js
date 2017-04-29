@@ -2,6 +2,7 @@
 const gulp = require('gulp')
 const fs = require('fs')
 const del = require('del')
+const browserSync = require('browser-sync')
 /* ------------------------------
  *
  * JS
@@ -94,11 +95,10 @@ gulp.task('watchHtml', function () {
     'resources/templates/*',
     'resources/templates/partials/*',
     'resources/templates/portfolio/*'
-  ], gulp.series(
-      'html',
-      'serviceWorker'
-    )
-  )
+  ], gulp.series('html', function reload (cb) {
+    browserSync.reload()
+    cb()
+  }))
 })
 
 /* ------------------------------
@@ -150,7 +150,10 @@ gulp.task('js', gulp.series(
 gulp.task('watchJs', function () {
   gulp.watch([
     'resources/js/*'
-  ], gulp.series('bundleJs'))
+  ], gulp.series('bundleJs', function reload (cb) {
+    browserSync.reload()
+    cb()
+  }))
 })
 /* ------------------------------
  *
@@ -161,17 +164,33 @@ gulp.task('watchCss', function () {
   gulp.watch([
     'resources/css/*',
     'resources/css/**/*'
-  ], gulp.series('bundleCss'))
+  ], gulp.series('bundleCss', function reload (cb) {
+    browserSync.reload()
+    cb()
+  }))
 })
 
 /* ------------------------------
  * default task
  */
+gulp.task('browser-sync', function (cb) {
+  browserSync({
+    proxy: 'localhost:8080',  // local node app address
+    port: 5000,  // use *different* port than above
+    notify: true,
+    open: false
+  }, cb)
+})
+
 gulp.task('default', gulp.series(
+  'browser-sync',
   gulp.parallel('bundleJs', 'bundleCss'),
   'html',
   gulp.parallel('watchJs', 'watchCss', 'watchHtml')
 ))
+
+gulp.task('serve', require('./gulp-tasks/serve.js').serve())
+
 /* ------------------------------
  * build task
  */
