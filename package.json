@@ -39,6 +39,7 @@
     "gulp-rev-delete-original": "^0.2.3",
     "gulp-size": "^2.1.0",
     "gulp-sourcemaps": "^2.2.1",
+    "gulp-standard-bundle": "^0.2.6",
     "gulp-svgmin": "^1.2.2",
     "gulp-svgstore": "^6.0.0",
     "gulp-uglify": "^2.0.0",

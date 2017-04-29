@@ -4,11 +4,18 @@ module.exports = function (templates, data) {
   const error = require('./errorHandling.js')()
   const fs = require('fs')
 
-  return function html () {
+  return (build) => function html () {
     let files = JSON.parse(fs.readFileSync('public/rev-manifest.json', 'utf8'))
-    Object.keys(files).map(function (key, index) {
-      data[key.replace('.', '_').replace(/^[a-z]+\//, '')] = files[key]
-    })
+    if (build === true) {
+      Object.keys(files).map(function (key, index) {
+        data[key.replace('.', '_').replace(/^[a-z]+\//, '')] = files[key]
+      })
+    } else {
+      delete files['js/registerServiceWorker.js']
+      Object.keys(files).map(function (key, index) {
+        data[key.replace('.', '_').replace(/^[a-z]+\//, '')] = key
+      })
+    }
 
     return gulp.src(templates)
       .pipe(dust({

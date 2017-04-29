@@ -75,7 +75,7 @@ gulp.task(require('./gulp-tasks/bundleCss.js')({
  * DUST
  *
  */
-gulp.task('html', require('./gulp-tasks/html.js')(
+const dustHtml = require('./gulp-tasks/html.js')(
   [
     'resources/templates/*.dust',
     'resources/templates/**/*.dust',
@@ -84,7 +84,9 @@ gulp.task('html', require('./gulp-tasks/html.js')(
   {
     'portfolioItems': JSON.parse(fs.readFileSync('resources/templates/data/portfolio.json'))
   }
-))
+)
+gulp.task('html', dustHtml())
+gulp.task('htmlBuild', dustHtml(true))
 
 // watch html
 gulp.task('watchHtml', function () {
@@ -94,8 +96,7 @@ gulp.task('watchHtml', function () {
     'resources/templates/portfolio/*'
   ], gulp.series(
       'html',
-      'serviceWorker',
-      'refresh'
+      'serviceWorker'
     )
   )
 })
@@ -138,29 +139,18 @@ gulp.task('serviceWorker', require('./gulp-tasks/serviceWorker.js')(
     revisionedFiles: JSON.parse(fs.readFileSync(`public/rev-manifest.json`, 'utf8'))
   })
 )
-/* ------------------------------
- * live reload server
- */
-const gulpRefresh = require('gulp-refresh')
-gulp.task('serve', require('./gulp-tasks/serve.js').serve(gulpRefresh))
-/* ------------------------------
- * refresh server
- */
-gulp.task('refresh', require('./gulp-tasks/serve.js').refresh(gulpRefresh))
 // js
 gulp.task('js', gulp.series(
     'clean-js',
     'bundleJs',
-    'revJs',
-    'html',
-    'serviceWorker'
+    'html'
   )
 )
 // watch js
 gulp.task('watchJs', function () {
   gulp.watch([
     'resources/js/*'
-  ], gulp.series('bundleJs', 'revJs', 'html', 'serviceWorker', 'refresh'))
+  ], gulp.series('bundleJs'))
 })
 /* ------------------------------
  *
@@ -171,7 +161,7 @@ gulp.task('watchCss', function () {
   gulp.watch([
     'resources/css/*',
     'resources/css/**/*'
-  ], gulp.series('bundleCss', 'revCss', 'html', 'serviceWorker', 'refresh'))
+  ], gulp.series('bundleCss'))
 })
 
 /* ------------------------------
@@ -179,8 +169,24 @@ gulp.task('watchCss', function () {
  */
 gulp.task('default', gulp.series(
   gulp.parallel('bundleJs', 'bundleCss'),
-  gulp.parallel('revJs', 'revCss'),
   'html',
-  'serviceWorker',
   gulp.parallel('watchJs', 'watchCss', 'watchHtml')
+))
+/* ------------------------------
+ * build task
+ */
+gulp.task('build', gulp.series(
+  function standard (cb) {
+    let standard = require('standard')
+    let linter = require('gulp-standard-bundle').linter
+    return gulp.src('resources/js/*.js')
+    .pipe(linter(standard))
+    .pipe(linter.reporter('default', {
+      breakOnError: false
+    }))
+  },
+  gulp.parallel('bundleJs', 'bundleCss'),
+  gulp.parallel('revJs', 'revCss'),
+  'htmlBuild',
+  'serviceWorker'
 ))
