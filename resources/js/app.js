@@ -1,14 +1,15 @@
-(function(document, window){
-    window.ready = function(fn) {
-        if (document.readyState != 'loading'){
-            fn();
-        } else {
-            document.addEventListener('DOMContentLoaded', fn);
-        }
+/* global ready Menu lazyImg */
+(function (document, window) {
+  window.ready = function (fn) {
+    if (document.readyState !== 'loading') {
+      fn()
+    } else {
+      document.addEventListener('DOMContentLoaded', fn)
     }
-}(document, window));
+  }
+}(document, window))
 
-ready(function(){
+ready(function () {
   const menu = new Menu('.o-nav')
   menu.transitionOnScroll()
 

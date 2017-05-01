@@ -13,6 +13,7 @@
    */
   --black: rgb(var(--black-rgb));
   --semi-black: rgba(var(--black-rgb),.5);
+  --quater-black: rgba(var(--black-rgb),.25);
   --white: rgb(var(--white-rgb));
   --veare-orange: rgb(var(--veare-orange-rgb));
   --blue: rgb(var(--blue-rgb));

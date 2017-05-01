@@ -1,3 +1,35 @@
 .c-portfolio{
-  
+  min-height: 100vh;
+  width: 100vw;
+  padding-bottom: 100px; /* @TODO: HACK for footer */
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.c-portfolio .o-figure{
+  width: 100%;
+}
+.c-portfolio__basic-info{
+  width: 100%;
+  max-width: var(--ms_b8);
+  display: flex;
+  justify-content: space-around;
+}
+.c-portfolio__basic-info__headline{
+  text-align: left;
+  color: var(--quater-black);
+  font-size: var(--type-default);
+  padding-bottom: var(--ms_a-2);
+}
+.c-portfolio__basic-info__content{
+  display: block;
+  text-align: left;
+  font-size: var(--type-big);
+  font-weight: var(--sans-serif-bold);
+}
+.c-portfolio__section{
+  position: absolute;
+  left: var(--ms_a0);
+  transform: rotate(-90deg);
 }

@@ -12,43 +12,43 @@ function throttle (callback, limit) {
 }
 
 class Menu {
-  constructor(menuSelector) {
+  constructor (menuSelector) {
     this._menu = document.querySelector(menuSelector)
   }
 
-  get instance(){
+  get instance () {
     return this._menu
   }
 
-  transitionOnScroll() {
+  transitionOnScroll () {
     let menu = this.instance
     let scrollDone
 
     let toggleClass = (posY) => {
-      if(posY > 150){
+      if (posY > 150) {
         menu.classList.add('is-hidden')
-      }else{
+      } else {
         menu.classList.remove('is-hidden')
       }
     }
 
-    document.addEventListener('scroll', throttle(function(){
+    document.addEventListener('scroll', throttle(function () {
       let posY = window.pageYOffset
       toggleClass(posY)
 
       scrollDone = (posY) => {
-        if(posY === window.pageYOffset){
+        if (posY === window.pageYOffset) {
           toggleClass(posY)
-        }else{
-          setTimeout(function(){
+        } else {
+          setTimeout(function () {
             scrollDone()
-          },50)
+          }, 50)
         }
       }
 
-      setTimeout(function(){
+      setTimeout(function () {
         scrollDone()
-      },50)
-    },20))
+      }, 50)
+    }, 20))
   }
 }

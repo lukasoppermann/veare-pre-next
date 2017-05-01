@@ -1,0 +1,33 @@
+{>"partials/head"/}
+<body>
+  <article class="c-portfolio">
+    <div class="o-figure o-figure--lazy-load c-figure--banner">
+      <div class="o-figure__inner">
+        <img class="o-figure__img" img-src="/media/copra-banner.png" alt="Copra"/>
+      </div>
+    </div>
+
+    <div class="c-portfolio__basic-info">
+      <div class="c-portfolio__basic-info__item">
+        <h6 class="c-portfolio__basic-info__headline">Industry</h6>
+        <span class="c-portfolio__basic-info__content">Health Care</span>
+      </div>
+      <div class="c-portfolio__basic-info__item">
+        <h6 class="c-portfolio__basic-info__headline">Project Type</h6>
+        <span class="c-portfolio__basic-info__content">Corporate &amp; UI Design</span>
+      </div>
+      <div class="c-portfolio__basic-info__item">
+        <h6 class="c-portfolio__basic-info__headline">Client</h6>
+        <span class="c-portfolio__basic-info__content">Copra Software GmbH</span>
+      </div>
+    </div>
+
+    <section>
+      <div class="c-portfolio__section">
+        // Corporate Identity /
+      </div>
+    </section>
+
+    {>"partials/footer"/}
+  </article>
+</body>

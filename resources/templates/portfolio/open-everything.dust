@@ -1,15 +1,5 @@
 {>"partials/head"/}
 <body class="hovers white-logo">
-  <a class="o-media c-back-arrow" href="/#portfolio">
-    <span class="o-icon c-icon--arrow-back c-back-arrow__icon"></span><span class="c-back-arrow__text">back</span>
-  </a>
-
-  <div class="o-figure o-figure--lazy-load">
-    <div class="o-figure__inner">
-      <img class="o-figure__img" img-src="/media/open-everything-stage.jpg" alt="Open Everything"/>
-    </div>
-  </div>
-
 	<div id="body">
 		<div id="header">
 			<a href="/" id="logo" class="no-flicker ajax-link" data-nav="#nav" data-link-tracking="logo-link">
@@ -30,6 +20,9 @@
 		</div>
 		<div class="wrapper">
 			<article class="portfolio-item">
+				<div class="stage blue type-full font-white">
+					<img class="full-width image" src="/media/open-everything-stage.jpg" alt="Open Everything" />
+			    </div>
 				<div class="grid content-box inline-block max-width-1000 padding-top-small padding-sides-small"><div class="span-4 mobile-span-12 tablet-small-span-8">
 						<h2 class="text-size medium-headline align-left font-blue uppercase">Open Everything</h2>
 						<div class="copy-small font-gray aside">
@@ -63,6 +56,6 @@
 			</article>
 		</div>
 	</div>
-{>"partials/sidebar"/}
+ 
 </body>
 </html>

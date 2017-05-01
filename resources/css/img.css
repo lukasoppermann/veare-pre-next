@@ -1,8 +1,11 @@
 .o-figure {
+  display: block;
   position: relative;
-  left: 50%;
-  transform: translate(-50%);
+}
+.c-figure--banner{
   max-width: calc(100vw - var(--ms_a3));
+  margin-top: var(--ms_a3);
+  margin-bottom: var(--ms_a3);
 }
 .o-figure__inner{
   position: relative;
