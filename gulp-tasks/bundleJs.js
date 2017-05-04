@@ -5,8 +5,6 @@ module.exports = function (bundles, filesToMove) {
   const concat = require('gulp-concat')
   const uglify = require('gulp-uglify')
   const error = require('./errorHandling.js')()
-  let standard = require('standard')
-  let linter = require('gulp-standard-bundle').linter
 
   return function bundleJs () {
     let stream = require('merge-stream')()
