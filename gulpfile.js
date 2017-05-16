@@ -14,7 +14,7 @@ gulp.task('clean-js', () => {
   ])
 })
 
-gulp.task(require('./gulp-tasks/bundleJs.js')({
+gulp.task('bundleJs', require('./gulp-tasks/bundleJs.js')({
   common: [
     'resources/js/analytics.js',
     'resources/js/menu.js',
@@ -58,7 +58,7 @@ gulp.task('cleanCss', function (done) {
   ])
 })
 
-gulp.task(require('./gulp-tasks/bundleCss.js')({
+gulp.task('bundleCss', require('./gulp-tasks/bundleCss.js')({
   'app': [
     // npm resources
     'node_modules/minireset.css/minireset.css',
