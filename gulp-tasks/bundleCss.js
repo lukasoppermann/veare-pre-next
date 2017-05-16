@@ -1,48 +1,30 @@
-module.exports = function (bundles) {
+module.exports = function (bundles, links) {
   const gulp = require('gulp')
   const sourcemaps = require('gulp-sourcemaps')
-  const postcss = require('gulp-postcss')
+  const cssnano = require('gulp-cssnano')
   const concat = require('gulp-concat')
   const error = require('./errorHandling.js')()
+  const uncss = require('gulp-uncss')
 
   return function bundleCss () {
     let stream = require('merge-stream')()
     Object.keys(bundles).forEach(function (key) {
       let savings = require('./savingsReporter')()
-
       stream.add(gulp.src(bundles[key])
         .pipe(sourcemaps.init())
         .pipe(concat(key + '.css'))
         .pipe(savings.start())
-        .pipe(postcss([
-          require('postcss-will-change'),
-          require('postcss-discard-comments'),
-          // require('postcss-cssnext')({
-          //   browsers: ['last 2 versions'],
-          //   features: {
-          //     rem: false,
-          //     customProperties: {
-          //       preserve: true
-          //     }
-          //   }
-          // }),
-          require('postcss-round-subpixels'),
-          // require('postcss-uncss')({
-          //   html: ['public/*.html', 'public/portfolio/*.html'],
-          //   ignore: [/.is-(.*)/]
-          // }),
-          require('cssnano')({
-            autoprefixer: false,
-            discardComments: {
-              removeAll: true
-            }
-          }),
-          require('postcss-reporter')({
-            plugins: [
-              'postcss-color-function'
-            ]
-          })
-        ]))
+        .pipe(cssnano({
+          autoprefixer: false,
+          discardComments: {
+            removeAll: true
+          }
+        }))
+        .on('error', error)
+        .pipe(uncss({
+          html: links,
+          ignore: [/is-(.*)/]
+        }))
         .on('error', error)
         .pipe(savings.stop())
         .pipe(savings.gziped())
