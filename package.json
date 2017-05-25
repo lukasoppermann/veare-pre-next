@@ -56,6 +56,7 @@
     "uncss": "^0.14.1"
   },
   "dependencies": {
+    "contentful": "^4.3.0",
     "express": "^4.14.0",
     "node-cache": "^4.1.1",
     "throttle-debounce": "^1.0.1"
