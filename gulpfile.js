@@ -70,7 +70,10 @@ gulp.task('bundleCss', require('./gulp-tasks/bundleCss.js')({
     'resources/css/*.css',
     'resources/css/pages/*.css'
   ]
-}))
+}, [
+  'public/*.html',
+  'public/portfolio/*.html'
+]))
 
 /* ------------------------------
  *

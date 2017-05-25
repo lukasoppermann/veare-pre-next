@@ -28,5 +28,5 @@
    */
 
   --type-black: var(--black);
-  --type-gray: color(var(--black) alpha(40%));
+  --type-gray: rgba(var(--black-rgb), .4);
 }
