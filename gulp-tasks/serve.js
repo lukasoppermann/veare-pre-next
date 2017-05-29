@@ -5,12 +5,13 @@
  */
 module.exports.serve = () => {
   const nodemon = require('gulp-nodemon')
+  const pack = require('../package.json')
 
   return () => {
     nodemon({
       verbose: true,
-      script: 'server.js',
-      watch: ['server.js', 'app/*.js', 'app/*/*.js'],
+      script: pack.main,
+      watch: [pack.main, 'app/*.js', 'app/*/*.js', 'app/*/*/*.js'],
       delay: '1000'
     }).once('quit', () => {
       process.exit()

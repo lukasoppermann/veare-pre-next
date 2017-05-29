@@ -3,35 +3,46 @@
 const express = require('express')
 const path = require('path')
 let router = express.Router()
-let publicDir = 'public'
-let blog = require('./blog')()
+const Blog = require('./controller/blog')
+const Webhook = require('./controller/webhook')
 
-router.use(express.static(publicDir))
+let routes = function (cache) {
+  let blog = new Blog(cache)
+  let webhook = new Webhook(cache)
 
-// router.use('/error', function (req, res) {
-//   process.exit()
-// })
+  // route for static files
+  router.use(express.static('public'))
 
-router.get(/^\/(home|contact)/, function (req, res) {
-  res.sendFile(path.resolve(publicDir, 'index.html'))
-})
+  // router.use('/error', function (req, res) {
+  //   process.exit()
+  // })
 
-router.get(/^\/blog/, blog.post)
-//
-// router.get(/^\/([\w-]+)\/?$/, function (req, res) {
-//   res.sendFile(path.resolve(publicDir, `${req.params[0]}.html`), {}, function (err) {
-//     if (err) {
-//       res.redirect('/')
-//     }
-//   })
-// })
-
-router.get(/^\/portfolio\/([\w-]+)$/, function (req, res) {
-  res.sendFile(path.resolve(publicDir, 'portfolio', `${req.params[0]}.html`), {}, function (err) {
-    if (err) {
-      res.redirect('/#portfolio')
-    }
+  router.get(/^\/(home|contact)/, function (req, res) {
+    res.sendFile(path.resolve('public', 'index.html'))
   })
-})
 
-module.exports = router
+  router.get(/^\/blog\/posts/, blog.posts)
+  router.get(/^\/blog\/categories/, blog.categories)
+
+  router.get(/^\/webhooks/, webhook.fire.bind(webhook))
+  //
+  router.get(/^\/([\w-]+)\/?$/, function (req, res) {
+    res.sendFile(path.resolve('public', `${req.params[0]}.html`), {}, function (err) {
+      if (err) {
+        res.redirect('/')
+      }
+    })
+  })
+
+  router.get(/^\/portfolio\/([\w-]+)$/, function (req, res) {
+    res.sendFile(path.resolve('public', 'portfolio', `${req.params[0]}.html`), {}, function (err) {
+      if (err) {
+        res.redirect('/#portfolio')
+      }
+    })
+  })
+
+  return router
+}
+
+module.exports = routes

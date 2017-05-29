@@ -2,7 +2,7 @@
   "name": "veare",
   "description": "veare website",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "app.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lukasoppermann/veare.git"
