@@ -173,7 +173,20 @@ gulp.task('watchCss', function () {
     cb()
   }))
 })
-
+/* ------------------------------
+ * watchNode task
+ */
+// gulp.task('watchNode', function () {
+//   const pack = require('./package.json')
+//   gulp.watch([
+//     pack.main,
+//     'app/*',
+//     'app/**/*'
+//   ], function reload (cb) {
+//     browserSync.reload()
+//     cb()
+//   })
+// })
 /* ------------------------------
  * default task
  */

@@ -1,3 +1,7 @@
+///<reference path="./node_modules/@types/node/index.d.ts" />
+///<reference path="./node_modules/@types/node-cache/index.d.ts" />
+///<reference path="./node_modules/contentful/index.d.ts" />
+
 'use strict'
 
 const express = require('express')

@@ -72,6 +72,8 @@
   position: relative;
 }
 .c-intro--services{
+  display: flex;
+  flex-direction: column;
   width: var(--ms_b6);
   font-family: var(--serif);
   font-style: var(--serif-style);

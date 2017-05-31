@@ -30,6 +30,7 @@
     "gulp-dust": "^3.0.0",
     "gulp-dust-html": "0.0.6",
     "gulp-filenames": "^4.0.1",
+    "gulp-forever-monitor": "^1.0.2",
     "gulp-nodemon": "^2.2.1",
     "gulp-rename": "^1.2.*",
     "gulp-rev": "^7.0.*",
@@ -51,19 +52,25 @@
     "snazzy": "^7.0.0",
     "standard": "^10.0.2",
     "sw-precache": "^5.1.0",
-    "typescript": "^2.3.2",
+    "typescript": "^2.3.4",
     "typescript-eslint-parser": "^2.1.0",
     "uncss": "^0.14.1"
   },
   "dependencies": {
+    "@types/contentful-resolve-response": "^0.1.30",
+    "@types/express": "^4.0.35",
+    "@types/node": "^7.0.22",
+    "@types/node-cache": "^3.0.31",
     "contentful": "^4.3.0",
     "express": "^4.14.0",
     "node-cache": "^4.1.1",
-    "throttle-debounce": "^1.0.1"
+    "throttle-debounce": "^1.0.1",
+    "ts-node": "^3.0.4"
   },
   "scripts": {
     "start": "gulp serve",
-    "nodemon": "nodemon --watch server.js",
+    "nodemon": "nodemon --watch app.js",
+    "forever": "forever start -v --watch --watchedDirectory=/Users/lukasoppermann/code/veare app.js",
     "test": "standard | snazzy 'resources/js/*.js'"
   }
 }

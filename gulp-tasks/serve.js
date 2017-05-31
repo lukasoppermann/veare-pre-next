@@ -4,17 +4,24 @@
  *
  */
 module.exports.serve = () => {
-  const nodemon = require('gulp-nodemon')
+  const forever = require('gulp-forever-monitor')
   const pack = require('../package.json')
 
   return () => {
-    nodemon({
-      verbose: true,
-      script: pack.main,
-      watch: [pack.main, 'app/*.js', 'app/*/*.js', 'app/*/*/*.js'],
-      delay: '1000'
-    }).once('quit', () => {
-      process.exit()
+
+    var foreverMonitorOptions = {
+      env: process.env,
+      args: process.argv,
+      watch: true,
+      watchIgnorePatterns: ['node_modules/**', 'public/**']
+    }
+
+    forever(pack.main, foreverMonitorOptions)
+    .on('watch:restart', function(fileInfo) {
+      console.log('server was restarted');
+    })
+    .on('exit', function() {
+      console.log('server was closed');
     })
   }
 }

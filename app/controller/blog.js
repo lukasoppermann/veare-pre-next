@@ -8,12 +8,14 @@ class Blog {
     cache = globalCache
   }
 
-  posts (req, res) {
+  index (req, res) {
     res.send(cache.get('contentfulEntries'))
   }
 
   categories (req, res) {
-    res.send(cache.get('contentfulEntries'))
+    res.writeHeader(200, {"Content-Type": "text/html"})
+        res.write('<body>üos</body>')
+        res.end()
   }
 
   // categories (req, res) {

@@ -16,7 +16,10 @@
             <h2 class="c-intro--services-description-veare">veare</h2>
             <span>supports clients with</span>
           </div>
-          <h1 class="c-intro--services">UI / UX / Frontend Consulting, Concept & Design</h1>
+          <h1 class="c-intro--services">
+            <span class="c-intro--services-row">Creative Direction</span>
+            <span class="c-intro--services-row">UI / UX Concept & Design</span>
+          </h1>
         </div>
       </div>
   	</div>

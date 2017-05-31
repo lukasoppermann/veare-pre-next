@@ -7,21 +7,23 @@ const Blog = require('./controller/blog')
 const Webhook = require('./controller/webhook')
 
 let routes = function (cache) {
+
   let blog = new Blog(cache)
   let webhook = new Webhook(cache)
 
   // route for static files
   router.use(express.static('public'))
 
-  // router.use('/error', function (req, res) {
-  //   process.exit()
-  // })
+  router.use('/error', function (req, res) {
+    console.log('yo')
+    process.exit()
+  })
 
   router.get(/^\/(home|contact)/, function (req, res) {
     res.sendFile(path.resolve('public', 'index.html'))
   })
 
-  router.get(/^\/blog\/posts/, blog.posts)
+  router.get(/^\/blog\/?$/, blog.index)
   router.get(/^\/blog\/categories/, blog.categories)
 
   router.get(/^\/webhooks/, webhook.fire.bind(webhook))
