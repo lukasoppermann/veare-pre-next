@@ -1,21 +1,29 @@
 'use strict'
 
-let cache
+const Controller = require('./Controller')
+const Post = require('../models/Post')
+let posts
+let self
 
-class Blog {
-
-  constructor (globalCache) {
-    cache = globalCache
+class Blog extends Controller {
+  constructor (cache) {
+    super()
+    self = this
+    posts = new Post(cache)
   }
 
   index (req, res) {
-    res.send(cache.get('contentfulEntries'))
+    posts.all((result) => {
+      self.render(res, 'blog', {
+        posts: result
+      })
+    })
   }
 
   categories (req, res) {
-    res.writeHeader(200, {"Content-Type": "text/html"})
-        res.write('<body>üos</body>')
-        res.end()
+    res.writeHeader(200, {'Content-Type': 'text/html'})
+    res.write('<body>üos</body>')
+    res.end()
   }
 
   // categories (req, res) {
@@ -38,7 +46,6 @@ class Blog {
   //     }
   //   })
   // }
-
 }
 
 module.exports = Blog

@@ -24,4 +24,6 @@
   --type-medium-line-height: 135%;
   --type-default: var(--ms_a0);
   --type-default-line-height: 135%;
+  --type-small: var(--ms_a-1);
+  --type-small-line-height: 135%;
 }

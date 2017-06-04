@@ -21,10 +21,10 @@ module.exports = function (bundles, links) {
           }
         }))
         .on('error', error)
-        .pipe(uncss({
-          html: links,
-          ignore: [/is-(.*)/]
-        }))
+        // .pipe(uncss({
+        //   html: links,
+        //   ignore: [/is-(.*)/]
+        // }))
         .on('error', error)
         .pipe(savings.stop())
         .pipe(savings.gziped())

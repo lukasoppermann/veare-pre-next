@@ -43,7 +43,7 @@
   font-size: var(--type-huge);
   font-weight: 400;
   line-height: var(--type-huge-line-height);
-  color: var(--type-gray);
+  color: var(--type-grey);
   display: inline-block;
   position: relative;
 }
@@ -87,7 +87,7 @@
 }
 .c-intro--services-description,
 .c-intro--services-description-veare{
-  color: var(--type-gray);
+  color: var(--type-grey);
   font-size: var(--type-default);
 }
 .c-intro--services-description-veare{

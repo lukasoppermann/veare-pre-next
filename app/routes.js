@@ -3,11 +3,10 @@
 const express = require('express')
 const path = require('path')
 let router = express.Router()
-const Blog = require('./controller/blog')
+const Blog = require('./controller/Blog')
 const Webhook = require('./controller/webhook')
 
 let routes = function (cache) {
-
   let blog = new Blog(cache)
   let webhook = new Webhook(cache)
 

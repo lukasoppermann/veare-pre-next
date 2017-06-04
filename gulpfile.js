@@ -52,11 +52,6 @@ gulp.task('bundleJs', require('./gulp-tasks/bundleJs.js')({
  * POST CSS
  *
  */
-gulp.task('cleanCss', function (done) {
-  return del([
-    'public/css'
-  ])
-})
 
 gulp.task('bundleCss', require('./gulp-tasks/bundleCss.js')({
   'app': [
@@ -72,7 +67,8 @@ gulp.task('bundleCss', require('./gulp-tasks/bundleCss.js')({
   ]
 }, [
   'public/*.html',
-  'public/portfolio/*.html'
+  'public/portfolio/*.html',
+  'public/blog/*.html'
 ]))
 
 /* ------------------------------
@@ -97,8 +93,8 @@ gulp.task('htmlBuild', dustHtml(true))
 gulp.task('watchHtml', function () {
   gulp.watch([
     'resources/templates/*',
-    'resources/templates/partials/*',
-    'resources/templates/portfolio/*'
+    'resources/templates/**/*',
+    '!resources/data/*'
   ], gulp.series('html', function reload (cb) {
     browserSync.reload()
     cb()
@@ -168,25 +164,11 @@ gulp.task('watchCss', function () {
   gulp.watch([
     'resources/css/*',
     'resources/css/**/*'
-  ], gulp.series('bundleCss', function reload (cb) {
+  ], gulp.series('bundleCss','revCss', function reload (cb) {
     browserSync.reload()
     cb()
   }))
 })
-/* ------------------------------
- * watchNode task
- */
-// gulp.task('watchNode', function () {
-//   const pack = require('./package.json')
-//   gulp.watch([
-//     pack.main,
-//     'app/*',
-//     'app/**/*'
-//   ], function reload (cb) {
-//     browserSync.reload()
-//     cb()
-//   })
-// })
 /* ------------------------------
  * default task
  */
@@ -202,6 +184,7 @@ gulp.task('browser-sync', function (cb) {
 gulp.task('default', gulp.series(
   'browser-sync',
   gulp.parallel('bundleJs', 'bundleCss'),
+  gulp.parallel('revJs', 'revCss'),
   'html',
   gulp.parallel('watchJs', 'watchCss', 'watchHtml')
 ))
