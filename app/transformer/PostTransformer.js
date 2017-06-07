@@ -1,6 +1,7 @@
 'use strict'
 
 const Transformer = require('./Transformer')
+const Category = require('../models/Category')
 
 class PostTransformer extends Transformer {
   transform (data) {
@@ -8,14 +9,20 @@ class PostTransformer extends Transformer {
       id: data.sys.id,
       createdAt: data.sys.createdAt,
       updatedAt: data.sys.updatedAt,
-      slug: this.getField('slug', data),
-      // category: this.getLinkedField('category', 'slug', data),
       fields: {
+        slug: this.getField('slug', data),
         title: this.getField('title', data),
+        rawdate: this.getField('date', data),
         date: this.formatDate(this.getField('date', data)),
         preview: this.getField('preview', data),
-        content: this.getField('content', data)
-        // category: this.getLinkedObject('category', data),
+        content: this.getField('content', data),
+        // category: new Category(this.getField('category', data)).transform()
+        category: {
+          slug: 'design',
+          fields: {
+            title: 'Design'
+          }
+        }
       }
     }
   }

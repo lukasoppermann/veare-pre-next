@@ -8,12 +8,6 @@ const browserSync = require('browser-sync')
  * JS
  *
  */
-gulp.task('clean-js', () => {
-  return del([
-    'public/js'
-  ])
-})
-
 gulp.task('bundleJs', require('./gulp-tasks/bundleJs.js')({
   common: [
     'resources/js/analytics.js',
@@ -86,7 +80,7 @@ const dustHtml = require('./gulp-tasks/html.js')(
     'portfolioItems': JSON.parse(fs.readFileSync('resources/templates/data/portfolio.json'))
   }
 )
-gulp.task('html', dustHtml())
+gulp.task('html', dustHtml(true))
 gulp.task('htmlBuild', dustHtml(true))
 
 // watch html
@@ -132,19 +126,10 @@ gulp.task('serviceWorker', require('./gulp-tasks/serviceWorker.js')(
   {
     rootDir: 'public',
     files: [
-      'media/veare-icons@2x.png',
-      'media/lukas-oppermann@2x.png',
-      'css/app.css'
+      'media/lukas-oppermann@2x.png'
     ],
     revisionedFiles: JSON.parse(fs.readFileSync(`public/rev-manifest.json`, 'utf8'))
   })
-)
-// js
-gulp.task('js', gulp.series(
-    'clean-js',
-    'bundleJs',
-    'html'
-  )
 )
 // watch js
 gulp.task('watchJs', function () {

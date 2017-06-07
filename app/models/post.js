@@ -10,6 +10,10 @@ class Post extends Model {
       type: 'Entry'
     })
   }
+
+  findBySlug (slug, cb) {
+    this.findByField('slug', slug, cb)
+  }
 }
 
 module.exports = Post

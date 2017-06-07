@@ -23,7 +23,7 @@ let routes = function (cache) {
   })
 
   router.get(/^\/blog\/?$/, blog.index)
-  router.get(/^\/blog\/categories/, blog.categories)
+  router.get(/^\/blog\/([\w-]+)/, blog.get)
 
   router.get(/^\/webhooks/, webhook.fire.bind(webhook))
   //

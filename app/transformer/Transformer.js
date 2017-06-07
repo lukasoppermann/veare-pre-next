@@ -23,10 +23,6 @@ class Transformer {
     return field[Object.keys(field)[0]]
   }
 
-  getLinkedObject (objectName, data) {
-    let field = data.fields[fieldName]
-  }
-
   getLinkedField (objectName, fieldname, data) {
 
   }

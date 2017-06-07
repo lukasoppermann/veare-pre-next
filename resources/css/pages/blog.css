@@ -30,7 +30,7 @@
     position: relative;
     flex: 1;
     margin: 2rem;
-    box-sizing: padding-box;
+    box-sizing: content-box;
     display: block;
     overflow: hidden;
     width: calc( 100% - 4rem);
@@ -43,10 +43,10 @@
     width: calc( 100% - 4rem);
     position: absolute;
     background: none;
-    .o-footer__link{
-        color: var(--white);
-        text-shadow: 0 0 1px var(--quater-black);
-    }
+}
+.o-blog-listing__about .o-footer .o-footer__link{
+    color: var(--white);
+    text-shadow: 0 0 1px var(--quater-black);
 }
 
 .c-list-postlist{
@@ -54,10 +54,12 @@
     margin-top: 10rem;
 }
 .js-blog-img{
-    position: absolute;
-    opacity: 0;
-    height: 100%;
-    width: auto;
+  position: absolute;
+  height: 100%;
+  width: auto;
+  max-width: none;
+  left: 50%;
+  transform: translateX(-50%);
 }
 @media (min-width: 1153px) {
     .js-blog-img{
@@ -77,9 +79,6 @@
     position: absolute;
     left: 4rem;
     top: 4rem;
-    -webkit-animation: move-up 2s 1, fadein 2s 1;
-    -moz-animation:    move-up 2s 1, fadein 2s 1;
-    -o-animation:      move-up 2s 1, fadein 2s 1;
     animation:         move-up 2s 1, fadein 2s 1;
 }
 .o-logo__form{
@@ -250,6 +249,7 @@
     position: relative;
     margin: 0 auto 5rem auto;
     max-width: 55rem;
+    min-height: 15rem;
     opacity: 0;
     transform: translateY(2rem);
     animation: fade-in-up;
@@ -314,7 +314,7 @@
 .o-article-preview__date:after{
     position:absolute;
     display: block;
-    color: var(--light-grey);
+    color: var(--medium-grey);
     font-size: var(--type-default);
     right: .75rem;
     top: .5rem;
@@ -332,6 +332,7 @@
     box-sizing: border-box;
     overflow: hidden;
     cursor: default;
+    text-decoration: none;
 }
 .o-article-preview__category:after{
     position: absolute;
@@ -345,10 +346,11 @@
     transition: transform .4s ease, opacity .4s ease;
 }
 .o-article-preview__title{
-    font-size: var(--type-medium-huge);
-    line-height: 125%;
-    width: 100%;
-    margin-top: 0;
+  font-size: var(--type-medium-huge);
+  line-height: 125%;
+  width: 100%;
+  margin-top: 0;
+  text-decoration: none;
 }
 .o-article-preview__series{
     color: var(--type-grey);
@@ -357,7 +359,8 @@
 }
 .o-article-preview__excerpt{
     margin-top: 1rem;
-    font-size: var(--type-default);
+    padding-bottom: var(--ms-1);
+    font-size: var(--type-medium);
     font-family: var(--serif);
     line-height: 135%;
     color: var(--type-grey);
@@ -368,6 +371,7 @@
     height: 100%;
     width: 100%;
     cursor: pointer;
+    text-decoration: none;
 }
 .o-article-preview__link:after, .o-article-preview__link:before{
     pointer-events: none;
