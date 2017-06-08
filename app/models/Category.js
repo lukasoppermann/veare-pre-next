@@ -4,8 +4,8 @@ const Model = require('./Model')
 const CategoryTransformer = require('../transformer/CategoryTransformer')
 
 class Category extends Model {
-  constructor (cache) {
-    super(cache, CategoryTransformer, {
+  constructor () {
+    super(CategoryTransformer, {
       contentType: 'category',
       type: 'Entry'
     })

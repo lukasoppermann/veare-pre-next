@@ -6,10 +6,10 @@ let posts
 let self
 
 class Blog extends Controller {
-  constructor (cache) {
+  constructor () {
     super()
     self = this
-    posts = new Post(cache)
+    posts = new Post()
   }
 
   index (req, res) {

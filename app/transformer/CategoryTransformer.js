@@ -11,8 +11,7 @@ class CategoryTransformer extends Transformer {
       fields: {
         slug: this.getField('slug', data),
         title: this.getField('title', data),
-        date: this.getField('description', data),
-        color: this.getField('color', data)
+        description: this.getField('description', data)
       }
     }
   }

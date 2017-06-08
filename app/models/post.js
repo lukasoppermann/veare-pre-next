@@ -4,8 +4,8 @@ const Model = require('./Model')
 const PostTransformer = require('../transformer/PostTransformer')
 
 class Post extends Model {
-  constructor (cache) {
-    super(cache, PostTransformer, {
+  constructor () {
+    super(PostTransformer, {
       contentType: 'post',
       type: 'Entry'
     })

@@ -3,8 +3,6 @@
 const path = require('path')
 const express = require('express')
 const hoffman = require('hoffman')
-const NodeCache = require('node-cache')
-const cache = new NodeCache()
 const routes = require('./app/routes')
 // Constants
 const PORT = 8080
@@ -25,7 +23,7 @@ hoffman.prime(app.settings.views, function (err) {
 // app.use(express.session({ secret: 'very_unique_secret_string',
 //   cookie: { maxAge: 1800000 }}))
 // load routes
-app.use('/', routes(cache))
+app.use('/', routes())
 
 app.listen(PORT)
 console.log('Running on http://localhost:' + PORT)

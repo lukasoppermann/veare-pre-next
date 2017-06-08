@@ -6,9 +6,8 @@ let router = express.Router()
 const Blog = require('./controller/Blog')
 const Webhook = require('./controller/webhook')
 
-let routes = function (cache) {
-  let blog = new Blog(cache)
-  let webhook = new Webhook(cache)
+let routes = function () {
+  let blog = new Blog()
 
   // route for static files
   router.use(express.static('public'))
@@ -25,15 +24,15 @@ let routes = function (cache) {
   router.get(/^\/blog\/?$/, blog.index)
   router.get(/^\/blog\/([\w-]+)/, blog.get)
 
-  router.get(/^\/webhooks/, webhook.fire.bind(webhook))
-  //
-  router.get(/^\/([\w-]+)\/?$/, function (req, res) {
-    res.sendFile(path.resolve('public', `${req.params[0]}.html`), {}, function (err) {
-      if (err) {
-        res.redirect('/')
-      }
-    })
-  })
+  // router.get(/^\/webhooks/, webhook.fire.bind(webhook))
+  // //
+  // router.get(/^\/([\w-]+)\/?$/, function (req, res) {
+  //   res.sendFile(path.resolve('public', `${req.params[0]}.html`), {}, function (err) {
+  //     if (err) {
+  //       res.redirect('/')
+  //     }
+  //   })
+  // })
 
   router.get(/^\/portfolio\/([\w-]+)$/, function (req, res) {
     res.sendFile(path.resolve('public', 'portfolio', `${req.params[0]}.html`), {}, function (err) {
