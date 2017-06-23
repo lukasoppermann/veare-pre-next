@@ -12,9 +12,13 @@ let routes = function () {
   // route for static files
   router.use(express.static('public'))
 
-  router.use('/error', function (req, res) {
-    console.log('yo')
-    process.exit()
+  // router.use('/error', function (req, res) {
+  //   process.exit()
+  // })
+
+  router.use('/cache', function (req, res) {
+    require('memory-cache').clear()
+    res.send(require('memory-cache').keys())
   })
 
   router.get(/^\/(home|contact)/, function (req, res) {

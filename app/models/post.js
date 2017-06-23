@@ -5,14 +5,25 @@ const PostTransformer = require('../transformer/PostTransformer')
 
 class Post extends Model {
   constructor () {
-    super(PostTransformer, {
-      contentType: 'post',
-      type: 'Entry'
+    super(PostTransformer, 'post')
+  }
+
+  all() {
+    return super.all().sort((a, b) => {
+      let dateA = new Date(a.fields.rawdate)
+      let dateB = new Date(b.fields.rawdate)
+      if (dateA < dateB) {
+        return 1;
+      }
+      if (dateA > dateB) {
+        return -1;
+      }
+      return 0;
     })
   }
 
-  findBySlug (slug, cb) {
-    this.findByField('slug', slug, cb)
+  findBySlug (slug) {
+    return this.findByField('slug', slug)
   }
 }
 

@@ -14,13 +14,13 @@
   background: var(--sand-grey);
 }
 .o-figure__img {
-  opacity: 0;
+  /*opacity: 0;
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
-  transition: opacity .5s ease;
+  transition: opacity .5s ease;*/
 }
 .is-loaded .o-figure__img{
   opacity: 1;

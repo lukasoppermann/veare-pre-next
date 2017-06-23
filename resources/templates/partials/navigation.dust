@@ -6,7 +6,7 @@
         <path d="M270,210 C300,210 520,210 540,210 C740,210 640,530 520,410 C440,330 300,190 300,190" id="bottom" transform="translate(480, 320) scale(1, -1) translate(-480, -318) "></path>
       </svg>
   </div>
-  <ul class="o-nav__list" layout="row center-right">
+  <ul class="o-nav__list">
     <li class='o-nav__item'>
       <a class='o-nav__link' href="/">Home</a>
     </li>

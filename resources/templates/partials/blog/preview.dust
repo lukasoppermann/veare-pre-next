@@ -1,11 +1,12 @@
-<li class="o-list-item o-article-preview o-article-preview--{fields.category.slug}" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+<li class="o-list-item o-article-preview o-article-preview--{fields.category.fields.slug}" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
     <div class="o-article-preview__meta">
         <meta itemprop="author" content="{fields.author.name}" />
         <meta itemprop="publisher" content="vea.re" />
         <time itemprop="datePublished" class="o-article-preview__date" datetime="{fields.date}">{fields.date}</time>
-        <a href="" class="o-article-preview__category o-article-preview__category--{fields.category.slug}" date-category="{fields.category.fields.title}">{fields.category.fields.title}</a>
+        <a href="" class="o-article-preview__category o-article-preview__category--{fields.category.fields.slug}">{fields.category.fields.title}</a>
+        <time class="o-article-preview__read-time" datetime="{fields.readingTime}m">{fields.readingTime} min read</time>
     </div>
-    <a itemprop="url" class="o-article-preview__link" title="Read: {fields.title}" href="blog/{fields.slug}">
+    <a itemprop="url" class="o-article-preview__link" title="Read: {fields.title}" href="/blog/{fields.slug}">
     <link itemprop="mainEntityOfPage" href="{fields.slug}" />
         {! @if( $post['meta']['series'] !== false )
             <h4 class="o-article-preview__series">{{$post['meta']['series']['name']}} – part {{$post['meta']['series']['part']}}:</h4>

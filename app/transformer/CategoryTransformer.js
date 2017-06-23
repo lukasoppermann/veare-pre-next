@@ -3,6 +3,10 @@
 const Transformer = require('./Transformer')
 
 class CategoryTransformer extends Transformer {
+  constructor (data) {
+    super(data)
+  }
+  
   transform (data) {
     return {
       id: data.sys.id,

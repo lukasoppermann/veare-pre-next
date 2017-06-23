@@ -9,6 +9,9 @@
   border-top: var(--ms_a3) solid rgb(255, 255, 255);
   min-height: 700px;
   height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 .c-section--intro .c-svg--logo{
   margin: var(--ms_b1) 0 0 var(--ms_a1);
@@ -60,6 +63,9 @@
 .c-intro-copy-container{
   margin-top: var(--ms_b3);
   width: calc(var(--ms_a8) - var(--ms_b2));
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 .c-intro--slogan{
   width: calc(var(--ms_b5) + var(--ms_b0));

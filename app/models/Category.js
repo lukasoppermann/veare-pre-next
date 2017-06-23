@@ -5,10 +5,7 @@ const CategoryTransformer = require('../transformer/CategoryTransformer')
 
 class Category extends Model {
   constructor () {
-    super(CategoryTransformer, {
-      contentType: 'category',
-      type: 'Entry'
-    })
+    super(CategoryTransformer, 'category')
   }
 }
 

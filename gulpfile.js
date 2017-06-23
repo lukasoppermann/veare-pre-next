@@ -1,7 +1,6 @@
 // Imports
 const gulp = require('gulp')
 const fs = require('fs')
-const del = require('del')
 const browserSync = require('browser-sync')
 /* ------------------------------
  *
@@ -22,8 +21,15 @@ gulp.task('bundleJs', require('./gulp-tasks/bundleJs.js')({
     'node_modules/minigrid/dist/minigrid.min.js',
     'resources/js/cards.js'
   ],
-  'registerServiceWorker': [
+  registerServiceWorker: [
     'resources/js/register-service-worker.js'
+  ],
+  blog: [
+    'node_modules/prismjs/prism.js',
+    'node_modules/prismjs/components/prism-bash.js'
+  ],
+  'dev-grid': [
+    'resources/js/dev-grid.js'
   ]
 },
   // files to only be moved to js folder
@@ -51,8 +57,8 @@ gulp.task('bundleCss', require('./gulp-tasks/bundleCss.js')({
   'app': [
     // npm resources
     'node_modules/minireset.css/minireset.css',
-    'node_modules/flex-layout-attribute/css/flex-layout-attribute.css',
     'node_modules/modular-scale-css/modular-scale.css',
+    'node_modules/raster.css/dist/raster.css',
     // includes
     'resources/css/includes/*.css',
     // main files
@@ -115,7 +121,8 @@ gulp.task('revJs', require('./gulp-tasks/rev.js')('css',
     'public/js/common.js',
     'public/js/portfolio.js',
     'public/js/webcomponents.js',
-    'public/js/registerServiceWorker.js'
+    'public/js/registerServiceWorker.js',
+    'public/js/blog.js'
   ]))
 /* ------------------------------
  *
@@ -149,7 +156,7 @@ gulp.task('watchCss', function () {
   gulp.watch([
     'resources/css/*',
     'resources/css/**/*'
-  ], gulp.series('bundleCss','revCss', function reload (cb) {
+  ], gulp.series('bundleCss', 'revCss', function reload (cb) {
     browserSync.reload()
     cb()
   }))

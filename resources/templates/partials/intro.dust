@@ -1,4 +1,4 @@
-<page-section class="o-section c-section--intro" layout="row top-left">
+<page-section class="o-section c-section--intro">
 
     {>"partials/logo-svg"/}
     <div class="c-intro-content">
@@ -9,7 +9,7 @@
         </svg>
         <span class="c-intro-main-subline">is everything</span>
       </h3>
-      <div class="c-intro-copy-container" layout="row top-justify">
+      <div class="c-intro-copy-container">
         <h2 class="c-intro--slogan">Designing experiences with a focus on usability.</h2>
         <div class="c-intro--services-container">
           <div class="c-intro--services-description">

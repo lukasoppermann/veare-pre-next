@@ -1,0 +1,22 @@
+.o-list{
+  font-size: var(--type-big);
+  line-height: 125%;
+  margin-top: var(--ms_b1);
+  margin-bottom: var(--ms_b1);
+}
+.o-list li{
+  position: relative;
+  list-style: none;
+  padding-left: 25px;
+  margin-bottom: var(--ms_b-1);
+}
+.o-list li:last-child{
+  margin-bottom: 0;
+}
+.o-list li:before{
+  position: absolute;
+  content: "–";
+  color: var(--veare-orange);
+  top: -3px;
+  left: 0;
+}

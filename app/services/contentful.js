@@ -1,98 +1,49 @@
 'use strict'
 
 const client = require('./client')
+const cache = require('memory-cache')
 
-class Contentful {
-  constructor (cache) {
-    this.cache = cache
-  }
-
-  sync () {
-    let self = this
-    self.cache.get('contentfulSyncToken', function (err, token) {
-      if (!err) {
-        if (token === undefined) {
-          client.sync({initial: true})
-          .then((response) => {
-            const responseObj = JSON.parse(response.stringifySafe())
-            self._storeContent(response.nextSyncToken, {
-              entries: responseObj.entries,
-              assets: responseObj.assets
-            })
-          })
-        } else {
-          client.sync({nextSyncToken: token})
-          .then((response) => {
-            self._storeContent(response.nextSyncToken, self._updatedContent(response))
-          })
-        }
+const contentful = (initial, cb, error = console.error) => {
+  client.sync({
+    initial: initial
+  })
+  .then((response) => {
+    const responseObj = JSON.parse(response.stringifySafe())
+    client.getContentTypes()
+    .then((types) => {
+      if (initial === true) {
+        initializeContent(types, responseObj, cb)
+      } else {
+        updateContent(types, responseObj, cb)
       }
-    })
-  }
-
-  _storeContent (token, content) {
-    this.cache.set('contentfulEntries', content.entries)
-    this.cache.set('contentfulAssets', content.assets)
-    // store the new token
-    this.cache.set('contentfulSyncToken', token)
-  }
-
-  _updatedContent (response) {
-    let entries = Object.assign(this._cleanObject(this.cache.get('contentfulEntries'), response.deletedEntries), response.entries)
-    let assets = Object.assign(this._cleanObject(this.cache.get('contentfulAssets'), response.deletedAssets), response.assets)
-
-    return {
-      entries: entries,
-      assets: assets
-    }
-  }
-
-  _cleanObject (object, removedProperties) {
-    console.log(removedProperties)
-    return object
-  }
+    }).catch(console.error)
+  })
+  .catch(error)
 }
 
-// let contentful = function (cache) {
-//   const entries = {}
-//   const assets = {}
-//
-//   cache.set('contentfulEntries', JSON.stringify(entries))
-//   cache.set('contentfulAssets', JSON.stringify(assets))
-//   // store the new token
-//   cache.set('contentfulSyncToken', 'Test')
-//
-//   return
-//
-//
-//   cache.get('contentfulSyncToken', function (err, value) {
-//     if (!err) {
-//       if (value === undefined) {
-//         client.sync({initial: true})
-//         .then((response) => {
-//           const responseObj = JSON.parse(response.stringifySafe())
-//           const entries = responseObj.entries
-//           const assets = responseObj.assets
-//           cache.set('contentfulEntries', JSON.stringify(entries))
-//           cache.set('contentfulAssets', JSON.stringify(assets))
-//           // store sync token
-//           cache.set('contentfulSyncToken', response.nextSyncToken)
-//         })
-//       } else {
-//         client.sync({nextSyncToken: value})
-//         .then((response) => {
-//           let entries = Object.assign(cache.get('contentfulEntries'), response.entries)
-//           let assets = Object.assign(cache.get('contentfulAssets'), response.assets)
-//           console.log(response.deletedEntries)
-//           console.log(response.deletedAssets)
-//           cache.set('contentfulEntries', JSON.stringify(entries))
-//           cache.set('contentfulAssets', JSON.stringify(assets))
-//           // store the new token
-//           cache.set('contentfulSyncToken', response.nextSyncToken)
-//         })
-//       }
-//     }
-//   })
-// }
+const initializeContent = (types, responseObj, cb) => {
+  let content = prepareResponse(types.items.map((item) => item.sys.id), responseObj)
+  for (var key in content) {
+    if (content.hasOwnProperty(key)) {
+        cache.put(key, content[key])
+    }
+  }
+  
+  cb(content)
+}
 
-module.exports = Contentful
+const updateContent = (types, responseObj, cb) => {
+  let content = prepareResponse(types.items.map((item) => item.sys.id), responseObj)
+}
+
+const prepareResponse = (types, responseObj) => {
+  let response = {}
+  types.forEach((contentTypeId) => {
+    response[contentTypeId] = responseObj.entries.filter((entry) => {
+      return entry.sys.contentType.sys.id === contentTypeId
+    })
+  })
+  return response
+}
+
+module.exports = contentful

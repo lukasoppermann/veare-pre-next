@@ -1,13 +1,14 @@
 'use strict'
 
 const path = require('path')
-const express = require('express')
 const hoffman = require('hoffman')
 const routes = require('./app/routes')
+const contentful = require('./app/services/contentful')
+// App
+const express = require('express')
+const app = express()
 // Constants
 const PORT = 8080
-// App
-const app = express()
 
 app.set('views', path.join(__dirname, 'resources/templates')) // path to your templates
 app.set('view engine', 'dust')
@@ -19,11 +20,11 @@ app.engine('dust', hoffman.__express())
 hoffman.prime(app.settings.views, function (err) {
   console.log(err)
 })
-// app.use(jsonBody())
-// app.use(express.session({ secret: 'very_unique_secret_string',
-//   cookie: { maxAge: 1800000 }}))
-// load routes
-app.use('/', routes())
 
-app.listen(PORT)
-console.log('Running on http://localhost:' + PORT)
+contentful(true, (response) => {
+  // load routes
+  app.use('/', routes())
+  // open port
+  app.listen(PORT)
+  console.log('Running on http://localhost:' + PORT)
+})

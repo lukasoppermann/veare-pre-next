@@ -2,33 +2,39 @@
 
 const Transformer = require('./Transformer')
 const Category = require('../models/Category')
-let self
+const CategoryTransformer = require('./CategoryTransformer')
+const AssetTransformer = require('./AssetTransformer')
+const readingTime = require('reading-time')
+const convertMarkdown = require('../services/convertMarkdown')
+
+const modifiers = {
+  h1: {
+    class: 'o-headline o-headline--h2 o-headline--serif'
+  }
+}
 
 class PostTransformer extends Transformer {
-  constructor (data) {
-    super(data)
-    self = this
-  }
-
   transform (data) {
-    console.log(this.getField('category', data));
-    let categoryId = this.getField('category', data).sys.id
-    new Category().find(categoryId, (category) => {
-      return {
-        id: data.sys.id,
-        createdAt: data.sys.createdAt,
-        updatedAt: data.sys.updatedAt,
-        fields: {
-          slug: self.getField('slug', data),
-          title: self.getField('title', data),
-          rawdate: self.getField('date', data),
-          date: self.formatDate(self.getField('date', data)),
-          preview: self.getField('preview', data),
-          content: self.getField('content', data),
-          category: category
-        }
+
+    return {
+      id: data.sys.id,
+      createdAt: data.sys.createdAt,
+      updatedAt: data.sys.updatedAt,
+      fields: {
+        slug: this.getField('slug', data),
+        title: this.getField('title', data),
+        banner: new AssetTransformer(this.getField('banner', data)).first(),
+        rawdate: this.getField('date', data),
+        date: this.formatDate(this.getField('date', data)),
+        preview: this.getField('preview', data),
+        intro: this.getField('intro', data),
+        firstParagraph: convertMarkdown(this.getField('firstParagraph', data), modifiers),
+        content: convertMarkdown(this.getField('content', data), modifiers),
+        readingTime: Math.ceil(readingTime(this.getField('content', data)).time / 60000),
+        category: new Category(CategoryTransformer, 'category').find(this.getField('category', data).sys.id),
+        author: null
       }
-    })
+    }
   }
 }
 

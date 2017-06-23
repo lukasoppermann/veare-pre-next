@@ -1,0 +1,13 @@
+.o-blockquote{
+  font-family: "Helvetica Neue", "Helvetica", var(--sans-serif);
+  font-size: var(--type-huge);
+  font-weight: bold;
+}
+.o-blockquote p {
+  font-family: "Helvetica Neue", "Helvetica", var(--sans-serif);
+  font-size: var(--type-huge);
+  line-height: calc( var(--type-huge) + 10px);
+  font-weight: bold;
+  margin-top: var(--ms_a2);
+  margin-bottom: var(--ms_a2);
+}

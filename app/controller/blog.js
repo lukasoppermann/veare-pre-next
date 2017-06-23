@@ -13,17 +13,14 @@ class Blog extends Controller {
   }
 
   index (req, res) {
-    posts.all((result) => {
-      self.render(res, 'blog', {
-        posts: result
-      })
+    self.render(res, 'blog', {
+      posts: posts.all()
     })
   }
 
   get(req, res) {
-    posts.findBySlug(req.params[0], (result) => {
-      self.render(res, 'partials/blog/article', result)
-    })
+    // res.send(posts.findBySlug(req.params[0]))
+    self.renderMaster(res, 'partials/blog/article', posts.findBySlug(req.params[0]))
   }
 
   categories (req, res) {

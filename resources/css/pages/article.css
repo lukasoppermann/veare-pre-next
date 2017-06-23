@@ -1,0 +1,107 @@
+.o-article{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--ms_a2);
+  padding-top: var(--ms_a3);
+  padding-bottom: var(--ms_a4);
+}
+.o-article__banner{
+  max-width: 140rem;
+  margin-bottom: var(--ms_a1);
+}
+.o-article__content{
+  position: relative;
+  max-width: 112rem;
+}
+.o-article__title{
+  font: var(--serif-huge);
+  font-style: var(--serif-italic);
+  max-width: 112rem;
+  margin-bottom: var(--ms_a1);
+}
+.o-article__publication-details{
+  display: block;
+  font: var(--sans-default);
+  color: var(--semi-black);
+}
+.o-article__author{
+  font: var(--sans-default);
+  color: var(--semi-black);
+  margin-bottom: var(--ms_a3);
+}
+.c-article__blockquote--intro{
+  position: relative;
+  padding-top: var(--ms_a1);
+  font: var(--sans-medium-huge);
+  font-weight: var(--sans-serif-bold);
+  margin-bottom: var(--ms_a2);
+}
+.c-article__blockquote--intro:before{
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0px;
+  top: 0;
+  width: var(--ms_a4);
+  height: var(--ms_a-1);
+  background: var(--veare-orange);
+}
+.o-article__content > .o-paragraph{
+  flex-basis: var(--column-10);
+  margin-left: var(--column-6);
+}
+.o-article__content > .o-headline{
+  flex-basis: var(--column-10);
+  margin-left: var(--column-6);
+}
+.o-article__content > .o-figure{
+  flex-basis: var(--column-16);
+  display: flex;
+  margin-bottom: var(--ms_a1);
+  margin-top: var(--ms_a-1);
+}
+.o-article__content > .o-figure > .o-figure__image {
+  flex-basis: var(--column-13);
+}
+.o-article__content > .o-figure .o-figure__img{
+  width: 100%;
+}
+.o-article__content > .o-figure > .o-figure__caption {
+  font-size: var(--type-default);
+  flex-basis: var(--column-3);
+  order: -1;
+}
+.o-article__content > pre[class*="language-"]{
+  flex-basis: var(--column-13);
+  margin-left: var(--column-3);
+  margin-bottom: var(--ms_a1);
+  margin-top: var(--ms_a1);
+  font-size: var(--type-medium);
+}
+.o-article__content > .o-paragraph:last-of-type{
+  margin-bottom: 0;
+}
+.o-article__comment{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: var(--white);
+  padding: var(--ms_a1);
+  box-sizing: border-box;
+  width: var(--column-5);
+  font-size: var(--type-big);
+  background: var(--blue);
+}
+.o-article__comment .o-link{
+  font-size: inherit;
+  color: inherit;
+  display: inline-block;
+  text-decoration: underline;
+}
+.o-article__comment .o-link:hover{
+  text-decoration: none;
+  color: rgba(var(--black-rgb),.8);
+  transition: color .25s ease;
+}

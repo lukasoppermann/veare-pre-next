@@ -1,12 +1,17 @@
 'use strict'
+let content
 
 class Transformer {
   constructor (data) {
-    this.data = this.transformData(data)
+    content = this.transformData(data)
   }
 
   get () {
-    return this.data
+    return content
+  }
+
+  first () {
+    return content[0]
   }
 
   transformData (data) {
@@ -20,6 +25,9 @@ class Transformer {
 
   getField (fieldName, data) {
     let field = data.fields[fieldName]
+    if (typeof field !== 'object') {
+      return null
+    }
     return field[Object.keys(field)[0]]
   }
 
