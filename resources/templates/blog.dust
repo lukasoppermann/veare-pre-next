@@ -7,7 +7,7 @@
   </div>
 </div>
 <div class="o-blog-listing__right">
-  <ul class="o-list o-list--none c-list-postlist" itemscope itemtype="http://schema.org/Blog">
+  <ul class="c-list-postlist" itemscope itemtype="http://schema.org/Blog">
     {#posts}
       {>"partials/blog/preview"/}
     {/posts}

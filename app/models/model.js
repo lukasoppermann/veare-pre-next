@@ -25,9 +25,15 @@ class Model {
     })
   }
 
-  findByField (type, key) {
+  findByField (type, value) {
     return content.find((item) => {
-      return item.fields[type] === key
+      return item.fields[type] === value
+    })
+  }
+
+  findByArrayField (type, value) {
+    return content.find((item) => {
+      return item.fields[type] !== undefined && item.fields[type] !== null && item.fields[type].indexOf(value) > -1
     })
   }
 }

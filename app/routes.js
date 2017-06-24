@@ -3,8 +3,9 @@
 const express = require('express')
 const path = require('path')
 let router = express.Router()
+let basicAuth = require('express-basic-auth')
 const Blog = require('./controller/Blog')
-const Webhook = require('./controller/webhook')
+const contentful = require('./services/contentful')
 
 let routes = function () {
   let blog = new Blog()
@@ -16,7 +17,14 @@ let routes = function () {
   //   process.exit()
   // })
 
+  router.use('/contentful', basicAuth({
+    users: { 'admin': 'supersecret' }
+  }), () => {
+    contentful(false, () => true)
+  })
+
   router.use('/cache', function (req, res) {
+    // res.send(require('memory-cache').get('post'))
     require('memory-cache').clear()
     res.send(require('memory-cache').keys())
   })
@@ -27,16 +35,6 @@ let routes = function () {
 
   router.get(/^\/blog\/?$/, blog.index)
   router.get(/^\/blog\/([\w-]+)/, blog.get)
-
-  // router.get(/^\/webhooks/, webhook.fire.bind(webhook))
-  // //
-  // router.get(/^\/([\w-]+)\/?$/, function (req, res) {
-  //   res.sendFile(path.resolve('public', `${req.params[0]}.html`), {}, function (err) {
-  //     if (err) {
-  //       res.redirect('/')
-  //     }
-  //   })
-  // })
 
   router.get(/^\/portfolio\/([\w-]+)$/, function (req, res) {
     res.sendFile(path.resolve('public', 'portfolio', `${req.params[0]}.html`), {}, function (err) {

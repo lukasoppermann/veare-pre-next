@@ -32,7 +32,8 @@ class PostTransformer extends Transformer {
         content: convertMarkdown(this.getField('content', data), modifiers),
         readingTime: Math.ceil(readingTime(this.getField('content', data)).time / 60000),
         category: new Category(CategoryTransformer, 'category').find(this.getField('category', data).sys.id),
-        author: null
+        author: null,
+        aliases: this.getField('aliases', data)
       }
     }
   }

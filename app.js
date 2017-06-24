@@ -17,9 +17,9 @@ app.engine('dust', hoffman.__express())
 // app.set('view cache', true)
 
 // optionally load all templates into dust cache on server start
-hoffman.prime(app.settings.views, function (err) {
-  console.log(err)
-})
+// hoffman.prime(app.settings.views, function (err) {
+//   console.log(err)
+// })
 
 contentful(true, (response) => {
   // load routes

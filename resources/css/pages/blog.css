@@ -200,6 +200,17 @@
     overflow: hidden;
     cursor: default;
     text-decoration: none;
+    padding-right: 2rem;
+}
+.o-article-preview__category:after{
+    position:absolute;
+    display: block;
+    color: var(--medium-grey);
+    font-size: var(--type-default);
+    background: transparent;
+    right: .75rem;
+    top: .5rem;
+    content: "•";
 }
 .o-article-preview__read-time{
   flex: 0 1 auto;
@@ -209,17 +220,6 @@
   display: inline-block;
   position: relative;
   padding-top: .5rem;
-  padding-left: 2rem;
-}
-.o-article-preview__read-time:before{
-    position:absolute;
-    display: block;
-    color: var(--medium-grey);
-    font-size: var(--type-default);
-    background: transparent;
-    left: .75rem;
-    top: .5rem;
-    content: "•";
 }
 .o-article-preview__title{
   font-size: var(--type-medium-huge);
@@ -305,21 +305,15 @@
 .o-article-preview--life .o-article-preview__category{
     color: var(--red);
 }
-.o-article-preview--life .o-article-preview__category:after{
-    background: var(--red);
-}
 .o-article-preview--life .o-article-preview__date:before{
     background: var(--red);
 }
 .o-article-preview--life .o-article-preview__link:before{
     background: rgba(var(--red-rgb), .95);
 }
-.o-article-preview--code.o-article-preview__category{
+.o-article-preview--code .o-article-preview__category{
     color: var(--blue);
   }
-.o-article-preview--code.o-article-preview__category:after{
-  background: var(--blue);
-}
 .o-article-preview__date:before{
   background: var(--blue);
 }
@@ -329,9 +323,6 @@
 .o-article-preview--design .o-article-preview__category{
   color: var(--green);
 }
-.o-article-preview--design .o-article-preview__category:after{
-  background: var(--green);
-}
 .o-article-preview--design .o-article-preview__date:before{
   background: var(--green);
 }
@@ -340,9 +331,6 @@
 }
 .o-article-preview--technology .o-article-preview__category{
     color:var(--blue);
-}
-.o-article-preview--technology .o-article-preview__category:after{
-    background: var(--blue);
 }
 .o-article-preview--technology .o-article-preview__date:before{
     background: var(--blue);

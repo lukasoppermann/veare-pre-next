@@ -25,6 +25,10 @@ class Post extends Model {
   findBySlug (slug) {
     return this.findByField('slug', slug)
   }
+
+  findByAlias (slug) {
+    return this.findByArrayField('aliases', slug)
+  }
 }
 
 module.exports = Post

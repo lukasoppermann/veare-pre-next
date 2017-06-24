@@ -142,7 +142,7 @@ gulp.task('serviceWorker', require('./gulp-tasks/serviceWorker.js')(
 gulp.task('watchJs', function () {
   gulp.watch([
     'resources/js/*'
-  ], gulp.series('bundleJs', function reload (cb) {
+  ], gulp.series('bundleJs', 'revJs', 'html', function reload (cb) {
     browserSync.reload()
     cb()
   }))
@@ -156,7 +156,7 @@ gulp.task('watchCss', function () {
   gulp.watch([
     'resources/css/*',
     'resources/css/**/*'
-  ], gulp.series('bundleCss', 'revCss', function reload (cb) {
+  ], gulp.series('bundleCss', 'revCss', 'html', function reload (cb) {
     browserSync.reload()
     cb()
   }))

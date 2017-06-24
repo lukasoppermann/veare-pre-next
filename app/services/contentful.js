@@ -4,10 +4,18 @@ const client = require('./client')
 const cache = require('memory-cache')
 
 const contentful = (initial, cb, error = console.error) => {
-  client.sync({
-    initial: initial
-  })
+  let syncConf = {
+    initial: true
+  }
+  if (initial === false) {
+    syncConf = {
+      nextSyncToken: cache.get('nextSyncToken')
+    }
+  }
+  client.sync(syncConf)
   .then((response) => {
+    cache.put('nextSyncToken', response.nextSyncToken)
+    console.log('⚠️  Not dealing with deleted records yet!!!!')
     const responseObj = JSON.parse(response.stringifySafe())
     client.getContentTypes()
     .then((types) => {
@@ -25,15 +33,22 @@ const initializeContent = (types, responseObj, cb) => {
   let content = prepareResponse(types.items.map((item) => item.sys.id), responseObj)
   for (var key in content) {
     if (content.hasOwnProperty(key)) {
-        cache.put(key, content[key])
+      cache.put(key, content[key])
     }
   }
-  
+
   cb(content)
 }
 
 const updateContent = (types, responseObj, cb) => {
+  console.log('⚠️  Work with data provided by webhook instead of doing a sync')
   let content = prepareResponse(types.items.map((item) => item.sys.id), responseObj)
+  for (var key in content) {
+    if (content.hasOwnProperty(key)) {
+      cache.put(key, cache.get(key).concat(content[key]))
+    }
+  }
+  return content
 }
 
 const prepareResponse = (types, responseObj) => {

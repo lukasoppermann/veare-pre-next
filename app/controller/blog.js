@@ -18,9 +18,13 @@ class Blog extends Controller {
     })
   }
 
-  get(req, res) {
-    // res.send(posts.findBySlug(req.params[0]))
-    self.renderMaster(res, 'partials/blog/article', posts.findBySlug(req.params[0]))
+  get (req, res) {
+    let post = posts.findBySlug(req.params[0]) || posts.findByAlias(req.params[0])
+    if (post === undefined) {
+      res.redirect(301, 'http://' + req.headers.host + '/blog')
+    } else {
+      self.renderMaster(res, 'partials/blog/article', post)
+    }
   }
 
   categories (req, res) {
@@ -28,7 +32,6 @@ class Blog extends Controller {
     res.write('<body>üos</body>')
     res.end()
   }
-
 }
 
 module.exports = Blog
