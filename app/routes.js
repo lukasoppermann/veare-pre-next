@@ -33,6 +33,10 @@ let routes = function () {
     res.sendFile(path.resolve('public', 'index.html'))
   })
 
+  router.get(/^\/(imprint|privacy)/, function (req, res) {
+    res.sendFile(path.resolve('public', `${req.params[0]}.html`))
+  })
+
   router.get(/^\/blog\/?$/, blog.index)
   router.get(/^\/blog\/([\w-]+)/, blog.get)
 

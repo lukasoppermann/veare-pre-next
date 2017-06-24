@@ -2,7 +2,7 @@
 
 const Transformer = require('./Transformer')
 const Category = require('../models/Category')
-const CategoryTransformer = require('./CategoryTransformer')
+const Author = require('../models/Author')
 const AssetTransformer = require('./AssetTransformer')
 const readingTime = require('reading-time')
 const convertMarkdown = require('../services/convertMarkdown')
@@ -31,8 +31,8 @@ class PostTransformer extends Transformer {
         firstParagraph: convertMarkdown(this.getField('firstParagraph', data), modifiers),
         content: convertMarkdown(this.getField('content', data), modifiers),
         readingTime: Math.ceil(readingTime(this.getField('content', data)).time / 60000),
-        category: new Category(CategoryTransformer, 'category').find(this.getField('category', data).sys.id),
-        author: null,
+        category: new Category().find(this.getField('category', data).sys.id),
+        author: new Author().find(this.getField('author', data).sys.id),
         aliases: this.getField('aliases', data)
       }
     }
