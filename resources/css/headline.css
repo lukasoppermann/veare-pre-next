@@ -7,7 +7,27 @@
 .o-headline-3{
   font-size: var(--type-big);
 }
-
 .o-headline--primary{
   color: var(--blue);
+}
+
+.o-headline--h2{
+  font-size: var(--type-medium-huge);
+  margin-bottom: calc(var(--type-medium-huge) / 2.25);
+  margin-top: calc(var(--type-medium-huge) / 1.15);
+}
+.o-headline--h3{
+  font-size: calc( var(--ms_a1) * 1.35 );
+  font-weight: bold;
+  margin-bottom: calc(var(--type-medium-huge) / 2.25);
+  margin-top: calc(var(--type-medium-huge) / 1.15);
+}
+.o-headline--h4{
+  font-size: var(--type-big);
+  font-weight: bold;
+  margin-bottom: calc(var(--type-big) / 2.25);
+  margin-top: calc(var(--type-big) / 1.15);
+}
+.o-headline--serif{
+  font-family: var(--serif);
 }

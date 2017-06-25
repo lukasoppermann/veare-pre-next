@@ -1,4 +1,4 @@
-<page-section class="o-section c-section--intro" layout="row top-left">
+<page-section class="o-section c-section--intro">
 
     {>"partials/logo-svg"/}
     <div class="c-intro-content">
@@ -9,14 +9,17 @@
         </svg>
         <span class="c-intro-main-subline">is everything</span>
       </h3>
-      <div class="c-intro-copy-container" layout="row top-justify">
+      <div class="c-intro-copy-container">
         <h2 class="c-intro--slogan">Designing experiences with a focus on usability.</h2>
         <div class="c-intro--services-container">
           <div class="c-intro--services-description">
             <h2 class="c-intro--services-description-veare">veare</h2>
             <span>supports clients with</span>
           </div>
-          <h1 class="c-intro--services">UI / UX / Frontend Consulting, Concept & Design</h1>
+          <h1 class="c-intro--services">
+            <span class="c-intro--services-row">Creative Direction</span>
+            <span class="c-intro--services-row">UI / UX Concept & Design</span>
+          </h1>
         </div>
       </div>
   	</div>

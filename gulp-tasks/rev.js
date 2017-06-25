@@ -19,8 +19,8 @@ module.exports = function (type, files) {
     return gulp.src(files, {base: 'public'})
       .on('error', error)
       .pipe(rev())
-      .pipe(gulp.dest('public'))
       .pipe(revdel())
+      .pipe(gulp.dest('public'))
       .pipe(rev.manifest('rev-manifest.json', {
         cwd: 'public',
         merge: true

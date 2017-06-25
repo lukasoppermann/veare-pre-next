@@ -4,9 +4,11 @@
   */
   --serif: 'Noto Serif', serif;
   --serif-style: italic;
+  --serif-italic: italic;
   --sans-serif: 'Source Sans Pro', sans-serif;
   --sans-serif-normal: 400;
   --sans-serif-bold: 700;
+  --monospace: monospace;
   /*
   * Sizes
   */
@@ -24,4 +26,13 @@
   --type-medium-line-height: 135%;
   --type-default: var(--ms_a0);
   --type-default-line-height: 135%;
+  --type-small: var(--ms_a-1);
+  --type-small-line-height: 135%;
+  /*
+  * mix
+  */
+  --serif-huge: var(--type-huge)/130% var(--serif);
+
+  --sans-default: var(--type-default)/130% var(--sans-serif);
+  --sans-medium-huge: var(--type-medium-huge)/130% var(--sans-serif);
 }

@@ -1,19 +1,12 @@
 // Imports
 const gulp = require('gulp')
 const fs = require('fs')
-const del = require('del')
 const browserSync = require('browser-sync')
 /* ------------------------------
  *
  * JS
  *
  */
-gulp.task('clean-js', () => {
-  return del([
-    'public/js'
-  ])
-})
-
 gulp.task('bundleJs', require('./gulp-tasks/bundleJs.js')({
   common: [
     'resources/js/analytics.js',
@@ -28,8 +21,15 @@ gulp.task('bundleJs', require('./gulp-tasks/bundleJs.js')({
     'node_modules/minigrid/dist/minigrid.min.js',
     'resources/js/cards.js'
   ],
-  'registerServiceWorker': [
+  registerServiceWorker: [
     'resources/js/register-service-worker.js'
+  ],
+  blog: [
+    'node_modules/prismjs/prism.js',
+    'node_modules/prismjs/components/prism-bash.js'
+  ],
+  'dev-grid': [
+    'resources/js/dev-grid.js'
   ]
 },
   // files to only be moved to js folder
@@ -52,18 +52,13 @@ gulp.task('bundleJs', require('./gulp-tasks/bundleJs.js')({
  * POST CSS
  *
  */
-gulp.task('cleanCss', function (done) {
-  return del([
-    'public/css'
-  ])
-})
 
 gulp.task('bundleCss', require('./gulp-tasks/bundleCss.js')({
   'app': [
     // npm resources
     'node_modules/minireset.css/minireset.css',
-    'node_modules/flex-layout-attribute/css/flex-layout-attribute.css',
     'node_modules/modular-scale-css/modular-scale.css',
+    'node_modules/raster.css/dist/raster.css',
     // includes
     'resources/css/includes/*.css',
     // main files
@@ -72,7 +67,8 @@ gulp.task('bundleCss', require('./gulp-tasks/bundleCss.js')({
   ]
 }, [
   'public/*.html',
-  'public/portfolio/*.html'
+  'public/portfolio/*.html',
+  'public/blog/*.html'
 ]))
 
 /* ------------------------------
@@ -90,15 +86,15 @@ const dustHtml = require('./gulp-tasks/html.js')(
     'portfolioItems': JSON.parse(fs.readFileSync('resources/templates/data/portfolio.json'))
   }
 )
-gulp.task('html', dustHtml())
+gulp.task('html', dustHtml(true))
 gulp.task('htmlBuild', dustHtml(true))
 
 // watch html
 gulp.task('watchHtml', function () {
   gulp.watch([
     'resources/templates/*',
-    'resources/templates/partials/*',
-    'resources/templates/portfolio/*'
+    'resources/templates/**/*',
+    '!resources/data/*'
   ], gulp.series('html', function reload (cb) {
     browserSync.reload()
     cb()
@@ -125,7 +121,8 @@ gulp.task('revJs', require('./gulp-tasks/rev.js')('css',
     'public/js/common.js',
     'public/js/portfolio.js',
     'public/js/webcomponents.js',
-    'public/js/registerServiceWorker.js'
+    'public/js/registerServiceWorker.js',
+    'public/js/blog.js'
   ]))
 /* ------------------------------
  *
@@ -136,25 +133,16 @@ gulp.task('serviceWorker', require('./gulp-tasks/serviceWorker.js')(
   {
     rootDir: 'public',
     files: [
-      'media/veare-icons@2x.png',
-      'media/lukas-oppermann@2x.png',
-      'css/app.css'
+      'media/lukas-oppermann@2x.png'
     ],
     revisionedFiles: JSON.parse(fs.readFileSync(`public/rev-manifest.json`, 'utf8'))
   })
-)
-// js
-gulp.task('js', gulp.series(
-    'clean-js',
-    'bundleJs',
-    'html'
-  )
 )
 // watch js
 gulp.task('watchJs', function () {
   gulp.watch([
     'resources/js/*'
-  ], gulp.series('bundleJs', function reload (cb) {
+  ], gulp.series('bundleJs', 'revJs', 'html', function reload (cb) {
     browserSync.reload()
     cb()
   }))
@@ -168,12 +156,11 @@ gulp.task('watchCss', function () {
   gulp.watch([
     'resources/css/*',
     'resources/css/**/*'
-  ], gulp.series('bundleCss', function reload (cb) {
+  ], gulp.series('bundleCss', 'revCss', 'html', function reload (cb) {
     browserSync.reload()
     cb()
   }))
 })
-
 /* ------------------------------
  * default task
  */
@@ -186,14 +173,15 @@ gulp.task('browser-sync', function (cb) {
   }, cb)
 })
 
+gulp.task('serve', require('./gulp-tasks/serve.js').serve())
+
 gulp.task('default', gulp.series(
   'browser-sync',
   gulp.parallel('bundleJs', 'bundleCss'),
+  gulp.parallel('revJs', 'revCss'),
   'html',
   gulp.parallel('watchJs', 'watchCss', 'watchHtml')
 ))
-
-gulp.task('serve', require('./gulp-tasks/serve.js').serve())
 
 /* ------------------------------
  * build task

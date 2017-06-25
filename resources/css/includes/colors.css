@@ -5,7 +5,9 @@
   --blue-rgb: 40, 80, 235;
   --blue-muted-hsl: 228, 75%, 54%;
   --green-rgb: 60, 200, 160;
+  --red-rgb: 240,80,50;
   --light-grey-rgb: 240, 240, 245;
+  --medium-grey-rgb: 210, 210, 215;
   --white-grey-rgb: 250, 250, 255;
   --sand-grey-rgb: 246,245,243;
   /*
@@ -19,6 +21,8 @@
   --blue: rgb(var(--blue-rgb));
   --blue-muted: hsl(var(--blue-muted-hsl));
   --green: rgb(var(--green-rgb));
+  --red: rgb(var(--red-rgb));
+  --medium-grey: rgb(var(--medium-grey-rgb));
   --light-grey: rgb(var(--light-grey-rgb));
   --white-grey: rgb(var(--white-grey-rgb));
   --sand-grey: rgb(var(--sand-grey-rgb));
@@ -26,7 +30,7 @@
   /*
    * type colors
    */
-
+  
   --type-black: var(--black);
-  --type-gray: rgba(var(--black-rgb), .4);
+  --type-grey: rgba(var(--black-rgb), .5);
 }

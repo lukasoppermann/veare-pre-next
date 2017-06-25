@@ -1,0 +1,6 @@
+.o-paragraph{
+  display: block;
+  font-size: var(--type-big);
+  font-family: var(--sans-serif);
+  font-weight: var(--sans-serif-normal);
+}

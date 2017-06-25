@@ -1,0 +1,32 @@
+.o-blockquote{
+  font-family: "Helvetica Neue", "Helvetica", var(--sans-serif);
+  font-size: var(--type-huge);
+  line-height: calc( var(--type-huge) + 10px);
+  font-weight: bold;
+}
+.o-blockquote .o-blockquote{
+  position: relative;
+  font-family: var(--sans-serif);
+  font-size: var(--type-big);
+  font-weight: var(--sans-serif-normal);
+  line-height: calc( var(--type-big) + 10px);
+  color: var(--type-grey);
+  padding-left: var(--ms_a1);
+}
+.o-blockquote .o-blockquote:before{
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: var(--ms_a-1);
+  background: var(--medium-grey);
+}
+.o-blockquote p {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  margin-top: var(--ms_a2);
+  margin-bottom: var(--ms_a2);
+}
