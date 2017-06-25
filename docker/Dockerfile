@@ -1,4 +1,5 @@
 FROM mhart/alpine-node:latest
+RUN apk update
 RUN apk add git
 ENV NODE_ENV production
 
