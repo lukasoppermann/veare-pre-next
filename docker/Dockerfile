@@ -1,8 +1,9 @@
-FROM mhart/alpine-node:7.2
-
+FROM mhart/alpine-node:latest
+RUN sudo apt-get install git-all
 ENV NODE_ENV production
 
 RUN npm i -g forever
+
 #RUN npm install pm2 -g --production
 #RUN npm install -g strong-supervisor --production
 # RUN npm install forever -g --production
