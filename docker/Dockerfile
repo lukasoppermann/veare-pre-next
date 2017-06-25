@@ -1,5 +1,5 @@
 FROM mhart/alpine-node:latest
-RUN sudo apt-get install git-all
+RUN apk add git
 ENV NODE_ENV production
 
 RUN npm i -g forever
