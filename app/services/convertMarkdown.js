@@ -21,6 +21,9 @@ let modifiers = {
   ul: {
     class: 'o-list'
   },
+  ol: {
+    class: 'o-list o-list--ordered'
+  },
   figure: {
     class: 'o-figure'
   },

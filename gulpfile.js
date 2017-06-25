@@ -173,6 +173,8 @@ gulp.task('browser-sync', function (cb) {
   }, cb)
 })
 
+gulp.task('serve', require('./gulp-tasks/serve.js').serve())
+
 gulp.task('default', gulp.series(
   'browser-sync',
   gulp.parallel('bundleJs', 'bundleCss'),
@@ -180,8 +182,6 @@ gulp.task('default', gulp.series(
   'html',
   gulp.parallel('watchJs', 'watchCss', 'watchHtml')
 ))
-
-gulp.task('serve', require('./gulp-tasks/serve.js').serve())
 
 /* ------------------------------
  * build task

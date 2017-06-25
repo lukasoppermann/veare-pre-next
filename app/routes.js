@@ -40,7 +40,7 @@ let routes = function () {
   router.get(/^\/blog\/?$/, blog.index)
   router.get(/^\/blog\/([\w-]+)/, blog.get)
 
-  router.get(/^\/portfolio\/([\w-]+)$/, function (req, res) {
+  router.get(/^\/portfolio\/([\w-]*)$/, function (req, res) {
     res.sendFile(path.resolve('public', 'portfolio', `${req.params[0]}.html`), {}, function (err) {
       if (err) {
         res.redirect('/#portfolio')

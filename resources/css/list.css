@@ -6,14 +6,21 @@
 }
 .o-list li{
   position: relative;
-  list-style: none;
-  padding-left: 25px;
   margin-bottom: var(--ms_b-1);
 }
 .o-list li:last-child{
   margin-bottom: 0;
 }
-.o-list li:before{
+
+.o-list:not(.o-list--ordered) li{
+  list-style: none;
+  padding-left: 25px;
+}
+.o-list--ordered li{
+  list-style: decimal-leading-zero;
+  margin-left: 1.5em;
+}
+.o-list:not(.o-list--ordered) li:before{
   position: absolute;
   content: "–";
   color: var(--veare-orange);

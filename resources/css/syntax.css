@@ -2,7 +2,8 @@ code[class*="language-"],
 pre[class*="language-"]{
 	color: #f8f8f2;
 	background: none;
-	font-family: @monospace;
+	font-family: var(--monospace);
+  font-size: inherit;
 	text-align: left;
 	white-space: pre;
 	word-spacing: normal;
@@ -61,7 +62,7 @@ code[data-label-file]:before {
 	padding: 0rem .4rem;
 	white-space: normal;
 	word-break: break-all;
-	display: inline-block;
+	display: inline;
 	color: rgba(50, 50, 55, .7);
 	background-color: rgba(50, 50, 55, .05);
 }

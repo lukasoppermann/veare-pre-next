@@ -6,8 +6,11 @@
 module.exports.serve = () => {
   const forever = require('gulp-forever-monitor')
   const pack = require('../package.json')
+  const exec = require('child_process').execSync
 
   return () => {
+
+    exec('pkill node')
 
     var foreverMonitorOptions = {
       env: process.env,
