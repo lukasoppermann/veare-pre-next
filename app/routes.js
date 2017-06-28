@@ -19,8 +19,8 @@ let routes = function () {
 
   router.use('/contentful', basicAuth({
     users: { 'admin': 'supersecret' }
-  }), () => {
-    contentful(false, () => true)
+  }), (req, res) => {
+    contentful(false, () => req.sendStatus(200))
   })
 
   router.use('/cache', function (req, res) {
