@@ -31,33 +31,54 @@ const contentful = (initial, cb, error = console.error) => {
 
 const initializeContent = (types, responseObj, cb) => {
   let content = prepareResponse(types.items.map((item) => item.sys.id), responseObj)
-  for (var key in content) {
-    if (content.hasOwnProperty(key)) {
-      cache.put(key, content[key])
+  for (var key in content.added) {
+    if (content.added.hasOwnProperty(key)) {
+      cache.put(key, content.added[key])
     }
   }
 
-  cb(content)
+  cb()
 }
 
 const updateContent = (types, responseObj, cb) => {
   console.log('⚠️  Work with data provided by webhook instead of doing a sync')
-  let content = prepareResponse(types.items.map((item) => item.sys.id), responseObj)
-  for (var key in content) {
-    if (content.hasOwnProperty(key)) {
-      cache.put(key, cache.get(key).concat(content[key]))
+  let updates = prepareResponse(types.items.map((item) => item.sys.id), responseObj)
+  // update content
+  // key is something like 'post' or 'category'
+  for (let key in updates.added) {
+    // get content
+    let content = cache.get(key)
+    // add new items
+    if (updates.added.hasOwnProperty(key)) {
+      content = content.concat(updates.added[key])
     }
+    // removed deleted items
+    content = content.filter((item) => {
+      return typeof updates.deleted.find((deleted) => {
+        return deleted.sys.id === item.sys.id
+      }) === 'undefined'
+    })
+    // update cache with updated content
+    cache.put(key, content)
   }
-  return content
+
+  cb(updates)
 }
 
 const prepareResponse = (types, responseObj) => {
-  let response = {}
+  let response = {
+    added: {},
+    deleted: {}
+  }
+  // add new items by contentType
   types.forEach((contentTypeId) => {
-    response[contentTypeId] = responseObj.entries.filter((entry) => {
+    response.added[contentTypeId] = responseObj.entries.filter((entry) => {
       return entry.sys.contentType.sys.id === contentTypeId
     })
   })
+  // add delete items, which have no contentType
+  response.deleted = responseObj.deletedEntries
+
   return response
 }
 

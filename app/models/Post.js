@@ -8,17 +8,17 @@ class Post extends Model {
     super(PostTransformer, 'post')
   }
 
-  all() {
+  all () {
     return super.all().sort((a, b) => {
       let dateA = new Date(a.fields.rawdate)
       let dateB = new Date(b.fields.rawdate)
       if (dateA < dateB) {
-        return 1;
+        return 1
       }
       if (dateA > dateB) {
-        return -1;
+        return -1
       }
-      return 0;
+      return 0
     })
   }
 

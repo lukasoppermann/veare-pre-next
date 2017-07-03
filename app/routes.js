@@ -6,6 +6,8 @@ let router = express.Router()
 let basicAuth = require('express-basic-auth')
 const Blog = require('./controller/Blog')
 const contentful = require('./services/contentful')
+const contentfulConfig = require('./config/contentful.js')
+const forever = require('forever')
 
 let routes = function () {
   let blog = new Blog()
@@ -16,11 +18,14 @@ let routes = function () {
   // router.use('/error', function (req, res) {
   //   process.exit()
   // })
-
+  let users = {}
+  users[contentfulConfig.webhookUser] = contentfulConfig.webhookPassword
   router.use('/contentful', basicAuth({
-    users: { 'admin': 'supersecret' }
+    users: users
   }), (req, res) => {
-    contentful(false, () => req.sendStatus(200))
+    contentful(false, () => {
+      res.sendStatus(200)
+    })
   })
 
   router.use('/cache', function (req, res) {

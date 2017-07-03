@@ -68,6 +68,7 @@
     "dustjs-helpers": "^1.7.3",
     "express": "^4.14.0",
     "express-basic-auth": "^1.1.1",
+    "forever": "^0.15.3",
     "hoffman": "^0.2.2",
     "markdown-it": "^8.3.1",
     "markdown-it-anchor": "^4.0.0",
