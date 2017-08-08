@@ -116,7 +116,7 @@ gulp.task('svg', () => {
  *
  */
 gulp.task('revCss', require('./gulp-tasks/rev.js')('css', ['public/css/app.css']))
-gulp.task('revJs', require('./gulp-tasks/rev.js')('css',
+gulp.task('revJs', require('./gulp-tasks/rev.js')('js',
   [
     'public/js/common.js',
     'public/js/portfolio.js',
