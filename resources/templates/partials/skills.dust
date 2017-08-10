@@ -2,7 +2,11 @@
 
 	<div class="c-skill o-media o-media--center">
     <figure class="c-skill__figure o-media__figure">
-      <img src="svgs/interaction-design.svg">
+      <responsive-image
+        active="true"
+        src="svgs/interaction-design.svg"
+        alt="Interaction design"
+      ></responsive-image>
     </figure>
 		<div class="o-media__body c-skill__content">
 			<a name="about"><h2 class="o-headline-2">Interaction design</h2></a>
@@ -14,7 +18,11 @@
 
   <div class="c-skill o-media o-media--reverse o-media--center">
     <figure class="c-skill__figure o-media__figure">
-      <img src="svgs/product-design.svg">
+      <responsive-image
+        active="true"
+        src="svgs/product-design.svg"
+        alt="Product design"
+      ></responsive-image>
     </figure>
     <div class="c-skill__content o-media__body">
       <h2 class="o-headline-2">Product design</h2>
