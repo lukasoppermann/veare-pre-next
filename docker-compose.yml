@@ -6,7 +6,7 @@ services:
         #image: veare/veare:latest
         build: .
         volumes:
-            - ../:/usr/app/
+            - ./:/usr/app/
         networks:
             - proxy_appnet
         # enable for local testing without docker proxy

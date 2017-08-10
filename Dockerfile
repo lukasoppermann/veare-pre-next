@@ -21,10 +21,10 @@ WORKDIR /usr/app
 EXPOSE 8080
 
 # Copy start.sh
-# COPY start.sh /usr/app/
+#COPY start.sh /usr/app/
 
 # VOLUME ["/usr/app"]
 
 # CMD ["docker/start.sh"]
 
-CMD sh docker/start.sh
+CMD sh start.sh
