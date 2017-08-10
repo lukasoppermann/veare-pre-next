@@ -14,18 +14,31 @@
 	<meta name="copyright" content="2016 " />
 	<meta http-equiv="X-UA-Compatible" content="chrome=1" />
 	<link rel="preload" href="https://fonts.googleapis.com/css?family=Noto+Serif:400,400i|Source+Sans+Pro:400,600" as="font" />
-  <link href="/css/app-477024c15a.css" rel="stylesheet" />
-  <script type="text/javascript">
-    window.addEventListener('WebComponentsReady', function () {
-      let script = document.createElement('script');
-      script.setAttribute('src', '/js/webcomponents-7ab3174399.js');
-      document.body.appendChild(script)
-    })
+  <link href="/css/app-6933b0c164.css" rel="stylesheet" />
+  <script type="text/javascript" async>
+    // test if browser supports 100% of web component specs
+    let webComponentsSupported = () => {
+      return 'registerElement' in document &&
+      typeof document.createElement('div').attachShadow === 'function' &&
+      'content' in document.createElement('template')
+    }
+    // create script tag to load compoments
+    let script = document.createElement('script')
+    script.setAttribute('src', '/js/webcomponents-4c99cb00e2.js')
+    // if 100% supported, load script
+    if (webComponentsSupported()) {
+      document.head.appendChild(script)
+    } else {
+      // if not 100% load polyfill and only load script once polyfill is ready
+      let polyfill = document.createElement('script')
+      polyfill.setAttribute('src', '/js/webcomponents-loader.js')
+      document.head.appendChild(polyfill)
+      window.addEventListener('WebComponentsReady', function () {
+        document.head.appendChild(script)
+      })
+    }
   </script>
-  
-  <script src="/js/webcomponents-loader.js"></script>
   <script src="/js/common-cc532e8bb1.js" async></script>
-  
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1,maximum-scale=1" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="theme-color" content="rgb(240, 170, 30)" />
@@ -138,7 +151,11 @@
       </div>
   	</div>
     <figure class="c-intro-image">
-      <img src="/media/lukas-oppermann@2x.png" alt="Lukas Oppermann" />
+      <responsive-image
+        active="true"
+        src="/media/lukas-oppermann@2x.png"
+        alt="Lukas Oppermann"
+      ></responsive-image>
     </figure>
 
 </page-section>
@@ -152,7 +169,12 @@
     <div class="o-card height-medium">
         <div class="o-card__sides">
             <div class="o-card__front blue">
-                <img class="image" src="/media/card-open-everything.png" />
+                <responsive-image
+                  class="image"
+                  active="true"
+                  src="/media/card-open-everything.png"
+                  alt="Open Everything"
+                ></responsive-image>
             </div>
             <div class="o-card__back blue">
                 <div class="content">
@@ -170,7 +192,12 @@
     <div class="o-card height-tall">
         <div class="o-card__sides">
             <div class="o-card__front yellow">
-                <img class="image" src="/media/card-swift.png" />
+                <responsive-image
+                  class="image"
+                  active="true"
+                  src="/media/card-swift.png"
+                  alt="swift / we are fast"
+                ></responsive-image>
             </div>
             <div class="o-card__back yellow">
                 <div class="content">
@@ -188,7 +215,12 @@
     <div class="o-card height-medium">
         <div class="o-card__sides">
             <div class="o-card__front blue">
-                <img class="image" src="/media/card-juicecontrol.png" />
+                <responsive-image
+                  class="image"
+                  active="true"
+                  src="/media/card-juicecontrol.png"
+                  alt="Juice Control"
+                ></responsive-image>
             </div>
             <div class="o-card__back blue">
                 <div class="content">
@@ -206,7 +238,12 @@
     <div class="o-card height-medium">
         <div class="o-card__sides">
             <div class="o-card__front yellow">
-                <img class="image" src="/media/card-lufthansa-germanwings.png" />
+                <responsive-image
+                  class="image"
+                  active="true"
+                  src="/media/card-lufthansa-germanwings.png"
+                  alt="The new germanwings"
+                ></responsive-image>
             </div>
             <div class="o-card__back yellow">
                 <div class="content">
@@ -224,7 +261,12 @@
     <div class="o-card height-medium">
         <div class="o-card__sides">
             <div class="o-card__front red">
-                <img class="image" src="/media/card-decks.png" />
+                <responsive-image
+                  class="image"
+                  active="true"
+                  src="/media/card-decks.png"
+                  alt="Decks"
+                ></responsive-image>
             </div>
             <div class="o-card__back red">
                 <div class="content">
@@ -242,7 +284,12 @@
     <div class="o-card height-small">
         <div class="o-card__sides">
             <div class="o-card__front orange">
-                <img class="image" src="/media/card-d2.png" />
+                <responsive-image
+                  class="image"
+                  active="true"
+                  src="/media/card-d2.png"
+                  alt="Diversity Squared"
+                ></responsive-image>
             </div>
             <div class="o-card__back orange">
                 <div class="content">
@@ -260,7 +307,12 @@
     <div class="o-card height-medium">
         <div class="o-card__sides">
             <div class="o-card__front light-blue">
-                <img class="image" src="/media/card-donnerwetter.png" />
+                <responsive-image
+                  class="image"
+                  active="true"
+                  src="/media/card-donnerwetter.png"
+                  alt="Donnerwetter"
+                ></responsive-image>
             </div>
             <div class="o-card__back light-blue">
                 <div class="content">
@@ -278,7 +330,12 @@
     <div class="o-card height-small">
         <div class="o-card__sides">
             <div class="o-card__front light-blue">
-                <img class="image" src="/media/card-woyzeck.png" />
+                <responsive-image
+                  class="image"
+                  active="true"
+                  src="/media/card-woyzeck.png"
+                  alt="Woyzeck – a fragment"
+                ></responsive-image>
             </div>
             <div class="o-card__back light-blue">
                 <div class="content">
@@ -302,7 +359,11 @@
 
 	<div class="c-skill o-media o-media--center">
     <figure class="c-skill__figure o-media__figure">
-      <img src="svgs/interaction-design.svg">
+      <responsive-image
+        active="true"
+        src="svgs/interaction-design.svg"
+        alt="Interaction design"
+      ></responsive-image>
     </figure>
 		<div class="o-media__body c-skill__content">
 			<a name="about"><h2 class="o-headline-2">Interaction design</h2></a>
@@ -314,7 +375,11 @@
 
   <div class="c-skill o-media o-media--reverse o-media--center">
     <figure class="c-skill__figure o-media__figure">
-      <img src="svgs/product-design.svg">
+      <responsive-image
+        active="true"
+        src="svgs/product-design.svg"
+        alt="Product design"
+      ></responsive-image>
     </figure>
     <div class="c-skill__content o-media__body">
       <h2 class="o-headline-2">Product design</h2>
