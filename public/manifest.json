@@ -26,6 +26,11 @@
       "src": "media/veare-icon@4x.png",
       "type": "image/png",
       "sizes": "192x192"
+    },
+    {
+      "src": "media/veare-icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
     }
   ],
   "name": "veare – interface design",
