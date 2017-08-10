@@ -15,7 +15,8 @@ gulp.task('bundleJs', require('./gulp-tasks/bundleJs.js')({
     'resources/js/app.js'
   ],
   webcomponents: [
-    'node_modules/page-sections/dist/page-sections.js'
+    'node_modules/page-sections/dist/page-sections.js',
+    'node_modules/responsive-image/dist/responsiveImage.js'
   ],
   portfolio: [
     'node_modules/minigrid/dist/minigrid.min.js',
