@@ -2,7 +2,12 @@
     <div class="o-card height-{size}">
         <div class="o-card__sides">
             <div class="o-card__front {color}">
-                <img class="image" src="{src}" />
+                <responsive-image
+                  class="image"
+                  active="true"
+                  src="{src}"
+                  alt="{title}"
+                ></responsive-image>
             </div>
             <div class="o-card__back {color}">
                 <div class="content">

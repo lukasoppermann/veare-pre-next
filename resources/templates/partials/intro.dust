@@ -24,7 +24,11 @@
       </div>
   	</div>
     <figure class="c-intro-image">
-      <img src="/media/lukas-oppermann@2x.png" alt="Lukas Oppermann" />
+      <responsive-image
+        active="true"
+        src="/media/lukas-oppermann@2x.png"
+        alt="Lukas Oppermann"
+      ></responsive-image>
     </figure>
 
 </page-section>
