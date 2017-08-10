@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/lukasoppermann/veare#readme",
   "devDependencies": {
-    "@webcomponents/webcomponentsjs": "^1.0.0",
+    "@webcomponents/webcomponentsjs": "^1.0.7",
     "babel-plugin-transform-custom-element-classes": "^0.1.0",
     "babel-preset-es2015": "^6.24.1",
     "browser-sync": "^2.18.12",

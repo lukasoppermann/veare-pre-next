@@ -47,7 +47,7 @@
   font-weight: 400;
   line-height: var(--type-huge-line-height);
   color: var(--type-grey);
-  display: inline-block;
+  display: block;
   position: relative;
 }
 .c-intro-main-subline::before{
