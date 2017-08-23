@@ -65,5 +65,5 @@ contentful(true, (response) => {
   }
   // open port
   app.listen(PORT)
-  console.log('Running on http://localhost:' + PORT)
+  console.log('Running on http://localhost:' + PORT + ' environment is set to "' + env + '"')
 })
