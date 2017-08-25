@@ -3,17 +3,12 @@ module.exports = function (type, files) {
   const rev = require('gulp-rev')
   const revdel = require('gulp-rev-delete-original')
   const fs = require('fs')
-  const del = require('del')
   const error = require('./errorHandling.js')()
 
   return () => {
-    // synchronously delete old files
-    if (fs.existsSync('public/rev-manifest.json')) {
-      let manifest = fs.readFileSync('public/rev-manifest.json', 'utf8')
-      let removeFiles = Object.values(JSON.parse(manifest)).filter(function(file){
-        return (file.substring(0, type.length) === type);
-      })
-      del.sync(removeFiles, {'cwd': 'public/'})
+    // create public/rev-manifest.json if it doesn't exist
+    if (!fs.existsSync('public/rev-manifest.json') || fs.readFileSync('public/rev-manifest.json', 'utf8').length === 0) {
+      fs.appendFileSync('public/rev-manifest.json', '{}', 'utf8')
     }
 
     return gulp.src(files, {base: 'public'})
