@@ -1,0 +1,9 @@
+<section class="c-portfolio">
+  <div class="js-cards cards font-white">
+    <a name="portfolio"></a>
+    {{#each portfolioItems}}
+      {{>portfolio-card}}
+    {{/each}}
+  </div>
+</section>
+<script src="/{{files.portfoliojs}}"></script>

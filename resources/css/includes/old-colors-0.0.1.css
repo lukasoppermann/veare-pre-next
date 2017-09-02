@@ -6,7 +6,7 @@
 .white-pseudo:before, .white-pseudo:after{ background: rgb(255,255,255); }
 /* black */
 .black{ background: rgb(35,40,55); border-color: rgb(35,40,55);}
-.font-black{ color: rgba(0,0,0,.8); }
+.font-black, .hover-font-black:hover{ color: rgba(0,0,0,.8); }
 .black-pseudo:before, .black-pseudo:after{ background: rgb(44,47,50);}
 /* black */
 .dark-black{ background: rgb(25,28,30); border-color: rgb(25,28,30);}
@@ -41,7 +41,7 @@
 /* yellow */
 .yellow{ background: rgb(245,215,85); border-color: rgb(245,215,85); }
 .border-yellow, .hovers .hover-border-yellow:hover{ border-color: rgb(245,215,85); }
-.font-yellow{ color: rgb(245,215,85); }
+.font-yellow, .hover-font-yellow:hover{ color: rgb(245,215,85); }
 /* red */
 .red{ background: rgb(245,130,105); border-color: rgb(245,130,105); }
 .border-red, .hovers .hover-border-red:hover{ border-color: rgb(245,130,105); }

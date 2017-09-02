@@ -71,37 +71,6 @@ gulp.task('bundleCss', require('./gulp-tasks/bundleCss.js')({
   'public/portfolio/*.html',
   'public/blog/*.html'
 ]))
-
-/* ------------------------------
- *
- * DUST
- *
- */
-const dustHtml = require('./gulp-tasks/html.js')(
-  [
-    'resources/templates/*.dust',
-    'resources/templates/**/*.dust',
-    '!resources/templates/partials/*.dust'
-  ],
-  {
-    'portfolioItems': JSON.parse(fs.readFileSync('resources/templates/data/portfolio.json'))
-  }
-)
-gulp.task('html', dustHtml(true))
-gulp.task('htmlBuild', dustHtml(true))
-
-// watch html
-gulp.task('watchHtml', function () {
-  gulp.watch([
-    'resources/templates/*',
-    'resources/templates/**/*',
-    '!resources/data/*'
-  ], gulp.series('html', function reload (cb) {
-    browserSync.reload()
-    cb()
-  }))
-})
-
 /* ------------------------------
  *
  * SVG
@@ -136,14 +105,18 @@ gulp.task('serviceWorker', require('./gulp-tasks/serviceWorker.js')(
     files: [
       'media/lukas-oppermann@2x.png'
     ],
-    revisionedFiles: JSON.parse(fs.readFileSync(`public/rev-manifest.json`, 'utf8'))
+    revisionedFiles: () => {
+      if (fs.existsSync('public/rev-manifest.json')) {
+        return JSON.parse(fs.readFileSync('public/rev-manifest.json', 'utf8'))
+      }
+    }
   })
 )
 // watch js
 gulp.task('watchJs', function () {
   gulp.watch([
     'resources/js/*'
-  ], gulp.series('bundleJs', 'revJs', 'html', function reload (cb) {
+  ], gulp.series('bundleJs', 'revJs', function reload (cb) {
     browserSync.reload()
     cb()
   }))
@@ -157,7 +130,7 @@ gulp.task('watchCss', function () {
   gulp.watch([
     'resources/css/*',
     'resources/css/**/*'
-  ], gulp.series('bundleCss', 'revCss', 'html', function reload (cb) {
+  ], gulp.series('bundleCss', 'revCss', function reload (cb) {
     browserSync.reload()
     cb()
   }))
@@ -179,9 +152,9 @@ gulp.task('serve', require('./gulp-tasks/serve.js').serve())
 gulp.task('default', gulp.series(
   'browser-sync',
   gulp.parallel('bundleJs', 'bundleCss'),
-  gulp.parallel('revJs', 'revCss'),
-  'html',
-  gulp.parallel('watchJs', 'watchCss', 'watchHtml')
+  'revJs',
+  'revCss',
+  gulp.parallel('watchJs', 'watchCss')
 ))
 
 /* ------------------------------
@@ -199,6 +172,5 @@ gulp.task('build', gulp.series(
   },
   gulp.parallel('bundleJs', 'bundleCss'),
   gulp.parallel('revJs', 'revCss'),
-  'htmlBuild',
   'serviceWorker'
 ))
