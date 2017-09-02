@@ -76,7 +76,7 @@ contentful(true, (response) => {
     files: files
   }))
   // Portfolio
-  app.get(/^\/portfolio\/([\w-]*)$/, function (req, res) {
+  app.get(/^\/portfolio\/?([\w-]*)?$/, function (req, res) {
     res.render('portfolio/' + req.params[0], {
       files: files
     }, function (err, html) {

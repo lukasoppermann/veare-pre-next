@@ -30,7 +30,6 @@
   /*
    * type colors
    */
-  
   --type-black: var(--black);
   --type-grey: rgba(var(--black-rgb), .5);
 }
