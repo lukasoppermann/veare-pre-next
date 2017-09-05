@@ -50,6 +50,7 @@
     "prismjs": "^1.6.0",
     "raster.css": "0.0.4",
     "responsive-image": "^0.1.1",
+    "rev-del": "^1.0.5",
     "snazzy": "^7.0.0",
     "standard": "^10.0.3",
     "sw-precache": "^5.1.0",
