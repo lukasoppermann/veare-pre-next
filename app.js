@@ -48,6 +48,30 @@ contentful(true, (response) => {
     delete files[key]
   })
   let portfolioItems = JSON.parse(fs.readFileSync('resources/templates/data/portfolio.json'))
+  // dev
+  if (env === 'dev') {
+    app.use(/\/[a-z_/]?/, function (req, res, next) {
+      files = JSON.parse(fs.readFileSync('public/rev-manifest.json', 'utf8'))
+      // change object keys
+      Object.keys(files).forEach((key) => {
+        let newKey = key.replace('.', '').substring(key.lastIndexOf('/') + 1)
+        files[newKey] = files[key]
+        delete files[key]
+      })
+      // console.log('parsed files: ', files)
+      next()
+    })
+
+    app.use('/contentful', basicAuth({
+      users: {
+        [contentfulConfig.webhookUser]: contentfulConfig.webhookPassword
+      }
+    }), (req, res) => {
+      contentful(false, () => {
+        res.sendStatus(200)
+      })
+    })
+  }
   // index
   app.get('/', function (req, res) {
     res.render('index', {
@@ -87,19 +111,6 @@ contentful(true, (response) => {
       res.send(html)
     })
   })
-
-  // dev
-  if (env === 'dev') {
-    app.use('/contentful', basicAuth({
-      users: {
-        [contentfulConfig.webhookUser]: contentfulConfig.webhookPassword
-      }
-    }), (req, res) => {
-      contentful(false, () => {
-        res.sendStatus(200)
-      })
-    })
-  }
   // static content
   app.use(express.static('public'))
   // open port
