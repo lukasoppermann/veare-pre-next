@@ -50,7 +50,7 @@ contentful(true, (response) => {
   let portfolioItems = JSON.parse(fs.readFileSync('resources/templates/data/portfolio.json'))
   // dev
   if (env === 'dev') {
-    app.use(/\/[a-z_/]?/, function (req, res, next) {
+    app.use(/\/[a-z_/]*/, function (req, res, next) {
       files = JSON.parse(fs.readFileSync('public/rev-manifest.json', 'utf8'))
       // change object keys
       Object.keys(files).forEach((key) => {
