@@ -7,7 +7,6 @@
   background-color: var(--color-sand);
   border: var(--ms_a0) solid rgb(255, 255, 255);
   border-top: var(--ms_a3) solid rgb(255, 255, 255);
-  min-height: 700px;
 }
 .c-intro-container{
   display: flex;
@@ -77,6 +76,7 @@
 }
 .c-intro--services-container{
   position: relative;
+  margin-bottom: var(--ms_a2);
 }
 .c-intro--services{
   display: flex;

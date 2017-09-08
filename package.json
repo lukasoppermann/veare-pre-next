@@ -45,11 +45,12 @@
     "minigrid": "3.*",
     "minireset.css": "^0.0.2",
     "modular-scale-css": "^1.0.0",
-    "nodemon": "^1.11.0",
-    "page-sections": "^0.2.2",
+    "nodemon": "^1.12.0",
+    "page-sections": "^0.3.0",
     "prismjs": "^1.6.0",
     "raster.css": "0.0.4",
     "responsive-image": "^0.1.1",
+    "rev-del": "^1.0.5",
     "snazzy": "^7.0.0",
     "standard": "^10.0.3",
     "sw-precache": "^5.1.0",
@@ -79,6 +80,7 @@
     "markdown-it-modify-token": "^1.0.2",
     "memory-cache": "^0.1.6",
     "reading-time": "^1.1.0",
+    "svgo": "^0.7.2",
     "ts-node": "^3.3.0"
   },
   "scripts": {

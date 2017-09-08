@@ -3,9 +3,9 @@
         <meta itemprop="author" content="{{fields.author.name}}" />
         <meta itemprop="publisher" content="vea.re" />
         <time itemprop="datePublished" class="o-article-preview__date" datetime="{{fields.date}}">{{fields.date}}</time>
-        {{#fields.category.fields.title}}
+        {{#if fields.category.fields.title}}
           <a href="" class="o-article-preview__category o-article-preview__category--{{fields.category.fields.slug}}">{{fields.category.fields.title}}</a>
-        {{/fields.category.fields.title}}
+        {{/if}}
         <time class="o-article-preview__read-time" datetime="{{fields.readingTime}}m">{{fields.readingTime}} min read</time>
     </div>
     <a itemprop="url" class="o-article-preview__link" title="Read: {{fields.title}}" href="/blog/{{fields.slug}}">

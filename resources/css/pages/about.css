@@ -3,6 +3,7 @@
   flex-direction: row;
   justify-content: center;
   z-index: 100;
+  position: relative;
   transform: translateZ(100px);
 }
 .c-about-container{
@@ -12,9 +13,88 @@
   box-shadow: var(--shadow-floating);
   color: rgb(255,255,255);
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  z-index: 10;
+  position: relative;
 }
-.c-about .circle-big{
+@media screen and (max-width: 600px) {
+  .c-about-container{
+    padding: var(--ms_a1) var(--ms_a1);
+    box-sizing: border-box;
+  }
+}
+.c-about__column{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 var(--ms_a2);
+  box-sizing: border-box;
+}
+.circle-big{
   background-color: rgba(0, 0, 0, 0.1);
+	position: relative;
+	width: 280px;
+	height: 280px;
+  flex: 0 0 auto;
+	border-radius: 280px;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.circle-big figure{
+  width: 220px;
+}
+.circle-headline{
+	position: relative;
+	text-align: center;
+	width: 100%;
+	margin-bottom: var(--ms_a0);
+  margin-top: calc(-1 * var(--ms_a2));
+	box-sizing: border-box;
+  font-weight: var(--sans-serif-bold);
+}
+.circle-copy{
+	text-align: left;
+	vertical-align: top;
+  font-size: var(--type-medium);
+  line-height: var(--type-medium-line-height);
+	width: 100%;
+	max-width: 450px;
+	box-sizing: border-box;
+}
+.plus:before{
+	content: "+";
+	width: 100px;
+	height: 100px;
+	text-align: center;
+	font-size: 150px;
+	line-height: 70px;
+	display: block;
+	position: absolute;
+	font-weight: 600;
+	left: 50%;
+	top: 40%;
+	margin: -75px 0 0 -50px;
+}
+@media screen and (max-width: 800px){
+	.circle-headline{
+		font-size: 60px;
+	}
+	.circle-headline, .circle-copy{ padding: 0 10px; }
+	.plus:before{ display: none; }
+	.circle-copy{
+    align-self: center;
+	}
+  .c-about__column:nth-child(2){
+    margin-top: var(--ms_a2);
+    margin-bottom: var(--ms_a2);
+  }
+}
+@media screen and (max-width: 800px){
+	.plus:before{ display: none; }
 }

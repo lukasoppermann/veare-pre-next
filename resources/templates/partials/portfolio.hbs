@@ -1,9 +1,7 @@
-<section class="c-portfolio">
-  <div class="js-cards cards font-white">
-    <a name="portfolio"></a>
+<page-section centered maxwidth="1000px" class="c-portfolio">
+  <div class="c-portfolio_cards o-raster u-width-full u-margin-top-xl">
     {{#each portfolioItems}}
       {{>portfolio-card}}
     {{/each}}
   </div>
-</section>
-<script src="/{{files.portfoliojs}}"></script>
+</page-section>

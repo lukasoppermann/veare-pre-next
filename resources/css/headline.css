@@ -7,6 +7,12 @@
 .o-headline-3{
   font-size: var(--type-big);
 }
+.o-headline-4{
+  font-size: var(--type-medium);
+  font-weight: var(--sans-serif-bold);
+  line-height: var(--type-medium-line-height);
+  margin-bottom: var(--ms_a-2);
+}
 .o-headline--primary{
   color: var(--blue);
 }

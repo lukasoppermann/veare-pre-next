@@ -4,14 +4,16 @@
  *
  */
 module.exports.serve = () => {
-  const forever = require('gulp-forever-monitor')
   const pack = require('../package.json')
   const exec = require('child_process').execSync
+  const forever = require('gulp-forever-monitor')
 
   return () => {
-
-    exec('pkill node')
-
+    try {
+      exec('pkill node')
+    } catch (err) {
+      // console.log(err)
+    }
     var foreverMonitorOptions = {
       env: process.env,
       args: process.argv,
@@ -20,11 +22,11 @@ module.exports.serve = () => {
     }
 
     forever(pack.main, foreverMonitorOptions)
-    .on('watch:restart', function(fileInfo) {
-      console.log('server was restarted');
+    .on('watch:restart', function (fileInfo) {
+      console.log('server was restarted')
     })
-    .on('exit', function() {
-      console.log('server was closed');
+    .on('exit', function () {
+      console.log('server was closed')
     })
   }
 }
