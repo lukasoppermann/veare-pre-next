@@ -96,6 +96,7 @@ contentful(true, (response) => {
   app.get('/', function (req, res) {
     res.render('index', {
       files: files,
+      pageClass: 'c-page--index',
       portfolioItems: portfolioItems
     })
   })
@@ -103,28 +104,33 @@ contentful(true, (response) => {
   app.get(/^\/(home|contact)/, function (req, res) {
     res.render('index', {
       files: files,
+      pageClass: 'c-page--index',
       portfolioItems: portfolioItems
     })
   })
   // imprint & privacy
   app.get(/^\/(imprint|privacy)/, function (req, res) {
     res.render(req.params[0], {
-      files: files
+      files: files,
+      pageClass: 'c-page--' + req.params[0]
     })
   })
   // Blog
   app.get(/^\/blog\/?$/, (req, res) => blog.index(req, res, {
     files: files,
+    pageClass: 'c-page--blog',
     layout: 'main-without-footer'
   }))
   app.get(/^\/blog\/([\w-]+)/, (req, res) => blog.get(req, res, {
     files: files,
+    pageClass: 'c-page--blog',
     layout: 'main-without-footer'
   }))
   // Portfolio
   app.get(/^\/portfolio\/?([\w-]*)?$/, function (req, res) {
     res.render('portfolio/' + req.params[0], {
-      files: files
+      files: files,
+      pageClass: 'c-page--portfolio-item'
     }, function (err, html) {
       if (err) {
         console.log(err)

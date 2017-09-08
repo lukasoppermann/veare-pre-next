@@ -1,6 +1,6 @@
 /*------------------*/
 /* Reset */
-html, body, div, span, applet, object, iframe,
+/*html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
@@ -16,44 +16,9 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: 100%;
-	line-height: inherit;
 	vertical-align: baseline;
-	font-weight: inherit;
 }
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-html, body{
-	padding: 0;
-	margin: 0;
-	width: 100%;
-	font-size: 13px;
-	color: rgb(0,0,0);
-}
-img{
-	padding: 0;
-	margin: 0;
-	border: 0;
-	position: relative;
-}
+
 a, span, a:active, a:focus{
   color: inherit;
 	display: inline-block;
@@ -64,4 +29,4 @@ p{
 	display: inline-block;
 	margin: 0;
 	padding: 0;
-}
+}*/

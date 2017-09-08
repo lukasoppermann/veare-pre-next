@@ -21,6 +21,3 @@
 .o-svg-bg--white-grey{
   fill: var(--white-grey);
 }
-.legal-footer{
-  z-index: 10;
-}

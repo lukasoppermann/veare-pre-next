@@ -1,3 +1,10 @@
+a, a:active, a:focus{
+  color: inherit;
+  display: inline-block;
+}
+a:hover{
+  text-decoration: none;
+}
 .o-link{
   font-size: inherit;
   text-decoration: none;

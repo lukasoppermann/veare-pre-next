@@ -174,7 +174,7 @@
 .o-overlay-nav__link{
   font-size: 30px;
   color: rgb(255,255,255);
-  padding: 10px;
+  padding: var(--ms_a0) 10px;
   text-decoration: none;
   position: relative;
   transition: color .3s ease;

@@ -8,6 +8,7 @@
   color: var(--black);
   cursor: pointer;
   transition: box-shadow .3s ease, color .3s ease, background-color .3s ease;
+  text-decoration: none;
 }
 .o-button:focus{
   outline: none;

@@ -131,6 +131,20 @@ gulp.task('watchCss', function () {
   }))
 })
 /* ------------------------------
+ *
+ * watch task
+ *
+ */
+gulp.task('watchTemplates', function () {
+  gulp.watch([
+    'resources/templates/*',
+    'resources/templates/**/*'
+  ], gulp.series(function reload (cb) {
+    browserSync.reload()
+    cb()
+  }))
+})
+/* ------------------------------
  * default task
  */
 gulp.task('browser-sync', function (cb) {
@@ -149,7 +163,7 @@ gulp.task('default', gulp.series(
   gulp.parallel('bundleJs', 'bundleCss'),
   'revJs',
   'revCss',
-  gulp.parallel('watchJs', 'watchCss')
+  gulp.parallel('watchJs', 'watchCss', 'watchTemplates')
 ))
 
 /* ------------------------------
