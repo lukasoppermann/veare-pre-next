@@ -15,17 +15,18 @@
   justify-content: center;
 }
 .o-card__container{
-  height: 300px;
+  min-height: 300px;
   box-sizing: border-box;
   padding: 0 var(--ms_a-2);
   margin-bottom: var(--ms_a0);
 	z-index: 1;
   max-width: 250px;
+  display: flex;
 }
 @media (max-width: 480px){
   .o-card__container{
     width: 100%;
-    max-width: 250px; 
+    max-width: 250px;
     flex-basis: 100%;
   }
 }

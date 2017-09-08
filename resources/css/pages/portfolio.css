@@ -62,7 +62,6 @@
   display: flex;
   flex-direction: row;
   margin-bottom: var(--ms_a3);
-  flex-wrap: wrap;
 }
 .o-project-section-container{
   width: 100%;
@@ -84,6 +83,9 @@
   margin-right: 0;
 }
 @media screen and (max-width: 800px){
+  .o-project-info{
+    flex-wrap: wrap;
+  }
   .o-project-info__item--last{
     flex-shrink: 0;
     width: 100%;

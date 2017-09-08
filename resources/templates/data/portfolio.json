@@ -4,7 +4,7 @@
           "description": "This magazine for the re:publica conference 2013 combines different articles on the topic “Open Everything”.",
           "src": "/media/card-open-everything.png",
           "color": "rgb(70,155,180)",
-          "size": "medium",
+          "size": "tall",
           "tag": "print",
           "link": "/portfolio/open-everything"
       },
@@ -13,7 +13,7 @@
           "description": "Swift is a case study of a corporate identity for an airline focusing on speed and comfort.",
           "src": "/media/card-swift.png",
           "color": "rgb(245,215,85)",
-          "size": "medium",
+          "size": "tall",
           "tag": "branding",
           "link": "/portfolio/swift"
       },
@@ -31,7 +31,7 @@
           "description": "An infographic for the airline germanwings showing service changes for passengers.",
           "src": "/media/card-lufthansa-germanwings.png",
           "color": "rgb(245,215,85)",
-          "size": "medium",
+          "size": "tall",
           "tag": "infographics",
           "link": "/portfolio/lufthansa-germanwings"
       },
@@ -40,7 +40,7 @@
           "description": "Creating the future fully-fledged Operating System for touchscreen.",
           "src": "/media/card-decks.png",
           "color": "rgb(245,130,105)",
-          "size": "medium",
+          "size": "tall",
           "tag": "interface",
           "link": "/portfolio/decks"
       },
