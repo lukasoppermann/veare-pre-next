@@ -18,7 +18,7 @@ module.exports.serve = () => {
       env: process.env,
       args: process.argv,
       watch: true,
-      watchIgnorePatterns: ['node_modules/**', '!public/**']
+      watchIgnorePatterns: ['node_modules/**', 'public/**']
     }
 
     forever(pack.main, foreverMonitorOptions)

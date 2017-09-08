@@ -7,6 +7,18 @@ const Blog = require('./app/controller/Blog')
 const express = require('express')
 const basicAuth = require('express-basic-auth')
 const expressHandlebars = require('express-handlebars')
+const SVGO = require('svgo')
+const svgo = new SVGO({
+  plugins: [
+    { removeEditorsNSData: {
+      additionalNamespaces: ['http://www.figma.com/figma/ns']}
+    },
+    { removeDesc: {removeAny: true} },
+    { removeTitle: {} }, // pass it an argument to enable
+    'removeComments', // does enable default plugins. (using { full: true } )
+    'removeMetadata'
+  ]
+})
 // App
 const app = express()
 const blog = new Blog()
@@ -24,6 +36,14 @@ const hbs = expressHandlebars.create({
     url_safe: function (url) {
       url = url.replace(/[`:]/g, '').replace(/[\W_]+/g, '-')
       return escape(url)
+    },
+    inline_svg: function (path) {
+      let svg = fs.readFileSync(path, 'utf8')
+      let optimized
+      svgo.optimize(svg, function (result) {
+        optimized = result.data
+      })
+      return optimized
     }
   }
 })
@@ -94,10 +114,12 @@ contentful(true, (response) => {
   })
   // Blog
   app.get(/^\/blog\/?$/, (req, res) => blog.index(req, res, {
-    files: files
+    files: files,
+    layout: 'main-without-footer'
   }))
   app.get(/^\/blog\/([\w-]+)/, (req, res) => blog.get(req, res, {
-    files: files
+    files: files,
+    layout: 'main-without-footer'
   }))
   // Portfolio
   app.get(/^\/portfolio\/?([\w-]*)?$/, function (req, res) {

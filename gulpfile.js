@@ -18,10 +18,6 @@ gulp.task('bundleJs', require('./gulp-tasks/bundleJs.js')({
     'node_modules/page-sections/dist/page-sections.js',
     'node_modules/responsive-image/dist/responsiveImage.js'
   ],
-  portfolio: [
-    'node_modules/minigrid/dist/minigrid.min.js',
-    'resources/js/cards.js'
-  ],
   registerServiceWorker: [
     'resources/js/register-service-worker.js'
   ],
@@ -89,7 +85,6 @@ gulp.task('revCss', require('./gulp-tasks/rev.js')('css', ['public/css/app.css']
 gulp.task('revJs', require('./gulp-tasks/rev.js')('js',
   [
     'public/js/common.js',
-    'public/js/portfolio.js',
     'public/js/webcomponents.js',
     'public/js/registerServiceWorker.js',
     'public/js/blog.js'
