@@ -4,4 +4,8 @@ dist: trusty
 node_js:
   - '8'
 before_script: npm install
-script: xvfb-run npm run travis && NODE_ENV=testing NODE_PORT=8888 node app.js & && node node_modules/lighthouse-ci/runlighthouse.js http://localhost:8888
+script:
+  - xvfb-run npm run travis
+  - NODE_ENV=testing NODE_PORT=8888 node app.js &
+  - node node_modules/lighthouse-ci/runlighthouse.js http://localhost:8888
+  - pkill node
