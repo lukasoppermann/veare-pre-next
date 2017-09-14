@@ -4,7 +4,6 @@ module.exports = function (bundles, links) {
   const cssnano = require('gulp-cssnano')
   const concat = require('gulp-concat')
   const error = require('./errorHandling.js')()
-  const uncss = require('gulp-uncss')
 
   return function bundleCss () {
     let stream = require('merge-stream')()
@@ -20,11 +19,6 @@ module.exports = function (bundles, links) {
             removeAll: true
           }
         }))
-        .on('error', error)
-        // .pipe(uncss({
-        //   html: links,
-        //   ignore: [/is-(.*)/]
-        // }))
         .on('error', error)
         .pipe(savings.stop())
         .pipe(savings.gziped())

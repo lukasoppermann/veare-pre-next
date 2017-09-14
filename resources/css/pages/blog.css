@@ -122,6 +122,7 @@
     animation-fill-mode: forwards;
     animation-duration: 1.5s;
     animation-delay: 1.5s;
+    list-style: none;
 }
 @media (max-width: 600px) {
     .o-article-preview{
