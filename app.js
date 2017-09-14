@@ -23,7 +23,7 @@ const svgo = new SVGO({
 const app = express()
 const blog = new Blog()
 // Variables
-const PORT = 8080
+const PORT = process.env.NODE_PORT || 8080
 let env = process.env.NODE_ENV || 'dev'
 
 app.set('views', 'resources/templates') // path to your templates
