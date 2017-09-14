@@ -143,5 +143,7 @@ contentful(true, (response) => {
   app.use(express.static('public'))
   // open port
   app.listen(PORT)
-  console.log('Running on http://localhost:' + PORT + ' environment is set to "' + env + '"')
+  if(env !== 'testing'){
+    console.log('Running on http://localhost:' + PORT + ' environment is set to "' + env + '"')
+  }
 })
