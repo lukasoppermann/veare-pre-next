@@ -38,6 +38,7 @@ let modifiers = {
 const md = require('markdown-it')('commonmark', {
   html: true,
   typographer: true,
+  quotes: '“”‘’',
   modifyToken: (token, env) => {
     let modifier = modifiers[token.tag]
     if (modifier !== undefined) {

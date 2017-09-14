@@ -53,7 +53,6 @@ gulp.task('bundleJs', require('./gulp-tasks/bundleJs.js')({
 gulp.task('bundleCss', require('./gulp-tasks/bundleCss.js')({
   'app': [
     // npm resources
-    'node_modules/minireset.css/minireset.css',
     'node_modules/modular-scale-css/modular-scale.css',
     'node_modules/raster.css/dist/raster.css',
     // includes
