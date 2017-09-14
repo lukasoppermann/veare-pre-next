@@ -1,5 +1,5 @@
 // CURRENTLY NOT IN USE
-let crawl = function (url, cb) {
+module.exports.crawl = function (url, cb) {
   let huntsman = require('huntsman')
   let spider = huntsman.spider()
   let links = []

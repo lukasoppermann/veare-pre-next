@@ -87,6 +87,7 @@
     "start": "gulp serve",
     "nodemon": "nodemon --watch app.js",
     "forever": "forever start -v --watch --watchedDirectory=/Users/lukasoppermann/code/veare app.js",
-    "test": "standard | snazzy 'resources/js/*.js'"
+    "test": "standard 'resources/js/*.js' 'app/**/*.js' 'gulp-tasks/*.js' | snazzy ",
+    "travis": "npm run test"
   }
 }
