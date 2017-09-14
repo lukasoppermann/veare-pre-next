@@ -1,6 +1,6 @@
-module.exports = (error) => {
-  return function error(error){
-    require('gulp-util').log(require('chalk').white.bgRed.bold(`ERROR:`) + ` ${error.toString()}`)
+module.exports = (errordata) => {
+  return function error (errordata) {
+    require('gulp-util').log(require('chalk').white.bgRed.bold(`ERROR:`) + ` ${errordata.toString()}`)
     this.emit('end')
   }
 }

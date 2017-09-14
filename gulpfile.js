@@ -11,7 +11,6 @@ gulp.task('bundleJs', require('./gulp-tasks/bundleJs.js')({
   common: [
     'resources/js/analytics.js',
     'resources/js/menu.js',
-    'resources/js/img.js',
     'resources/js/app.js'
   ],
   webcomponents: [
@@ -24,9 +23,6 @@ gulp.task('bundleJs', require('./gulp-tasks/bundleJs.js')({
   blog: [
     'node_modules/prismjs/prism.js',
     'node_modules/prismjs/components/prism-bash.js'
-  ],
-  'dev-grid': [
-    'resources/js/dev-grid.js'
   ]
 },
   // files to only be moved to js folder
