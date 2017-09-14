@@ -15,6 +15,7 @@ gulp.task('bundleJs', require('./gulp-tasks/bundleJs.js')({
   ],
   webcomponents: [
     'node_modules/page-sections/dist/page-sections.js',
+    'node_modules/@nuclei-components/grid/dist/grid.js',
     'node_modules/responsive-image/dist/responsiveImage.js'
   ],
   registerServiceWorker: [

@@ -13,21 +13,25 @@
 .c-portfolio_cards{
   padding: 0 calc(var(--ms_a0) - var(--ms_a-2));
   justify-content: center;
+  max-width: 800px;
+  width: 100%;
 }
 .o-card__container{
-  min-height: 300px;
+  height: 300px;
   box-sizing: border-box;
   padding: 0 var(--ms_a-2);
   margin-bottom: var(--ms_a0);
 	z-index: 1;
-  max-width: 250px;
   display: flex;
+  justify-content: center;
 }
 @media (max-width: 480px){
   .o-card__container{
     width: 100%;
-    max-width: 250px;
+    /*max-width: 250px;*/
     flex-basis: 100%;
+    display: flex;
+    align-items: center;
   }
 }
 .o-card__container:hover{
@@ -36,6 +40,7 @@
 .o-card {
 	display: block;
 	width: 100%;
+  max-width: 250px;
   height: 100%;
 	vertical-align: top;
 	text-align: left;
