@@ -15,7 +15,6 @@ const modifiers = {
 
 class PostTransformer extends Transformer {
   transform (data) {
-
     return {
       id: data.sys.id,
       createdAt: data.sys.createdAt,
