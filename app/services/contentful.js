@@ -15,7 +15,7 @@ const contentful = (initial, cb, error = console.error) => {
   client.sync(syncConf)
   .then((response) => {
     cache.put('nextSyncToken', response.nextSyncToken)
-    if(process.env.NODE_ENV !== 'testing'){
+    if (process.env.NODE_ENV !== 'testing') {
       console.log('⚠️  Not dealing with deleted records yet!!!!')
     }
     const responseObj = JSON.parse(response.stringifySafe())
