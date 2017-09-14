@@ -4,5 +4,4 @@ dist: trusty
 node_js:
   - '8'
 before_script: npm install
-script: xvfb-run npm run travis
-after_success: node app.js && node node_modules/lighthouse-ci/runlighthouse.js http://localhost:8080
+script: xvfb-run npm run travis && node app.js && node node_modules/lighthouse-ci/runlighthouse.js http://localhost:8080
