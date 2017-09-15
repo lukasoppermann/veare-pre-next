@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/lukasoppermann/veare#readme",
   "devDependencies": {
-    "@nuclei-components/grid": "0.0.3",
+    "@nuclei-components/grid": "0.0.4",
     "@types/contentful-resolve-response": "^0.1.30",
     "@types/express": "^4.0.37",
     "@types/node": "^8.*",
@@ -70,7 +70,7 @@
     "handlebars-helpers": "^0.9.8",
     "markdown-it": "^8.4.0",
     "markdown-it-anchor": "^4.0.0",
-    "markdown-it-attrs": "^1.0.0",
+    "markdown-it-attrs": "^1.2.0",
     "markdown-it-expand-tabs": "^1.0.12",
     "markdown-it-implicit-figures": "^0.6.0",
     "markdown-it-modify-token": "^1.0.2",

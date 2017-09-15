@@ -13,7 +13,7 @@
 .c-portfolio_cards{
   padding: 0 calc(var(--ms_a0) - var(--ms_a-2));
   justify-content: center;
-  max-width: 800px;
+  max-width: 1000px;
   width: 100%;
 }
 .o-card__container{
