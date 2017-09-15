@@ -115,6 +115,10 @@ contentful(true, (response) => {
       pageClass: 'c-page--' + req.params[0]
     })
   })
+  // About
+  app.get(/^\/about\/([\w-]+)?$/, function (req, res) {
+    res.redirect('/#about')
+  })
   // Blog
   app.get(/^\/blog\/?$/, (req, res) => blog.index(req, res, {
     files: files,

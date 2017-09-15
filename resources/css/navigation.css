@@ -170,6 +170,7 @@
   flex-direction: column;
   align-items: flex-start;
   margin-left: 10px;
+  list-style: none;
 }
 .o-overlay-nav__link{
   font-size: 30px;
