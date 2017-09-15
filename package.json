@@ -23,7 +23,8 @@
     "babel-plugin-transform-custom-element-classes": "^0.1.0",
     "babel-preset-es2015": "^6.24.1",
     "browser-sync": "^2.18.13",
-    "chalk": "2.*",
+    "chalk": "1.*",
+    "check-broken-links": "^1.1.6",
     "cssnano": "^3.7.0",
     "del": "3.*",
     "gulp": "github:gulpjs/gulp#4.0",
@@ -44,7 +45,6 @@
     "gulp-svgmin": "^1.2.2",
     "gulp-svgstore": "^6.0.0",
     "gulp-uglify": "^3.0.0",
-    "huntsman": "^0.3.0",
     "lighthouse-ci": "git+https://github.com/ebidel/lighthouse-ci.git",
     "merge-stream": "^1.0.1",
     "modular-scale-css": "^1.0.0",
@@ -87,7 +87,7 @@
     "start": "gulp serve",
     "nodemon": "nodemon --watch app.js",
     "forever": "forever start -v --watch --watchedDirectory=/Users/lukasoppermann/code/veare app.js",
-    "test": "standard 'resources/js/*.js' 'app/**/*.js' 'gulp-tasks/*.js' | snazzy ",
+    "test": "standard 'resources/js/*.js' 'app/**/*.js' 'gulp-tasks/*.js' | snazzy && node test/links.js",
     "travis": "npm run test"
   }
 }

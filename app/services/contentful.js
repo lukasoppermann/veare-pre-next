@@ -15,7 +15,9 @@ const contentful = (initial, cb, error = console.error) => {
   client.sync(syncConf)
   .then((response) => {
     cache.put('nextSyncToken', response.nextSyncToken)
-    console.log('⚠️  Not dealing with deleted records yet!!!!')
+    if (process.env.NODE_ENV !== 'testing') {
+      console.log('⚠️  Not dealing with deleted records yet!!!!')
+    }
     const responseObj = JSON.parse(response.stringifySafe())
     client.getContentTypes()
     .then((types) => {
@@ -26,7 +28,9 @@ const contentful = (initial, cb, error = console.error) => {
       }
     }).catch(console.error)
   })
-  .catch(error)
+  .catch((error) => {
+    console.log(error)
+  })
 }
 
 const initializeContent = (types, responseObj, cb) => {
