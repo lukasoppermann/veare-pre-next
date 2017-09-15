@@ -127,7 +127,12 @@ contentful(true, (response) => {
     layout: 'main-without-footer'
   }))
   // Portfolio
-  app.get(/^\/portfolio\/?([\w-]*)?$/, function (req, res) {
+  // no portfolio item selected
+  app.get(/^\/portfolio\/?$/, function (req, res) {
+    res.redirect('/#portfolio')
+  })
+  // show portfolio item
+  app.get(/^\/portfolio\/?([\w-]*)$/, function (req, res) {
     res.render('portfolio/' + req.params[0], {
       files: files,
       pageClass: 'c-page--portfolio-item'
@@ -143,7 +148,7 @@ contentful(true, (response) => {
   app.use(express.static('public'))
   // open port
   app.listen(PORT)
-  if(env !== 'testing'){
+  if (env !== 'testing') {
     console.log('Running on http://localhost:' + PORT + ' environment is set to "' + env + '"')
   }
 })
