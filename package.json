@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/lukasoppermann/veare#readme",
   "devDependencies": {
-    "@nuclei-components/grid": "0.0.4",
+    "@nuclei-components/grid": "^0.2.0",
     "@types/contentful-resolve-response": "^0.1.30",
     "@types/express": "^4.0.37",
     "@types/node": "^8.*",

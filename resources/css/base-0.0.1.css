@@ -3,10 +3,6 @@
 :root{
   --ms-base-a: 16px;
   --ms-base-b: 20px;
-  --grid-breakpoint-s: 0;
-  --grid-breakpoint-m: 420px;
-  --grid-breakpoint-l: 800px;
-  --grid-breakpoint-xl: 1000px;
   --grid-gutter: var(--ms_a-1);
 }
 /*------------------*/
