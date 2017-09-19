@@ -68,6 +68,7 @@
     "express-handlebars": "^3.0.0",
     "forever": "^0.15.3",
     "handlebars-helpers": "^0.9.8",
+    "lighthouse": "^2.4.0",
     "markdown-it": "^8.4.0",
     "markdown-it-anchor": "^4.0.0",
     "markdown-it-attrs": "^1.2.0",
@@ -83,7 +84,9 @@
     "start": "gulp serve",
     "nodemon": "nodemon --watch app.js",
     "forever": "forever start -v --watch --watchedDirectory=/Users/lukasoppermann/code/veare app.js",
-    "test": "standard 'app.js resources/js/*.js' 'app/**/*.js' 'gulp-tasks/*.js' | snazzy && node test/links.js",
+    "test": "standard 'app.js' 'resources/js/*.js' 'app/**/*.js' 'gulp-tasks/*.js' | snazzy && node test/links.js && npm run lighthouse",
+    "test-server": "NODE_ENV=testing NODE_PORT=8888 node app.js &",
+    "lighthouse": "npm run test-server && NODE_ENV=testing NODE_PORT=8888 node test/lighthouse.js && pkill node",
     "travis": "npm run test"
   }
 }
