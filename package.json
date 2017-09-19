@@ -84,7 +84,9 @@
     "start": "gulp serve",
     "nodemon": "nodemon --watch app.js",
     "forever": "forever start -v --watch --watchedDirectory=/Users/lukasoppermann/code/veare app.js",
-    "test": "standard 'app.js' 'resources/js/*.js' 'app/**/*.js' 'gulp-tasks/*.js' | snazzy && node test/links.js && node test/lighthouse.js",
+    "test": "standard 'app.js' 'resources/js/*.js' 'app/**/*.js' 'gulp-tasks/*.js' | snazzy && node test/links.js && npm run lighthouse",
+    "test-server": "NODE_PORT=8888 && node app.js &",
+    "lighthouse": "npm run test-server && NODE_PORT=8888 && node test/lighthouse.js && pkill node",
     "travis": "npm run test"
   }
 }

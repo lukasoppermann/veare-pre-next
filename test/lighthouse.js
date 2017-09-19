@@ -1,8 +1,7 @@
 const lighthouse = require('lighthouse')
 const chromeLauncher = require('lighthouse/chrome-launcher')
 const perfConfig = require('lighthouse/lighthouse-core/config/fast-config.js')
-const PORT = 8080
-
+const PORT = process.env.NODE_PORT || 8080
 /**
  * Run lighthouse
  */
