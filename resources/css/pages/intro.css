@@ -5,8 +5,8 @@
 .c-section--intro{
   position: relative;
   background-color: var(--color-sand);
-  border: var(--ms_a0) solid rgb(255, 255, 255);
-  border-top: var(--ms_a3) solid rgb(255, 255, 255);
+  border: var(--size-m) solid rgb(255, 255, 255);
+  border-top: var(--size-g) solid rgb(255, 255, 255);
 }
 .c-intro-container{
   display: flex;
@@ -14,15 +14,15 @@
   justify-content: flex-start;
 }
 .c-section--intro .c-svg--logo{
-  margin: var(--ms_b1) 0 0 var(--ms_a1);
+  margin: var(--size-xxl) 0 0 var(--size-xl);
 }
 .c-intro-content{
-  margin-left: var(--ms_b3);
-  margin-top: calc(var(--ms_a5) + var(--ms_a2)); /* to get close to 22rem */
+  margin-left: var(--size-g);
+  margin-top: 21rem;
   position: relative;
   z-index: 10;
   flex-grow: 1;
-  max-width: var(--ms_a8);
+  max-width: 75rem;
 }
 .c-intro-main-headline-container{
   width: 100%;
@@ -52,23 +52,23 @@
 }
 .c-intro-main-subline::before{
   content: "";
-  width: var(--ms_a4);
-  height: var(--ms_b-1);
+  width: var(--size-xxg);
+  height: var(--size-s);
   background-color: var(--veare-orange);
   display: block;
   position: absolute;
-  bottom: calc(-1 * var(--ms_a2));
+  bottom: calc(-1 * var(--size-h));
   left: 0;
 }
 .c-intro-copy-container{
-  margin-top: var(--ms_b3);
-  width: calc(var(--ms_a8) - var(--ms_b2));
+  margin-top: var(--size-xg);
+  width: 70rem;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
 .c-intro--slogan{
-  width: calc(var(--ms_b5) + var(--ms_b0));
+  width: 24rem;
   font-family: var(--sans-serif);
   font-size: var(--type-medium-big);
   line-height: var(--type-medium-big-line-height);
@@ -76,12 +76,12 @@
 }
 .c-intro--services-container{
   position: relative;
-  margin-bottom: var(--ms_a2);
+  margin-bottom: var(--size-h);
 }
 .c-intro--services{
   display: flex;
   flex-direction: column;
-  width: var(--ms_b6);
+  width: 36rem;
   font-family: var(--serif);
   font-style: var(--serif-style);
   font-size: var(--type-big);
@@ -90,7 +90,7 @@
 }
 .c-intro--services-description{
   position: absolute;
-  top: calc(-1 * var(--ms_b0));
+  top: calc(-1 * var(--size-l));
 }
 .c-intro--services-description,
 .c-intro--services-description-veare{

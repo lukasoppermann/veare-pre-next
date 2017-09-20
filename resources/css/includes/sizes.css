@@ -1,0 +1,20 @@
+:root{
+  /* small */
+  --size-xxs: 4px;
+  --size-xs: 8px;
+  --size-s: 13px;
+  /* medium / default */
+  --size-m: 16px;
+  /* large */
+  --size-l: 20px;
+  --size-xl: 25px;
+  --size-xxl: 31px;
+  /* huge */
+  --size-h: 39px;
+  --size-xh: 49px;
+  --size-xxh: 61px;
+  /* giant */
+  --size-g: 76px;
+  --size-xg: 95px;
+  --size-xxg: 119px;
+}

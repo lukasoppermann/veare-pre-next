@@ -5,8 +5,8 @@
   left: 0;
   z-index: 990;
   transform: translateZ(100px); /* safari hack */
-  font-size: var(--ms_b0);
-  height: var(--ms_a3);
+  font-size: var(--size-l);
+  height: var(--size-g);
   width: 100vw;
   font-family: var(--sans-serif);
   font-weight: var(--sans-serif-bold);
