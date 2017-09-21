@@ -1,0 +1,31 @@
+.o-copy{
+  font-family: var(--sans-serif);
+  font-size: var(--type-default);
+  line-height: var(--type-default-line-height);
+  color: var(--type-black);
+}
+.o-copy--large{
+  font-size: var(--size-xxl);
+}
+.o-copy--big{
+  font-size: var(--type-medium-big);
+  line-height: var(--type-medium-big-line-height);
+}
+.o-copy--huge{
+  font-size: var(--type-big);
+  line-height: var(--type-big-line-height);
+}
+.o-copy--serif{
+  font-family: var(--serif);
+  font-style: var(--serif-style);
+}
+.o-copy--muted{
+  color: var(--semi-black);
+}
+.o-copy-intro{
+  font-family: var(--serif);
+  font-style: var(--serif-style);
+  font-size: var(--type-big);
+  line-height: var(--type-big-line-height);
+  color: var(--semi-black);
+}

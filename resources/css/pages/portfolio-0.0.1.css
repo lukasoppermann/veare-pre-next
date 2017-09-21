@@ -196,7 +196,7 @@
 	opacity: 0;
 	transition: opacity .4s ease;
 }
-.o-portfolio-card responsive-image{
+.o-portfolio-card .image{
 	position: absolute;
 	left: 50%;
 	top: 50%;

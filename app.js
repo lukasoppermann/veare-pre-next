@@ -10,6 +10,32 @@ const hbs = require('./app/services/expressHandlebars')
 const app = express()
 // Variables
 app.set('views', 'resources/templates') // path to your templates
+const hbs = expressHandlebars.create({
+  extname: '.hbs',
+  defaultLayout: 'main',
+  layoutsDir: 'resources/templates/layouts',
+  partialsDir: 'resources/templates/partials',
+  helpers: {
+    url_safe: function (url) {
+      url = url.replace(/[`:]/g, '').replace(/[\W_]+/g, '-')
+      return escape(url)
+    },
+    inline_svg: function (path, options) {
+      let svg = fs.readFileSync(path, 'utf8')
+      let optimized
+      svgo.optimize(svg, function (result) {
+        optimized = result.data
+      })
+      console.log(options.hash)
+      let attrs = Object.keys(options.hash || {}).map(function (key) {
+        return key + '="' + options.hash[key] + '"'
+      }).join(' ')
+
+      return optimized.replace(/<svg/g, `<svg ${attrs}`)
+    }
+  }
+})
+
 app.engine('hbs', hbs.engine)
 // register new view engine
 app.set('view engine', 'hbs')
