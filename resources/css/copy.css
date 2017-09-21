@@ -4,9 +4,8 @@
   line-height: var(--type-default-line-height);
   color: var(--type-black);
 }
-.o-copy--medium{
-  font-size: var(--type-medium);
-  line-height: var(--type-medium-line-height);
+.o-copy--large{
+  font-size: var(--size-xxl);
 }
 .o-copy--big{
   font-size: var(--type-medium-big);

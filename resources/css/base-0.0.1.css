@@ -3,7 +3,6 @@
 :root{
   --ms-base-a: 16px;
   --ms-base-b: 20px;
-  --grid-gutter: var(--ms_a-1);
 }
 /*------------------*/
 /* general */
@@ -20,7 +19,7 @@ body{
 	font-family: var(--sans-serif);
 	font-weight: var(--sans-serif-normal);
   font-size: var(--type-default);
-  line-height: var(--type-default-line-height);
+  line-height: 135%;
 	color: rgba(0,0,0,.8);
 	background: rgb(255,255,255);
 	overflow-y: scroll;

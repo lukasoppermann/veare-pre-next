@@ -21,8 +21,7 @@
   --type-big: var(--ms_a1);
   --type-big-line-height: 135%;
   --type-medium-big: var(--ms_b0);
-  --type-medium-big-line-height: 135%;
-  --type-medium: 1.8rem;
+  --type-medium: var(--size-l);
   --type-medium-line-height: 135%;
   --type-default: var(--ms_a0);
   --type-default-line-height: 135%;
@@ -35,4 +34,12 @@
 
   --sans-default: var(--type-default)/130% var(--sans-serif);
   --sans-medium-huge: var(--type-medium-huge)/130% var(--sans-serif);
+}
+.type-l{
+  font-size: var(--size-l);
+  line-height: 140%;
+}
+.type-xl{
+  font-size: var(--size-xl);
+  line-height: 140%;
 }

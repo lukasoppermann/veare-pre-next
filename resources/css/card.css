@@ -1,0 +1,11 @@
+.o-card{
+  position: relative;
+  background: var(--white);
+  box-shadow: 0 10px 30px 0 rgba(var(--black-rgb),.10), 0 3px 4px 0 rgba(var(--black-rgb),.10);
+  padding: var(--size-xl);
+  padding-bottom: var(--size-h);
+}
+.o-card--rounded{
+  border-radius: 2px;
+  overflow: hidden;
+}

@@ -9,8 +9,7 @@
     margin-bottom: -300px;
   }
   .c-section-portfolio-intro{
-    padding-top: var(--ms_a3);
-    padding-bottom: var(--ms_a5);
+    padding-top: var(--size-xxh);
   }
   .o-project-info{
     max-width: 1000px;
@@ -59,13 +58,15 @@
   .o-project-section__headline:before{
     content: "";
     position: absolute;
-    bottom: 0;
+    bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     display: block;
     width: 140px;
     height: 7px;
-    background-image: url('/svgs/headline-wavy-line.svg');
+    height: 1px;
+    background: #E1464B;
+    /*background-image: url('/svgs/headline-wavy-line.svg');*/
   }
   .o-corporate-colors{
     display: block;
@@ -147,6 +148,29 @@
     background-color: #E1464B;
     z-index: 0;
   }
+  .copra-card-bottom-line{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #E1464B;
+    height: var(--size-xs);
+    width: 100%;
+  }
+  .copra-card-bottom-line:before, .copra-card-bottom-line:after{
+    content: "";
+    position: absolute;
+    height: var(--size-xs);
+  }
+  .copra-card-bottom-line:before{
+    width: 31%;
+    left: 51%;
+    background: #B9323C;
+  }
+  .copra-card-bottom-line:after{
+    width: 18%;
+    right: 0;
+    background: #5AAA96;
+  }
 </style>
 <page-sections>
   <page-section class="o-section c-section-portfolio-top-image">
@@ -167,6 +191,7 @@
     </div>
   </page-section>
   <page-section class="c-section-portfolio-intro" centered maxwidth="1000px">
+
     <div class="o-project-info">
       <div class="o-project-info__item">
         <h4 class="o-project-info__title">Industry</h4>
@@ -181,23 +206,83 @@
         <p class="o-project-info__intro">The Copra Software GmbH develops a patient managment software to help hospitals monitor all important information so they can focus on saving peoples lives. I was asked to create a corporate identity & website to communicate their values and ideals to current and future clients and attract potential employees.</p>
       </div>
     </div>
+    
   </page-section>
   <page-section class="o-project-section" centered maxwidth="1000px">
     <h3 class="o-project-section__headline">The Challenge</h3>
-    <div class="o-raster">
-      <div class="o-column--md-6">
-        <p>
+    <grid-container columns="16" class="u-margin-bottom--xxg">
+      <div column="6" start-column="1">
+        <p class="type-l u-padding-right--m">
           The project started with an in-depth conversation with the team at Copra to understand the companies history, present and their goals for the future as well as their clients and the health care industry itself. Once we had a good understanding of everything we defined the project goal.
         </p>
+        <ul class="o-list o-list--none type-l">
+          <li>{{{inline_svg 'resources/svgs/copra-list-trust.svg' class="o-list-svg-bullet" }}}
+            trustworthy
+          </li>
+          <li>{{{inline_svg 'resources/svgs/copra-list-state-of-the-art.svg' class="o-list-svg-bullet" }}}
+            state-of-the-art technology
+          </li>
+          <li>{{{inline_svg 'resources/svgs/copra-list-friendly.svg' class="o-list-svg-bullet" }}}
+            friendly & professional
+          </li>
+        </ul>
       </div>
-      <div class="o-column--md-9 o-column--offset-md-1">
-        Transform the brand to resemable a modern software company that works on the future of hospital software while maintaining enough recognizablility to keeping the trust the brand has established.
+      <div column="9" class="u-margin-top--xh">
+        <div class="o-card o-card--rounded">
+          <p class="o-quote">
+            Transform the brand to resemable a modern software company that works on the future of hospital software while maintaining enough recognizablility to keeping the trust the brand has established.
+          </p>
+          <div class="copra-card-bottom-line"></div>
+        </div>
       </div>
-    </div>
+      <div column="12" start-column="2">
+        {{{inline_svg 'resources/svgs/copra-sketch-mindmap.svg'}}}
+      </div>
+    </grid-container>
   </page-section>
-  <page-section class="o-project-section">
+
+  <page-section class="o-project-section" centered maxwidth="1000px">
     <h3 class="o-project-section__headline">Target Audience</h3>
+    <grid-container columns="16" class="u-margin-bottom--xxg">
+      <div column="2" start-column="1" centered>
+        {{{inline_svg 'resources/svgs/copra-icon-doctor.svg'}}}
+      </div>
+      <div column="5" class="u-margin-bottom--xl">
+        <h4 class="o-headline o-headline--h4">Medical Staff</h4>
+        <p class="type-l u-padding-right--m">
+          While looking for a good software solution or during customer workshops & on conventions especially doctors will come in contact with the company and brand.
+        </p>
+      </div>
+      <div column="2" start-column="9" centered>
+        {{{inline_svg 'resources/svgs/copra-icon-controlling.svg'}}}
+      </div>
+      <div column="5" class="u-margin-bottom--xl">
+        <h4 class="o-headline o-headline--h4">Controlling</h4>
+        <p class="type-l u-padding-right--m">
+          The controlling department will get in contact with the brand when trying to find a tool to enable them to get an overview of all that is going on in the hospital.
+        </p>
+      </div>
+      <div column="2" start-column="1" centered>
+        {{{inline_svg 'resources/svgs/copra-icon-it.svg'}}}
+      </div>
+      <div column="5">
+        <h4 class="o-headline o-headline--h4">IT Staff</h4>
+        <p class="type-l u-padding-right--m">
+          The software is developed by Copra, but the hospitals IT staff needs to take care of and configure the software, they download the documentation and deal with problems and support.
+        </p>
+      </div>
+      <div column="2" start-column="9" centered>
+        {{{inline_svg 'resources/svgs/copra-icon-developers.svg'}}}
+      </div>
+      <div column="5">
+        <h4 class="o-headline o-headline--h4">Developers</h4>
+        <p class="type-l u-padding-right--m">
+          Like any other software company Copra is constantly looking for fresh talent to join their team. The brand needs to communicate their ideals and mission to potential hires.
+        </p>
+      </div>
+    </grid-container>
   </page-section>
+
   <page-section class="o-project-section">
     <h3 class="o-project-section__headline">Research & Moods</h3>
   </page-section>

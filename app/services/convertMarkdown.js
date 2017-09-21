@@ -19,10 +19,10 @@ let modifiers = {
     class: 'o-paragraph'
   },
   ul: {
-    class: 'o-list'
+    class: 'o-list type-xl'
   },
   ol: {
-    class: 'o-list o-list--ordered'
+    class: 'o-list o-list--ordered type-xl'
   },
   figure: {
     class: 'o-figure'
