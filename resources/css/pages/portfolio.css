@@ -19,7 +19,7 @@
 }
 .c-portfolio__basic-info__headline{
   text-align: left;
-  color: var(--quater-black);
+  color: var(--black-25);
   font-size: var(--type-default);
   padding-bottom: var(--ms_a-2);
 }

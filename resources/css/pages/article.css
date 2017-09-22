@@ -29,11 +29,11 @@
 .o-article__publication-details{
   display: block;
   font: var(--sans-default);
-  color: var(--semi-black);
+  color: var(--black-50);
 }
 .o-article__author{
   font: var(--sans-default);
-  color: var(--semi-black);
+  color: var(--black-50);
   margin-bottom: var(--ms_a3);
 }
 .c-article__blockquote--intro{

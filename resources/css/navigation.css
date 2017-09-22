@@ -181,7 +181,7 @@
   transition: color .3s ease;
 }
 .o-overlay-nav__link:hover{
-  color: var(--semi-black);
+  color: var(--black-50);
 }
 .o-overlay-nav__link:before{
   display: block;
