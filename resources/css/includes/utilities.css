@@ -42,6 +42,7 @@
 .u-padding-left--xxl{ padding-left: var(--size-xxl); }
 
 .u-full-width{ width: 100%; }
+<<<<<<< HEAD
 
 .u-center{
   display: flex;
@@ -53,6 +54,8 @@
   justify-content: center;
 }
 
+=======
+>>>>>>> update resources & alignment
 
 .u-margin-bottom-sm{
   margin-bottom: var(--ms_a-2);
