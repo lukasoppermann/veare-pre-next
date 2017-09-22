@@ -35,11 +35,21 @@
   --sans-default: var(--type-default)/130% var(--sans-serif);
   --sans-medium-huge: var(--type-medium-huge)/130% var(--sans-serif);
 }
+::first-line{
+  /*line-height: 100%;*/
+}
+.type-m{
+  font-size: var(--size-m);
+  line-height: 135%;
+}
 .type-l{
   font-size: var(--size-l);
-  line-height: 140%;
+  line-height: 135%;
 }
 .type-xl{
   font-size: var(--size-xl);
   line-height: 140%;
+}
+.type-grey{
+  color: var(--type-grey);
 }

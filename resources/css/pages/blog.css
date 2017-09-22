@@ -21,21 +21,9 @@
   display: flex;
   flex-direction: column;
 }
-.o-blog-listing__image{
-  position: relative;
-  flex: 1;
-  margin: 2rem;
-  box-sizing: content-box;
-  display: block;
-  overflow: hidden;
-  height: 100%;
-  width: auto;
-  background-color: var(--veare-orange);
-}
-@media (max-width: 800px) {
-  .o-blog-listing__about{
-      display: none;
-  }
+.o-blog-listing__about .o-footer .o-footer__link{
+    color: var(--white);
+    text-shadow: 0 0 1px var(--black-25);
 }
 
 .c-list-postlist{

@@ -26,7 +26,7 @@ const hbs = expressHandlebars.create({
       svgo.optimize(svg, function (result) {
         optimized = result.data
       })
-      console.log(options.hash)
+
       let attrs = Object.keys(options.hash || {}).map(function (key) {
         return key + '="' + options.hash[key] + '"'
       }).join(' ')
