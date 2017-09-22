@@ -5,6 +5,12 @@
   padding: var(--size-xl);
   padding-bottom: var(--size-h);
 }
+.o-card--no-padding{
+  padding: 0;
+}
+.o-card--floating{
+  box-shadow:0 20px 50px 0 var(--black-25);
+}
 .o-card--rounded{
   border-radius: 2px;
   overflow: hidden;

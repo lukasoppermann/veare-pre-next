@@ -164,6 +164,11 @@
     grid-template-rows: repeat(12, var(--size-xh));
     width: 100%;
   }
+  .c-copra-logo-presenter{
+    background: #EDE9E7;
+    height: 600px;
+    width: 100%;
+  }
 </style>
 <page-sections>
   <page-section class="o-section c-section-portfolio-top-image">
@@ -226,7 +231,7 @@
           <div class="copra-card-bottom-line"></div>
         </div>
       </div>
-      <div column="10" start-column="3">
+      <div column="10" start-column="4">
         {{{inline_svg 'resources/svgs/copra-sketch-mindmap.svg'}}}
       </div>
     </grid-container>
@@ -238,7 +243,7 @@
       <div column="2" start-column="1" centered>
         {{{inline_svg 'resources/svgs/copra-icon-doctor.svg'}}}
       </div>
-      <div column="5" class="u-margin-bottom--xl">
+      <div column="5" class="u-margin-bottom--h">
         <h4 class="o-headline o-headline--h4">Medical Staff</h4>
         <p class="type-l u-padding-right--m">
           While looking for a good software solution or during customer workshops & on conventions especially doctors will come in contact with the company and brand.
@@ -247,7 +252,7 @@
       <div column="2" start-column="9" centered>
         {{{inline_svg 'resources/svgs/copra-icon-controlling.svg'}}}
       </div>
-      <div column="5" class="u-margin-bottom--xl">
+      <div column="5" class="u-margin-bottom--h">
         <h4 class="o-headline o-headline--h4">Controlling</h4>
         <p class="type-l u-padding-right--m">
           The controlling department will get in contact with the brand when trying to find a tool to enable them to get an overview of all that is going on in the hospital.
@@ -340,18 +345,89 @@
   <page-section class="o-project-section" centered maxwidth="1000px">
     <h3 class="o-project-section__headline">Typography</h3>
   </page-section>
-  <page-section class="o-project-section" centered maxwidth="1000px" minwidth="100%">
+  <page-section class="o-project-section" centered maxwidth="1000px" width="100%">
     <h3 class="o-project-section__headline">Logo</h3>
-    <grid-container columns="16" class="u-margin-bottom--xxg">
-      <div column="10" start-column="3">
+    <grid-container class="u-margin-bottom--xxg u-width-full">
+      <div column="10" start-column="5" class="u-margin-bottom--h">
         {{{inline_svg 'resources/svgs/copra-sketch-logo.svg'}}}
+      </div>
+      <div column="7" start-column="2" class="u-padding-right--m">
+        <h4 class="o-headline o-headline--h4">History</h4>
+        <p class="type-l type-grey">We did not get very much infromation about the background of the logo. All that was know is that the founder liked cobras and the red was chosen because of the association with hospitals.</p>
+      </div>
+      <div column="7" class="u-padding-left--m">
+        <h4 class="o-headline o-headline--h4">Redesign Goal</h4>
+        <p class="type-l type-grey">With the redesign we wanted to clearly distinguish the new Copra from the old and show its transformation into a modern software company. However we also wanted to keep the trust the company has aquired since the early 1990s.</p>
+      </div>
+    </grid-container>
+    <grid-container class="u-margin-bottom--xxg" rows="11">
+      <div style="z-index: 20" column="10" start-column="6" row="3" start-row="9">
+        <div class="o-card o-card--floating">
+          <h4 class="o-headline o-headline--h4">Final Brandmark</h4>
+          <p class="type-l type-grey">The final design combines the idea of the cobra forming the C with a more modern letter form. However the edges are soft and rounded with no sharp corners anywhere. This is to fit into the idea of a more organic and natural snake-shape. The shadow on the C is a little detail which hint at the hood of a cobra in a closed, calm state.</p>
+        </div>
+      </div>
+      <div class="c-copra-logo-presenter" style="z-index: 19" row="10" column="16" start-column="1" start-row="1">
       </div>
     </grid-container>
   </page-section>
   <page-section class="o-project-section" centered maxwidth="1000px">
     <h3 class="o-project-section__headline">Style Direction</h3>
+    <grid-container columns="16" class="u-margin-bottom--xxg">
+      <div column="7" start-column="2">
+        {{{inline_svg 'resources/svgs/copra-style-directions-one.svg' class="u-width-full"}}}
+      </div>
+      <div column="7" start-column="9">
+        {{{inline_svg 'resources/svgs/copra-style-directions-two.svg' class="u-width-full"}}}
+      </div>
+      <div column="10" start-column="2" class="u-margin-bottom--h">
+        <p class="type-l type-grey">Designers are constantly trying to convey a message through design, which means we have much experience imagining how a design concept looks when used in a website or flyer. However this is often hard for clients who might never think and talk about design in their daily live. Because of this I decided to illustrate the eight design concepts with a little icon and a couple stationary sketches. This approach worked very well and we got to the final style within a couple iterations.</p>
+      </div>
+      <responsive-image column="7" start-column="2"
+        class="u-padding-right--m u-margin-bottom--m u-margin-top--h"
+        active="true"
+        src="/media/copra-style-exploration-stack.png"
+        alt="copra style exploration – stack"
+      ></responsive-image>
+      <responsive-image column="7"
+        class="u-padding-left--m u-margin-top--h"
+        active="true"
+        src="/media/copra-style-exploration-progress.png"
+        alt="copra style exploration – progress"
+      ></responsive-image>
+      <responsive-image column="7" start-column="2"
+        class="u-padding-right--m u-margin-top--m"
+        active="true"
+        src="/media/copra-style-exploration-stack.png"
+        alt="copra style exploration – stack"
+      ></responsive-image>
+      <responsive-image column="7"
+        class="u-padding-left--m u-margin-top--m"
+        active="true"
+        src="/media/copra-style-exploration-frame.png"
+        alt="copra style exploration – frame"
+      ></responsive-image>
+    </grid-container>
   </page-section>
   <page-section class="o-project-section" centered maxwidth="1000px">
     <h3 class="o-project-section__headline">Implementation</h3>
+    <grid-container columns="16" class="u-margin-bottom--xxg">
+      <div column="14" start-column="2">
+        <h4 class="o-headline o-headline--h4">Website</h4>
+      </div>
+      <div column="7" start-column="2" class="u-padding-right--m u-margin-bottom--h">
+        <p class="type-l type-grey">The company website has to fullfill the typical aspects of informing about the product and its uses as well as providing some background about the company and upcoming events. Customers can see which medical decices are connected to and operated by the system are in which hospital.</p>
+      </div>
+      <div column="7" start-column="9" class="u-padding-right--m u-margin-bottom--h">
+        <p class="type-l type-grey">With the idea of increasing the trust and showing that it is a validated software product which is used by huge hospitals.<br />
+        We focused on speed by making sure it was as small as possible but also by designing and writing the content so that it is easy to scan to get the gist without reading every last paragraph.</p>
+      </div>
+      <responsive-image column="14" start-column="2"
+        class="o-card o-card--no-padding"
+        active="true"
+        src="/media/copra_website.png"
+        alt="website developed according to styleguide"
+      ></responsive-image>
+    </grid-container>
   </page-section>
 </page-sections>

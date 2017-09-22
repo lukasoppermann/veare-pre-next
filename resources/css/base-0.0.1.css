@@ -3,6 +3,7 @@
 :root{
   --ms-base-a: 16px;
   --ms-base-b: 20px;
+  --grid-columns:16;
 }
 /*------------------*/
 /* general */
@@ -69,7 +70,6 @@ html.menu-active{ overflow: hidden !important; }
 .padding-sides-small{ padding-left: 25px; padding-right: 25px; }
 .margin-sides-small{ margin-left: 25px; margin-right: 25px; }
 
-p{ margin: 0 0 10px 0; text-align: inherit; }
 .copy p{ width: 100%; max-width: 550px; line-height: inherit; }
 
 .margin-top-tiny{ margin-top: 25px; }
