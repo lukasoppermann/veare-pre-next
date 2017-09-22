@@ -57,6 +57,17 @@
 =======
 >>>>>>> update resources & alignment
 
+.u-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.u-center-h{
+  display: flex;
+  justify-content: center;
+}
+
+
 .u-margin-bottom-sm{
   margin-bottom: var(--ms_a-2);
 }
