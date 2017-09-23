@@ -17,5 +17,19 @@
   max-width: var(--ms_b7);
 }
 .c-skill__figure{
-  min-width: 100px;
+  display: flex;
+  align-items: center;
+  width: 250px;
+  height: 250px;
+}
+.c-skill__figure svg{
+  display: block;
+  width: 250px;
+  height: 250px;
+}
+@media screen and (max-width: 800px){
+  .c-skill{
+    margin-left: var(--ms_a1);
+    margin-right: var(--ms_a1);
+  }
 }

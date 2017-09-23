@@ -68,10 +68,22 @@ gulp.task('bundleCss', require('./gulp-tasks/bundleCss.js')({
  * SVG
  *
  */
-gulp.task('svg', () => {
-  gulp.src(['resources/svgs/*'])
-    .pipe(gulp.dest('public/svgs'))
-})
+// gulp.task('svg', () => {
+//   gulp.src(['resources/svgs/*'])
+//     .pipe(gulp.dest('public/svgs'))
+// })
+//
+/* ------------------------------
+ *
+ * imagemin
+ *
+ */
+const imagemin = require('gulp-imagemin')
+gulp.task('images', () =>
+  gulp.src('resources/media/*.*')
+    .pipe(imagemin())
+    .pipe(gulp.dest('public/media'))
+)
 /* ------------------------------
  *
  * Revision
@@ -156,7 +168,7 @@ gulp.task('serve', require('./gulp-tasks/serve.js').serve())
 
 gulp.task('default', gulp.series(
   'browser-sync',
-  gulp.parallel('bundleJs', 'bundleCss'),
+  gulp.parallel('bundleJs', 'bundleCss', 'images'),
   'revJs',
   'revCss',
   gulp.parallel('watchJs', 'watchCss', 'watchTemplates')

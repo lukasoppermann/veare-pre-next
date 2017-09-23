@@ -28,7 +28,7 @@
     flex-direction: column;
     align-items: center;
   }
-  .o-media__figure{
+  .o-media__figure, .o-media--reverse .o-media__figure{
     margin-right: 0;
     margin-left: 0;
   }
