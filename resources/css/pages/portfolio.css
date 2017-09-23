@@ -8,6 +8,15 @@
   flex-direction: column;
   --page-section-width: 100%;
 }
+.c-portfolio-header{
+  width: 100%;
+  height: 175px;
+  box-sizing: border-box;
+  padding: 25px;
+  display: block;
+  position: absolute;
+  z-index: 100;
+}
 .c-portfolio .o-figure{
   width: 100%;
 }
