@@ -23,9 +23,6 @@
     <path stroke="#3CC8A0" stroke-width="2" d="M224,88.4786301 C224,88.4786301 228.335856,85.2460938 229.370481,81" opacity=".5" stroke-linecap="round"/>
     <circle cx="174.5" cy="138.5" r="2.5" fill="#3CC8A0" opacity=".25"/>
     <circle cx="48.5" cy="231.5" r="2.5" fill="#3CC8A0" opacity=".5"/>
-    <text fill="#939DA7" font-family="OpenSans-Semibold, Open Sans" font-size="20" font-weight="500">
-      <tspan x="-10007" y="21">Type something</tspan>
-    </text>
     <g transform="translate(23 79)">
       <use fill="#FFFFFF" xlink:href="#a"/>
       <use fill="#3CC8A0" fill-opacity=".1" xlink:href="#a"/>
