@@ -7,10 +7,9 @@
   transform: translateZ(100px);
 }
 .c-about-container{
-  margin-top: var(--size-m);
+  margin-top: var(--ms_a0);
   margin-bottom: calc(-1 * var(--ms_a2));
-  padding: var(--size-h) var(--size-l);
-  box-sizing: border-box;
+  padding: var(--ms_a1) 0;
   background: var(--blue-muted);
   box-shadow: var(--shadow-floating);
   color: rgb(255,255,255);
@@ -95,7 +94,7 @@
 @media screen and (max-width: 800px){
 	.plus:before{ display: none; }
   .c-about__column{
-    padding: 0;
+    margin-left: var(--size-m);
+    margin-right: var(--size-m);
   }
-
 }
