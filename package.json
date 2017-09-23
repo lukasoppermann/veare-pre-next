@@ -17,7 +17,7 @@
     "@nuclei-components/grid": "^0.2.0",
     "@types/contentful-resolve-response": "^0.1.30",
     "@types/express": "^4.0.37",
-    "@types/node": "^8.*",
+    "@types/node": "^8.0.30",
     "@webcomponents/webcomponentsjs": "^1.0.13",
     "babel-core": "^6.26.0",
     "babel-plugin-transform-custom-element-classes": "^0.1.0",
@@ -47,7 +47,7 @@
     "merge-stream": "^1.0.1",
     "modular-scale-css": "^1.0.0",
     "nodemon": "^1.12.1",
-    "page-sections": "^0.4.0",
+    "page-sections": "^0.4.1",
     "prismjs": "^1.8.1",
     "raster.css": "0.0.4",
     "responsive-image": "^0.1.2",
@@ -60,7 +60,7 @@
     "uncss": "^0.15.0"
   },
   "dependencies": {
-    "contentful": "^4.6.1",
+    "contentful": "^4.6.2",
     "deep-assign": "^2.0.0",
     "dotenv-safe": "^4.0.4",
     "express": "^4.15.4",
