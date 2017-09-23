@@ -70,8 +70,6 @@
 .c-intro--slogan{
   width: 24rem;
   font-family: var(--sans-serif);
-  font-size: var(--type-medium-big);
-  line-height: var(--type-medium-big-line-height);
   color: var(--type-black);
 }
 .c-intro--services-container{
@@ -84,8 +82,6 @@
   width: 36rem;
   font-family: var(--serif);
   font-style: var(--serif-style);
-  font-size: var(--type-big);
-  line-height: var(--type-big-line-height);
   color: var(--type-black);
 }
 .c-intro--services-description{
@@ -124,13 +120,9 @@
   }
   .c-intro--slogan{
     width: calc(var(--ms_b5) + var(--ms_b-1));
-    font-size: var(--type-medium-big);
-    line-height: var(--type-medium-big-line-height);
   }
   .c-intro--services{
     width: var(--ms_a6);
-    font-size: var(--type-medium-big);
-    line-height: var(--type-medium-big-line-height);
   }
 }
 @media screen and (max-width: 1100px){
@@ -196,13 +188,7 @@
     letter-spacing: 0;
     left: -.2rem;
   }
-  .c-intro--slogan{
-    font-size: var(--type-medium);
-    line-height: var(--type-medium-line-height);
-  }
   .c-intro--services{
-    font-size: var(--type-medium);
-    line-height: var(--type-medium-line-height);
     padding-bottom: var(--ms_b0);
   }
 }
