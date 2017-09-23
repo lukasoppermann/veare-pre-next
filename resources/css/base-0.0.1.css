@@ -70,10 +70,6 @@ html.menu-active{ overflow: hidden !important; }
 .padding-sides-small{ padding-left: 25px; padding-right: 25px; }
 .margin-sides-small{ margin-left: 25px; margin-right: 25px; }
 
-.copy p{ width: 100%; max-width: 550px; line-height: inherit; }
-
-.margin-top-tiny{ margin-top: 25px; }
-
 @media screen and (max-width: 600px){
 	.padding-top-wide{ padding-top: 75px; }
 	.padding-top-medium{ padding-top: 50px; }
@@ -82,17 +78,6 @@ html.menu-active{ overflow: hidden !important; }
 	.padding-bottom-small{ padding-bottom: 25px; }
 	.padding-sides-small{ padding-left: 10px; padding-right: 10px; }
 	.margin-sides-small{ margin-left: 10px; margin-right: 10px; }
-	.margin-top-tiny{ margin-top: 10px; }
-}
-/*------------------*/
-/* links */
-.hovers a.link{
-	transition: color .3s ease;
-	-webkit-transition: color .3s ease;
-}
-.hovers a.link:hover{
-	transition: color .3s ease;
-	-webkit-transition: color .3s ease;
 }
 /*------------------*/
 /* images */
@@ -102,4 +87,8 @@ img.loaded{
 	opacity: 1.0;
 	transition: opacity .4s ease;
 	-webkit-transition: opacity .4s ease;
+}
+/*------------------*/
+#logo.white-logo svg{
+	fill: rgb(255,255,255);
 }
