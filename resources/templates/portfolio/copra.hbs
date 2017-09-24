@@ -55,7 +55,6 @@
     height: 7px;
     height: 1px;
     background: #E1464B;
-    /*background-image: url('/svgs/headline-wavy-line.svg');*/
   }
   .o-corporate-colors{
     display: block;
@@ -164,9 +163,12 @@
     grid-template-rows: repeat(12, var(--size-xh));
     width: 100%;
   }
+  .c-copra-logo-presenter-grid{
+    height: 800px;
+  }
   .c-copra-logo-presenter{
     background: #EDE9E7;
-    height: 600px;
+    /*height: 600px;*/
     width: 100%;
   }
 </style>
@@ -240,7 +242,7 @@
   <page-section class="o-project-section" centered maxwidth="1000px">
     <h3 class="o-project-section__headline">Target Audience</h3>
     <grid-container columns="16" class="u-margin-bottom--xxg">
-      <div column="2" start-column="1" centered>
+      <div column="2" start-column="1" class="u-center-h">
         {{{inline_svg 'resources/svgs/copra-icon-doctor.svg'}}}
       </div>
       <div column="5" class="u-margin-bottom--h">
@@ -249,7 +251,7 @@
           While looking for a good software solution or during customer workshops & on conventions especially doctors will come in contact with the company and brand.
         </p>
       </div>
-      <div column="2" start-column="9" centered>
+      <div column="2" start-column="9" class="u-center-h">
         {{{inline_svg 'resources/svgs/copra-icon-controlling.svg'}}}
       </div>
       <div column="5" class="u-margin-bottom--h">
@@ -258,7 +260,7 @@
           The controlling department will get in contact with the brand when trying to find a tool to enable them to get an overview of all that is going on in the hospital.
         </p>
       </div>
-      <div column="2" start-column="1" centered>
+      <div column="2" start-column="1" class="u-center-h">
         {{{inline_svg 'resources/svgs/copra-icon-it.svg'}}}
       </div>
       <div column="5">
@@ -267,7 +269,7 @@
           The software is developed by Copra, but the hospitals IT staff needs to take care of and configure the software, they download the documentation and deal with problems and support.
         </p>
       </div>
-      <div column="2" start-column="9" centered>
+      <div column="2" start-column="9" class="u-center-h">
         {{{inline_svg 'resources/svgs/copra-icon-developers.svg'}}}
       </div>
       <div column="5">
@@ -347,7 +349,7 @@
   </page-section>
   <page-section class="o-project-section" centered maxwidth="1000px" width="100%">
     <h3 class="o-project-section__headline">Logo</h3>
-    <grid-container class="u-margin-bottom--xxg u-width-full">
+    <grid-container class="u-margin-bottom--xxg u-full-width">
       <div column="10" start-column="5" class="u-margin-bottom--h">
         {{{inline_svg 'resources/svgs/copra-sketch-logo.svg'}}}
       </div>
@@ -360,7 +362,7 @@
         <p class="type-l type-grey">With the redesign we wanted to clearly distinguish the new Copra from the old and show its transformation into a modern software company. However we also wanted to keep the trust the company has aquired since the early 1990s.</p>
       </div>
     </grid-container>
-    <grid-container class="u-margin-bottom--xxg" rows="11">
+    <grid-container class="c-copra-logo-presenter-grid u-margin-bottom--xxg" rows="11">
       <div style="z-index: 20" column="10" start-column="6" row="3" start-row="9">
         <div class="o-card o-card--floating">
           <h4 class="o-headline o-headline--h4">Final Brandmark</h4>
@@ -376,10 +378,10 @@
     <h3 class="o-project-section__headline">Style Direction</h3>
     <grid-container columns="16" class="u-margin-bottom--xxg">
       <div column="7" start-column="2">
-        {{{inline_svg 'resources/svgs/copra-style-directions-one.svg' class="u-width-full"}}}
+        {{{inline_svg 'resources/svgs/copra-style-directions-one.svg' class="u-full-width"}}}
       </div>
       <div column="7" start-column="9">
-        {{{inline_svg 'resources/svgs/copra-style-directions-two.svg' class="u-width-full"}}}
+        {{{inline_svg 'resources/svgs/copra-style-directions-two.svg' class="u-full-width"}}}
       </div>
       <div column="10" start-column="2" class="u-margin-bottom--h">
         <p class="type-l type-grey">Designers are constantly trying to convey a message through design, which means we have much experience imagining how a design concept looks when used in a website or flyer. However this is often hard for clients who might never think and talk about design in their daily live. Because of this I decided to illustrate the eight design concepts with a little icon and a couple stationary sketches. This approach worked very well and we got to the final style within a couple iterations.</p>

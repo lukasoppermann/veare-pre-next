@@ -169,7 +169,7 @@ gulp.task('serve', require('./gulp-tasks/serve.js').serve())
 
 gulp.task('default', gulp.series(
   'browser-sync',
-  gulp.parallel('bundleJs', 'bundleCss', 'images'),
+  gulp.parallel('bundleJs', 'bundleCss'),
   'revJs',
   'revCss',
   gulp.parallel('watchJs', 'watchCss', 'watchTemplates')

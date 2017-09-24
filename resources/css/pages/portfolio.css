@@ -53,19 +53,8 @@
   position: relative;
   display: inline-block;
   height: auto;
-  padding-bottom: var(--ms_a1);
-  margin-bottom: var(--ms_a3)
-}
-.o-headline--portfolio:before{
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  display: block;
-  width: 140px;
-  height: 7px;
-  background-image: url('/svgs/headline-wavy-line.svg');
+  margin-top: var(--size-xg);
+  margin-bottom: var(--size-xxh);
 }
 .o-project-info{
   display: flex;
@@ -73,12 +62,7 @@
   margin-bottom: var(--ms_a3);
 }
 .o-project-section-container{
-  width: 100%;
-}
-@media (max-width: 1050px) {
-  .o-project-section-container{
-    width: calc(100% - var(--ms_a1) * 2)
-  }
+  padding: 0 var(--size-l)
 }
 .o-project-info__item{
   flex-shrink: 1;

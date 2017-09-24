@@ -9,7 +9,8 @@
 .c-about-container{
   margin-top: var(--ms_a0);
   margin-bottom: calc(-1 * var(--ms_a2));
-  padding: var(--ms_a1) 0;
+  padding: var(--size-l);
+  box-sizing: border-box;
   background: var(--blue-muted);
   box-shadow: var(--shadow-floating);
   color: rgb(255,255,255);
@@ -94,7 +95,7 @@
 @media screen and (max-width: 800px){
 	.plus:before{ display: none; }
   .c-about__column{
-    margin-left: var(--size-m);
-    margin-right: var(--size-m);
+    padding: 0;
   }
+
 }

@@ -2,4 +2,5 @@
 /* setup */
 :root{
   --grid-gutter: var(--size-m);
+  --grid-columns:16;
 }
