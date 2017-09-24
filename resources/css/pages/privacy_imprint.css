@@ -1,9 +1,9 @@
 .c-section-privacy, .c-section-imprint{
-  margin-top: var(--ms_a5);
-  padding: 0 var(--ms_a0);
+  margin-top: var(--size-h);
+  padding: 0 var(--size-l);
 }
 @media (max-width: 800px){
   .c-section-privacy, .c-section-imprint{
-    margin-top: var(--ms_a4);
+    margin-top: var(--size-l);
   }
 }

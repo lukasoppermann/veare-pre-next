@@ -62,7 +62,9 @@
 }
 .c-intro-copy-container{
   margin-top: var(--size-xg);
-  width: 70rem;
+  max-width: 70rem;
+  width: 100%;
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;

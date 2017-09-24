@@ -1,3 +1,10 @@
+.c-logo{
+  display: block;
+  position: relative;
+  width: 140px;
+  height: 115px;
+  padding: var(--size-l);
+}
 .c-svg--logo{
 	cursor: pointer;
 	display: block;
@@ -17,12 +24,24 @@
     width: 100%;
     height: 100%;
 }
+.c-logo .c-svg--logo{
+  position: relative;
+  width: auto;
+  height: 100%;
+  margin: 0;
+}
 #logo{
   width: 140px;
   height: 120px;
+  display: block;
+  position: relative;
 }
 @media screen and (max-width: 800px){
   .c-svg--logo{
+    width: 50px;
+    height: 40px;
+  }
+  .c-logo{
     width: 50px;
     height: 40px;
   }

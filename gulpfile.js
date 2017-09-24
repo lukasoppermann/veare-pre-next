@@ -9,6 +9,7 @@ const browserSync = require('browser-sync')
  */
 gulp.task('bundleJs', require('./gulp-tasks/bundleJs.js')({
   common: [
+    'resources/js/config.js',
     'resources/js/analytics.js',
     'resources/js/menu.js',
     'resources/js/app.js'
@@ -168,7 +169,7 @@ gulp.task('serve', require('./gulp-tasks/serve.js').serve())
 
 gulp.task('default', gulp.series(
   'browser-sync',
-  gulp.parallel('bundleJs', 'bundleCss', 'images'),
+  gulp.parallel('bundleJs', 'bundleCss'),
   'revJs',
   'revCss',
   gulp.parallel('watchJs', 'watchCss', 'watchTemplates')
@@ -187,7 +188,7 @@ gulp.task('build', gulp.series(
       breakOnError: false
     }))
   },
-  gulp.parallel('bundleJs', 'bundleCss'),
+  gulp.parallel('bundleJs', 'bundleCss', 'images'),
   gulp.parallel('revJs', 'revCss'),
   'serviceWorker'
 ))
