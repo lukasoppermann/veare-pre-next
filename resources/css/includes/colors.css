@@ -14,8 +14,9 @@
    * main colors
    */
   --black: rgb(var(--black-rgb));
-  --semi-black: rgba(var(--black-rgb),.5);
-  --quater-black: rgba(var(--black-rgb),.25);
+  --black-50: rgba(var(--black-rgb),.5);
+  --black-25: rgba(var(--black-rgb),.25);
+  --black-10: rgba(var(--black-rgb),.1);
   --white: rgb(var(--white-rgb));
   --veare-orange: rgb(var(--veare-orange-rgb));
   --blue: rgb(var(--blue-rgb));

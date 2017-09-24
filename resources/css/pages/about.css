@@ -7,7 +7,8 @@
   transform: translateZ(100px);
 }
 .c-about-container{
-  margin: var(--ms_a0) var(--ms_a0) calc(-1 * var(--ms_a2)) var(--ms_a0);
+  margin-top: var(--ms_a0);
+  margin-bottom: calc(-1 * var(--ms_a2));
   padding: var(--ms_a1) 0;
   background: var(--blue-muted);
   box-shadow: var(--shadow-floating);
@@ -97,4 +98,8 @@
 }
 @media screen and (max-width: 800px){
 	.plus:before{ display: none; }
+  .c-about__column{
+    margin-left: var(--size-m);
+    margin-right: var(--size-m);
+  }
 }

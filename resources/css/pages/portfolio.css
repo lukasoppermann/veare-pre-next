@@ -8,6 +8,15 @@
   flex-direction: column;
   --page-section-width: 100%;
 }
+.c-portfolio-header{
+  width: 100%;
+  height: 175px;
+  box-sizing: border-box;
+  padding: 25px;
+  display: block;
+  position: absolute;
+  z-index: 100;
+}
 .c-portfolio .o-figure{
   width: 100%;
 }
@@ -19,7 +28,7 @@
 }
 .c-portfolio__basic-info__headline{
   text-align: left;
-  color: var(--quater-black);
+  color: var(--black-25);
   font-size: var(--type-default);
   padding-bottom: var(--ms_a-2);
 }

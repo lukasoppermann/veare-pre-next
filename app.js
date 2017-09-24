@@ -37,13 +37,18 @@ const hbs = expressHandlebars.create({
       url = url.replace(/[`:]/g, '').replace(/[\W_]+/g, '-')
       return escape(url)
     },
-    inline_svg: function (path) {
+    inline_svg: function (path, options) {
       let svg = fs.readFileSync(path, 'utf8')
       let optimized
       svgo.optimize(svg, function (result) {
         optimized = result.data
       })
-      return optimized
+
+      let attrs = Object.keys(options.hash || {}).map(function (key) {
+        return key + '="' + options.hash[key] + '"'
+      }).join(' ')
+
+      return optimized.replace(/<svg/g, `<svg ${attrs}`)
     }
   }
 })

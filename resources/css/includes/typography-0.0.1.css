@@ -1,18 +1,14 @@
-/* typography */
-/*------------------*/
-/* Alignment & settings */
-.align-center{ text-align: center !important; }
 /*------------------*/
 /* Headlines */
 h1, h2, h3, h4, h5{ word-wrap: break-word; }
-h1, .giant-headline{ font-size: 200px; line-height: 100%; }
-h2, .big-headline{ font-size: 100px; line-height: 120%; }
-h3, .medium-headline{ font-size: 40px; line-height: 120%; margin-bottom: 15px; }
-h4, .small-headline{ font-size: 24px; line-height: 120%; margin: 5px 0 10px; }
+h1{ font-size: 200px; line-height: 100%; }
+h2{ font-size: 100px; line-height: 120%; }
+h3{ font-size: 40px; line-height: 120%; margin-bottom: 15px; }
+h4{ font-size: 24px; line-height: 120%; margin: 5px 0 10px; }
 
 @media screen and (max-width: 600px){
-    h1, .giant-headline{ font-size: 80px; line-height: 100%; }
-    h2, .big-headline{ font-size: 36px; line-height: 100%; }
-    h3, .medium-headline{ font-size: 26px; line-height: 120%; }
-    h4, .small-hadline{ font-size: 24px; line-height: 120%; }
+    h1{ font-size: 80px; line-height: 100%; }
+    h2{ font-size: 36px; line-height: 100%; }
+    h3{ font-size: 26px; line-height: 120%; }
+    h4{ font-size: 24px; line-height: 120%; }
 }

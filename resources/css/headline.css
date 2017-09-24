@@ -1,5 +1,6 @@
 .o-headline{
   display: block;
+  margin-top: 0;
 }
 .o-headline-2{
   font-size: var(--type-medium-huge);
@@ -30,9 +31,8 @@
 }
 .o-headline--h4{
   font-size: var(--type-big);
-  font-weight: bold;
+  font-weight: var(--sans-serif-bold);
   margin-bottom: calc(var(--type-big) / 2.25);
-  margin-top: calc(var(--type-big) / 1.15);
 }
 .o-headline--serif{
   font-family: var(--serif);

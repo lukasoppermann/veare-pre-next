@@ -30,3 +30,9 @@
   margin-top: var(--ms_a2);
   margin-bottom: var(--ms_a2);
 }
+.o-quote{
+  font-family: var(--serif);
+  font-size: var(--size-xl);
+  line-height: 140%;
+  margin: -9px 0;
+}

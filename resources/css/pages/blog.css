@@ -46,7 +46,7 @@
 }
 .o-blog-listing__about .o-footer .o-footer__link{
     color: var(--white);
-    text-shadow: 0 0 1px var(--quater-black);
+    text-shadow: 0 0 1px var(--black-25);
 }
 
 .c-list-postlist{

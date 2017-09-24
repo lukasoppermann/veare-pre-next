@@ -38,7 +38,7 @@
 .o-card__container:hover{
 	z-index: 100;
 }
-.o-card {
+.o-portfolio-card {
 	display: block;
 	width: 100%;
   max-width: 250px;
@@ -52,12 +52,12 @@
 	transition: all .4s ease;
   color: rgb(255,255,255);
 }
-.o-card__container:hover .o-card{
+.o-card__container:hover .o-portfolio-card{
 	transform: scale(1.2,1.2);
 	box-shadow: 0 10px 60px rgba(0, 15, 30, 0.3);
 	transition: all .4s ease;
 }
-.o-card .o-card__sides{
+.o-portfolio-card .o-card__sides{
 	display: block;
 	height: 100%;
 	width: 100%;
@@ -88,7 +88,7 @@
 	opacity: 0;
 	transition: opacity .4s ease;
 }
-.o-card .image{
+.o-portfolio-card responsive-image{
 	position: absolute;
 	left: 50%;
 	top: 50%;
@@ -120,7 +120,7 @@
 	line-height: var(--type-medium-line-height);
 	padding: 5px 25px 10px 25px;
 }
-.o-card .arrow{
+.o-portfolio-card .arrow{
 	position: absolute;
 	font-family: "Lucida Grande", sans-serif;
 	bottom: 10px;
