@@ -236,9 +236,6 @@
   justify-content: center;
   flex: 1;
 }
-.c-contact-info{
-  font-size: var(--type-medium);
-}
 @media(max-width: 700px){
   .o-overlay-nav__content{
     display: none;

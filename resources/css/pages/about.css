@@ -7,9 +7,9 @@
   transform: translateZ(100px);
 }
 .c-about-container{
-  margin-top: var(--ms_a0);
+  margin-top: var(--size-m);
   margin-bottom: calc(-1 * var(--ms_a2));
-  padding: var(--size-l);
+  padding: var(--size-h) var(--size-l);
   box-sizing: border-box;
   background: var(--blue-muted);
   box-shadow: var(--shadow-floating);
