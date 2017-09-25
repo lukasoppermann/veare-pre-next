@@ -38,24 +38,3 @@
 	opacity: 1;
 	bottom: -5px
 }
-/*.legal-footer{
-	box-sizing: border-box;
-	float:left;
-	width: 100%;
-	font-size: 16px;
-	line-height: 16px;
-	background: rgba(0,0,0,.05);
-	color: rgba(0,0,0,.5);
-	padding: 17px 0;
-	height: 50px;
-}
-.legal-footer--absolute{
-	position: absolute;
-	bottom: 0;
-	left: 0;
-}
-.privacy .legal-footer{
-	background: rgb(150, 190, 185);
-}
-
-*/

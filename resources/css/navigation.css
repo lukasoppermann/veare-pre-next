@@ -236,16 +236,6 @@
   justify-content: center;
   flex: 1;
 }
-.o-overlay-nav__content__block{
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: var(--ms_a1);
-}
-.o-overlay-nav__content__block .o-copy{
-  max-width: 500px;
-}
 .c-contact-info{
   font-size: var(--type-medium);
 }

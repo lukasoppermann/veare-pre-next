@@ -8,7 +8,13 @@
   padding-bottom: var(--ms_a3);
 }
 .c-contact-content{
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--ms_a1);
   z-index: 10;
+  max-width: 700px;
 }
 .o-svg-bg{
   position: absolute;
