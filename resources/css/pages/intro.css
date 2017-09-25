@@ -189,7 +189,7 @@
     margin: 0;
   }
   .c-intro-content{
-    margin-left: var(--ms_a0);
+    margin-left: var(--size-m);
     margin-top: var(--ms_b5);
   }
   .c-intro-main-subline{

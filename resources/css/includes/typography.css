@@ -23,7 +23,7 @@
   --type-medium-big: var(--ms_b0);
   --type-medium: var(--size-l);
   --type-medium-line-height: 135%;
-  --type-default: var(--ms_a0);
+  --type-default: var(--size-m);
   --type-default-line-height: 135%;
   --type-small: var(--ms_a-1);
   --type-small-line-height: 135%;

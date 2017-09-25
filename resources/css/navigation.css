@@ -176,7 +176,7 @@
   display: block;
   font-size: 30px;
   color: rgb(255,255,255);
-  padding: var(--ms_a0) 10px;
+  padding: var(--size-m) 10px;
   text-decoration: none;
   position: relative;
   transition: color .3s ease;
@@ -235,9 +235,6 @@
   align-items: center;
   justify-content: center;
   flex: 1;
-}
-.c-contact-info{
-  font-size: var(--type-medium);
 }
 @media(max-width: 700px){
   .o-overlay-nav__content{
