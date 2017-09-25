@@ -1,15 +1,18 @@
 .o-blog-listing__right{
-    float: left;
-    width: 55%;
     height: 100vh;
     overflow-y: scroll;
     overflow-x: hidden;
-    padding: 1rem 2rem;
+    padding: var(--size-m);
 }
-
+.o-blog-listing__left{
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
 @media (max-width: 600px) {
-    .o-blog-listing__right{
-        width: 100%;
+    .o-blog-listing__left{
+        display: none;
     }
 }
 .o-blog-listing__about{
