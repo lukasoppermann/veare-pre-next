@@ -1,5 +1,5 @@
 'use strict'
-let content
+let content = []
 
 class Transformer {
   constructor (data) {
@@ -18,8 +18,10 @@ class Transformer {
     if (Array.isArray(data)) {
       let that = this
       return data.map((item) => that.transform(item))
-    } else {
+    } else if (data !== null) {
       return [this.transform(data)]
+    } else {
+      return []
     }
   }
 
