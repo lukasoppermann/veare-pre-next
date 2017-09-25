@@ -68,16 +68,3 @@
   display: flex;
   justify-content: center;
 }
-
-
-
-
-.u-margin-top-md{
-  margin-top: var(--ms_a0);
-}
-.u-margin-top-xl{
-  margin-top: var(--ms_a2);
-}
-.u-padding-bottom-xl{
-  padding-bottom: var(--ms_a2);
-}
