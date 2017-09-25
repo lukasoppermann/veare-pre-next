@@ -1,4 +1,4 @@
-/* global ready Menu Image */
+/* global ready Menu */
 (function (document, window) {
   window.ready = function (fn) {
     if (document.readyState !== 'loading') {
