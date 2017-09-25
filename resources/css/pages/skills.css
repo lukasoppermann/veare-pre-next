@@ -1,5 +1,5 @@
 .c-skills{
-  --media-spacing: var(--ms_a2);
+  --media-spacing: var(--size-xl);
   color: var(--black);
   display: flex;
   justify-content: center;
@@ -9,8 +9,8 @@
 }
 .c-skill{
   margin-top: var(--ms_a3);
-  margin-left: var(--ms_a2);
-  margin-right: var(--ms_a2);
+  margin-left: var(--size-xl);
+  margin-right: var(--size-xl);
 }
 .c-skill__content{
   text-align: left;
@@ -29,7 +29,7 @@
 }
 @media screen and (max-width: 800px){
   .c-skill{
-    margin-left: var(--ms_a1);
-    margin-right: var(--ms_a1);
+    margin-left: var(--size-xl);
+    margin-right: var(--size-xl);
   }
 }

@@ -1,8 +1,8 @@
 .o-blog-listing__right{
-    height: 100vh;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    padding: var(--size-m);
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: var(--size-m);
 }
 .o-blog-listing__left{
     height: 100vh;
@@ -10,16 +10,16 @@
     display: flex;
     flex-direction: column;
 }
-@media (max-width: 600px) {
-    .o-blog-listing__left{
-        display: none;
-    }
-}
 .o-blog-listing__about{
   height: 100vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+}
+@media (max-width: 600px) {
+  .o-blog-listing__about{
+    display: none;
+  }
 }
 .o-blog-listing__image{
   position: relative;
@@ -32,33 +32,10 @@
   width: auto;
   background-color: var(--veare-orange);
 }
-@media (max-width: 800px) {
-  .o-blog-listing__about{
-      display: none;
-  }
-}
 
 .c-list-postlist{
-    width: 100%;
-    margin-top: 10rem;
-}
-.js-blog-img{
-  position: absolute;
-  height: 100%;
-  width: auto;
-  max-width: none;
-  left: 50%;
-  transform: translateX(-50%);
-}
-@media (min-width: 1153px) {
-    .js-blog-img{
-        height: auto;
-        width: 100%;
-    }
-}
-.is-loaded{
-    opacity: 1;
-    transition: opacity 2s ease;
+  width: 100%;
+  margin-top: 10rem;
 }
 .o-logo{
     z-index: 100;
@@ -71,7 +48,7 @@
     animation:         move-up 2s 1, fadein 2s 1;
 }
 .o-logo__form{
-    fill: rgb(240, 170, 30);
+  fill: rgb(240, 170, 30);
 }
 .o-logo__form--white{
     fill: rgb(255,255,255);
@@ -101,23 +78,23 @@
   100% { transform: translate3d(0,0,0); }
 }
 .o-article-preview{
-    position: relative;
-    margin: 0 auto 5rem auto;
-    max-width: 55rem;
-    min-height: 15rem;
-    opacity: 0;
-    transform: translateY(2rem);
-    animation: fade-in-up;
-    animation-fill-mode: forwards;
-    animation-duration: 1.5s;
-    animation-delay: 1.5s;
-    list-style: none;
+  position: relative;
+  margin: 0 auto 5rem auto;
+  max-width: 55rem;
+  min-height: 15rem;
+  opacity: 0;
+  transform: translateY(2rem);
+  animation: fade-in-up;
+  animation-fill-mode: forwards;
+  animation-duration: 1.5s;
+  animation-delay: 1.5s;
+  list-style: none;
 }
 @media (max-width: 600px) {
-    .o-article-preview{
-        border-bottom: .1rem solid var(--light-grey);
-        margin: 0 auto 2.5rem auto;
-    }
+  .o-article-preview{
+    border-bottom: .1rem solid var(--light-grey);
+    margin: 0 auto 2.5rem auto;
+  }
 }
 .o-article-preview:nth-child(1){ animation-delay: 0s; }
 .o-article-preview:nth-child(2){ animation-delay: .3s; }

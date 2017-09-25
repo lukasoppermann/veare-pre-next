@@ -29,7 +29,7 @@
   margin: 0 var(--ms_a-2);
 }
 .o-nav__link{
-  padding: var(--ms_a-2) var(--ms_a-1);
+  padding: var(--ms_a-2) var(--size-s);
   text-decoration: none;
   text-transform: uppercase;
   overflow: hidden;
@@ -182,7 +182,7 @@
   transition: color .3s ease;
 }
 .o-overlay-nav__link:hover{
-  color: var(--black-50);
+  color: var(--type-grey);
 }
 .o-overlay-nav__link:before{
   display: block;

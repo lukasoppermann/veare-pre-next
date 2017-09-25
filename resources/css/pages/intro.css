@@ -124,7 +124,7 @@
     width: var(--ms_b7);
   }
   .c-intro-main-subline{
-    margin-top: var(--ms_a-1);
+    margin-top: var(--size-s);
     font-size: var(--ms_a3);
   }
   .c-intro--slogan{
@@ -162,7 +162,7 @@
   }
   .c-intro-main-headline{
     margin-bottom: 0;
-    width: calc( 100% - var(--ms_a1));
+    width: calc( 100% - var(--size-xl));
   }
 }
 @media screen and (max-width: 700px){
@@ -172,7 +172,7 @@
   }
   .c-intro-main-headline{
     margin-bottom: 0;
-    width: calc( 100% - var(--ms_a1));
+    width: calc( 100% - var(--size-xl));
   }
   .c-intro-main-subline{
     font-size: var(--ms_a3);
@@ -185,7 +185,7 @@
     top: calc(-1 * var(--ms_b2));
     left: 0;
     width: var(--ms_b2);
-    height: var(--ms_a2);
+    height: var(--size-xl);
     margin: 0;
   }
   .c-intro-content{

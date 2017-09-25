@@ -1,37 +1,61 @@
 const deepAssign = require('deep-assign')
 let modifiers = {
   h1: {
-    class: 'o-headline o-headline--h2',
+    class: 'o-headline--h2',
+    column: '16s 13m 10l',
+    'start-column': '0s 4m 7l',
     fn: (token) => { token.tag = 'h2' }
   },
   h2: {
-    class: 'o-headline o-headline--h3',
+    class: 'o-headline--h3',
+    column: '16s 13m 10l',
+    'start-column': '0s 4m 7l',
     fn: (token) => { token.tag = 'h3' }
   },
   h3: {
-    class: 'o-headline o-headline--h4',
+    class: 'o-headline--h4',
+    column: '16s 13m 10l',
+    'start-column': '0s 4m 7l',
     fn: (token) => { token.tag = 'h4' }
   },
   blockquote: {
     class: 'o-blockquote'
   },
   p: {
-    class: 'o-paragraph'
+    class: 'o-paragraph',
+    column: '16s 13m 10l',
+    'start-column': '0s 4m 7l'
   },
   ul: {
-    class: 'o-list type-xl'
+    class: 'o-list type--xl',
+    column: '16s 13m 10l',
+    'start-column': '0s 4m 7l'
   },
   ol: {
-    class: 'o-list o-list--ordered type-xl'
+    class: 'o-list o-list--ordered type--xl',
+    column: '16s 13m 10l',
+    'start-column': '0s 4m 7l'
   },
   figure: {
-    class: 'o-figure'
+    class: 'o-figure',
+    column: '16s 13m 10l',
+    'start-column': '0s 4m 7l'
   },
   figcaption: {
     class: 'o-figure__caption'
   },
   img: {
     class: 'o-figure__img'
+  },
+  code: {
+    istype: 'fence',
+    column: '16s 16m 14l',
+    'start-column': '0s 1m 3l',
+    fn: (token) => {
+      if (token.info === '') {
+        token.info = 'bash'
+      }
+    }
   }
 }
 
@@ -41,14 +65,16 @@ const md = require('markdown-it')('commonmark', {
   quotes: '“”‘’',
   modifyToken: (token, env) => {
     let modifier = modifiers[token.tag]
-    if (modifier !== undefined) {
-      if (modifier.class !== undefined) {
-        token.attrObj.class = (token.attrObj.class || '') + ' ' + modifier.class
-        token.attrObj.class = token.attrObj.class.trim()
-      }
-      if (modifier.fn !== undefined) {
-        modifier.fn(token, env)
-      }
+    if (modifier !== undefined && (modifier.istype === undefined || modifier.istype === token.type)) {
+      Object.keys(modifier).forEach((key) => {
+        if (key === 'istype') {
+          // ignore
+        } else if (key === 'fn') {
+          modifier.fn(token, env)
+        } else {
+          token.attrObj[key] = ((token.attrObj[key] || '') + ' ' + modifier[key]).trim()
+        }
+      })
     }
   }
 })
