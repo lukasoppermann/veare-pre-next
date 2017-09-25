@@ -4,6 +4,17 @@
     overflow-x: hidden;
     padding: var(--size-m);
 }
+.o-blog-listing__left{
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+@media (max-width: 600px) {
+    .o-blog-listing__left{
+        display: none;
+    }
+}
 .o-blog-listing__about{
   height: 100vh;
   overflow: hidden;

@@ -40,7 +40,7 @@
 }
 .c-portfolio__section{
   position: absolute;
-  left: var(--size-m);
+  left: var(--ms_a0);
   transform: rotate(-90deg);
 }
 /* NEW PORTFOLIO */
