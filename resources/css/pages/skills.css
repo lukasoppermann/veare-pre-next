@@ -5,16 +5,16 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding-bottom: var(--ms_a3);
+  padding-bottom: var(--size-g);
 }
 .c-skill{
-  margin-top: var(--ms_a3);
+  margin-top: var(--size-g);
   margin-left: var(--size-xl);
   margin-right: var(--size-xl);
 }
 .c-skill__content{
   text-align: left;
-  max-width: var(--ms_b7);
+  max-width: 580px;
 }
 .c-skill__figure{
   display: flex;

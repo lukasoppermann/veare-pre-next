@@ -203,7 +203,7 @@
 }
 .o-article-preview__excerpt{
     margin-top: 1rem;
-    padding-bottom: var(--ms-1);
+    padding-bottom: var(--size-m);
     font-size: var(--type-medium);
     font-family: var(--serif);
     line-height: 135%;
