@@ -23,14 +23,12 @@ h5{
   font-size: 100%;
   font-weight: normal;
 }
-html {
+html, div {
   box-sizing: border-box;
-}
-*, *:before, *:after {
-  box-sizing: inherit;
 }
 img,
 video {
   height: auto;
   max-width: 100%;
+  vertical-align: top; /* removes margin below */
 }

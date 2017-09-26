@@ -1,9 +1,10 @@
 .o-button{
+  display: inline-block;
   text-decoration: none;
   border: none;
   box-shadow: var(--shadow-floating-one) rgba(var(--shadow-color-rgb, var(--black-rgb)),.3), var(--shadow-floating-two) rgba(var(--shadow-color-rgb, var(--black-rgb)),.1);
-  font-size: var(--ms_a0);
-  padding: var(--ms_a0);
+  font-size: var(--size-m);
+  padding: var(--size-m);
   background-color: var(--white);
   color: var(--black);
   cursor: pointer;

@@ -1,6 +1,8 @@
 /*
  * Margin Top
  */
+.u-margin-top--xs{ margin-top: var(--size-xs); }
+.u-margin-top--s{ margin-top: var(--size-s); }
 .u-margin-top--m{ margin-top: var(--size-m); }
 .u-margin-top--l{ margin-top: var(--size-l); }
 .u-margin-top--h{ margin-top: var(--size-h); }
@@ -12,6 +14,8 @@
 /*
  * Margin Bottom
  */
+.u-margin-bottom--xs{ margin-bottom: var(--size-xs); }
+.u-margin-bottom--s{ margin-bottom: var(--size-s); }
 .u-margin-bottom--m{ margin-bottom: var(--size-m); }
 .u-margin-bottom--l{ margin-bottom: var(--size-l); }
 .u-margin-bottom--h{ margin-bottom: var(--size-h); }
@@ -20,6 +24,18 @@
 .u-margin-bottom--g{ margin-bottom: var(--size-g); }
 .u-margin-bottom--xg{ margin-bottom: var(--size-xg); }
 .u-margin-bottom--xxg{ margin-bottom: var(--size-xxg); }
+/*
+ * Margin right
+ */
+.u-margin-right--xs{ margin-right: var(--size-xs); }
+.u-margin-right--s{ margin-right: var(--size-s); }
+.u-margin-right--m{ margin-right: var(--size-m); }
+/*
+ * Margin left
+ */
+.u-margin-left--xs{ margin-left: var(--size-xs); }
+.u-margin-left--s{ margin-left: var(--size-s); }
+.u-margin-left--m{ margin-left: var(--size-m); }
 /*
  * Padding Right
  */
@@ -54,60 +70,12 @@
 }
 
 
-.u-margin-bottom-sm{
-  margin-bottom: var(--ms_a-2);
-}
 .u-margin-top-md{
   margin-top: var(--ms_a0);
-}
-.u-margin-top-lg{
-  margin-top: var(--ms_a1);
 }
 .u-margin-top-xl{
   margin-top: var(--ms_a2);
 }
-.u-margin-bottom-md{
-  margin-bottom: var(--ms_a0);
-}
-.u-margin-bottom-lg{
-  margin-bottom: var(--ms_a1);
-}
-.u-margin-bottom-xl{
-  margin-bottom: var(--ms_a2);
-}
-.u-margin-right-md{
-  margin-right: var(--ms_a0);
-}
-.u-width-full{
-  width: 100%;
-  box-sizing: border-box;
-}
 .u-padding-bottom-xl{
   padding-bottom: var(--ms_a2);
-}
-.u-padding-top-xl{
-  padding-top: var(--ms_a2);
-}
-.u-margin-right-md{
-  margin-right: var(--ms_a0);
-}
-.u-margin-left-md{
-  margin-left: var(--ms_a0);
-}
-.u-padding-right-sm{
-  padding-right: var(--ms_a-2);
-}
-.u-padding-left-sm{
-  padding-left: var(--ms_a-2);
-}
-.u-padding-right-md{
-  padding-right: var(--ms_a0);
-}
-.u-padding-left-md{
-  padding-left: var(--ms_a0);
-}
-
-grid-container [centered]{
-  display: flex;
-  justify-content: center;
 }

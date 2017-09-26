@@ -3,7 +3,7 @@
 const client = require('./client')
 const cache = require('memory-cache')
 
-const contentful = (initial, cb, error = console.error) => {
+const contentful = (initial, cb, errorFn = console.error) => {
   let syncConf = {
     initial: true
   }
@@ -28,9 +28,7 @@ const contentful = (initial, cb, error = console.error) => {
       }
     }).catch(console.error)
   })
-  .catch((error) => {
-    console.log(error)
-  })
+  .catch(errorFn)
 }
 
 const initializeContent = (types, responseObj, cb) => {

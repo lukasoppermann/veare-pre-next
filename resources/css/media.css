@@ -1,5 +1,5 @@
 :root{
-  --media-spacing: var(--ms_a0);
+  --media-spacing: var(--size-m);
   --media-body-min-width: var(--ms_a7);
 }
 .o-media{
