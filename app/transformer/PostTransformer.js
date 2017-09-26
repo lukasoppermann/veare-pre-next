@@ -27,7 +27,6 @@ class PostTransformer extends Transformer {
         date: this.formatDate(this.getField('date', data)),
         preview: this.getField('preview', data),
         intro: convertMarkdown(this.getField('intro', data), modifiers),
-        firstParagraph: convertMarkdown(this.getField('firstParagraph', data), modifiers),
         content: convertMarkdown(this.getField('content', data), modifiers),
         readingTime: Math.ceil(readingTime(this.getField('content', data)).time / 60000),
         category: new Category().find(this.getField('category', data).sys.id),

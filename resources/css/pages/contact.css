@@ -1,7 +1,7 @@
 .c-contact{
   position: relative;
   background-color: transparent;
-  padding-top: var(--ms_a2);
+  padding-top: var(--size-xl);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,7 +12,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: var(--ms_a1);
+  padding: var(--size-xl);
   z-index: 10;
   max-width: 700px;
 }
@@ -20,8 +20,8 @@
   position: absolute;
   z-index: 0;
   width: 100%;
-  height: calc(100% + var(--ms_a1));
-  top: calc(-1 * var(--ms_a1));
+  height: calc(100% + var(--size-xl));
+  top: calc(-1 * var(--size-xl));
   left: 0;
 }
 .o-svg-bg--white-grey{

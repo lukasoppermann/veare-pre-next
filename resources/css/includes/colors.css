@@ -28,9 +28,4 @@
   --white-grey: rgb(var(--white-grey-rgb));
   --sand-grey: rgb(var(--sand-grey-rgb));
   --color-sand: var(--sand-grey);
-  /*
-   * type colors
-   */
-  --type-black: var(--black);
-  --type-grey: rgba(var(--black-rgb), .5);
 }

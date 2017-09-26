@@ -68,8 +68,8 @@
   flex-shrink: 1;
   flex-grow: 0;
   flex-basis: auto;
-  padding-bottom: var(--ms_a1);
-  margin-right: var(--ms_a1);
+  padding-bottom: var(--size-xl);
+  margin-right: var(--size-xl);
 }
 .o-project-info__item:nth-child(3){
   flex-grow: 1;

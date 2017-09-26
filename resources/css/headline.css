@@ -1,38 +1,26 @@
-.o-headline{
+/*
+ * headine styles
+ */
+[class*="o-headline"]{
   display: block;
 }
-.o-headline-2{
-  font-size: var(--type-medium-huge);
-}
-.o-headline-3{
-  font-size: var(--type-big);
-}
-.o-headline-4{
-  font-size: var(--type-medium);
-  font-weight: var(--sans-serif-bold);
-  line-height: var(--type-medium-line-height);
-  margin-bottom: var(--ms_a-2);
-}
-.o-headline--primary{
-  color: var(--blue);
-}
-
 .o-headline--h2{
-  font-size: var(--type-medium-huge);
-  margin-bottom: calc(var(--type-medium-huge) / 2.25);
-  margin-top: calc(var(--type-medium-huge) / 1.15);
+  font-size: var(--type-h);
+  line-height: var(--type-h-lineheight);
+  margin-bottom: var(--size-l);
+  margin-top: var(--size-h);
 }
 .o-headline--h3{
-  font-size: calc( var(--ms_a1) * 1.35 );
-  font-weight: bold;
-  margin-bottom: calc(var(--type-medium-huge) / 2.25);
-  margin-top: calc(var(--type-medium-huge) / 1.15);
+  font-size: var(--type-xxl);
+  line-height: var(--type-xxl-lineheight);
+  font-weight: var(--sans-serif-bold);
+  margin-bottom: var(--size-s);
+  margin-top: var(--size-xl);
 }
 .o-headline--h4{
-  font-size: var(--type-big);
+  font-size: var(--type-xl);
+  line-height: var(--type-xl-lineheight);
   font-weight: var(--sans-serif-bold);
-  margin-bottom: calc(var(--type-big) / 2.25);
-}
-.o-headline--serif{
-  font-family: var(--serif);
+  margin-bottom: var(--size-s);
+  margin-top: var(--size-l);
 }

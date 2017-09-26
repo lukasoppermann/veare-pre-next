@@ -11,7 +11,7 @@
   font-weight: var(--sans-serif-normal);
   line-height: calc( var(--type-big) + 10px);
   color: var(--type-grey);
-  padding-left: var(--ms_a1);
+  padding-left: var(--size-xl);
 }
 .o-blockquote .o-blockquote:before{
   content: "";
@@ -20,15 +20,15 @@
   left: 0;
   top: 0;
   height: 100%;
-  width: var(--ms_a-1);
+  width: var(--size-s);
   background: var(--medium-grey);
 }
 .o-blockquote p {
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
-  margin-top: var(--ms_a2);
-  margin-bottom: var(--ms_a2);
+  margin-top: var(--size-xl);
+  margin-bottom: var(--size-xl);
 }
 .o-quote{
   font-family: var(--serif);
