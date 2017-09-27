@@ -50,7 +50,7 @@
     "nodemon": "^1.12.1",
     "page-sections": "^0.4.1",
     "prismjs": "^1.8.1",
-    "responsive-image": "^0.2.0",
+    "responsive-image": "^0.2.1",
     "rev-del": "^1.0.5",
     "snazzy": "^7.0.0",
     "standard": "^10.0.3",
