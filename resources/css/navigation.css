@@ -26,10 +26,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 var(--ms_a-2);
+  margin: 0 var(--size-xs);
 }
 .o-nav__link{
-  padding: var(--ms_a-2) var(--size-s);
+  padding: var(--size-xs) var(--size-s);
   text-decoration: none;
   text-transform: uppercase;
   overflow: hidden;

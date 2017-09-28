@@ -12,15 +12,12 @@
   /*
   * Sizes
   */
-  --type-giant: var(--ms_a5);
-  --type-giant-line-height: 100%;
-  --type-huge: calc(var(--ms_a3) + var(--size-s));
+  --type-huge: var(--size-g);
   --type-huge-line-height: 100%;
   --type-medium-huge: var(--size-xl);
   --type-medium-huge-line-height: 135%;
   --type-big: var(--size-xl);
   --type-big-line-height: 135%;
-  --type-medium-big: var(--ms_b0);
   --type-medium: var(--size-l);
   --type-medium-line-height: 135%;
   --type-default: var(--size-m);
