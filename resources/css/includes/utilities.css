@@ -61,7 +61,11 @@
 .u-padding-left--xl{ padding-left: var(--size-xl) !important; }
 .u-padding-left--xxl{ padding-left: var(--size-xxl) !important; }
 
-.u-full-width{ width: 100%; box-sizing: border-box; }
+.u-full-width{
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+}
 
 .u-center{
   display: flex;
