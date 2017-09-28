@@ -1,29 +1,99 @@
 <style media="screen">
-  :root{
-    --shadow-float-small: 0 5px 25px 0 rgba(0,0,0,0.15), 0 2px 4px 0 rgba(0,0,0,0.10);
+  @media (max-width: 1020px){
+    page-section{
+      padding: 0 var(--size-m);
+    }
   }
   .c-section-portfolio-top-image{
     position: relative;
     overflow: visible;
     display: flex;
     margin-bottom: -300px;
+    padding: 0;
   }
-  .o-project-info{
-    max-width: 1000px;
-    display: flex;
+  .o-stage{
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: auto;
   }
-  .o-project-info__item{
-    flex-shrink: 0;
-    padding-right: var(--ms_a3);
+  .o-stage svg{
+    width: 100%;
+    height: auto;
   }
-  .o-project-info__item:last-child{
-    flex-shrink: 1;
-    padding-right: 0;
+  .c-headline--copra{
+    z-index: 100;
+    padding: 50px 35px 45px;
+    width: 50%;
+    color: white;
+    position: absolute;
+    right: 0;
+    top: 380px;
+    background-color: #E1464B;
+    box-shadow: 0 5px 30px 0 rgba(0,0,0,0.15);
   }
-  .o-project-info__title{
-    font-size: var(--type-default);
-    color: var(--type-grey);
-    text-transform: uppercase;
+  .c-section-portfolio-top-image:before{
+    content: "";
+    display: block;
+    position: absolute;
+    height: 400px;
+    width: 50%;
+    top: 170px;
+    background-color: #E1464B;
+    z-index: 0;
+  }
+  @media (max-width: 1100px){
+    .c-section-portfolio-top-image:before{
+      height: 300px;
+    }
+    .c-headline--copra{
+      top: 280px;
+    }
+    .c-section-portfolio-top-image{
+      margin-bottom: -250px;
+    }
+  }
+  @media (max-width: 960px){
+    .c-headline--copra{
+      top: 240px;
+      padding: 30px 25px 25px;
+    }
+  }
+  @media (max-width: 880px){
+    .o-stage{
+      width: 96%;
+    }
+    .c-section-portfolio-top-image:before{
+      height: 200px;
+      top: 100px;
+    }
+    .c-headline--copra{
+      top: 250px;
+      padding: 30px 25px 25px;
+      width: 450px;
+    }
+    .c-section-portfolio-top-image{
+      margin-bottom: -150px;
+    }
+  }
+  @media (max-width: 600px){
+    .c-section-portfolio-top-image{
+      margin-bottom: -50px;
+    }
+    .c-headline--copra svg{
+      width: 100%;
+    }
+  }
+  @media (max-width: 500px){
+    .c-section-portfolio-top-image{
+      margin-bottom: 50px;
+    }
+    .c-headline--copra{
+      padding: 20px 25px 15px;
+      width: 100%;
+    }
   }
   .o-project-section{
     min-height: auto;
@@ -97,7 +167,6 @@
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
   }
-
   .o-corporate-colors__name{
     font-family: var(--sans-serif);
     font-size: var(--type-medium);
@@ -107,34 +176,6 @@
     font-size: var(--type-default);
     color: var(--type-grey);
     text-transform: uppercase;
-  }
-  .o-stage{
-    margin-top: 25px;
-    margin-bottom: 25px;
-    margin-left: 50%;
-    transform: translateX(-50%);
-    width: 1208px;
-  }
-  .c-headline--copra{
-    z-index: 100;
-    padding: 50px 35px 45px;
-    width: 50%;
-    color: white;
-    position: absolute;
-    right: 0;
-    top: 380px;
-    background-color: #E1464B;
-    box-shadow: 0 5px 30px 0 rgba(0,0,0,0.15);
-  }
-  .c-section-portfolio-top-image:before{
-    content: "";
-    display: block;
-    position: absolute;
-    height: 400px;
-    width: 50%;
-    top: 170px;
-    background-color: #E1464B;
-    z-index: 0;
   }
   .copra-card-bottom-line{
     position: absolute;
@@ -160,7 +201,7 @@
     background: #5AAA96;
   }
   .c-copra-photo-grid{
-    grid-template-rows: repeat(12, var(--size-xh));
+    grid-template-rows: repeat(10, var(--size-xh));
     width: 100%;
   }
   .c-copra-logo-presenter-grid{
@@ -168,8 +209,24 @@
   }
   .c-copra-logo-presenter{
     background: #EDE9E7;
-    /*height: 600px;*/
     width: 100%;
+  }
+  @media (min-width: 800px){
+    .copra-logo-final{
+      transform: translateY(-30%)
+    }
+    .c-copra-intro-card{
+      margin-top: var(--size-xh);
+    }
+    grid-container{
+      grid-gap: var(--size-xl);
+    }
+  }
+  .c-copra-audience-svg{
+    width: 100px;
+    height: 100px;
+    padding: var(--size-xs);
+    box-sizing: border-box;
   }
 </style>
 <page-sections>
@@ -191,16 +248,16 @@
     </div>
   </page-section>
   <page-section class="c-section-portfolio-intro u-margin-bottom--xxg u-margin-top--xxh" centered maxwidth="1000px">
-    <grid-container columns="16">
-      <div column="3">
+    <grid-container>
+      <div columns="8s 3m">
         <h4 class="o-project-info__title">Industry</h4>
         <div class="type--xl">Health Care</div>
       </div>
-      <div column="3">
+      <div columns="8s 3m">
         <h4 class="o-project-info__title">Created</h4>
         <div class="type--xl">2014 – 2015</div>
       </div>
-      <div column="10">
+      <div columns="16s 10m">
         <h4 class="o-project-info__title">Objective</h4>
         <p class="type--l">The Copra Software GmbH develops a patient managment software to help hospitals monitor all important information so they can focus on saving peoples lives. I was asked to create a corporate identity & website to communicate their values and ideals to current and future clients and attract potential employees.</p>
       </div>
@@ -209,7 +266,7 @@
   <page-section class="o-project-section" centered maxwidth="1000px">
     <h3 class="o-project-section__headline">The Challenge</h3>
     <grid-container columns="16" class="u-margin-bottom--xxg">
-      <div column="6" start-column="1">
+      <div columns="16s 7m" start-column="1">
         <p class="type--l u-padding-right--m">
           The project started with an in-depth conversation with the team at Copra to understand the companies history, present and their goals for the future as well as their clients and the health care industry itself. Once we had a good understanding of everything we defined the project goal.
         </p>
@@ -225,7 +282,7 @@
           </li>
         </ul>
       </div>
-      <div column="9" class="u-margin-top--xh">
+      <div columns="16s 9m" class="c-copra-intro-card u-margin-bottom--h">
         <div class="o-card o-card--rounded">
           <p class="o-quote">
             Transform the brand to resemable a modern software company that works on the future of hospital software while maintaining enough recognizablility to keeping the trust the brand has established.
@@ -233,7 +290,7 @@
           <div class="copra-card-bottom-line"></div>
         </div>
       </div>
-      <div column="10" start-column="4">
+      <div columns="16s 12m 10l" start-column="0s 3m 4l">
         {{{inline_svg 'resources/svgs/copra-sketch-mindmap.svg'}}}
       </div>
     </grid-container>
@@ -242,41 +299,49 @@
   <page-section class="o-project-section" centered maxwidth="1000px">
     <h3 class="o-project-section__headline">Target Audience</h3>
     <grid-container columns="16" class="u-margin-bottom--xxg">
-      <div column="2" start-column="1" class="u-center-h">
-        {{{inline_svg 'resources/svgs/copra-icon-doctor.svg'}}}
+      <div columns="16s 8m" class="o-media o-media--center u-margin-bottom--h">
+        <div class="o-media__figure">
+          {{{inline_svg 'resources/svgs/copra-icon-doctor.svg' class="c-copra-audience-svg"}}}
+        </div>
+        <div class="o-media__body">
+          <h4 class="o-headline--h4">Medical Staff</h4>
+          <p class="type--l">
+            While looking for a good software solution or during customer workshops & on conventions especially doctors will come in contact with the company and brand.
+          </p>
+        </div>
       </div>
-      <div column="5" class="u-margin-bottom--h">
-        <h4 class="o-headline--h4">Medical Staff</h4>
-        <p class="type--l u-padding-right--m">
-          While looking for a good software solution or during customer workshops & on conventions especially doctors will come in contact with the company and brand.
-        </p>
+      <div columns="16s 8m" class="o-media o-media--center u-margin-bottom--h">
+        <div class="o-media__figure">
+          {{{inline_svg 'resources/svgs/copra-icon-controlling.svg' class="c-copra-audience-svg"}}}
+        </div>
+        <div class="o-media__body">
+          <h4 class="o-headline--h4">Controlling</h4>
+          <p class="type--l">
+            The controlling department will get in contact with the brand when trying to find a tool to enable them to get an overview of all that is going on in the hospital.
+          </p>
+        </div>
       </div>
-      <div column="2" start-column="9" class="u-center-h">
-        {{{inline_svg 'resources/svgs/copra-icon-controlling.svg'}}}
+      <div columns="16s 8m" class="o-media o-media--center">
+        <div class="o-media__figure">
+          {{{inline_svg 'resources/svgs/copra-icon-it.svg' class="c-copra-audience-svg"}}}
+        </div>
+        <div class="o-media__body">
+          <h4 class="o-headline--h4">IT Staff</h4>
+          <p class="type--l">
+            The software is developed by Copra, but the hospitals IT staff needs to take care of and configure the software, they download the documentation and deal with problems and support.
+          </p>
+        </div>
       </div>
-      <div column="5" class="u-margin-bottom--h">
-        <h4 class="o-headline--h4">Controlling</h4>
-        <p class="type--l u-padding-right--m">
-          The controlling department will get in contact with the brand when trying to find a tool to enable them to get an overview of all that is going on in the hospital.
-        </p>
-      </div>
-      <div column="2" start-column="1" class="u-center-h">
-        {{{inline_svg 'resources/svgs/copra-icon-it.svg'}}}
-      </div>
-      <div column="5">
-        <h4 class="o-headline--h4">IT Staff</h4>
-        <p class="type--l u-padding-right--m">
-          The software is developed by Copra, but the hospitals IT staff needs to take care of and configure the software, they download the documentation and deal with problems and support.
-        </p>
-      </div>
-      <div column="2" start-column="9" class="u-center-h">
-        {{{inline_svg 'resources/svgs/copra-icon-developers.svg'}}}
-      </div>
-      <div column="5">
-        <h4 class="o-headline--h4">Developers</h4>
-        <p class="type--l u-padding-right--m">
-          Like any other software company Copra is constantly looking for fresh talent to join their team. The brand needs to communicate their ideals and mission to potential hires.
-        </p>
+      <div columns="16s 8m" class="o-media o-media--center">
+        <div class="o-media__figure">
+          {{{inline_svg 'resources/svgs/copra-icon-developers.svg' class="c-copra-audience-svg"}}}
+        </div>
+        <div class="o-media__body">
+          <h4 class="o-headline--h4">Developers</h4>
+          <p class="type--l">
+            Like any other software company Copra is constantly looking for fresh talent to join their team. The brand needs to communicate their ideals and mission to potential hires.
+          </p>
+        </div>
       </div>
     </grid-container>
   </page-section>
@@ -284,30 +349,34 @@
   <page-section class="o-project-section" centered maxwidth="1000px" fullscreen>
     <h3 class="o-project-section__headline">Research & Moods</h3>
     <grid-container columns="16" class="u-margin-bottom--xxg c-copra-photo-grid">
-      <div style="background:#E1464B; box-shadow:0 20px 50px 0 rgba(0,0,0,0.40); z-index: 21;" start-row="2" start-column="9" column="8" row="3">
-        <p class="type--xl inset--l" style="color:rgb(255,255,255);">Once the target audience was defined the visual research and creation of mood boards started. The goal was to collect inspiration for colors and typography.</p>
+      <div style="z-index: 21" start-row="1s 2m" start-column="2s 9m" columns="15s 8m" rows="3">
+        <p class="type--xl inset--l" style="color:rgb(255,255,255); background:#E1464B; box-shadow:0 20px 50px 0 rgba(0,0,0,0.40);">Once the target audience was defined the visual research and creation of mood boards started. The goal was to collect inspiration for colors and typography.</p>
       </div>
-      <responsive-image start-row="3" start-column="3" column="11" row="6"
+      <responsive-image start-row="4s 3m" start-column="5s 3m" columns="11" rows="6"
         style="box-shadow:0 20px 50px 0 rgba(0,0,0,0.40); z-index: 20;"
         active="true"
         src="/media/copra_picture_main.jpg"
         alt="copra research picture"
+        resizing
       ></responsive-image>
-      <responsive-image start-row="1" column="7" start-column="2" row="4"
+      <responsive-image start-row="3s 1m" columns="7" start-column="1s 2m" rows="4"
         style="box-shadow:0 20px 50px 0 rgba(0,0,0,0.40); z-index: 19;"
         active="true"
         src="/media/copra_picture_top_left.jpg"
         alt="copra research picture"
+        resizing
       ></responsive-image>
-      <responsive-image start-row="6" column="7" start-column="1" row="4"
+      <responsive-image start-row="7s 6m" columns="7" start-column="1" rows="4"
         style="box-shadow:0 20px 50px 0 rgba(0,0,0,0.40); z-index: 18;"
         active="true"
         src="/media/copra_picture_bottom_left.jpg"
         alt="copra research picture"
+        resizing
       ></responsive-image>
-      <responsive-image start-row="6" column="8" start-column="9" row="5"
+      <responsive-image start-row="7s 6m" columns="8" start-column="9" rows="5"
         style="box-shadow:0 20px 50px 0 rgba(0,0,0,0.40); z-index: 18;"
         active="true"
+        resizing
         src="/media/copra_picture_bottom_right.jpg"
         alt="copra research picture"
       ></responsive-image>
@@ -334,78 +403,76 @@
       </div>
     </div>
     <grid-container columns="16" class="u-margin-bottom--xxg">
-      <div column="7" start-column="2" class="u-padding-right--m">
+      <div columns="16s 14m 7l" start-column="0s 2m 2l">
         <h4 class="o-headline--h4">Main Colors</h4>
         <p class="type--l type-grey">Red like the red cross that adorns every hospital has always been the color copra used and it was clear from the start, that this color will be kept. However the original brownish red was replace by a bright but warm and friendly red as the primary color and a darker, more subtle red as a secondary color which is used sparingly.</p>
       </div>
-      <div column="7" start-column="9" class="u-padding-left--m">
+      <div columns="16s 14m 7l" start-column="0s 2m 0l">
         <h4 class="o-headline--h4">Accent Colors</h4>
         <p class="type--l type-grey">To compliment the reds we have an aquamarine as the accent color and a very brightened version of it as a tertiary color that can be used for backgrounds. Aquamarine is used in operation rooms and wards as well as for the clothing because the color stands for hygiene and cleanliness, which is extrenly important in hospitals.</p>
       </div>
     </grid-container>
   </page-section>
-  <page-section class="o-project-section" centered maxwidth="1000px">
+  {{!-- <page-section class="o-project-section" centered maxwidth="1000px">
     <h3 class="o-project-section__headline">Typography</h3>
-  </page-section>
+  </page-section> --}}
   <page-section class="o-project-section" centered maxwidth="1000px" width="100%">
     <h3 class="o-project-section__headline">Logo</h3>
-    <grid-container class="u-margin-bottom--xxg u-full-width">
-      <div column="10" start-column="5" class="u-margin-bottom--h">
+    <grid-container class="u-margin-bottom--xxg">
+      <div columns="10l 14m 16s" start-column="5l 2m 0s">
         {{{inline_svg 'resources/svgs/copra-sketch-logo.svg'}}}
       </div>
-      <div column="7" start-column="2" class="u-padding-right--m">
+      <div columns="16s 14m 7l" start-column="0s 2m 2l">
         <h4 class="o-headline--h4">History</h4>
         <p class="type--l type-grey">We did not get very much infromation about the background of the logo. All that was know is that the founder liked cobras and the red was chosen because of the association with hospitals.</p>
       </div>
-      <div column="7" class="u-padding-left--m">
+      <div columns="16s 14m 7l" start-column="0s 2m 0l">
         <h4 class="o-headline--h4">Redesign Goal</h4>
         <p class="type--l type-grey">With the redesign we wanted to clearly distinguish the new Copra from the old and show its transformation into a modern software company. However we also wanted to keep the trust the company has aquired since the early 1990s.</p>
       </div>
     </grid-container>
-    <grid-container class="c-copra-logo-presenter-grid u-margin-bottom--xxg" rows="11">
-      <div style="z-index: 20" column="10" start-column="6" row="3" start-row="9">
+    <grid-container class="c-copra-logo-presenter-grid u-margin-bottom--xxg" rows="9s 11m">
+      <div style="z-index: 20" columns="16s 13m 10l" start-column="0s 3m 6l" rows="0s 3m" start-row="0s 8m 9l">
         <div class="o-card o-card--floating">
           <h4 class="o-headline--h4">Final Brandmark</h4>
           <p class="type--l type-grey">The final design combines the idea of the cobra forming the C with a more modern letter form. However the edges are soft and rounded with no sharp corners anywhere. This is to fit into the idea of a more organic and natural snake-shape. The shadow on the C is a little detail which hint at the hood of a cobra in a closed, calm state.</p>
         </div>
       </div>
-      <div class="c-copra-logo-presenter u-center" style="z-index: 19" row="10" column="16" start-column="1" start-row="1">
-        {{{inline_svg 'resources/svgs/copra-logo.svg' style="transform: translateY(-30%)"}}}
+      <div class="c-copra-logo-presenter u-center" style="z-index: 19" rows="7s 8m 10l" columns="16" start-column="1" start-row="1">
+        {{{inline_svg 'resources/svgs/copra-logo.svg' class="copra-logo-final"}}}
       </div>
     </grid-container>
   </page-section>
   <page-section class="o-project-section" centered maxwidth="1000px">
     <h3 class="o-project-section__headline">Style Direction</h3>
-    <grid-container columns="16" class="u-margin-bottom--xxg">
-      <div column="7" start-column="2">
+    <grid-container columns="16" class="u-margin-bottom--h">
+      <div columns="16s 7m" start-column="2m">
         {{{inline_svg 'resources/svgs/copra-style-directions-one.svg' class="u-full-width"}}}
       </div>
-      <div column="7" start-column="9">
+      <div columns="16s 7m" start-column="9m">
         {{{inline_svg 'resources/svgs/copra-style-directions-two.svg' class="u-full-width"}}}
       </div>
-      <div column="10" start-column="2" class="u-margin-bottom--h">
+      <div columns="16s 10m" start-column="2m">
         <p class="type--l type-grey">Designers are constantly trying to convey a message through design, which means we have much experience imagining how a design concept looks when used in a website or flyer. However this is often hard for clients who might never think and talk about design in their daily live. Because of this I decided to illustrate the eight design concepts with a little icon and a couple stationary sketches. This approach worked very well and we got to the final style within a couple iterations.</p>
       </div>
-      <responsive-image column="7" start-column="2"
-        class="u-padding-right--m u-margin-bottom--m u-margin-top--h"
+    </grid-container>
+    <grid-container columns="16" class="u-margin-bottom--xxg">
+      <responsive-image columns="16s 7m" start-column="0s 2m"
         active="true"
         src="/media/copra-style-exploration-stack.png"
         alt="copra style exploration – stack"
       ></responsive-image>
-      <responsive-image column="7"
-        class="u-padding-left--m u-margin-top--h"
+      <responsive-image columns="16s 7m"
         active="true"
         src="/media/copra-style-exploration-progress.png"
         alt="copra style exploration – progress"
       ></responsive-image>
-      <responsive-image column="7" start-column="2"
-        class="u-padding-right--m u-margin-top--m"
+      <responsive-image columns="16s 7m" start-column="0s 2m"
         active="true"
         src="/media/copra-style-exploration-stack.png"
         alt="copra style exploration – stack"
       ></responsive-image>
-      <responsive-image column="7"
-        class="u-padding-left--m u-margin-top--m"
+      <responsive-image columns="16s 7m"
         active="true"
         src="/media/copra-style-exploration-frame.png"
         alt="copra style exploration – frame"
@@ -415,22 +482,27 @@
   <page-section class="o-project-section" centered maxwidth="1000px">
     <h3 class="o-project-section__headline">Implementation</h3>
     <grid-container columns="16" class="u-margin-bottom--xxg">
-      <div column="14" start-column="2">
+      <div columns="16s 14m 14l" start-column="0s 2m 2l">
         <h4 class="o-headline--h4">Website</h4>
       </div>
-      <div column="7" start-column="2" class="u-padding-right--m u-margin-bottom--h">
+      <div columns="16s 14m 7l" start-column="0s 2m 2l">
         <p class="type--l type-grey">The company website has to fullfill the typical aspects of informing about the product and its uses as well as providing some background about the company and upcoming events. Customers can see which medical decices are connected to and operated by the system are in which hospital.</p>
       </div>
-      <div column="7" start-column="9" class="u-padding-right--m u-margin-bottom--h">
+      <div columns="16s 14m 7l" start-column="0s 2m 9l">
         <p class="type--l type-grey">With the idea of increasing the trust and showing that it is a validated software product which is used by huge hospitals.<br />
         We focused on speed by making sure it was as small as possible but also by designing and writing the content so that it is easy to scan to get the gist without reading every last paragraph.</p>
       </div>
-      <responsive-image column="14" start-column="2"
-        class="o-card o-card--no-padding"
+      <responsive-image columns="16s 14m 14l" start-column="0s 2m 2l"
+        class="o-card o-card--no-padding u-margin-top--h"
         active="true"
         src="/media/copra_website.png"
         alt="website developed according to styleguide"
       ></responsive-image>
     </grid-container>
+  </page-section>
+  <page-section centered maxwidth="1000px" class="o-project-section-container">
+    <div class="u-full-width u-margin-bottom--g" class="o-project-section-container">
+      <a class="o-button o-button--floating o-button--primary u-margin-top--h" href="/portfolio">&larr; return to overview</a>
+    </div>
   </page-section>
 </page-sections>

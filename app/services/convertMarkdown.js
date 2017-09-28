@@ -2,19 +2,19 @@ const deepAssign = require('deep-assign')
 let modifiers = {
   h1: {
     class: 'o-headline--h2',
-    column: '16s 13m 10l',
+    columns: '16s 13m 10l',
     'start-column': '0s 4m 7l',
     fn: (token) => { token.tag = 'h2' }
   },
   h2: {
     class: 'o-headline--h3',
-    column: '16s 13m 10l',
+    columns: '16s 13m 10l',
     'start-column': '0s 4m 7l',
     fn: (token) => { token.tag = 'h3' }
   },
   h3: {
     class: 'o-headline--h4',
-    column: '16s 13m 10l',
+    columns: '16s 13m 10l',
     'start-column': '0s 4m 7l',
     fn: (token) => { token.tag = 'h4' }
   },
@@ -23,22 +23,22 @@ let modifiers = {
   },
   p: {
     class: 'o-paragraph',
-    column: '16s 13m 10l',
+    columns: '16s 13m 10l',
     'start-column': '0s 4m 7l'
   },
   ul: {
     class: 'o-list type--xl',
-    column: '16s 13m 10l',
+    columns: '16s 13m 10l',
     'start-column': '0s 4m 7l'
   },
   ol: {
     class: 'o-list o-list--ordered type--xl',
-    column: '16s 13m 10l',
+    columns: '16s 13m 10l',
     'start-column': '0s 4m 7l'
   },
   figure: {
     class: 'o-figure',
-    column: '16s 13m 10l',
+    columns: '16s 13m 10l',
     'start-column': '0s 4m 7l'
   },
   figcaption: {
@@ -49,7 +49,7 @@ let modifiers = {
   },
   code: {
     istype: 'fence',
-    column: '16s 16m 14l',
+    columns: '16s 16m 14l',
     'start-column': '0s 1m 3l',
     fn: (token) => {
       if (token.info === '') {

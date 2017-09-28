@@ -10,6 +10,6 @@ document.querySelector('.o-nav__icon').addEventListener('click', function () {
 
 Array.prototype.forEach.call(document.querySelectorAll('pre > code'), function (item) {
   item.classList.add('line-numbers')
-  item.parentElement.setAttribute('column', item.getAttribute('column'))
+  item.parentElement.setAttribute('columns', item.getAttribute('columns'))
   item.parentElement.setAttribute('start-column', item.getAttribute('start-column'))
 })
