@@ -38,8 +38,7 @@ let modifiers = {
   },
   figure: {
     class: 'o-figure',
-    columns: '16s 13m 10l',
-    'start-column': '0s 4m 7l'
+    columns: '16s'
   },
   figcaption: {
     class: 'o-figure__caption'
@@ -50,7 +49,7 @@ let modifiers = {
   code: {
     istype: 'fence',
     columns: '16s 16m 14l',
-    'start-column': '0s 1m 3l',
+    'start-column': '0s 1m 4l',
     fn: (token) => {
       if (token.info === '') {
         token.info = 'bash'
