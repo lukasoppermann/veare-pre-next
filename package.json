@@ -29,6 +29,7 @@
     "del": "3.*",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-babel": "7.*",
+    "gulp-changed": "^3.1.0",
     "gulp-concat": "^2.6.0",
     "gulp-cssnano": "^2.1.2",
     "gulp-filenames": "^4.0.1",
@@ -44,6 +45,7 @@
     "gulp-svgmin": "^1.2.2",
     "gulp-svgstore": "^6.0.0",
     "gulp-uglify": "^3.0.0",
+    "lighthouse": "^2.5.0",
     "lighthouse-ci": "git+https://github.com/ebidel/lighthouse-ci.git",
     "merge-stream": "^1.0.1",
     "nodemon": "^1.12.1",
@@ -56,7 +58,6 @@
     "sw-precache": "^5.1.0",
     "typescript": "^2.5.3",
     "typescript-eslint-parser": "^8.0.0",
-    "lighthouse": "^2.5.0",
     "uncss": "^0.15.0"
   },
   "dependencies": {

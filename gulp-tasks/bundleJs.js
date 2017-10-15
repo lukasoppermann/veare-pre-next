@@ -5,6 +5,7 @@ module.exports = function (bundles, filesToMove) {
   const concat = require('gulp-concat')
   const uglify = require('gulp-uglify')
   const error = require('./errorHandling.js')()
+  const changed = require('gulp-changed')
 
   return function bundleJs () {
     let stream = require('merge-stream')()
@@ -26,6 +27,7 @@ module.exports = function (bundles, filesToMove) {
         .pipe(savings.gziped())
         .pipe(sourcemaps.write('/'))
         .pipe(gulp.src(filesToMove, {passthrough: true}))
+        .pipe(changed('public/js'))
         .pipe(gulp.dest('public/js'))
         .on('end', () => savings.report('JS (' + key + '):'))
       )
