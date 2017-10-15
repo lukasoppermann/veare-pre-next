@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/lukasoppermann/veare#readme",
   "devDependencies": {
-    "@nuclei-components/grid": "^1.0.0",
+    "@nuclei-components/grid": "^1.0.1",
     "@types/contentful-resolve-response": "^0.1.30",
     "@types/express": "^4.0.37",
     "@types/node": "^8.0.31",
@@ -44,6 +44,7 @@
     "gulp-svgmin": "^1.2.2",
     "gulp-svgstore": "^6.0.0",
     "gulp-uglify": "^3.0.0",
+    "lighthouse": "^2.5.0",
     "lighthouse-ci": "git+https://github.com/ebidel/lighthouse-ci.git",
     "merge-stream": "^1.0.1",
     "nodemon": "^1.12.1",
@@ -56,7 +57,6 @@
     "sw-precache": "^5.1.0",
     "typescript": "^2.5.3",
     "typescript-eslint-parser": "^8.0.0",
-    "lighthouse": "^2.5.0",
     "uncss": "^0.15.0"
   },
   "dependencies": {
