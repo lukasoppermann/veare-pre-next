@@ -101,6 +101,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    --page-section-width: 100%;
   }
   .o-project-section__headline{
     font-family: var(--serif);
@@ -127,55 +128,91 @@
     background: #E1464B;
   }
   .o-corporate-colors{
-    display: block;
     width: 100%;
-    max-width: 1000px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     margin-bottom: var(--size-g);
   }
   .o-corporate-colors__color{
-    height: 200px;
-    width: 20%;
+    height: 240px;
+    flex: 0 0 23%;
     box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1), 5px 0 20px 0 rgba(0,0,0,0.15);
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: var(--size-m);
+    border-radius: 3px;
+    overflow: hidden;
   }
-  .o-corporate-colors__color--primary{
-    height: 220px;
-    width: 35%;
-    background-color: #E1464B;
-    background-image: linear-gradient(-180deg, #EB6065 0%, #E1464B 48%, #D94348 100%);
-    border-radius: 5px;
-    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.15), 10px 0 30px 0 rgba(0,0,0,0.20);
-  }
-  .o-corporate-colors__color--secondary{
-    width: 25%;
-    background-color: #B9323C;
-  }
-  .o-corporate-colors__color--tertiary{
-    background-color: #CDE1CD;
-    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05), 5px 0 20px 0 rgba(0,0,0,0.1);
-  }
-  .o-corporate-colors__color--tertiary .o-corporate-colors__name{
-    color: #05555A;
-  }
-  .o-corporate-colors__color--accent{
-    background-color: #5AAA96;
-    border-bottom-right-radius: 5px;
-    border-top-right-radius: 5px;
+  .o-corporate-colors__color_info{
+    background: var(--white);
+    padding: var(--size-s) var(--size-s) var(--size-h) var(--size-s);
+    display: flex;
+    flex-direction: column;
   }
   .o-corporate-colors__name{
     font-family: var(--sans-serif);
-    font-size: var(--type-medium);
-    color: var(--white);
+    font-size: var(--type-m);
+    font-weight: var(--sans-serif-bold);
+    color: var(--black);
   }
   .o-corporate-colors__hex{
-    font-size: var(--type-default);
+    font-size: var(--type-m);
     color: var(--type-grey);
     text-transform: uppercase;
+  }
+  .o-corporate-colors__color_field{
+    height: 100%;
+  }
+  .o-corporate-colors__color--primary .o-corporate-colors__color_field{
+    background-color: #E1464B;
+    background-image: linear-gradient(-180deg, rgb(232, 84, 89) 0%, rgb(218, 78, 83) 48%, rgb(217, 67, 72) 100%);
+  }
+  .o-corporate-colors__color--primary{
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.15), 10px 0 30px 0 rgba(0,0,0,0.20);
+  }
+  @media (min-width: 900px){
+    .o-corporate-colors__color{
+      flex-basis: 21%;
+    }
+    .o-corporate-colors__color--primary{
+      height: 283px;
+      flex-basis: 33%;
+    }
+    .o-corporate-colors__color--primary .o-corporate-colors__color_info{
+        padding-bottom: var(--size-xxh);
+    }
+  }
+  @media (max-width: 700px){
+    .o-corporate-colors{
+      flex-wrap: wrap;
+      margin-bottom: var(--size-xl);
+    }
+    .o-corporate-colors__color{
+      height: 240px;
+      flex-basis: 48%;
+      margin-bottom: 4%;
+    }
+  }
+  @media (max-width: 600px){
+    .o-corporate-colors{
+      flex-direction: column;
+    }
+    .o-corporate-colors__color{
+      width: 100%;
+      max-width: 280px;
+      margin-bottom: var(--size-s);
+    }
+  }
+  .o-corporate-colors__color--secondary .o-corporate-colors__color_field{
+    background-color: #B9323C;
+  }
+  .o-corporate-colors__color--tertiary .o-corporate-colors__color_field{
+    background-color: #CDE1CD;
+  }
+  .o-corporate-colors__color--accent .o-corporate-colors__color_field{
+    background-color: #5AAA96;
   }
   .copra-card-bottom-line{
     position: absolute;
@@ -228,6 +265,11 @@
     padding: var(--size-xs);
     box-sizing: border-box;
   }
+  @media (max-width: 400px){
+    .o-project-section{
+      padding: 0 var(--size-s);
+    }
+  }
 </style>
 <page-sections>
   <page-section class="o-section c-section-portfolio-top-image">
@@ -247,7 +289,7 @@
       {{> macbook-air screen="/media/copra_main.jpg"}}
     </div>
   </page-section>
-  <page-section class="c-section-portfolio-intro u-margin-bottom--xxg u-margin-top--xxh" centered maxwidth="1000px">
+  <page-section class="o-project-section c-section-portfolio-intro u-margin-bottom--xxg u-margin-top--xxh" centered maxwidth="1000px">
     <grid-container>
       <div columns="8s 3m">
         <h4 class="o-project-info__title">Industry</h4>
@@ -386,20 +428,32 @@
     <h3 class="o-project-section__headline">Corporate Colors</h3>
     <div class="o-corporate-colors">
       <div class="o-corporate-colors__color o-corporate-colors__color--primary">
-        <span class="o-corporate-colors__name">Primary color</span>
-        <span class="o-corporate-colors__hex">#E1464B</span>
+        <div class="o-corporate-colors__color_field"></div>
+        <div class="o-corporate-colors__color_info">
+          <span class="o-corporate-colors__name">Primary color</span>
+          <span class="o-corporate-colors__hex">#E1464B</span>
+        </div>
       </div>
       <div class="o-corporate-colors__color o-corporate-colors__color--secondary">
-        <span class="o-corporate-colors__name">Secondary color</span>
-        <span class="o-corporate-colors__hex">#B9323C</span>
+        <div class="o-corporate-colors__color_field"></div>
+        <div class="o-corporate-colors__color_info">
+          <span class="o-corporate-colors__name">Secondary color</span>
+          <span class="o-corporate-colors__hex">#B9323C</span>
+        </div>
       </div>
       <div class="o-corporate-colors__color o-corporate-colors__color--tertiary">
-        <span class="o-corporate-colors__name">Tertiary color</span>
-        <span class="o-corporate-colors__hex">#CDE1CD</span>
+        <div class="o-corporate-colors__color_field"></div>
+        <div class="o-corporate-colors__color_info">
+          <span class="o-corporate-colors__name">Tertiary color</span>
+          <span class="o-corporate-colors__hex">#CDE1CD</span>
+        </div>
       </div>
       <div class="o-corporate-colors__color o-corporate-colors__color--accent">
-        <span class="o-corporate-colors__name">Accent color</span>
-        <span class="o-corporate-colors__hex">#5AAA96</span>
+        <div class="o-corporate-colors__color_field"></div>
+        <div class="o-corporate-colors__color_info">
+          <span class="o-corporate-colors__name">Accent color</span>
+          <span class="o-corporate-colors__hex">#5AAA96</span>
+        </div>
       </div>
     </div>
     <grid-container columns="16" class="u-margin-bottom--xxg">
@@ -512,7 +566,7 @@
       <div columns="16s 14m 14l" start-column="0s 2m 2l">
         <h4 class="o-headline--h4">Other Products</h4>
       </div>
-      <div columns="16s 7m" start-column="0s 2m">
+      <div columns="16s 7m" start-column="0s 2m" class="u-margin-bottom--l">
         <p class="type--l">Once the website was finalized there where many other things that needed to be designed. This included materials needed when directly interacting with customers and potential hires including business cards, flyers, job postings, letter heads but also elements like a small and a big convention booth. </p>
       </div>
       <responsive-image columns="16s 6m" start-column="0s 10m"
@@ -528,7 +582,7 @@
       ></responsive-image>
     </grid-container>
   </page-section>
-  <page-section centered maxwidth="1000px" class="o-project-section-container">
+  <page-section centered maxwidth="1000px" class="o-project-section o-project-section-container">
     <div class="u-full-width u-margin-bottom--g" class="o-project-section-container">
       <a class="o-button o-button--floating o-button--primary u-margin-top--h" href="/portfolio">&larr; return to overview</a>
     </div>
