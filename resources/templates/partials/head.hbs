@@ -31,7 +31,7 @@
     } else {
       // if not 100% load polyfill and only load script once polyfill is ready
       let polyfill = document.createElement('script')
-      polyfill.setAttribute('src', '/js/webcomponents-loader.js')
+      polyfill.setAttribute('src', '/js/webcomponents-sd-ce.js')
       document.head.appendChild(polyfill)
       window.addEventListener('WebComponentsReady', function () {
         document.head.appendChild(script)

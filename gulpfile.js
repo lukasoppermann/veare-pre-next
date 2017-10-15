@@ -29,16 +29,7 @@ gulp.task('bundleJs', require('./gulp-tasks/bundleJs.js')({
 },
   // files to only be moved to js folder
   [
-    'node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js',
-    'node_modules/@webcomponents/webcomponentsjs/webcomponents-hi-sd-ce.js',
-    'node_modules/@webcomponents/webcomponentsjs/webcomponents-hi-ce.js',
-    'node_modules/@webcomponents/webcomponentsjs/webcomponents-hi.js',
-    'node_modules/@webcomponents/webcomponentsjs/webcomponents-lite.js',
     'node_modules/@webcomponents/webcomponentsjs/webcomponents-sd-ce.js',
-    'node_modules/@webcomponents/webcomponentsjs/webcomponents-hi-sd-ce.js.map',
-    'node_modules/@webcomponents/webcomponentsjs/webcomponents-hi-ce.js.map',
-    'node_modules/@webcomponents/webcomponentsjs/webcomponents-hi.js.map',
-    'node_modules/@webcomponents/webcomponentsjs/webcomponents-lite.js.map',
     'node_modules/@webcomponents/webcomponentsjs/webcomponents-sd-ce.js.map'
   ]
 ))
