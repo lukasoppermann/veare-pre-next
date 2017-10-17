@@ -44,7 +44,6 @@
     "gulp-svgstore": "^6.0.0",
     "gulp-uglify": "^3.0.0",
     "merge-stream": "^1.0.1",
-    "nodemon": "^1.12.1",
     "page-sections": "^0.4.1",
     "prismjs": "^1.8.1",
     "responsive-image": "^0.2.3",
@@ -75,7 +74,6 @@
   },
   "scripts": {
     "start": "gulp serve",
-    "nodemon": "nodemon --watch app.js",
     "forever": "forever start -v --watch --watchedDirectory=/Users/lukasoppermann/code/veare app.js",
     "test": "standard 'app.js' 'resources/js/*.js' 'app/**/*.js' 'gulp-tasks/*.js' | snazzy && npm run test-server && node test/links.js && kill -9 $(lsof -sTCP:LISTEN -i:8888 -t) &>/dev/null 2>&1",
     "test-server": "NODE_ENV=testing NODE_PORT=8888 node app.js &",
