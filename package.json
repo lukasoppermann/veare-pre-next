@@ -32,10 +32,8 @@
     "gulp-changed": "^3.1.0",
     "gulp-concat": "^2.6.0",
     "gulp-cssnano": "^2.1.2",
-    "gulp-filenames": "^4.0.1",
     "gulp-forever-monitor": "^1.0.3",
     "gulp-imagemin": "^3.3.0",
-    "gulp-nodemon": "^2.2.1",
     "gulp-rename": "^1.2.0",
     "gulp-rev": "^8.0.0",
     "gulp-rev-delete-original": "^0.2.3",
@@ -45,8 +43,6 @@
     "gulp-svgmin": "^1.2.2",
     "gulp-svgstore": "^6.0.0",
     "gulp-uglify": "^3.0.0",
-    "lighthouse": "^2.5.0",
-    "lighthouse-ci": "git+https://github.com/ebidel/lighthouse-ci.git",
     "merge-stream": "^1.0.1",
     "nodemon": "^1.12.1",
     "page-sections": "^0.4.1",
@@ -57,8 +53,7 @@
     "standard": "^10.0.3",
     "sw-precache": "^5.1.0",
     "typescript": "^2.5.3",
-    "typescript-eslint-parser": "^8.0.0",
-    "uncss": "^0.15.0"
+    "typescript-eslint-parser": "^8.0.0"
   },
   "dependencies": {
     "contentful": "^4.6.2",
@@ -68,7 +63,6 @@
     "express-basic-auth": "^1.1.2",
     "express-handlebars": "^3.0.0",
     "forever": "^0.15.3",
-    "handlebars-helpers": "^0.9.8",
     "markdown-it": "^8.4.0",
     "markdown-it-anchor": "^4.0.0",
     "markdown-it-attrs": "^1.2.0",
@@ -83,9 +77,8 @@
     "start": "gulp serve",
     "nodemon": "nodemon --watch app.js",
     "forever": "forever start -v --watch --watchedDirectory=/Users/lukasoppermann/code/veare app.js",
-    "test": "standard 'app.js' 'resources/js/*.js' 'app/**/*.js' 'gulp-tasks/*.js' | snazzy && node test/links.js && npm run lighthouse",
+    "test": "standard 'app.js' 'resources/js/*.js' 'app/**/*.js' 'gulp-tasks/*.js' | snazzy && npm run test-server && node test/links.js && kill -9 $(lsof -sTCP:LISTEN -i:8888 -t) &>/dev/null 2>&1",
     "test-server": "NODE_ENV=testing NODE_PORT=8888 node app.js &",
-    "lighthouse": "npm run test-server && NODE_ENV=testing NODE_PORT=8888 node test/lighthouse.js && pkill node",
     "travis": "npm run test"
   }
 }
