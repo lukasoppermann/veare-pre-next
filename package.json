@@ -42,17 +42,22 @@
     "gulp-standard-bundle": "^0.2.6",
     "gulp-svgmin": "^1.2.2",
     "gulp-svgstore": "^6.0.0",
+    "gulp-typescript": "^3.2.2",
     "gulp-uglify": "^3.0.0",
     "merge-stream": "^1.0.1",
     "page-sections": "^0.4.3",
     "prismjs": "^1.8.3",
     "responsive-image": "^0.2.3",
     "rev-del": "^1.0.5",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-typescript": "^0.8.1",
+    "rollup-stream": "^1.24.1",
     "snazzy": "^7.0.0",
     "standard": "^10.0.3",
     "sw-precache": "^5.1.0",
     "typescript": "^2.5.3",
-    "typescript-eslint-parser": "^8.0.0"
+    "typescript-eslint-parser": "^8.0.0",
+    "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
     "contentful": "^4.6.4",

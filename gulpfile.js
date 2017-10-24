@@ -33,6 +33,16 @@ gulp.task('bundleJs', require('./gulp-tasks/bundleJs.js')({
     'node_modules/@webcomponents/webcomponentsjs/webcomponents-sd-ce.js.map'
   ]
 ))
+gulp.task('rollup', require('./gulp-tasks/rollup.js')(
+  [
+    'resources/js/test.ts',
+  ],
+  // files to only be moved to js folder
+  [
+    'node_modules/@webcomponents/webcomponentsjs/webcomponents-sd-ce.js',
+    'node_modules/@webcomponents/webcomponentsjs/webcomponents-sd-ce.js.map'
+  ]
+))
 /* ------------------------------
  *
  * POST CSS
