@@ -1,0 +1,208 @@
+<style media="screen">
+.c-portfolio-card--copra{
+  position: relative;
+  width: 75%;
+  background-color: #E1464B;
+  height: 480px;
+  box-shadow: 0 20px 40px 0 rgba(0,0,0,0.20);
+  overflow: hidden;
+}
+.copra-logo{
+  padding-left: var(--size-xxh);
+  padding-top: var(--size-xg);
+}
+.copra-content h4{
+  color: var(--white);
+  font-size: var(--type-g);
+  font-weight: var(--sans-serif-bold);
+  padding-left: var(--size-xxh);
+  padding-top: var(--size-g);
+}
+.copra-description{
+  padding-left: var(--size-xxh);
+  width: 280px;
+  color: var(--white);
+  font-size: var(--type-xl);
+  line-height: var(--type-xl-lineheight);
+}
+.o-macbook-air{
+  position: absolute;
+  right: 0;
+  top: var(--size-g);
+  width: 65%;
+  height: auto;
+}
+.o-device--macbook-air{
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+.copra-medium-red{
+  position: absolute;
+  transform: rotate(25deg);
+  top: -80px;
+  right: 0;
+  height: 700px;
+  width: 400px;
+  background: #CD3C40;
+}
+.copra-dark-red{
+  position: absolute;
+  transform: rotate(25deg);
+  top: -80px;
+  right: -90px;
+  height: 700px;
+  width: 200px;
+  background: #B4363A;
+}
+.portfolio-link{
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  color: var(--white);
+  font-size: var(--type-xl);
+  margin-top: var(--size-xxh);
+  margin-left: var(--size-xxh);
+  left: calc(-1 * var(--size-s));
+  padding: var(--size-s);
+  transition: all .35s ease;
+}
+.portfolio-link svg{
+  height: 10px;
+  padding-left: var(--size-xs);
+  padding-bottom: 2px;
+  fill: #fff;
+  transition: all .35s ease;
+}
+.portfolio-link:hover{
+  background: var(--white);
+  color: #E1464B;
+  box-shadow: 0 10px 20px 0 rgba(0,0,0,0.10), 0 1px 3px 0 rgba(0,0,0,0.20);
+}
+.portfolio-link:hover svg{
+  fill: #E1464B;
+}
+.wrapper{
+  position: relative;
+  width: 100%;
+  margin-bottom: var(--size-xxg);
+}
+.copra-content{
+  position: relative;
+}
+@media (max-width: 1200px) {
+  .wrapper{
+    padding-left: var(--size-m);
+    padding-right: var(--size-m);
+  }
+  .o-macbook-air{
+    top: 100px;
+    width: 60%;
+    right: var(--size-m);
+  }
+  .c-portfolio-card--copra{
+    height: 440px;
+  }
+  .portfolio-link{
+    margin-top: var(--size-xxl);
+  }
+  .copra-logo{
+    padding-top: var(--size-g);
+  }
+}
+@media (max-width: 1050px) {
+  .o-macbook-air{
+    top: 170px;
+  }
+  .copra-logo{
+    width: 250px;
+  }
+  .copra-medium-red{
+    top: -80px;
+    right: 0;
+    width: 300px;
+  }
+  .copra-dark-red{
+    top: -80px;
+    right: -90px;
+    width: 180px;
+  }
+}
+@media (max-width: 900px) {
+  .wrapper{
+    width: 100%;
+    max-width: 700px;
+    margin-bottom: 300px;
+  }
+  .c-portfolio-card--copra{
+    width: 100%;
+    height: 480px;
+  }
+  .o-macbook-air{
+    top: 240px;
+    width: calc(100% - var(--size-m) * 2 );
+  }
+  .copra-content h4{
+    padding-top: var(--size-h);
+  }
+  .copra-description{
+    float: left;
+  }
+  .portfolio-link{
+    margin-left: var(--size-g);
+  }
+}
+@media (max-width: 680px) {
+  .copra-description{
+    float: none;
+  }
+  .portfolio-link {
+    margin-left: var(--size-xxh);
+    margin-top: var(--size-m);
+  }
+  .o-macbook-air{
+    top: 280px;
+  }
+  .wrapper{
+    margin-bottom: 250px;
+  }
+}
+@media (max-width: 500px) {
+  .wrapper{
+    margin-bottom: 150px;
+  }
+}
+@media (max-width: 400px) {
+  .c-portfolio-card--copra{
+    height: 440px;
+  }
+  .copra-content h4{
+    padding-left: var(--size-xxl);
+  }
+  .copra-description{
+    padding-left: var(--size-xxl);
+    width: 240px;
+    font-size: var(--type-l);
+  }
+  .portfolio-link{
+    margin-left: var(--size-xxl);
+  }
+  .o-macbook-air{
+    top: 280px;
+  }
+}
+</style>
+<div class="wrapper u-margin-top--g">
+  <div class="c-portfolio-card--copra">
+    <div class="copra-medium-red"></div>
+    <div class="copra-dark-red"></div>
+    <div class="copra-content">
+      <h4>Copra</h4>
+      <p class="copra-description">Patient data management system for hospitals.</p>
+      <a class="portfolio-link" href="/portfolio/copra">View case{{{inline_svg 'resources/svgs/arrow-right.svg'}}}</a>
+    </div>
+  </div>
+  <div class="o-macbook-air">
+    <img src="/media/copra-macbook.png" alt="copra corporate identity" />
+  </div>
+</div>

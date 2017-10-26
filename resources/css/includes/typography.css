@@ -47,6 +47,9 @@
 
   --type-h: var(--size-h);
   --type-h-lineheight: 140%;
+
+  --type-g: var(--size-g);
+  --type-g-lineheight: 140%;
   /*
    * type colors
    */
