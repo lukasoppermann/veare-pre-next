@@ -19,7 +19,9 @@ let modifiers = {
     fn: (token) => { token.tag = 'h4' }
   },
   blockquote: {
-    class: 'o-blockquote'
+    class: 'o-blockquote',
+    columns: '16s 15m 14l',
+    'start-column': '0s 2m 3l'
   },
   p: {
     class: 'o-paragraph',
