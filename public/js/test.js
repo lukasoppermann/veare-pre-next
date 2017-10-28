@@ -1,1 +1,0 @@
-!function(){"use strict";let o=((o,t)=>o+t)(1,2);console.log(o)}();

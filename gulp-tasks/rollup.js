@@ -3,7 +3,6 @@ module.exports = function (bundles, filesToMove) {
   const rollup = require('rollup-stream')
   const source = require('vinyl-source-stream')
   const sourcemaps = require('gulp-sourcemaps')
-  const ts = require('gulp-typescript')
   const error = require('./errorHandling.js')()
   const changed = require('gulp-changed')
   const typescript = require('rollup-plugin-typescript')
@@ -11,13 +10,12 @@ module.exports = function (bundles, filesToMove) {
   const streamify = require('gulp-streamify')
   const uglifyes = require('uglify-es')
   const composer = require('gulp-uglify/composer')
-  const uglify = composer(uglifyes, console);
+  const uglify = composer(uglifyes, console)
 
   return function bundleJs () {
     let stream = require('merge-stream')()
     bundles.forEach(function (bundle) {
-      let savings = require('./savingsReporter')()
-      let fileName = bundle.replace(/^.*[\\\/]/, '').slice(0, -3)
+      let fileName = bundle.replace(/^.*[\\/]/, '').slice(0, -3)
 
       stream.add(
         rollup({
@@ -42,17 +40,14 @@ module.exports = function (bundles, filesToMove) {
         })
         .on('error', error)
         // rename
-        // .pipe(savings.start())
-        // .pipe(savings.stop())
-        // .pipe(savings.gziped())
         .pipe(source(fileName + '.js'))
         .pipe(streamify(uglify()))
+        .pipe(streamify(sourcemaps.init({loadMaps: true})))
+        .pipe(streamify(sourcemaps.write('/')))
         .pipe(gulp.dest('public/js'))
-        .pipe(sourcemaps.write('/'))
         .pipe(gulp.src(filesToMove, {passthrough: true}))
         .pipe(changed('public/js'))
         .pipe(gulp.dest('public/js'))
-        // .on('end', () => savings.report('JS (' + fileName + '):'))
       )
     })
     return stream

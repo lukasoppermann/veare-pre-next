@@ -35,7 +35,7 @@ gulp.task('bundleJs', require('./gulp-tasks/bundleJs.js')({
 ))
 gulp.task('rollup', require('./gulp-tasks/rollup.js')(
   [
-    'resources/js/test.ts',
+    'resources/js/common.ts'
   ],
   // files to only be moved to js folder
   [
