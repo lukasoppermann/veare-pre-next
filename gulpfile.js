@@ -7,26 +7,7 @@ const browserSync = require('browser-sync')
  * JS
  *
  */
-gulp.task('bundleJs', require('./gulp-tasks/bundleJs.js')({
-  common: [
-    'resources/js/config.js',
-    'resources/js/analytics.js',
-    'resources/js/menu.js',
-    'resources/js/app.js'
-  ],
-  webcomponents: [
-    'node_modules/page-sections/dist/page-sections.js',
-    'node_modules/@nuclei-components/grid/dist/grid.js',
-    'node_modules/responsive-image/dist/responsiveImage.js'
-  ],
-  registerServiceWorker: [
-    'resources/js/register-service-worker.js'
-  ],
-  blog: [
-    'node_modules/prismjs/prism.js',
-    'node_modules/prismjs/components/prism-bash.js'
-  ]
-},
+gulp.task('bundleJs', require('./gulp-tasks/rollup.js')('resources/js/',
   // files to only be moved to js folder
   [
     'node_modules/@webcomponents/webcomponentsjs/webcomponents-sd-ce.js',
