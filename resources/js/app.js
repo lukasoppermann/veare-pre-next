@@ -1,4 +1,4 @@
-/* global Menu */
+import { Menu } from './modules/menu'
 
 const menu = new Menu('.o-nav')
 menu.transitionOnScroll()

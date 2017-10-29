@@ -39,7 +39,7 @@ module.exports = (app) => {
       })
     })
     // home & contact
-    app.get(/^\/(home|contact)/, function (req, res) {
+    app.get(/^\/(home)/, function (req, res) {
       res.render('index', {
         files: files,
         pageClass: 'c-page--index',
@@ -57,16 +57,18 @@ module.exports = (app) => {
     app.get(/^\/about\/([\w-]+)?$/, function (req, res) {
       res.redirect('/#about')
     })
+    // contact
+    app.get(/^\/contact\/([\w-]+)?$/, function (req, res) {
+      res.redirect('/#contact')
+    })
     // Blog
     app.get(/^\/blog\/?$/, (req, res) => blog.index(req, res, {
       files: files,
-      pageClass: 'c-page--blog',
-      layout: 'main-without-footer'
+      pageClass: 'c-page--blog'
     }))
     app.get(/^\/blog\/([\w-]+)/, (req, res) => blog.get(req, res, {
       files: files,
-      pageClass: 'c-page--blog',
-      layout: 'main-without-footer'
+      pageClass: 'c-page--blog'
     }))
     // Portfolio
     // no portfolio item selected
@@ -75,7 +77,7 @@ module.exports = (app) => {
     })
     // show portfolio item
     app.get(/^\/portfolio\/?([\w-]*)$/, function (req, res) {
-      res.render('portfolio/' + req.params[0], {
+      res.render('./portfolio/' + req.params[0] + '.hbs', {
         files: files,
         pageClass: 'c-page--portfolio-item'
       }, function (err, html) {

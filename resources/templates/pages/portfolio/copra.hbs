@@ -1,0 +1,593 @@
+{{> layouts/base title="| Portfolio – Copra" }}
+{{#*inline "body"}}
+  <style media="screen">
+    @media (max-width: 1020px){
+      page-section{
+        padding: 0 var(--size-m);
+      }
+    }
+    .c-section-portfolio-top-image{
+      position: relative;
+      overflow: visible;
+      display: flex;
+      margin-bottom: -300px;
+      padding: 0;
+    }
+    .o-stage{
+      margin-top: 25px;
+      margin-bottom: 25px;
+      margin-left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      height: auto;
+    }
+    .o-stage svg{
+      width: 100%;
+      height: auto;
+    }
+    .c-headline--copra{
+      z-index: 100;
+      padding: 50px 35px 45px;
+      width: 50%;
+      color: white;
+      position: absolute;
+      right: 0;
+      top: 380px;
+      background-color: #E1464B;
+      box-shadow: 0 5px 30px 0 rgba(0,0,0,0.15);
+    }
+    .c-section-portfolio-top-image:before{
+      content: "";
+      display: block;
+      position: absolute;
+      height: 400px;
+      width: 50%;
+      top: 170px;
+      background-color: #E1464B;
+      z-index: 0;
+    }
+    @media (max-width: 1100px){
+      .c-section-portfolio-top-image:before{
+        height: 300px;
+      }
+      .c-headline--copra{
+        top: 280px;
+      }
+      .c-section-portfolio-top-image{
+        margin-bottom: -250px;
+      }
+    }
+    @media (max-width: 960px){
+      .c-headline--copra{
+        top: 240px;
+        padding: 30px 25px 25px;
+      }
+    }
+    @media (max-width: 880px){
+      .o-stage{
+        width: 96%;
+      }
+      .c-section-portfolio-top-image:before{
+        height: 200px;
+        top: 100px;
+      }
+      .c-headline--copra{
+        top: 250px;
+        padding: 30px 25px 25px;
+        width: 450px;
+      }
+      .c-section-portfolio-top-image{
+        margin-bottom: -150px;
+      }
+    }
+    @media (max-width: 600px){
+      .c-section-portfolio-top-image{
+        margin-bottom: -50px;
+      }
+      .c-headline--copra svg{
+        width: 100%;
+      }
+    }
+    @media (max-width: 500px){
+      .c-section-portfolio-top-image{
+        margin-bottom: 50px;
+      }
+      .c-headline--copra{
+        padding: 20px 25px 15px;
+        width: 100%;
+      }
+    }
+    .o-project-section{
+      min-height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      --page-section-width: 100%;
+    }
+    .o-project-section__headline{
+      font-family: var(--serif);
+      font-style: italic;
+      width: 100%;
+      max-width: 1000px;
+      text-align: center;
+      position: relative;
+      display: inline-block;
+      height: auto;
+      padding-bottom: var(--size-xl);
+      margin-bottom: var(--size-g)
+    }
+    .o-project-section__headline:before{
+      content: "";
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: block;
+      width: 140px;
+      height: 7px;
+      height: 1px;
+      background: #E1464B;
+    }
+    .o-corporate-colors{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--size-g);
+    }
+    .o-corporate-colors__color{
+      height: 240px;
+      flex: 0 0 23%;
+      box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1), 5px 0 20px 0 rgba(0,0,0,0.15);
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .o-corporate-colors__color_info{
+      background: var(--white);
+      padding: var(--size-s) var(--size-s) var(--size-h) var(--size-s);
+      display: flex;
+      flex-direction: column;
+    }
+    .o-corporate-colors__name{
+      font-family: var(--sans-serif);
+      font-size: var(--type-m);
+      font-weight: var(--sans-serif-bold);
+      color: var(--black);
+    }
+    .o-corporate-colors__hex{
+      font-size: var(--type-m);
+      color: var(--type-grey);
+      text-transform: uppercase;
+    }
+    .o-corporate-colors__color_field{
+      height: 100%;
+    }
+    .o-corporate-colors__color--primary .o-corporate-colors__color_field{
+      background-color: #E1464B;
+      background-image: linear-gradient(-180deg, rgb(232, 84, 89) 0%, rgb(218, 78, 83) 48%, rgb(217, 67, 72) 100%);
+    }
+    .o-corporate-colors__color--primary{
+      box-shadow: 0 1px 4px 0 rgba(0,0,0,0.15), 10px 0 30px 0 rgba(0,0,0,0.20);
+    }
+    @media (min-width: 900px){
+      .o-corporate-colors__color{
+        flex-basis: 21%;
+      }
+      .o-corporate-colors__color--primary{
+        height: 283px;
+        flex-basis: 33%;
+      }
+      .o-corporate-colors__color--primary .o-corporate-colors__color_info{
+          padding-bottom: var(--size-xxh);
+      }
+    }
+    @media (max-width: 700px){
+      .o-corporate-colors{
+        flex-wrap: wrap;
+        margin-bottom: var(--size-xl);
+      }
+      .o-corporate-colors__color{
+        height: 240px;
+        flex-basis: 48%;
+        margin-bottom: 4%;
+      }
+    }
+    @media (max-width: 600px){
+      .o-corporate-colors{
+        flex-direction: column;
+      }
+      .o-corporate-colors__color{
+        width: 100%;
+        max-width: 280px;
+        margin-bottom: var(--size-s);
+      }
+    }
+    .o-corporate-colors__color--secondary .o-corporate-colors__color_field{
+      background-color: #B9323C;
+    }
+    .o-corporate-colors__color--tertiary .o-corporate-colors__color_field{
+      background-color: #CDE1CD;
+    }
+    .o-corporate-colors__color--accent .o-corporate-colors__color_field{
+      background-color: #5AAA96;
+    }
+    .copra-card-bottom-line{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background: #E1464B;
+      height: var(--size-xs);
+      width: 100%;
+    }
+    .copra-card-bottom-line:before, .copra-card-bottom-line:after{
+      content: "";
+      position: absolute;
+      height: var(--size-xs);
+    }
+    .copra-card-bottom-line:before{
+      width: 31%;
+      left: 51%;
+      background: #B9323C;
+    }
+    .copra-card-bottom-line:after{
+      width: 18%;
+      right: 0;
+      background: #5AAA96;
+    }
+    .c-copra-photo-grid{
+      grid-template-rows: repeat(10, var(--size-xh));
+      width: 100%;
+    }
+    .c-copra-logo-presenter-grid{
+      height: 800px;
+    }
+    .c-copra-logo-presenter{
+      background: #EDE9E7;
+      width: 100%;
+    }
+    @media (min-width: 800px){
+      .copra-logo-final{
+        transform: translateY(-30%)
+      }
+      .c-copra-intro-card{
+        margin-top: var(--size-xh);
+      }
+      grid-container{
+        grid-gap: var(--size-xl);
+      }
+    }
+    .c-copra-audience-svg{
+      width: 100px;
+      height: 100px;
+      padding: var(--size-xs);
+      box-sizing: border-box;
+    }
+    @media (max-width: 400px){
+      .o-project-section{
+        padding: 0 var(--size-s);
+      }
+    }
+  </style>
+  <page-sections>
+    <page-section class="o-section c-section-portfolio-top-image">
+      <div class="c-headline--copra">
+        <svg width="348px" height="111px" viewBox="0 0 348 111" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g transform="translate(-662.000000, -447.000000)" fill="#FFFFFF">
+              <g transform="translate(658.000000, 420.000000)">
+                <path d="M20.85,124.225 C20.85,129.175 17.05,133 11.55,133 L5.475,133 L5.475,115.5 L11.55,115.5 C17.05,115.5 20.85,119.275 20.85,124.225 Z M18.8,124.275 C18.8,120.375 15.975,117.325 11.55,117.325 L7.45,117.325 L7.45,131.175 L11.55,131.175 C15.975,131.175 18.8,128.175 18.8,124.275 Z M27.05,117.25 L27.05,115.125 L24.85,115.125 L24.85,117.25 L27.05,117.25 Z M26.9,133 L26.9,120.075 L24.975,120.075 L24.975,133 L26.9,133 Z M43.775,130.75 C43.775,134.925 41.175,137.05 37.2,137.05 C35.05,137.05 33.05,136.45 31.325,135.25 L32.2,133.75 C33.675,134.825 35.325,135.4 37.175,135.4 C40.025,135.4 41.875,133.825 41.875,130.8 L41.875,129.275 C40.75,130.775 39.175,132 36.8,132 C33.7,132 30.725,129.7 30.725,125.925 C30.725,122.125 33.725,119.8 36.8,119.8 C39.225,119.8 40.8,121 41.85,122.4 L41.85,120.075 L43.775,120.075 L43.775,130.75 Z M41.925,125.9 C41.925,123.225 39.625,121.5 37.175,121.5 C34.725,121.5 32.7,123.175 32.7,125.875 C32.7,128.525 34.775,130.3 37.175,130.3 C39.625,130.3 41.925,128.55 41.925,125.9 Z M50.425,117.25 L50.425,115.125 L48.225,115.125 L48.225,117.25 L50.425,117.25 Z M50.275,133 L50.275,120.075 L48.35,120.075 L48.35,133 L50.275,133 Z M57.45,121.775 L61.55,121.775 L61.55,120.075 L57.45,120.075 L57.45,116.175 L55.525,116.175 L55.525,120.075 L53.725,120.075 L53.725,121.775 L55.525,121.775 L55.525,129.575 C55.525,132.2 57.1,133.225 59.175,133.225 C60.1,133.225 60.825,133.025 61.5,132.675 L61.5,131.025 C60.825,131.35 60.275,131.475 59.625,131.475 C58.325,131.475 57.45,130.9 57.45,129.325 L57.45,121.775 Z M69.725,121.6 C68.2,121.6 67,122 65.8,122.55 L65.225,120.975 C66.65,120.325 68.05,119.9 69.925,119.9 C73.45,119.9 75.425,121.7 75.425,125.1 L75.425,133 L73.575,133 L73.575,131.05 C72.675,132.225 71.175,133.275 68.9,133.275 C66.5,133.275 64.075,131.925 64.075,129.225 C64.075,126.475 66.325,125.025 69.6,125.025 C71.25,125.025 72.425,125.25 73.575,125.575 L73.575,125.125 C73.575,122.8 72.15,121.6 69.725,121.6 Z M69.8,126.45 C67.375,126.45 66.025,127.5 66.025,129.15 C66.025,130.8 67.525,131.75 69.275,131.75 C71.65,131.75 73.6,130.3 73.6,128.25 L73.6,127 C72.65,126.725 71.375,126.45 69.8,126.45 Z M81.725,133 L81.725,114.75 L79.8,114.75 L79.8,133 L81.725,133 Z M106.95,126.525 C106.95,130.775 103.9,133.275 100.775,133.275 C98.375,133.275 96.825,131.975 95.825,130.525 L95.825,137 L93.9,137 L93.9,120.075 L95.825,120.075 L95.825,122.675 C96.875,121.125 98.4,119.8 100.775,119.8 C103.875,119.8 106.95,122.25 106.95,126.525 Z M104.975,126.55 C104.975,123.475 102.875,121.525 100.425,121.525 C98.025,121.525 95.75,123.525 95.75,126.525 C95.75,129.55 98.025,131.55 100.425,131.55 C102.925,131.55 104.975,129.7 104.975,126.55 Z M115.275,121.6 C113.75,121.6 112.55,122 111.35,122.55 L110.775,120.975 C112.2,120.325 113.6,119.9 115.475,119.9 C119,119.9 120.975,121.7 120.975,125.1 L120.975,133 L119.125,133 L119.125,131.05 C118.225,132.225 116.725,133.275 114.45,133.275 C112.05,133.275 109.625,131.925 109.625,129.225 C109.625,126.475 111.875,125.025 115.15,125.025 C116.8,125.025 117.975,125.25 119.125,125.575 L119.125,125.125 C119.125,122.8 117.7,121.6 115.275,121.6 Z M115.35,126.45 C112.925,126.45 111.575,127.5 111.575,129.15 C111.575,130.8 113.075,131.75 114.825,131.75 C117.2,131.75 119.15,130.3 119.15,128.25 L119.15,127 C118.2,126.725 116.925,126.45 115.35,126.45 Z M127.775,121.775 L131.875,121.775 L131.875,120.075 L127.775,120.075 L127.775,116.175 L125.85,116.175 L125.85,120.075 L124.05,120.075 L124.05,121.775 L125.85,121.775 L125.85,129.575 C125.85,132.2 127.425,133.225 129.5,133.225 C130.425,133.225 131.15,133.025 131.825,132.675 L131.825,131.025 C131.15,131.35 130.6,131.475 129.95,131.475 C128.65,131.475 127.775,130.9 127.775,129.325 L127.775,121.775 Z M137.625,117.25 L137.625,115.125 L135.425,115.125 L135.425,117.25 L137.625,117.25 Z M137.475,133 L137.475,120.075 L135.55,120.075 L135.55,133 L137.475,133 Z M143.2,127.25 C143.475,130.05 145.475,131.625 147.75,131.625 C149.525,131.625 150.775,130.9 151.825,129.8 L153.025,130.875 C151.725,132.325 150.15,133.3 147.7,133.3 C144.15,133.3 141.25,130.575 141.25,126.55 C141.25,122.8 143.875,119.8 147.45,119.8 C151.275,119.8 153.475,122.85 153.475,126.65 C153.475,126.825 153.475,127.025 153.45,127.25 L143.2,127.25 Z M143.2,125.825 L151.525,125.825 C151.325,123.475 149.975,121.425 147.4,121.425 C145.15,121.425 143.45,123.3 143.2,125.825 Z M158.875,125.6 C158.875,123.175 160.525,121.55 162.75,121.55 C165.025,121.55 166.325,123.05 166.325,125.45 L166.325,133 L168.25,133 L168.25,124.975 C168.25,121.9 166.425,119.8 163.3,119.8 C161.075,119.8 159.725,120.925 158.875,122.325 L158.875,120.075 L156.95,120.075 L156.95,133 L158.875,133 L158.875,125.6 Z M175.05,121.775 L179.15,121.775 L179.15,120.075 L175.05,120.075 L175.05,116.175 L173.125,116.175 L173.125,120.075 L171.325,120.075 L171.325,121.775 L173.125,121.775 L173.125,129.575 C173.125,132.2 174.7,133.225 176.775,133.225 C177.7,133.225 178.425,133.025 179.1,132.675 L179.1,131.025 C178.425,131.35 177.875,131.475 177.225,131.475 C175.925,131.475 175.05,130.9 175.05,129.325 L175.05,121.775 Z M200.5,122.375 C199.8,120.925 198.45,119.8 196.35,119.8 C194.175,119.8 193.025,120.975 192.175,122.25 L192.175,120.075 L190.25,120.075 L190.25,133 L192.175,133 L192.175,125.625 C192.175,123.25 193.725,121.55 195.775,121.55 C197.825,121.55 199.1,122.975 199.1,125.4 L199.1,133 L201,133 L201,125.55 C201,123 202.625,121.55 204.575,121.55 C206.675,121.55 207.925,122.95 207.925,125.45 L207.925,133 L209.85,133 L209.85,125 C209.85,121.8 208.025,119.8 205.05,119.8 C202.8,119.8 201.425,120.95 200.5,122.375 Z M218.8,121.6 C217.275,121.6 216.075,122 214.875,122.55 L214.3,120.975 C215.725,120.325 217.125,119.9 219,119.9 C222.525,119.9 224.5,121.7 224.5,125.1 L224.5,133 L222.65,133 L222.65,131.05 C221.75,132.225 220.25,133.275 217.975,133.275 C215.575,133.275 213.15,131.925 213.15,129.225 C213.15,126.475 215.4,125.025 218.675,125.025 C220.325,125.025 221.5,125.25 222.65,125.575 L222.65,125.125 C222.65,122.8 221.225,121.6 218.8,121.6 Z M218.875,126.45 C216.45,126.45 215.1,127.5 215.1,129.15 C215.1,130.8 216.6,131.75 218.35,131.75 C220.725,131.75 222.675,130.3 222.675,128.25 L222.675,127 C221.725,126.725 220.45,126.45 218.875,126.45 Z M230.625,125.6 C230.625,123.175 232.275,121.55 234.5,121.55 C236.775,121.55 238.075,123.05 238.075,125.45 L238.075,133 L240,133 L240,124.975 C240,121.9 238.175,119.8 235.05,119.8 C232.825,119.8 231.475,120.925 230.625,122.325 L230.625,120.075 L228.7,120.075 L228.7,133 L230.625,133 L230.625,125.6 Z M248.875,121.6 C247.35,121.6 246.15,122 244.95,122.55 L244.375,120.975 C245.8,120.325 247.2,119.9 249.075,119.9 C252.6,119.9 254.575,121.7 254.575,125.1 L254.575,133 L252.725,133 L252.725,131.05 C251.825,132.225 250.325,133.275 248.05,133.275 C245.65,133.275 243.225,131.925 243.225,129.225 C243.225,126.475 245.475,125.025 248.75,125.025 C250.4,125.025 251.575,125.25 252.725,125.575 L252.725,125.125 C252.725,122.8 251.3,121.6 248.875,121.6 Z M248.95,126.45 C246.525,126.45 245.175,127.5 245.175,129.15 C245.175,130.8 246.675,131.75 248.425,131.75 C250.8,131.75 252.75,130.3 252.75,128.25 L252.75,127 C251.8,126.725 250.525,126.45 248.95,126.45 Z M271.075,130.75 C271.075,134.925 268.475,137.05 264.5,137.05 C262.35,137.05 260.35,136.45 258.625,135.25 L259.5,133.75 C260.975,134.825 262.625,135.4 264.475,135.4 C267.325,135.4 269.175,133.825 269.175,130.8 L269.175,129.275 C268.05,130.775 266.475,132 264.1,132 C261,132 258.025,129.7 258.025,125.925 C258.025,122.125 261.025,119.8 264.1,119.8 C266.525,119.8 268.1,121 269.15,122.4 L269.15,120.075 L271.075,120.075 L271.075,130.75 Z M269.225,125.9 C269.225,123.225 266.925,121.5 264.475,121.5 C262.025,121.5 260,123.175 260,125.875 C260,128.525 262.075,130.3 264.475,130.3 C266.925,130.3 269.225,128.55 269.225,125.9 Z M276.625,127.25 C276.9,130.05 278.9,131.625 281.175,131.625 C282.95,131.625 284.2,130.9 285.25,129.8 L286.45,130.875 C285.15,132.325 283.575,133.3 281.125,133.3 C277.575,133.3 274.675,130.575 274.675,126.55 C274.675,122.8 277.3,119.8 280.875,119.8 C284.7,119.8 286.9,122.85 286.9,126.65 C286.9,126.825 286.9,127.025 286.875,127.25 L276.625,127.25 Z M276.625,125.825 L284.95,125.825 C284.75,123.475 283.4,121.425 280.825,121.425 C278.575,121.425 276.875,123.3 276.625,125.825 Z M300.625,122.375 C299.925,120.925 298.575,119.8 296.475,119.8 C294.3,119.8 293.15,120.975 292.3,122.25 L292.3,120.075 L290.375,120.075 L290.375,133 L292.3,133 L292.3,125.625 C292.3,123.25 293.85,121.55 295.9,121.55 C297.95,121.55 299.225,122.975 299.225,125.4 L299.225,133 L301.125,133 L301.125,125.55 C301.125,123 302.75,121.55 304.7,121.55 C306.8,121.55 308.05,122.95 308.05,125.45 L308.05,133 L309.975,133 L309.975,125 C309.975,121.8 308.15,119.8 305.175,119.8 C302.925,119.8 301.55,120.95 300.625,122.375 Z M315.4,127.25 C315.675,130.05 317.675,131.625 319.95,131.625 C321.725,131.625 322.975,130.9 324.025,129.8 L325.225,130.875 C323.925,132.325 322.35,133.3 319.9,133.3 C316.35,133.3 313.45,130.575 313.45,126.55 C313.45,122.8 316.075,119.8 319.65,119.8 C323.475,119.8 325.675,122.85 325.675,126.65 C325.675,126.825 325.675,127.025 325.65,127.25 L315.4,127.25 Z M315.4,125.825 L323.725,125.825 C323.525,123.475 322.175,121.425 319.6,121.425 C317.35,121.425 315.65,123.3 315.4,125.825 Z M331.075,125.6 C331.075,123.175 332.725,121.55 334.95,121.55 C337.225,121.55 338.525,123.05 338.525,125.45 L338.525,133 L340.45,133 L340.45,124.975 C340.45,121.9 338.625,119.8 335.5,119.8 C333.275,119.8 331.925,120.925 331.075,122.325 L331.075,120.075 L329.15,120.075 L329.15,133 L331.075,133 L331.075,125.6 Z M347.25,121.775 L351.35,121.775 L351.35,120.075 L347.25,120.075 L347.25,116.175 L345.325,116.175 L345.325,120.075 L343.525,120.075 L343.525,121.775 L345.325,121.775 L345.325,129.575 C345.325,132.2 346.9,133.225 348.975,133.225 C349.9,133.225 350.625,133.025 351.3,132.675 L351.3,131.025 C350.625,131.35 350.075,131.475 349.425,131.475 C348.125,131.475 347.25,130.9 347.25,129.325 L347.25,121.775 Z" id="Digital-patient-mana"></path>
+                <path d="M65.706,83.378 L56.494,74.072 C51.324,78.772 46.718,81.78 39.198,81.78 C27.918,81.78 20.116,72.38 20.116,61.1 L20.116,60.912 C20.116,49.632 28.106,40.42 39.198,40.42 C45.778,40.42 50.948,43.24 56.024,47.846 L65.236,37.224 C59.126,31.208 51.7,27.072 39.292,27.072 C19.082,27.072 4.982,42.394 4.982,61.1 L4.982,61.288 C4.982,80.182 19.364,95.128 38.728,95.128 C51.418,95.128 58.938,90.616 65.706,83.378 Z M144.29,61.1 C144.29,79.806 129.532,95.128 109.228,95.128 C88.924,95.128 74.354,79.994 74.354,61.288 L74.354,61.1 C74.354,42.394 89.112,27.072 109.416,27.072 C129.72,27.072 144.29,42.206 144.29,60.912 L144.29,61.1 Z M129.156,61.288 L129.156,61.1 C129.156,49.82 120.884,40.42 109.228,40.42 C97.572,40.42 89.488,49.632 89.488,60.912 L89.488,61.1 C89.488,72.38 97.76,81.78 109.416,81.78 C121.072,81.78 129.156,72.568 129.156,61.288 Z M209.244,51.136 C209.244,66.364 197.4,74.26 182.642,74.26 L171.644,74.26 L171.644,94 L157.168,94 L157.168,28.2 L184.052,28.2 C199.75,28.2 209.244,37.506 209.244,50.948 L209.244,51.136 Z M194.58,51.418 L194.58,51.23 C194.58,44.744 190.068,41.266 182.83,41.266 L171.644,41.266 L171.644,61.382 L183.112,61.382 C190.35,61.382 194.58,57.058 194.58,51.418 Z M276.83,94 L259.91,94 L245.81,72.944 L234.436,72.944 L234.436,94 L219.96,94 L219.96,28.2 L250.04,28.2 C265.55,28.2 274.856,36.378 274.856,49.914 L274.856,50.102 C274.856,60.724 269.122,67.398 260.756,70.5 L276.83,94 Z M260.192,50.854 L260.192,50.666 C260.192,44.462 255.868,41.266 248.818,41.266 L234.436,41.266 L234.436,60.16 L249.1,60.16 C256.15,60.16 260.192,56.4 260.192,50.854 Z M352.03,94 L336.896,94 L330.88,79.242 L303.056,79.242 L297.04,94 L282.282,94 L310.482,27.73 L323.83,27.73 L352.03,94 Z M325.71,66.458 L316.968,45.12 L308.226,66.458 L325.71,66.458 Z" id="Copra"></path>
+              </g>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="o-stage">
+        {{> includes/macbook-air screen="/media/copra_main.jpg"}}
+      </div>
+    </page-section>
+    <page-section class="o-project-section c-section-portfolio-intro u-margin-bottom--xxg u-margin-top--xxh" centered maxwidth="1000px">
+      <grid-container>
+        <div columns="8s 3m">
+          <h4 class="o-project-info__title">Industry</h4>
+          <div class="type--xl">Health Care</div>
+        </div>
+        <div columns="8s 3m">
+          <h4 class="o-project-info__title">Created</h4>
+          <div class="type--xl">2014 – 2015</div>
+        </div>
+        <div columns="16s 10m">
+          <h4 class="o-project-info__title">Objective</h4>
+          <p class="type--l">The Copra Software GmbH develops a patient managment software to help hospitals monitor all important information so they can focus on saving peoples lives. I was asked to create a corporate identity & website to communicate their values and ideals to current and future clients and attract potential employees.</p>
+        </div>
+      </grid-container>
+    </page-section>
+    <page-section class="o-project-section" centered maxwidth="1000px">
+      <h3 class="o-project-section__headline">The Challenge</h3>
+      <grid-container columns="16" class="u-margin-bottom--xxg">
+        <div columns="16s 7m" start-column="1">
+          <p class="type--l u-padding-right--m">
+            The project started with an in-depth conversation with the team at Copra to understand the companies history, present and their goals for the future as well as their clients and the health care industry itself. Once we had a good understanding of everything we defined the project goal.
+          </p>
+          <ul class="o-list o-list--none type--l">
+            <li>{{{inline_svg 'resources/svgs/copra-list-trust.svg' class="o-list-svg-bullet" }}}
+              trustworthy
+            </li>
+            <li>{{{inline_svg 'resources/svgs/copra-list-state-of-the-art.svg' class="o-list-svg-bullet" }}}
+              state-of-the-art technology
+            </li>
+            <li>{{{inline_svg 'resources/svgs/copra-list-friendly.svg' class="o-list-svg-bullet" }}}
+              friendly & professional
+            </li>
+          </ul>
+        </div>
+        <div columns="16s 9m" class="c-copra-intro-card u-margin-bottom--h">
+          <div class="o-card o-card--rounded">
+            <p class="o-quote">
+              Transform the brand to resemable a modern software company that works on the future of hospital software while maintaining enough recognizablility to keeping the trust the brand has established.
+            </p>
+            <div class="copra-card-bottom-line"></div>
+          </div>
+        </div>
+        <div columns="16s 12m 10l" start-column="0s 3m 4l">
+          {{{inline_svg 'resources/svgs/copra-sketch-mindmap.svg'}}}
+        </div>
+      </grid-container>
+    </page-section>
+
+    <page-section class="o-project-section" centered maxwidth="1000px">
+      <h3 class="o-project-section__headline">Target Audience</h3>
+      <grid-container columns="16" class="u-margin-bottom--xxg">
+        <div columns="16s 8m" class="o-media o-media--center u-margin-bottom--h">
+          <div class="o-media__figure">
+            {{{inline_svg 'resources/svgs/copra-icon-doctor.svg' class="c-copra-audience-svg"}}}
+          </div>
+          <div class="o-media__body">
+            <h4 class="o-headline--h4">Medical Staff</h4>
+            <p class="type--l">
+              While looking for a good software solution or during customer workshops & on conventions especially doctors will come in contact with the company and brand.
+            </p>
+          </div>
+        </div>
+        <div columns="16s 8m" class="o-media o-media--center u-margin-bottom--h">
+          <div class="o-media__figure">
+            {{{inline_svg 'resources/svgs/copra-icon-controlling.svg' class="c-copra-audience-svg"}}}
+          </div>
+          <div class="o-media__body">
+            <h4 class="o-headline--h4">Controlling</h4>
+            <p class="type--l">
+              The controlling department will get in contact with the brand when trying to find a tool to enable them to get an overview of all that is going on in the hospital.
+            </p>
+          </div>
+        </div>
+        <div columns="16s 8m" class="o-media o-media--center">
+          <div class="o-media__figure">
+            {{{inline_svg 'resources/svgs/copra-icon-it.svg' class="c-copra-audience-svg"}}}
+          </div>
+          <div class="o-media__body">
+            <h4 class="o-headline--h4">IT Staff</h4>
+            <p class="type--l">
+              The software is developed by Copra, but the hospitals IT staff needs to take care of and configure the software, they download the documentation and deal with problems and support.
+            </p>
+          </div>
+        </div>
+        <div columns="16s 8m" class="o-media o-media--center">
+          <div class="o-media__figure">
+            {{{inline_svg 'resources/svgs/copra-icon-developers.svg' class="c-copra-audience-svg"}}}
+          </div>
+          <div class="o-media__body">
+            <h4 class="o-headline--h4">Developers</h4>
+            <p class="type--l">
+              Like any other software company Copra is constantly looking for fresh talent to join their team. The brand needs to communicate their ideals and mission to potential hires.
+            </p>
+          </div>
+        </div>
+      </grid-container>
+    </page-section>
+
+    <page-section class="o-project-section" centered maxwidth="1000px" fullscreen>
+      <h3 class="o-project-section__headline">Research & Moods</h3>
+      <grid-container columns="16" class="u-margin-bottom--xxg c-copra-photo-grid">
+        <div style="z-index: 21" start-row="1s 2m" start-column="2s 9m" columns="15s 8m" rows="3">
+          <p class="type--xl inset--l" style="color:rgb(255,255,255); background:#E1464B; box-shadow:0 20px 50px 0 rgba(0,0,0,0.40);">Once the target audience was defined the visual research and creation of mood boards started. The goal was to collect inspiration for colors and typography.</p>
+        </div>
+        <responsive-image start-row="4s 3m" start-column="5s 3m" columns="11" rows="6"
+          style="box-shadow:0 20px 50px 0 rgba(0,0,0,0.40); z-index: 20;"
+          active="true"
+          src="/media/copra_picture_main.jpg"
+          alt="copra research picture"
+          resizing
+        ></responsive-image>
+        <responsive-image start-row="3s 1m" columns="7" start-column="1s 2m" rows="4"
+          style="box-shadow:0 20px 50px 0 rgba(0,0,0,0.40); z-index: 19;"
+          active="true"
+          src="/media/copra_picture_top_left.jpg"
+          alt="copra research picture"
+          resizing
+        ></responsive-image>
+        <responsive-image start-row="7s 6m" columns="7" start-column="1" rows="4"
+          style="box-shadow:0 20px 50px 0 rgba(0,0,0,0.40); z-index: 18;"
+          active="true"
+          src="/media/copra_picture_bottom_left.jpg"
+          alt="copra research picture"
+          resizing
+        ></responsive-image>
+        <responsive-image start-row="7s 6m" columns="8" start-column="9" rows="5"
+          style="box-shadow:0 20px 50px 0 rgba(0,0,0,0.40); z-index: 18;"
+          active="true"
+          resizing
+          src="/media/copra_picture_bottom_right.jpg"
+          alt="copra research picture"
+        ></responsive-image>
+      </grid-container>
+    </page-section>
+    <page-section class="o-project-section" centered maxwidth="1000px">
+      <h3 class="o-project-section__headline">Corporate Colors</h3>
+      <div class="o-corporate-colors">
+        <div class="o-corporate-colors__color o-corporate-colors__color--primary">
+          <div class="o-corporate-colors__color_field"></div>
+          <div class="o-corporate-colors__color_info">
+            <span class="o-corporate-colors__name">Primary color</span>
+            <span class="o-corporate-colors__hex">#E1464B</span>
+          </div>
+        </div>
+        <div class="o-corporate-colors__color o-corporate-colors__color--secondary">
+          <div class="o-corporate-colors__color_field"></div>
+          <div class="o-corporate-colors__color_info">
+            <span class="o-corporate-colors__name">Secondary color</span>
+            <span class="o-corporate-colors__hex">#B9323C</span>
+          </div>
+        </div>
+        <div class="o-corporate-colors__color o-corporate-colors__color--tertiary">
+          <div class="o-corporate-colors__color_field"></div>
+          <div class="o-corporate-colors__color_info">
+            <span class="o-corporate-colors__name">Tertiary color</span>
+            <span class="o-corporate-colors__hex">#CDE1CD</span>
+          </div>
+        </div>
+        <div class="o-corporate-colors__color o-corporate-colors__color--accent">
+          <div class="o-corporate-colors__color_field"></div>
+          <div class="o-corporate-colors__color_info">
+            <span class="o-corporate-colors__name">Accent color</span>
+            <span class="o-corporate-colors__hex">#5AAA96</span>
+          </div>
+        </div>
+      </div>
+      <grid-container columns="16" class="u-margin-bottom--xxg">
+        <div columns="16s 14m 7l" start-column="0s 2m 2l">
+          <h4 class="o-headline--h4">Main Colors</h4>
+          <p class="type--l type-grey">Red like the red cross that adorns every hospital has always been the color copra used and it was clear from the start, that this color will be kept. However the original brownish red was replace by a bright but warm and friendly red as the primary color and a darker, more subtle red as a secondary color which is used sparingly.</p>
+        </div>
+        <div columns="16s 14m 7l" start-column="0s 2m 0l">
+          <h4 class="o-headline--h4">Accent Colors</h4>
+          <p class="type--l type-grey">To compliment the reds we have an aquamarine as the accent color and a very brightened version of it as a tertiary color that can be used for backgrounds. Aquamarine is used in operation rooms and wards as well as for the clothing because the color stands for hygiene and cleanliness, which is extrenly important in hospitals.</p>
+        </div>
+      </grid-container>
+    </page-section>
+    {{!-- <page-section class="o-project-section" centered maxwidth="1000px">
+      <h3 class="o-project-section__headline">Typography</h3>
+    </page-section> --}}
+    <page-section class="o-project-section" centered maxwidth="1000px" width="100%">
+      <h3 class="o-project-section__headline">Logo</h3>
+      <grid-container class="u-margin-bottom--xxg">
+        <div columns="10l 14m 16s" start-column="5l 2m 0s">
+          {{{inline_svg 'resources/svgs/copra-sketch-logo.svg'}}}
+        </div>
+        <div columns="16s 14m 7l" start-column="0s 2m 2l">
+          <h4 class="o-headline--h4">History</h4>
+          <p class="type--l type-grey">We did not get very much infromation about the background of the logo. All that was know is that the founder liked cobras and the red was chosen because of the association with hospitals.</p>
+        </div>
+        <div columns="16s 14m 7l" start-column="0s 2m 0l">
+          <h4 class="o-headline--h4">Redesign Goal</h4>
+          <p class="type--l type-grey">With the redesign we wanted to clearly distinguish the new Copra from the old and show its transformation into a modern software company. However we also wanted to keep the trust the company has aquired since the early 1990s.</p>
+        </div>
+      </grid-container>
+      <grid-container class="c-copra-logo-presenter-grid u-margin-bottom--g" rows="9s 11m">
+        <div style="z-index: 20" columns="16s 13m 10l" start-column="0s 3m 6l" rows="0s 2m" start-row="0s 8m 10l">
+          <div class="o-card o-card--floating">
+            <h4 class="o-headline--h4">Final Brandmark</h4>
+            <p class="type--l type-grey">The final design combines the idea of the cobra forming the C with a more modern letter form. However the edges are soft and rounded with no sharp corners anywhere. This is to fit into the idea of a more organic and natural snake-shape. The shadow on the C is a little detail which hint at the hood of a cobra in a closed, calm state.</p>
+          </div>
+        </div>
+        <div class="c-copra-logo-presenter u-center" style="z-index: 19" rows="7s 8m 10l" columns="16" start-column="1" start-row="1">
+          {{{inline_svg 'resources/svgs/copra-logo.svg' class="copra-logo-final"}}}
+        </div>
+      </grid-container>
+    </page-section>
+    <page-section class="o-project-section" centered maxwidth="1000px">
+      <h3 class="o-project-section__headline">Style Direction</h3>
+      <grid-container columns="16" class="u-margin-bottom--h">
+        <div columns="16s 7m" start-column="2m">
+          {{{inline_svg 'resources/svgs/copra-style-directions-one.svg' class="u-full-width"}}}
+        </div>
+        <div columns="16s 7m" start-column="9m">
+          {{{inline_svg 'resources/svgs/copra-style-directions-two.svg' class="u-full-width"}}}
+        </div>
+        <div columns="16s 10m" start-column="2m">
+          <p class="type--l type-grey">Designers are constantly trying to convey a message through design, which means we have much experience imagining how a design concept looks when used in a website or flyer. However this is often hard for clients who might never think and talk about design in their daily live. Because of this I decided to illustrate the eight design concepts with a little icon and a couple stationary sketches. This approach worked very well and we got to the final style within a couple iterations.</p>
+        </div>
+      </grid-container>
+      <grid-container columns="16" class="u-margin-bottom--xxg">
+        <responsive-image columns="16s 7m" start-column="0s 2m"
+          active="true"
+          src="/media/copra-style-exploration-stack.png"
+          alt="copra style exploration – stack"
+        ></responsive-image>
+        <responsive-image columns="16s 7m"
+          active="true"
+          src="/media/copra-style-exploration-progress.png"
+          alt="copra style exploration – progress"
+        ></responsive-image>
+        <responsive-image columns="16s 7m" start-column="0s 2m"
+          active="true"
+          src="/media/copra-style-exploration-paper.png"
+          alt="copra style exploration – paper"
+        ></responsive-image>
+        <responsive-image columns="16s 7m"
+          active="true"
+          src="/media/copra-style-exploration-frame.png"
+          alt="copra style exploration – frame"
+        ></responsive-image>
+      </grid-container>
+    </page-section>
+    <page-section class="o-project-section" centered maxwidth="1000px">
+      <h3 class="o-project-section__headline">Implementation</h3>
+      <grid-container columns="16">
+        <div columns="16s 14m 14l" start-column="0s 2m 2l">
+          <h4 class="o-headline--h4">Website</h4>
+        </div>
+        <div columns="16s 14m 7l" start-column="0s 2m 2l">
+          <p class="type--l type-grey">The company website has to fullfill the typical aspects of informing about the product and its uses as well as providing some background about the company and upcoming events. Customers can see which medical decices are connected to and operated by the system are in which hospital.</p>
+        </div>
+        <div columns="16s 14m 7l" start-column="0s 2m 9l">
+          <p class="type--l type-grey">With the idea of increasing the trust and showing that it is a validated software product which is used by huge hospitals.<br />
+          We focused on speed by making sure it was as small as possible but also by designing and writing the content so that it is easy to scan to get the gist without reading every last paragraph.</p>
+        </div>
+      </grid-container>
+      <grid-container columns="16" rows="10" class="u-margin-bottom--g">
+        <responsive-image columns="16s 14m 14l" start-column="0s 2m 2l" start-row="0s 1m" rows="0s 10m"
+          class="o-card o-card--no-padding u-margin-top--h"
+          active="true"
+          src="/media/copra_website.png"
+          alt="website developed according to styleguide"
+        ></responsive-image>
+        <responsive-image columns="16s 4m 4l" start-column="0s 13m 13l" start-row="0s 5m" rows="0s 7m"
+          class="u-margin-top--h"
+          active="true"
+          src="/media/copra-mobile.png"
+          alt="corpa business cards"
+          style="z-index: 10"
+        ></responsive-image>
+      </grid-container>
+      <grid-container columns="16" class="u-margin-bottom--xxg">
+        <div columns="16s 14m 14l" start-column="0s 2m 2l">
+          <h4 class="o-headline--h4">Other Products</h4>
+        </div>
+        <div columns="16s 7m" start-column="0s 2m" class="u-margin-bottom--l">
+          <p class="type--l">Once the website was finalized there where many other things that needed to be designed. This included materials needed when directly interacting with customers and potential hires including business cards, flyers, job postings, letter heads but also elements like a small and a big convention booth. </p>
+        </div>
+        <responsive-image columns="16s 6m" start-column="0s 10m"
+          active="true"
+          src="/media/copra-booth.jpg"
+          alt="website developed according to styleguide"
+        ></responsive-image>
+        <responsive-image columns="16s 14m 14l" start-column="0s 2m 2l"
+          class="u-margin-top--h"
+          active="true"
+          src="/media/copra-business-cards.jpg"
+          alt="corpa business cards"
+        ></responsive-image>
+      </grid-container>
+    </page-section>
+    <page-section centered maxwidth="1000px" class="o-project-section o-project-section-container">
+      <div class="u-full-width u-margin-bottom--g" class="o-project-section-container">
+        <a class="o-button o-button--floating o-button--primary u-margin-top--h" href="/portfolio">&larr; return to overview</a>
+      </div>
+    </page-section>
+  </page-sections>
+{{/inline}}
