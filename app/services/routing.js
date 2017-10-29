@@ -39,7 +39,7 @@ module.exports = (app) => {
       })
     })
     // home & contact
-    app.get(/^\/(home|contact)/, function (req, res) {
+    app.get(/^\/(home)/, function (req, res) {
       res.render('index', {
         files: files,
         pageClass: 'c-page--index',
@@ -56,6 +56,10 @@ module.exports = (app) => {
     // About
     app.get(/^\/about\/([\w-]+)?$/, function (req, res) {
       res.redirect('/#about')
+    })
+    // contact
+    app.get(/^\/contact\/([\w-]+)?$/, function (req, res) {
+      res.redirect('/#contact')
     })
     // Blog
     app.get(/^\/blog\/?$/, (req, res) => blog.index(req, res, {
