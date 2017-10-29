@@ -9,7 +9,7 @@ const hbs = require('./app/services/expressHandlebars')
 // App
 const app = express()
 // Variables
-app.set('views', 'resources/templates') // path to your templates
+app.set('views', 'resources/templates/pages') // path to your templates
 app.engine('hbs', hbs.engine)
 // register new view engine
 app.set('view engine', 'hbs')

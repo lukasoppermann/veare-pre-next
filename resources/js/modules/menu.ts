@@ -11,7 +11,7 @@ function throttle (callback, limit) {
   }
 }
 
-class Menu { // eslint-disable-line no-unused-vars
+export class Menu { // eslint-disable-line no-unused-vars
   constructor (menuSelector) {
     this._menu = document.querySelector(menuSelector)
   }

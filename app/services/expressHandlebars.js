@@ -15,13 +15,17 @@ const svgo = new SVGO({
 
 module.exports = expressHandlebars.create({
   extname: '.hbs',
-  defaultLayout: 'main',
-  layoutsDir: 'resources/templates/layouts',
-  partialsDir: 'resources/templates/partials',
+  defaultLayout: false,
+  layoutsDir: './resources/templates/partials/layouts',
+  partialsDir: './resources/templates/partials',
   helpers: {
     url_safe: function (url) {
       url = url.replace(/[`:]/g, '').replace(/[\W_]+/g, '-')
       return escape(url)
+    },
+    join: function () {
+      let args = Array.from(Object.values(arguments)).slice(0, -1)
+      return args.join(' ')
     },
     inline_svg: function (path, options) {
       let svg = fs.readFileSync(path, 'utf8')

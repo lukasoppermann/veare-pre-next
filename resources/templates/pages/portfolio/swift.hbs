@@ -1,6 +1,8 @@
+{{> layouts/base title="| Portfolio – swift" }}
+{{#*inline "body"}}
 <page-sections>
   <page-section>
-    {{> "portfolio-header" }}
+    {{> "includes/portfolio/portfolio-header" }}
 		<div class="stage type-full" style="background-color: rgb(246,245,243)">
 			<img class="full-width image" src="/media/swift-stage.jpg" alt="swift / we are fast" />
     </div>
@@ -25,7 +27,7 @@
     </div>
   </page-section>
   <page-section centered maxwidth="1000px" class="o-project-section-container">
-    <grid-container>
+    <grid-container rowgutter="15">
       <h3 class="o-headline--portfolio" columns="16">Swift Logo Design</h3>
       <div columns="16">
         <img src="/media/swift-logo.jpg" alt="Swift logo design" />
@@ -73,7 +75,7 @@
     </grid-container>
   </page-section>
   <page-section centered maxwidth="1000px" class="o-project-section-container">
-    <grid-container>
+    <grid-container rowgutter="15">
       <h3 class="o-headline--portfolio" columns="16">Architecture & Vehicles</h3>
       <div columns="16s 8m">
         <img src="/media/swift-car.jpg" alt="vehicle with corporate colors & elements" class="u-full-width" />
@@ -95,3 +97,4 @@
     </div>
   </page-section>
 </page-sections>
+{{/inline}}

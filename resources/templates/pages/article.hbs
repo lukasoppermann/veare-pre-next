@@ -1,0 +1,46 @@
+{{> layouts/base title=(join "|" post.fields.title) disableFooter="true" }}
+{{#*inline "header-block"}}
+  <meta property="og:url" content="https://vea.re/blog/{{post.fields.slug}}" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="{{post.fields.title}}" />
+  <meta property="og:description" content="{{post.fields.preview}}" />
+  {{#if post.fields.banner}}
+    <meta property="og:image" content="{{post.fields.banner.fields.url}}" />
+  {{else}}
+    <meta property="og:image" content="https://vea.re/media/veare-icon-512.png" />
+  {{/if}}
+{{/inline}}
+{{#*inline "body"}}
+  <article class="o-article" itemprop="mainEntityOfPage" itemid="/blog/{{post.fields.slug}}" itemscope itemtype="http://schema.org/BlogPosting">
+    <link itemprop="mainEntityOfPage" href="/blog/{{post.fields.slug}}" />
+    {{#if post.fields.banner}}
+      <div class="o-article__banner">
+        <img src="{{post.fields.banner.fields.url}}" alt="{{post.fields.banner.fields.title}}" />
+      </div>
+    {{/if}}
+    <div class="o-article__publication-details">
+        <time class="o-article__time" itemprop="datePublished" datetime="{{fields.rawdate}}">{{post.fields.date}}</time> •&nbsp;
+        <time class="o-article__read-time" datetime="{{fields.readingTime}}m">{{post.fields.readingTime}} min read</time>
+    </div>
+    <h1 class="o-article__title" itemprop="headline">{{post.fields.title}}</h1>
+
+    <div class="o-article__author">
+      — Published by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><a class="author" href="https://twitter.com/lukasoppermann" itemprop="url" title="about {{post.fields.author.fields.name}}" rel="author"><span itemprop="name">{{post.fields.author.fields.name}}</span></a></span> / <span itemprop="publisher" itemtype="http://schema.org/Organization" itemscope><a itemprop="url" href="http://vea.re"><span itemprop="name">vea.re</span></a></span> —
+    </div>
+    <grid-container class="o-article__content">
+      <div columns="16s 15m 15l" start-column="0s 2m 2l">
+        <blockquote class="o-blockquote c-article__blockquote--intro">
+          {{{post.fields.intro}}}
+        </blockquote>
+      </div>
+    </grid-container>
+    <grid-container class="o-article__content" rowgutter="0">
+      {{{post.fields.content}}}
+      <div class="o-article__comment" columns="16s 13m 5l" start-column="0s 4m 0l">
+        I am interested in your feedback, please share your thoughts with me <a class="o-link o-link--decorated" title="Reply to my article with a tweet" href="https://twitter.com/intent/tweet?text={{url_safe post.fields.title}}">via Twitter</a>.
+      </div>
+    </grid-container>
+  </article>
+  {{> includes/footer}}
+  <script type="text/javascript" src="/{{files.blogjs}}"></script>
+{{/inline}}
