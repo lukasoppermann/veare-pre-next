@@ -27,6 +27,9 @@ module.exports = expressHandlebars.create({
       let args = Array.from(Object.values(arguments)).slice(0, -1)
       return args.join(' ')
     },
+    year: function () {
+      return new Date().getFullYear()
+    },
     inline_svg: function (path, options) {
       let svg = fs.readFileSync(path, 'utf8')
       let optimized

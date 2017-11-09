@@ -1,4 +1,5 @@
 .o-nav{
+  display: none;
   pointer-events: none;
   position: fixed;
   top: 0;

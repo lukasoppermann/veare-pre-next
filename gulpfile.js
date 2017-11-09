@@ -88,7 +88,8 @@ gulp.task('serviceWorker', require('./gulp-tasks/serviceWorker.js')(
 // watch js
 gulp.task('watchJs', function () {
   gulp.watch([
-    'resources/js/*'
+    'resources/js/*',
+    'resources/js/**/*'
   ], gulp.series('bundleJs', 'revJs', function reload (cb) {
     browserSync.reload()
     cb()
