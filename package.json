@@ -62,6 +62,7 @@
   },
   "dependencies": {
     "contentful": "^5.0.2",
+    "deasync": "^0.1.10",
     "deep-assign": "^2.0.0",
     "dotenv-safe": "^4.0.4",
     "express": "^4.16.2",

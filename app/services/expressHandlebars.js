@@ -1,6 +1,8 @@
 const fs = require('fs')
 const expressHandlebars = require('express-handlebars')
 const SVGO = require('svgo')
+const deasync = require('deasync')
+
 const svgo = new SVGO({
   plugins: [
     { removeEditorsNSData: {
@@ -31,17 +33,20 @@ module.exports = expressHandlebars.create({
       return new Date().getFullYear()
     },
     inline_svg: function (path, options) {
-      let svg = fs.readFileSync(path, 'utf8')
-      let optimized
-      svgo.optimize(svg, function (result) {
-        optimized = result.data
-      })
-
+      // optimizing fn
+      function svgoOptimizeSync (svgo, path) {
+        let res
+        let svg = fs.readFileSync(path, 'utf8')
+        svgo.optimize(svg, result => { res = result })
+        deasync.loopWhile(() => !res)
+        return res.data
+      }
+      // prep attributes
       let attrs = Object.keys(options.hash || {}).map(function (key) {
         return key + '="' + options.hash[key] + '"'
       }).join(' ')
 
-      return optimized.replace(/<svg/g, `<svg ${attrs}`)
+      return svgoOptimizeSync(svgo, path).replace(/<svg/g, `<svg ${attrs}`)
     }
   }
 })
