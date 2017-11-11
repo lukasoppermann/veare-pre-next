@@ -35,9 +35,9 @@ module.exports = expressHandlebars.create({
     inline_svg: function (path, options) {
       // optimizing fn
       function svgoOptimizeSync (svgo, path) {
-        let res
+        let res = null
         let svg = fs.readFileSync(path, 'utf8')
-        svgo.optimize(svg, result => { res = result })
+        svgo.optimize(svg, {path: path}).then(result => { res = result })
         deasync.loopWhile(() => !res)
         return res.data
       }
