@@ -7,6 +7,7 @@ module.exports = function (dir, filesToMove) {
   const path = require('path')
   const changed = require('gulp-changed')
   const typescript = require('rollup-plugin-typescript')
+  const nodeResolve = require('rollup-plugin-node-resolve')
   const error = require('./errorHandling.js')()
   const streamify = require('gulp-streamify')
   const uglifyes = require('uglify-es')
@@ -27,12 +28,20 @@ module.exports = function (dir, filesToMove) {
             rootDir: './',
             module: 'es6',
             target: 'es6',
+            allowJs: true,
             declaration: false,
             removeComments: true,
             lib: [
               'dom',
               'es6'
             ]
+          }),
+          nodeResolve({
+            module: true,
+            jsnext: true,
+            browser: true,
+            extensions: [ '.js', '.json' ],
+            preferBuiltins: false
           })
         ]
       })
