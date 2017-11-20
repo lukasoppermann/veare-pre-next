@@ -4,7 +4,6 @@
 }
 .c-section--intro{
   position: relative;
-  overflow: hidden;
   background-color: var(--color-sand);
   border: var(--size-m) solid rgb(255, 255, 255);
   border-top: var(--size-g) solid rgb(255, 255, 255);
