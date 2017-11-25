@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1036" height="365" viewBox="0 0 1036 365">
+  <g fill="none" fill-rule="evenodd" transform="translate(-4 -23)">
+    <rect width="426" height="57" x="431" y="46" fill="#55C2A6"/>
+    <text font-family="OpenSans, Open Sans" font-size="36">
+      <tspan x="437" y="87" fill="#FFFFFF">Source Sans Pro Regular</tspan>  <tspan x="437" y="146" fill="#0F1416" fill-opacity=".5">ABCDEFGHIJKLMNOPQRSTUVWXYZ</tspan> <tspan x="437" y="195" fill="#0F1416" fill-opacity=".5">abcdefghijklmnopqrstuvwxyz</tspan>
+    </text>
+    <rect width="465" height="57" x="431" y="230" fill="#55C2A6"/>
+    <text font-family="OpenSans-Semibold, Open Sans" font-size="36" font-weight="500">
+      <tspan x="437" y="271" fill="#FFFFFF">Source Sans Pro SemiBold</tspan>  <tspan x="437" y="330" fill="#0F1416" fill-opacity=".5">ABCDEFGHIJKLMNOPQRSTUVWXYZ</tspan> <tspan x="437" y="379" fill="#0F1416" fill-opacity=".5">abcdefghijklmnopqrstuvwxyz</tspan>
+    </text>
+    <text fill="#E1464B" font-family="SourceSansPro-Bold, Source Sans Pro" font-size="120" font-weight="bold">
+      <tspan x="0" y="118">Source </tspan> <tspan x="0" y="238">Sans </tspan> <tspan x="0" y="358">Pro</tspan>
+    </text>
+    <text fill="#232E33" fill-opacity=".35" font-family="SourceSansPro-Bold, Source Sans Pro" font-size="120" font-weight="bold" opacity=".3">
+      <tspan x="8" y="126">Source </tspan> <tspan x="8" y="246">Sans </tspan> <tspan x="8" y="366">Pro</tspan>
+    </text>
+  </g>
+</svg>

@@ -11,7 +11,8 @@ const svgo = new SVGO({
     { removeDesc: {removeAny: true} },
     { removeTitle: {} }, // pass it an argument to enable
     'removeComments', // does enable default plugins. (using { full: true } )
-    'removeMetadata'
+    'removeMetadata',
+    {removeViewBox: false}
   ]
 })
 
