@@ -46,6 +46,50 @@
       background-color: #E1464B;
       z-index: 0;
     }
+    .c-typo-description{
+      width: calc(100%);
+      max-width: 600px;
+      position: relative;
+      float: right;
+      transform: translateY(80px);
+    }
+    .c-project-section-typography{
+      padding-top: var(--size-l);
+      margin-bottom: var(--size-xxg);
+      background-color: var(--white-grey);
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .c-project-section-typography:before,
+    .c-project-section-typography:after{
+      content: "";
+      width: calc(100% + 40px);
+      height: 80px;
+      position: absolute;
+      left: -20px;
+      top: -40px;
+      transform: rotate(3deg);
+      background-color: var(--white-grey);
+    }
+    .c-project-section-typography:after{
+      top: auto;
+      bottom: -40px;
+    }
+    .c-project-section-typography-content{
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: calc(1000px + 2 * var(--size-m));
+      padding: 0 var(--size-m);
+    }
+    .c-diagonal-bg{
+      width: 100%;
+      height: 100%;
+      fill: var(--light-grey);
+      position: absolute;
+      top: -100px;
+      left: 0;
+    }
     @media (max-width: 1100px){
       .c-section-portfolio-top-image:before{
         height: 300px;
@@ -112,6 +156,7 @@
       max-width: 1000px;
       text-align: center;
       position: relative;
+      z-index: 100;
       display: inline-block;
       height: auto;
       padding-bottom: var(--size-xl);
@@ -365,7 +410,7 @@
             </p>
           </div>
         </div>
-        <div columns="16s 8m" class="o-media o-media--center">
+        <div columns="16s 8m" class="o-media o-media--center u-margin-bottom--h">
           <div class="o-media__figure">
             {{{inline_svg 'resources/svgs/copra-icon-it.svg' class="c-copra-audience-svg"}}}
           </div>
@@ -376,7 +421,7 @@
             </p>
           </div>
         </div>
-        <div columns="16s 8m" class="o-media o-media--center">
+        <div columns="16s 8m" class="o-media o-media--center u-margin-bottom--h">
           <div class="o-media__figure">
             {{{inline_svg 'resources/svgs/copra-icon-developers.svg' class="c-copra-audience-svg"}}}
           </div>
@@ -469,11 +514,18 @@
         </div>
       </grid-container>
     </page-section>
-    {{!-- <page-section class="o-project-section" centered maxwidth="1000px">
+    <page-section class="o-project-section c-project-section-typography" centered>
       <h3 class="o-project-section__headline">Typography</h3>
-    </page-section> --}}
+      <div class="c-project-section-typography-content">
+        {{{inline_svg 'resources/svgs/copra-typography.svg' style="width: 90%; max-width: 1000px; height: auto;"}}}
+        <div class="c-typo-description o-card o-card--floating">
+          <h4 class="o-headline--h4">Keeping it clean</h4>
+          <p class="type--l type-grey">Source Sans Pro was chosen because it combines a clean astehtic with a humanistic look & feel. It works well for print and marketing material as well as for digital interfaces. Top keep a good performance on the web we decided on only using two weights.</p>
+        </div>
+      </div>
+    </page-section>
     <page-section class="o-project-section" centered maxwidth="1000px" width="100%">
-      <h3 class="o-project-section__headline">Logo</h3>
+      <h3 class="o-project-section__headline u-margin-top--g">Logo</h3>
       <grid-container class="u-margin-bottom--xxg">
         <div columns="10l 14m 16s" start-column="5l 2m 0s">
           {{{inline_svg 'resources/svgs/copra-sketch-logo.svg'}}}
