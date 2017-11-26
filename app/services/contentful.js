@@ -1,5 +1,3 @@
-'use strict'
-
 const client = require('./client')
 const cache = require('memory-cache')
 
@@ -38,7 +36,6 @@ const initializeContent = (types, responseObj, cb) => {
       cache.put(key, content.added[key])
     }
   }
-
   cb()
 }
 
