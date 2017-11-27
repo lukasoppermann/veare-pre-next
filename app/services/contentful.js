@@ -18,7 +18,6 @@ const contentful = (cb, errorFn = console.error) => {
 
 const initializeContent = (types, responseObj, cb) => {
   let content = prepareResponse(types.items.map((item) => item.sys.id), responseObj)
-  console.log(content)
   for (var key in content) {
     if (content.hasOwnProperty(key)) {
       cache.put(key, content[key])
