@@ -1,19 +1,15 @@
-'use strict'
-
 const cache = require('memory-cache')
 
-const contentfulWebhook = (request, cb, error = console.error) => {
+const contentfulWebhook = (request, res) => {
   // extract action (e.g. publish) and resourceType (e.g. Entry or Asset) from header
   let [, resourceType, action] = request.header('X-Contentful-Topic').split('.')
   //
   if (resourceType === 'Entry' && action === 'publish') {
-    updateContent(request.body)
+    res.sendStatus(updateContent(request.body))
   }
   if (resourceType === 'Entry' && ['unpublish', 'archive', 'delete'].indexOf(action) > -1) {
-    deleteContent(request.body)
+    res.sendStatus(deleteContent(request.body))
   }
-  // run callback
-  cb()
 }
 
 const updateContent = (updatedItem) => {
@@ -24,6 +20,8 @@ const updateContent = (updatedItem) => {
   content.push(updatedItem)
   // update cache
   cache.put(contentTypeId, content)
+  // return status OK
+  return 200
 }
 
 const deleteContent = (updatedItem) => {
@@ -32,7 +30,10 @@ const deleteContent = (updatedItem) => {
   let content = removeItem(contentTypeId, updatedItem)
   // update cache
   cache.put(contentTypeId, content)
+  // return status OK
+  return 200
 }
+
 const removeItem = (contentTypeId, removeItem) => {
   // get cached content
   let content = cache.get(contentTypeId)

@@ -1,5 +1,9 @@
 const fs = require('fs')
 const express = require('express')
+const bodyParser = require('body-parser')
+const basicAuth = require('express-basic-auth')
+const contentfulConfig = require('../config/contentful.js')
+const contentfulWebhook = require('./contentfulWebhook')
 const Blog = require('../controller/Blog')
 const blog = new Blog()
 
@@ -30,6 +34,14 @@ module.exports = (app) => {
         next()
       })
     }
+    //
+    app.use(bodyParser.json({ type: 'application/*+json' }))
+    // contentful webhook
+    app.post('/contentful', basicAuth({
+      users: {
+        [contentfulConfig.webhookUser]: contentfulConfig.webhookPassword
+      }
+    }), contentfulWebhook)
     // index
     app.get('/', function (req, res) {
       res.render('index', {
