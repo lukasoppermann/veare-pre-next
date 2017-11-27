@@ -15,7 +15,7 @@ app.set('view engine', 'hbs')
 // app.set('view cache', true)
 let routes = routing(app)
 // contentful has loaded
-contentful(true, routes, (error) => {
+contentful(routes, (error) => {
   console.log(error)
   // run routes even when contentful connection fails
   routes()
