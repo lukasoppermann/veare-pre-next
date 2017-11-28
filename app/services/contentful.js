@@ -17,25 +17,16 @@ const contentful = (cb, errorFn = console.error) => {
 }
 
 const initializeContent = (types, responseObj, cb) => {
-  let content = prepareResponse(types.items.map((item) => item.sys.id), responseObj)
-  for (var key in content) {
-    if (content.hasOwnProperty(key)) {
-      cache.put(key, content[key])
-    }
-  }
-  cb()
-}
-
-const prepareResponse = (types, responseObj) => {
-  let response = {}
-  // add new items by contentType
-  types.forEach((contentTypeId) => {
-    response[contentTypeId] = responseObj.entries.filter((entry) => {
+  // get type ids
+  let typeIds = types.items.map((item) => item.sys.id)
+  // get content by type
+  typeIds.forEach((contentTypeId) => {
+    let content = responseObj.entries.filter((entry) => {
       return entry.sys.contentType.sys.id === contentTypeId
     })
+    cache.put(contentTypeId, content)
   })
-
-  return response
+  cb()
 }
 
 module.exports = contentful
