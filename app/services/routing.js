@@ -42,6 +42,10 @@ module.exports = (app) => {
         [contentfulConfig.webhookUser]: contentfulConfig.webhookPassword
       }
     }), contentfulWebhook)
+    // revisioned files
+    app.get('/revisionedFiles', function (req, res) {
+      res.json(files)
+    })
     // index
     app.get('/', function (req, res) {
       res.render('index', {

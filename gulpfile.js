@@ -11,7 +11,8 @@ gulp.task('bundleJs', require('./gulp-tasks/rollup.js')('resources/js/',
   // files to only be moved to js folder
   [
     'node_modules/@webcomponents/webcomponentsjs/webcomponents-sd-ce.js',
-    'node_modules/@webcomponents/webcomponentsjs/webcomponents-sd-ce.js.map'
+    'node_modules/@webcomponents/webcomponentsjs/webcomponents-sd-ce.js.map',
+    'node_modules/fetch-inject/dist/fetch-inject.min.js'
   ]
 ))
 /* ------------------------------
@@ -62,10 +63,11 @@ gulp.task('images', () =>
 gulp.task('revCss', require('./gulp-tasks/rev.js')('css', ['public/css/app.css']))
 gulp.task('revJs', require('./gulp-tasks/rev.js')('js',
   [
-    'public/js/common.js',
     'public/js/webcomponents.js',
     'public/js/registerServiceWorker.js',
-    'public/js/blog.js'
+    'public/js/blog.js',
+    'public/js/setConfig.js',
+    'public/js/rest.js'
   ]))
 /* ------------------------------
  *
