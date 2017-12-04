@@ -105,7 +105,7 @@ module.exports = (app) => {
       })
     })
     // static content
-    app.use(express.static('public'))
+    app.use(express.static('public', {maxAge: '5m'}))
     // open port
     app.listen(PORT)
     if (env !== 'testing') {

@@ -1,4 +1,5 @@
 <script type="text/javascript" async>
+
 const webComponentsSupported = () => {
   return 'registerElement' in document &&
   typeof document.createElement('div').attachShadow === 'function' &&
@@ -15,42 +16,64 @@ const scriptPromise = new Promise((resolve, reject) => {
   script.onload = resolve;
   script.onerror = reject;
   script.async = true;
-  script.src = 'js/fetch-inject.min.js';
-});
+  script.src = '/js/fetch-inject.min.js';
+})
 
 Promise.all([revisionedFiles, scriptPromise])
 .then(results => {
   let json = results[0]
-  fetchInject([
-    // critical js
-    // `/${json.commonjs}`
-  ]).then(() => {
+  // make sure WC are working
+  const webComponentsAvailable = new Promise((resolve, reject) => {
     if (!webComponentsSupported()) {
       return fetchInject([
         // polyfill
         `/js/webcomponents-sd-ce.js`
-      ]).then( () => {
-        console.log('WC loaded')
+      ]).then(() => {
+        resolve()
       })
     }
+    resolve()
   })
-  // WC available
+  // load critical layout components
+  const layoutComponents = fetchInject([`/${json.layoutComponentsjs}`], webComponentsAvailable);
+  // load webfont and view intro once downloaded
+  fetchInject([
+    `https://fonts.googleapis.com/css?family=Noto+Serif:400,400i|Source+Sans+Pro:400,600`
+  ], layoutComponents)
   .then(() => {
-    return fetchInject([
-      `/${json.setConfigjs}`,
-      `/${json.webcomponentsjs}`
-    ]).then(() => {
-      setConfig(window)
-      console.log('ähh no')
-    })
+    document.querySelector('.c-section--intro').style.opacity = "1"
+  }, () => {
+    document.querySelector('.c-section--intro').style.opacity = "1"
   })
-  // unimportant rest
+
+  // load responsiveMenu
+  fetchInject([
+    `/${json.responsiveMenujs}`
+  ], webComponentsAvailable)
   .then(() => {
-    console.log('last')
-    return fetchInject([
-      `/${json.restjs}`
-    ])
+    document.querySelector('responsive-menu').style.display = "block"
   })
+  // Promise.all([webComponentsAvailable, criticalWCs])
+  // .then(() => {
+  //   setConfig(window)
+  //   console.log('ähh no')
+  // }, () => {
+  //   console.log('Nooooooo')
+  // })
+  // Promise.all([webComponentsAvailable, fetchInject([
+  //     `/${json.responsiveMenujs}`
+  //   ])
+  // ]).then(() => {
+  //   console.log('yo')
+  //   document.querySelector('responsive-menu').style.display = 'block'
+  // })
+  // // unimportant rest
+  // .then(() => {
+  //   console.log('last')
+  //   return fetchInject([
+  //     `/${json.restjs}`
+  //   ])
+  // })
 })
 </script>
 {{!-- <script src="/{{files.indexjs}}"></script> --}}

@@ -61,14 +61,15 @@ gulp.task('images', () =>
  *
  */
 gulp.task('revCss', require('./gulp-tasks/rev.js')('css', ['public/css/app.css']))
+// js
 gulp.task('revJs', require('./gulp-tasks/rev.js')('js',
-  [
-    'public/js/webcomponents.js',
-    'public/js/registerServiceWorker.js',
-    'public/js/blog.js',
-    'public/js/setConfig.js',
-    'public/js/rest.js'
-  ]))
+  fs.readdirSync('resources/js/').filter(file => {
+    return file.substr(-3) === '.ts'
+  }).map(item => {
+    return `public/js/${item.replace(/\.ts$/, '.js')}`
+  })
+))
+
 /* ------------------------------
  *
  * service-worker
