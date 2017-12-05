@@ -35,7 +35,7 @@ Promise.all([revisionedFiles, scriptPromise])
     resolve()
   })
   // load critical layout components
-  const layoutComponents = fetchInject([`/${json.layoutComponentsjs}`], webComponentsAvailable);
+  const layoutComponents = fetchInject([`/${json['js/layoutComponents.js']}`], webComponentsAvailable);
   // load webfont and view intro once downloaded
   fetchInject([
     `https://fonts.googleapis.com/css?family=Noto+Serif:400,400i|Source+Sans+Pro:400,600`
@@ -48,7 +48,7 @@ Promise.all([revisionedFiles, scriptPromise])
 
   // load responsiveMenu
   fetchInject([
-    `/${json.responsiveMenujs}`
+    `/${json['js/responsiveMenu.js']}`
   ], webComponentsAvailable)
   .then(() => {
     document.querySelector('responsive-menu').style.display = "block"

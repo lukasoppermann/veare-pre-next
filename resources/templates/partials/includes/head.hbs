@@ -8,7 +8,7 @@
 <meta name="theme-color" content="rgb(240, 170, 30)" />
 <link rel="icon" href="/media/veare-icon-32.png" type="image/png" />
 <link rel="apple-touch-icon-precomposed" href="/media/favicon-iphone.png" />
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/media/veare-icon@1,5x.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/media/veare-icon-72.png" />
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/media/favicon-iphone@2x.png" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/media/veare-icon@3x.png" />
 <link rel="manifest" href="/manifest.json" />
@@ -22,5 +22,6 @@
 {{#> critical-scripts-block}}
   {{!-- Critical scripts in header --}}
 {{/critical-scripts-block}}
+{{!-- {{{ inline_js /files.[js/index.js] }}} --}}
 {{!-- <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,400i|Source+Sans+Pro:400,600" rel="stylesheet" /> --}}
-<link href="/{{files.appcss}}" rel="stylesheet" />
+<link href="/{{files.[css/app.css]}}" rel="stylesheet" />

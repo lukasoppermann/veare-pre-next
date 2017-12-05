@@ -47,7 +47,7 @@ module.exports = function (dir, filesToMove) {
       })
       .on('error', error)
       .pipe(source(path.resolve(entry.slice(0, -3) + '.js'), path.resolve(dir)))
-      // .pipe(streamify(uglify()))
+      .pipe(streamify(uglify()))
       .pipe(streamify(sourcemaps.init({loadMaps: true})))
       .pipe(streamify(sourcemaps.write('/')))
     }))
