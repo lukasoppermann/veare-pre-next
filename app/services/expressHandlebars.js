@@ -2,6 +2,7 @@ const fs = require('fs')
 const expressHandlebars = require('express-handlebars')
 const SVGO = require('svgo')
 const deasync = require('deasync')
+const inlineScript = require('express-handlebars-inline-script')
 
 const svgo = new SVGO({
   plugins: [
@@ -32,6 +33,10 @@ module.exports = expressHandlebars.create({
     },
     year: function () {
       return new Date().getFullYear()
+    },
+    inline_js: (path) => {
+      let js = fs.readFileSync(path, 'utf8')
+      return `<script>${js}</script>`
     },
     inline_svg: function (path, options) {
       // optimizing fn
