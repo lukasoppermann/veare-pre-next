@@ -69,7 +69,14 @@ gulp.task('revJs', require('./gulp-tasks/rev.js')('js',
     return `public/js/${item.replace(/\.ts$/, '.js')}`
   })
 ))
-
+// images
+gulp.task('revMedia', require('./gulp-tasks/rev.js')('media',
+  fs.readdirSync('public/media/').filter(file => {
+    return file.substr(-4) === '.png' || file.substr(-4) === '.jpg' || file.substr(-4) === '.svg'
+  }).map(item => {
+    return `public/media/${item}`
+  })
+))
 /* ------------------------------
  *
  * service-worker
