@@ -15,6 +15,7 @@
   "homepage": "https://github.com/lukasoppermann/veare#readme",
   "devDependencies": {
     "@nuclei-components/grid": "^1.0.1",
+    "@pwa/manifest": "^0.2.1",
     "@types/contentful-resolve-response": "^0.1.30",
     "@types/express": "^4.0.39",
     "@types/node": "^8.0.53",
@@ -62,6 +63,7 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
+    "compression": "^1.7.1",
     "contentful": "^5.0.5",
     "deasync": "^0.1.11",
     "deep-assign": "^2.0.0",

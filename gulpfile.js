@@ -82,6 +82,12 @@ gulp.task('revMedia', require('./gulp-tasks/rev.js')('media',
  * service-worker
  *
  */
+gulp.task('pwaManifest', require('./gulp-tasks/pwaManifest.js')(JSON.parse(fs.readFileSync('public/rev-manifest.json', 'utf8'))))
+/* ------------------------------
+ *
+ * service-worker
+ *
+ */
 gulp.task('serviceWorker', require('./gulp-tasks/serviceWorker.js')(
   {
     rootDir: 'public',
@@ -152,6 +158,7 @@ gulp.task('default', gulp.series(
   gulp.parallel('bundleJs', 'bundleCss'),
   'revJs',
   'revCss',
+  'pwaManifest',
   gulp.parallel('watchJs', 'watchCss', 'watchTemplates')
 ))
 
