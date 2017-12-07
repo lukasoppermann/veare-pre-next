@@ -2,7 +2,6 @@ const fs = require('fs')
 const expressHandlebars = require('express-handlebars')
 const SVGO = require('svgo')
 const deasync = require('deasync')
-const inlineScript = require('express-handlebars-inline-script')
 
 const svgo = new SVGO({
   plugins: [

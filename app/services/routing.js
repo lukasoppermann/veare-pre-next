@@ -1,5 +1,6 @@
 const fs = require('fs')
 const express = require('express')
+const compression = require('compression')
 const bodyParser = require('body-parser')
 const basicAuth = require('express-basic-auth')
 const contentfulConfig = require('../config/contentful.js')
@@ -13,7 +14,6 @@ const PORT = process.env.NODE_PORT || 8080
 module.exports = (app) => {
   return (response) => {
     let files = JSON.parse(fs.readFileSync('public/rev-manifest.json', 'utf8'))
-    console.log(files)
     // revisioned css & js files
     const revisionedFiles = Object.keys(files)
       .filter(key => key.substr(-3) === 'css' || key.substr(-2) === 'js')
@@ -32,6 +32,7 @@ module.exports = (app) => {
     }
     //
     app.use(bodyParser.json({ type: 'application/*+json' }))
+    app.use(compression())
     // contentful webhook
     app.post('/contentful', basicAuth({
       users: {
