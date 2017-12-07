@@ -1,38 +1,51 @@
-// import {default as fetchInject} from '../../node_modules/fetch-inject/dist/fetch-inject.es.js'
-// import {default as webComponentsSupported} from './modules/wcPolyfill'
-// import {default as setConfig} from './modules/config'
-// get a json object of revisioned files
+/* global fetchInject */
+import {default as webComponentsSupported} from './modules/wcSupported'
+// get correct file name
+const revisionedFiles = fetch('/revisionedFiles').then(response => {
+  return response.json()
+})
+// get fetchInject class
+const scriptPromise = new Promise((resolve, reject) => {
+  const script = window.document.createElement('script');
+  window.document.head.appendChild(script);
+  script.onload = resolve;
+  script.onerror = reject;
+  script.async = true;
+  script.src = '/js/fetch-inject.min.js';
+})
 
 Promise.all([revisionedFiles, scriptPromise])
 .then(results => {
   let json = results[0]
-  // setConfig(window)
-  fetchInject([
-    // critical js
-    // `/${json.commonjs}`
-  ]).then(() => {
-    // if (!webComponentsSupported()) {
+  // make sure WC are working
+  const webComponentsAvailable = new Promise((resolve) => {
+    if (!webComponentsSupported()) {
       return fetchInject([
         // polyfill
         `/js/webcomponents-sd-ce.js`
-      ]).then( () => {
-        console.log('WC loaded')
+      ]).then(() => {
+        resolve()
       })
-    // }
+    }
+    resolve()
   })
-  // WC available
+  // load critical layout components
+  const layoutComponents = fetchInject([`/${json['js/layoutComponents.js']}`], webComponentsAvailable);
+  // load webfont and view intro once downloaded
+  fetchInject([
+    `https://fonts.googleapis.com/css?family=Noto+Serif:400,400i|Source+Sans+Pro:400,600`
+  ], layoutComponents)
   .then(() => {
-    return fetchInject([
-      `/${json.webcomponentsjs}`
-    ]).then(() => {
-      console.log('ähh no')
-    })
+    document.querySelector('.c-section--intro').style.opacity = "1"
+  }, () => {
+    document.querySelector('.c-section--intro').style.opacity = "1"
   })
-  // unimportant rest
+
+  // load responsiveMenu
+  fetchInject([
+    `/${json['js/responsiveMenu.js']}`
+  ], webComponentsAvailable)
   .then(() => {
-    console.log('last')
-    return fetchInject([
-      `/${json.restjs}`
-    ])
+    document.querySelector('responsive-menu').style.display = "block"
   })
 })
