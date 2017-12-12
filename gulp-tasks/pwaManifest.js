@@ -1,7 +1,6 @@
 const pwaManifest = require('@pwa/manifest')
 
 module.exports = (revFiles) => {
-
   return () => {
     return pwaManifest({
       name: 'veare – UI/UX design',

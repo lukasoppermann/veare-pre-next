@@ -49,10 +49,8 @@ module.exports = function (dir, filesToMove) {
       .pipe(source(path.resolve(entry.slice(0, -3) + '.js'), path.resolve(dir)))
       .pipe(streamify(uglify()))
       .pipe(streamify(sourcemaps.init({loadMaps: true})))
-      .pipe(streamify(sourcemaps.write('/',{
-        sourceMappingURL: function(file) {
-          return '/' + file.relative + '.map';
-        }
+      .pipe(streamify(sourcemaps.write('/', {
+        sourceMappingURL: file => '/' + file.relative + '.map'
       })))
     }))
     .pipe(gulp.dest('public/js'))
