@@ -184,7 +184,11 @@ gulp.task('build', gulp.series(
       breakOnError: false
     }))
   },
-  gulp.parallel('bundleJs', 'bundleCss', 'images'),
-  gulp.parallel('revJs', 'revCss', 'revMedia'),
+  gulp.parallel(gulp.series(
+    gulp.parallel('bundleJs', 'bundleCss'),
+    gulp.parallel('revJs', 'revCss')
+    ),
+    'images'
+  ),
   gulp.parallel('pwaManifest', 'serviceWorker')
 ))
