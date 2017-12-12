@@ -2,7 +2,7 @@
       {
           "title": "Open Everything",
           "description": "This magazine for the re:publica conference 2013 combines different articles on the topic “Open Everything”.",
-          "src": "/media/card-open-everything.png",
+          "src": "media/card-open-everything.png",
           "color": "rgb(70,155,180)",
           "size": "tall",
           "tag": "print",
@@ -11,7 +11,7 @@
       {
           "title": "swift / we are fast",
           "description": "Swift is a case study of a corporate identity for an airline focusing on speed and comfort.",
-          "src": "/media/card-swift.png",
+          "src": "media/card-swift.png",
           "color": "rgb(245,215,85)",
           "size": "tall",
           "tag": "branding",
@@ -20,7 +20,7 @@
       {
           "title": "Juice Control",
           "description": "Are you aware of your energy consumption? JuiceControl will help you with it.",
-          "src": "/media/card-juicecontrol.png",
+          "src": "media/card-juicecontrol.png",
           "color": "rgb(70,155,180)",
           "size": "medium",
           "tag": "interface",
@@ -29,7 +29,7 @@
       {
           "title": "The new germanwings",
           "description": "An infographic for the airline germanwings showing service changes for passengers.",
-          "src": "/media/card-lufthansa-germanwings.png",
+          "src": "media/card-lufthansa-germanwings.png",
           "color": "rgb(245,215,85)",
           "size": "tall",
           "tag": "infographics",
@@ -38,7 +38,7 @@
       {
           "title": "Decks",
           "description": "Creating the future fully-fledged Operating System for touchscreen.",
-          "src": "/media/card-decks.png",
+          "src": "media/card-decks.png",
           "color": "rgb(245,130,105)",
           "size": "tall",
           "tag": "interface",
@@ -47,7 +47,7 @@
       {
           "title": "Woyzeck – a fragment",
           "description": "A series of typographical posters on the play “Woyzeck - Ein Fragment” by Georg Büchner.",
-          "src": "/media/card-woyzeck.png",
+          "src": "media/card-woyzeck.png",
           "color": "rgb(165,205,200)",
           "size": "medium",
           "tag": "print",
@@ -56,7 +56,7 @@
       {
           "title": "Diversity Squared",
           "description": "An iPad magazine for people who recently moved to Berlin.",
-          "src": "/media/card-d2.png",
+          "src": "media/card-d2.png",
           "color": "rgb(245,150,0)",
           "size": "medium",
           "tag": "interface",
@@ -65,7 +65,7 @@
       {
           "title": "Donnerwetter",
           "description": "A calendar that features an information graphic on different weather phenomenon every month.",
-          "src": "/media/card-donnerwetter.png",
+          "src": "media/card-donnerwetter.png",
           "color": "rgb(165,205,200)",
           "size": "medium",
           "tag": "print",

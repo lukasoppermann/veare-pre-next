@@ -12,7 +12,7 @@ app.engine('hbs', hbs.engine)
 // register new view engine
 app.set('view engine', 'hbs')
 // works with caching
-// app.set('view cache', true)
+app.set('view cache', true)
 let routes = routing(app)
 // contentful has loaded
 contentful(routes, (error) => {

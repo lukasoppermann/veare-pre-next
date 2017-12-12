@@ -11,7 +11,8 @@ gulp.task('bundleJs', require('./gulp-tasks/rollup.js')('resources/js/',
   // files to only be moved to js folder
   [
     'node_modules/@webcomponents/webcomponentsjs/webcomponents-sd-ce.js',
-    'node_modules/@webcomponents/webcomponentsjs/webcomponents-sd-ce.js.map'
+    'node_modules/@webcomponents/webcomponentsjs/webcomponents-sd-ce.js.map',
+    'node_modules/fetch-inject/dist/fetch-inject.min.js'
   ]
 ))
 /* ------------------------------
@@ -49,7 +50,7 @@ gulp.task('bundleCss', require('./gulp-tasks/bundleCss.js')({
  *
  */
 const imagemin = require('gulp-imagemin')
-gulp.task('images', () =>
+gulp.task('minifyImages', () =>
   gulp.src('resources/media/*.*')
     .pipe(imagemin())
     .pipe(gulp.dest('public/media'))
@@ -60,13 +61,37 @@ gulp.task('images', () =>
  *
  */
 gulp.task('revCss', require('./gulp-tasks/rev.js')('css', ['public/css/app.css']))
+// js
 gulp.task('revJs', require('./gulp-tasks/rev.js')('js',
-  [
-    'public/js/common.js',
-    'public/js/webcomponents.js',
-    'public/js/registerServiceWorker.js',
-    'public/js/blog.js'
-  ]))
+  fs.readdirSync('resources/js/').filter(file => {
+    return file.substr(-3) === '.ts'
+  }).map(item => {
+    return `public/js/${item.replace(/\.ts$/, '.js')}`
+  })
+))
+// images
+gulp.task('revMedia', require('./gulp-tasks/rev.js')('media',
+  fs.readdirSync('public/media/').filter(file => {
+    return file.substr(-4) === '.png' || file.substr(-4) === '.jpg' || file.substr(-4) === '.svg'
+  }).map(item => {
+    return `public/media/${item}`
+  })
+))
+/* ------------------------------
+ *
+ * images
+ *
+ */
+gulp.task('images', gulp.series(
+  'minifyImages',
+  'revMedia'
+))
+/* ------------------------------
+ *
+ * service-worker
+ *
+ */
+gulp.task('pwaManifest', require('./gulp-tasks/pwaManifest.js')(JSON.parse(fs.readFileSync('public/rev-manifest.json', 'utf8'))))
 /* ------------------------------
  *
  * service-worker
@@ -142,6 +167,7 @@ gulp.task('default', gulp.series(
   gulp.parallel('bundleJs', 'bundleCss'),
   'revJs',
   'revCss',
+  'pwaManifest',
   gulp.parallel('watchJs', 'watchCss', 'watchTemplates')
 ))
 
@@ -159,6 +185,6 @@ gulp.task('build', gulp.series(
     }))
   },
   gulp.parallel('bundleJs', 'bundleCss', 'images'),
-  gulp.parallel('revJs', 'revCss'),
-  'serviceWorker'
+  gulp.parallel('revJs', 'revCss', 'revMedia'),
+  gulp.parallel('pwaManifest', 'serviceWorker')
 ))

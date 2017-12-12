@@ -1,9 +1,14 @@
 <title>vea.re UI/UX Design{{#if title}} {{title}}{{else}} & Creative Direction{{/if}}</title>
 <meta name="apple-mobile-web-app-title" content="veare" />
-<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-<link rel="icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="copyright" content="{{year}}" />
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="theme-color" content="rgb(240, 170, 30)" />
+<link rel="icon" href="/media/veare-icon-32.png" type="image/png" />
 <link rel="apple-touch-icon-precomposed" href="/media/favicon-iphone.png" />
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/media/veare-icon@1,5x.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/media/veare-icon-72.png" />
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/media/favicon-iphone@2x.png" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/media/veare-icon@3x.png" />
 <link rel="manifest" href="/manifest.json" />
@@ -11,35 +16,9 @@
 {{#> header-block}}
   {{!-- Additional header content --}}
 {{/header-block}}
-<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-<meta name="copyright" content="{{year}}" />
-<meta http-equiv="X-UA-Compatible" content="chrome=1" />
-<link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,400i|Source+Sans+Pro:400,600" rel="stylesheet" />
-<link href="/{{files.appcss}}" rel="stylesheet" />
-<script type="text/javascript" async>
-  // test if browser supports 100% of web component specs
-  let webComponentsSupported = () => {
-    return 'registerElement' in document &&
-    typeof document.createElement('div').attachShadow === 'function' &&
-    'content' in document.createElement('template')
-  }
-  // create script tag to load compoments
-  let script = document.createElement('script')
-  script.setAttribute('src', '/{{files.webcomponentsjs}}')
-  // if 100% supported, load script
-  if (webComponentsSupported()) {
-    document.head.appendChild(script)
-  } else {
-    // if not 100% load polyfill and only load script once polyfill is ready
-    let polyfill = document.createElement('script')
-    polyfill.setAttribute('src', '/js/webcomponents-sd-ce.js')
-    document.head.appendChild(polyfill)
-    window.addEventListener('WebComponentsReady', function () {
-      document.head.appendChild(script)
-    })
-  }
-</script>
-<script src="/{{files.commonjs}}" async></script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=no" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="theme-color" content="rgb(240, 170, 30)" />
+{{#> critical-css-block}}
+  {{!-- Critical css in header --}}
+{{/critical-css-block}}
+{{{ inline_js files.[js/index.js] }}}
+{{!-- <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,400i|Source+Sans+Pro:400,600" rel="stylesheet" /> --}}
+<link href="/{{files.[css/app.css]}}" rel="stylesheet" />

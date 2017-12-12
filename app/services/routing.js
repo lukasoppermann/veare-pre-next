@@ -1,5 +1,6 @@
 const fs = require('fs')
 const express = require('express')
+const compression = require('compression')
 const bodyParser = require('body-parser')
 const basicAuth = require('express-basic-auth')
 const contentfulConfig = require('../config/contentful.js')
@@ -13,35 +14,45 @@ const PORT = process.env.NODE_PORT || 8080
 module.exports = (app) => {
   return (response) => {
     let files = JSON.parse(fs.readFileSync('public/rev-manifest.json', 'utf8'))
-    // change object keys
-    Object.keys(files).forEach((key) => {
-      let newKey = key.replace('.', '').substring(key.lastIndexOf('/') + 1)
-      files[newKey] = files[key]
-      delete files[key]
-    })
+    // revisioned css & js files
+    let revisionedFiles = Object.keys(files)
+      .filter(key => key.substr(-3) === 'css' || key.substr(-2) === 'js')
+      .reduce((obj, key) => {
+        obj[key] = files[key]
+        return obj
+      }, {})
+    // portfolio files
     let portfolioItems = JSON.parse(fs.readFileSync('resources/templates/data/portfolio.json'))
+    // replace image
+    portfolioItems.map(item => {
+      item.src = '/' + files[item.src]
+    })
     // dev
     if (env === 'dev') {
       app.use(/\/[a-z_/]*/, function (req, res, next) {
         files = JSON.parse(fs.readFileSync('public/rev-manifest.json', 'utf8'))
-        // change object keys
-        Object.keys(files).forEach((key) => {
-          let newKey = key.replace('.', '').substring(key.lastIndexOf('/') + 1)
-          files[newKey] = files[key]
-          delete files[key]
-        })
-        // console.log('parsed files: ', files)
+        revisionedFiles = Object.keys(files)
+          .filter(key => key.substr(-3) === 'css' || key.substr(-2) === 'js')
+          .reduce((obj, key) => {
+            obj[key] = files[key]
+            return obj
+          }, {})
         next()
       })
     }
     //
     app.use(bodyParser.json({ type: 'application/*+json' }))
+    app.use(compression())
     // contentful webhook
     app.post('/contentful', basicAuth({
       users: {
         [contentfulConfig.webhookUser]: contentfulConfig.webhookPassword
       }
     }), contentfulWebhook)
+    // revisioned files
+    app.get('/revisionedFiles', function (req, res) {
+      res.json(revisionedFiles)
+    })
     // index
     app.get('/', function (req, res) {
       res.render('index', {
@@ -101,7 +112,7 @@ module.exports = (app) => {
       })
     })
     // static content
-    app.use(express.static('public'))
+    app.use(express.static('public', {maxAge: '365d'}))
     // open port
     app.listen(PORT)
     if (env !== 'testing') {
