@@ -15,7 +15,7 @@ module.exports = (app) => {
   return (response) => {
     let files = JSON.parse(fs.readFileSync('public/rev-manifest.json', 'utf8'))
     // revisioned css & js files
-    const revisionedFiles = Object.keys(files)
+    let revisionedFiles = Object.keys(files)
       .filter(key => key.substr(-3) === 'css' || key.substr(-2) === 'js')
       .reduce((obj, key) => {
         obj[key] = files[key]
@@ -23,10 +23,20 @@ module.exports = (app) => {
       }, {})
     // portfolio files
     let portfolioItems = JSON.parse(fs.readFileSync('resources/templates/data/portfolio.json'))
+    // replace image
+    portfolioItems.map(item => {
+      item.src = '/' + files[item.src]
+    })
     // dev
     if (env === 'dev') {
       app.use(/\/[a-z_/]*/, function (req, res, next) {
         files = JSON.parse(fs.readFileSync('public/rev-manifest.json', 'utf8'))
+        revisionedFiles = Object.keys(files)
+          .filter(key => key.substr(-3) === 'css' || key.substr(-2) === 'js')
+          .reduce((obj, key) => {
+            obj[key] = files[key]
+            return obj
+          }, {})
         next()
       })
     }
@@ -102,7 +112,7 @@ module.exports = (app) => {
       })
     })
     // static content
-    app.use(express.static('public', {maxAge: '5m'}))
+    app.use(express.static('public', {maxAge: '365d'}))
     // open port
     app.listen(PORT)
     if (env !== 'testing') {

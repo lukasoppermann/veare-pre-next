@@ -33,9 +33,15 @@ module.exports = expressHandlebars.create({
     year: function () {
       return new Date().getFullYear()
     },
-    inline_js: (path) => {
+    inline_js: function (path) {
+      path = `public/` + path
       let js = fs.readFileSync(path, 'utf8')
       return `<script>${js}</script>`
+    },
+    inline_css: (path) => {
+      path = `public/` + path
+      let css = fs.readFileSync(path, 'utf8')
+      return `<style>${css}</style>`
     },
     inline_svg: function (path, options) {
       // optimizing fn
