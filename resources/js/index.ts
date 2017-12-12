@@ -11,7 +11,7 @@ const scriptPromise = new Promise((resolve, reject) => {
   script.onload = resolve;
   script.onerror = reject;
   script.async = true;
-  script.src = '/js/fetch-inject.min.js';
+  script.src = '/js/fetch-inject.min.js?v=1.9.1';
 })
 
 Promise.all([revisionedFiles, scriptPromise])
@@ -36,14 +36,19 @@ Promise.all([revisionedFiles, scriptPromise])
     `https://fonts.googleapis.com/css?family=Noto+Serif:400,400i|Source+Sans+Pro:400,600`
   ], layoutComponents)
   .then(() => {
-    document.querySelector('.c-section--intro').style.opacity = "1"
+    if(document.querySelector('.c-section--intro') !== null) {
+      document.querySelector('.c-section--intro').style.opacity = "1"
+    }
   }, () => {
-    document.querySelector('.c-section--intro').style.opacity = "1"
+    if(document.querySelector('.c-section--intro') !== null) {
+      document.querySelector('.c-section--intro').style.opacity = "1"
+    }
   })
 
   // load responsiveMenu
   fetchInject([
-    `/${json['js/responsiveMenu.js']}`
+    `/${json['js/responsiveMenu.js']}`,
+    `/${json['js/rest.js']}`
   ], webComponentsAvailable)
   .then(() => {
     document.querySelector('responsive-menu').style.display = "block"
