@@ -50,7 +50,7 @@ gulp.task('bundleCss', require('./gulp-tasks/bundleCss.js')({
  *
  */
 const imagemin = require('gulp-imagemin')
-gulp.task('images', () =>
+gulp.task('minifyImages', () =>
   gulp.src('resources/media/*.*')
     .pipe(imagemin())
     .pipe(gulp.dest('public/media'))
@@ -76,6 +76,15 @@ gulp.task('revMedia', require('./gulp-tasks/rev.js')('media',
   }).map(item => {
     return `public/media/${item}`
   })
+))
+/* ------------------------------
+ *
+ * images
+ *
+ */
+gulp.task('images', gulp.series(
+  'minifyImages',
+  'revMedia'
 ))
 /* ------------------------------
  *
@@ -176,6 +185,6 @@ gulp.task('build', gulp.series(
     }))
   },
   gulp.parallel('bundleJs', 'bundleCss', 'images'),
-  gulp.parallel('revJs', 'revCss'),
-  'serviceWorker'
+  gulp.parallel('revJs', 'revCss', 'revMedia'),
+  gulp.parallel('pwaManifest', 'serviceWorker')
 ))
