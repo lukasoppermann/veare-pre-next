@@ -190,5 +190,5 @@ gulp.task('build', gulp.series(
     ),
     'images'
   ),
-  gulp.parallel('pwaManifest', 'serviceWorker')
+  gulp.parallel('pwaManifest') // , 'serviceWorker'
 ))
