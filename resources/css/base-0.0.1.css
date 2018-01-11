@@ -13,7 +13,6 @@ body{
 	font-family: var(--sans-serif);
 	font-weight: var(--sans-serif-normal);
   font-size: var(--type-default);
-  line-height: 135%;
 	color: rgba(0,0,0,.8);
 	background: rgb(255,255,255);
 	overflow-y: scroll;
@@ -26,11 +25,6 @@ body{
   flex-direction: column;
 }
 html.menu-active{ overflow: hidden !important; }
-/*------------------*/
-/* fonts */
-strong{
-	font-weight: var(--sans-serif-bold);
-}
 /*------------------*/
 /* images */
 img.async-img, img.loading{ visibility: hidden; opacity: 0; }

@@ -13,14 +13,16 @@
 .o-headline--h3{
   font-size: var(--type-xxl);
   line-height: var(--type-xxl-lineheight);
-  font-weight: var(--sans-serif-bold);
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-montserrat-bold);
   margin-bottom: var(--size-s);
   margin-top: var(--size-xl);
 }
 .o-headline--h4{
   font-size: var(--type-xl);
   line-height: var(--type-xl-lineheight);
-  font-weight: var(--sans-serif-bold);
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-montserrat-bold);
   margin-bottom: var(--size-s);
   margin-top: var(--size-l);
 }

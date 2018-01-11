@@ -12,7 +12,7 @@ module.exports = (revFiles) => {
       lang: 'en-US',
       icons: [
         {
-          src: revFiles['media/veare-icon.png'],
+          src: revFiles['media/veare-icon-48.png'],
           type: 'image/png',
           sizes: '48x48'
         },
@@ -22,17 +22,17 @@ module.exports = (revFiles) => {
           sizes: '72x72'
         },
         {
-          src: revFiles['media/veare-icon@2x.png'],
+          src: revFiles['media/veare-icon-96.png'],
           type: 'image/png',
           sizes: '96x96'
         },
         {
-          src: revFiles['media/veare-icon@3x.png'],
+          src: revFiles['media/veare-icon-144.png'],
           type: 'image/png',
           sizes: '144x144'
         },
         {
-          src: revFiles['media/veare-icon@4x.png'],
+          src: revFiles['media/veare-icon-192.png'],
           type: 'image/png',
           sizes: '192x192'
         },

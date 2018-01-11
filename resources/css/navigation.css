@@ -6,11 +6,11 @@
   left: 0;
   z-index: 990;
   transform: translateZ(100px); /* safari hack */
-  font-size: var(--size-l);
   height: var(--size-g);
   width: 100vw;
-  font-family: var(--sans-serif);
-  font-weight: var(--sans-serif-bold);
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-montserrat-bold);
+  font-size: var(--size-l);
 }
 .o-nav__list{
   pointer-events: auto;
@@ -190,7 +190,7 @@
   content: "";
   width: 0%;
   height: 3px;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--white);
   position: absolute;
   left: 0;
   top: 50%;

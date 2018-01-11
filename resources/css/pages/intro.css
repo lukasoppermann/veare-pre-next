@@ -6,8 +6,8 @@
 .c-section--intro{
   position: relative;
   background-color: var(--color-sand);
-  border: var(--size-m) solid rgb(255, 255, 255);
-  border-top: var(--size-g) solid rgb(255, 255, 255);
+  border: var(--size-m) solid var(--white);
+  border-top: var(--size-g) solid var(--white);
 }
 .c-section--intro .c-logo{
   position: absolute;

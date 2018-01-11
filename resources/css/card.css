@@ -1,3 +1,13 @@
+.Card{
+  position: relative;
+  background: var(--white);
+  padding: var(--size-xl);
+  padding-bottom: var(--size-h);
+}
+.Card--rounded{
+  border-radius: 5px;
+}
+
 .o-card{
   position: relative;
   background: var(--white);

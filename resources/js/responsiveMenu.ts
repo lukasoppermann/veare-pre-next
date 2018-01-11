@@ -29,8 +29,8 @@ template.innerHTML = `<style>
     overflow: hidden;
     position: relative;
     font-size: var(--size-l);
-    font-family: var(--sans-serif);
-    font-weight: var(--sans-serif-bold);
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-montserrat-bold);
   }
   nav{
     display: flex;

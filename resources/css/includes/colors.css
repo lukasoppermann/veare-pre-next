@@ -1,29 +1,44 @@
 :root{
+  /**
+   * Main Colors RGB
+   */
   --veare-orange-rgb: 250, 150, 0;
-  --black-rgb: 33,37,41;
-  --white-rgb: 255, 255, 255;
   --blue-rgb: 40, 80, 235;
+  --white-rgb: 255, 255, 255;
+  --black-rgb: 33,37,41;
+  --grey-rgb: 168, 170, 179;
+  --medium-grey-rgb: 196, 198, 207;
+  /**
+   * Suplement Colors RGB
+   */
   --blue-muted-hsl: 228, 75%, 54%;
   --green-rgb: 60, 200, 160;
   --red-rgb: 240,80,50;
   --light-grey-rgb: 240, 240, 245;
-  --medium-grey-rgb: 210, 210, 215;
-  --white-grey-rgb: 250, 250, 255;
+
+  --white-grey-rgb: 250, 250, 252;
   --sand-grey-rgb: 246,245,243;
   /*
-   * main colors
+   * COLORS: Primary Colors
    */
+   --veare-orange: rgb(var(--veare-orange-rgb));
+   --blue: rgb(var(--blue-rgb));
   --black: rgb(var(--black-rgb));
   --black-50: rgba(var(--black-rgb),.5);
   --black-25: rgba(var(--black-rgb),.25);
   --black-10: rgba(var(--black-rgb),.1);
   --black-5: rgba(var(--black-rgb),.05);
   --white: rgb(var(--white-rgb));
-  --veare-orange: rgb(var(--veare-orange-rgb));
-  --blue: rgb(var(--blue-rgb));
+  /*
+   * COLORS: Supplementing COlors
+   */
   --blue-muted: hsl(var(--blue-muted-hsl));
   --green: rgb(var(--green-rgb));
   --red: rgb(var(--red-rgb));
+  /*
+   * COLORS: Greys
+   */
+  --grey: rgb(var(--grey-rgb));
   --medium-grey: rgb(var(--medium-grey-rgb));
   --light-grey: rgb(var(--light-grey-rgb));
   --white-grey: rgb(var(--white-grey-rgb));

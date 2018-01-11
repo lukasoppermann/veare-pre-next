@@ -8,7 +8,7 @@
 }
 .c-about-container{
   margin-top: var(--size-m);
-  margin-bottom: calc(-1 * var(--size-xl));
+  /* margin-bottom: calc(-1 * var(--size-xl)); */
   padding: var(--size-h) var(--size-l);
   box-sizing: border-box;
   background: var(--blue-muted);
@@ -53,7 +53,8 @@
 	margin-bottom: var(--size-m);
   margin-top: calc(-1 * var(--size-xl));
 	box-sizing: border-box;
-  font-weight: var(--sans-serif-bold);
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-montserrat-bold);
 }
 .circle-copy{
 	text-align: left;

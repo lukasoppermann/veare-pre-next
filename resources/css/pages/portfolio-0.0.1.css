@@ -181,14 +181,14 @@
 	box-sizing: border-box;
 	width: 250px;
   font-size: var(--type-big);
-	line-height: var(--type-big-line-height);
-  font-weight: var(--sans-serif-bold);
-	line-height: 100%;
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-montserrat-bold);
+	line-height: 125%;
 	padding: 25px 15px 15px 25px;
 	transition: width .3s ease .2s, font-size .3s ease .2s, line-height .3s ease .2s;
 }
 .o-card__content{
-  color: rgb(255, 255, 255);
+  color: var(--white);
 }
 .o-card__copy{
 	box-sizing: border-box;

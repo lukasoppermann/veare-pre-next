@@ -41,9 +41,9 @@
   position: relative;
   padding-top: var(--size-xl);
   font-size: var(--type-h);
-  line-height: var(--type-h-lineheight);
-  font-family: "Helvetica Neue", Helvetica, var(--sans-serif);
-  font-weight: var(--sans-serif-bold);
+  line-height: 125%;
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-montserrat-bold);
   margin-bottom: var(--size-xl);
 }
 .c-article__blockquote--intro:before{

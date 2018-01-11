@@ -1,5 +1,19 @@
-<div class="o-footer">
-    <a href="/imprint/" class="o-footer-link">imprint</a>
-    <span class="o-footer-delimiter--dot">•</span>
-    <a href="/privacy/" class="o-footer-link">privacy policy</a>
-</div>
+<footer class="Footer">
+  {{#> footer-related}}
+  {{/footer-related}}
+
+  {{#> footer-content}}
+  {{/footer-content}}
+
+  <menu class="Footer__links">
+    <a href="/imprint" class="Footer__link">imprint</a>
+    <a href="/privacy" class="Footer__link">privacy policy</a>
+    <a href="/contact/#contact" class="Footer__link">contact</a>
+    <a href="/contact/#contact" class="Footer__link Footer__link--end Footer__link__copyright">Copyright {{year}} by Lukas Oppermann</a>
+  </menu>
+</footer>
+{{#unless disableFooter}}
+  <svg class="Footer__svg" preserveAspectRatio="none" width="1440px" height="675px" viewBox="0 0 1440 675" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <path d="M0,0 C109.570312,0 890.09375,55.8754162 1440,284.621254 L1440,675 L0,675 L0,0 Z"></path>
+  </svg>
+{{/unless}}
