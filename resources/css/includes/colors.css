@@ -21,8 +21,8 @@
   /*
    * COLORS: Primary Colors
    */
-   --veare-orange: rgb(var(--veare-orange-rgb));
-   --blue: rgb(var(--blue-rgb));
+  --veare-orange: rgb(var(--veare-orange-rgb));
+  --blue: rgb(var(--blue-rgb));
   --black: rgb(var(--black-rgb));
   --black-50: rgba(var(--black-rgb),.5);
   --black-25: rgba(var(--black-rgb),.25);

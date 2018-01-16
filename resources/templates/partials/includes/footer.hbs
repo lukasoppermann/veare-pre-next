@@ -1,9 +1,31 @@
 <footer class="Footer">
+{{#unless disableFooter}}
   {{#> footer-related}}
+  <div class="u-margin-top--xg"></div>
   {{/footer-related}}
 
-  {{#> footer-content}}
-  {{/footer-content}}
+  <aside class="Footer__content">
+    <div class="left">
+      {{#> footer-content}}
+      <span class="Footer__content__subheadline">Need help with your</span>
+      <h4 class="Footer__content__headline">Project</h4>
+      <p class="Footer__content__copy">If you would like to talk about a project or digital product design consulting you need help with, just contact me.</p>
+      <a class="Footer__content__link" rel="noopener" target="_blank" href="mailto:lukas@vea.re">
+        Contact Lukas Oppermann
+        <svg class="Footer__content__link-arrow" viewBox="0 0 11 8"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g transform="translate(-280.000000, -629.000000)">
+              <polygon id="Rectangle" points="286 632 286 629 291 633 286 637 286 634 280 634 280 632"></polygon>
+          </g>
+        </svg>
+      </a>
+      {{/footer-content}}
+    </div>
+    <div class="right">
+      <nuclei-button class="Footer__content__hexagon-link" rel="noopener" target="_blank" href="mailto:lukas@vea.re">Start your project</nuclei-button>
+      <img class="Footer__hexagons" src="/{{files.[media/hexagons.svg]}}" alt="Start a project with Lukas Oppermann" />
+    </div>
+  </aside>
+{{/unless}}
 
   <menu class="Footer__links">
     <a href="/imprint" class="Footer__link">imprint</a>
@@ -13,7 +35,7 @@
   </menu>
 </footer>
 {{#unless disableFooter}}
-  <svg class="Footer__svg" preserveAspectRatio="none" width="1440px" height="675px" viewBox="0 0 1440 675" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <path d="M0,0 C109.570312,0 890.09375,55.8754162 1440,284.621254 L1440,675 L0,675 L0,0 Z"></path>
+  <svg class="Footer__svg" preserveAspectRatio="none" width="1440px" height="675px" viewBox="0 0 1440 675" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <path d="M0,7.63278329e-17 C54.8125,7.63278329e-17 861.390625,34.296875 1440,204.621254 L1440,800 L0,800 L0,7.63278329e-17 Z"></path>
   </svg>
 {{/unless}}

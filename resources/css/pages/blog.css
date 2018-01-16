@@ -356,8 +356,15 @@
 .o-blog-listing__right .Footer{
   padding-top: var(--size-l);
 }
-@media (max-width: 1000px) {
-  .o-blog-listing__right .Footer__link__copyright{
-    display: none;
+@media (max-width: 1180px) {
+  .o-blog-listing__right .Footer__links{
+    justify-content: center;
+  }
+  .o-blog-listing__right .Footer__link:first-child{
+    margin-left: var(--size-m);
+  }
+  .o-blog-listing__right .Footer__link.Footer__link--end{
+    margin-left: auto;
+    margin-right: auto;
   }
 }

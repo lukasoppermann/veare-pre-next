@@ -5,9 +5,6 @@ const deasync = require('deasync')
 
 const svgo = new SVGO({
   plugins: [
-    { removeEditorsNSData: {
-      additionalNamespaces: ['http://www.figma.com/figma/ns']}
-    },
     { removeDesc: {removeAny: true} },
     { removeTitle: {} }, // pass it an argument to enable
     'removeComments', // does enable default plugins. (using { full: true } )

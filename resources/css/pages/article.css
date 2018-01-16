@@ -9,7 +9,7 @@
   box-sizing: border-box;
   padding: var(--size-xl);
   padding-top: var(--size-g);
-  padding-bottom: var(--size-xxg);
+  padding-bottom: var(--size-l);
 }
 .o-article__banner{
   max-width: 140rem;

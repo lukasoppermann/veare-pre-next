@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="615" height="378" viewBox="0 0 615 378">
+  <defs>
+    <linearGradient id="a" x1="26.209%" x2="40.115%" y1="12.483%" y2="60.139%">
+      <stop offset="0%" stop-color="#E6E8F2"/>
+      <stop offset="12.61%" stop-color="#E6E8F2" stop-opacity=".874"/>
+      <stop offset="100%" stop-color="#E6E8F2" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="b" x1="75.894%" x2="54.603%" y1="13.737%" y2="50%">
+      <stop offset="0%" stop-color="#E6E8F2"/>
+      <stop offset="12.61%" stop-color="#E6E8F2" stop-opacity=".874"/>
+      <stop offset="100%" stop-color="#E6E8F2" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="c" x1="50%" x2="50%" y1="2.879%" y2="70.426%">
+      <stop offset="0%" stop-color="#E6E8F2"/>
+      <stop offset="12.61%" stop-color="#E6E8F2" stop-opacity=".874"/>
+      <stop offset="100%" stop-color="#E6E8F2" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="d" x1="10.075%" x2="84.3%" y1="23.928%" y2="50%">
+      <stop offset="0%" stop-color="#E6E8F2"/>
+      <stop offset="12.61%" stop-color="#E6E8F2" stop-opacity=".874"/>
+      <stop offset="100%" stop-color="#E6E8F2" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="e" x1="50%" x2="50%" y1="98.906%" y2="33.346%">
+      <stop offset="0%" stop-color="#E6E8F2"/>
+      <stop offset="12.61%" stop-color="#E6E8F2" stop-opacity=".874"/>
+      <stop offset="100%" stop-color="#E6E8F2" stop-opacity="0"/>
+    </linearGradient>
+    <path id="g" d="M360.979357,151.071909 L442.979357,198.089709 C445.466192,199.51563 447,202.163155 447,205.02979 L447,298.97021 C447,301.836845 445.466192,304.48437 442.979357,305.910291 L360.979357,352.928091 C358.514662,354.341318 355.485338,354.341318 353.020643,352.928091 L271.020643,305.910291 C268.533808,304.48437 267,301.836845 267,298.97021 L267,205.02979 C267,202.163155 268.533808,199.51563 271.020643,198.089709 L353.020643,151.071909 C355.485338,149.658682 358.514662,149.658682 360.979357,151.071909 Z"/>
+    <filter id="f" width="195%" height="183.8%" x="-47.5%" y="-26.7%" filterUnits="objectBoundingBox">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1.5"/>
+      <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+      <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+      <feOffset dy="5" in="SourceAlpha" result="shadowOffsetOuter2"/>
+      <feGaussianBlur in="shadowOffsetOuter2" result="shadowBlurOuter2" stdDeviation="5"/>
+      <feComposite in="shadowBlurOuter2" in2="SourceAlpha" operator="out" result="shadowBlurOuter2"/>
+      <feColorMatrix in="shadowBlurOuter2" result="shadowMatrixOuter2" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0"/>
+      <feOffset dy="10" in="SourceAlpha" result="shadowOffsetOuter3"/>
+      <feGaussianBlur in="shadowOffsetOuter3" result="shadowBlurOuter3" stdDeviation="10"/>
+      <feComposite in="shadowBlurOuter3" in2="SourceAlpha" operator="out" result="shadowBlurOuter3"/>
+      <feColorMatrix in="shadowBlurOuter3" result="shadowMatrixOuter3" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+      <feOffset dy="15" in="SourceAlpha" result="shadowOffsetOuter4"/>
+      <feGaussianBlur in="shadowOffsetOuter4" result="shadowBlurOuter4" stdDeviation="15"/>
+      <feComposite in="shadowBlurOuter4" in2="SourceAlpha" operator="out" result="shadowBlurOuter4"/>
+      <feColorMatrix in="shadowBlurOuter4" result="shadowMatrixOuter4" values="0 0 0 0 0.117647059 0 0 0 0 0.298039216 0 0 0 0 1 0 0 0 0.15 0"/>
+      <feMerge>
+        <feMergeNode in="shadowMatrixOuter1"/>
+        <feMergeNode in="shadowMatrixOuter2"/>
+        <feMergeNode in="shadowMatrixOuter3"/>
+        <feMergeNode in="shadowMatrixOuter4"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <g fill="none" fill-rule="evenodd" transform="translate(-3 -67)">
+    <path fill="url(#a)" fill-rule="nonzero" d="M446,303.575 L534,353.686 L534,444.278 C534,450.189 530.809,455.678 525.673,458.603 L454.158,499.327 C451.677,500.74 448.856,501.487 446.001,501.487 C443.146,501.487 440.325,500.74 437.844,499.327 L358,453.861 L358,353.686 L446,303.575 Z M446,301.273 L356,352.523 L356,455.023 L436.853,501.064 C439.688,502.679 442.844,503.486 446,503.486 C449.156,503.486 452.312,502.679 455.147,501.064 L526.662,460.34 C532.435,457.053 536,450.92 536,444.277 L536,352.523 L446,301.273 Z"/>
+    <path fill="url(#b)" fill-rule="nonzero" d="M90,303.575 L178,353.686 L178,453.861 L98.157,499.327 C95.676,500.74 92.855,501.487 90,501.487 C87.145,501.487 84.324,500.74 81.843,499.327 L10.328,458.603 C5.191,455.678 2,450.189 2,444.278 L2,363.269 C2,357.358 5.191,351.869 10.327,348.944 L90,303.575 Z M90,301.273 L9.338,347.206 C3.565,350.493 0,356.626 0,363.269 L0,444.278 C0,450.921 3.565,457.054 9.338,460.341 L80.853,501.065 C83.688,502.68 86.844,503.487 90,503.487 C93.156,503.487 96.312,502.68 99.147,501.065 L180,455.023 L180,352.523 L90,301.273 Z"/>
+    <path fill="url(#c)" fill-rule="nonzero" d="M268,303.575 L356,353.686 L356,453.861 L276.157,499.327 C273.676,500.74 270.855,501.487 268,501.487 C265.145,501.487 262.324,500.74 259.843,499.327 L180,453.861 L180,353.686 L268,303.575 Z M268,301.273 L178,352.523 L178,455.023 L258.853,501.064 C261.688,502.679 264.844,503.486 268,503.486 C271.156,503.486 274.312,502.679 277.147,501.064 L358,455.023 L358,352.523 L268,301.273 Z"/>
+    <path fill="url(#d)" fill-rule="nonzero" d="M534.878,151.542 L614.551,196.911 C619.688,199.836 622.879,205.325 622.879,211.236 L622.879,292.245 C622.879,298.156 619.688,303.645 614.552,306.57 L534.879,351.939 L446.879,301.828 L446.879,201.654 L534.878,151.542 Z M534.878,149.241 L444.878,200.491 L444.878,302.991 L534.878,354.241 L615.54,308.308 C621.313,305.021 624.878,298.888 624.878,292.245 L624.878,211.236 C624.878,204.593 621.313,198.46 615.54,195.173 L534.878,149.241 Z"/>
+    <path fill="#E6E8F2" fill-rule="nonzero" d="M356.878,151.542 L444.878,201.653 L444.878,301.828 L356.878,351.939 L268.878,301.828 L268.878,201.654 L356.878,151.542 Z M356.878,149.241 L266.878,200.491 L266.878,302.991 L356.878,354.241 L446.878,302.991 L446.878,200.491 L356.878,149.241 Z"/>
+    <path fill="#E6E8F2" fill-rule="nonzero" d="M178.878,151.542 L266.878,201.653 L266.878,301.828 L178.878,351.939 L90.878,301.828 L90.878,211.236 C90.878,205.325 94.069,199.836 99.205,196.911 L178.878,151.542 Z M178.878,149.241 L98.216,195.174 C92.443,198.461 88.878,204.594 88.878,211.237 L88.878,302.991 L178.878,354.241 L268.878,302.991 L268.878,200.491 L178.878,149.241 Z"/>
+    <path fill="url(#e)" fill-rule="nonzero" d="M445.878,2 C448.733,2 451.554,2.747 454.035,4.16 L525.55,44.884 C530.687,47.809 533.878,53.298 533.878,59.209 L533.878,149.8 L445.878,199.911 L357.878,149.8 L357.878,49.625 L437.721,4.16 C440.202,2.747 443.023,2 445.878,2 Z M445.878,0 C442.722,0 439.566,0.807 436.731,2.422 L355.878,48.463 L355.878,150.963 L445.878,202.213 L535.878,150.963 L535.878,59.209 C535.878,52.566 532.313,46.433 526.54,43.146 L455.025,2.422 C452.19,0.807 449.034,0 445.878,0 Z"/>
+    <path fill="url(#e)" fill-rule="nonzero" d="M267.878,2 C270.733,2 273.554,2.747 276.035,4.16 L355.878,49.626 L355.878,149.8 L267.878,199.911 L179.878,149.8 L179.878,59.209 C179.878,53.298 183.069,47.809 188.205,44.884 L259.721,4.16 C262.202,2.747 265.023,2 267.878,2 Z M267.878,0 C264.722,0 261.566,0.807 258.731,2.422 L187.216,43.146 C181.443,46.433 177.878,52.566 177.878,59.209 L177.878,150.963 L267.878,202.213 L357.878,150.963 L357.878,48.463 L277.025,2.422 C274.19,0.807 271.034,0 267.878,0 Z"/>
+    <use fill="black" filter="url(#f)" xlink:href="#g"/>
+    <use fill="#F9FBFD" xlink:href="#g"/>
+    <path stroke="#2850EB" stroke-width="2" d="M360.481938,151.939419 C358.325329,150.702846 355.674671,150.702846 353.518062,151.939419 L271.518062,198.957219 C269.342082,200.2049 268,202.521484 268,205.02979 L268,298.97021 C268,301.478516 269.342082,303.7951 271.518062,305.042781 L353.518062,352.060581 C355.674671,353.297154 358.325329,353.297154 360.481938,352.060581 L442.481938,305.042781 C444.657918,303.7951 446,301.478516 446,298.97021 L446,205.02979 C446,202.521484 444.657918,200.2049 442.481938,198.957219 L360.481938,151.939419 Z"/>
+  </g>
+</svg>

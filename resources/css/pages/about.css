@@ -81,9 +81,11 @@
 }
 @media screen and (max-width: 800px){
 	.circle-headline{
-		font-size: 60px;
+		font-size: var(--size-xh);
+    padding: 0;
+    text-align: left;
 	}
-	.circle-headline, .circle-copy{ padding: 0 10px; }
+	.circle-copy{ padding: 0 10px; }
 	.plus:before{ display: none; }
 	.circle-copy{
     align-self: center;

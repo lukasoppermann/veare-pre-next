@@ -1,4 +1,4 @@
-{{> layouts/base title=(join "|" post.fields.title) disableFooter="true" }}
+{{> layouts/base title=(join "|" post.fields.title) }}
 {{#*inline "header-block"}}
   <meta property="og:url" content="https://vea.re/blog/{{post.fields.slug}}" />
   <meta property="og:type" content="article" />
@@ -42,6 +42,5 @@
       </div>
     </grid-container>
   </article>
-  {{> includes/footer}}
   <script type="text/javascript" src="/{{files.[js/blog.js]}}"></script>
 {{/inline}}
