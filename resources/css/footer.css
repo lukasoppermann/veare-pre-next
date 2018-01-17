@@ -12,13 +12,16 @@
 }
 .Footer__svg{
   position: absolute;
-  top: var(--size-xg);
+  bottom: 0;
   left: 0;
   z-index: 0;
   vertical-align: middle;
   min-width: 100%;
-  min-height: 100%;
+  height: calc(100% - 50px);
+  /* For when cards are added */
+  /* height: calc(100% - 250px); */
 }
+
 .Footer__svg path{
   fill: var(--white-grey);
 }
