@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/lukasoppermann/veare#readme",
   "devDependencies": {
-    "@nuclei-components/grid": "^1.0.2",
+    "@nuclei-components/grid": "^1.0.3",
     "@pwa/manifest": "^0.2.1",
     "@types/contentful-resolve-response": "^0.1.30",
     "@types/express": "^4.11.0",
@@ -49,7 +49,7 @@
     "merge-stream": "^1.0.1",
     "page-sections": "^0.4.3",
     "prismjs": "^1.9.0",
-    "responsive-image": "^0.2.4",
+    "responsive-image": "^0.2.5",
     "rev-del": "^1.0.5",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-typescript": "^0.8.1",
