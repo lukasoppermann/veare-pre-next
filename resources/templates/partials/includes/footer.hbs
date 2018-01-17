@@ -1,7 +1,7 @@
 <footer class="Footer">
 {{#unless disableFooter}}
   {{#> footer-related}}
-  <div class="u-margin-top--xg"></div>
+
   {{/footer-related}}
 
   <aside class="Footer__content">
@@ -31,11 +31,12 @@
     <a href="/imprint" class="Footer__link">imprint</a>
     <a href="/privacy" class="Footer__link">privacy policy</a>
     <a href="/contact/#contact" class="Footer__link">contact</a>
-    <a href="/contact/#contact" class="Footer__link Footer__link--end Footer__link__copyright">Copyright {{year}} by Lukas Oppermann</a>
+    <a href="/imprint" class="Footer__link Footer__link--end Footer__link__copyright">Copyright {{year}} by Lukas Oppermann</a>
   </menu>
 </footer>
 {{#unless disableFooter}}
-  <svg class="Footer__svg" preserveAspectRatio="none" width="1440px" height="675px" viewBox="0 0 1440 675" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <path d="M0,7.63278329e-17 C54.8125,7.63278329e-17 861.390625,34.296875 1440,204.621254 L1440,800 L0,800 L0,7.63278329e-17 Z"></path>
+  <svg class="Footer__svg" preserveAspectRatio="none" width="1440px" height="615px" viewBox="0 0 1440 615" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <path d="M0,0 C918.166667,2.27373675e-13 1398.16667,2.27373675e-13 1440,0 C1440,96.7604167 1440,301.760417 1440,615 L0,615 L0,0 Z" id="square"></path>
+    {{!-- <path id="wave" d="M0,7.63278329e-17 C54.8125,7.63278329e-17 861.390625,34.296875 1440,204.621254 L1440,800 L0,800 L0,7.63278329e-17 Z"></path> --}}
   </svg>
 {{/unless}}
