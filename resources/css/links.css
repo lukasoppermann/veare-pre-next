@@ -1,5 +1,5 @@
 a, a:active, a:focus{
-  color: inherit;
+  /* color: inherit; */
 }
 a:hover{
   text-decoration: none;
