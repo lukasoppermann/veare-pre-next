@@ -17,7 +17,7 @@ module.exports = function (type, files) {
       del.sync(removeFiles, {cwd: 'public'})
     }
 
-    return gulp.src(files, {base: 'public'})
+    return gulp.src(files, {base: 'public', allowEmpty: true})
       .on('error', error)
       .pipe(rev())
       .pipe(revdel())

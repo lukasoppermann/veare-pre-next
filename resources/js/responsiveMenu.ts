@@ -21,6 +21,7 @@ template.innerHTML = `<style>
   /*Firefox bug: responsive-menu > [slot="items"]*/
   nav [slot="items"],
   ::slotted([slot="items"]){
+    color: inherit;
     pointer-events: auto;
     padding: var(--size-xl, 20px) var(--size-s, 10px) var(--size-m, 10px);
     margin: 0 var(--size-xs);
@@ -35,7 +36,7 @@ template.innerHTML = `<style>
   }
   nav [slot="items"]:hover,
   ::slotted([slot="items"]:hover){
-    color: var(--white);
+    color: var(--black);
   }
   nav [slot="items"]:before,
   ::slotted([slot="items"])::before{
@@ -48,8 +49,8 @@ template.innerHTML = `<style>
     transform: translateY(-50%);
     left: -4px;
     z-index: -1;
-    opacity: .35;
-    background-color: var(--black);
+    opacity: 1;
+    background-color: var(--veare-orange);
     transition: width .35s var(--easeInOutQuad);
   }
   nav [slot="items"]:hover:before,
@@ -58,7 +59,7 @@ template.innerHTML = `<style>
   }
   footer [slot="footer"],
   ::slotted([slot="footer"]){
-    color: rgba(var(--white-rgb), .5);
+    color: rgba(var(--white-rgb), .6) !important;
     position: relative;
     display: inline-block;
     font-size: 16px;
@@ -69,7 +70,7 @@ template.innerHTML = `<style>
   }
   footer [slot="footer"]:hover,
   ::slotted([slot="footer"]:hover){
-    color: var(--white);
+    color: var(--white) !important;
   }
   nav{
     display: flex;
@@ -136,7 +137,6 @@ template.innerHTML = `<style>
     height: 100%;
     width: 30%;
     min-width: 300px;
-    color: rgba(var(--white-rgb), .5);
     opacity: 0;
     padding-top: var(--size-xl);
   }
@@ -148,11 +148,15 @@ template.innerHTML = `<style>
   :host([overlayVisible]) nav [slot="items"],
   :host([overlayVisible]) ::slotted([slot="items"]){
     font-size: var(--size-xl);
-    color: rgba(var(--white-rgb), .5);
+    color: rgba(var(--white-rgb), .75) !important;
   }
   :host([overlayVisible]) nav [slot="items"]:hover,
   :host([overlayVisible]) ::slotted([slot="items"]:hover){
-    color: rgba(var(--white-rgb), 1);
+    color: rgba(var(--white-rgb), 1) !important;
+  }
+  :host([overlayVisible]) nav [slot="items"]:before,
+  :host([overlayVisible]) ::slotted([slot="items"])::before{
+    background-color: rgba(var(--black-rgb), .5);
   }
   #info{
     display: flex;
