@@ -3,28 +3,32 @@
 	"short_name": "veare",
 	"icons": [
 		{
+			"src": "media/veare-icon-48-0aa72fc237.png",
 			"type": "image/png",
 			"sizes": "48x48"
 		},
 		{
-			"src": "media/veare-icon-72-0b1457ce96.png",
+			"src": "media/veare-icon-72-95d5b1d516.png",
 			"type": "image/png",
 			"sizes": "72x72"
 		},
 		{
+			"src": "media/veare-icon-96-6d79d339fe.png",
 			"type": "image/png",
 			"sizes": "96x96"
 		},
 		{
+			"src": "media/veare-icon-144-2b3e744e28.png",
 			"type": "image/png",
 			"sizes": "144x144"
 		},
 		{
+			"src": "media/veare-icon-192-3d55d37347.png",
 			"type": "image/png",
 			"sizes": "192x192"
 		},
 		{
-			"src": "media/veare-icon-512-f84eb9ccfd.png",
+			"src": "media/veare-icon-512-cda2494b5f.png",
 			"type": "image/png",
 			"sizes": "512x512"
 		}
