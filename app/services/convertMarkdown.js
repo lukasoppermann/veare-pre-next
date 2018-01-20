@@ -18,6 +18,12 @@ let modifiers = {
     'start-column': '0s 4m 7l',
     fn: (token) => { token.tag = 'h4' }
   },
+  h4: {
+    class: 'o-headline--h5',
+    columns: '16s 13m 10l',
+    'start-column': '0s 4m 7l',
+    fn: (token) => { token.tag = 'h5' }
+  },
   blockquote: {
     class: 'o-blockquote',
     columns: '16s 15m 14l',

@@ -21,6 +21,7 @@ template.innerHTML = `<style>
   /*Firefox bug: responsive-menu > [slot="items"]*/
   nav [slot="items"],
   ::slotted([slot="items"]){
+    color: inherit;
     pointer-events: auto;
     padding: var(--size-xl, 20px) var(--size-s, 10px) var(--size-m, 10px);
     margin: 0 var(--size-xs);
@@ -31,6 +32,45 @@ template.innerHTML = `<style>
     font-size: var(--size-l);
     font-family: var(--font-montserrat);
     font-weight: var(--font-montserrat-bold);
+    transition: color .35s var(--easeInOutQuad);
+  }
+  nav [slot="items"]:hover,
+  ::slotted([slot="items"]:hover){
+    color: var(--black);
+  }
+  nav [slot="items"]:before,
+  ::slotted([slot="items"])::before{
+    display: block;
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 7px;
+    top: calc(50% + 5px);
+    transform: translateY(-50%);
+    left: -4px;
+    z-index: -1;
+    opacity: 1;
+    background-color: var(--veare-orange);
+    transition: width .35s var(--easeInOutQuad);
+  }
+  nav [slot="items"]:hover:before,
+  ::slotted([slot="items"]:hover)::before{
+    width: calc(100% + 8px);
+  }
+  footer [slot="footer"],
+  ::slotted([slot="footer"]){
+    color: rgba(var(--white-rgb), .6) !important;
+    position: relative;
+    display: inline-block;
+    font-size: 16px;
+    text-decoration: none;
+    padding: var(--size-m, 10px) var(--size-s, 10px);
+    margin: 0;
+    transition: color .35s var(--easeInOutQuad);
+  }
+  footer [slot="footer"]:hover,
+  ::slotted([slot="footer"]:hover){
+    color: var(--white) !important;
   }
   nav{
     display: flex;
@@ -93,10 +133,10 @@ template.innerHTML = `<style>
   }
   :host([overlayVisible]) nav{
     flex-direction: column;
+    align-items: flex-start;
     height: 100%;
     width: 30%;
     min-width: 300px;
-    color: rgb(255,255,255);
     opacity: 0;
     padding-top: var(--size-xl);
   }
@@ -108,6 +148,15 @@ template.innerHTML = `<style>
   :host([overlayVisible]) nav [slot="items"],
   :host([overlayVisible]) ::slotted([slot="items"]){
     font-size: var(--size-xl);
+    color: rgba(var(--white-rgb), .75) !important;
+  }
+  :host([overlayVisible]) nav [slot="items"]:hover,
+  :host([overlayVisible]) ::slotted([slot="items"]:hover){
+    color: rgba(var(--white-rgb), 1) !important;
+  }
+  :host([overlayVisible]) nav [slot="items"]:before,
+  :host([overlayVisible]) ::slotted([slot="items"])::before{
+    background-color: rgba(var(--black-rgb), .5);
   }
   #info{
     display: flex;
@@ -165,9 +214,10 @@ template.innerHTML = `<style>
     bottom: -50px;
     z-index: 10;
     height: 50px;
-    width: 30%;
-    min-width: 300px;
+    width: calc(30% - 2 * var(--size-xs));
+    min-width: calc(300px - 2 * var(--size-xs));
     opacity: 0;
+    margin: 0 var(--size-xs);
     transition: bottom .3s ease, opacity .3s ease;
   }
   :host(.is-active) footer{

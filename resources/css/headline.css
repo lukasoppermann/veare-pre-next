@@ -26,3 +26,11 @@
   margin-bottom: var(--size-s);
   margin-top: var(--size-l);
 }
+.o-headline--h5{
+  font-size: var(--type-l);
+  line-height: var(--type-l-lineheight);
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-montserrat-bold);
+  margin-bottom: var(--size-s);
+  margin-top: var(--size-l);
+}
