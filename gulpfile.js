@@ -49,12 +49,12 @@ gulp.task('bundleCss', require('./gulp-tasks/bundleCss.js')({
  * imagemin
  *
  */
-const imagemin = require('gulp-imagemin')
-gulp.task('minifyImages', () =>
-  gulp.src('resources/media/*.*')
-    .pipe(imagemin())
-    .pipe(gulp.dest('public/media'))
-)
+// const imagemin = require('gulp-imagemin')
+// gulp.task('minifyImages', () =>
+//   gulp.src('resources/media/*.*')
+//     .pipe(imagemin())
+//     .pipe(gulp.dest('public/media'))
+// )
 /* ------------------------------
  *
  * Revision
@@ -77,13 +77,18 @@ gulp.task('revMedia', require('./gulp-tasks/rev.js')('media',
     return `public/media/${item}`
   })
 ))
+
 /* ------------------------------
  *
  * images
  *
  */
+gulp.task('copyMedia', () => gulp.src('resources/media/*.*')
+   .pipe(gulp.dest('public/media'))
+)
+
 gulp.task('images', gulp.series(
-  'minifyImages',
+  'copyMedia',
   'revMedia'
 ))
 /* ------------------------------

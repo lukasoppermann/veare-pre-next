@@ -54,7 +54,9 @@ template.innerHTML = `<style>
     transition: width .35s var(--easeInOutQuad);
   }
   nav [slot="items"]:hover:before,
-  ::slotted([slot="items"]:hover)::before{
+  ::slotted([slot="items"]:hover)::before,
+  nav [slot="items"]:focus:before,
+  ::slotted([slot="items"]:focus)::before{
     width: calc(100% + 8px);
   }
   footer [slot="footer"],
@@ -258,7 +260,7 @@ class ResponsiveMenu extends HTMLElement { // eslint-disable-line no-unused-vars
     // This is specific to CE and required by the spec.
     super()
     // create shadowRoot
-    let shadowRoot = this.attachShadow({mode: 'open'})
+    let shadowRoot = this.attachShadow({mode: 'open', delegatesFocus: false})
     // check if polyfill is used
     if (typeof ShadyCSS !== 'undefined') {
       ShadyCSS.prepareTemplate(template, 'responsive-menu') // eslint-disable-line no-undef
