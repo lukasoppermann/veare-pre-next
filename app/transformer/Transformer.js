@@ -25,18 +25,6 @@ class Transformer {
     }
   }
 
-  getField (fieldName, data) {
-    let field = data.fields[fieldName]
-    if (typeof field !== 'object') {
-      return null
-    }
-    return field[Object.keys(field)[0]]
-  }
-
-  getLinkedField (objectName, fieldname, data) {
-
-  }
-
   formatDate (dateString, format) {
     let date = new Date(dateString)
     let day = ('0' + date.getDate()).slice(-2)

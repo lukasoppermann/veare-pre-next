@@ -9,8 +9,8 @@ class AuthorTransformer extends Transformer {
       createdAt: data.sys.createdAt,
       updatedAt: data.sys.updatedAt,
       fields: {
-        slug: this.getField('slug', data),
-        name: this.getField('name', data)
+        slug: data.fields['slug'],
+        name: data.fields['name']
       }
     }
   }

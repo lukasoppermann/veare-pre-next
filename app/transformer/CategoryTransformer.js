@@ -9,9 +9,9 @@ class CategoryTransformer extends Transformer {
       createdAt: data.sys.createdAt,
       updatedAt: data.sys.updatedAt,
       fields: {
-        slug: this.getField('slug', data),
-        title: this.getField('title', data),
-        description: this.getField('description', data)
+        slug: data.fields['slug'],
+        title: data.fields['title'],
+        description: data.fields['description']
       }
     }
   }
