@@ -24,79 +24,32 @@
   --sans-serif-normal: 400;
   /* FONT: Monospace*/
   --monospace: monospace;
-  /*
-  * Sizes
-  */
-  --type-huge: var(--size-g);
-  --type-huge-line-height: 100%;
-  --type-medium-huge: var(--size-xl);
-  --type-medium-huge-line-height: 135%;
-  --type-big: var(--size-xl);
-  --type-big-line-height: 135%;
-  --type-medium: var(--size-l);
-  --type-medium-line-height: 135%;
-  --type-default: var(--size-m);
-  --type-default-line-height: 135%;
-  --type-small: var(--size-s);
-  --type-small-line-height: 135%;
-  /*
-  * mix
-  */
-  --serif-huge: var(--type-huge)/130% var(--serif);
-  --sans-default: var(--type-default)/130% var(--sans-serif);
-  --sans-medium-huge: var(--type-medium-huge)/130% var(--sans-serif);
-  /*
-  * type sizes
-  */
-  --type-m: var(--size-m);
-  --type-m-lineheight: 135%;
-
-  --type-l: var(--size-l);
-  --type-l-lineheight: 130%;
-
-  --type-xl: var(--size-xl);
-  --type-xl-lineheight: 140%;
-
-  --type-xxl: var(--size-xxl);
-  --type-xxl-lineheight: 140%;
-
-  --type-h: var(--size-h);
-  --type-h-lineheight: 140%;
-
-  --type-g: var(--size-g);
-  --type-g-lineheight: 140%;
-  /*
-   * type colors
-   */
-  --type-black: var(--black);
-  --type-grey: rgba(var(--black-rgb), .5);
-  --type-blue: var(--blue);
 }
 /*
  * type syles
  */
 .type--m{
-  font-size: var(--type-m);
-  line-height: var(--type-m-lineheight);
+  font-size: var(--size-m);
+  line-height: 135%;
 }
 .type--l{
-  font-size: var(--type-l);
-  line-height: var(--type-l-lineheight);
+  font-size: var(--size-l);
+  line-height: 130%;
 }
 .type--xl{
-  font-size: var(--type-xl);
-  line-height: var(--type-xl-lineheight);
+  font-size: var(--size-xl);
+  line-height: 140%;
 }
 .type--xxl{
-  font-size: var(--type-xxl);
-  line-height: var(--type-xxl-lineheight);
+  font-size: var(--size-xxl);
+  line-height: 140%;
 }
 .type--h{
   font-size: var(--size-h);
-  line-height: var(--type-h-lineheight);
+  line-height: 140%;
 }
 /*
  * type colors
  */
-.type-grey{ color: var(--type-grey); }
-.type-blue{ color: var(--type-blue); }
+.type-grey{ color: rgba(var(--black-rgb), .5); }
+.type-blue{ color: var(--blue); }
