@@ -62,13 +62,13 @@
   }
 }
 .o-project-info__title{
-  font-size: var(--type-default);
-  color: var(--type-grey);
+  font-size: var(--size-m);
+  color: var(--black-50);
   text-transform: uppercase;
 }
 .o-project-info__description{
-  font-size: var(--type-big);
-  color: var(--type-black);
+  font-size: var(--size-xl);
+  color: var(--black);
 }
 .o-project-section{
   min-height: auto;
@@ -180,7 +180,7 @@
 	text-align: left;
 	box-sizing: border-box;
 	width: 250px;
-  font-size: var(--type-big);
+  font-size: var(--size-xl);
   font-family: var(--font-montserrat);
   font-weight: var(--font-montserrat-bold);
 	line-height: 125%;
@@ -196,8 +196,8 @@
 	transition: width .3s ease .2s, font-size .3s ease .2s, line-height .3s ease .2s;
 	position: relative;
 	display: block;
-  font-size: var(--type-medium);
-	line-height: var(--type-medium-line-height);
+  font-size: var(--size-l);
+	line-height: 135%;
 	padding: 5px 25px 10px 25px;
 }
 .o-portfolio-card .arrow{

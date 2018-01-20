@@ -5,30 +5,30 @@
   display: block;
 }
 .o-headline--h2{
-  font-size: var(--type-h);
-  line-height: var(--type-h-lineheight);
+  font-size: var(--size-h);
+  line-height: 140%;
   margin-bottom: var(--size-l);
   margin-top: var(--size-h);
 }
 .o-headline--h3{
-  font-size: var(--type-xxl);
-  line-height: var(--type-xxl-lineheight);
+  font-size: var(--size-xxl);
+  line-height: 140%;
   font-family: var(--font-montserrat);
   font-weight: var(--font-montserrat-bold);
   margin-bottom: var(--size-s);
   margin-top: var(--size-xl);
 }
 .o-headline--h4{
-  font-size: var(--type-xl);
-  line-height: var(--type-xl-lineheight);
+  font-size: var(--size-xl);
+  line-height: 140%;
   font-family: var(--font-montserrat);
   font-weight: var(--font-montserrat-bold);
   margin-bottom: var(--size-s);
   margin-top: var(--size-l);
 }
 .o-headline--h5{
-  font-size: var(--type-l);
-  line-height: var(--type-l-lineheight);
+  font-size: var(--size-l);
+  line-height: 130%;
   font-family: var(--font-montserrat);
   font-weight: var(--font-montserrat-bold);
   margin-bottom: var(--size-s);

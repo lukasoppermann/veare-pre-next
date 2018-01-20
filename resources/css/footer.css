@@ -199,7 +199,7 @@
 .Footer__link{
   position: relative;
   font: var(--font-source-sans);
-  font-size: var(--type-default);
+  font-size: var(--size-m);
   padding: var(--size-m) 0;
   margin: 0 var(--size-m);
   text-decoration: none;

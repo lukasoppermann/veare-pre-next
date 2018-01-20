@@ -1,7 +1,7 @@
 .o-paragraph{
   display: block;
-  font-size: var(--type-big);
-  line-height: var(--type-big-line-height);
+  font-size: var(--size-xl);
+  line-height: 135%;
   font-family: var(--sans-serif);
   font-weight: var(--sans-serif-normal);
 }

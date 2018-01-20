@@ -30,9 +30,9 @@
 .o-copy-intro{
   font-family: var(--serif);
   font-style: var(--serif-style);
-  font-size: var(--type-big);
-  line-height: var(--type-big-line-height);
-  color: var(--type-grey);
+  font-size: var(--size-xl);
+  line-height: 135%;
+  color: var(--black-50);
 }
 .c-intro-main-headline-container{
   width: 100%;
@@ -42,17 +42,17 @@
   height: auto;
 }
 .c-intro-main-headline path{
-  fill: var(--type-black);
+  fill: var(--black);
 }
 .c-intro-main-subline{
   letter-spacing: .2rem;
   margin-top: 2rem;
   font-family: var(--serif);
   font-style: var(--serif-style);
-  font-size: var(--type-huge);
+  font-size: var(--size-g);
   font-weight: 400;
-  line-height: var(--type-huge-line-height);
-  color: var(--type-grey);
+  line-height: 100%;
+  color: var(--black-50);
   display: block;
   position: relative;
 }
@@ -78,7 +78,7 @@
 .c-intro--slogan{
   width: 24rem;
   font-family: var(--sans-serif);
-  color: var(--type-black);
+  color: var(--black);
 }
 .c-intro--services-container{
   position: relative;
@@ -90,7 +90,7 @@
   width: 36rem;
   font-family: var(--serif);
   font-style: var(--serif-style);
-  color: var(--type-black);
+  color: var(--black);
 }
 .c-intro--services-description{
   position: absolute;
@@ -98,8 +98,8 @@
 }
 .c-intro--services-description,
 .c-intro--services-description-veare{
-  color: var(--type-grey);
-  font-size: var(--type-default);
+  color: var(--black-50);
+  font-size: var(--size-m);
 }
 .c-intro--services-description-veare{
   display: inline-block;
@@ -191,7 +191,7 @@
     margin-top: 22rem;
   }
   .c-intro-main-subline{
-    font-size: var(--type-medium-huge);
+    font-size: var(--size-xl);
     letter-spacing: 0;
     left: -.2rem;
   }
