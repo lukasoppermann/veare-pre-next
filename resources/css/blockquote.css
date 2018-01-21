@@ -1,8 +1,13 @@
 .o-blockquote{
   font-family: "Helvetica Neue", "Helvetica", var(--sans-serif);
   font-size: var(--size-g);
-  line-height: 140%;
+  line-height: 135%;
   font-weight: bold;
+}
+@media (max-width: 900px){
+  .o-blockquote{
+    font-size: var(--size-xxh);
+  }
 }
 @media (max-width: 600px){
   .o-blockquote{
