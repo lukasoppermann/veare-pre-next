@@ -42,10 +42,9 @@ const updateContent = (updatedItem, res) => {
     })
   }
   // place new / updated item in cache
-  content.push(updatedItem)
+  updatedContent.push(updatedItem)
   // update cache
-  cache.put(contentTypeId, content)
-  // return status OK
+  cache.put(contentTypeId, updatedContent)
   // return status OK
   return res.status(200).json({
     'action': 'entry updated',
