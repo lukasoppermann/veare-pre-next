@@ -234,9 +234,6 @@
     transition: opacity .4s ease, top .5s ease, left .5s ease;
 }
 @media (max-width: 900px) {
-    .o-article-preview__excerpt{
-        font-size: var(--size-m);
-    }
     .o-article-preview__link:after, .o-article-preview__link:before{
         display: none;
     }
