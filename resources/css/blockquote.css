@@ -4,9 +4,9 @@
   line-height: 140%;
   font-weight: bold;
 }
-@media (max-width: 650px){
+@media (max-width: 600px){
   .o-blockquote{
-    font-size: var(--size-h);
+    font-size: var(--size-xl);
   }
 }
 .o-blockquote .o-blockquote{

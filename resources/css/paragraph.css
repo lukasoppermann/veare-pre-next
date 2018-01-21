@@ -5,3 +5,16 @@
   font-family: var(--sans-serif);
   font-weight: var(--sans-serif-normal);
 }
+.Paragraph{
+  display: block;
+  font-size: var(--size-l);
+  line-height: 130%;
+  font-family: var(--sans-serif);
+  font-weight: var(--sans-serif-normal);
+}
+@media (max-width: 600px){
+  .Paragraph{
+    font-size: var(--size-xl);
+    line-height: 140%;
+  }
+}

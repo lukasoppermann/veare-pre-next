@@ -73,8 +73,6 @@
 }
 .Footer__content__copy{
   color: var(--grey);
-  font-size: var(--size-l);
-  line-height: 125%;
   font-family: var(--font-source-sans);
   max-width: 600px;
 }
@@ -225,11 +223,6 @@
 .Footer__link:hover:before{
   width: calc(100% + 8px);
 }
-@media (max-width: 600px) {
-  .Footer__links{
-    justify-content: center;
-  }
-}
 @media (min-width: 600px) {
   .Footer__link:first-child{
     margin-left: 0;
@@ -255,5 +248,15 @@
   .Footer__content > div{
     flex-basis: 100%;
     flex-shrink: 0;
+  }
+}
+@media (max-width: 600px) {
+  .Footer__links{
+    justify-content: center;
+    margin: 0;
+  }
+  .Footer__link{
+    text-align: center;
+    font-size: var(--size-l);
   }
 }

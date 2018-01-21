@@ -92,6 +92,9 @@
   .o-article__content > .o-figure > .o-figure__image {
     width: 100%;
   }
+  .c-article__blockquote--intro{
+    font-size: var(--size-xl);
+  }
 }
 .o-article__content > pre[class*="language-"]{
   margin-bottom: var(--size-xl);
