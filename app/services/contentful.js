@@ -5,7 +5,8 @@ const contentful = (cb, errorFn = console.error) => {
   // get all entries
   let entriesPromise = client.getEntries({
     limit: 1000,
-    order: 'sys.createdAt'
+    order: 'sys.createdAt',
+    locale: '*'
   }).then((response) => {
     return response
   }).catch(errorFn)

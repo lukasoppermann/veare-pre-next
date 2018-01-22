@@ -7,15 +7,15 @@ class AssetTransformer extends Transformer {
     // return null if no asset
     if (data === undefined) return null
     // get file
-    let file = data.fields['file']
+    let file = this.getContent(data, 'file')
 
     return {
       id: data.sys.id,
       createdAt: data.sys.createdAt,
       updatedAt: data.sys.updatedAt,
       fields: {
-        title: data.fields['title'],
-        description: data.fields['description'],
+        title: this.getContent(data, 'title'),
+        description: this.getContent(data, 'description'),
         url: file.url,
         fileName: file.fileName,
         details: file.details,

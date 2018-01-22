@@ -14,6 +14,14 @@ class Transformer {
     return content[0]
   }
 
+  getContent (data, fieldName) {
+    let field = data.fields[fieldName]
+    if (typeof field !== 'object') {
+      return null
+    }
+    return field[Object.keys(field)[0]]
+  }
+
   transformData (data) {
     if (Array.isArray(data)) {
       let that = this
