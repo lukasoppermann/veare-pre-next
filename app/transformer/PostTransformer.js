@@ -20,18 +20,18 @@ class PostTransformer extends Transformer {
       createdAt: data.sys.createdAt,
       updatedAt: data.sys.updatedAt,
       fields: {
-        slug: data.fields['slug'],
-        title: data.fields['title'],
-        banner: new AssetTransformer(data.fields['banner']).first(),
-        rawdate: data.fields['date'],
-        date: this.formatDate(data.fields['date']),
-        preview: data.fields['preview'],
-        intro: convertMarkdown(data.fields['intro'], modifiers),
-        content: convertMarkdown(data.fields['content'], modifiers),
-        readingTime: Math.ceil(readingTime(data.fields['content']).time / 60000),
-        category: new Category().find(data.fields['category'].sys.id),
-        author: new Author().find(data.fields['author'].sys.id),
-        aliases: data.fields['aliases']
+        slug: this.getContent(data, 'slug'),
+        title: this.getContent(data, 'title'),
+        banner: new AssetTransformer(this.getContent(data, 'banner')).first(),
+        rawdate: this.getContent(data, 'date'),
+        date: this.formatDate(this.getContent(data, 'date')),
+        preview: this.getContent(data, 'preview'),
+        intro: convertMarkdown(this.getContent(data, 'intro'), modifiers),
+        content: convertMarkdown(this.getContent(data, 'content'), modifiers),
+        readingTime: Math.ceil(readingTime(this.getContent(data, 'content') || '').time / 60000),
+        category: new Category().find(this.getContent(data, 'category').sys.id),
+        author: new Author().find(this.getContent(data, 'author').sys.id),
+        aliases: this.getContent(data, 'aliases')
       }
     }
   }
