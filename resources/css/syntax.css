@@ -63,7 +63,7 @@ code[data-label-file]:before {
 :not(pre) > code {
 	padding: 0rem .4rem;
 	white-space: normal;
-	word-break: break-all;
+	word-break: break-word;
 	display: inline;
 	color: rgba(50, 50, 55, .7);
 	background-color: rgba(50, 50, 55, .05);

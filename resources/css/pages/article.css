@@ -76,6 +76,8 @@
 }
 .o-article__content > .o-figure > .o-figure__caption {
   width: 19%;
+  box-sizing: border-box;
+  padding-right: var(--size-m);
   font-size: var(--size-m);
   line-height: 135%;
   order: 1;
@@ -84,8 +86,10 @@
   width: 81%;
   order: 2;
 }
-@media (max-width: 600px){
+@media (max-width: 651px){
   .o-article__content > .o-figure > .o-figure__caption {
+    padding-top: var(--size-s);
+    font-size: var(--size-l);
     width: 100%;
     order: 2;
   }

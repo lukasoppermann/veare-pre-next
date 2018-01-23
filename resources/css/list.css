@@ -33,6 +33,7 @@
 .o-list:not(.o-list--ordered):not(.o-list--none) li:before{
   position: absolute;
   content: "–";
+  font-weight: 600;
   color: var(--veare-orange);
   top: -3px;
   left: 0;
