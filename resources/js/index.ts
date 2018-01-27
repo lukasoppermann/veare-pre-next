@@ -31,17 +31,18 @@ Promise.all([revisionedFiles, scriptPromise])
   })
   // load critical layout components
   const layoutComponents = fetchInject([`/${json['js/layoutComponents.js']}`], webComponentsAvailable);
+  let body = document.querySelector('body')
   // load webfont and view intro once downloaded
   fetchInject([
     `https://fonts.googleapis.com/css?family=Montserrat:600,700|Noto+Serif:400i|Source+Sans+Pro`
   ], layoutComponents)
   .then(() => {
-    if(document.querySelector('.c-section--intro') !== null) {
-      document.querySelector('.c-section--intro').style.opacity = "1"
+    if(body !== null) {
+      body.style.opacity = "1"
     }
   }, () => {
-    if(document.querySelector('.c-section--intro') !== null) {
-      document.querySelector('.c-section--intro').style.opacity = "1"
+    if(body !== null) {
+      body.style.opacity = "1"
     }
   })
 
