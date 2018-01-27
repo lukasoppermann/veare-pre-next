@@ -9,7 +9,7 @@
 .c-about-container{
   margin-top: var(--size-m);
   /* margin-bottom: calc(-1 * var(--size-xl)); */
-  padding: var(--size-h) var(--size-l);
+  padding: var(--size-h) var(--size-l) var(--size-xh);
   box-sizing: border-box;
   background: var(--blue-muted);
   box-shadow: var(--shadow-floating);
