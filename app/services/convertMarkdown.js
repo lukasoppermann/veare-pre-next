@@ -30,7 +30,7 @@ let modifiers = {
     'start-column': '0s 2m 3l'
   },
   p: {
-    class: 'o-paragraph',
+    class: 'Paragraph Paragraph--xl',
     columns: '16s 13m 10l',
     'start-column': '0s 4m 7l'
   },

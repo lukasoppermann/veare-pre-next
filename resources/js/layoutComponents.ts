@@ -5,7 +5,7 @@ import '../../node_modules/responsive-image/dist/responsiveImage.js'
 window.nucleiGrid = {
   breakpoints: {
     s: 0,
-    m: 600,
-    l: 900
+    m: 800,
+    l: 1000
   }
 }

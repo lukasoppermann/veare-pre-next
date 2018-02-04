@@ -51,5 +51,6 @@
 /*
  * type colors
  */
-.type-grey{ color: rgba(var(--black-rgb), .5); }
-.type-blue{ color: var(--blue); }
+.type--dark-grey{ color: rgba(var(--black-rgb), .6); }
+.type--grey{ color: rgba(var(--black-rgb), .5); }
+.type--blue{ color: var(--blue); }

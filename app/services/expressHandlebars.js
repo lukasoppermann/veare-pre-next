@@ -25,7 +25,10 @@ module.exports = expressHandlebars.create({
     },
     join: function () {
       let args = Array.from(Object.values(arguments)).slice(0, -1)
-      return args.join(' ')
+      return args.join('')
+    },
+    eq: (...params) => {
+      return params[0] === params[1]
     },
     year: function () {
       return new Date().getFullYear()

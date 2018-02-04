@@ -30,7 +30,7 @@ Promise.all([revisionedFiles, scriptPromise])
     resolve()
   })
   // load critical layout components
-  const layoutComponents = fetchInject([`/${json['js/layoutComponents.js']}`], webComponentsAvailable);
+  const layoutComponents = fetchInject([`/${json['js/layoutComponents.js']}`], webComponentsAvailable)
   let body = document.querySelector('body')
   // load webfont and view intro once downloaded
   fetchInject([

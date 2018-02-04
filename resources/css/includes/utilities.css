@@ -76,3 +76,9 @@
   display: flex;
   justify-content: center;
 }
+.u-flex{
+  display: flex;
+}
+.u-flex--bottom{
+  align-items: flex-end;
+}

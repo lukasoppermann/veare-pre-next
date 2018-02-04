@@ -251,7 +251,7 @@ template.innerHTML = `<style>
 class ResponsiveMenu extends HTMLElement { // eslint-disable-line no-unused-vars
   /* Typescript: declare variables */
   private _thresholdY: number = 150 // eslint-disable-line no-undef
-  private _collpaseSize: number = 700 // eslint-disable-line no-undef
+  private _collapseSize: number = 700 // eslint-disable-line no-undef
   private _animateOverlayBg: boolean = true // eslint-disable-line no-undef
   private _hideOverlayDelay: number = 300 // eslint-disable-line no-undef
 
@@ -275,7 +275,7 @@ class ResponsiveMenu extends HTMLElement { // eslint-disable-line no-unused-vars
   * @description return attributes that should be watched for updates
    */
   static get observedAttributes () {
-    return ['thresholdY', 'collpaseSize', 'hideOverlayDelay', 'animateOverlayBg']
+    return ['thresholdy', 'collapsesize', 'hideoverlaydelay', 'animateoverlaybg']
   }
   /**
   * @method observedAttributes
@@ -330,10 +330,10 @@ class ResponsiveMenu extends HTMLElement { // eslint-disable-line no-unused-vars
   * @description toggle extended attribute when scrollPosY is bigger than this._thresholdY
    */
   toggleExtended () {
-    if (window.pageYOffset > this._thresholdY) {
+    if (window.pageYOffset > this.thresholdy) {
       return this.removeAttribute('extended')
     }
-    if(document.documentElement.clientWidth < this.collpaseSize) {
+    if(document.documentElement.clientWidth < this.collapsesize) {
       return this.removeAttribute('extended')
     }
     this.setAttribute('extended', '')
@@ -342,7 +342,7 @@ class ResponsiveMenu extends HTMLElement { // eslint-disable-line no-unused-vars
   * @method setter thresholdY
   * @description set the thresholdY property
    */
-  set thresholdY (thresholdY: number) {
+  set thresholdy (thresholdY: number) {
     if (this._thresholdY === thresholdY) return
     this._thresholdY = thresholdY
   }
@@ -350,29 +350,29 @@ class ResponsiveMenu extends HTMLElement { // eslint-disable-line no-unused-vars
    * @method getter thresholdY
    * @description get the thresholdY property
    */
-  get thresholdY () {
+  get thresholdy () {
     return this._thresholdY
   }
   /**
-  * @method setter collpaseSize
-  * @description set the collpaseSize property
+  * @method setter collapseSize
+  * @description set the collapseSize property
    */
-  set collpaseSize (collpaseSize: number) {
-    if (this._collpaseSize === collpaseSize) return
-    this._collpaseSize = collpaseSize
+  set collapsesize (collapseSize: number) {
+    if (this._collapseSize === collapseSize) return
+    this._collapseSize = collapseSize
   }
   /**
-   * @method getter collpaseSize
-   * @description get the collpaseSize property
+   * @method getter collapseSize
+   * @description get the collapseSize property
    */
-  get collpaseSize () {
-    return this._collpaseSize
+  get collapsesize () {
+    return this._collapseSize
   }
   /**
   * @method setter hideOverlayDelay
   * @description set the hideOverlayDelay property
    */
-  set hideOverlayDelay (hideOverlayDelay: number) {
+  set hideoverlaydelay (hideOverlayDelay: number) {
     if (this._hideOverlayDelay === hideOverlayDelay) return
     this._hideOverlayDelay = hideOverlayDelay
   }
@@ -380,14 +380,14 @@ class ResponsiveMenu extends HTMLElement { // eslint-disable-line no-unused-vars
    * @method getter hideOverlayDelay
    * @description get the hideOverlayDelay property
    */
-  get hideOverlayDelay () {
+  get hideoverlaydelay () {
     return this._hideOverlayDelay
   }
   /**
   * @method setter animateOverlayBg
   * @description set the animateOverlayBg property
    */
-  set animateOverlayBg (animateOverlayBg: boolean) {
+  set animateoverlaybg (animateOverlayBg: boolean) {
     if (this._animateOverlayBg === animateOverlayBg) return
     this._animateOverlayBg = animateOverlayBg
   }
@@ -395,7 +395,7 @@ class ResponsiveMenu extends HTMLElement { // eslint-disable-line no-unused-vars
    * @method getter animateOverlayBg
    * @description get the animateOverlayBg property
    */
-  get animateOverlayBg () {
+  get animateoverlaybg () {
     return this._animateOverlayBg
   }
   /**
@@ -407,7 +407,7 @@ class ResponsiveMenu extends HTMLElement { // eslint-disable-line no-unused-vars
     if (! this.hasAttribute('overlayVisible')) {
       this.dispatchEvent(new CustomEvent('toggleOverlay', { detail: { visible: true } } ))
       document.body.style.overflow = 'hidden'
-      if (this._animateOverlayBg === true) {
+      if (this.animateoverlaybg === true) {
         this.shadowRoot.querySelector('#background').classList.add('is-active')
       }
       this.classList.add('is-active')
@@ -415,7 +415,7 @@ class ResponsiveMenu extends HTMLElement { // eslint-disable-line no-unused-vars
     }
     // hide overlay
     this.dispatchEvent(new CustomEvent('toggleOverlay', { detail: { visible: false } } ))
-    if (this._animateOverlayBg === true) {
+    if (this.animateoverlaybg === true) {
       this.shadowRoot.querySelector('#background').classList.remove('is-active')
     }
     this.classList.remove('is-active')
@@ -423,7 +423,7 @@ class ResponsiveMenu extends HTMLElement { // eslint-disable-line no-unused-vars
     setTimeout(() => {
       this.removeAttribute('overlayVisible')
       document.body.style.overflow = 'auto'
-    }, this.hideOverlayDelay)
+    }, this.hideoverlaydelay)
   }
 }
 
