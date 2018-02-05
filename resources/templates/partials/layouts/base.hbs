@@ -7,9 +7,14 @@
   {{/head-block}}
 </head>
 
-<body class="{{pageClass}}" style="opacity: 0;">
+<body class="{{pageClass}}">
+  {{#if wordmark}}
+    <a href="/">
+      {{{inline_svg 'resources/svgs/veare-wordmark.svg'}}}
+    </a>
+  {{/if}}
   {{>includes/navigation}}
-  <page-sections>
+  <page-sections class="Sections-container">
 
     {{#> body}}
       {{!-- Body will be added here --}}
