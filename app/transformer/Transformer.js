@@ -14,10 +14,10 @@ class Transformer {
     return content[0]
   }
 
-  getContent (data, fieldName) {
+  getContent (data, fieldName, defaultValue = null) {
     let field = data.fields[fieldName]
     if (typeof field !== 'object') {
-      return null
+      return defaultValue || null
     }
     return field[Object.keys(field)[0]]
   }
