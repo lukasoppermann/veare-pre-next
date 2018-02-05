@@ -20,6 +20,7 @@ class SectionTransformer extends Transformer {
   textSection (data) {
     return {
       type: data.sys.contentType.sys.id,
+      stylingOptions: this.getContent(data, 'stylingOptions', []),
       sectionTitle: this.getContent(data, 'sectionTitle'),
       intro: this.getContent(data, 'intro'),
       text: this.getContent(data, 'text')
@@ -39,6 +40,7 @@ class SectionTransformer extends Transformer {
   quoteSection (data) {
     return {
       type: data.sys.contentType.sys.id,
+      stylingOptions: this.getContent(data, 'stylingOptions', []),
       text: this.getContent(data, 'text'),
       author: this.getContent(data, 'author')
     }
