@@ -7,6 +7,8 @@ const contentfulConfig = require('../config/contentful.js')
 const contentfulWebhook = require('./contentfulWebhook')
 const Blog = require('../controller/Blog')
 const blog = new Blog()
+const Page = require('../controller/Page')
+const page = new Page()
 
 let env = process.env.NODE_ENV || 'dev'
 const PORT = process.env.NODE_PORT || 8080
@@ -54,13 +56,13 @@ module.exports = (app) => {
       res.json(revisionedFiles)
     })
     // index
-    app.get('/', function (req, res) {
-      res.render('index', {
+    app.get('/', (req, res) =>
+      page.get(req, res, {
         files: files,
-        pageClass: 'c-page--index',
+        pageClass: 'c-page--blog',
         portfolioItems: portfolioItems
       })
-    })
+    )
     // home & contact
     app.get(/^\/(home)/, function (req, res) {
       res.render('index', {

@@ -9,7 +9,9 @@
 
   {{>includes/homepage/about}}
 
-  {{>includes/homepage/clients}}
+  {{#each page.sections}}
+    {{> (join "includes/" fields.type) section=fields}}
+  {{/each}}
   <a name="contact"></a>
 
 {{/inline}}

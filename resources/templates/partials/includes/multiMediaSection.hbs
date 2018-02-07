@@ -1,0 +1,5 @@
+<h4 class="o-headline o-headline--section-title">{{section.sectionTitle}}</h4>
+{{#each section.media}}
+  <responsive-image class="Section__media__image" src="{{this.fields.url}}" alt="{{this.fields.title}}"></responsive-image>
+{{/each}}
+<p class="Section__media__description">{{section.description}}</p>

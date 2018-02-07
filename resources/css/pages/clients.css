@@ -1,0 +1,58 @@
+.clients grid-container{
+  grid-gap: 0;
+}
+.clients .o-headline.o-headline--section-title{
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: var(--size-l);
+  color: var(--blue);
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-montserrat-bold);
+  padding-bottom: var(--size-h);
+  padding-top: var(--size-g);
+}
+.clients .Section__media__image{
+  grid-column: span 4;
+}
+.clients .Section__media__image::before{
+  display: block;
+  content: "";
+  height: 10px;
+  width: calc(100% + 10px);
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMSIgaGVpZ2h0PSIxMCIgdmlld0JveD0iMCAwIDExIDEwIj4KICA8cG9seWdvbiBmaWxsPSIjMjEyNTI5IiBmaWxsLW9wYWNpdHk9Ii4xIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHBvaW50cz0iMjI2IDU5LjUgMjMwLjUgNTkuNSAyMzAuNSA2MC41IDIyNiA2MC41IDIyNiA2NSAyMjUgNjUgMjI1IDYwLjUgMjIwLjUgNjAuNSAyMjAuNSA1OS41IDIyNSA1OS41IDIyNSA1NSAyMjYgNTUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yMjAgLTU1KSIvPgo8L3N2Zz4K") no-repeat;
+}
+.clients .Section__media__image:nth-of-type(4)::before{
+  background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMSIgaGVpZ2h0PSIxMCIgdmlld0JveD0iMCAwIDExIDEwIj4KICA8cG9seWdvbiBmaWxsPSIjMjEyNTI5IiBmaWxsLW9wYWNpdHk9Ii4xIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHBvaW50cz0iMjI2IDU5LjUgMjMwLjUgNTkuNSAyMzAuNSA2MC41IDIyNiA2MC41IDIyNiA2NSAyMjUgNjUgMjI1IDYwLjUgMjIwLjUgNjAuNSAyMjAuNSA1OS41IDIyNSA1OS41IDIyNSA1NSAyMjYgNTUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yMjAgLTU1KSIvPgo8L3N2Zz4K") no-repeat,
+  url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMSIgaGVpZ2h0PSIxMCIgdmlld0JveD0iMCAwIDExIDEwIj4KICA8cG9seWdvbiBmaWxsPSIjMjEyNTI5IiBmaWxsLW9wYWNpdHk9Ii4xIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHBvaW50cz0iMjI2IDU5LjUgMjMwLjUgNTkuNSAyMzAuNSA2MC41IDIyNiA2MC41IDIyNiA2NSAyMjUgNjUgMjI1IDYwLjUgMjIwLjUgNjAuNSAyMjAuNSA1OS41IDIyNSA1OS41IDIyNSA1NSAyMjYgNTUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yMjAgLTU1KSIvPgo8L3N2Zz4K") no-repeat right top;
+}
+.clients .Section__media__image:nth-last-of-type(1)::after,
+.clients .Section__media__image:nth-last-of-type(2)::after,
+.clients .Section__media__image:nth-last-of-type(3)::after,
+.clients .Section__media__image:nth-last-of-type(4)::after{
+  display: block;
+  content: "";
+  height: 10px;
+  width: calc(100% + 10px);
+  position: absolute;
+  top: auto;
+  bottom: -5px;
+  left: -5px;
+  background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMSIgaGVpZ2h0PSIxMCIgdmlld0JveD0iMCAwIDExIDEwIj4KICA8cG9seWdvbiBmaWxsPSIjMjEyNTI5IiBmaWxsLW9wYWNpdHk9Ii4xIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHBvaW50cz0iMjI2IDU5LjUgMjMwLjUgNTkuNSAyMzAuNSA2MC41IDIyNiA2MC41IDIyNiA2NSAyMjUgNjUgMjI1IDYwLjUgMjIwLjUgNjAuNSAyMjAuNSA1OS41IDIyNSA1OS41IDIyNSA1NSAyMjYgNTUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yMjAgLTU1KSIvPgo8L3N2Zz4K") no-repeat;
+}
+.clients .Section__media__image:nth-last-of-type(1)::after{
+  background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMSIgaGVpZ2h0PSIxMCIgdmlld0JveD0iMCAwIDExIDEwIj4KICA8cG9seWdvbiBmaWxsPSIjMjEyNTI5IiBmaWxsLW9wYWNpdHk9Ii4xIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHBvaW50cz0iMjI2IDU5LjUgMjMwLjUgNTkuNSAyMzAuNSA2MC41IDIyNiA2MC41IDIyNiA2NSAyMjUgNjUgMjI1IDYwLjUgMjIwLjUgNjAuNSAyMjAuNSA1OS41IDIyNSA1OS41IDIyNSA1NSAyMjYgNTUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yMjAgLTU1KSIvPgo8L3N2Zz4K") no-repeat,
+  url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMSIgaGVpZ2h0PSIxMCIgdmlld0JveD0iMCAwIDExIDEwIj4KICA8cG9seWdvbiBmaWxsPSIjMjEyNTI5IiBmaWxsLW9wYWNpdHk9Ii4xIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHBvaW50cz0iMjI2IDU5LjUgMjMwLjUgNTkuNSAyMzAuNSA2MC41IDIyNiA2MC41IDIyNiA2NSAyMjUgNjUgMjI1IDYwLjUgMjIwLjUgNjAuNSAyMjAuNSA1OS41IDIyNSA1OS41IDIyNSA1NSAyMjYgNTUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yMjAgLTU1KSIvPgo8L3N2Zz4K") no-repeat right top;
+}
+@media (max-width: 1000px){
+  .clients grid-container{
+    --grid-columns: 12;
+  }
+}
+@media (max-width: 800px){
+  .clients .Section__media__image{
+    grid-column: span 8;
+  }
+}
