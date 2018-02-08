@@ -220,7 +220,7 @@
 .Footer__link:hover:before{
   width: calc(100% + 8px);
 }
-@media (min-width: 600px) {
+@media (min-width: 901px) {
   .Footer__link:first-child{
     margin-left: 0;
   }
@@ -247,7 +247,7 @@
     flex-shrink: 0;
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 850px) {
   .Footer__links{
     justify-content: center;
     margin: 0;
