@@ -30,6 +30,7 @@ class SectionTransformer extends Transformer {
   mediaSection (data) {
     return {
       type: data.sys.contentType.sys.id,
+      classes: this.getContent(data, 'classes'),
       stylingOptions: this.getContent(data, 'stylingOptions', []),
       sectionTitle: this.getContent(data, 'sectionTitle'),
       description: this.getContent(data, 'description'),
