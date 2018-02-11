@@ -7,7 +7,7 @@ const AssetTransformer = require('./AssetTransformer')
 const readingTime = require('reading-time')
 const convertMarkdown = require('../services/convertMarkdown')
 
-const modifiers = {
+let modifiers = {
   h1: {
     class: 'o-headline o-headline--h2 o-headline--serif'
   }

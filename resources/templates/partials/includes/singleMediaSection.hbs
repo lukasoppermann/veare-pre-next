@@ -1,8 +1,7 @@
-<div class="Section__grid">
+<div class="Section__media__container" columns>
   <h4 class="o-headline o-headline--section-title">{{section.sectionTitle}}</h4>
   {{!-- need to be transfered to css columns="16s 14m 10l" start-column="0s 2m 4l" --}}
   <responsive-image class="Section__media__image" src="{{section.media.0.fields.url}}" alt="{{section.media.0.fields.title}}"></responsive-image>
-  <div class="Section__media__shadow"></div>
   <p class="Section__media__description">{{section.description}}</p>
   <div class="Section__media__bg"></div>
 </div>

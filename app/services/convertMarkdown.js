@@ -1,71 +1,4 @@
 const deepAssign = require('deep-assign')
-let modifiers = {
-  h1: {
-    class: 'o-headline--h2',
-    columns: '16s 13m 10l',
-    'start-column': '0s 4m 7l',
-    fn: (token) => { token.tag = 'h2' }
-  },
-  h2: {
-    class: 'o-headline--h3',
-    columns: '16s 13m 10l',
-    'start-column': '0s 4m 7l',
-    fn: (token) => { token.tag = 'h3' }
-  },
-  h3: {
-    class: 'o-headline--h4',
-    columns: '16s 13m 10l',
-    'start-column': '0s 4m 7l',
-    fn: (token) => { token.tag = 'h4' }
-  },
-  h4: {
-    class: 'o-headline--h5',
-    columns: '16s 13m 10l',
-    'start-column': '0s 4m 7l',
-    fn: (token) => { token.tag = 'h5' }
-  },
-  blockquote: {
-    class: 'o-blockquote',
-    columns: '16s 15m 14l',
-    'start-column': '0s 2m 3l'
-  },
-  p: {
-    class: 'Paragraph Paragraph--xl',
-    columns: '16s 13m 10l',
-    'start-column': '0s 4m 7l'
-  },
-  ul: {
-    class: 'o-list type--xl',
-    columns: '16s 13m 10l',
-    'start-column': '0s 4m 7l'
-  },
-  ol: {
-    class: 'o-list o-list--ordered type--xl',
-    columns: '16s 13m 10l',
-    'start-column': '0s 4m 7l'
-  },
-  figure: {
-    class: 'o-figure',
-    columns: '16s'
-  },
-  figcaption: {
-    class: 'o-figure__caption'
-  },
-  img: {
-    class: 'o-figure__img'
-  },
-  code: {
-    istype: 'fence',
-    columns: '16s 16m 14l',
-    'start-column': '0s 1m 4l',
-    fn: (token) => {
-      if (token.info === '') {
-        token.info = 'bash'
-      }
-    }
-  }
-}
-
 const md = require('markdown-it')('commonmark', {
   html: true,
   typographer: true,
@@ -93,8 +26,73 @@ const md = require('markdown-it')('commonmark', {
 
 md.renderer.rules.image = (tokens, idx, opts, _, slf) => '<div class="o-figure__image">' + slf.renderToken(tokens, idx, opts) + '</div>'
 
-module.exports = (content, mods) => {
-  modifiers = deepAssign(modifiers, mods)
+module.exports = (content, mods = {}) => {
+  let modifiers = deepAssign({
+    h1: {
+      class: 'o-headline--h2',
+      columns: '16s 13m 10l',
+      'start-column': '0s 4m 7l',
+      fn: (token) => { token.tag = 'h2' }
+    },
+    h2: {
+      class: 'o-headline--h3',
+      columns: '16s 13m 10l',
+      'start-column': '0s 4m 7l',
+      fn: (token) => { token.tag = 'h3' }
+    },
+    h3: {
+      class: 'o-headline--h4',
+      columns: '16s 13m 10l',
+      'start-column': '0s 4m 7l',
+      fn: (token) => { token.tag = 'h4' }
+    },
+    h4: {
+      class: 'o-headline--h5',
+      columns: '16s 13m 10l',
+      'start-column': '0s 4m 7l',
+      fn: (token) => { token.tag = 'h5' }
+    },
+    blockquote: {
+      class: 'o-blockquote',
+      columns: '16s 15m 14l',
+      'start-column': '0s 2m 3l'
+    },
+    p: {
+      class: 'Paragraph Paragraph--xl',
+      columns: '16s 13m 10l',
+      'start-column': '0s 4m 7l'
+    },
+    ul: {
+      class: 'o-list type--xl',
+      columns: '16s 13m 10l',
+      'start-column': '0s 4m 7l'
+    },
+    ol: {
+      class: 'o-list o-list--ordered type--xl',
+      columns: '16s 13m 10l',
+      'start-column': '0s 4m 7l'
+    },
+    figure: {
+      class: 'o-figure',
+      columns: '16'
+    },
+    figcaption: {
+      class: 'o-figure__caption'
+    },
+    img: {
+      class: 'o-figure__img'
+    },
+    code: {
+      istype: 'fence',
+      columns: '16s 16m 14l',
+      'start-column': '0s 1m 4l',
+      fn: (token) => {
+        if (token.info === '') {
+          token.info = 'bash'
+        }
+      }
+    }
+  }, mods)
   if (typeof content !== 'string') return content
   return md.render(content)
 }

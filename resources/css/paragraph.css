@@ -1,9 +1,10 @@
 .Paragraph{
   display: block;
   font-size: var(--size-l);
-  line-height: 130%;
+  line-height: 140%;
   font-family: var(--sans-serif);
   font-weight: var(--sans-serif-normal);
+  margin-bottom: var(--size-m);
 }
 .Paragraph--xl{
   font-size: var(--size-xl);
@@ -15,11 +16,9 @@
 @media (max-width: 800px){
   .Paragraph{
     font-size: var(--size-xl);
-    line-height: 140%;
   }
   .Paragraph--xl{
     font-size: var(--size-xxl);
-    line-height: 135%;
   }
   .Paragraph--m{
     font-size: var(--size-l);
