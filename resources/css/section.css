@@ -38,6 +38,14 @@
   top: 0;
   filter: blur(10px);
 }
+.Section__media--single .Section__media__container{
+  --column-start-l: 4;
+  --column-end-l: span 10;
+  --column-start-m: 2;
+  --column-end-m: span 15;
+  --column-start-s: 1;
+  --column-end-s: span 16;
+}
 .Section__media--bg-colored .Section__media__bg{
   display: block;
   position: absolute;
@@ -120,4 +128,11 @@
     position: relative;
     width: 100%;
   }
+}
+
+.Section__quote{
+  font-size: var(--size-xxl);
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-montserrat-bold);
+  line-height: 140%;
 }

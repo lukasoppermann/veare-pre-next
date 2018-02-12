@@ -1,7 +1,7 @@
 /*
  * headine styles
  */
-[class*="o-headline"]{
+.o-headline, [class*="o-headline"]{
   display: block;
 }
 .o-headline--h2{
@@ -33,4 +33,14 @@
   font-weight: var(--font-montserrat-bold);
   margin-bottom: var(--size-s);
   margin-top: var(--size-l);
+}
+.o-headline--section-title{
+  font-size: var(--size-m);
+  line-height: 100%;
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-montserrat-semibold);
+  text-transform: uppercase;
+  color: rgba(var(--black-rgb),.4);
+  margin-top: var(--size-xxh);
+  margin-bottom: var(--size-s);
 }

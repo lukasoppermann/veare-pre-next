@@ -2,6 +2,12 @@
 
 const Transformer = require('./Transformer')
 const AssetTransformer = require('./AssetTransformer')
+const convertMarkdown = require('../services/convertMarkdown')
+let modifiers = {
+  p: {
+    class: 'Paragraph type--dark-grey Paragraph--l'
+  }
+}
 
 class SectionTransformer extends Transformer {
   transform (data) {
@@ -23,7 +29,7 @@ class SectionTransformer extends Transformer {
       stylingOptions: this.getContent(data, 'stylingOptions', []),
       sectionTitle: this.getContent(data, 'sectionTitle'),
       intro: this.getContent(data, 'intro'),
-      text: this.getContent(data, 'text')
+      text: convertMarkdown(this.getContent(data, 'text'), modifiers)
     }
   }
 

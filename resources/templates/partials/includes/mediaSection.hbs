@@ -1,4 +1,4 @@
-<page-section centered maxwidth="1200px" class="Section Section__media{{#each section.stylingOptions}} Section__media--{{this}}{{/each}} {{section.classes}}">
+<page-section centered maxwidth="1200px" class="Section Section__media{{#each section.stylingOptions}} Section__media--{{this}}{{/each}} {{section.classes}} {{conditional section.media.length 1 "Section__media--single" "Section__media--multiple"}}">
   <grid-container>
       {{#if (eq section.media.length 1)}}
         {{> (join "includes/singleMediaSection") section=section}}
