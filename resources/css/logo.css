@@ -25,3 +25,11 @@
     height: 40px;
   }
 }
+.veare-wordmark{
+  position: absolute;
+  z-index: 999;
+  height: 20px;
+  fill: var(--black);
+  top: calc(var(--size-xl) + 2px);
+  left: var(--size-m);
+}

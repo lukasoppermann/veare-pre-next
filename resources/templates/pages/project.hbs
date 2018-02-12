@@ -1,0 +1,107 @@
+{{> layouts/base title=(join "| " project.title) wordmark=true}}
+
+{{#*inline "body"}}
+<style media="screen">
+  .HeaderImage{
+    position: relative;
+    z-index: 1;
+    border: var(--size-m) solid var(--white);
+    border-top: var(--size-g) solid var(--white);
+    height: calc(100vh - var(--size-m) - var(--size-g));
+  }
+  .Project__title.Project__header-title{
+    color: var(--blue);
+  }
+  .Project__header-details{
+    margin: 0;
+    position: absolute;
+    right: calc(var(--size-m) + var(--size-h));
+    bottom: var(--size-h);
+    font-family: var(--font-montserrat);
+    font-weight: 600;
+  }
+  .Project__header-details_title{
+    font-size: var(--size-s);
+    color: rgba(var(--black-rgb), .4);
+    text-transform: uppercase;
+    margin: 0;
+  }
+  .Project__header-details_detail{
+    margin: 0;
+    font-size: var(--size-l);
+    color: var(--black);
+  }
+  .Project__header-details_detail:not(:last-child){
+    margin-bottom: var(--size-m);
+  }
+  .Project__title, .Project__subtitle{
+    display: block;
+    min-width: 100%;
+    position: relative;
+    z-index: 999;
+    font-size: var(--size-g);
+    line-height: 110%;
+    color: var(--black);
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-montserrat-bold);
+  }
+  .Project__title--small{
+    font-size: var(--size-xh);
+  }
+  .Project__subtitle{
+    font-size: var(--size-xxl);
+  }
+  /* .Project__title--with-subtitle:after{
+    content: "";
+    display: block;
+    width: 100px;
+    height: 8px;
+    float: right;
+    margin: 40px 10px 0;
+    background: currentColor;
+  } */
+  .Project__title-container{
+    width: 350px;
+    margin-left: var(--size-g);
+    margin-top: var(--size-g);
+  }
+  .Project__role{
+    font-size: var(--size-xl);
+    color: var(--black-50);
+  }
+  .Project__challenge{
+    font-size: var(--size-xl);
+  }
+</style>
+<page-section fullscreen style="isolation: isolate;">
+  <dl class="Project__header-details">
+    <dt class="Project__header-details_title">Client</dt>
+    <dd class="Project__header-details_detail">{{project.client}}</dd>
+    <dt class="Project__header-details_title">Year</dt>
+    <dd class="Project__header-details_detail">{{project.publicationYear}}</dd>
+    <dt class="Project__header-details_title">Industry</dt>
+    <dd class="Project__header-details_detail">{{project.industry}}</dd>
+  </dl>
+  <responsive-image id="hero" style="mix-blend-mode: multiply;" class="HeaderImage" src="{{project.headerImage.fields.url}}" alt="{{project.headerImage.fields.title}}"></responsive-image>
+</page-section>
+<script type="text/javascript">
+
+</script>
+<page-section centered maxwidth="1200px" class="Section u-margin-top--h">
+  <grid-container columns="16">
+    <div class="u-flex u-flex--bottom" style="flex-wrap: wrap;" columns="16s 14m 6l" start-column="0s 2m 0l" start-row="0s 0m 1l">
+      <h1 class="Project__title Project__header-title Project__title--{{project.titleStyle}}{{#if project.subtitle}} Project__title--with-subtitle{{/if}}">{{project.title}}</h1>
+      {{#if project.subtitle}}
+        <h4 class="Project__subtitle">{{project.subtitle}}</h4>
+      {{/if}}
+    </div>
+    <h3 id="role" class="Project__role u-margin-top--m" columns="16s 14m 5l" start-column="0s 2m 0l" start-row="0s 0m 2l">{{project.role}}</h3>
+    <p class="Project__challenge u-margin-top--m" start-row="0s 0m 1l" start-column="0s 2m 7l" columns="16s 14m 9l">{{project.challenge}}</p>
+  </grid-container>
+</page-section>
+{{!-- Load Sections --}}
+{{#each project.sections}}
+  {{> (join "includes/" fields.type) section=fields}}
+{{/each}}
+
+{{/inline}}

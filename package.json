@@ -43,17 +43,31 @@
     "gulp-uglify": "^3.0.0",
     "merge-stream": "^1.0.1",
     "page-sections": "^0.4.3",
+<<<<<<< HEAD
     "prismjs": "^1.14.0",
+=======
+    "prismjs": "^1.10.0",
+>>>>>>> some improvements & bugfixes (#151) & portfolio
     "rev-del": "^1.0.5",
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-typescript": "^0.8.1",
     "rollup-stream": "^1.24.1",
+<<<<<<< HEAD
     "snazzy": "^7.1.1",
     "standard": "^11.0.1",
     "sw-precache": "^5.2.1",
     "typescript": "^2.7.1",
     "typescript-eslint-parser": "^15.0.0",
     "uglify-es": "^3.3.9"
+=======
+    "snazzy": "^7.0.0",
+    "standard": "^10.0.3",
+    "sw-precache": "^5.1.0",
+    "typescript": "^2.7.1",
+    "typescript-eslint-parser": "^13.0.0",
+    "uglify-es": "^3.3.7",
+    "vinyl-source-stream": "^2.0.0"
+>>>>>>> some improvements & bugfixes (#151) & portfolio
   },
   "dependencies": {
     "@nuclei-components/responsive-image": "^0.3.1",

@@ -12,6 +12,13 @@
   position: relative;
   z-index: 50;
 }
+.Section__media--rounded-corners .Section__media__image{
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+.Section__media--title-hide .o-headline--section-title{
+  display: none;
+}
 .Section__media__description{
   margin-top: var(--size-s);
   color: rgba(var(--black-rgb), .5);
@@ -42,10 +49,19 @@
   --column-start-l: 4;
   --column-end-l: span 10;
   --column-start-m: 2;
-  --column-end-m: span 15;
+  --column-end-m: span 14;
   --column-start-s: 1;
   --column-end-s: span 16;
 }
+.Section__media.Section__media--full-screen .Section__media__container{
+  --column-start-l: 0;
+  --column-end-l: span 16;
+  --column-start-m: 0;
+  --column-end-m: span 16;
+  --column-start-s: 0;
+  --column-end-s: span 16;
+}
+ /* Section__media--bg-fullscreen */
 .Section__media--bg-colored .Section__media__bg{
   display: block;
   position: absolute;
@@ -136,3 +152,9 @@
   font-weight: var(--font-montserrat-bold);
   line-height: 140%;
 }
+<<<<<<< HEAD
+=======
+.Section.bg-color--bluish-dark{
+  background-color: #262933;
+}
+>>>>>>> some improvements & bugfixes (#151) & portfolio
