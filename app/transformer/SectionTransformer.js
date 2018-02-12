@@ -4,9 +4,7 @@ const Transformer = require('./Transformer')
 const AssetTransformer = require('./AssetTransformer')
 const convertMarkdown = require('../services/convertMarkdown')
 let modifiers = {
-  p: {
-    class: 'Paragraph-old type--dark-grey Paragraph--l'
-  }
+  reset: true
 }
 
 class SectionTransformer extends Transformer {
@@ -27,7 +25,8 @@ class SectionTransformer extends Transformer {
     return {
       type: data.sys.contentType.sys.id,
       stylingOptions: this.getContent(data, 'stylingOptions', []),
-      sectionTitle: this.getContent(data, 'sectionTitle'),
+      title: this.getContent(data, 'title'),
+      showTitle: this.getContent(data, 'showTitle'),
       intro: this.getContent(data, 'intro'),
       text: convertMarkdown(this.getContent(data, 'text'), modifiers)
     }
@@ -36,17 +35,32 @@ class SectionTransformer extends Transformer {
   mediaSection (data) {
     return {
       type: data.sys.contentType.sys.id,
+      title: this.getContent(data, 'title'),
+      showTitle: this.getContent(data, 'showTitle'),
       classes: this.getContent(data, 'classes'),
       stylingOptions: this.getContent(data, 'stylingOptions', []),
-      sectionTitle: this.getContent(data, 'sectionTitle'),
       description: this.getContent(data, 'description'),
-      media: new AssetTransformer(this.getContent(data, 'media')).get()
+      media: new AssetTransformer(this.getContent(data, 'media'), this.getContent(data, 'title')).get()
+    }
+  }
+
+  mediaCollectionSection (data) {
+    return {
+      type: data.sys.contentType.sys.id,
+      title: this.getContent(data, 'title'),
+      showTitle: this.getContent(data, 'showTitle'),
+      slug: this.getContent(data, 'slug'),
+      description: this.getContent(data, 'description'),
+      media: new AssetTransformer(this.getContent(data, 'media'), this.getContent(data, 'title')).get(),
+      classes: this.getContent(data, 'classes')
     }
   }
 
   quoteSection (data) {
     return {
       type: data.sys.contentType.sys.id,
+      title: this.getContent(data, 'title'),
+      showTitle: this.getContent(data, 'showTitle'),
       stylingOptions: this.getContent(data, 'stylingOptions', []),
       text: this.getContent(data, 'text'),
       author: this.getContent(data, 'author')

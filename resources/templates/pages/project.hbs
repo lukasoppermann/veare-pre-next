@@ -1,0 +1,61 @@
+{{> layouts/base title=(join "| " project.title) wordmark=true}}
+
+{{#*inline "body"}}
+
+<page-section style="--page-section-height: 100vh; --page-section-max-height: 1000px" class="Section--Header">
+  <div class="Header">
+    <h2 class="Header__title">{{project.title}}</h2>
+    <responsive-image class="Header__image" src="{{project.headerImage.fields.url}}" alt="{{project.headerImage.fields.title}}"></responsive-image>
+  </div>
+</page-section>
+
+<page-section centered>
+  <div class="Grid">
+    <div class="Boxed-group Grid--content">
+      <div class="Boxed-item" style="flex-grow: 2;">
+        <span class="Headline--h5 text--light">Client</span>
+        <div class="Paragraph Paragraph--sans-small">
+          {{project.client}}
+        </div>
+      </div>
+      <div class="Boxed-item" style="flex-grow: 1;">
+        <span class="Headline--h5 text--light">Year</span>
+        <div class="Paragraph Paragraph--sans-small">
+          {{project.publicationYear}}
+        </div>
+      </div>
+      <div class="Boxed-item" style="flex-grow: 2;">
+        <span class="Headline--h5 text--light">Industry</span>
+        <div class="Paragraph Paragraph--sans-small">
+          {{project.industry}}
+        </div>
+      </div>
+      <div class="Boxed-item" style="flex-grow: 3;">
+        <span class="Headline--h5 text--light">Responsibilites</span>
+        <div class="Paragraph Paragraph--sans-small">
+          {{project.role}}
+        </div>
+      </div>
+    </div>
+    {{!-- Intro headline & text --}}
+    {{#if project.subtitle}}
+      <h4 class="Project__subtitle Headline--subtitle u-margin-top--xg">{{project.subtitle}}</h4>
+    {{/if}}
+    <div class="Project__challenge">
+      <p class="Paragraph-sans Paragraph-sans--small">{{project.challenge}}</p>
+    </div>
+    {{!-- TOC --}}
+    <ul class="Toc Project__toc">
+    {{#each project.chapters}}
+      <li class="Toc__chapter"><a class="Toc__chapter__link" href="#{{fields.slug}}"><div class="Toc__chapter__title">{{fields.title}}</div></a></li>
+    {{/each}}
+    </ul>
+  </div>
+</page-section>
+
+{{!-- Load Chapter --}}
+{{#each project.chapters}}
+  {{> "includes/chapter" section=fields}}
+{{/each}}
+
+{{/inline}}

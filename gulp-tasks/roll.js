@@ -4,14 +4,14 @@ module.exports = function (entry) {
   const nodeResolve = require('rollup-plugin-node-resolve')
   const rollupEach = require('gulp-rollup-each')
   const rename = require('gulp-rename')
-  const sourcemaps = require('gulp-sourcemaps')
+  // const sourcemaps = require('gulp-sourcemaps')
   const uglifyes = require('uglify-es')
   const composer = require('gulp-uglify/composer')
   const uglify = composer(uglifyes, console)
 
   return function bundleJs () {
     return gulp.src(entry)
-      .pipe(sourcemaps.init())
+      // .pipe(sourcemaps.init())
       .pipe(rollupEach({
         output: {
           format: 'iife'
@@ -43,7 +43,7 @@ module.exports = function (entry) {
       .pipe(rename({
         extname: '.js'
       }))
-      .pipe(sourcemaps.write('')) // '' to save map as seperate file in same folder
+      // .pipe(sourcemaps.write('', {sourceMappingURLPrefix: '/'})) // '' to save map as seperate file in same folder
       .pipe(gulp.dest('public/js'))
   }
 }

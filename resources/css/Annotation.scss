@@ -1,0 +1,34 @@
+.Annotation{
+  @extend %font-annotation;
+  position: relative;
+  padding-top: calc(var(--baseline) * 2);
+  @include mq('m') {
+    @include baseline(2);
+    padding-left: var(--size-m);
+    padding-bottom: calc(var(--baseline) * 2);
+    background-color: var(--white-grey);
+    font-size: var(--size-l);
+    line-height: calc(var(--baseline) * 3);
+  }
+}
+.Annotation--align-bottom{
+  align-self: end;
+}
+.Grid > .Annotation {
+  grid-column: right / span 2;
+  @include mq('s') {
+    grid-column: 1 / -1;
+  }
+}
+.Annotation:before{
+  @include pseudo;
+  top: 0;
+  height: 2px;
+  width: 50%;
+  background-color: var(--light-grey);
+  @include mq('m') {
+    left: 0;
+    height: 100%;
+    width: 2px;
+  }
+}
