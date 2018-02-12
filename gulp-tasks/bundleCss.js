@@ -4,6 +4,7 @@ module.exports = function (bundles) {
   const cleanCSS = require('gulp-clean-css')
   const concat = require('gulp-concat')
   const error = require('./errorHandling.js')()
+  const sass = require('gulp-sass')
 
   return function bundleCss () {
     let stream = require('merge-stream')()
@@ -13,6 +14,10 @@ module.exports = function (bundles) {
         .pipe(sourcemaps.init())
         .pipe(concat(key + '.css'))
         .pipe(savings.start())
+        .pipe(sass({
+          outputStyle: 'compressed'
+          // outputStyle: 'nested'
+        }).on('error', sass.logError))
         .pipe(cleanCSS())
         .on('error', error)
         .pipe(savings.stop())

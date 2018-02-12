@@ -1,0 +1,36 @@
+.Toc{
+  list-style: none;
+  counter-reset: chapter;
+}
+.Toc__chapter{
+  margin-top: var(--vs-m);
+}
+.Toc__chapter__link{
+  text-decoration: none;
+  display: flex;
+}
+.Toc__chapter__title{
+  @extend %font-uppercase-small;
+  order: 1;
+  flex: 0 0 auto;
+  padding-right: var(--hs-xs);
+}
+.Toc__chapter__link::before {
+  @include pseudo("relative");
+  order: 2;
+  flex: 1 0 auto;
+  align-self: center;
+  height: 2px;
+  transform: translateY(-1px);
+  background-color: var(--black);
+}
+.Toc__chapter__link::after {
+  @extend %font-uppercase-small;
+  order: 3;
+  padding-left: var(--hs-xs);
+  align-self: flex-end;
+  flex: 0 0 auto;
+  counter-increment: chapter;
+  content: counter(chapter, decimal-leading-zero);
+  font-feature-settings: "tnum", "zero";
+}

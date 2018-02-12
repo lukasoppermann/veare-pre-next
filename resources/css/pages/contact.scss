@@ -1,0 +1,19 @@
+.c-contact{
+  position: relative;
+  background-color: transparent;
+  /*background-image: url('/media/contact-bg.svg');*/
+  padding-top: var(--size-xl);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: var(--size-g);
+}
+.c-contact-content{
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--size-xl);
+  z-index: 10;
+  max-width: 700px;
+}
