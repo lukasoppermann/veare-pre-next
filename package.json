@@ -23,7 +23,7 @@
     "browser-sync": "^2.24.4",
     "chalk": "^2.4.1",
     "check-broken-links": "^1.2.1",
-    "cssnano": "^3.7.0",
+    "cssnano": "v4.0.0-rc.2",
     "del": "3.*",
     "fetch-inject": "^1.9.1",
     "gulp": "next",
