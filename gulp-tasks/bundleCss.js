@@ -1,4 +1,4 @@
-module.exports = function (bundles, links) {
+module.exports = function (bundles) {
   const gulp = require('gulp')
   const sourcemaps = require('gulp-sourcemaps')
   const cssnano = require('gulp-cssnano')
