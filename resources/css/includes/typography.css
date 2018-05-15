@@ -12,6 +12,8 @@
   --serif: 'Noto Serif', serif;
   --serif-style: italic;
   --serif-italic: italic;
+  /* FONT: Georgia*/
+  --font-georgia: Georgia, serif;
   /* FONT: Source Sans*/
   --font-source-sans: 'Source Sans Pro', Helvetica, sans-serif;
   --font-source-sans-regular: 400;
@@ -26,7 +28,7 @@
   --monospace: monospace;
 }
 /*
- * type syles
+ * type styles
  */
 .type--m{
   font-size: var(--size-m);

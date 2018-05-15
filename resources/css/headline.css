@@ -1,9 +1,30 @@
 /*
  * headine styles
  */
-.o-headline, [class*="o-headline"]{
-  display: block;
-}
+ .o-headline, [class*="o-headline"], [class*="Headline"]{
+   display: block;
+ }
+ .Headline--title{
+
+ }
+ .Headline--h2{
+   font-size: var(--size-xl);
+   font-family: var(--font-montserrat);
+   font-weight: var(--font-montserrat-bold);
+   line-height: 36px;
+   margin-top: var(--size-xh);
+   margin-bottom: var(--size-l);
+ }
+ .Headline--h3{
+   font-size: var(--size-l);
+   font-family: var(--font-montserrat);
+   font-weight: var(--font-montserrat-bold);
+   line-height: 26px;
+   margin-top: var(--size-xxl);
+   margin-bottom: var(--size-xs);
+ }
+/* --------------- */
+/* OLD */
 .o-headline--h2{
   font-size: var(--size-h);
   line-height: 140%;

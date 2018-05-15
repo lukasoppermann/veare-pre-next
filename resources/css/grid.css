@@ -1,0 +1,16 @@
+.grid {
+    width: 100%;
+    max-width: 1200px;
+    display: grid;
+    grid-gap: 24px;
+    grid-template-columns: [left] 7% [left] 7% [content-start column] 9% [column] 9% [column] 9% [column] 9% [column] 9% [column] 9% [content-end right] 7% [right] 7%;
+}
+.left-aside {
+  grid-area: left-aside;
+}
+.content {
+  grid-column: content;
+}
+.right-aside {
+  grid-area: right-aside;
+}
