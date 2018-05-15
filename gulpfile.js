@@ -7,14 +7,13 @@ const browserSync = require('browser-sync')
  * JS
  *
  */
-gulp.task('bundleJs', require('./gulp-tasks/rollup.js')('resources/js/',
-  // files to only be moved to js folder
-  [
-    'node_modules/@webcomponents/webcomponentsjs/webcomponents-sd-ce.js',
-    'node_modules/@webcomponents/webcomponentsjs/webcomponents-sd-ce.js.map',
-    'node_modules/fetch-inject/dist/fetch-inject.min.js'
-  ]
-))
+// gulp.task('bundleJs', require('./gulp-tasks/rollup.js')('resources/js/'))
+gulp.task('bundleJs', require('./gulp-tasks/roll.js')('resources/js/*.ts'))
+gulp.task('moveJs', require('./gulp-tasks/moveFiles.js')([
+  'node_modules/@webcomponents/webcomponentsjs/webcomponents-sd-ce.js',
+  'node_modules/@webcomponents/webcomponentsjs/webcomponents-sd-ce.js.map',
+  'node_modules/fetch-inject/dist/fetch-inject.min.js'
+], 'public/js'))
 /* ------------------------------
  *
  * POST CSS
@@ -29,11 +28,7 @@ gulp.task('bundleCss', require('./gulp-tasks/bundleCss.js')({
     'resources/css/*.css',
     'resources/css/pages/*.css'
   ]
-}, [
-  'public/*.html',
-  'public/portfolio/*.html',
-  'public/blog/*.html'
-]))
+}))
 /* ------------------------------
  *
  * SVG
@@ -169,7 +164,7 @@ gulp.task('serve', require('./gulp-tasks/serve.js').serve())
 
 gulp.task('default', gulp.series(
   'browser-sync',
-  gulp.parallel('bundleJs', 'bundleCss'),
+  gulp.parallel('moveJs', 'bundleJs', 'bundleCss'),
   'revJs',
   'revCss',
   'pwaManifest',
@@ -190,7 +185,7 @@ gulp.task('build', gulp.series(
     }))
   },
   gulp.parallel(gulp.series(
-    gulp.parallel('bundleJs', 'bundleCss'),
+    gulp.parallel('moveJs', 'bundleJs', 'bundleCss'),
     gulp.parallel('revJs', 'revCss')
     ),
     'images'
