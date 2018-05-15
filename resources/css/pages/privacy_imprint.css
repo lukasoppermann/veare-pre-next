@@ -1,6 +1,21 @@
 .c-section-privacy, .c-section-imprint{
-  margin-top: var(--size-h);
-  padding: 0 var(--size-l);
+  margin: var(--size-h) var(--size-l) 0 var(--size-l);
+}
+.c-section-privacy p, .c-section-imprint p{
+  font-family: var(--font-georgia);
+  font-size: var(--size-l);
+  line-height: 26px;
+  margin-bottom: var(--size-xs);
+}
+.c-section-privacy ul, .c-section-imprint ul{
+  margin-bottom: var(--size-xxl);
+  margin-top: var(--size-xxl);
+}
+.c-section-privacy li, .c-section-imprint li{
+  font-family: var(--font-georgia);
+  font-size: var(--size-l);
+  line-height: 26px;
+  margin-bottom: var(--size-xs);
 }
 @media (max-width: 800px){
   .c-section-privacy, .c-section-imprint{
