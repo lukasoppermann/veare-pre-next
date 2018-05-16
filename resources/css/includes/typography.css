@@ -21,6 +21,7 @@
   --font-montserrat: 'Montserrat', Helvetica, sans-serif;
   --font-montserrat-bold: 700;
   --font-montserrat-semibold: 600;
+  --font-montserrat-spacing: .07em;
   /* REMOVE when remove from css */
   --sans-serif: var(--font-source-sans);
   --sans-serif-normal: 400;

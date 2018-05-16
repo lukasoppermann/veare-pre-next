@@ -32,6 +32,7 @@ template.innerHTML = `<style>
     font-size: var(--size-l);
     font-family: var(--font-montserrat);
     font-weight: var(--font-montserrat-bold);
+    letter-spacing: var(--font-montserrat-spacing);
     transition: color .35s var(--easeInOutQuad);
   }
   nav [slot="items"]:hover,
