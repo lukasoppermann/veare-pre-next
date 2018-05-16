@@ -3,7 +3,7 @@
    * Modular Scale
    * Base: font-size 20
    * Scale: Major thrid (4:5 / 1.25)
-   * Numbers: 4, 8, 13, 16, 20, 26, 32, 40, 50, 63, 77, 97, 121, 189, 236, 296, 462
+   * Numbers: 4, 8, 13, 16, 20, 26, 32, 39, 49, 60, 75, 95, 120, 180, 232, 291, 360, 450, 570, 720
    */
   --base-font: 20px;
   --base-lineheight: 30px;
@@ -19,14 +19,11 @@
   --size-xl: 26px;
   --size-xxl: 32px;
   /* huge */
-  --size-h: 40px;
-  --size-xh: 50px;
-  --size-xxh: 62px;
+  --size-h: 39px;
+  --size-xh: 49px;
+  --size-xxh: 60px;
   /* giant */
-  --size-g: 77px;
-  --size-xg: 97px;
-  --size-xxg: 121px;
-}
-.inset--l{
-  padding: var(--size-l);
+  --size-g: 75px;
+  --size-xg: 95px;
+  --size-xxg: 120px;
 }
