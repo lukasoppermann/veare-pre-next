@@ -27,6 +27,8 @@
   --sans-serif-normal: 400;
   /* FONT: Monospace*/
   --monospace: monospace;
+  /* Text Styles */
+  --font-copy-serif: var(--base-font)/var(--base-lineheight) var(--font-georgia);
 }
 /*
  * type styles

@@ -2,10 +2,8 @@
   margin: var(--size-h) var(--size-l) 0 var(--size-l);
 }
 .c-section-privacy p, .c-section-imprint p{
-  font-family: var(--font-georgia);
-  font-size: var(--size-l);
-  line-height: 26px;
-  margin-bottom: var(--size-xs);
+  font: var(--font-copy-serif);
+  margin-bottom: var(--baseline);
 }
 .c-section-privacy ul, .c-section-imprint ul{
   margin-bottom: var(--size-xxl);
