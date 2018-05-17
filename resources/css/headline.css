@@ -8,20 +8,14 @@
 
  }
  .Headline--h2{
-   font-size: var(--size-xl);
-   font-family: var(--font-montserrat);
-   font-weight: var(--font-montserrat-bold);
-   line-height: 36px;
-   margin-top: var(--size-xh);
-   margin-bottom: var(--size-l);
+   font: var(--font-h2);
+   margin-top: calc(var(--baseline) * 4);
+   margin-bottom: var(--baseline);
  }
  .Headline--h3{
-   font-size: var(--size-l);
-   font-family: var(--font-montserrat);
-   font-weight: var(--font-montserrat-bold);
-   line-height: 26px;
-   margin-top: var(--size-xxl);
-   margin-bottom: var(--size-xs);
+   font: var(--font-h3);
+   margin-top: calc(var(--baseline) * 3);
+   margin-bottom: var(--baseline);
  }
 /* --------------- */
 /* OLD */
