@@ -17,6 +17,7 @@
   /* FONT: Source Sans*/
   --font-source-sans: 'Source Sans Pro', Helvetica, sans-serif;
   --font-source-sans-regular: 400;
+  --style-source-sans-semibold: 600;
   /* FONT: Montserrat*/
   --font-montserrat: 'Montserrat', Helvetica, sans-serif;
   --font-montserrat-bold: 700;
@@ -29,6 +30,9 @@
   --monospace: monospace;
   /* Text Styles */
   --font-copy-serif: var(--base-font)/var(--base-lineheight) var(--font-georgia);
+  --font-h2: var(--size-xxl)/calc(var(--baseline) * 4) var(--font-source-sans);
+  --font-h3: var(--style-source-sans-semibold) var(--size-xl)/calc(var(--baseline) * 3) var(--font-source-sans);
+  --font-annotation: var(--size-m)/calc(var(--baseline) * 2) var(--font-source-sans);
 }
 /*
  * type styles

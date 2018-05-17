@@ -1,9 +1,12 @@
 .c-section-privacy, .c-section-imprint{
-  margin: var(--size-h) var(--size-l) 0 var(--size-l);
+  padding: var(--size-h) var(--size-l) 0 var(--size-l);
 }
 .c-section-privacy p, .c-section-imprint p{
   font: var(--font-copy-serif);
   margin-bottom: var(--baseline);
+}
+.c-section-privacy .content{
+  grid-column: column / span 5;
 }
 .c-section-privacy ul, .c-section-imprint ul{
   margin-bottom: var(--size-xxl);
