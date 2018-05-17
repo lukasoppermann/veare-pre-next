@@ -33,6 +33,7 @@
   --font-h2: var(--size-xxl)/calc(var(--baseline) * 4) var(--font-source-sans);
   --font-h3: var(--style-source-sans-semibold) var(--size-xl)/calc(var(--baseline) * 3) var(--font-source-sans);
   --font-annotation: var(--size-m)/calc(var(--baseline) * 2) var(--font-source-sans);
+  --font-title: var(--font-montserrat-bold) var(--size-g)/calc(var(--baseline) * 8) var(--font-montserrat);
 }
 /*
  * type styles
