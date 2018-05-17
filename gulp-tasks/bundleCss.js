@@ -1,7 +1,7 @@
 module.exports = function (bundles) {
   const gulp = require('gulp')
   const sourcemaps = require('gulp-sourcemaps')
-  const cssnano = require('gulp-cssnano')
+  const cleanCSS = require('gulp-clean-css')
   const concat = require('gulp-concat')
   const error = require('./errorHandling.js')()
 
@@ -13,12 +13,7 @@ module.exports = function (bundles) {
         .pipe(sourcemaps.init())
         .pipe(concat(key + '.css'))
         .pipe(savings.start())
-        .pipe(cssnano({
-          autoprefixer: false,
-          discardComments: {
-            removeAll: true
-          }
-        }))
+        .pipe(cleanCSS())
         .on('error', error)
         .pipe(savings.stop())
         .pipe(savings.gziped())
