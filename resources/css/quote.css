@@ -46,17 +46,3 @@
   line-height: 140%;
   margin: -9px 0;
 }
-.Annotation{
-  position: relative;
-  font: var(--font-annotation);
-  padding-top: calc(var(--baseline));
-}
-.Annotation:before{
-  content: "";
-  position: absolute;
-  display: block;
-  top: 0;
-  height: 2px;
-  width: 50%;
-  background-color: var(--light-grey);
-}
