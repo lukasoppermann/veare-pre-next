@@ -31,27 +31,6 @@ gulp.task('bundleCss', require('./gulp-tasks/bundleCss.js')({
 }))
 /* ------------------------------
  *
- * SVG
- *
- */
-// gulp.task('svg', () => {
-//   gulp.src(['resources/svgs/*'])
-//     .pipe(gulp.dest('public/svgs'))
-// })
-//
-/* ------------------------------
- *
- * imagemin
- *
- */
-// const imagemin = require('gulp-imagemin')
-// gulp.task('minifyImages', () =>
-//   gulp.src('resources/media/*.*')
-//     .pipe(imagemin())
-//     .pipe(gulp.dest('public/media'))
-// )
-/* ------------------------------
- *
  * Revision
  *
  */
@@ -64,7 +43,11 @@ gulp.task('revJs', require('./gulp-tasks/rev.js')('js',
     return `public/js/${item.replace(/\.ts$/, '.js')}`
   })
 ))
-// images
+/* ------------------------------
+ *
+ * images
+ *
+ */
 gulp.task('revMedia', require('./gulp-tasks/rev.js')('media',
   fs.readdirSync('public/media/').filter(file => {
     return file.substr(-4) === '.png' || file.substr(-4) === '.jpg' || file.substr(-4) === '.svg'
@@ -73,11 +56,6 @@ gulp.task('revMedia', require('./gulp-tasks/rev.js')('media',
   })
 ))
 
-/* ------------------------------
- *
- * images
- *
- */
 gulp.task('copyMedia', () => gulp.src('resources/media/*.*')
    .pipe(gulp.dest('public/media'))
 )
