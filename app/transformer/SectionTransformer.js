@@ -5,7 +5,7 @@ const AssetTransformer = require('./AssetTransformer')
 const convertMarkdown = require('../services/convertMarkdown')
 let modifiers = {
   p: {
-    class: 'Paragraph type--dark-grey Paragraph--l'
+    class: 'Paragraph-old type--dark-grey Paragraph--l'
   }
 }
 

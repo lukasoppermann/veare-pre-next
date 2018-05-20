@@ -1,7 +1,7 @@
 .Annotation{
   position: relative;
   font: var(--font-annotation);
-  padding-top: calc(var(--baseline));
+  padding-top: calc(var(--baseline) * 2);
   grid-column: right / span 2;
 }
 .Annotation:before{
@@ -20,6 +20,8 @@
     background-color: var(--white-grey);
     padding-bottom: calc(var(--baseline));
     margin-bottom: calc(var(--baseline) * 2);
+    font-size: var(--size-l);
+    line-height: calc(var(--baseline) * 3);
   }
   .Annotation:before{
     left: 0;

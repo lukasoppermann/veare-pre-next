@@ -9,13 +9,25 @@
   padding-top: calc(var(--baseline) * 4);
   margin-bottom: calc(var(--baseline) * 2);
 }
+.Headline--h1{
+  font: var(--font-h1);
+  padding-top: calc(var(--baseline) * 5);
+  margin-bottom: calc(var(--baseline) * 2);
+}
 .Headline--h2{
   font: var(--font-h2);
-  padding-top: calc(var(--baseline) * 4);
-  margin-bottom: var(--baseline);
+  margin-top: var(--vs-xl);
 }
 .Headline--h3{
   font: var(--font-h3);
   padding-top: calc(var(--baseline) * 3);
   margin-bottom: var(--baseline);
+}
+.Headline--h5{
+  font: var(--font-h5);
+  text-transform: uppercase;
+  margin-top: var(--baseline);
+}
+.Headline--h5 + *{
+  margin-top: var(--vs-s);
 }
