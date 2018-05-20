@@ -59,7 +59,7 @@ module.exports = (content, mods = {}) => {
       'start-column': '0s 2m 3l'
     },
     p: {
-      class: 'Paragraph Paragraph--xl',
+      class: 'Paragraph-old Paragraph--xl',
       columns: '16s 13m 10l',
       'start-column': '0s 4m 7l'
     },

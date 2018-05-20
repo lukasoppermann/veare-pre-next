@@ -1,4 +1,3 @@
-
  /* ====================================
      Text Settings
  ==================================== */
@@ -18,9 +17,6 @@ font-variant-ligatures: discretionary-ligatures;
 -webkit-font-feature-settings:"liga", "dlig";
 font-feature-settings:"liga", "dlig";
 */
-/* ====================================
-    Text Styles
-==================================== */
 :root{
   /*
   * Fonts
@@ -44,12 +40,27 @@ font-feature-settings:"liga", "dlig";
   --sans-serif-normal: 400;
   /* FONT: Monospace*/
   --monospace: monospace;
-  /* Text Styles */
+  /* ====================================
+      Text Styles
+  ==================================== */
+  /* Copy Styles */
   --font-copy-serif: var(--base-font)/var(--base-lineheight) var(--font-georgia);
+  --font-copy-sans-small: var(--base-font)/var(--base-lineheight) var(--font-source-sans);
+  /* Headline Styles */
+  --font-title: var(--font-montserrat-bold) var(--size-g)/calc(var(--baseline) * 8) var(--font-montserrat);
+  --font-h1: var(--size-xh)/calc(var(--baseline) * 5) var(--font-source-sans);
   --font-h2: var(--size-xxl)/calc(var(--baseline) * 4) var(--font-source-sans);
   --font-h3: var(--style-source-sans-semibold) var(--size-xl)/calc(var(--baseline) * 3) var(--font-source-sans);
+  --font-h5: var(--font-montserrat-bold) var(--size-s)/calc(var(--baseline) * 1) var(--font-montserrat);
+  /* Supporting Elements */
   --font-annotation: var(--size-m)/calc(var(--baseline) * 2) var(--font-source-sans);
-  --font-title: var(--font-montserrat-bold) var(--size-g)/calc(var(--baseline) * 8) var(--font-montserrat);
+
+}
+/* ====================================
+    Text Colors
+==================================== */
+.text--light{
+  color: var(--grey);
 }
 /*
  * type styles
@@ -75,7 +86,7 @@ font-feature-settings:"liga", "dlig";
   line-height: 140%;
 }
 /*
- * type colors
+ * type colors OLD
  */
 .type--dark-grey{ color: rgba(var(--black-rgb), .6); }
 .type--grey{ color: rgba(var(--black-rgb), .5); }
