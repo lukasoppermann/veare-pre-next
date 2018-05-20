@@ -1,6 +1,8 @@
 .Paragraph{
   font: var(--font-copy-serif);
   margin-top: var(--vs-s);
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 .Paragraph--sans-small{
   font: var(--font-copy-sans-small);

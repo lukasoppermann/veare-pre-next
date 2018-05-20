@@ -31,3 +31,8 @@
 .Headline--h5 + *{
   margin-top: var(--vs-s);
 }
+@media (max-width: 800px) {
+  .Headline--title{
+    font: var(--font-title-small);
+  }
+}

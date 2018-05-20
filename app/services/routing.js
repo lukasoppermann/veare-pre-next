@@ -75,7 +75,7 @@ module.exports = (app) => {
     app.get(/^\/(imprint|privacy)/, function (req, res) {
       res.render(req.params[0], {
         files: files,
-        pageClass: 'c-page--' + req.params[0] + ' page--' + req.params[0] + ' New-temp',
+        pageClass: 'c-page--' + req.params[0] + ' page--' + req.params[0],
         htmlClass: 'Temp-Override'
       })
     })

@@ -48,6 +48,7 @@ font-feature-settings:"liga", "dlig";
   --font-copy-sans-small: var(--base-font)/var(--base-lineheight) var(--font-source-sans);
   /* Headline Styles */
   --font-title: var(--font-montserrat-bold) var(--size-g)/calc(var(--baseline) * 8) var(--font-montserrat);
+  --font-title-small: var(--font-montserrat-bold) var(--size-xh)/calc(var(--baseline) * 5) var(--font-montserrat);
   --font-h1: var(--size-xh)/calc(var(--baseline) * 5) var(--font-source-sans);
   --font-h2: var(--size-xxl)/calc(var(--baseline) * 4) var(--font-source-sans);
   --font-h3: var(--style-source-sans-semibold) var(--size-xl)/calc(var(--baseline) * 3) var(--font-source-sans);
