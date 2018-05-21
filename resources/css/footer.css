@@ -66,7 +66,7 @@
   color: var(--black);
   font-size: var(--size-l);
   font-family: var(--font-montserrat);
-  font-weight: var(--font-montserrat-semibold);
+  font-weight: var(--font-montserrat-bold);
 }
 .Footer__content__copy{
   color: var(--grey);

@@ -22,7 +22,7 @@
 }
 /* NEW PORTFOLIO */
 .o-headline--portfolio{
-  font-family: var(--serif);
+  font-family: var(--font-noto-serif);
   font-style: italic;
   width: 100%;
   max-width: 1000px;

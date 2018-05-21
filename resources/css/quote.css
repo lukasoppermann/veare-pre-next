@@ -41,7 +41,7 @@
   margin-bottom: var(--size-xl);
 }
 .o-quote{
-  font-family: var(--serif);
+  font-family: var(--font-noto-serif);
   font-size: var(--size-xl);
   line-height: 140%;
   margin: -9px 0;
