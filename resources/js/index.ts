@@ -34,7 +34,7 @@ Promise.all([revisionedFiles, scriptPromise])
   let body = document.querySelector('body')
   // load webfont and view intro once downloaded
   fetchInject([
-    `https://fonts.googleapis.com/css?family=Montserrat:600,700|Noto+Serif:400i|Source+Sans+Pro:400,600`
+    `https://fonts.googleapis.com/css?family=Montserrat:700|Noto+Serif:400,400i|Source+Sans+Pro:400,600`
   ], layoutComponents)
   .then(() => {
     if(body !== null) {

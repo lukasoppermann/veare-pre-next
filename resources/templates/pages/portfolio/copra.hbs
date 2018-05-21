@@ -6,6 +6,13 @@
         padding: 0 var(--size-m);
       }
     }
+    .s-copra-mobile-phone{
+      z-index: 10;
+      width: 250px;
+      position: absolute;
+      bottom: -50px;
+      right: 0px;
+    }
     .c-section-portfolio-top-image{
       position: relative;
       overflow: visible;
@@ -108,6 +115,10 @@
       }
     }
     @media (max-width: 880px){
+      .s-copra-mobile-phone{
+        right: 20px;
+        width: 200px;
+      }
       .o-stage{
         width: 96%;
       }
@@ -131,6 +142,13 @@
       .c-headline--copra svg{
         width: 100%;
       }
+      .s-copra-mobile-phone{
+        z-index: 10;
+        width: 60%;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        position: relative;
+      }
     }
     @media (max-width: 500px){
       .c-section-portfolio-top-image{
@@ -150,7 +168,7 @@
       --page-section-width: 100%;
     }
     .o-project-section__headline{
-      font-family: var(--serif);
+      font-family: var(--font-noto-serif);
       font-style: italic;
       width: 100%;
       max-width: 1000px;
@@ -298,6 +316,7 @@
       width: 100%;
     }
     @media (min-width: 800px){
+
       .copra-logo-final{
         transform: translateY(-30%)
       }
@@ -605,21 +624,21 @@
         We focused on speed by making sure it was as small as possible but also by designing and writing the content so that it is easy to scan to get the gist without reading every last paragraph.</p>
       </div>
     </grid-container>
-    <grid-container columns="16" rows="10" class="u-margin-bottom--g">
+    <grid-container columns="16" rows="1" class="u-margin-bottom--g" style="position: relative;">
       <responsive-image columns="16s 14m 14l" start-column="0s 2m 2l" start-row="0s 1m" rows="0s 10m"
         class="o-card o-card--no-padding u-margin-top--h"
         active="true"
         src="/{{files.[media/copra_website.png]}}"
         alt="website developed according to styleguide"
       ></responsive-image>
-      <responsive-image columns="16s 4m 4l" start-column="0s 13m 13l" start-row="0s 5m" rows="0s 7m"
-        class="u-margin-top--h"
+      <responsive-image columns="16s 4m 4l" start-column="0s 13m 13l"
+        class="s-copra-mobile-phone"
         active="true"
         src="/{{files.[media/copra-mobile.png]}}"
         alt="corpa business cards"
-        style="z-index: 10"
       ></responsive-image>
     </grid-container>
+
     <grid-container columns="16" class="u-margin-bottom--xxg">
       <div columns="16s 14m 14l" start-column="0s 2m 2l">
         <h4 class="o-headline--h4">Other Products</h4>

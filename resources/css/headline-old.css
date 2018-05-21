@@ -40,7 +40,8 @@
   font-size: var(--size-m);
   line-height: 100%;
   font-family: var(--font-montserrat);
-  font-weight: var(--font-montserrat-semibold);
+  font-weight: var(--font-montserrat-bold);
+  letter-spacing: 0.5px;
   text-transform: uppercase;
   color: rgba(var(--black-rgb),.4);
   margin-top: var(--size-xxh);

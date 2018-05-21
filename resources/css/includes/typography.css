@@ -18,14 +18,10 @@ font-variant-ligatures: discretionary-ligatures;
 font-feature-settings:"liga", "dlig";
 */
 :root{
-  /*
-  * Fonts
-  */
-  --serif: 'Noto Serif', serif;
-  --serif-style: italic;
-  --serif-italic: italic;
-  /* FONT: Georgia*/
+  /* FONT: Noto Serif*/
   --font-georgia: Georgia, serif;
+  --font-noto-serif: 'Noto Serif', Georgia, serif;
+  --font-noto-serif-italic: italic;
   /* FONT: Source Sans*/
   --font-source-sans: 'Source Sans Pro', Helvetica, sans-serif;
   --font-source-sans-regular: 400;
@@ -33,7 +29,6 @@ font-feature-settings:"liga", "dlig";
   /* FONT: Montserrat*/
   --font-montserrat: 'Montserrat', Helvetica, sans-serif;
   --font-montserrat-bold: 700;
-  --font-montserrat-semibold: 600;
   --font-montserrat-spacing: .07em;
   /* REMOVE when remove from css */
   --sans-serif: var(--font-source-sans);
@@ -44,7 +39,8 @@ font-feature-settings:"liga", "dlig";
       Text Styles
   ==================================== */
   /* Copy Styles */
-  --font-copy-serif: var(--base-font)/var(--base-lineheight) var(--font-georgia);
+  --font-copy-serif: var(--base-font)/var(--base-lineheight) var(--font-noto-serif);
+  --font-copy-serif-italic: italic var(--base-font)/var(--base-lineheight) var(--font-noto-serif);
   --font-copy-sans-small: var(--base-font)/var(--base-lineheight) var(--font-source-sans);
   /* Headline Styles */
   --font-title: var(--font-montserrat-bold) var(--size-g)/calc(var(--baseline) * 8) var(--font-montserrat);
@@ -52,7 +48,7 @@ font-feature-settings:"liga", "dlig";
   --font-h1: var(--size-xh)/calc(var(--baseline) * 5) var(--font-source-sans);
   --font-h2: var(--size-xxl)/calc(var(--baseline) * 4) var(--font-source-sans);
   --font-h3: var(--style-source-sans-semibold) var(--size-xl)/calc(var(--baseline) * 3) var(--font-source-sans);
-  --font-h5: var(--font-montserrat-bold) var(--size-s)/calc(var(--baseline) * 1) var(--font-montserrat);
+  --font-h5: var(--font-montserrat-bold) var(--size-s)/calc(var(--baseline) * 2) var(--font-montserrat);
   /* Supporting Elements */
   --font-annotation: var(--size-m)/calc(var(--baseline) * 2) var(--font-source-sans);
 

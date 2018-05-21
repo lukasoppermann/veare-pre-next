@@ -22,9 +22,9 @@
   max-width: 112rem;
 }
 .o-article__title{
-  font-family: var(--serif);
+  font-family: var(--font-noto-serif);
+  font-style: italic;
   font-size: var(--size-g);
-  font-style: var(--serif-italic);
   line-height: 130%;
   max-width: 112rem;
   margin-bottom: var(--size-xl);
