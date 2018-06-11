@@ -1,0 +1,19 @@
+.Header{
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  border: var(--size-m) solid var(--white);
+  border-width: var(--vs-g) var(--size-m) var(--vs-m);
+  height: 100%;
+}
+.Header__image{
+  height: 100%;
+  width: 100%;
+}
+.Header__title{
+  position: absolute;
+  font: var(--font-title);
+  bottom: var(--vs-xxl);
+  left: var(--hs-xl);
+  color: var(--white);
+}

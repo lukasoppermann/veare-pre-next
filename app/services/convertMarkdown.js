@@ -28,7 +28,7 @@ const md = require('markdown-it')('commonmark', {
 md.renderer.rules.image = (tokens, idx, opts, _, slf) => '<div class="o-figure__image">' + slf.renderToken(tokens, idx, opts) + '</div>'
 
 module.exports = (content, mods = {}) => {
-  modifiers = deepAssign({
+  const defaults = {
     h1: {
       class: 'o-headline--h2',
       columns: '16s 13m 10l',
@@ -93,7 +93,8 @@ module.exports = (content, mods = {}) => {
         }
       }
     }
-  }, mods)
+  }
+  modifiers = deepAssign(mods.reset === true ? {} : defaults, mods)
   if (typeof content !== 'string') return content
   return md.render(content)
 }

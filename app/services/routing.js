@@ -59,9 +59,9 @@ module.exports = (app) => {
     })
     // index
     app.get('/', (req, res) =>
-      page.get(req, res, {
+      res.render('index', {
         files: files,
-        pageClass: 'c-page--blog',
+        pageClass: 'c-page--index',
         portfolioItems: portfolioItems
       })
     )
@@ -118,7 +118,9 @@ module.exports = (app) => {
     })
 
     app.get(/^\/work\/([a-z0-9]*)/, (req, res) => portfolio.get(req, res, {
-      files: files
+      files: files,
+      pageClass: 'Page--work',
+      htmlClass: 'Temp-Override'
     }))
     // static content
     app.use(express.static('public', {maxAge: '365d'}))

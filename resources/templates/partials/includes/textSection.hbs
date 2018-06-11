@@ -1,10 +1,8 @@
-<page-section centered maxwidth="1200px" class="Section Section__text{{#each section.stylingOptions}} Section__text--{{this}}{{/each}}">
-  <grid-container>
-    <div columns="16s 14m 10l" start-column="0s 2m 4l">
-      <h4 class="o-headline o-headline--section-title">{{section.sectionTitle}}</h4>
-      <p class="Paragraph-old Paragraph--xl">{{section.intro}}</p>
-      <div class="Separator Separator--blue"></div>
-      {{{section.text}}}
-    </div>
-  </grid-container>
-</page-section>
+<div class="Section Grid{{#each section.stylingOptions}} Section__text--{{this}}{{/each}}">
+  {{#if section.showTitle}}<h4 class="Section__title">{{section.title}}</h4>{{/if}}
+  <p class="Section__intro">{{section.intro}}</p>
+  <div class="Separator Separator--blue"></div>
+  <div class="Section__text">
+    {{{section.text}}}
+  </div>
+</div>

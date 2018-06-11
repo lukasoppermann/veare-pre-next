@@ -10,8 +10,8 @@ const browserSync = require('browser-sync')
 // gulp.task('bundleJs', require('./gulp-tasks/rollup.js')('resources/js/'))
 gulp.task('bundleJs', require('./gulp-tasks/roll.js')('resources/js/*.ts'))
 gulp.task('moveJs', require('./gulp-tasks/moveFiles.js')([
-  'node_modules/@webcomponents/webcomponentsjs/webcomponents-sd-ce.js',
-  'node_modules/@webcomponents/webcomponentsjs/webcomponents-sd-ce.js.map',
+  'node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce.js',
+  'node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce.js.map',
   'node_modules/fetch-inject/dist/fetch-inject.min.js'
 ], 'public/js'))
 /* ------------------------------
@@ -23,10 +23,10 @@ gulp.task('moveJs', require('./gulp-tasks/moveFiles.js')([
 gulp.task('bundleCss', require('./gulp-tasks/bundleCss.js')({
   'app': [
     // includes
-    'resources/css/includes/*.css',
-    // main files
-    'resources/css/*.css',
-    'resources/css/pages/*.css'
+    'resources/css/includes/*.scss',
+    // // main files
+    'resources/css/*.scss',
+    'resources/css/pages/*.scss'
   ]
 }))
 /* ------------------------------

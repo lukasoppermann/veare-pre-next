@@ -1,0 +1,35 @@
+.c-skills{
+  --media-spacing: var(--size-xl);
+  color: var(--black);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: var(--size-g);
+}
+.c-skill{
+  margin-top: var(--size-g);
+  margin-left: var(--size-xl);
+  margin-right: var(--size-xl);
+}
+.c-skill__content{
+  text-align: left;
+  max-width: 580px;
+}
+.c-skill__figure{
+  display: flex;
+  align-items: center;
+  width: 250px;
+  height: 250px;
+}
+.c-skill__figure svg{
+  display: block;
+  width: 250px;
+  height: 250px;
+}
+@media screen and (max-width: 800px){
+  .c-skill{
+    margin-left: var(--size-xl);
+    margin-right: var(--size-xl);
+  }
+}
