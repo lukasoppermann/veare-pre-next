@@ -118,7 +118,8 @@ module.exports = (app) => {
     })
 
     app.get(/^\/work\/([a-z0-9]*)/, (req, res) => portfolio.get(req, res, {
-      files: files
+      files: files,
+      htmlClass: 'Temp-Override'
     }))
     // static content
     app.use(express.static('public', {maxAge: '365d'}))

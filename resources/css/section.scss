@@ -1,24 +1,41 @@
 .Section{
-  position: relative;
-  padding: 0 var(--size-h);
+  grid-column: 1 / span 11;
 }
-.Footer-Section{
-  overflow: hidden;
+.Section ~ .Section {
+  @include baseline(7);
 }
-.Section__media{
-  margin-top: var(--size-xh);
+.Section__title{
+  @extend %font-uppercase-small;
+  color: var(--black-40);
+  grid-column: column / span 7;
+}
+.Section__intro{
+  @extend %font-paragraph-sans-big;
+  @include baseline(3);
+  grid-column: column / span 7;
+}
+.Section .Separator{
+  grid-column: column / span 7;
+}
+.Section__text{
+  @extend %font-paragraph-sans;
+  @include baseline(3);
+  grid-column: column / span 5;
+}
+.Section__text p:not(:first-child){
+  @include baseline(2);
 }
 .Section__media__image{
+  grid-column: column / span 7;
   position: relative;
   z-index: 50;
 }
-.Section__media--rounded-corners .Section__media__image{
-  border-radius: var(--border-radius);
-  overflow: hidden;
+.Section__media__image:not(:first-child){
+  @include baseline(3);
 }
-.Section__media--title-hide .o-headline--section-title{
-  display: none;
-}
+/* ============================ */
+/* OLD */
+/* ============================ */
 .Section__media__description{
   margin-top: var(--size-s);
   color: rgba(var(--black-rgb), .5);

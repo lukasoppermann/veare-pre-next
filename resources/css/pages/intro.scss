@@ -4,10 +4,7 @@
   display: flex;
 }
 .c-section--intro{
-  position: relative;
   background-color: var(--color-sand);
-  border: var(--size-m) solid var(--white);
-  border-top: var(--size-g) solid var(--white);
 }
 .c-section--intro .c-logo{
   position: absolute;

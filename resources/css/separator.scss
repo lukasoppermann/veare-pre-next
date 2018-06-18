@@ -2,7 +2,7 @@
   display: block;
   height: 2px;
   width: var(--size-xxl);
-  margin: var(--size-xl) 0;
+  @include baseline(4);
 }
 .Separator--blue{
   background-color: var(--blue);

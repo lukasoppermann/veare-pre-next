@@ -1,6 +1,7 @@
 'use strict'
 
 const Transformer = require('./Transformer')
+const ChapterTransformer = require('./ChapterTransformer')
 const SectionTransformer = require('./SectionTransformer')
 const AssetTransformer = require('./AssetTransformer')
 
@@ -21,7 +22,7 @@ class ProjectTransformer extends Transformer {
         publicationYear: this.getContent(data, 'publicationYear'),
         industry: this.getContent(data, 'industry'),
         client: this.getContent(data, 'client'),
-        sections: new SectionTransformer(this.getContent(data, 'sections')).get()
+        chapters: new ChapterTransformer(this.getContent(data, 'chapters')).get()
         // related:
         // tags:
       }

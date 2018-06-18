@@ -23,10 +23,10 @@ gulp.task('moveJs', require('./gulp-tasks/moveFiles.js')([
 gulp.task('bundleCss', require('./gulp-tasks/bundleCss.js')({
   'app': [
     // includes
-    'resources/css/includes/*.css',
-    // main files
-    'resources/css/*.css',
-    'resources/css/pages/*.css'
+    'resources/css/includes/*.scss',
+    // // main files
+    'resources/css/*.scss',
+    'resources/css/pages/*.scss'
   ]
 }))
 /* ------------------------------

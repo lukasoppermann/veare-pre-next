@@ -8,27 +8,29 @@
 </head>
 
 <body class="{{pageClass}}">
-  {{#if wordmark}}
-    <a href="/">
-      {{{inline_svg 'resources/svgs/veare-wordmark.svg'}}}
-    </a>
-  {{/if}}
-  {{>includes/navigation}}
-  <page-sections class="Sections-container">
+  <div class="Page">
+    {{#if wordmark}}
+      <a href="/">
+        {{{inline_svg 'resources/svgs/veare-wordmark.svg'}}}
+      </a>
+    {{/if}}
+    {{>includes/navigation}}
+    <page-sections class="Sections-container">
 
-    {{#> body}}
-      {{!-- Body will be added here --}}
-    {{/body}}
+      {{#> body}}
+        {{!-- Body will be added here --}}
+      {{/body}}
 
-    {{#unless disableFooter}}
-    <page-section centered class="Footer-Section">
-      {{#> footer-block}}
-        {{!-- The `includes/footer` partial is the default content, but can be overridden. --}}
-        {{> includes/footer }}
-      {{/footer-block}}
-    </page-section>
-    {{/unless}}
+      {{#unless disableFooter}}
+      <page-section centered class="Footer-Section">
+        {{#> footer-block}}
+          {{!-- The `includes/footer` partial is the default content, but can be overridden. --}}
+          {{> includes/footer }}
+        {{/footer-block}}
+      </page-section>
+      {{/unless}}
 
-  </page-sections>
+    </page-sections>
+  </div>
 </body>
 </html>

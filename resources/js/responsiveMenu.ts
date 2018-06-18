@@ -11,8 +11,6 @@ template.innerHTML = `<style>
     display: flex;
     position: fixed;
     justify-content: flex-end;
-    top: 0;
-    left: 0;
     z-index: 990;
     transform: translateZ(100px); /* safari hack */
     width: 100vw;

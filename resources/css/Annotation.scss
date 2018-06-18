@@ -1,6 +1,6 @@
 .Annotation{
+  @extend %font-annotation;
   position: relative;
-  font: var(--font-annotation);
   padding-top: calc(var(--baseline) * 2);
 }
 .Annotation--align-bottom{

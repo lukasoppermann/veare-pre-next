@@ -9,6 +9,10 @@
   padding-top: calc(var(--baseline) * 4);
   margin-bottom: calc(var(--baseline) * 2);
 }
+.Headline--subtitle{
+  font: var(--font-subtitle);
+  margin-top: calc(var(--baseline) * 4);
+}
 .Headline--h1{
   font: var(--font-h1);
   padding-top: calc(var(--baseline) * 5);

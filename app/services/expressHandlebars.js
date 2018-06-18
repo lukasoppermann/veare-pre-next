@@ -39,8 +39,11 @@ module.exports = expressHandlebars.create({
     year: function () {
       return new Date().getFullYear()
     },
+    log: function (something) {
+      console.log(something)
+    },
     inline_js: function (path) {
-      path = `public/` + path
+      path = `./public/` + path
       let js = fs.readFileSync(path, 'utf8')
       return `<script>${js}</script>`
     },

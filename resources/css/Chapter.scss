@@ -1,0 +1,46 @@
+.Chapters{
+  width: 100%;
+  counter-reset: chapter-side;
+}
+.Chapter__Grid{
+  grid-template-rows: 0px auto !important;
+  @include baseline(12);
+}
+.Chapter__title-container{
+  display: flex;
+  height: calc(var(--baseline) * 2);
+  overflow: visible;
+  grid-column-start: 2;
+  grid-row-start: 1;
+  width: 300px;
+  transform-origin: top left;
+  transform: rotate(90deg) translateY(-100%);
+}
+.Chapter__title{
+  @extend %font-uppercase-small;
+  display: inline-block;
+  flex: 0 0 auto;
+  order: 1;
+  padding-right: var(--vs-s);
+}
+.Chapter__title-container::before {
+  order: 2;
+  content: "";
+  height: 2px;
+  display: block;
+  width: var(--vs-xl);
+  align-self: center;
+  transform: translateY(-1px);
+  background-color: var(--black);
+}
+.Chapter__title-container::after{
+  @extend %font-uppercase-small;
+  order: 3;
+  padding-left: var(--vs-s);
+  counter-increment: chapter-side;
+  content: counter(chapter-side, decimal-leading-zero);
+  font-feature-settings: "tnum", "zero";
+}
+.Chapter__anchor{
+  outline: none;
+}
