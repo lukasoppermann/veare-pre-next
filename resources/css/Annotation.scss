@@ -8,6 +8,9 @@
 }
 .Grid > .Annotation {
   grid-column: right / span 2;
+  @include mq('m') {
+    grid-column: column / span 6;
+  }
 }
 .Annotation:before{
   content: "";
@@ -26,9 +29,6 @@
     background-color: var(--white-grey);
     font-size: var(--size-l);
     line-height: calc(var(--baseline) * 3);
-  }
-  .Grid > .Annotation {
-    grid-column: column / span 6;
   }
   .Annotation:before{
     left: 0;

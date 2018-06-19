@@ -14,8 +14,11 @@ module.exports = function (bundles) {
         .pipe(sourcemaps.init())
         .pipe(concat(key + '.css'))
         .pipe(savings.start())
-        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-        .pipe(cleanCSS())
+        .pipe(sass({
+          // outputStyle: 'compressed'
+          outputStyle: 'nested'
+        }).on('error', sass.logError))
+        // .pipe(cleanCSS())
         .on('error', error)
         .pipe(savings.stop())
         .pipe(savings.gziped())

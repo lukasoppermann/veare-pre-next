@@ -40,7 +40,7 @@ class SectionTransformer extends Transformer {
       classes: this.getContent(data, 'classes'),
       stylingOptions: this.getContent(data, 'stylingOptions', []),
       description: this.getContent(data, 'description'),
-      media: new AssetTransformer(this.getContent(data, 'media')).get()
+      media: new AssetTransformer(this.getContent(data, 'media'), this.getContent(data, 'title')).get()
     }
   }
 
@@ -51,7 +51,8 @@ class SectionTransformer extends Transformer {
       showTitle: this.getContent(data, 'showTitle'),
       slug: this.getContent(data, 'slug'),
       description: this.getContent(data, 'description'),
-      media: new AssetTransformer(this.getContent(data, 'media')).get()
+      media: new AssetTransformer(this.getContent(data, 'media'), this.getContent(data, 'title')).get(),
+      classes: this.getContent(data, 'classes')
     }
   }
 
