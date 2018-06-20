@@ -1,5 +1,5 @@
 .Section{
-  grid-column: 1 / span 11;
+  grid-column: 1 / -1;
 }
 .Section ~ .Section {
   @include baseline(7);
@@ -21,6 +21,9 @@
   @extend %font-paragraph-sans;
   @include baseline(3);
   grid-column: column / span 5;
+  @include mq('s') {
+    grid-column: 1 / -1;
+  }
 }
 .Section__text p:not(:first-child){
   @include baseline(2);
@@ -32,6 +35,9 @@
 }
 .Section__media__image--big > .Section__media__image{
   grid-column: 1 / span 9;
+  @include mq('s') {
+    grid-column: 1 / -1;
+  }
 }
 .Section__media__image:not(:first-child){
   @include baseline(3);
@@ -59,7 +65,6 @@
   order: 2;
   grid-column: 7 / span 3;
   height: calc( 100% + calc(var(--baseline) * -20));
-  // overflow: hidden;
 }
 .Section__media__images--two.Section__media__images--description-bottom .Section__media__description{
   grid-column: column / span 3;

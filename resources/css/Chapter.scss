@@ -1,5 +1,4 @@
-.Chapters{
-  width: 100%;
+.Chapter:first-child{
   counter-reset: chapter-side;
 }
 .Chapter__Grid{
@@ -15,6 +14,12 @@
   width: 300px;
   transform-origin: top left;
   transform: rotate(90deg) translateY(-100%);
+  @include mq('s') {
+    grid-column: 1 / -1;
+    grid-row-start: auto;
+    transform: rotate(0deg);
+    @include baseline(2,"margin-bottom");
+  }
 }
 .Chapter__title{
   @extend %font-uppercase-small;
@@ -24,10 +29,9 @@
   padding-right: var(--vs-s);
 }
 .Chapter__title-container::before {
+  @include pseudo("relative");
   order: 2;
-  content: "";
   height: 2px;
-  display: block;
   width: var(--vs-xl);
   align-self: center;
   transform: translateY(-1px);

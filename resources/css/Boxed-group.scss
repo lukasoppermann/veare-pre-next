@@ -1,6 +1,9 @@
 .Boxed-group{
   display: flex;
   justify-content: space-between;
+  @include mq('xxs') {
+    flex-direction: column;
+  }
 }
 .Boxed-group:not(.Boxed-group--nested){
   margin-top: var(--vs-xl);

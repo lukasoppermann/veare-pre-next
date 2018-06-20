@@ -15,10 +15,10 @@ module.exports = function (bundles) {
         .pipe(concat(key + '.css'))
         .pipe(savings.start())
         .pipe(sass({
-          // outputStyle: 'compressed'
-          outputStyle: 'nested'
+          outputStyle: 'compressed'
+          // outputStyle: 'nested'
         }).on('error', sass.logError))
-        // .pipe(cleanCSS())
+        .pipe(cleanCSS())
         .on('error', error)
         .pipe(savings.stop())
         .pipe(savings.gziped())

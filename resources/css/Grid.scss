@@ -34,10 +34,3 @@
     grid-column: column / span 6;
   }
 }
-@media (max-width: 600px) {
-  .Grid {
-    width: calc(100% - calc(var(--hs-m) * 2));
-    margin-left: var(--hs-m);
-    margin-right: var(--hs-m);
-  }
-}

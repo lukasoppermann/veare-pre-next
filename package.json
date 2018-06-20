@@ -46,12 +46,10 @@
     "prismjs": "^1.15.0",
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-typescript": "^0.8.1",
-    "rollup-stream": "^1.24.1",
     "snazzy": "^7.1.1",
     "standard": "^11.0.1",
     "sw-precache": "^5.2.1",
     "typescript": "^2.9.2",
-    "typescript-eslint-parser": "^16.0.0",
     "uglify-es": "^3.3.9"
   },
   "dependencies": {
@@ -81,7 +79,7 @@
   "scripts": {
     "start": "gulp serve",
     "forever": "forever start -v --watch --watchedDirectory=/Users/lukasoppermann/code/veare app.js",
-    "test": "standard 'app.js' 'resources/js/*.js' 'app/**/*.js' 'gulp-tasks/*.js' | snazzy && npm run test-server && node test/links.js && kill -9 $(lsof -sTCP:LISTEN -i:8888 -t) &>/dev/null 2>&1",
+    "test": "standard 'app.js' 'resources/js/*.js' 'app/**/*.js' 'gulp-tasks/*.js' | snazzy",
     "test-server": "NODE_ENV=testing NODE_PORT=8888 node app.js &",
     "travis": "npm run test"
   }

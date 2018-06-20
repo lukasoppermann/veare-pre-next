@@ -2,14 +2,14 @@
 
 {{#*inline "body"}}
 
-<page-section style="--page-section-height: 100vh; --page-section-max-height: 1000px">
+<page-section style="--page-section-height: 100vh; --page-section-max-height: 1000px" class="Section--Header">
   <div class="Header">
     <h2 class="Header__title">{{project.title}}</h2>
     <responsive-image class="Header__image" src="{{project.headerImage.fields.url}}" alt="{{project.headerImage.fields.title}}"></responsive-image>
   </div>
 </page-section>
 
-<page-section centered class="Section">
+<page-section centered>
   <div class="Grid">
     <div class="Boxed-group Grid--content">
       <div class="Boxed-item" style="flex-grow: 2;">
@@ -54,10 +54,8 @@
 </page-section>
 
 {{!-- Load Chapter --}}
-<div class="Chapters">
-  {{#each project.chapters}}
-    {{> "includes/chapter" section=fields}}
-  {{/each}}
-</div>
+{{#each project.chapters}}
+  {{> "includes/chapter" section=fields}}
+{{/each}}
 
 {{/inline}}

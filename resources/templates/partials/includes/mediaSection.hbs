@@ -1,6 +1,13 @@
 <div class="Section Grid{{#each section.stylingOptions}} Section__media--{{this}}{{/each}} {{section.classes}}">
-  {{#if section.showTitle}}<h4 class="Section__title">{{section.title}}</h4>{{/if}}
+  {{#if section.showTitle}}
+    <h4 class="Section__title">{{section.title}}</h4>
+  {{/if}}
+
   <responsive-image class="Section__media__image" src="{{section.media.0.fields.url}}" alt="{{section.media.0.fields.title}}"></responsive-image>
-  <p class="Section__media__description Annotation">{{section.description}}</p>
+
+  {{#if section.description}}
+    <p class="Section__media__description Annotation">{{section.description}}</p>
+
+  {{/if}}
   <div class="Section__media__bg"></div>
 </div>

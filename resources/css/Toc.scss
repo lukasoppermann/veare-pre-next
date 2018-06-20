@@ -16,10 +16,10 @@
   padding-right: var(--hs-xs);
 }
 .Toc__chapter__link::before {
+  @include pseudo("relative");
   order: 2;
   flex: 1 0 auto;
   align-self: center;
-  content: "";
   height: 2px;
   transform: translateY(-1px);
   background-color: var(--black);
