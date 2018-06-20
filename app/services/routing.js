@@ -57,9 +57,9 @@ module.exports = (app) => {
     })
     // index
     app.get('/', (req, res) =>
-      page.get(req, res, {
+      res.render('index', {
         files: files,
-        pageClass: 'c-page--blog',
+        pageClass: 'c-page--index',
         portfolioItems: portfolioItems
       })
     )
@@ -114,6 +114,10 @@ module.exports = (app) => {
         res.send(html)
       })
     })
+    app.get('/:pageCalled', function(req, res) {
+      console.log('retrieving page: ' + req.params.pageCalled);
+      res.redirect('/')
+    });
     // static content
     app.use(express.static('public', {maxAge: '365d'}))
     // open port
