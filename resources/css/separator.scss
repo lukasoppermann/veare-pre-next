@@ -1,0 +1,9 @@
+.Separator{
+  display: block;
+  height: 2px;
+  width: var(--size-xxl);
+  @include baseline(4);
+}
+.Separator--blue{
+  background-color: var(--blue);
+}

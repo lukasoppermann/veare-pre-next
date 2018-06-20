@@ -11,7 +11,7 @@ module.exports = function (entry) {
 
   return function bundleJs () {
     return gulp.src(entry)
-      .pipe(sourcemaps.init())
+      // .pipe(sourcemaps.init())
       .pipe(rollupEach({
         output: {
           format: 'iife'
@@ -43,7 +43,7 @@ module.exports = function (entry) {
       .pipe(rename({
         extname: '.js'
       }))
-      .pipe(sourcemaps.write('')) // '' to save map as seperate file in same folder
+      // .pipe(sourcemaps.write('', {sourceMappingURLPrefix: '/'})) // '' to save map as seperate file in same folder
       .pipe(gulp.dest('public/js'))
   }
 }

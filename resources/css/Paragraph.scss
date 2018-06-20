@@ -1,0 +1,12 @@
+[class*="Paragraph"]{
+  overflow-wrap: normal;
+}
+.Paragraph{
+  font: var(--font-copy-serif);
+  margin-top: var(--vs-s);
+}
+.Paragraph-sans{
+  margin-top: var(--vs-l);
+  font: var(--font-copy-sans);
+  color: var(--black-60);
+}

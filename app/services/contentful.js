@@ -31,6 +31,7 @@ const initializeContent = (types, entries, cb) => {
     })
     cache.put(contentTypeId, content)
   })
+  // console.log(cache.get('project')[0].fields.chapters['en-US'][0].fields.sections['en-US'][1].fields.media['en-US'].fields)
   cb()
 }
 

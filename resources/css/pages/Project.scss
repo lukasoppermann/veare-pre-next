@@ -1,0 +1,29 @@
+.Page--work page-section:not(.Footer-Section):not(.Section--Header){
+  padding-left: var(--hs-m);
+  padding-right: var(--hs-m);
+  @include mq('s') {
+    padding-left: var(--hs-s);
+    padding-right: var(--hs-s);
+  }
+}
+.Project__subtitle{
+  grid-column: column / span 4;
+  @include mq('xs') {
+    grid-column: 1 / span 7;
+  }
+}
+.Project__challenge{
+  grid-column: column / span 4;
+  @include mq('xs') {
+    grid-column: 1 / span 7;
+  }
+}
+.Project__toc{
+  grid-column: 8 / span 2;
+  @include mq('s') {
+    grid-column: 5 / span 3;
+  }
+  @include mq('xs') {
+    grid-column: 1 / span 7;
+  }
+}

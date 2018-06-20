@@ -1,9 +1,13 @@
-<page-section centered maxwidth="1200px" class="Section Section__media{{#each section.stylingOptions}} Section__media--{{this}}{{/each}} {{section.classes}} {{conditional section.media.length 1 "Section__media--single" "Section__media--multiple"}}">
-  <grid-container>
-      {{#if (eq section.media.length 1)}}
-        {{> (join "includes/singleMediaSection") section=section}}
-      {{else}}
-        {{> (join "includes/multiMediaSection") section=section}}
-      {{/if}}
-  </grid-container>
-</page-section>
+<div class="Section Grid{{#each section.stylingOptions}} Section__media--{{this}}{{/each}} {{section.classes}}">
+  {{#if section.showTitle}}
+    <h4 class="Section__title">{{section.title}}</h4>
+  {{/if}}
+
+  <responsive-image class="Section__media__image" src="{{section.media.0.fields.url}}" alt="{{section.media.0.fields.title}}"></responsive-image>
+
+  {{#if section.description}}
+    <p class="Section__media__description Annotation">{{section.description}}</p>
+
+  {{/if}}
+  <div class="Section__media__bg"></div>
+</div>
