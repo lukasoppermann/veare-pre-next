@@ -23,8 +23,10 @@
     "@types/node": "^10.3.4",
     "@webcomponents/webcomponentsjs": "^2.0.2",
     "chalk": "^2.4.1",
+    "cheerio": "^1.0.0-rc.2",
     "del": "3.*",
     "fetch-inject": "^1.10.0",
+    "get-links": "0.0.2",
     "gulp": "next",
     "gulp-better-rollup": "^3.2.1",
     "gulp-clean-css": "^3.9.4",
@@ -41,6 +43,7 @@
     "gulp-svgmin": "^1.2.2",
     "gulp-svgstore": "^6.1.1",
     "gulp-uglify": "^3.0.0",
+    "link-check": "^4.4.4",
     "merge-stream": "^1.0.1",
     "pre-commit": "^1.2.2",
     "prismjs": "^1.15.0",
@@ -49,6 +52,7 @@
     "snazzy": "^7.1.1",
     "standard": "^11.0.1",
     "sw-precache": "^5.2.1",
+    "sync-request": "^6.0.0",
     "typescript": "^2.9.2",
     "uglify-es": "^3.3.9"
   },
@@ -75,11 +79,10 @@
     "svgo": "^1.0.5"
   },
   "scripts": {
-    "start": "gulp serve",
+    "start": "npm run forever",
     "forever": "forever start -v --watch --watchedDirectory=/Users/lukasoppermann/code/veare app.js",
     "test": "standard 'app.js' 'resources/js/*.js' 'app/**/*.js' 'gulp-tasks/*.js' | snazzy",
-    "testLinks": "npm run test-server && node test/links.js && kill -9 $(lsof -sTCP:LISTEN -i:8888 -t) &>/dev/null 2>&1",
-    "test-server": "NODE_ENV=testing NODE_PORT=8888 node app.js &",
+    "testLinks": "node test/links.js",
     "travis": "npm run test",
     "removeCompiled": "branch=$(git branch | grep \\* | cut -d ' ' -f2) && if test \"$branch\" != \"master\" ; then git reset HEAD public/ ; fi"
   },
