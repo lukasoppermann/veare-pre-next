@@ -1,7 +1,6 @@
 // Imports
 const gulp = require('gulp')
 const fs = require('fs')
-const browserSync = require('browser-sync')
 /* ------------------------------
  *
  * JS
@@ -57,7 +56,7 @@ gulp.task('revMedia', require('./gulp-tasks/rev.js')('media',
 ))
 
 gulp.task('copyMedia', () => gulp.src('resources/media/*.*')
-   .pipe(gulp.dest('public/media'))
+  .pipe(gulp.dest('public/media'))
 )
 
 gulp.task('images', gulp.series(
@@ -94,7 +93,7 @@ gulp.task('watchJs', function () {
     'resources/js/*',
     'resources/js/**/*'
   ], gulp.series('bundleJs', 'revJs', function reload (cb) {
-    browserSync.reload()
+    // browserSync.reload()
     cb()
   }))
 })
@@ -108,7 +107,7 @@ gulp.task('watchCss', function () {
     'resources/css/*',
     'resources/css/**/*'
   ], gulp.series('bundleCss', 'revCss', function reload (cb) {
-    browserSync.reload()
+    // browserSync.reload()
     cb()
   }))
 })
@@ -117,36 +116,38 @@ gulp.task('watchCss', function () {
  * watch task
  *
  */
-gulp.task('watchTemplates', function () {
-  gulp.watch([
-    'resources/templates/*',
-    'resources/templates/**/*'
-  ], gulp.series(function reload (cb) {
-    browserSync.reload()
-    cb()
-  }))
-})
+// gulp.task('watchTemplates', function () {
+//   gulp.watch([
+//     'resources/templates/*',
+//     'resources/templates/**/*'
+//   ], gulp.series(function reload (cb) {
+//     browserSync.reload()
+//     cb()
+//   }))
+// })
 /* ------------------------------
  * default task
  */
-gulp.task('browser-sync', function (cb) {
-  browserSync({
-    proxy: 'localhost:8080',  // local node app address
-    port: 5000,  // use *different* port than above
-    notify: true,
-    open: false
-  }, cb)
-})
+// gulp.task('browser-sync', function (cb) {
+//   browserSync({
+//     proxy: 'localhost:8080',  // local node app address
+//     port: 5000,  // use *different* port than above
+//     notify: true,
+//     open: false
+//   }, cb)
+// })
 
 gulp.task('serve', require('./gulp-tasks/serve.js').serve())
 
 gulp.task('default', gulp.series(
-  'browser-sync',
+  // 'browser-sync',
   gulp.parallel('moveJs', 'bundleJs', 'bundleCss'),
   'revJs',
   'revCss',
   'pwaManifest',
-  gulp.parallel('watchJs', 'watchCss', 'watchTemplates')
+  gulp.parallel('watchJs', 'watchCss',
+  // 'watchTemplates'
+  )
 ))
 
 /* ------------------------------
