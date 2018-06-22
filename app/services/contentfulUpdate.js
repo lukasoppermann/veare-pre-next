@@ -7,25 +7,25 @@ const contentfulUpdate = (cb, error = console.error) => {
   client.sync({
     nextSyncToken: cache.get('nextSyncToken')
   })
-  .then((response) => {
-    // update nextSyncToken
-    cache.put('nextSyncToken', response.nextSyncToken)
-    // parse response
-    let responseObj = JSON.parse(response.stringifySafe())
-    // get available types (because items are stored in cache by content type)
-    client.getContentTypes()
-    .then((types) => {
-      // turn array of type object into array of ids
-      types = types.items.map((item) => item.sys.id)
-      // prepare response
-      let updates = prepareResponse(types, responseObj)
-      // create content
-      updateContent(updates, responseObj, cb)
-      // run callback
-      cb(updates)
-    }).catch(console.error)
-  })
-  .catch(error)
+    .then((response) => {
+      // update nextSyncToken
+      cache.put('nextSyncToken', response.nextSyncToken)
+      // parse response
+      let responseObj = JSON.parse(response.stringifySafe())
+      // get available types (because items are stored in cache by content type)
+      client.getContentTypes()
+        .then((types) => {
+          // turn array of type object into array of ids
+          types = types.items.map((item) => item.sys.id)
+          // prepare response
+          let updates = prepareResponse(types, responseObj)
+          // create content
+          updateContent(updates, responseObj, cb)
+          // run callback
+          cb(updates)
+        }).catch(console.error)
+    })
+    .catch(error)
 }
 
 const updateContent = (updates, responseObj) => {

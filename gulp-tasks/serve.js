@@ -22,11 +22,11 @@ module.exports.serve = () => {
     }
 
     forever(pack.main, foreverMonitorOptions)
-    .on('watch:restart', function (fileInfo) {
-      console.log('server was restarted')
-    })
-    .on('exit', function () {
-      console.log('server was closed')
-    })
+      .on('watch:restart', function (fileInfo) {
+        console.log('server was restarted')
+      })
+      .on('exit', function () {
+        console.log('server was closed')
+      })
   }
 }

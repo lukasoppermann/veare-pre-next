@@ -15,8 +15,8 @@
   "homepage": "https://github.com/lukasoppermann/veare#readme",
   "devDependencies": {
     "@nuclei-components/grid": "^1.1.0",
-    "@nuclei-components/responsive-image": "^0.3.1",
     "@nuclei-components/page-sections": "^0.5.1",
+    "@nuclei-components/responsive-image": "^0.3.1",
     "@pwa/manifest": "^1.0.0",
     "@types/contentful-resolve-response": "^0.1.30",
     "@types/express": "^4.11.1",
@@ -44,6 +44,7 @@
     "gulp-svgstore": "^6.1.1",
     "gulp-uglify": "^3.0.0",
     "merge-stream": "^1.0.1",
+    "pre-commit": "^1.2.2",
     "prismjs": "^1.14.0",
     "rev-del": "^1.0.5",
     "rollup-plugin-node-resolve": "^3.3.0",
@@ -80,8 +81,14 @@
   "scripts": {
     "start": "gulp serve",
     "forever": "forever start -v --watch --watchedDirectory=/Users/lukasoppermann/code/veare app.js",
-    "test": "standard 'app.js' 'resources/js/*.js' 'app/**/*.js' 'gulp-tasks/*.js' | snazzy && npm run test-server && node test/links.js && kill -9 $(lsof -sTCP:LISTEN -i:8888 -t) &>/dev/null 2>&1",
+    "test": "standard 'app.js' 'resources/js/*.js' 'app/**/*.js' 'gulp-tasks/*.js' | snazzy",
+    "testLinks": "npm run test-server && node test/links.js && kill -9 $(lsof -sTCP:LISTEN -i:8888 -t) &>/dev/null 2>&1",
     "test-server": "NODE_ENV=testing NODE_PORT=8888 node app.js &",
-    "travis": "npm run test"
-  }
+    "travis": "npm run test",
+    "removeCompiled": "branch=$(git branch | grep \\* | cut -d ' ' -f2) && if test \"$branch\" != \"master\" ; then git reset HEAD public/ ; fi"
+  },
+  "pre-commit": [
+    "test",
+    "removeCompiled"
+  ]
 }

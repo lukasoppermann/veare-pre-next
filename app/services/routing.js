@@ -7,8 +7,8 @@ const contentfulConfig = require('../config/contentful.js')
 const contentfulWebhook = require('./contentfulWebhook')
 const Blog = require('../controller/Blog')
 const blog = new Blog()
-const Page = require('../controller/Page')
-const page = new Page()
+// const Page = require('../controller/Page')
+// const page = new Page()
 
 let env = process.env.NODE_ENV || 'dev'
 const PORT = process.env.NODE_PORT || 8080
@@ -114,10 +114,10 @@ module.exports = (app) => {
         res.send(html)
       })
     })
-    app.get('/:pageCalled', function(req, res) {
-      console.log('retrieving page: ' + req.params.pageCalled);
+    app.get('/:pageCalled', function (req, res) {
+      console.log('retrieving page: ' + req.params.pageCalled)
       res.redirect('/')
-    });
+    })
     // static content
     app.use(express.static('public', {maxAge: '365d'}))
     // open port

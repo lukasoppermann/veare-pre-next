@@ -11,7 +11,6 @@ class Page extends Model {
   findBySlug (slug) {
     return this.findByField('slug', slug)
   }
-
 }
 
 module.exports = Page
