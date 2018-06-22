@@ -68,7 +68,6 @@
     "express-basic-auth": "^1.1.5",
     "express-handlebars": "^3.0.0",
     "forever": "^0.15.3",
-    "glob": "^7.1.2",
     "gulp-changed": "^3.2.0",
     "markdown-it": "^8.4.1",
     "markdown-it-anchor": "^5.0.2",
