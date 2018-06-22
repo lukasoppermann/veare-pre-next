@@ -9,8 +9,8 @@ const fs = require('fs')
 // gulp.task('bundleJs', require('./gulp-tasks/rollup.js')('resources/js/'))
 gulp.task('bundleJs', require('./gulp-tasks/roll.js')('resources/js/*.ts'))
 gulp.task('moveJs', require('./gulp-tasks/moveFiles.js')([
-  'node_modules/@webcomponents/webcomponentsjs/webcomponents-sd-ce.js',
-  'node_modules/@webcomponents/webcomponentsjs/webcomponents-sd-ce.js.map',
+  'node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce.js',
+  'node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce.js.map',
   'node_modules/fetch-inject/dist/fetch-inject.min.js'
 ], 'public/js'))
 /* ------------------------------
