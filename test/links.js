@@ -3,7 +3,7 @@ const chalk = require('chalk')
 const request = require('sync-request')
 const cheerio = require('cheerio')
 
-const baseUrl = 'http://localhost:8080'
+const baseUrl = `http://localhost:${process.env.NODE_PORT}`
 
 const isInternalLink = (link) => {
   return link && link.substr(0, baseUrl.length) === baseUrl
@@ -90,9 +90,11 @@ const getAllLinks = (url) => {
 }
 
 const checkLinks = (url) => {
+  console.log(`${chalk.yellow.bold('Fetching links for ' + baseUrl + ' …')}`)
   // get links
   let links = getAllLinks(url)
   // check links
+  console.log(`${chalk.yellow.bold('Checking ' + links.length + 'links …')}`)
   links.links.forEach((item) => {
     checkLink(item, links)
   })
