@@ -93,8 +93,9 @@ const checkLinks = (url) => {
   console.log(`${chalk.yellow.bold('Fetching links for ' + baseUrl + ' …')}`)
   // get links
   let links = getAllLinks(url)
+
   // check links
-  console.log(`${chalk.yellow.bold('Checking ' + links.length + 'links …')}`)
+  console.log(`${chalk.yellow.bold('Checking ' + links.links.length + ' links …')}`)
   links.links.forEach((item) => {
     checkLink(item, links)
   })
