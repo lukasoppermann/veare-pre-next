@@ -37,76 +37,103 @@ const scrapeLinks = (url) => {
   return scrapedLinks
 }
 
-let checkLink = (link, links) => {
-  linkCheck(link, function (err, result) {
-    if (err) {
-      console.error(err)
-      return
-    }
-    if (result.statusCode > 0 && result.statusCode < 400) {
-      // console.log(`${chalk.green('✔')} ${chalk.green(result.link)} is ${result.status} with code ${result.statusCode}`)
-      // output = {
-      //   type: 'success',
-      //   msg: `${chalk.green('✔')} ${chalk.green(result.link)} is ${result.status} with code ${result.statusCode}`
-      // }
-    } else {
-      console.log(`${chalk.red.bold('×')} ${chalk.red(result.link)} is ${result.status} with code ${result.statusCode} on page ${chalk.yellow(links.parents[result.link])}`)
-      // output = {
-      //   type: 'error',
-      //   msg: `${chalk.red.bold('×')} ${chalk.red(result.link)} is ${result.status} with code ${result.statusCode}`
-      // }
-    }
+const checkLink = (link, links, results) => {
+  return new Promise((resolve, reject) => {
+    linkCheck(link, function (err, result) {
+      if (err) {
+        console.error(err)
+        reject(err)
+        return
+      }
+      resolve(result)
+    })
   })
 }
 
 const getAllLinks = (url) => {
   let internalLinks = []
   let externalLinks = []
-  let parents = {}
 
   let getPageLinks = (url) => {
     var links = scrapeLinks(url)
     links
-      .filter((linkItem) => linkItem !== undefined && linkItem.link !== undefined)
-      .forEach((linkItem) => {
-        parents[linkItem.link] = url
-        let link = linkItem.link
-        if (isInternalLink(link)) {
-          if (internalLinks.indexOf(link) === -1) {
-            internalLinks.push(link)
-            getPageLinks(link)
+      .filter((item) => item !== undefined && item.link !== undefined)
+      .forEach((item) => {
+        if (isInternalLink(item.link)) {
+          if (internalLinks.filter((arrayItem) => arrayItem.link === item.link).length === 0) {
+            internalLinks.push(item)
+            getPageLinks(item.link)
           }
-        } else if (externalLinks.indexOf(link) === -1) {
-          externalLinks.push(link)
+        } else if (externalLinks.filter((arrayItem) => arrayItem.link === item.link).length === 0) {
+          externalLinks.push(item)
         }
       })
   }
 
   getPageLinks(url)
-  return {
-    links: [...internalLinks, ...externalLinks],
-    parents: parents
-  }
+  return [...internalLinks, ...externalLinks]
 }
 
 const checkLinks = (url) => {
-  console.log(`${chalk.yellow.bold('Fetching links for ' + baseUrl + ' …')}`)
+  console.log(`${chalk.yellow.bold('Fetching links for ' + baseUrl + '...')}`)
   // get links
   let links = getAllLinks(url)
-
   // check links
-  console.log(`${chalk.yellow.bold('Checking ' + links.links.length + ' links …')}`)
-  links.links.forEach((item) => {
-    checkLink(item, links)
+  console.log(`${chalk.yellow.bold('Checking ' + links.length + ' links...')}`)
+  let linkLoop = new Promise((resolve, reject) => {
+    let results = []
+    links.forEach((item, index, array) => {
+      checkLink(item.link).then((result) => {
+        item.status = result.status
+        item.statusCode = result.statusCode
+        results.push(item)
+        if (index === array.length - 1) {
+          resolve(results)
+        }
+      })
+    })
   })
-  // if (output['error'].length > 0) {
-  //   throw Error(`${chalk.red.bold('×')} There are ${chalk.red.bold(output['error'].length)} broken links in the page.`)
-  // }
+
+  linkLoop.then((results) => {
+    let errors = results.filter((item) => {
+      return item.statusCode > 400 && item.statusCode < 600
+    })
+
+    let valid = results.filter((item) => {
+      return item.statusCode >= 200 && item.statusCode < 400
+    })
+
+    let warnings = results.filter((item) => {
+      return item.statusCode < 200 || item.statusCode > 600
+    })
+
+    if (errors.length > 0) {
+      console.log(`${chalk.red.bold(errors.length)} broken urls:`)
+      errors.forEach((error) => {
+        console.log(`${chalk.red.bold('✘ ' + error.statusCode + ':')} ${chalk.yellow(error.link)} on page ${error.parent}`)
+      })
+    }
+
+    if (warnings.length > 0) {
+      console.log(`${chalk.yellow.bold(warnings.length)} urls with warnings:`)
+      warnings.forEach((warning) => {
+        console.log(`${chalk.yellow.bold('⚠︎ ' + warning.statusCode + ':')} ${warning.link} ${chalk.white('on page ' + warning.parent)}`)
+      })
+    }
+
+    if (valid.length > 0) {
+      console.log(`${chalk.green.bold(valid.length)} valid urls:`)
+      valid.forEach((success) => {
+        console.log(`${chalk.green.bold('✔︎ ' + success.statusCode + ':')} ${success.link} ${chalk.white('on page ' + success.parent)}`)
+      })
+    }
+
+    // to stop node test, etc.
+    if (errors.length > 0) {
+      process.exit(1)
+    }
+  })
 }
 
 // run script
-try {
-  checkLinks(baseUrl)
-} catch (e) {
-  console.log(e)
-}
+checkLinks(baseUrl)
