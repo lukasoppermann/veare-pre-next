@@ -50,6 +50,7 @@ class SectionTransformer extends Transformer {
       title: this.getContent(data, 'title'),
       showTitle: this.getContent(data, 'showTitle'),
       slug: this.getContent(data, 'slug'),
+      descriptionTitle: this.getContent(data, 'descriptionTitle'),
       description: this.getContent(data, 'description'),
       media: new AssetTransformer(this.getContent(data, 'media'), this.getContent(data, 'title')).get(),
       classes: this.getContent(data, 'classes')

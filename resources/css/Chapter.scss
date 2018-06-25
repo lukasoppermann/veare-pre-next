@@ -22,7 +22,7 @@
   }
 }
 .Chapter__title{
-  @extend %font-uppercase-small;
+  @extend %font-subtitle-uppercase-small;
   display: inline-block;
   flex: 0 0 auto;
   order: 1;
@@ -38,7 +38,7 @@
   background-color: var(--black);
 }
 .Chapter__title-container::after{
-  @extend %font-uppercase-small;
+  @extend %font-subtitle-uppercase-small;
   order: 3;
   padding-left: var(--vs-s);
   counter-increment: chapter-side;
