@@ -3,7 +3,11 @@
   height: 2px;
   width: var(--size-xxl);
   @include baseline(4);
+  background-color: var(--black);
 }
 .Separator--blue{
   background-color: var(--blue);
+}
+.Separator--light-grey{
+  background-color: var(--black-25);
 }

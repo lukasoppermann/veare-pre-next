@@ -55,7 +55,8 @@
     "sw-precache": "^5.2.1",
     "sync-request": "^6.0.0",
     "typescript": "^2.9.2",
-    "uglify-es": "^3.3.9"
+    "uglify-es": "^3.3.9",
+    "wait-on": "^2.1.0"
   },
   "dependencies": {
     "body-parser": "^1.18.3",

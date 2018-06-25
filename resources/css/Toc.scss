@@ -10,7 +10,7 @@
   display: flex;
 }
 .Toc__chapter__title{
-  @extend %font-uppercase-small;
+  @extend %font-subtitle-uppercase-small;
   order: 1;
   flex: 0 0 auto;
   padding-right: var(--hs-xs);
@@ -25,7 +25,7 @@
   background-color: var(--black);
 }
 .Toc__chapter__link::after {
-  @extend %font-uppercase-small;
+  @extend %font-subtitle-uppercase-small;
   order: 3;
   padding-left: var(--hs-xs);
   align-self: flex-end;

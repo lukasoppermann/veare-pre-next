@@ -1,7 +1,7 @@
 .Page--work page-section:not(.Footer-Section):not(.Section--Header){
-  padding-left: var(--hs-m);
-  padding-right: var(--hs-m);
-  @include mq('s') {
+  padding-left: var(--hs-l);
+  padding-right: var(--hs-l);
+  @include mq('xs') {
     padding-left: var(--hs-s);
     padding-right: var(--hs-s);
   }

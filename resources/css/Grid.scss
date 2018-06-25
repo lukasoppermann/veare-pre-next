@@ -2,35 +2,32 @@
     Grid
 ==================================== */
 .Grid {
-  width: calc(100%);
+  width: 100%;
   max-width: 1200px;
   display: grid;
-  grid-column-gap: 1.9533729553%;
   grid-template-rows: auto;
+  grid-column-gap: 1.9533729553%;
   grid-template-columns: [left] 6.2088171641% [left] 6.2088171641% [column] 7.9472859701% [column] 7.9472859701% [column] 7.9472859701% [column] 7.9472859701% [column] 7.9472859701% [column] 7.9472859701% [column] 7.9472859701% [right] 6.2088171641% [right] 6.2088171641%;
+  @include mq('s') {
+    grid-column-gap: 2.7589162191%;
+    grid-template-columns: [column] 11.9209289551% [column] 11.9209289551% [column] 11.9209289551% [column] 11.9209289551% [column] 11.9209289551% [column] 11.9209289551% [column] 11.9209289551%;
+  }
 }
 .Grid--auto-column > *{
   grid-column: column / span 7;
 }
-.Grid--left-aside {
-  grid-column: left / span 2;
-}
 .Grid--content {
   grid-column: column / span 7;
 }
+.Grid--left-aside {
+  grid-column: left / span 2;
+  @include mq('s') {
+    grid-column: 1 / -1;
+  }
+}
 .Grid--right-aside {
   grid-column: right / span 2;
-}
-
-@media (max-width: 800px) {
-  .Grid {
-    grid-column-gap: 2.7589162191%;
-    grid-template-columns: [column] 11.9209289551% [column] 11.9209289551% [column] 11.9209289551% [column] 11.9209289551% [column] 11.9209289551% [column] 11.9209289551% [column] 11.9209289551%;
-  }
-  .Grid--left-aside{
-    grid-column: column / span 6;
-  }
-  .Grid--right-aside {
-    grid-column: column / span 6;
+  @include mq('s') {
+    grid-column: 1 / -1;
   }
 }

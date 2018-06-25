@@ -25,7 +25,7 @@ font-feature-settings:"liga", "dlig";
   /* FONT: Source Sans*/
   --font-source-sans: 'Source Sans Pro', Helvetica, sans-serif;
   --font-source-sans-regular: 400;
-  --style-source-sans-semibold: 600;
+  --font-source-sans-semibold: 600;
   /* FONT: Montserrat*/
   --font-montserrat: 'Montserrat', Helvetica, sans-serif;
   --font-montserrat-bold: 700;
@@ -48,7 +48,7 @@ font-feature-settings:"liga", "dlig";
   --font-subtitle: var(--font-montserrat-bold) var(--size-xl)/calc(var(--baseline) * 4) var(--font-montserrat);
   --font-h1: var(--size-xh)/calc(var(--baseline) * 6) var(--font-source-sans);
   --font-h2: var(--size-xxl)/calc(var(--baseline) * 5) var(--font-source-sans);
-  --font-h3: var(--style-source-sans-semibold) var(--size-xl)/calc(var(--baseline) * 4) var(--font-source-sans);
+  --font-h3: var(--font-source-sans-semibold) var(--size-xl)/calc(var(--baseline) * 4) var(--font-source-sans);
   --font-h5: var(--font-montserrat-bold) var(--size-s)/calc(var(--baseline) * 2) var(--font-montserrat);
   /* Supporting Elements */
 }
@@ -70,12 +70,20 @@ font-feature-settings:"liga", "dlig";
   font-family: var(--font-source-sans);
   color: var(--black-60);
 }
-%font-uppercase-small {
+%font-subtitle-uppercase-small {
   text-transform: uppercase;
   font-weight: var(--font-montserrat-bold);
   font-size: var(--size-m);
   line-height: calc(var(--baseline) * 2);
   font-family: var(--font-montserrat);
+  letter-spacing: 0.5px;
+  color: var(--black);
+}
+%font-subtitle-small {
+  font-weight: var(--font-source-sans-semibold);
+  font-size: var(--size-m);
+  line-height: calc(var(--baseline) * 2);
+  font-family: var(--font-source-sans);
   letter-spacing: 0.5px;
   color: var(--black);
 }
