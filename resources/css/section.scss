@@ -62,9 +62,10 @@
   @include baseline(3);
 }
 .Section__media__image:not(:first-child) + .Section__media__description{
-  @include baseline(3);
+  @include mq('m', min) {
+    @include baseline(3);
+  }
   @include mq('m') {
-    @include baseline(0);
     grid-column: column / span 5;
   }
   @include mq('xs') {
