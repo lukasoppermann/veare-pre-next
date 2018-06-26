@@ -4,6 +4,7 @@
   padding-top: calc(var(--baseline) * 2);
   @include mq('m') {
     @include baseline(2);
+    padding-top: 0;
     font-size: var(--size-m);
     line-height: calc(var(--baseline) * 3);
     font-style: italic;

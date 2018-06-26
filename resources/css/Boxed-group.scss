@@ -26,6 +26,9 @@
   flex-grow: 1;
   flex-basis: 0;
 }
+.Boxed-item .Paragraph{
+  color: var(--black);
+}
 @media (max-width: 800px) {
   .Boxed-group{
     flex-wrap: wrap;
