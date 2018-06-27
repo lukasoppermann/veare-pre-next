@@ -10,10 +10,21 @@
   display: flex;
 }
 .Toc__chapter__title{
+  position: relative;
   @extend %font-subtitle-uppercase-small;
   order: 1;
   flex: 0 0 auto;
   padding-right: var(--hs-xs);
+  transition: all .2s var(--easeInOutQuad);
+}
+.Toc__chapter__title::after{
+  @include pseudo;
+  width: 0;
+  height: calc(var(--baseline) * 2);
+  background-color: var(--blue);
+  opacity: .25;
+  top: var(--baseline);
+  left: 0;
 }
 .Toc__chapter__link::before {
   @include pseudo("relative");
@@ -23,6 +34,10 @@
   height: 2px;
   transform: translateY(-1px);
   background-color: var(--black);
+  background-image: linear-gradient(90deg, var(--black) 0%, var(--black) 50%, var(--blue) 50%, var(--blue) 100%);
+  background-size: 200% 100%;
+  background-position: 0% 0%;
+  transition: all .2s var(--easeInOutQuad);
 }
 .Toc__chapter__link::after {
   @extend %font-subtitle-uppercase-small;
@@ -33,4 +48,24 @@
   counter-increment: chapter;
   content: counter(chapter, decimal-leading-zero);
   font-feature-settings: "tnum", "zero";
+}
+/* ====================================
+    Animated Hover State
+==================================== */
+.Toc__chapter__link:hover .Toc__chapter__title{
+  color: var(--blue);
+  padding-left: var(--hs-xs);
+  transition: all .35s var(--easeInOutQuad);
+}
+.Toc__chapter__link:hover .Toc__chapter__title::after{
+  width: calc(100% - var(--hs-s));
+  transition: all .35s var(--easeInOutQuad);
+}
+.Toc__chapter__link:hover::before{
+  background-position: -100% 0%;
+  transition: all .35s .1s var(--easeInOutQuad);
+}
+.Toc__chapter__link:hover::after{
+  color: var(--blue);
+  transition: all .35s .2s var(--easeInOutQuad);
 }

@@ -20,6 +20,9 @@
 }
 .Project__toc{
   grid-column: 8 / span 2;
+  @include mq('m') {
+    grid-column: 7 / span 3;
+  }
   @include mq('s') {
     grid-column: 5 / span 3;
   }
