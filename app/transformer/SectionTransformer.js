@@ -26,7 +26,7 @@ class SectionTransformer extends Transformer {
       type: data.sys.contentType.sys.id,
       stylingOptions: this.getContent(data, 'stylingOptions', []),
       title: this.getContent(data, 'title'),
-      showTitle: this.getContent(data, 'showTitle'),
+      showTitle: this.getContent(data, 'showTitle', true),
       intro: this.getContent(data, 'intro'),
       text: convertMarkdown(this.getContent(data, 'text'), modifiers)
     }
@@ -36,7 +36,7 @@ class SectionTransformer extends Transformer {
     return {
       type: data.sys.contentType.sys.id,
       title: this.getContent(data, 'title'),
-      showTitle: this.getContent(data, 'showTitle'),
+      showTitle: this.getContent(data, 'showTitle', true),
       classes: this.getContent(data, 'classes'),
       stylingOptions: this.getContent(data, 'stylingOptions', []),
       description: this.getContent(data, 'description'),
@@ -48,7 +48,7 @@ class SectionTransformer extends Transformer {
     return {
       type: data.sys.contentType.sys.id,
       title: this.getContent(data, 'title'),
-      showTitle: this.getContent(data, 'showTitle'),
+      showTitle: this.getContent(data, 'showTitle', true),
       slug: this.getContent(data, 'slug'),
       descriptionTitle: this.getContent(data, 'descriptionTitle'),
       description: this.getContent(data, 'description'),
@@ -61,7 +61,7 @@ class SectionTransformer extends Transformer {
     return {
       type: data.sys.contentType.sys.id,
       title: this.getContent(data, 'title'),
-      showTitle: this.getContent(data, 'showTitle'),
+      showTitle: this.getContent(data, 'showTitle', true),
       stylingOptions: this.getContent(data, 'stylingOptions', []),
       text: this.getContent(data, 'text'),
       author: this.getContent(data, 'author')

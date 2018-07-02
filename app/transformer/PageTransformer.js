@@ -1,7 +1,7 @@
 'use strict'
 
 const Transformer = require('./Transformer')
-const SectionTransformer = require('./SectionTransformer')
+const ChapterTransformer = require('./ChapterTransformer')
 
 class PageTransformer extends Transformer {
   transform (data) {
@@ -14,7 +14,7 @@ class PageTransformer extends Transformer {
         title: this.getContent(data, 'title'),
         customPageData: this.getContent(data, 'customPageData'),
         isHomepage: this.getContent(data, 'homepage', false),
-        sections: new SectionTransformer(this.getContent(data, 'sections')).get()
+        chapters: new ChapterTransformer(this.getContent(data, 'chapters')).get()
       }
     }
   }
