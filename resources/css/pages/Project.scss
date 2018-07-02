@@ -35,12 +35,13 @@
 }
 .Project__pagination{
   z-index: 900;
-  top: 100px;
+  top: 200px;
   position: sticky;
 }
 .Project__pagination-container{
   display: block;
   position: absolute;
+  margin-top: -4px; // to align with TOC
   @include mq('s') {
     display: none;
   }
