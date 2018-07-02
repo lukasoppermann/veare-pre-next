@@ -1,6 +1,5 @@
-<page-section centered class="Chapter">
+<page-section centered class="Chapter" name="{{section.slug}}">
   <div class="Grid Chapter__Grid">
-    <a class="Chapter__anchor" href="#" name="{{section.slug}}"></a>
     <div class="Chapter__title-container"><h5 class="Chapter__title">{{section.title}}</h5></div>
     {{#each section.sections}}
       {{> (join "includes/" fields.type) section=fields}}

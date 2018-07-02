@@ -45,7 +45,7 @@
       <p class="Paragraph Paragraph--sans-small">{{project.challenge}}</p>
     </div>
     {{!-- TOC --}}
-    <ul class="Toc Project__toc">
+    <ul class="Toc Project__toc" data-toc>
     {{#each project.chapters}}
       <li class="Toc__chapter"><a class="Toc__chapter__link" href="#{{fields.slug}}"><div class="Toc__chapter__title">{{fields.title}}</div></a></li>
     {{/each}}
@@ -53,6 +53,14 @@
   </div>
 </page-section>
 
+{{!-- Section Indicator --}}
+<div class="Project__pagination-container">
+  <ul class="Pagination Project__pagination" data-toc>
+  {{#each project.chapters}}
+    <li class="Pagination__item"><a class="Pagination__item__link" href="#{{fields.slug}}"><div class="Pagination__item__title">{{fields.title}}</div></a></li>
+  {{/each}}
+  </ul>
+</div>
 {{!-- Load Chapter --}}
 {{#each project.chapters}}
   {{> "includes/chapter" section=fields}}
