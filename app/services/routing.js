@@ -9,8 +9,8 @@ const Blog = require('../controller/Blog')
 const Portfolio = require('../controller/Portfolio')
 const portfolio = new Portfolio()
 const blog = new Blog()
-// const Page = require('../controller/Page')
-// const page = new Page()
+const Page = require('../controller/Page')
+const page = new Page()
 
 let env = process.env.NODE_ENV || 'dev'
 const PORT = process.env.NODE_PORT || 8080
@@ -58,21 +58,11 @@ module.exports = (app) => {
       res.json(revisionedFiles)
     })
     // index
-    app.get('/', (req, res) =>
-      res.render('index', {
-        files: files,
-        pageClass: 'c-page--index',
-        portfolioItems: portfolioItems
-      })
-    )
-    // home & contact
-    app.get(/^\/(home)/, function (req, res) {
-      res.render('index', {
-        files: files,
-        pageClass: 'c-page--index',
-        portfolioItems: portfolioItems
-      })
-    })
+    app.get(/^\/(home)?$/, (req, res) => page.get(req, res, {
+      files: files,
+      pageClass: 'c-page--index',
+      portfolioItems: portfolioItems
+    }))
     // imprint & privacy
     app.get(/^\/(imprint|privacy)/, function (req, res) {
       res.render(req.params[0], {

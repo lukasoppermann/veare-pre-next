@@ -1,14 +1,15 @@
 .Chapter:first-child{
   counter-reset: chapter-side;
 }
-.Chapter__Grid{
+.Chapter--side-title .Chapter__Grid{
   @include baseline(12);
   grid-template-rows: 0px auto !important;
   @include mq('s') {
     grid-template-rows: auto !important;
   }
 }
-.Chapter__title-container{
+
+.Chapter--side-title .Chapter__title-container{
   display: flex;
   height: calc(var(--baseline) * 2);
   overflow: visible;
@@ -24,14 +25,14 @@
     @include baseline(2,"margin-bottom");
   }
 }
-.Chapter__title{
+.Chapter--side-title .Chapter__title{
   @extend %font-subtitle-uppercase-small;
   display: inline-block;
   flex: 0 0 auto;
   order: 1;
   padding-right: var(--vs-s);
 }
-.Chapter__title-container::before {
+.Chapter--side-title .Chapter__title-container::before {
   @include pseudo("relative");
   order: 2;
   height: 2px;
@@ -40,14 +41,11 @@
   transform: translateY(-1px);
   background-color: var(--black);
 }
-.Chapter__title-container::after{
+.Chapter--side-title .Chapter__title-container::after{
   @extend %font-subtitle-uppercase-small;
   order: 3;
   padding-left: var(--vs-s);
   counter-increment: chapter-side;
   content: counter(chapter-side, decimal-leading-zero);
   font-feature-settings: "tnum", "zero";
-}
-.Chapter__anchor{
-  outline: none;
 }
