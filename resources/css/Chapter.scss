@@ -2,8 +2,11 @@
   counter-reset: chapter-side;
 }
 .Chapter__Grid{
-  grid-template-rows: 0px auto !important;
   @include baseline(12);
+  grid-template-rows: 0px auto !important;
+  @include mq('s') {
+    grid-template-rows: auto !important;
+  }
 }
 .Chapter__title-container{
   display: flex;
