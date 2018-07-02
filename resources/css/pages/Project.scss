@@ -39,5 +39,9 @@
   position: sticky;
 }
 .Project__pagination-container{
+  display: block;
   position: absolute;
+  @include mq('s') {
+    display: none;
+  }
 }
