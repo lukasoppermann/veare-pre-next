@@ -50,6 +50,7 @@ Promise.all([revisionedFiles, scriptPromise])
   fetchInject([
     `/${json['js/responsiveMenu.js']}`,
     `/${json['js/nucleiButton.js']}`,
+    `/${json['js/toc.js']}`,
     `/${json['js/rest.js']}`
   ], webComponentsAvailable)
   .then(() => {

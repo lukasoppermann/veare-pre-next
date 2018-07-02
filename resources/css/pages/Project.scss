@@ -1,6 +1,9 @@
+.Page--work page-sections{
+  --outer-padding: var(--hs-l);
+}
 .Page--work page-section:not(.Footer-Section):not(.Section--Header){
-  padding-left: var(--hs-l);
-  padding-right: var(--hs-l);
+  padding-left: var(--outer-padding);
+  padding-right: var(--outer-padding);
   @include mq('xs') {
     padding-left: var(--hs-s);
     padding-right: var(--hs-s);
@@ -29,4 +32,12 @@
   @include mq('xs') {
     grid-column: 1 / span 7;
   }
+}
+.Project__pagination{
+  z-index: 900;
+  top: 100px;
+  position: sticky;
+}
+.Project__pagination-container{
+  position: absolute;
 }

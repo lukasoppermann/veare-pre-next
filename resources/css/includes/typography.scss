@@ -85,6 +85,11 @@ font-feature-settings:"liga", "dlig";
   letter-spacing: 0.5px;
   color: var(--black);
 }
+%font-subtitle-uppercase-tiny {
+  @extend %font-subtitle-uppercase-small;
+  font-size: var(--size-s);
+  line-height: calc(var(--baseline) * 1);
+}
 %font-subtitle-small {
   font-weight: var(--font-source-sans-semibold);
   font-size: var(--size-m);
