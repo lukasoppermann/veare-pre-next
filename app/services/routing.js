@@ -108,7 +108,7 @@ module.exports = (app) => {
     })
     // catch all route with logging
     app.get('/:pageCalled', function (req, res) {
-      console.log('retrieving page: ' + req.params.pageCalled)
+      console.log('tried to retrieve non-existing page: ' + req.params.pageCalled)
       res.redirect('/')
     })
 

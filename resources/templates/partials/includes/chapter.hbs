@@ -1,9 +1,9 @@
-<page-section centered class="Chapter {{classes}}" name="{{section.slug}}">
+<page-section centered class="Chapter {{chapter.classes}}" name="{{chapter.slug}}">
   <div class="Grid Chapter__Grid">
-    {{#if section.showTitle}}
-      <div class="Chapter__title-container"><h5 class="Chapter__title">{{section.title}}</h5></div>
+    {{#if chapter.showTitle}}
+      <div class="Chapter__title-container"><h5 class="Chapter__title">{{chapter.title}}</h5></div>
     {{/if}}
-    {{#each section.sections}}
+    {{#each chapter.sections}}
       {{> (join "includes/" fields.type) section=fields}}
     {{/each}}
   </div>
