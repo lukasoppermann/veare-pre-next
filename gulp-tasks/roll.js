@@ -14,7 +14,8 @@ module.exports = function (entry) {
       // .pipe(sourcemaps.init())
       .pipe(rollupEach({
         output: {
-          format: 'iife'
+          format: 'iife',
+          sourcemap: false
         },
         plugins: [
           typescript({
