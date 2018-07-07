@@ -18,11 +18,12 @@ class Portfolio extends Controller {
   }
 
   get (req, res, data) {
+    if ((projects.findBySlug(req.params[0]) || projects.findByAlias(req.params[0])) === undefined) {
+      return res.redirect(301, 'http://' + req.headers.host + '/')
+    }
     data.project = (projects.findBySlug(req.params[0]) || projects.findByAlias(req.params[0])).fields
     // console.log('Project:', data.project, req.params[0])
-    // if (data.project === undefined) {
-    //   return res.redirect(301, 'http://' + req.headers.host + '/')
-    // }
+
     self.render(res, 'project', data)
   }
 }
