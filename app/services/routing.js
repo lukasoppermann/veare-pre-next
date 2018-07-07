@@ -111,7 +111,7 @@ module.exports = (app) => {
       console.log('tried to retrieve non-existing page: ' + req.params.pageCalled)
       res.redirect('/')
     })
-
+    // show individual project
     app.get(/^\/work\/([a-z0-9]*)/, (req, res) => portfolio.get(req, res, {
       files: files,
       pageClass: 'Page--work',
