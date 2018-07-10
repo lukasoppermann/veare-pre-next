@@ -11,6 +11,8 @@ const portfolio = new Portfolio()
 const blog = new Blog()
 const Page = require('../controller/Page')
 const page = new Page()
+const Project = require('../models/Project')
+const project = new Project()
 
 let env = process.env.NODE_ENV || 'dev'
 const PORT = process.env.NODE_PORT || 8080
@@ -61,6 +63,7 @@ module.exports = (app) => {
     app.get(/^\/(home)?$/, (req, res) => page.get(req, res, {
       files: files,
       pageClass: 'c-page--index',
+      projects: project.all(),
       portfolioItems: portfolioItems
     }))
     // imprint & privacy

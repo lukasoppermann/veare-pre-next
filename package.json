@@ -82,7 +82,7 @@
   },
   "scripts": {
     "start": "npm run forever",
-    "forever": "forever start -v --watch --watchedDirectory=/Users/lukasoppermann/code/veare app.js",
+    "forever": "forever start -v --watch --watchDirectory=/Users/lukasoppermann/code/veare app.js",
     "test": "standard 'app.js' 'resources/js/*.js' 'app/**/*.js' 'gulp-tasks/*.js' | snazzy",
     "killNode": "lsof -n -i4TCP:8888 | grep LISTEN | tr -s ' ' | cut -f 2 -d ' ' | xargs kill -9",
     "testLinks": "npm run killNode && NODE_ENV=testing NODE_PORT=8888 node app.js & wait-on http://localhost:8888 && NODE_PORT=8888 node test/links.js && npm run killNode",
