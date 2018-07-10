@@ -3,6 +3,10 @@
 
   {{>includes/homepage/intro}}
 
+  {{#each projects}}
+    {{> "includes/homepage/project-card" project=fields}}
+  {{/each}}
+
   {{>includes/homepage/portfolio}}
 
   {{>includes/homepage/skills}}

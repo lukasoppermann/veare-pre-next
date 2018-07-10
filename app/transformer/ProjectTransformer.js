@@ -16,6 +16,7 @@ class ProjectTransformer extends Transformer {
         titleStyle: this.getContent(data, 'titleStyle', 'default'),
         slug: this.getContent(data, 'slug'),
         headerImage: new AssetTransformer(this.getContent(data, 'headerImage')).first(),
+        previewImage: new AssetTransformer(this.getContent(data, 'previewImage')).first(),
         challenge: this.getContent(data, 'challenge'),
         role: this.getContent(data, 'role'),
         publicationYear: this.getContent(data, 'publicationYear'),

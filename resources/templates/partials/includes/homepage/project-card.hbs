@@ -1,0 +1,11 @@
+<div>
+  <div class="">{{number}}</div>
+  <h4 class="Section__title">{{project.client}}</h4>
+  <h2 class="Section__title">{{project.title}}</h2>
+
+  {{#if project.previewImage}}
+    <responsive-image class="Section__media__image" src="{{project.previewImage.fields.url}}" alt="{{project.previewImage.fields.title}}"></responsive-image>
+  {{/if}}
+
+  <div class="Section__media__bg"></div>
+</div>
