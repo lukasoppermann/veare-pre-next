@@ -1,3 +1,23 @@
+/* ====================================
+    Projects on Homepage
+==================================== */
+.Projects{
+  padding-left: var(--hs-l);
+  padding-right: var(--hs-l);
+}
+.Project-card__image-container{
+  grid-column: 1 / 7;
+  @include mq('xs') {
+    grid-column: 1 / span 7;
+  }
+}
+.Project-card__title{
+  z-index: 100;
+  grid-column: 6 / 9;
+}
+/* ====================================
+    PROJECT Page
+==================================== */
 .Page--work page-sections{
   --outer-padding: var(--hs-l);
 }

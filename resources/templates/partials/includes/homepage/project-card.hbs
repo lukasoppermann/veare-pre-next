@@ -1,11 +1,12 @@
-<div>
-  <div class="">{{number}}</div>
-  <h4 class="Section__title">{{project.client}}</h4>
-  <h2 class="Section__title">{{project.title}}</h2>
+<div class="Grid Project-card">
+  <div class="Project-card__number">{{number}}</div>
+  <h4 class="Project-card__client">{{project.client}}</h4>
+  <h2 class="Project-card__title Headline--subtitle">{{project.subtitle}}</h2>
 
+  <div class="Project-card__image-container">
   {{#if project.previewImage}}
-    <responsive-image class="Section__media__image" src="{{project.previewImage.fields.url}}" alt="{{project.previewImage.fields.title}}"></responsive-image>
+    <responsive-image class="Project-card__image" src="{{project.previewImage.fields.url}}" alt="{{project.previewImage.fields.title}}"></responsive-image>
   {{/if}}
+  </div>
 
-  <div class="Section__media__bg"></div>
 </div>
