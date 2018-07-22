@@ -2,18 +2,116 @@
     Projects on Homepage
 ==================================== */
 .Projects{
+  counter-reset: projects;
   padding-left: var(--hs-l);
   padding-right: var(--hs-l);
-}
-.Project-card__image-container{
-  grid-column: 1 / 7;
-  @include mq('xs') {
-    grid-column: 1 / span 7;
+  @include mq('s') {
+    padding-left: var(--hs-m);
+    padding-right: var(--hs-m);
   }
 }
-.Project-card__title{
+.Project-card{
+  counter-increment: projects;
+  margin-top: calc(var(--baseline) * 20);
+  @include mq('s') {
+    margin-top: var(--vs-xg);
+  }
+  @include mq('xs') {
+    margin-top: 0;
+  }
+}
+.Project-card__image-container{
+  position: relative;
+  grid-column: 1 / span 7;
+  grid-row-start: 1;
+  z-index: 1;
+  padding-top: 62.5%;
+  overflow: hidden;
+  background-color: var(--white-blue);
+  @include mq('s') {
+    grid-column: 1 / span 5;
+  }
+  @include mq('xs') {
+    grid-column: 1 / span 7;
+    grid-row-start: auto;
+  }
+}
+.Project-card:nth-child(2n) .Project-card__image-container{
+  @include mq('s', 'min') {
+    grid-column-start: 5;
+  }
+}
+.Project-card__image{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  transition: all .3s ease;
+  filter: grayscale(35%);
+}
+.Project-card__text:hover ~ .Project-card__image-container .Project-card__image,
+.Project-card__image-container:hover .Project-card__image{
+  @include mq('s','min') {
+    transform: scale(1.1);
+    filter: grayscale(0%);
+  }
+}
+.Project-card__text{
   z-index: 100;
-  grid-column: 6 / 9;
+  grid-column: 7 / span 3;
+  grid-row-start: 1;
+  margin-top: 30%;
+  transition: all .3s ease;
+  text-decoration: none;
+  @include mq('s') {
+    grid-column-start: 5;
+    margin-top: 10%;
+  }
+  @include mq('xs') {
+    grid-column: 1 / span 5;
+    margin-bottom: calc(-1 * var(--vs-m));
+    padding-left: var(--hs-l);
+  }
+}
+.Project-card:nth-child(2n) .Project-card__text{
+  @include mq('s', 'min') {
+    grid-column-start: 3;
+  }
+}
+.Project-card__text:hover{
+  @include mq('s','min') {
+    margin-top: 7%;
+  }
+  @include mq('m','min') {
+    margin-top: 27%;
+  }
+}
+.Project-card__text::before{
+  @extend %font-title;
+  display: block;
+  content: counter(projects, decimal-leading-zero);
+  font-feature-settings: "tnum", "zero";
+}
+.Project-card__client{
+  margin-top: var(--vs-xl);
+  display: flex;
+  @extend %font-subtitle-uppercase-small;
+  transition: all .3s ease;
+  @include mq('s') {
+    margin-top: var(--vs-s);
+  }
+}
+.Project-card__text:hover .Project-card__client{
+  @include mq('s','min') {
+    margin-top: var(--vs-xxl);
+  }
+}
+.Project-card__client::before{
+  @extend %pseudo-line;
+  margin-right: var(--hs-xs);
+}
+.Project-card__title{
+  @extend %font-title;
 }
 /* ====================================
     PROJECT Page

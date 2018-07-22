@@ -61,6 +61,7 @@ module.exports = (app) => {
     })
     // index
     app.get(/^\/(home)?$/, (req, res) => page.get(req, res, {
+      admin: req.query.admin,
       files: files,
       pageClass: 'c-page--index',
       projects: project.all(),

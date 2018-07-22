@@ -17,6 +17,7 @@
   --light-grey-rgb: 240, 240, 245;
 
   --white-grey-rgb: 250, 250, 252;
+  --white-blue-rgb: 245, 246, 250;
   --sand-grey-rgb: 246,245,243;
   /*
    * COLORS: Primary Colors
@@ -45,6 +46,7 @@
   --medium-grey: rgb(var(--medium-grey-rgb));
   --light-grey: rgb(var(--light-grey-rgb));
   --white-grey: rgb(var(--white-grey-rgb));
+  --white-blue: rgb(var(--white-blue-rgb));
   --sand-grey: rgb(var(--sand-grey-rgb));
   --color-sand: var(--sand-grey);
 }

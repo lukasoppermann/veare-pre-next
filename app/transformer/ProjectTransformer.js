@@ -12,6 +12,7 @@ class ProjectTransformer extends Transformer {
       updatedAt: data.sys.updatedAt,
       fields: {
         title: this.getContent(data, 'title'),
+        published: this.getContent(data, 'published', true),
         subtitle: this.getContent(data, 'subtitle'),
         titleStyle: this.getContent(data, 'titleStyle', 'default'),
         slug: this.getContent(data, 'slug'),
