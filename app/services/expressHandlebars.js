@@ -30,6 +30,9 @@ module.exports = expressHandlebars.create({
     eq: (...params) => {
       return params[0] === params[1]
     },
+    or: function () {
+      return Array.prototype.slice.call(arguments, 0, -1).some(Boolean)
+    },
     conditional: (param, test, value, defaultValue) => {
       if (param === test) {
         return value
@@ -38,9 +41,6 @@ module.exports = expressHandlebars.create({
     },
     year: function () {
       return new Date().getFullYear()
-    },
-    log: function (something) {
-      console.log(something)
     },
     inline_js: function (path) {
       path = `public/` + path
