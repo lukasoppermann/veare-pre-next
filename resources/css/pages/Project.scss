@@ -14,11 +14,14 @@
   margin-top: var(--vs-xg);
 }
 .Projects__headline{
+  grid-column: 1 / span 7;
   @extend %font-subtitle-uppercase-small;
   color: var(--black-40);
 }
 .Projects__body{
-
+  grid-column: 1 / span 7;
+  margin-top: var(--vs-l);
+  @extend %font-paragraph-sans-big;
 }
 .Project-card{
   counter-increment: projects;
