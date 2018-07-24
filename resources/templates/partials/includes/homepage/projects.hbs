@@ -1,0 +1,27 @@
+<page-section class="Projects" name="portfolio">
+  <div class="Projects__intro">
+    <div class="Projects__headline">
+      Latest Projects
+    </div>
+    <div class="Projects__body">
+    </div>
+  </div>
+  <div class="Projects__cards-container">
+    {{#each projects}}
+      {{#if (or (eq fields.published "true") (eq @root.admin "true"))}}
+        {{> "includes/homepage/project-card" project=fields}}
+      {{/if}}
+    {{/each}}
+
+    <div class="Grid Project-card">
+      <a class="Project-card__text" href="/portfolio/copra">
+        <h4 class="Project-card__client">copra</h4>
+        <h2 class="Project-card__title">Rebranding digital patient managment.</h2>
+      </a>
+      <a class="Project-card__image-container" href="/portfolio/copra">
+        <responsive-image class="Project-card__image" src="/media/copra-preview.png" alt="Branding digital health"></responsive-image>
+      </a>
+    </div>
+  </div>
+
+</page-section>
