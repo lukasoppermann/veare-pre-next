@@ -10,6 +10,16 @@
     padding-right: var(--hs-m);
   }
 }
+.Projects__intro{
+  margin-top: var(--vs-xg);
+}
+.Projects__headline{
+  @extend %font-subtitle-uppercase-small;
+  color: var(--black-40);
+}
+.Projects__body{
+
+}
 .Project-card{
   counter-increment: projects;
   margin-top: calc(var(--baseline) * 20);
