@@ -60,7 +60,15 @@ module.exports = (app) => {
       res.json(revisionedFiles)
     })
     // index
-    app.get(/^\/(home)?$/, (req, res) => page.get(req, res, {
+    app.get(/^\/$/, (req, res) => page.get(req, res, {
+      admin: req.query.admin,
+      files: files,
+      pageClass: 'c-page--index',
+      projects: project.all(),
+      portfolioItems: portfolioItems
+    }))
+    // index
+    app.get(/^\/home$/, (req, res) => page.get(req, res, {
       admin: req.query.admin,
       files: files,
       pageClass: 'c-page--index',
