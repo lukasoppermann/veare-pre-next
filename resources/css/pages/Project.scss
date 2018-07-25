@@ -33,6 +33,9 @@
     margin-top: 0;
   }
 }
+.Project-card:first-child{
+  margin-top: var(--vs-g);
+}
 .Project-card__image-container{
   position: relative;
   grid-column: 1 / span 7;
