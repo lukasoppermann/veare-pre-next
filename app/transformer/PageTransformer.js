@@ -12,7 +12,6 @@ class PageTransformer extends Transformer {
       fields: {
         slug: this.getContent(data, 'slug'),
         title: this.getContent(data, 'title'),
-        customPageData: this.getContent(data, 'customPageData'),
         isHomepage: this.getContent(data, 'homepage', false),
         chapters: new ChapterTransformer(this.getContent(data, 'chapters')).get()
       }

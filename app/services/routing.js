@@ -75,8 +75,10 @@ module.exports = (app) => {
       projects: project.all(),
       portfolioItems: portfolioItems
     }))
+    // pages
+    app.get(/^\/(imprint)?$/, (req, res) => page.get(req, res))
     // imprint & privacy
-    app.get(/^\/(imprint|privacy)/, function (req, res) {
+    app.get(/^\/(privacy)/, function (req, res) {
       res.render(req.params[0], {
         staticFiles: req.staticFiles,
         htmlClass: 'Temp-Override'
