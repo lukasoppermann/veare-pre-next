@@ -33,20 +33,7 @@ module.exports = (app) => {
     portfolioItems.map(item => {
       item.src = '/' + files[item.src]
     })
-    // dev
-    if (env === 'dev') {
-      app.use(/\/[a-z_/]*/, function (req, res, next) {
-        files = JSON.parse(fs.readFileSync('public/rev-manifest.json', 'utf8'))
-        revisionedFiles = Object.keys(files)
-          .filter(key => key.substr(-3) === 'css' || key.substr(-2) === 'js')
-          .reduce((obj, key) => {
-            obj[key] = files[key]
-            return obj
-          }, {})
-        next()
-      })
-    }
-    //
+
     app.use(bodyParser.json({ type: 'application/*+json' }))
     app.use(compression())
     // contentful webhook
@@ -60,15 +47,7 @@ module.exports = (app) => {
       res.json(revisionedFiles)
     })
     // index
-    app.get(/^\/$/, (req, res) => page.get(req, res, {
-      admin: req.query.admin,
-      files: files,
-      pageClass: 'c-page--index',
-      projects: project.all(),
-      portfolioItems: portfolioItems
-    }))
-    // index
-    app.get(/^\/home$/, (req, res) => page.get(req, res, {
+    app.get(/^\/(home)?$/, (req, res) => page.get(req, res, {
       admin: req.query.admin,
       files: files,
       pageClass: 'c-page--index',
