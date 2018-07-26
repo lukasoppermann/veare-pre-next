@@ -14,7 +14,7 @@ class Portfolio extends Controller {
 
   index (req, res, data) {
     data.projects = projects.all()
-    self.render(res, 'portfolio', data)
+    self.render(req, res, 'portfolio', data)
   }
 
   get (req, res, data) {
@@ -24,7 +24,7 @@ class Portfolio extends Controller {
     data.project = (projects.findBySlug(req.params[0]) || projects.findByAlias(req.params[0])).fields
     // console.log('Project:', data.project, req.params[0])
 
-    self.render(res, 'project', data)
+    self.render(req, res, 'project', data)
   }
 }
 

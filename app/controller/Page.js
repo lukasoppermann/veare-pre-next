@@ -14,7 +14,7 @@ class Pages extends Controller {
 
   get (req, res, data) {
     data.page = page.findBySlug(req.params[0] || 'home').fields
-    self.render(res, 'index', data)
+    self.render(req, res, 'index', data)
   }
 }
 

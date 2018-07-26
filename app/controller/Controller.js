@@ -2,8 +2,10 @@
 
 // App
 class Controller {
-  render (res, view, data = {}) {
-    res.render(view, data)
+  render (req, res, view, data = {}) {
+    res.render(view, Object.assign({
+      staticFiles: req.staticFiles
+    }, data))
   }
 }
 

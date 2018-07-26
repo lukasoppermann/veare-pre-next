@@ -13,27 +13,26 @@ const Page = require('../controller/Page')
 const page = new Page()
 const Project = require('../models/Project')
 const project = new Project()
+const staticFilesMiddleware = require('../middleware/staticFilesMiddleware')
 
 let env = process.env.NODE_ENV || 'dev'
 const PORT = process.env.NODE_PORT || 8080
 
 module.exports = (app) => {
   return (response) => {
-    let files = JSON.parse(fs.readFileSync('public/rev-manifest.json', 'utf8'))
-    // revisioned css & js files
-    let revisionedFiles = Object.keys(files)
-      .filter(key => key.substr(-3) === 'css' || key.substr(-2) === 'js')
-      .reduce((obj, key) => {
-        obj[key] = files[key]
-        return obj
-      }, {})
+    // middleware to add files to req
+    app.use(staticFilesMiddleware(JSON.parse(fs.readFileSync('public/rev-manifest.json', 'utf8'))))
+    // ---------------------------------- //
+    // DELETE once new portfolio from cms is done
     // portfolio files
     let portfolioItems = JSON.parse(fs.readFileSync('resources/templates/data/portfolio.json'))
+    // FILES only needed for portfolio
+    let files = JSON.parse(fs.readFileSync('public/rev-manifest.json', 'utf8'))
     // replace image
     portfolioItems.map(item => {
       item.src = '/' + files[item.src]
     })
-
+    // ---------------------------------- //
     app.use(bodyParser.json({ type: 'application/*+json' }))
     app.use(compression())
     // contentful webhook
@@ -44,12 +43,19 @@ module.exports = (app) => {
     }), contentfulWebhook)
     // revisioned files
     app.get('/revisionedFiles', function (req, res) {
+      // revisioned css & js files
+      let revisionedFiles = Object.keys(req.staticFiles)
+        .filter(key => key.substr(-3) === 'css' || key.substr(-2) === 'js')
+        .reduce((obj, key) => {
+          obj[key] = files[key]
+          return obj
+        }, {})
+      // return as json
       res.json(revisionedFiles)
     })
     // index
     app.get(/^\/(home)?$/, (req, res) => page.get(req, res, {
       admin: req.query.admin,
-      files: files,
       pageClass: 'c-page--index',
       projects: project.all(),
       portfolioItems: portfolioItems
@@ -87,7 +93,7 @@ module.exports = (app) => {
     // show portfolio item
     app.get(/^\/portfolio\/?([\w-]*)$/, function (req, res) {
       res.render('./portfolio/' + req.params[0] + '.hbs', {
-        files: files,
+        staticFiles: req.staticFiles,
         pageClass: 'c-page--portfolio-item'
       }, function (err, html) {
         if (err) {
@@ -104,7 +110,6 @@ module.exports = (app) => {
     })
     // show individual project
     app.get(/^\/work\/([a-z0-9]*)/, (req, res) => portfolio.get(req, res, {
-      files: files,
       pageClass: 'Page--work',
       htmlClass: 'Temp-Override'
     }))
