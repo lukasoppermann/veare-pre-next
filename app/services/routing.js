@@ -1,4 +1,3 @@
-const fs = require('fs')
 const express = require('express')
 const compression = require('compression')
 const bodyParser = require('body-parser')
@@ -13,7 +12,7 @@ const Page = require('../controller/Page')
 const page = new Page()
 const Project = require('../models/Project')
 const project = new Project()
-const staticFilesMiddleware = require('../middleware/staticFilesMiddleware')
+const staticFilesMiddleware = require('../middleware/staticFilesMiddleware')()
 
 let env = process.env.NODE_ENV || 'dev'
 const PORT = process.env.NODE_PORT || 8080
@@ -21,16 +20,17 @@ const PORT = process.env.NODE_PORT || 8080
 module.exports = (app) => {
   return (response) => {
     // middleware to add files to req
-    app.use(staticFilesMiddleware(JSON.parse(fs.readFileSync('public/rev-manifest.json', 'utf8'))))
+    app.use(staticFilesMiddleware)
     // ---------------------------------- //
     // DELETE once new portfolio from cms is done
     // portfolio files
+    const fs = require('fs')
     let portfolioItems = JSON.parse(fs.readFileSync('resources/templates/data/portfolio.json'))
     // FILES only needed for portfolio
-    let files = JSON.parse(fs.readFileSync('public/rev-manifest.json', 'utf8'))
+    let filesForPortfolio = JSON.parse(fs.readFileSync('public/rev-manifest.json', 'utf8'))
     // replace image
     portfolioItems.map(item => {
-      item.src = '/' + files[item.src]
+      item.src = '/' + filesForPortfolio[item.src]
     })
     // ---------------------------------- //
     app.use(bodyParser.json({ type: 'application/*+json' }))
@@ -47,7 +47,7 @@ module.exports = (app) => {
       let revisionedFiles = Object.keys(req.staticFiles)
         .filter(key => key.substr(-3) === 'css' || key.substr(-2) === 'js')
         .reduce((obj, key) => {
-          obj[key] = files[key]
+          obj[key] = req.staticFiles[key]
           return obj
         }, {})
       // return as json
@@ -63,7 +63,7 @@ module.exports = (app) => {
     // imprint & privacy
     app.get(/^\/(imprint|privacy)/, function (req, res) {
       res.render(req.params[0], {
-        files: files,
+        staticFiles: req.staticFiles,
         pageClass: 'c-page--' + req.params[0] + ' page--' + req.params[0],
         htmlClass: 'Temp-Override'
       })
@@ -78,11 +78,9 @@ module.exports = (app) => {
     })
     // Blog
     app.get(/^\/blog\/?$/, (req, res) => blog.index(req, res, {
-      files: files,
       pageClass: 'c-page--blog'
     }))
     app.get(/^\/blog\/([\w-]+)/, (req, res) => blog.get(req, res, {
-      files: files,
       pageClass: 'c-page--blog'
     }))
     // Portfolio
