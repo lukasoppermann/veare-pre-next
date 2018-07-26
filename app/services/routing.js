@@ -13,14 +13,20 @@ const page = new Page()
 const Project = require('../models/Project')
 const project = new Project()
 const staticFilesMiddleware = require('../middleware/staticFilesMiddleware')()
+const revisionedFiles = require('./revisionedFiles')
 
 let env = process.env.NODE_ENV || 'dev'
 const PORT = process.env.NODE_PORT || 8080
 
 module.exports = (app) => {
   return (response) => {
+    // ---------------------------------- //
+    // MIDDLEWARE
+    // ---------------------------------- //
     // middleware to add files to req
     app.use(staticFilesMiddleware)
+    app.use(bodyParser.json({ type: 'application/*+json' }))
+    app.use(compression())
     // ---------------------------------- //
     // DELETE once new portfolio from cms is done
     // portfolio files
@@ -32,57 +38,6 @@ module.exports = (app) => {
     portfolioItems.map(item => {
       item.src = '/' + filesForPortfolio[item.src]
     })
-    // ---------------------------------- //
-    app.use(bodyParser.json({ type: 'application/*+json' }))
-    app.use(compression())
-    // contentful webhook
-    app.post('/contentful', basicAuth({
-      users: {
-        [contentfulConfig.webhookUser]: contentfulConfig.webhookPassword
-      }
-    }), contentfulWebhook)
-    // revisioned files
-    app.get('/revisionedFiles', function (req, res) {
-      // revisioned css & js files
-      let revisionedFiles = Object.keys(req.staticFiles)
-        .filter(key => key.substr(-3) === 'css' || key.substr(-2) === 'js')
-        .reduce((obj, key) => {
-          obj[key] = req.staticFiles[key]
-          return obj
-        }, {})
-      // return as json
-      res.json(revisionedFiles)
-    })
-    // index
-    app.get(/^\/(home)?$/, (req, res) => page.get(req, res, {
-      admin: req.query.admin,
-      pageClass: 'c-page--index',
-      projects: project.all(),
-      portfolioItems: portfolioItems
-    }))
-    // imprint & privacy
-    app.get(/^\/(imprint|privacy)/, function (req, res) {
-      res.render(req.params[0], {
-        staticFiles: req.staticFiles,
-        pageClass: 'c-page--' + req.params[0] + ' page--' + req.params[0],
-        htmlClass: 'Temp-Override'
-      })
-    })
-    // About
-    app.get(/^\/about\/([\w-]+)?$/, function (req, res) {
-      res.redirect('/#about')
-    })
-    // contact
-    app.get(/^\/contact\/([\w-]+)?$/, function (req, res) {
-      res.redirect('/#contact')
-    })
-    // Blog
-    app.get(/^\/blog\/?$/, (req, res) => blog.index(req, res, {
-      pageClass: 'c-page--blog'
-    }))
-    app.get(/^\/blog\/([\w-]+)/, (req, res) => blog.get(req, res, {
-      pageClass: 'c-page--blog'
-    }))
     // Portfolio
     // no portfolio item selected
     app.get(/^\/portfolio\/?$/, function (req, res) {
@@ -101,17 +56,53 @@ module.exports = (app) => {
         res.send(html)
       })
     })
-    // catch all route with logging
-    app.get('/:pageCalled', function (req, res) {
-      console.log('tried to retrieve non-existing page: ' + req.params.pageCalled)
-      res.redirect('/')
+    // ---------------------------------- //
+    // UTILITIES
+    // ---------------------------------- //
+    // contentful webhook
+    app.post('/contentful', basicAuth({
+      users: {
+        [contentfulConfig.webhookUser]: contentfulConfig.webhookPassword
+      }
+    }), contentfulWebhook)
+    // revisioned files
+    app.get('/revisionedFiles', revisionedFiles)
+    // ---------------------------------- //
+    // PAGE ROUTES
+    // ---------------------------------- //
+    // index
+    app.get(/^\/(home)?$/, (req, res) => page.get(req, res, {
+      projects: project.all(),
+      portfolioItems: portfolioItems
+    }))
+    // imprint & privacy
+    app.get(/^\/(imprint|privacy)/, function (req, res) {
+      res.render(req.params[0], {
+        staticFiles: req.staticFiles,
+        htmlClass: 'Temp-Override'
+      })
     })
+    // About
+    app.get(/^\/about\/([\w-]+)?$/, function (req, res) {
+      res.redirect('/#about')
+    })
+    // contact
+    app.get(/^\/contact\/([\w-]+)?$/, function (req, res) {
+      res.redirect('/#contact')
+    })
+    // Blog
+    app.get(/^\/blog\/?$/, blog.index)
+    app.get(/^\/blog\/([\w-]+)/, blog.get)
     // show individual project
     app.get(/^\/work\/([a-z0-9]*)/, (req, res) => portfolio.get(req, res, {
       pageClass: 'Page--work',
       htmlClass: 'Temp-Override'
     }))
-
+    // catch all route with logging
+    app.get('/:pageCalled', function (req, res) {
+      console.log('tried to retrieve non-existing page: ' + req.params.pageCalled)
+      res.redirect('/')
+    })
     // static content
     app.use(express.static('public', {maxAge: '365d'}))
     // open port
