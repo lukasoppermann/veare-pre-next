@@ -24,9 +24,9 @@ class SectionTransformer extends Transformer {
   textSection (data) {
     return {
       type: data.sys.contentType.sys.id,
-      stylingOptions: this.getContent(data, 'stylingOptions', []),
       title: this.getContent(data, 'title'),
-      showTitle: this.getContent(data, 'showTitle', true),
+      titleType: this.getContent(data, 'titleType', 'hidden'),
+      options: this.getContent(data, 'stylingOptions', []),
       intro: this.getContent(data, 'intro'),
       text: convertMarkdown(this.getContent(data, 'text'), modifiers),
       annotation: this.getContent(data, 'annotation')
@@ -37,9 +37,8 @@ class SectionTransformer extends Transformer {
     return {
       type: data.sys.contentType.sys.id,
       title: this.getContent(data, 'title'),
-      showTitle: this.getContent(data, 'showTitle', true),
+      titleType: this.getContent(data, 'titleType', 'hidden'),
       classes: this.getContent(data, 'classes'),
-      stylingOptions: this.getContent(data, 'stylingOptions', []),
       description: this.getContent(data, 'description'),
       media: new AssetTransformer(this.getContent(data, 'media'), this.getContent(data, 'title')).get()
     }
@@ -49,8 +48,7 @@ class SectionTransformer extends Transformer {
     return {
       type: data.sys.contentType.sys.id,
       title: this.getContent(data, 'title'),
-      showTitle: this.getContent(data, 'showTitle', true),
-      slug: this.getContent(data, 'slug'),
+      titleType: this.getContent(data, 'titleType', 'hidden'),
       descriptionTitle: this.getContent(data, 'descriptionTitle'),
       description: this.getContent(data, 'description'),
       media: new AssetTransformer(this.getContent(data, 'media'), this.getContent(data, 'title')).get(),
@@ -62,8 +60,7 @@ class SectionTransformer extends Transformer {
     return {
       type: data.sys.contentType.sys.id,
       title: this.getContent(data, 'title'),
-      showTitle: this.getContent(data, 'showTitle', true),
-      stylingOptions: this.getContent(data, 'stylingOptions', []),
+      titleType: this.getContent(data, 'titleType', 'hidden'),
       text: this.getContent(data, 'text'),
       author: this.getContent(data, 'author')
     }
