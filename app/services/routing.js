@@ -74,7 +74,7 @@ module.exports = (app) => {
     app.get(/^\/(home)?$/, (req, res) => page.get(req, res, {
       projects: project.all(),
       portfolioItems: portfolioItems
-    }))
+    }, 'index'))
     // pages
     app.get(/^\/(imprint)?$/, (req, res) => page.get(req, res))
     // imprint & privacy
