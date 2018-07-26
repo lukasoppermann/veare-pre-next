@@ -1,7 +1,9 @@
 <div class="Section Grid{{#each section.stylingOptions}} Section__text--{{this}}{{/each}}">
   {{#if section.showTitle}}<h4 class="Section__title">{{section.title}}</h4>{{/if}}
   <p class="Section__intro">{{section.intro}}</p>
-  <div class="Separator Separator--blue"></div>
+  {{#if section.stylingOptions.seperator}}
+    <div class="Separator Separator--blue"></div>
+  {{/if}}
   <div class="Section__text">
     {{{section.text}}}
   </div>
