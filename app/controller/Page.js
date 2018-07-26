@@ -12,9 +12,10 @@ class Pages extends Controller {
     page = new Page()
   }
 
-  get (req, res, data) {
+  get (req, res, data = {}, view) {
     data.page = page.findBySlug(req.params[0] || 'home').fields
-    self.render(req, res, 'index', data)
+    let template = view || 'page'
+    self.render(req, res, template, data)
   }
 }
 

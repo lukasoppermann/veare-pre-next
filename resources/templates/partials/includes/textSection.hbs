@@ -5,4 +5,7 @@
   <div class="Section__text">
     {{{section.text}}}
   </div>
+  {{#if section.annotation}}
+    <p class="Section__text__annotation Annotation">{{section.annotation}}</p>
+  {{/if}}
 </div>
