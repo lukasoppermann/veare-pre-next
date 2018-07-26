@@ -14,7 +14,7 @@ class Blog extends Controller {
 
   index (req, res, data) {
     data.posts = posts.all()
-    self.render(res, 'blog', data)
+    self.render(req, res, 'blog', data)
   }
 
   get (req, res, data) {
@@ -22,7 +22,7 @@ class Blog extends Controller {
     if (data.post === undefined) {
       return res.redirect(301, 'http://' + req.headers.host + '/blog')
     }
-    self.render(res, 'article', data)
+    self.render(req, res, 'article', data)
   }
 }
 

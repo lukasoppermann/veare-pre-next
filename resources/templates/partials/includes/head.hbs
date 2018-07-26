@@ -7,13 +7,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=no" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="theme-color" content="rgb(240, 170, 30)" />
-<link rel="icon" href="/{{files.[media/veare-icon-32.png]}}" type="image/png" />
-<link rel="icon" href="/{{files.[media/veare-icon-32.png]}}" type="image/png" sizes="32x32" />
-<link rel="icon" href="/{{files.[media/veare-icon-96.png]}}" type="image/png" sizes="96x96" />
-<link rel="apple-touch-icon" href="/{{files.[media/veare-icon-120.png]}}">
-<link rel="apple-touch-icon" sizes="152x152" href="/{{files.[media/veare-icon-152.png]}}">
-<link rel="apple-touch-icon" sizes="167x167" href="/{{files.[media/veare-icon-168.png]}}">
-<link rel="apple-touch-icon" sizes="180x180" href="/{{files.[media/veare-icon-180.png]}}">
+<link rel="icon" href="/{{staticFiles.[media/veare-icon-32.png]}}" type="image/png" />
+<link rel="icon" href="/{{staticFiles.[media/veare-icon-32.png]}}" type="image/png" sizes="32x32" />
+<link rel="icon" href="/{{staticFiles.[media/veare-icon-96.png]}}" type="image/png" sizes="96x96" />
+<link rel="apple-touch-icon" href="/{{staticFiles.[media/veare-icon-120.png]}}">
+<link rel="apple-touch-icon" sizes="152x152" href="/{{staticFiles.[media/veare-icon-152.png]}}">
+<link rel="apple-touch-icon" sizes="167x167" href="/{{staticFiles.[media/veare-icon-168.png]}}">
+<link rel="apple-touch-icon" sizes="180x180" href="/{{staticFiles.[media/veare-icon-180.png]}}">
 <link rel="manifest" href="/manifest.json" />
 
 {{#> header-block}}
@@ -22,6 +22,6 @@
 {{#> critical-css-block}}
   {{!-- Critical css in header --}}
 {{/critical-css-block}}
-{{{ inline_js files.[js/index.js] }}}
+{{{ inline_js staticFiles.[js/index.js] }}}
 {{!-- <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,400i|Source+Sans+Pro:400,600" rel="stylesheet" /> --}}
-<link href="/{{files.[css/app.css]}}" rel="stylesheet" />
+<link href="/{{staticFiles.[css/app.css]}}" rel="stylesheet" />
