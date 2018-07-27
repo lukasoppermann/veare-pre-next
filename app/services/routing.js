@@ -28,6 +28,12 @@ module.exports = (app) => {
     app.use(bodyParser.json({ type: 'application/*+json' }))
     app.use(compression())
     // ---------------------------------- //
+    // Development
+    // ---------------------------------- //
+    if (env === 'dev') {
+      app.use(require('../middleware/staticFilesReloadMiddleware')())
+    }
+    // ---------------------------------- //
     // DELETE once new portfolio from cms is done
     // portfolio files
     const fs = require('fs')

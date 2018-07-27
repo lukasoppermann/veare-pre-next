@@ -10,6 +10,9 @@
     font-style: italic;
   }
 }
+.Annotation p:not(:first-child){
+  margin-top: calc(var(--baseline) * 2);
+}
 .Annotation--align-bottom{
   align-self: end;
 }
