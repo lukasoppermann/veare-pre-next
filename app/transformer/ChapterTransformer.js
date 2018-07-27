@@ -11,7 +11,7 @@ class ChapterTransformer extends Transformer {
       updatedAt: data.sys.updatedAt,
       fields: {
         title: this.getContent(data, 'title'),
-        showTitle: this.getContent(data, 'showTitle', true),
+        titleType: this.getContent(data, 'titleType', 'hidden'),
         slug: this.getContent(data, 'slug'),
         classes: this.getContent(data, 'classes'),
         sections: new SectionTransformer(this.getContent(data, 'sections')).get()

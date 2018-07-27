@@ -13,7 +13,6 @@
 }
 .Section__title--headline{
   @extend %font-headline--h2;
-  margin-top: var(--vs-xl);
 }
 .Section__subtitle{
   @extend %font-subtitle-small;
@@ -49,6 +48,19 @@
   @include mq('xs') {
     grid-column: 1 / -1;
   }
+}
+.Section__text h2{
+  @extend %font-headline--h2;
+  @include baseline(3);
+  color: var(--black);
+}
+.Section__text h3{
+  @extend %font-headline--h3;
+  @include baseline(3);
+  color: var(--black);
+}
+.Chapter__content--fullwidth .Section__text{
+  grid-column: column / span 7;
 }
 .Section__text p:not(:first-child){
   @include baseline(2);

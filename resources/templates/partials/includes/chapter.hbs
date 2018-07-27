@@ -1,6 +1,6 @@
-<page-section centered class="Chapter {{classes}}" name="{{chapter.slug}}">
+<page-section centered class="Chapter {{classes}} {{chapter.classes}}" name="{{chapter.slug}}">
   <div class="Grid Chapter__Grid">
-    {{#if chapter.showTitle}}
+    {{#if (eq chapter.titleType "subtitle")}}
       <div class="Chapter__title-container"><h5 class="Chapter__title">{{chapter.title}}</h5></div>
     {{/if}}
     {{#each chapter.sections}}
