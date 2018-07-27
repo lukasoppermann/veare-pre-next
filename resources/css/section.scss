@@ -5,9 +5,15 @@
   @include baseline(7);
 }
 .Section__title{
+  grid-column: column / span 7;
+}
+.Section__title--subtitle{
   @extend %font-subtitle-uppercase-small;
   color: var(--black-40);
-  grid-column: column / span 7;
+}
+.Section__title--headline{
+  @extend %font-headline--h2;
+  margin-top: var(--vs-xl);
 }
 .Section__subtitle{
   @extend %font-subtitle-small;
