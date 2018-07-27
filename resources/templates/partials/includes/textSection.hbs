@@ -1,11 +1,13 @@
 <div class="Section Grid">
   {{> "includes/sections/sectionTitle"}}
-  <p class="Section__intro">{{section.intro}}</p>
+  {{#if section.intro}}
+    <p class="Section__intro">{{section.intro}}</p>
+  {{/if}}
   {{> "includes/sections/sectionSeparator"}}
   <div class="Section__text">
     {{{section.text}}}
   </div>
   {{#if section.annotation}}
-    <p class="Section__text__annotation Annotation">{{section.annotation}}</p>
+    <div class="Section__text__annotation Annotation">{{{section.annotation}}}</div>
   {{/if}}
 </div>

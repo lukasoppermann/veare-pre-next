@@ -29,7 +29,7 @@ class SectionTransformer extends Transformer {
       options: this.getContent(data, 'stylingOptions', []),
       intro: this.getContent(data, 'intro'),
       text: convertMarkdown(this.getContent(data, 'text'), modifiers),
-      annotation: this.getContent(data, 'annotation')
+      annotation: convertMarkdown(this.getContent(data, 'annotation'), modifiers)
     }
   }
 
