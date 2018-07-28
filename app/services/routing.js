@@ -82,14 +82,7 @@ module.exports = (app) => {
       portfolioItems: portfolioItems
     }, 'index'))
     // pages
-    app.get(/^\/(imprint)?$/, (req, res) => page.get(req, res))
-    // imprint & privacy
-    app.get(/^\/(privacy)/, function (req, res) {
-      res.render(req.params[0], {
-        staticFiles: req.staticFiles,
-        htmlClass: 'Temp-Override'
-      })
-    })
+    app.get(/^\/(privacy)?$/, (req, res) => page.get(req, res))
     // About
     app.get(/^\/about\/([\w-]+)?$/, function (req, res) {
       res.redirect('/#about')
