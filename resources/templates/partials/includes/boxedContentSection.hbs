@@ -1,0 +1,12 @@
+<div class="Section Grid">
+  <div class="Boxed-group Grid--content">
+    {{#each section.items}}
+      <div class="Boxed-item">
+        <span class="Headline--h5 text--light">{{this.title}}</span>
+        <div class="Paragraph Paragraph--sans-small">
+          {{{this.value}}}
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>
