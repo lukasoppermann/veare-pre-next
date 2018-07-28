@@ -4,7 +4,7 @@
       <div class="Chapter__title-container"><h5 class="Chapter__title">{{chapter.title}}</h5></div>
     {{/if}}
     {{#each chapter.sections}}
-      {{> (join "includes/" fields.type) section=fields}}
+      {{> (join "includes/sections/" fields.type) section=fields}}
     {{/each}}
   </div>
 </page-section>
