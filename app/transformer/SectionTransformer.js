@@ -65,6 +65,14 @@ class SectionTransformer extends Transformer {
       author: this.getContent(data, 'author')
     }
   }
+
+  boxedContentSection (data) {
+    return {
+      type: data.sys.contentType.sys.id,
+      title: this.getContent(data, 'title'),
+      items: this.getContent(data, 'items')
+    }
+  }
 }
 
 module.exports = SectionTransformer
