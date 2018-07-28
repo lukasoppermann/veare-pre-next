@@ -135,17 +135,6 @@
 /* ====================================
     PROJECT Page
 ==================================== */
-.Page--work page-sections{
-  --outer-padding: var(--hs-l);
-}
-.Page--work page-section:not(.Footer-Section):not(.Section--Header){
-  padding-left: var(--outer-padding);
-  padding-right: var(--outer-padding);
-  @include mq('xs') {
-    padding-left: var(--hs-s);
-    padding-right: var(--hs-s);
-  }
-}
 .Project__subtitle{
   grid-column: column / span 4;
   @include mq('xs') {
