@@ -30,6 +30,8 @@
   background-color: var(--black-30);
 }
 .Section__intro{
+  hyphens: auto;
+  overflow-wrap: break-word;
   @extend %font-paragraph-sans-big;
   @include mq('xxs') {
     font-size: var(--base-font);
@@ -42,10 +44,13 @@
   grid-column: column / span 7;
 }
 .Section__text{
+  hyphens: auto;
+  overflow-wrap: break-word;
   @extend %font-paragraph-sans;
   @include baseline(3);
   grid-column: column / span 5;
   @include mq('xs') {
+    word-break: break-word;
     grid-column: 1 / -1;
   }
 }
