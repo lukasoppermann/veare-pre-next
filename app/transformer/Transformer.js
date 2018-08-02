@@ -23,14 +23,22 @@ class Transformer {
   }
 
   transformData (data) {
+    // abort if no header
     if (Array.isArray(data)) {
       let that = this
-      return data.map((item) => that.transform(item))
+      return data.map((item) => that.transformOrNull(item))
     } else if (data !== null) {
-      return [this.transform(data)]
+      return [this.transformOrNull(data)]
     } else {
       return []
     }
+  }
+
+  transformOrNull (data) {
+    if (data !== null && typeof data.fields === 'object') {
+      return this.transform(data)
+    }
+    return null
   }
 
   formatDate (dateString, format) {

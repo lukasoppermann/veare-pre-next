@@ -13,4 +13,4 @@ class Page extends Model {
   }
 }
 
-module.exports = Page
+module.exports = () => new Page()

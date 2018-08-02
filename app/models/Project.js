@@ -31,4 +31,4 @@ class Project extends Model {
   }
 }
 
-module.exports = Project
+module.exports = () => new Project()

@@ -31,4 +31,4 @@ class Post extends Model {
   }
 }
 
-module.exports = Post
+module.exports = () => new Post()
