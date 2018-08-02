@@ -1,22 +1,21 @@
 'use strict'
 
 const Controller = require('./Controller')
-const Page = require('../models/Page')
-let page
+const PageModel = require('../models/Page')
 let self
 
-class Pages extends Controller {
+class Page extends Controller {
   constructor () {
     super()
+    this.model = PageModel()
     self = this
-    page = new Page()
   }
 
   get (req, res, data = {}, view) {
-    data.page = page.findBySlug(req.params[0] || 'home').fields
+    data.page = this.model.findBySlug(req.params[0] || 'home').fields
     let template = view || 'page'
     self.render(req, res, template, data)
   }
 }
 
-module.exports = Pages
+module.exports = () => new Page()

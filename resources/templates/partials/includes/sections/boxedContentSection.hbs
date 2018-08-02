@@ -1,7 +1,7 @@
 <div class="Section Grid">
   <div class="Boxed-group Grid--content">
     {{#each section.items}}
-      <div class="Boxed-item">
+      <div class="Boxed-item" {{#each this.attr}}{{@key}}="{{this}}"{{/each}}>
         <span class="Headline--h5 text--light">{{this.title}}</span>
         <div class="Paragraph Paragraph--sans-small">
           {{{this.value}}}

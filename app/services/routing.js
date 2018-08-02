@@ -4,16 +4,13 @@ const bodyParser = require('body-parser')
 const basicAuth = require('express-basic-auth')
 const contentfulConfig = require('../config/contentful.js')
 const contentfulWebhook = require('./contentfulWebhook')
-const Blog = require('../controller/Blog')
-const Portfolio = require('../controller/Portfolio')
-const portfolio = new Portfolio()
-const blog = new Blog()
-const Page = require('../controller/Page')
-const page = new Page()
-const Project = require('../models/Project')
-const project = new Project()
+const ProjectModel = require('../models/Project')()
 const staticFilesMiddleware = require('../middleware/staticFilesMiddleware')()
 const revisionedFiles = require('./revisionedFiles')
+// Controller
+const Blog = require('../controller/Blog')()
+const Projects = require('../controller/Project')()
+const Pages = require('../controller/Pages')()
 
 let env = process.env.NODE_ENV || 'dev'
 const PORT = process.env.NODE_PORT || 8080
@@ -77,12 +74,12 @@ module.exports = (app) => {
     // PAGE ROUTES
     // ---------------------------------- //
     // index
-    app.get(/^\/(home)?$/, (req, res) => page.get(req, res, {
-      projects: project.all(),
+    app.get(/^\/(home)?$/, (req, res) => Pages.get(req, res, {
+      projects: ProjectModel.all(),
       portfolioItems: portfolioItems
     }, 'index'))
     // pages
-    app.get(/^\/(privacy)?$/, (req, res) => page.get(req, res))
+    app.get(/^\/(privacy)?$/, (req, res) => Pages.get(req, res))
     // About
     app.get(/^\/about\/([\w-]+)?$/, function (req, res) {
       res.redirect('/#about')
@@ -91,14 +88,17 @@ module.exports = (app) => {
     app.get(/^\/contact\/([\w-]+)?$/, function (req, res) {
       res.redirect('/#contact')
     })
-    // Blog
-    app.get(/^\/blog\/?$/, blog.index)
-    app.get(/^\/blog\/([\w-]+)/, blog.get)
     // show individual project
-    app.get(/^\/work\/([a-z0-9]*)/, (req, res) => portfolio.get(req, res, {
-      pageClass: 'Page--work',
-      htmlClass: 'Temp-Override'
-    }))
+    app.get(/^\/work\/([a-z0-9]*)/, (req, res) => {
+      console.log('jo')
+      Projects.get(req, res, {
+        pageClass: 'Page--work',
+        htmlClass: 'Temp-Override'
+      })
+    })
+    // Blog
+    app.get(/^\/blog\/?$/, (req, res) => Blog.index(req, res, {}))
+    app.get(/^\/blog\/([\w-]+)/, (req, res) => Blog.get(req, res, {}))
     // catch all route with logging
     app.get('/:pageCalled', function (req, res) {
       console.log('tried to retrieve non-existing page: ' + req.params.pageCalled)

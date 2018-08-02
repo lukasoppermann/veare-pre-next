@@ -4,8 +4,10 @@ const Transformer = require('./Transformer')
 
 class AssetTransformer extends Transformer {
   transform (data) {
-    // return null if no asset
-    if (data === undefined) return null
+    // // abort if no header
+    // if (typeof data.fields !== 'object') {
+    //   return null
+    // }
     // get file
     let file = this.getContent(data, 'file')
 

@@ -172,3 +172,11 @@
     display: none;
   }
 }
+.Project--intro{
+  padding-left: var(--hs-l);
+  padding-right: var(--hs-l);
+  @include mq('xs') {
+    padding-left: var(--hs-s);
+    padding-right: var(--hs-s);
+  }
+}

@@ -1,5 +1,7 @@
 const cache = require('memory-cache')
 const removeItem = require('./contentfulRemoveItem')
+const client = require('./client')
+// Controller
 
 module.exports = (updatedItem, res) => {
   let contentTypeId = updatedItem.sys.contentType.sys.id
@@ -10,15 +12,24 @@ module.exports = (updatedItem, res) => {
       'entry': updatedItem
     })
   }
-  // get content without updated item
-  let updatedContent = removeItem(content, updatedItem)
-  // place new / updated item in cache
-  updatedContent.push(updatedItem)
-  // update cache
-  cache.put(contentTypeId, updatedContent)
-  // return status OK
-  return res.status(200).json({
-    'action': 'entry updated',
-    'entry': updatedItem
+  // fetch entry by id with linked entries
+  client.getEntries({
+    'sys.id': updatedItem.sys.id,
+    locale: '*',
+    include: 10
   })
+    .then((entry) => {
+      // get content without updated item
+      let updatedContent = removeItem(content, updatedItem.sys.id)
+      // place new / updated item in cache
+      updatedContent.push(entry.items[0])
+      // update cache
+      cache.put(contentTypeId, updatedContent)
+      // return status OK
+      return res.status(200).json({
+        'action': 'entry updated',
+        'entry': entry.items[0]
+      })
+    })
+    .catch(console.error)
 }
