@@ -3,21 +3,22 @@
 const Controller = require('./Controller')
 const ProjectModel = require('../models/Project')
 let self
+let model
 
 class Project extends Controller {
   constructor () {
     super()
-    this.model = ProjectModel()
+    model = ProjectModel()
     self = this
   }
 
   index (req, res, data) {
-    data.projects = this.model.all()
+    data.projects = model.all()
     self.render(req, res, 'portfolio', data)
   }
 
   get (req, res, data) {
-    let project = (this.model.findBySlug(req.params[0]) || this.model.findByAlias(req.params[0]))
+    let project = (model.findBySlug(req.params[0]) || model.findByAlias(req.params[0]))
     // redirect home if param is neither slug nor alias
     if (project === undefined) {
       return res.redirect(301, 'http://' + req.headers.host + '/')

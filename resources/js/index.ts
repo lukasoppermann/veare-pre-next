@@ -4,6 +4,7 @@ import {default as webComponentsSupported} from './modules/wcSupported'
 const revisionedFiles = fetch('/revisionedFiles').then(response => {
   return response.json()
 })
+const baseUrl = window.location.protocol+'//'+window.location.host
 // get fetchInject class
 const scriptPromise = new Promise((resolve, reject) => {
   const script = window.document.createElement('script');
@@ -11,7 +12,7 @@ const scriptPromise = new Promise((resolve, reject) => {
   script.onload = resolve;
   script.onerror = reject;
   script.async = true;
-  script.src = '/js/fetch-inject.min.js?v=1.9.1';
+  script.src = baseUrl + '/js/fetch-inject.min.js?v=1.9.1';
 })
 
 Promise.all([revisionedFiles, scriptPromise])
@@ -22,7 +23,7 @@ Promise.all([revisionedFiles, scriptPromise])
     if (!webComponentsSupported()) {
       return fetchInject([
         // polyfill
-        `/js/webcomponents-sd-ce.js`
+        `${baseUrl}/js/webcomponents-sd-ce.js`
       ]).then(() => {
         resolve()
       })
@@ -30,7 +31,7 @@ Promise.all([revisionedFiles, scriptPromise])
     resolve()
   })
   // load critical layout components
-  const layoutComponents = fetchInject([`/${json['js/layoutComponents.js']}`], webComponentsAvailable)
+  const layoutComponents = fetchInject([`${baseUrl}/${json['js/layoutComponents.js']}`], webComponentsAvailable)
   let body = document.querySelector('body')
   // load webfont and view intro once downloaded
   fetchInject([
@@ -48,10 +49,10 @@ Promise.all([revisionedFiles, scriptPromise])
 
   // load responsiveMenu
   fetchInject([
-    `/${json['js/responsiveMenu.js']}`,
-    `/${json['js/nucleiButton.js']}`,
-    `/${json['js/toc.js']}`,
-    `/${json['js/rest.js']}`
+    `${baseUrl}/${json['js/responsiveMenu.js']}`,
+    `${baseUrl}/${json['js/nucleiButton.js']}`,
+    `${baseUrl}/${json['js/toc.js']}`,
+    `${baseUrl}/${json['js/rest.js']}`
   ], webComponentsAvailable)
   .then(() => {
     document.querySelector('responsive-menu').style.display = "block"

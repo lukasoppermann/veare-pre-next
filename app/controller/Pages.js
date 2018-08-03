@@ -3,16 +3,17 @@
 const Controller = require('./Controller')
 const PageModel = require('../models/Page')
 let self
+let model
 
 class Page extends Controller {
   constructor () {
     super()
-    this.model = PageModel()
+    model = PageModel()
     self = this
   }
 
   get (req, res, data = {}, view) {
-    data.page = this.model.findBySlug(req.params[0] || 'home').fields
+    data.page = model.findBySlug(req.params[0] || 'home').fields
     let template = view || 'page'
     self.render(req, res, template, data)
   }

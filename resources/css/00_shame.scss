@@ -1,0 +1,13 @@
+.shame--portfolio-grid{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+.shame--portfolio-grid .o-card__container{
+  grid-column: auto / span 12;
+  @include mq('xs', 'min') {
+    grid-column: auto / span 6;
+  }
+  @include mq('s', 'min') {
+    grid-column: auto / span 4;
+  }
+}

@@ -43,11 +43,11 @@ module.exports = (app) => {
     })
     // Portfolio
     // no portfolio item selected
-    app.get(/^\/portfolio\/?$/, function (req, res) {
+    app.get(/^\/portfolio\/?$/, (req, res) => {
       res.redirect('/#portfolio')
     })
     // show portfolio item
-    app.get(/^\/portfolio\/?([\w-]*)$/, function (req, res) {
+    app.get(/^\/portfolio\/?([\w-]*)$/, (req, res) => {
       res.render('./portfolio/' + req.params[0] + '.hbs', {
         staticFiles: req.staticFiles,
         pageClass: 'c-page--portfolio-item'
@@ -81,17 +81,16 @@ module.exports = (app) => {
     // pages
     app.get(/^\/(privacy)?$/, (req, res) => Pages.get(req, res))
     // About
-    app.get(/^\/about\/([\w-]+)?$/, function (req, res) {
+    app.get(/^\/about\/([\w-]+)?$/, (req, res) => {
       res.redirect('/#about')
     })
     // contact
-    app.get(/^\/contact\/([\w-]+)?$/, function (req, res) {
+    app.get(/^\/contact\/([\w-]+)?$/, (req, res) => {
       res.redirect('/#contact')
     })
     // show individual project
-    app.get(/^\/work\/([a-z0-9]*)/, (req, res) => {
-      console.log('jo')
-      Projects.get(req, res, {
+    app.get(/^\/work\/([\w-]+)/, (req, res) => {
+      return Projects.get(req, res, {
         pageClass: 'Page--work',
         htmlClass: 'Temp-Override'
       })
@@ -100,7 +99,7 @@ module.exports = (app) => {
     app.get(/^\/blog\/?$/, (req, res) => Blog.index(req, res, {}))
     app.get(/^\/blog\/([\w-]+)/, (req, res) => Blog.get(req, res, {}))
     // catch all route with logging
-    app.get('/:pageCalled', function (req, res) {
+    app.get('/:pageCalled', (req, res) => {
       console.log('tried to retrieve non-existing page: ' + req.params.pageCalled)
       res.redirect('/')
     })

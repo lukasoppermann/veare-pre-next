@@ -1,11 +1,8 @@
-{{!-- <page-section centered maxwidth="1200px" style="z-index: 100;">
-  <a name="portfolio"></a>
-  {{>includes/portfolio/card-copra}}
-</page-section> --}}
 <page-section centered maxwidth="1000px" class="c-portfolio">
-  <grid-container columns="12" class="c-portfolio_cards u-margin-top--h"  breakpoints="0s 500m 800l">
+  <div class="c-portfolio_cards u-margin-top--h shame--portfolio-grid">
     {{#each portfolioItems}}
       {{>includes/portfolio/portfolio-card}}
     {{/each}}
-  </grid-container>
+  </div>
+
 </page-section>
