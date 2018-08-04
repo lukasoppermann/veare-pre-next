@@ -39,10 +39,10 @@
   }
 }
 .c-about__column:last-of-type{
-  @include mq('m') {
+  @include mq('s') {
     margin-top: var(--vs-xxl);
   }
-  @include mq('m', 'min') {
+  @include mq('s', 'min') {
     grid-column-start: auto;
   }
 }
