@@ -8,21 +8,14 @@
 }
 .c-about-container{
   margin-top: var(--size-m);
-  /* margin-bottom: calc(-1 * var(--size-xl)); */
   padding: var(--size-h) var(--size-l) var(--size-xh);
   box-sizing: border-box;
   background: var(--blue-muted);
   box-shadow: var(--shadow-floating);
   color: rgb(255,255,255);
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  z-index: 10;
-  position: relative;
 }
 .c-about__column{
+  grid-column: 2 / span 4;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -30,6 +23,28 @@
   padding: 0 var(--size-h);
   box-sizing: border-box;
   overflow: hidden;
+  @include mq('m') {
+    grid-column-start: 1;
+    grid-column-end: span 5;
+    margin-top: var(--vs-l);
+  }
+  @include mq('s') {
+    padding: 0;
+    grid-column-start: 2;
+    grid-column-end: span 5;
+  }
+  @include mq('xs') {
+    grid-column-start: auto;
+    grid-column-end: span 7;
+  }
+}
+.c-about__column:last-of-type{
+  @include mq('m') {
+    margin-top: var(--vs-xxl);
+  }
+  @include mq('m', 'min') {
+    grid-column-start: auto;
+  }
 }
 .circle-big{
   background-color: rgba(0, 0, 0, 0.1);
@@ -65,19 +80,17 @@
 	max-width: 450px;
 	box-sizing: border-box;
 }
-.plus:before{
-	content: "+";
-	width: 100px;
-	height: 100px;
+.plus{
+  grid-column: 6 / span 1;
 	text-align: center;
 	font-size: 150px;
 	line-height: 70px;
 	display: block;
-	position: absolute;
 	font-weight: 600;
-	left: 50%;
-	top: 40%;
-	margin: -75px 0 0 -50px;
+  padding-top: 100px;
+  @include mq('s') {
+    display: none;
+  }
 }
 @media screen and (max-width: 800px){
 	.circle-headline{
@@ -86,19 +99,11 @@
     text-align: left;
 	}
 	.circle-copy{ padding: 0 10px; }
-	.plus:before{ display: none; }
 	.circle-copy{
     align-self: center;
 	}
-  .c-about__column:nth-child(2){
-    margin-top: var(--size-xl);
-    margin-bottom: var(--size-xl);
-  }
-}
-@media screen and (max-width: 800px){
-	.plus:before{ display: none; }
-  .c-about__column{
-    padding: 0;
-  }
-
+  // .c-about__column:nth-child(2){
+  //   margin-top: var(--size-xl);
+  //   margin-bottom: var(--size-xl);
+  // }
 }
