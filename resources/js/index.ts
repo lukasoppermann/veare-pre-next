@@ -23,7 +23,8 @@ Promise.all([revisionedFiles, scriptPromise])
     if (!webComponentsSupported()) {
       return fetchInject([
         // polyfill
-        `${baseUrl}/js/webcomponents-sd-ce.js`
+        `${baseUrl}/js/webcomponents-sd-ce.js`,
+        'https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver'
       ]).then(() => {
         resolve()
       })
