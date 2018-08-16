@@ -40,6 +40,9 @@
   @include baseline(3);
   grid-column: column / span 7;
 }
+.Section__intro p{
+  @include baseline(2);
+}
 .Section .Separator{
   grid-column: column / span 7;
 }
@@ -64,11 +67,20 @@
   @include baseline(3);
   color: var(--black);
 }
+.Section__text h4{
+  @extend %font-headline--h4;
+  @include baseline(3);
+  color: var(--black);
+}
+
 .Chapter__content--fullwidth .Section__text{
   grid-column: column / span 7;
 }
 .Section__text p:not(:first-child){
   @include baseline(2);
+}
+.Section__text h4 ~ p:not(:first-child){
+  @include baseline(1);
 }
 .Section__media__image{
   grid-column: column / span 7;

@@ -72,6 +72,12 @@ font-feature-settings:"liga", "dlig";
   font-family: var(--font-source-sans);
   font-weight: var(--font-source-sans-semibold);
 }
+%font-headline--h4 {
+  font-size: var(--size-l);
+  line-height: calc(var(--baseline) * 3);
+  font-family: var(--font-source-sans);
+  font-weight: var(--font-source-sans-semibold);
+}
 %font-paragraph-serif {
   font-size: var(--base-font);
   line-height: calc(var(--baseline) * 4);

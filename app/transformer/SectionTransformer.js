@@ -27,7 +27,7 @@ class SectionTransformer extends Transformer {
       title: this.getContent(data, 'title'),
       titleType: this.getContent(data, 'titleType', 'hidden'),
       options: this.getContent(data, 'stylingOptions', []),
-      intro: this.getContent(data, 'intro'),
+      intro: convertMarkdown(this.getContent(data, 'intro'), modifiers),
       text: convertMarkdown(this.getContent(data, 'text'), modifiers),
       annotation: convertMarkdown(this.getContent(data, 'annotation'), modifiers)
     }
