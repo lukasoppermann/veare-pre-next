@@ -40,7 +40,10 @@
   @include baseline(3);
   grid-column: column / span 7;
 }
-.Section__intro p{
+.Section__intro:first-child{
+  margin-top: 0;
+}
+.Section__intro p:not(:first-child){
   @include baseline(2);
 }
 .Section .Separator{
