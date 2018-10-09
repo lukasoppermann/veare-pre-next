@@ -180,3 +180,19 @@
     padding-right: var(--hs-s);
   }
 }
+.Project__Section-Title .Section__title{
+  @extend %font-title;
+  color: var(--blue);
+  font-size: var(--size-g);
+  line-height: calc(var(--baseline) * 11);
+  grid-column: 7 / span 5;
+  grid-row-start: 1;
+  z-index: 100;
+  align-self: end;
+}
+.Project__Section-Title .Section__title + .Section__media__image{
+  grid-row-start: 1;
+}
+.Project__Section-Title .Section__media__description{
+  grid-row-start: 1;
+}
