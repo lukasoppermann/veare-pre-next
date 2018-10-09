@@ -21,9 +21,23 @@ class AssetTransformer extends Transformer {
         url: file.url,
         fileName: file.fileName,
         details: file.details,
-        contentType: file.contentType
+        contentType: file.contentType,
+        resolution: this.getResolution(file.fileName)
       }
     }
+  }
+  /**
+   * Extract resolution from filename
+   */
+  getResolution (file, defaultResolution = 1) {
+    let fileName = file.split('.').slice(0, -1)[0]
+    let fileResolution = parseInt(fileName.substring(fileName.lastIndexOf('@') + 1, fileName.lastIndexOf('@') + 2))
+
+    if (Number.isInteger(fileResolution)) {
+      return fileResolution
+    }
+
+    return defaultResolution
   }
 }
 

@@ -1,7 +1,7 @@
 <div class="Section Grid{{#each section.stylingOptions}} Section__media--{{this}}{{/each}} {{section.classes}}">
   {{> "includes/sections/sectionTitle"}}
 
-  <responsive-image class="Section__media__image" src="{{section.media.0.fields.url}}" alt="{{section.media.0.fields.title}}"></responsive-image>
+  <responsive-image class="Section__media__image" resolution="{{section.media.0.fields.resolution}}" srcset="{{section.media.0.fields.url}} {{section.media.0.fields.resolution}}x" src="{{section.media.0.fields.url}}" alt="{{section.media.0.fields.title}}"></responsive-image>
 
   {{#if section.description}}
     <p class="Section__media__description Annotation">{{section.description}}</p>
