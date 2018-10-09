@@ -93,7 +93,6 @@ gulp.task('watchJs', function () {
     'resources/js/*',
     'resources/js/**/*'
   ], gulp.series('bundleJs', 'revJs', function reload (cb) {
-    // browserSync.reload()
     cb()
   }))
 })
@@ -107,7 +106,6 @@ gulp.task('watchCss', function () {
     'resources/css/*',
     'resources/css/**/*'
   ], gulp.series('bundleCss', 'revCss', function reload (cb) {
-    // browserSync.reload()
     cb()
   }))
 })
@@ -121,21 +119,12 @@ gulp.task('watchCss', function () {
 //     'resources/templates/*',
 //     'resources/templates/**/*'
 //   ], gulp.series(function reload (cb) {
-//     browserSync.reload()
 //     cb()
 //   }))
 // })
 /* ------------------------------
  * default task
  */
-// gulp.task('browser-sync', function (cb) {
-//   browserSync({
-//     proxy: 'localhost:8080',  // local node app address
-//     port: 5000,  // use *different* port than above
-//     notify: true,
-//     open: false
-//   }, cb)
-// })
 
 gulp.task('serve', require('./gulp-tasks/serve.js').serve())
 
