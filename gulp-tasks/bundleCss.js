@@ -9,22 +9,17 @@ module.exports = function (bundles) {
   return function bundleCss () {
     let stream = require('merge-stream')()
     Object.keys(bundles).forEach(function (key) {
-      let savings = require('./savingsReporter')()
       stream.add(gulp.src(bundles[key])
         .pipe(sourcemaps.init())
         .pipe(concat(key + '.css'))
-        .pipe(savings.start())
         .pipe(sass({
           outputStyle: 'compressed'
           // outputStyle: 'nested'
         }).on('error', sass.logError))
         .pipe(cleanCSS())
         .on('error', error)
-        .pipe(savings.stop())
-        .pipe(savings.gziped())
         .pipe(sourcemaps.write('/'))
         .pipe(gulp.dest('public/css'))
-        .on('end', () => savings.report('CSS (' + key + '):'))
       )
     })
 
