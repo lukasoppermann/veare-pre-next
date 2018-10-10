@@ -47,12 +47,11 @@
     "sw-precache": "^5.2.1",
     "tslib": "^1.9.3",
     "typescript": "^3.1.2",
-    "uglify-es": "^3.3.9",
-    "wait-on": "^2.1.0"
+    "uglify-es": "^3.3.9"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
-    "compression": "^1.7.2",
+    "compression": "^1.7.3",
     "contentful": "^6.1.1",
     "deasync": "^0.1.13",
     "deep-assign": "^2.0.0",
@@ -75,9 +74,7 @@
     "start": "npm run forever",
     "forever": "forever start -v --watch --watchDirectory=/Users/lukasoppermann/code/veare app.js",
     "test": "standard 'app.js' 'resources/js/*.js' 'app/**/*.js' 'gulp-tasks/*.js' | snazzy",
-    "killNode": "lsof -n -i4TCP:8888 | grep LISTEN | tr -s ' ' | cut -f 2 -d ' ' | xargs kill -9",
-    "testLinks": "npm run killNode && NODE_ENV=testing NODE_PORT=8888 node app.js & wait-on http://localhost:8888 && NODE_PORT=8888 node test/links.js && npm run killNode",
-    "travis": "npm run test && npm run testLinks",
+    "travis": "npm run test",
     "removeCompiled": "branch=$(git branch | grep \\* | cut -d ' ' -f2) && if test \"$branch\" != \"master\" ; then git reset HEAD public/ ; fi"
   },
   "pre-commit": [
