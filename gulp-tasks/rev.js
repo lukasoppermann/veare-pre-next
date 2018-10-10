@@ -14,10 +14,10 @@ module.exports = function (type, files) {
       let removeFiles = Object.values(JSON.parse(fs.readFileSync('public/rev-manifest.json', 'utf8'))).filter((item) => {
         return item.substring(0, type.length) === type
       })
-      del.sync(removeFiles, {cwd: 'public'})
+      del.sync(removeFiles, { cwd: 'public' })
     }
 
-    return gulp.src(files, {base: 'public', allowEmpty: true})
+    return gulp.src(files, { base: 'public', allowEmpty: true })
       .on('error', error)
       .pipe(rev())
       .pipe(revdel())

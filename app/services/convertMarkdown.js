@@ -21,7 +21,7 @@ const md = require('markdown-it')('commonmark', {
 })
   .use(require('markdown-it-modify-token'))
   .use(require('markdown-it-anchor'))
-  .use(require('markdown-it-implicit-figures'), {figcaption: true})
+  .use(require('markdown-it-implicit-figures'), { figcaption: true })
   .use(require('markdown-it-expand-tabs'))
   .use(require('markdown-it-attrs'))
 

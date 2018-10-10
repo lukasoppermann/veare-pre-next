@@ -134,7 +134,7 @@ gulp.task('default', gulp.series(
   'revJs',
   'revCss',
   'pwaManifest',
-  gulp.parallel('watchJs', 'watchCss',
+  gulp.parallel('watchJs', 'watchCss'
   // 'watchTemplates'
   )
 ))
@@ -147,16 +147,16 @@ gulp.task('build', gulp.series(
     let standard = require('standard')
     let linter = require('gulp-standard-bundle').linter
     return gulp.src('resources/js/*.js')
-    .pipe(linter(standard))
-    .pipe(linter.reporter('default', {
-      breakOnError: false
-    }))
+      .pipe(linter(standard))
+      .pipe(linter.reporter('default', {
+        breakOnError: false
+      }))
   },
   gulp.parallel(gulp.series(
     gulp.parallel('moveJs', 'bundleJs', 'bundleCss'),
     gulp.parallel('revJs', 'revCss')
-    ),
-    'images'
+  ),
+  'images'
   ),
   gulp.parallel('pwaManifest') // , 'serviceWorker'
 ))

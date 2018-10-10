@@ -5,11 +5,11 @@ const deasync = require('deasync')
 
 const svgo = new SVGO({
   plugins: [
-    { removeDesc: {removeAny: true} },
+    { removeDesc: { removeAny: true } },
     { removeTitle: {} }, // pass it an argument to enable
     'removeComments', // does enable default plugins. (using { full: true } )
     'removeMetadata',
-    {removeViewBox: false}
+    { removeViewBox: false }
   ]
 })
 
@@ -60,7 +60,7 @@ module.exports = expressHandlebars.create({
       function svgoOptimizeSync (svgo, path) {
         let res = null
         let svg = fs.readFileSync(path, 'utf8')
-        svgo.optimize(svg, {path: path}).then(result => { res = result })
+        svgo.optimize(svg, { path: path }).then(result => { res = result })
         deasync.loopWhile(() => !res)
         return res.data
       }

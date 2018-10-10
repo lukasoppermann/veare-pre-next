@@ -104,7 +104,7 @@ module.exports = (app) => {
       res.redirect('/')
     })
     // static content
-    app.use(express.static('public', {maxAge: '365d'}))
+    app.use(express.static('public', { maxAge: '365d' }))
     // open port
     app.listen(PORT)
     if (env !== 'testing') {
