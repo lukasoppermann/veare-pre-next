@@ -4,18 +4,15 @@
   overflow-x: hidden;
   padding: var(--size-m);
   padding-bottom: 0;
-}
-.o-blog-listing__left{
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
+  grid-column: 7 / span 5;
 }
 .o-blog-listing__about{
+  position: relative;
   height: 100vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  grid-column: 1 / span 6;
 }
 @media (max-width: 600px) {
   .o-blog-listing__about{
