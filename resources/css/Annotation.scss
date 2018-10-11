@@ -17,9 +17,9 @@
   align-self: end;
 }
 .Grid > .Annotation {
-  grid-column: right / span 2;
+  grid-column: sidebar-right;
   @include mq('s') {
-    grid-column: 1 / -1;
+    grid-column: columns;
   }
 }
 .Annotation:before{

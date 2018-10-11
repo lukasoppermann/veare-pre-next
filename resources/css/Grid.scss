@@ -3,31 +3,46 @@
 ==================================== */
 .Grid {
   width: 100%;
-  max-width: 1200px;
   display: grid;
+  overflow: hidden;
   grid-template-rows: auto;
-  grid-column-gap: 1.9533729553%;
-  grid-template-columns: [left] 6.2088171641% [left] 6.2088171641% [column] 7.9472859701% [column] 7.9472859701% [column] 7.9472859701% [column] 7.9472859701% [column] 7.9472859701% [column] 7.9472859701% [column] 7.9472859701% [right] 6.2088171641% [right] 6.2088171641%;
+  grid-template-columns:
+    [margin-left-start full-bleed-start]
+      minmax(0, 1fr)
+    [margin-left-end sidebar-left-start]
+      minmax(6.2088171641%, 74px)
+    [sidebar-left-middle]
+      minmax(6.2088171641%, 74px)
+    [sidebar-left-end columns-start column-1-start]
+      7.9472859701% [column-1-end column-2-start]
+      7.9472859701% [column-2-end column-3-start]
+      7.9472859701% [column-3-end column-4-start]
+      7.9472859701% [column-4-end column-5-start]
+      7.9472859701% [column-5-end column-6-start]
+      7.9472859701% [column-6-end column-7-start]
+      7.9472859701%
+    [column-7-end columns-end sidebar-right-start]
+      minmax(6.2088171641%, 74px)
+    [sidebar-right-middle]
+      minmax(6.2088171641%, 74px)
+    [sidebar-right-end margin-right-start]
+      minmax(0, 1fr)
+    [margin-right-end full-bleed-end];
+  grid-gap: 1.6278107961%; /* 12 gaps */
   @include mq('s') {
     grid-column-gap: 2.7589162191%;
-    grid-template-columns: [column] 11.9209289551% [column] 11.9209289551% [column] 11.9209289551% [column] 11.9209289551% [column] 11.9209289551% [column] 11.9209289551% [column] 11.9209289551%;
+    grid-template-columns:
+      [columns-start full-bleed-start column-1-start]
+      11.9209289551% [column-1-end column-2-start]
+      11.9209289551% [column-2-end column-3-start]
+      11.9209289551% [column-3-end column-4-start]
+      11.9209289551% [column-4-end column-5-start]
+      11.9209289551% [column-5-end column-6-start]
+      11.9209289551% [column-6-end column-7-start]
+      11.9209289551%
+      [column-7-end columns-end full-bleed-end];
   }
 }
-.Grid--auto-column > *{
-  grid-column: column / span 7;
-}
-.Grid--content {
-  grid-column: column / span 7;
-}
-.Grid--left-aside {
-  grid-column: left / span 2;
-  @include mq('s') {
-    grid-column: 1 / -1;
-  }
-}
-.Grid--right-aside {
-  grid-column: right / span 2;
-  @include mq('s') {
-    grid-column: 1 / -1;
-  }
+.Grid--columns {
+  grid-column: columns;
 }
