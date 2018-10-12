@@ -91,7 +91,7 @@
   z-index: 50;
 }
 .Section__media__image--big > .Section__media__image{
-  grid-column: 1 / span 9;
+  grid-column: sidebar-left / span 9;
   @include mq('m') {
     grid-column: 1 / -1;
   }
