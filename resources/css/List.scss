@@ -1,7 +1,7 @@
 ul{
   margin-top: calc(var(--baseline) * 2);
 }
-li{
+li:not(:first-child){
   margin-top: var(--baseline);
 }
 ul + *{

@@ -21,7 +21,7 @@ if (document.querySelector('body').classList.contains('Page--work')) {
     let footerHeight = window.getComputedStyle(document.querySelector('.Footer-Section')).getPropertyValue('height')
     paginationContainer.style.top = `${tocOffset}px`
     paginationContainer.style.left = padding
-    paginationContainer.style.height = `calc(100% - ${tocOffset}px - ${footerHeight} - 200px)`
+    paginationContainer.style.height = `calc(100% - ${tocOffset}px - ${footerHeight} - 190px)`
     pageSections.addEventListener('activateSection', (event) => {
       paginationItems.forEach((item) => {
         if (item.querySelector('a').getAttribute('href').substr(1) === event.detail.sectionName) {
@@ -37,7 +37,7 @@ if (document.querySelector('body').classList.contains('Page--work')) {
       })
     })
   }, 100)
-  
+
   paginationInit()
   window.addEventListener('resize', paginationInit)
 }
