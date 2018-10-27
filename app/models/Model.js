@@ -1,6 +1,6 @@
 'use strict'
 
-const cache = require('memory-cache')
+const cache = require('../services/cacheService')()
 
 class Model {
   constructor (transformer, type) {

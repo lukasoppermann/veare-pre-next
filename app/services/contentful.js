@@ -1,5 +1,5 @@
 const client = require('./client')
-const cache = require('memory-cache')
+const cache = require('./cacheService')()
 
 const contentful = (cb, errorFn = console.error) => {
   // get all entries
@@ -9,11 +9,11 @@ const contentful = (cb, errorFn = console.error) => {
     locale: '*'
   }).then((response) => {
     return response
-  }).catch(errorFn)
+  })
   // get all content types
   let contentTypesPromise = client.getContentTypes().then((res) => {
     return res
-  }).catch(errorFn)
+  })
 
   Promise.all([entriesPromise, contentTypesPromise]).then((values) => {
     let [entries, contentTypes] = values
@@ -23,14 +23,18 @@ const contentful = (cb, errorFn = console.error) => {
 
 const initializeContent = (types, entries, cb) => {
   // get type ids
-  let typeIds = types.items.map((item) => item.sys.id)
-  // get content by type
-  typeIds.forEach((contentTypeId) => {
-    let content = entries.items.filter((entry) => {
-      return entry.sys.contentType.sys.id === contentTypeId
+  if (types !== undefined) {
+    let typeIds = types.items.map((item) => item.sys.id)
+    // get content by type
+    typeIds.forEach((contentTypeId) => {
+      let content = entries.items.filter((entry) => {
+        return entry.sys.contentType.sys.id === contentTypeId
+      })
+      cache.put(contentTypeId, content)
     })
-    cache.put(contentTypeId, content)
-  })
+  } else {
+    throw new Error('No types array provided to initializeContent function.')
+  }
   cb()
 }
 
