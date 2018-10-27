@@ -16,7 +16,11 @@ app.set('view cache', true)
 let routes = routing(app)
 // contentful has loaded
 contentful(routes, (error) => {
-  console.log(error)
+  if (error.Error !== undefined) {
+    console.error(error.Error)
+  } else {
+    console.error(error)
+  }
   // run routes even when contentful connection fails
   routes()
 })
