@@ -1,10 +1,19 @@
-.o-blog-listing__right{
-  height: 100vh;
+.c-blog-Grid--posts{
   overflow-y: scroll;
   overflow-x: hidden;
+}
+.o-blog-listing__right{
+  height: 100vh;
   padding: var(--size-m);
   padding-bottom: 0;
   grid-column: 7 / span 5;
+}
+.c-blog-Grid--image{
+  position: fixed;
+  pointer-events: none;
+  @include mq('xs') {
+    display: none;
+  }
 }
 .o-blog-listing__about{
   position: relative;
