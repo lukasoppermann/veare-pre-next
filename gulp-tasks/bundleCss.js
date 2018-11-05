@@ -5,6 +5,7 @@ module.exports = function (bundles) {
   const concat = require('gulp-concat')
   const error = require('./errorHandling.js')()
   const sass = require('gulp-sass')
+  sass.compiler = require('node-sass')
 
   return function bundleCss () {
     let stream = require('merge-stream')()
