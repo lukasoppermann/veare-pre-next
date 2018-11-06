@@ -238,3 +238,33 @@
 .portfolio-item .grid [class*="span-"]{
 	margin-bottom: 30px;
 }
+.old-project-grid-text{
+  grid-column: column-1 / column-5;
+  @include mq('m') {
+    grid-column: columns;
+  }
+}
+.old-project-grid-image-main{
+  grid-column: column-1 / column-4;
+  @include mq('m') {
+    grid-column: columns;
+  }
+}
+.old-project-grid-image-side{
+  grid-column: column-5 / column-7;
+  @include mq('m') {
+    grid-column: columns;
+  }
+}
+.old-project-grid-image-side-start{
+  grid-column: column-1 / column-3;
+  @include mq('m') {
+    grid-column: columns;
+  }
+}
+.old-project-grid-image-centered{
+  grid-column: column-2 / column-6;
+  @include mq('m') {
+    grid-column: columns;
+  }
+}
