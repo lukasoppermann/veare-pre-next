@@ -5,6 +5,7 @@
   width: 100%;
   display: grid;
   grid-template-rows: auto;
+  grid-auto-rows: auto;
   grid-template-columns:
     [margin-left-start full-bleed-start]
       minmax(0, 1fr)
@@ -27,7 +28,8 @@
     [sidebar-right-end margin-right-start full-content-end]
       minmax(0, 1fr)
     [margin-right-end full-bleed-end];
-  grid-gap: 1.6278107961%; /* 12 gaps */
+  grid-column-gap: 1.6278107961%; /* 12 gaps */
+  grid-row-gap: var(--vs-m); /* 12 gaps */
   @include mq('s') {
     grid-column-gap: 2.7589162191%;
     grid-template-columns:

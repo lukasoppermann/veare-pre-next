@@ -250,6 +250,12 @@
     grid-column: columns;
   }
 }
+.old-project-grid-image-main-right{
+  grid-column: column-4 / column-7;
+  @include mq('m') {
+    grid-column: columns;
+  }
+}
 .old-project-grid-image-side{
   grid-column: column-5 / column-7;
   @include mq('m') {
