@@ -30,27 +30,19 @@ md.renderer.rules.image = (tokens, idx, opts, _, slf) => '<div class="o-figure__
 module.exports = (content, mods = {}) => {
   const defaults = {
     h1: {
-      class: 'o-headline--h2',
-      columns: '16s 13m 10l',
-      'start-column': '0s 4m 7l',
+      class: 'o-headline--h2 c-article__headline',
       fn: (token) => { token.tag = 'h2' }
     },
     h2: {
-      class: 'o-headline--h3',
-      columns: '16s 13m 10l',
-      'start-column': '0s 4m 7l',
+      class: 'o-headline--h3 c-article__headline',
       fn: (token) => { token.tag = 'h3' }
     },
     h3: {
-      class: 'o-headline--h4',
-      columns: '16s 13m 10l',
-      'start-column': '0s 4m 7l',
+      class: 'o-headline--h4 c-article__headline',
       fn: (token) => { token.tag = 'h4' }
     },
     h4: {
-      class: 'o-headline--h5',
-      columns: '16s 13m 10l',
-      'start-column': '0s 4m 7l',
+      class: 'o-headline--h5 c-article__headline',
       fn: (token) => { token.tag = 'h5' }
     },
     blockquote: {
@@ -59,23 +51,16 @@ module.exports = (content, mods = {}) => {
       'start-column': '0s 2m 3l'
     },
     p: {
-      class: 'Paragraph-old Paragraph--xl',
-      columns: '16s 13m 10l',
-      'start-column': '0s 4m 7l'
+      class: 'Paragraph-old Paragraph--xl c-article__paragraph'
     },
     ul: {
-      class: 'o-list type--xl',
-      columns: '16s 13m 10l',
-      'start-column': '0s 4m 7l'
+      class: 'o-list type--xl c-article__list'
     },
     ol: {
-      class: 'o-list o-list--ordered type--xl',
-      columns: '16s 13m 10l',
-      'start-column': '0s 4m 7l'
+      class: 'o-list o-list--ordered type--xl c-article__list'
     },
     figure: {
-      class: 'o-figure',
-      columns: '16'
+      class: 'o-figure c-article__figure'
     },
     figcaption: {
       class: 'o-figure__caption'
@@ -85,8 +70,6 @@ module.exports = (content, mods = {}) => {
     },
     code: {
       istype: 'fence',
-      columns: '16s 16m 14l',
-      'start-column': '0s 1m 4l',
       fn: (token) => {
         if (token.info === '') {
           token.info = 'bash'
