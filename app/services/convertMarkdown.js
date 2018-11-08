@@ -46,9 +46,7 @@ module.exports = (content, mods = {}) => {
       fn: (token) => { token.tag = 'h5' }
     },
     blockquote: {
-      class: 'o-blockquote',
-      columns: '16s 15m 14l',
-      'start-column': '0s 2m 3l'
+      class: 'o-blockquote c-article__blockquote'
     },
     p: {
       class: 'Paragraph-old Paragraph--xl c-article__paragraph'

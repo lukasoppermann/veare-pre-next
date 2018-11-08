@@ -10,21 +10,21 @@
     [margin-left-start full-bleed-start]
       minmax(0, 1fr)
     [margin-left-end sidebar-left-start full-content-start]
-      minmax(6.2088171641%, 74px)
+      minmax(6.2088171641%, 75px)
     [sidebar-left-middle]
-      minmax(6.2088171641%, 74px)
+      minmax(6.2088171641%, 75px)
     [sidebar-left-end columns-start column-1-start]
-      7.9472859701% [column-1-end column-2-start]
-      7.9472859701% [column-2-end column-3-start]
-      7.9472859701% [column-3-end column-4-start]
-      7.9472859701% [column-4-end column-5-start]
-      7.9472859701% [column-5-end column-6-start]
-      7.9472859701% [column-6-end column-7-start]
-      7.9472859701%
+      minmax(7.9472859701%, 95px) [column-1-end column-2-start]
+      minmax(7.9472859701%, 95px) [column-2-end column-3-start]
+      minmax(7.9472859701%, 95px) [column-3-end column-4-start]
+      minmax(7.9472859701%, 95px) [column-4-end column-5-start]
+      minmax(7.9472859701%, 95px) [column-5-end column-6-start]
+      minmax(7.9472859701%, 95px) [column-6-end column-7-start]
+      minmax(7.9472859701%, 95px)
     [column-7-end columns-end sidebar-right-start]
-      minmax(6.2088171641%, 74px)
+      minmax(6.2088171641%, 75px)
     [sidebar-right-middle]
-      minmax(6.2088171641%, 74px)
+      minmax(6.2088171641%, 75px)
     [sidebar-right-end margin-right-start full-content-end]
       minmax(0, 1fr)
     [margin-right-end full-bleed-end];
