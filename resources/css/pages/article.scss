@@ -207,6 +207,9 @@ pre[class*="language-"] + .o-article__comment{
 }
 .c-article__figure{
   grid-column: sidebar-left / columns;
+  @include mq('m') {
+    grid-column: columns;
+  }
 }
 .c-article__code{
   grid-column: columns;
