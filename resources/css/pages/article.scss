@@ -107,9 +107,9 @@
   line-height: 130%;
 }
 .o-article__comment{
-  grid-column: sidebar-left / column-1;
+  grid-column: sidebar-left / column 3;
   @include mq('m') {
-    grid-column: column-2 / column-7;
+    grid-column: column 2 / column 8;
   }
   @include mq('s') {
     grid-column: columns;
@@ -179,27 +179,27 @@ pre[class*="language-"] + .o-article__comment{
   }
 }
 .c-article__headline{
-  grid-column: column-3 / column-7;
+  grid-column: column 3 / column 8;
   @include mq('m') {
-    grid-column: column-2 / column-7;
+    grid-column: column 2 / column 8;
   }
   @include mq('s') {
     grid-column: columns;
   }
 }
 .c-article__paragraph{
-  grid-column: column-3 / column-7;
+  grid-column: column 3 / column 8;
   @include mq('m') {
-    grid-column: column-2 / column-7;
+    grid-column: column 2 / column 8;
   }
   @include mq('s') {
     grid-column: columns;
   }
 }
 .c-article__list{
-  grid-column: column-3 / column-7;
+  grid-column: column 3 / column 8;
   @include mq('m') {
-    grid-column: column-2 / column-7;
+    grid-column: column 2 / column 8;
   }
   @include mq('s') {
     grid-column: columns;

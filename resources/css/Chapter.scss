@@ -1,4 +1,4 @@
-.Chapter:not(.Footer-Section):not(.Section--Header){
+.Chapter:not(.Footer-Section):not(.Section--Header):not(.clients){
   padding-left: var(--hs-l);
   padding-right: var(--hs-l);
   @include mq('xs') {

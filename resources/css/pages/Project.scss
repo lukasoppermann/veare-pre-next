@@ -39,7 +39,7 @@
 }
 .Project-card__image-container{
   position: relative;
-  grid-column: sidebar-left-middle / span 7;
+  grid-column: sidebar-left 2 / span 7;
   grid-row-start: 1;
   z-index: 1;
   padding-top: 62.5%;
@@ -55,7 +55,7 @@
 }
 .Project-card:nth-child(2n) .Project-card__image-container{
   @include mq('s', 'min') {
-    grid-column-start: column-2;
+    grid-column-start: column 2;
   }
 }
 .Project-card__image{
@@ -77,7 +77,7 @@
 }
 .Project-card__text{
   z-index: 100;
-  grid-column: column-6 / span 3;
+  grid-column: column 6 / span 3;
   grid-row-start: 1;
   margin-top: 30%;
   transition: all .3s ease;
@@ -97,7 +97,7 @@
 }
 .Project-card:nth-child(2n) .Project-card__text{
   @include mq('s', 'min') {
-    grid-column-start: sidebar-left-middle;
+    grid-column-start: sidebar-left 2;
   }
 }
 .Project-card__link:hover .Project-card__text{
@@ -139,21 +139,21 @@
     PROJECT Page
 ==================================== */
 .Project__subtitle{
-  grid-column: column-1 / column-4;
+  grid-column: column 1 / column 5;
   @include mq('xs') {
     grid-column: columns;
   }
 }
 .Project__challenge{
-  grid-column: column-1 / column-4;
+  grid-column: column 1 / column 5;
   @include mq('xs') {
     grid-column: columns;
   }
 }
 .Project__toc{
-  grid-column: column-6 / column-7;
+  grid-column: column 6 / column 8;
   @include mq('l') {
-    grid-column: column-5 / column-7;
+    grid-column: column 5 / column 8;
   }
   @include mq('xs') {
     grid-column: columns;

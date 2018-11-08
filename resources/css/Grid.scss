@@ -7,41 +7,41 @@
   grid-template-rows: auto;
   grid-auto-rows: auto;
   grid-template-columns:
-    [margin-left-start full-bleed-start]
+    [margin-left full-bleed-start]
       minmax(0, 1fr)
-    [margin-left-end sidebar-left-start full-content-start]
+    [sidebar-left-start sidebar-left full-content-start]
       minmax(53px, 75px)
-    [sidebar-left-middle]
+    [sidebar-left]
       minmax(53px, 75px)
-    [sidebar-left-end columns-start column-1-start]
-      minmax(64px, 95px) [column-1-end column-2-start]
-      minmax(64px, 95px) [column-2-end column-3-start]
-      minmax(64px, 95px) [column-3-end column-4-start]
-      minmax(64px, 95px) [column-4-end column-5-start]
-      minmax(64px, 95px) [column-5-end column-6-start]
-      minmax(64px, 95px) [column-6-end column-7-start]
+    [sidebar-left-end sidebar-left columns-start column]
+      minmax(64px, 95px) [column]
+      minmax(64px, 95px) [column]
+      minmax(64px, 95px) [column]
+      minmax(64px, 95px) [column]
+      minmax(64px, 95px) [column]
+      minmax(64px, 95px) [column]
       minmax(64px, 95px)
-    [column-7-end columns-end sidebar-right-start]
+    [column columns-end sidebar-right sidebar-right-start]
       minmax(53px, 75px)
-    [sidebar-right-middle]
+    [sidebar-right]
       minmax(53px, 75px)
-    [sidebar-right-end margin-right-start full-content-end]
+    [sidebar-right sidebar-right-end full-content-end margin-right]
       minmax(0, 1fr)
-    [margin-right-end full-bleed-end];
+    [full-bleed-end];
   grid-column-gap: 1.6278107961%; /* 12 gaps */
   grid-row-gap: var(--vs-m); /* 12 gaps */
   @include mq('s') {
     grid-column-gap: 2.7589162191%;
     grid-template-columns:
-      [columns-start full-bleed-start column-1-start full-content-start]
-      11.9209289551% [column-1-end column-2-start]
-      11.9209289551% [column-2-end column-3-start]
-      11.9209289551% [column-3-end column-4-start]
-      11.9209289551% [column-4-end column-5-start]
-      11.9209289551% [column-5-end column-6-start]
-      11.9209289551% [column-6-end column-7-start]
+      [columns-start full-bleed-start full-content-start column]
+      11.9209289551% [column]
+      11.9209289551% [column]
+      11.9209289551% [column]
+      11.9209289551% [column]
+      11.9209289551% [column]
+      11.9209289551% [column]
       11.9209289551%
-      [column-7-end columns-end full-bleed-end full-content-end];
+      [column columns-end full-bleed-end full-content-end];
   }
 }
 .Grid--columns {
