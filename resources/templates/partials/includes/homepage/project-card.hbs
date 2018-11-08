@@ -1,11 +1,13 @@
-<div class="Grid Project-card">
-  <a class="Project-card__text" href="/work/{{project.slug}}">
-    <h4 class="Project-card__client">{{project.client}}</h4>
-    <h2 class="Project-card__title">{{project.subtitle}}</h2>
-  </a>
-  <a class="Project-card__image-container" href="/work/{{project.slug}}">
-  {{#if project.previewImage}}
-    <responsive-image class="Project-card__image" src="{{project.previewImage.fields.url}}" alt="{{project.previewImage.fields.title}}"></responsive-image>
-  {{/if}}
+<div class="Project-card">
+  <a class="Grid Project-card__link" href="/work/{{project.slug}}">
+    <div class="Project-card__text">
+      <h4 class="Project-card__client">{{project.client}}</h4>
+      <h2 class="Project-card__title">{{project.subtitle}}</h2>
+    </div>
+    <div class="Project-card__image-container">
+    {{#if project.previewImage}}
+      <responsive-image class="Project-card__image" src="{{project.previewImage.fields.url}}" alt="{{project.previewImage.fields.title}}"></responsive-image>
+    {{/if}}
+    </div>
   </a>
 </div>
