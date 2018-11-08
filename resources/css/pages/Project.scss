@@ -3,12 +3,6 @@
 ==================================== */
 .Projects{
   counter-reset: projects;
-  padding-left: var(--hs-l);
-  padding-right: var(--hs-l);
-  @include mq('s') {
-    padding-left: var(--hs-m);
-    padding-right: var(--hs-m);
-  }
 }
 .Projects__intro{
   margin-top: var(--vs-xg);
@@ -46,10 +40,10 @@
   overflow: hidden;
   background-color: var(--white-blue);
   @include mq('s') {
-    grid-column: 1 / span 5;
+    grid-column: column 1 / span 5;
   }
   @include mq('xs') {
-    grid-column: 1 / span 7;
+    grid-column: columns;
     grid-row-start: auto;
   }
 }
@@ -83,16 +77,16 @@
   transition: all .3s ease;
   text-decoration: none;
   @include mq('s') {
-    grid-column-start: 5;
+    grid-column-start: column 5;
     margin-top: 10%;
   }
   @include mq('xs') {
-    grid-column: 1 / span 5;
+    grid-column: column 1 / span 5;
     margin-bottom: calc(-1 * var(--vs-m));
     padding-left: var(--hs-l);
   }
   @include mq('xxs') {
-    grid-column: 1 / span 7;
+    grid-column: column 1 / span 7;
   }
 }
 .Project-card:nth-child(2n) .Project-card__text{
