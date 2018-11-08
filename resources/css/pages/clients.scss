@@ -4,7 +4,7 @@
   }
 }
 .clients .Section__title{
-  grid-column: 1 / -1;
+  grid-column: columns;
   text-align: center;
   font-size: var(--size-l);
   color: var(--blue);
@@ -19,28 +19,25 @@
 .clients .Section__media__image:nth-of-type(3n+1){
   grid-column: sidebar-left 2 / column 3;
   @include mq('s') {
-    grid-column: 1 / span 3;
+    grid-column: column 1 / span 3;
   }
   @include mq('xs') {
-    grid-column: span 7;
+    grid-column: columns;
   }
 }
 .clients .Section__media__image:nth-of-type(3n+2){
   grid-column: column 3 / column 6;
   @include mq('s') {
-    grid-column: 5 / span 3;
+    grid-column: column 5 / span 3;
   }
   @include mq('xs') {
-    grid-column: span 7;
+    grid-column: columns;
   }
 }
 .clients .Section__media__image:nth-of-type(3n){
   grid-column: column 6 / sidebar-right 2;
   @include mq('s') {
     display: none;
-  }
-  @include mq('xs') {
-    grid-column: span 7;
   }
 }
 

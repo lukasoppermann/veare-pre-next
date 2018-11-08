@@ -13,6 +13,9 @@
   background: var(--blue-muted);
   box-shadow: var(--shadow-floating);
   box-sizing: border-box;
+  @include mq('s') {
+    grid-column: full-bleed;
+  }
 }
 .c-about__column{
   z-index: 10;
@@ -30,8 +33,7 @@
     grid-column: sidebar-left 2 / span 4;
   }
   @include mq('s') {
-    grid-column-start: 2;
-    grid-column-end: span 5;
+    grid-column: column 2 / span 5;
   }
   @include mq('xs') {
     grid-column: columns;
