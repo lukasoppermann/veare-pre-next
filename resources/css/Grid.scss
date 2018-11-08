@@ -25,23 +25,27 @@
       minmax(53px, 75px)
     [sidebar-right]
       minmax(53px, 75px)
-    [sidebar-right sidebar-right-end full-content-end margin-right]
+    [sidebar-right sidebar-right-end full-content-end]
       minmax(0, 1fr)
-    [full-bleed-end];
+    [full-bleed-end margin-right];
   grid-column-gap: 1.6278107961%; /* 12 gaps */
   grid-row-gap: var(--vs-m); /* 12 gaps */
   @include mq('s') {
-    grid-column-gap: 2.7589162191%;
+    grid-column-gap: var(--size-m);
     grid-template-columns:
-      [columns-start full-bleed-start full-content-start column]
-      11.9209289551% [column]
-      11.9209289551% [column]
-      11.9209289551% [column]
-      11.9209289551% [column]
-      11.9209289551% [column]
-      11.9209289551% [column]
-      11.9209289551%
-      [column columns-end full-bleed-end full-content-end];
+      [margin-left full-bleed-start]
+      10px
+      [columns-start full-content-start column]
+      1fr [column]
+      1fr [column]
+      1fr [column]
+      1fr [column]
+      1fr [column]
+      1fr [column]
+      1fr
+      [column columns-end full-content-end]
+      10px
+      [full-bleed-end margin-right];
   }
 }
 .Grid--columns {
