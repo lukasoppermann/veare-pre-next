@@ -18,7 +18,6 @@
 .o-article__content{
   position: relative;
   width: 100%;
-  max-width: 112rem;
 }
 .o-article__title{
   font-family: var(--font-noto-serif);
@@ -211,4 +210,10 @@ pre[class*="language-"] + .o-article__comment{
 }
 .c-article__code{
   grid-column: columns;
+}
+.c-article__blockquote{
+  grid-column: columns;
+}
+.c-article__blockquote p {
+  line-height: 115%;
 }
