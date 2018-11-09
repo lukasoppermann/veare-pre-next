@@ -28,7 +28,7 @@
     [sidebar-right sidebar-right-end full-content-end]
       minmax(0, 1fr)
     [full-bleed-end margin-right];
-  grid-column-gap: 1.6278107961%; /* 12 gaps */
+  grid-column-gap: 20px; /* 12 gaps */
   grid-row-gap: var(--vs-m); /* 12 gaps */
   @include mq('s') {
     grid-column-gap: var(--size-m);
