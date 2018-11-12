@@ -1,8 +1,8 @@
 <div class="Section Grid {{conditional section.media.length 2 "Section__media__images--two" "Section__media__images--gallery"}} {{section.classes}}">
   {{> "includes/sections/sectionTitle"}}
-  
+
   {{#each section.media}}
-    <responsive-image class="Section__media__image" src="{{this.fields.url}}" alt="{{this.fields.title}}"></responsive-image>
+    <responsive-image class="Section__media__image" srcset="{{this.fields.url}} {{this.fields.resolution}}x" src="{{this.fields.url}}?w={{this.fields.defaultWidth}}&h={{this.fields.defaultHeight}}" alt="{{this.fields.title}}"></responsive-image>
   {{/each}}
   <div class="Section__media__description">
     {{#if section.descriptionTitle}}
