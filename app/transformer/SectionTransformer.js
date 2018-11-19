@@ -2,6 +2,7 @@
 
 const Transformer = require('./Transformer')
 const AssetTransformer = require('./AssetTransformer')
+const MediaResourceTransformer = require('./MediaResourceTransformer')
 const convertMarkdown = require('../services/convertMarkdown')
 let modifiers = {
   reset: true
@@ -39,7 +40,9 @@ class SectionTransformer extends Transformer {
       title: this.getContent(data, 'title'),
       titleType: this.getContent(data, 'titleType', 'hidden'),
       classes: this.getContent(data, 'classes'),
+      descriptionTitle: this.getContent(data, 'descriptionTitle'),
       description: this.getContent(data, 'description'),
+      mediaResources: new MediaResourceTransformer(this.getContent(data, 'mediaResources')).get(),
       media: new AssetTransformer(this.getContent(data, 'media'), this.getContent(data, 'title')).get()
     }
   }
