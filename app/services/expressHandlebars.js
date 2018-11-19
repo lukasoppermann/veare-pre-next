@@ -30,6 +30,9 @@ module.exports = expressHandlebars.create({
     eq: (...params) => {
       return params[0] === params[1]
     },
+    gt: (...params) => {
+      return params[0] > params[1]
+    },
     or: function () {
       return Array.prototype.slice.call(arguments, 0, -1).some(Boolean)
     },
