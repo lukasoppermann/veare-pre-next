@@ -1,4 +1,4 @@
-const deepAssign = require('deep-assign')
+const mergeOptions = require('merge-options')
 let modifiers
 const md = require('markdown-it')('commonmark', {
   html: true,
@@ -75,7 +75,8 @@ module.exports = (content, mods = {}) => {
       }
     }
   }
-  modifiers = deepAssign(mods.reset === true ? {} : defaults, mods)
+  modifiers = mergeOptions(mods.reset === true ? {} : defaults, mods)
+
   if (typeof content !== 'string') return content
   return md.render(content)
 }
