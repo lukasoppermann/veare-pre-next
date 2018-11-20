@@ -1,10 +1,31 @@
-<div class="Section Grid{{#each section.stylingOptions}} Section__media--{{this}}{{/each}} {{section.classes}}">
+<div class="Section Grid {{section.classes}} Section__media" mediacount="{{section.mediaResources.length}}">
   {{> "includes/sections/sectionTitle"}}
 
-  <responsive-image class="Section__media__image" srcset="{{section.media.0.fields.url}} {{section.media.0.fields.resolution}}x" src="{{section.media.0.fields.url}}?w={{section.media.0.fields.defaultWidth}}&h={{section.media.0.fields.defaultHeight}}" alt="{{section.media.0.fields.title}}"></responsive-image>
-
-  {{#if section.description}}
-    <p class="Section__media__description Annotation">{{section.description}}</p>
+  {{#each section.mediaResources}}
+    <lazy-picture class="Section__media__image" src="{{this.fields.image.fields.url}}" alt="{{this.fields.title}}">
+      {{#each this.fields.sources}}
+        <source media="{{this.fields.mediaQuery}}" srcset="{{this.fields.image.fields.url}}">
+      {{/each}}
+    </lazy-picture>
+  {{/each}}
+  {{#if (eq section.mediaResources.length 1) }}
+    {{#if section.description}}
+      <div class="Annotation">
+        {{#if section.descriptionTitle}}
+          <h5 class="Annotation__title">{{section.descriptionTitle}}</h5>
+        {{/if}}
+        <p class="Annotation__text">{{section.description}}</p>
+      </div>
+    {{/if}}
   {{/if}}
-  <div class="Section__media__bg"></div>
+  {{#if (gt section.mediaResources.length 1) }}
+    <div class="Section__media__description">
+      {{#if section.descriptionTitle}}
+        <h5 class="Section__media__description__title Section__subtitle">{{section.descriptionTitle}}</h5>
+      {{/if}}
+      {{#if section.description}}
+        <p class="Section__media__description__text">{{section.description}}</p>
+      {{/if}}
+    </div>
+  {{/if}}
 </div>
