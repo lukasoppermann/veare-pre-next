@@ -31,7 +31,7 @@
     "gulp-concat": "^2.6.0",
     "gulp-forever-monitor": "^1.0.3",
     "gulp-rename": "^1.4.0",
-    "gulp-rev": "^8.1.1",
+    "gulp-rev": "^9.0.0",
     "gulp-rev-delete-original": "^0.2.3",
     "gulp-rollup-each": "^2.2.0",
     "gulp-sass": "^4.0.2",
