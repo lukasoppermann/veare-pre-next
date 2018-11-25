@@ -41,21 +41,9 @@ class SectionTransformer extends Transformer {
       titleType: this.getContent(data, 'titleType', 'hidden'),
       classes: this.getContent(data, 'classes'),
       descriptionTitle: this.getContent(data, 'descriptionTitle'),
-      description: this.getContent(data, 'description'),
+      description: convertMarkdown(this.getContent(data, 'description'), modifiers),
       mediaResources: new MediaResourceTransformer(this.getContent(data, 'mediaResources')).get(),
       media: new AssetTransformer(this.getContent(data, 'media'), this.getContent(data, 'title')).get()
-    }
-  }
-
-  mediaCollectionSection (data) {
-    return {
-      type: data.sys.contentType.sys.id,
-      title: this.getContent(data, 'title'),
-      titleType: this.getContent(data, 'titleType', 'hidden'),
-      descriptionTitle: this.getContent(data, 'descriptionTitle'),
-      description: this.getContent(data, 'description'),
-      media: new AssetTransformer(this.getContent(data, 'media'), this.getContent(data, 'title')).get(),
-      classes: this.getContent(data, 'classes')
     }
   }
 
@@ -74,6 +62,18 @@ class SectionTransformer extends Transformer {
       type: data.sys.contentType.sys.id,
       title: this.getContent(data, 'title'),
       items: this.getContent(data, 'items')
+    }
+  }
+
+  sectionCollection (data) {
+    return {
+      type: data.sys.contentType.sys.id,
+      title: this.getContent(data, 'title'),
+      titleType: this.getContent(data, 'titleType', 'hidden'),
+      sections: this.getContent(data, 'sections').map(section => {
+        return this.transform(section)
+      }),
+      classes: this.getContent(data, 'classes')
     }
   }
 
