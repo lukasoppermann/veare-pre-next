@@ -83,7 +83,7 @@
     "js:move": "cp $npm_package_config_moveFilesJs public/js/",
     "js:compile": "rollup --config",
     "js:rev": "node-file-rev public/js/*.js --manifest=public/rev-manifest.json --root=public/",
-    "test":  "standard --parser typescript-eslint-parser --plugin typescript 'app.js' 'resources/js/*.ts' 'app/**/*.js' | snazzy",
+    "test": "standard --parser typescript-eslint-parser --plugin typescript 'app.js' 'resources/js/*.ts' 'app/**/*.js' | snazzy",
     "travis": "npm run test",
     "removeCompiled": "branch=$(git branch | grep \\* | cut -d ' ' -f2) && if test \"$branch\" != \"master\" ; then git reset HEAD public/ ; fi"
   },

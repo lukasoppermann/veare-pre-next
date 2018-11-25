@@ -1,12 +1,41 @@
-.c-skills{
-  --media-spacing: var(--size-xl);
-  padding-bottom: var(--size-g);
-}
-.c-skill{
+
+.skills__skill .Section__media{
+  order: 1;
+  display: flex;
+  align-self: center;
   width: 100%;
-  margin-top: var(--size-g);
+  height: auto;
+  grid-column: sidebar-left 2 / span 3;
+  @include mq('m') {
+    grid-column: sidebar-left 2 / span 3;
+  }
+  @include mq('s') {
+    grid-column: column 3 / span 3;
+  }
+  @include mq('xs') {
+    grid-column: columns;
+  }
 }
-.c-skill__content{
+.skills__skill:nth-child(2n) .Section__media{
+  order: 3;
+  grid-column: column 6 / span 3;
+  @include mq('s') {
+    order: 1;
+    grid-column: column 3 / span 3;
+  }
+  @include mq('xs') {
+    order: 1;
+    grid-column: columns;
+  }
+}
+.skills__skill .Section__media lazy-picture{
+  width: 100%;
+  height: auto;
+}
+.skills__skill .Section__text{
+  order: 2;
+  color: var(--black);
+  display: block;
   text-align: left;
   grid-column: column 3 / span 5;
   @include mq('m') {
@@ -19,50 +48,23 @@
     grid-column: columns;
   }
 }
-.c-skill__content.c-skill__content--two{
-  @include mq('l', 'min') {
-    grid-row: 1;
-    grid-column: column 1 / span 5;
-  }
-  @include mq('m', 'min') {
+.skills__skill:nth-child(2n) .Section__text{
+  grid-column: column / span 5;
+  @include mq('m') {
     grid-column: sidebar-left 2 / span 6;
   }
-}
-.c-skill__figure{
-  display: flex;
-  align-self: center;
-  width: 100%;
-  height: auto;
-  grid-column: column 1 / span 2;
-  @include mq('m') {
-    grid-column: sidebar-left 2 / span 3;
-  }
   @include mq('s') {
-    grid-column: column 3 / span 4;
+    grid-column: column 2 / span 5;
   }
   @include mq('xs') {
     grid-column: columns;
   }
 }
-.c-skill__figure.c-skill__figure--two{
-  grid-row: 1;
-  @include mq('l', 'min') {
-    order: 2;
-    grid-column: column 6 / span 2;
-  }
-  @include mq('m', 'min') {
-    order: 2;
-    grid-column: column 6 / span 3;
-  }
+.skills__skill .Section__text .Section__title{
+  font-size: var(--size-h);
 }
-.c-skill__figure svg{
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-@media screen and (max-width: 800px){
-  .c-skill{
-    margin-left: var(--size-xl);
-    margin-right: var(--size-xl);
-  }
+.skills__skill .Section__text .Section__intro{
+  @extend %font-intro-paragraph;
+  margin-top: calc(var(--baseline) * 1);
+  hyphens: none;
 }

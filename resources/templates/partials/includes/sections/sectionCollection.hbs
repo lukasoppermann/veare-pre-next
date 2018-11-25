@@ -1,1 +1,6 @@
-test
+<div class="Section Section__collection Grid {{section.classes}}">
+  {{> "includes/sections/sectionTitle"}}
+  {{#each section.sections}}
+    {{> (join "includes/sections/" fields.type) section=fields}}
+  {{/each}}
+</div>
