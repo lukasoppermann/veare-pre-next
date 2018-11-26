@@ -76,6 +76,13 @@ class SectionTransformer extends Transformer {
       items: this.getContent(data, 'items')
     }
   }
+
+  sectionCollection (data) {
+    return {
+      type: data.sys.contentType.sys.id,
+      title: this.getContent(data, 'title')
+    }
+  }
 }
 
 module.exports = SectionTransformer
