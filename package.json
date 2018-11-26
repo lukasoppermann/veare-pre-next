@@ -23,7 +23,9 @@
     "@types/express": "^4.16.0",
     "@types/node": "^10.12.9",
     "@webcomponents/webcomponentsjs": "^2.2.0",
+    "asset_hash": "^0.2.5",
     "del": "3.*",
+    "edit-json-file": "^1.2.0",
     "fetch-inject": "^2.0.2",
     "gulp": "next",
     "gulp-changed": "^3.2.0",
@@ -38,6 +40,7 @@
     "gulp-sourcemaps": "^2.6.4",
     "gulp-standard-bundle": "^0.2.6",
     "gulp-uglify": "^3.0.1",
+    "hasha": "^3.0.0",
     "merge-stream": "^1.0.1",
     "node-sass": "^4.10.0",
     "pre-commit": "^1.2.2",
@@ -46,10 +49,13 @@
     "rollup-plugin-typescript": "^1.0.0",
     "snazzy": "^8.0.0",
     "standard": "^12.0.1",
+    "supervisor": "^0.12.0",
     "sw-precache": "^5.2.1",
     "tslib": "^1.9.3",
+    "ttab": "^0.6.1",
     "typescript": "^3.1.6",
-    "uglify-es": "^3.3.9"
+    "uglify-es": "^3.3.9",
+    "yargs": "^12.0.5"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
@@ -75,7 +81,13 @@
     "svgo": "^1.1.1"
   },
   "scripts": {
-    "start": "npm run forever",
+    "start": "node_modules/.bin/ttab 'npm run supervisor' && node_modules/.bin/ttab 'gulp'",
+    "stop": "forever stopall",
+    "build:css": "node-sass --output-style compressed --source-map true --source-map-contents sass resources/css/app.scss > test.css",
+      "css:clean": "rm -r public/css/*",
+      "css:compile": "node-sass --output-style compressed resources/css/app.scss > public/css/app.css",
+      "css:rev": "node node-file-rev.js --input='public/css/app.css' --manifest='public/manifest-rev.json'",
+    "supervisor": "supervisor -w . --extensions node,js,hbs app.js",
     "forever": "forever start -v --watch --watchDirectory=/Users/lukasoppermann/code/veare app.js",
     "test": "standard 'app.js' 'resources/js/*.js' 'app/**/*.js' 'gulp-tasks/*.js' | snazzy",
     "travis": "npm run test",
