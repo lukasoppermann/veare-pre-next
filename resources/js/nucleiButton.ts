@@ -1,4 +1,4 @@
-/* global HTMLElement CustomEvent */
+/* global HTMLElement */
 'use strict'
 
 declare const ShadyCSS // eslint-disable-line
@@ -80,7 +80,7 @@ class nucleiButton extends HTMLElement { // eslint-disable-line no-unused-vars
     // This is specific to CE and required by the spec.
     super()
     // create shadowRoot
-    let shadowRoot = this.attachShadow({mode: 'open'})
+    let shadowRoot = this.attachShadow({ mode: 'open' })
     // check if polyfill is used
     if (typeof ShadyCSS !== 'undefined') {
       ShadyCSS.prepareTemplate(template, 'nuclei-button') // eslint-disable-line no-undef
