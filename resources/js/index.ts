@@ -1,4 +1,4 @@
-/* global fetchInject */
+/* global fetchInject*/
 import {default as webComponentsSupported} from './modules/wcSupported'
 // get correct file name
 const revisionedFiles = fetch('/revisionedFiles').then(response => {
