@@ -44,6 +44,7 @@
 .c-intro-main-subline{
   margin-top: 2rem;
   font-family: var(--font-noto-serif);
+  font-weight: 400;
   font-style: italic;
   font-size: var(--size-g);
   line-height: 100%;
@@ -73,6 +74,7 @@
 .c-intro--slogan{
   width: 24rem;
   font-family: var(--sans-serif);
+  font-weight: 400;
   color: var(--black);
 }
 .c-intro--services-container{
@@ -85,6 +87,7 @@
   width: 36rem;
   font-family: var(--font-noto-serif);
   font-style: italic;
+  font-weight: 400;
   color: var(--black);
 }
 .c-intro--services-description{
