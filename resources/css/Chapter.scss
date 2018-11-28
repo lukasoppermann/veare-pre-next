@@ -1,14 +1,14 @@
-.Chapter:first-child{
+.Chapter:first-child {
   counter-reset: chapter-side;
 }
-.Chapter__title-Grid{
+.Chapter__title-Grid {
   @include baseline(12);
-  grid-template-rows: 0px !important;
+  grid-template-rows: 0 !important;
   @include mq('s') {
     grid-template-rows: auto !important;
   }
 }
-.Chapter--side-title .Chapter__title-container{
+.Chapter--side-title .Chapter__title-container {
   display: flex;
   height: calc(var(--baseline) * 2);
   overflow: visible;
@@ -24,7 +24,7 @@
     @include baseline(2,"margin-bottom");
   }
 }
-.Chapter--side-title .Chapter__title{
+.Chapter--side-title .Chapter__title {
   @extend %font-subtitle-uppercase-small;
   display: inline-block;
   flex: 0 0 auto;
@@ -41,7 +41,7 @@
   transform: translateY(-1px);
   background-color: var(--black);
 }
-.Chapter--side-title .Chapter__title-container::after{
+.Chapter--side-title .Chapter__title-container::after {
   @extend %font-subtitle-uppercase-small;
   order: 3;
   padding-left: var(--vs-s);
