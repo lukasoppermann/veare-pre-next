@@ -1,7 +1,7 @@
 /* global HTMLElement CustomEvent */
 'use strict'
 
-declare const ShadyCSS // eslint-disable-line no-unused-vars
+declare const ShadyCSS // eslint-disable-line
 let template = document.createElement('template')
 template.innerHTML = `<style>
   :host{
