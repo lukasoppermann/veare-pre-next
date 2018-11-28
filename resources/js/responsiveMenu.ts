@@ -259,7 +259,7 @@ class ResponsiveMenu extends HTMLElement { // eslint-disable-line no-unused-vars
     // This is specific to CE and required by the spec.
     super()
     // create shadowRoot
-    let shadowRoot = this.attachShadow({mode: 'open', delegatesFocus: false})
+    let shadowRoot = this.attachShadow({ mode: 'open', delegatesFocus: false })
     // check if polyfill is used
     if (typeof ShadyCSS !== 'undefined') {
       ShadyCSS.prepareTemplate(template, 'responsive-menu') // eslint-disable-line no-undef
@@ -332,7 +332,7 @@ class ResponsiveMenu extends HTMLElement { // eslint-disable-line no-unused-vars
     if (window.pageYOffset > this.thresholdy) {
       return this.removeAttribute('extended')
     }
-    if(document.documentElement.clientWidth < this.collapsesize) {
+    if (document.documentElement.clientWidth < this.collapsesize) {
       return this.removeAttribute('extended')
     }
     this.setAttribute('extended', '')
@@ -403,8 +403,8 @@ class ResponsiveMenu extends HTMLElement { // eslint-disable-line no-unused-vars
    */
   toggleOverlay () {
     // show overlay
-    if (! this.hasAttribute('overlayVisible')) {
-      this.dispatchEvent(new CustomEvent('toggleOverlay', { detail: { visible: true } } ))
+    if (!this.hasAttribute('overlayVisible')) {
+      this.dispatchEvent(new CustomEvent('toggleOverlay', { detail: { visible: true } }))
       document.body.style.overflow = 'hidden'
       if (this.animateoverlaybg === true) {
         this.shadowRoot.querySelector('#background').classList.add('is-active')
@@ -413,7 +413,7 @@ class ResponsiveMenu extends HTMLElement { // eslint-disable-line no-unused-vars
       return this.setAttribute('overlayVisible', '')
     }
     // hide overlay
-    this.dispatchEvent(new CustomEvent('toggleOverlay', { detail: { visible: false } } ))
+    this.dispatchEvent(new CustomEvent('toggleOverlay', { detail: { visible: false } }))
     if (this.animateoverlaybg === true) {
       this.shadowRoot.querySelector('#background').classList.remove('is-active')
     }
