@@ -1,9 +1,8 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "lib": ["es2016", "dom"],
+    "lib": ["es6", "es2016", "dom"],
     "module": "es6",
-    "allowJs": true,
     "isolatedModules": false,
     "declaration": true,
     "noUnusedLocals": true,
