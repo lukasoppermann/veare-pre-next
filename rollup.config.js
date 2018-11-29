@@ -37,7 +37,7 @@ let configs = glob.sync('resources/js/*.ts').map(path => {
     output: {
       format: 'iife',
       file: path.replace('resources', 'public').split('.')[0] + '.js',
-      sourcemap: true
+      sourcemap: false
     } }, plugins)
 })
 
