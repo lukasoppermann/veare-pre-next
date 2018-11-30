@@ -68,6 +68,10 @@
   "config": {
     "moveFilesJs": "node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce.js node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce.js.map node_modules/fetch-inject/dist/fetch-inject.min.js"
   },
+  "standard": {
+    "parser": "typescript-eslint-parser",
+    "plugins": [ "typescript" ]
+  },
   "scripts": {
     "start": "node_modules/.bin/ttab -t 'Node Server' 'npm run supervisor' && node_modules/.bin/ttab -t 'Building assets' 'npm run build'",
     "supervisor": "supervisor -w . --extensions node,js,hbs app.js",
@@ -83,7 +87,7 @@
     "js:move": "cp $npm_package_config_moveFilesJs public/js/",
     "js:compile": "rollup --config",
     "js:rev": "node-file-rev public/js/*.js --manifest=public/rev-manifest.json --root=public/",
-    "test": "standard --parser typescript-eslint-parser --plugin typescript 'app.js' 'resources/js/*.ts' 'app/**/*.js' | snazzy",
+    "test": "standard 'app.js' 'resources/js/*.ts' 'app/**/*.js' | snazzy",
     "travis": "npm run test",
     "removeCompiled": "branch=$(git branch | grep \\* | cut -d ' ' -f2) && if test \"$branch\" != \"master\" ; then git reset HEAD public/ ; fi"
   },
