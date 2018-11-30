@@ -81,9 +81,7 @@
     margin-top: 10%;
   }
   @include mq('xs') {
-    grid-column: column 1 / span 5;
-    margin-bottom: calc(-1 * var(--vs-m));
-    padding-left: var(--hs-l);
+    grid-column: columns;
   }
   @include mq('xxs') {
     grid-column: column 1 / span 7;

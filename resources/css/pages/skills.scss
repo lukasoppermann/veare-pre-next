@@ -46,6 +46,7 @@
   }
   @include mq('xs') {
     grid-column: columns;
+    margin-top: 0 !important;
   }
 }
 .skills__skill:nth-child(2n) .Section__text{
@@ -67,4 +68,7 @@
   @extend %font-intro-paragraph;
   margin-top: calc(var(--baseline) * 1);
   hyphens: none;
+}
+.skills__skill .Section__text .Section__copy{
+  margin-top: calc(var(--baseline) * 3);
 }
