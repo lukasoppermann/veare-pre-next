@@ -14,6 +14,12 @@
   grid-column: full-content;
   grid-row: 1;
   z-index: 1;
+  @include mq('s') {
+    grid-row: 1 / span 2;
+  }
+  @include mq('xs') {
+    grid-column: full-bleed;
+  }
 }
 .about__column{
   display: flex;
@@ -26,10 +32,28 @@
   padding: var(--size-h) 0 var(--size-xh);
   box-sizing: border-box;
   overflow: hidden;
+  @include mq('l') {
+    grid-column: sidebar-left 2 / span 4;
+  }
+  @include mq('s') {
+    grid-column: columns;
+  }
+}
+.about__column:nth-child(2){
+  margin-top: 0;
+  grid-column: column 5 / span 3;
+  @include mq('l') {
+    grid-column: column 5 / span 4;
+  }
+  @include mq('s') {
+    padding-top: 0;
+    grid-row: 2;
+    grid-column: columns;
+  }
 }
 .about .Chapter__Grid::before{
   content: "+";
-  color: rgb(255,255,255);
+  color: rgb(255, 255, 255);
   z-index: 10;
   grid-row: 1;
   grid-column: column 4;
@@ -43,9 +67,11 @@
     display: none;
   }
 }
-.about__column:nth-child(2){
-  margin-top: 0;
-  grid-column: column 5 / span 3;
+.about__column .Section__media{
+  align-self: center;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
 }
 .about__column .Section__media__image{
   background-color: rgba(0, 0, 0, 0.1);
@@ -61,33 +87,33 @@
   justify-content: center;
   z-index: 1;
 }
-.about__column .Annotation{
+.about__column .Section__text{
+  display: block !important;
   z-index: 10;
+  margin-top: 0 !important;
 }
-.about__column .Annotation::before{
-  display: none;
-}
-.about__column .Annotation__title{
+.about__column .Section__text .Section__title{
   @extend %font-headline--h2;
   color: rgb(255, 255, 255);
-	position: relative;
-	text-align: center;
-	width: 100%;
-	margin-bottom: var(--size-m);
+  display: block;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  margin-bottom: var(--size-m);
   margin-top: calc(-1 * var(--size-xxl));
-	box-sizing: border-box;
+  box-sizing: border-box;
   font-family: var(--font-montserrat);
   font-weight: var(--font-montserrat-bold);
   font-size: var(--size-h);
 }
-.about__column .Annotation__text{
+.about__column .Section__text .Section__copy{
   color: rgb(255, 255, 255);
-	text-align: left;
-	vertical-align: top;
+  text-align: left;
+  vertical-align: top;
   font-size: var(--size-l);
   line-height: 135%;
-	width: 100%;
-	max-width: 450px;
-	box-sizing: border-box;
+  width: 100%;
+  max-width: 450px;
+  box-sizing: border-box;
   margin: 0 auto;
 }
