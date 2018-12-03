@@ -4,6 +4,7 @@ import webComponentsSupported from './modules/wcSupported'
 const revisionedFiles = fetch('/revisionedFiles').then(response => {
   return response.json()
 })
+
 const baseUrl = `${window.location.protocol}//${window.location.host}`
 // get fetchInject class
 const scriptPromise = new Promise((resolve, reject) => {
@@ -12,7 +13,7 @@ const scriptPromise = new Promise((resolve, reject) => {
   script.onload = resolve
   script.onerror = reject
   script.async = true
-  script.src = baseUrl + '/js/fetch-inject.min.js?v=1.9.1'
+  script.src = baseUrl + '/js/fetch-inject.min.js?v=$Fetch_Inject_Version'
 })
 
 Promise.all([revisionedFiles, scriptPromise])
