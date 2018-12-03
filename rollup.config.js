@@ -1,10 +1,15 @@
 import uglify from 'rollup-plugin-uglify-es'
+import replace from 'rollup-plugin-replace'
 const typescript = require('rollup-plugin-typescript')
 const nodeResolve = require('rollup-plugin-node-resolve')
 const glob = require('glob')
 
 let plugins = {
   plugins: [
+    replace({
+      '$Fetch_Inject_Version': process.env.FETCHINJECTVERSION,
+      delimiters: ['', '']
+    }),
     typescript({
       target: 'ES6',
       typescript: require('typescript'), // use local version
