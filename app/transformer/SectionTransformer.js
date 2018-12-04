@@ -42,8 +42,8 @@ class SectionTransformer extends Transformer {
       classes: this.getContent(data, 'classes'),
       descriptionTitle: this.getContent(data, 'descriptionTitle'),
       description: convertMarkdown(this.getContent(data, 'description'), modifiers),
-      mediaResources: new MediaResourceTransformer(this.getContent(data, 'mediaResources')).get(),
-      media: new AssetTransformer(this.getContent(data, 'media'), this.getContent(data, 'title')).get()
+      mediaResources: new MediaResourceTransformer(this.getContent(data, 'mediaResources')).all(),
+      media: new AssetTransformer(this.getContent(data, 'media'), this.getContent(data, 'title')).first()
     }
   }
 

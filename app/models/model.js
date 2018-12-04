@@ -12,7 +12,7 @@ class Model {
   }
 
   content () {
-    return new this.Transformer(cache.get(this.contentType)).get()
+    return new this.Transformer(cache.get(this.contentType)).all()
   }
 
   all () {

@@ -23,7 +23,7 @@ class MediaResourceTransformer extends Transformer {
       type: data.sys.contentType.sys.id,
       title: this.getContent(data, 'title'),
       image: new AssetTransformer(this.getContent(data, 'image')).first(),
-      sources: new PictureSourceTransformer(this.getContent(data, 'pictureSources')).get()
+      sources: new PictureSourceTransformer(this.getContent(data, 'pictureSources')).all()
     }
   }
 }

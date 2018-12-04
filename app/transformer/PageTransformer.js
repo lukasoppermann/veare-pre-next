@@ -15,7 +15,7 @@ class PageTransformer extends Transformer {
         title: this.getContent(data, 'title'),
         header: new HeaderTransformer(this.getContent(data, 'header')).first(),
         isHomepage: this.getContent(data, 'homepage', false),
-        chapters: new ChapterTransformer(this.getContent(data, 'chapters')).get()
+        chapters: new ChapterTransformer(this.getContent(data, 'chapters')).all()
       }
     }
   }

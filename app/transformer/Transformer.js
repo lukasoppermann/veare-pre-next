@@ -6,7 +6,7 @@ class Transformer {
     content = this.transformData(data)
   }
 
-  get () {
+  all () {
     return content
   }
 

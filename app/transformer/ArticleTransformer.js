@@ -9,6 +9,12 @@ const readingTime = require('reading-time')
 
 class ArticleTransformer extends Transformer {
   transform (data) {
+    let chapters = new ChapterTransformer(this.getContent(data, 'chapters')).all()
+    // calc reading time
+    let readTime = Math.ceil(readingTime(chapters
+      .reduce((text, current) => `${text} ${current.fields.plainText}`) || ''
+    ).time / 60000)
+    // return
     return {
       id: data.sys.id,
       contentType: data.sys.contentType.sys.id,
@@ -21,8 +27,8 @@ class ArticleTransformer extends Transformer {
         rawdate: this.getContent(data, 'date'),
         date: this.formatDate(this.getContent(data, 'date')),
         preview: this.getContent(data, 'preview'),
-        chapters: new ChapterTransformer(this.getContent(data, 'chapters')),
-        readingTime: 'Needs to be programmed' /* Math.ceil(readingTime(this.getContent(data, 'content') || '').time / 60000) */,
+        chapters: chapters,
+        readingTime: readTime,
         category: new Category().find(this.getContent(data, 'category').sys.id),
         author: new Author().find(this.getContent(data, 'author').sys.id)
       }

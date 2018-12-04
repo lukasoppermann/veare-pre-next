@@ -23,7 +23,7 @@ class ProjectTransformer extends Transformer {
         publicationYear: this.getContent(data, 'publicationYear'),
         industry: this.getContent(data, 'industry'),
         client: this.getContent(data, 'client'),
-        chapters: new ChapterTransformer(this.getContent(data, 'chapters')).get()
+        chapters: new ChapterTransformer(this.getContent(data, 'chapters')).all()
         // related:
         // tags:
       }
