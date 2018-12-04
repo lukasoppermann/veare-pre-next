@@ -15,7 +15,6 @@ let modifiers = {
 
 class PostTransformer extends Transformer {
   transform (data) {
-    console.log()
     return {
       id: data.sys.id,
       contentType: data.sys.contentType.sys.id,

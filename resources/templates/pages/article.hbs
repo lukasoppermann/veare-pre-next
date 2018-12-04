@@ -28,7 +28,10 @@
     <div class="o-article__author">
       — Published by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><a class="author" href="https://twitter.com/lukasoppermann" itemprop="url" title="about {{post.fields.author.fields.name}}" rel="author"><span itemprop="name">{{post.fields.author.fields.name}}</span></a></span> / <span itemprop="publisher" itemtype="http://schema.org/Organization" itemscope><a itemprop="url" href="http://vea.re"><span itemprop="name">vea.re</span></a></span> —
     </div>
-    HUHU
+    {{!-- Load Chapter --}}
+    {{#each post.fields.chapters}}
+      {{> "includes/chapter" chapter=fields classes="Chapter--side-title"}}
+    {{/each}}
   </article>
   <script type="text/javascript" src="/{{staticFiles.[js/blog.js]}}"></script>
 {{/inline}}
