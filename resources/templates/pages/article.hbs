@@ -12,25 +12,34 @@
   {{/if}}
 {{/inline}}
 {{#*inline "body"}}
-  <article class="o-article" itemprop="mainEntityOfPage" itemid="/blog/{{post.fields.slug}}" itemscope itemtype="http://schema.org/BlogPosting">
+  <article class="Article Grid" itemprop="mainEntityOfPage" itemid="/blog/{{post.fields.slug}}" itemscope itemtype="http://schema.org/BlogPosting">
     <link itemprop="mainEntityOfPage" href="/blog/{{post.fields.slug}}" />
     {{#if post.fields.banner}}
-      <div class="o-article__banner">
+      <div class="Article__banner">
         <img src="{{post.fields.banner.fields.url}}" alt="{{post.fields.banner.fields.title}}" />
       </div>
     {{/if}}
-    <div class="o-article__publication-details">
-        <time class="o-article__time" itemprop="datePublished" datetime="{{fields.rawdate}}">{{post.fields.date}}</time> •&nbsp;
-        <time class="o-article__read-time" datetime="{{fields.readingTime}}m">{{post.fields.readingTime}} min read</time>
+    <div class="Article__publication-details">
+        <time class="Article__time" itemprop="datePublished" datetime="{{fields.rawdate}}">{{post.fields.date}}</time> •&nbsp;
+        <time class="Article__read-time" datetime="{{fields.readingTime}}m">{{post.fields.readingTime}} min read</time>
     </div>
-    <h1 class="o-article__title" itemprop="headline">{{post.fields.title}}</h1>
+    <h1 class="Article__title" itemprop="headline">{{post.fields.title}}</h1>
 
-    <div class="o-article__author">
-      — Published by <span itemprop="author" itemscope itemtype="http://schema.org/Person"><a class="author" href="https://twitter.com/lukasoppermann" itemprop="url" title="about {{post.fields.author.fields.name}}" rel="author"><span itemprop="name">{{post.fields.author.fields.name}}</span></a></span> / <span itemprop="publisher" itemtype="http://schema.org/Organization" itemscope><a itemprop="url" href="http://vea.re"><span itemprop="name">vea.re</span></a></span> —
+    <div class="Article__author">
+      — Published by <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <a class="author" href="https://twitter.com/lukasoppermann" itemprop="url" title="about {{post.fields.author.fields.name}}" rel="author">
+          <span itemprop="name">{{post.fields.author.fields.name}}</span>
+        </a></span>
+         /
+        <span itemprop="publisher" itemtype="http://schema.org/Organization" itemscope>
+          <a itemprop="url" href="http://vea.re">
+            <span itemprop="name">vea.re</span>
+          </a>
+        </span> —
     </div>
     {{!-- Load Chapter --}}
     {{#each post.fields.chapters}}
-      {{> "includes/chapter" chapter=fields classes="Chapter--side-title"}}
+      {{> "includes/chapter" chapter=fields}}
     {{/each}}
   </article>
   <script type="text/javascript" src="/{{staticFiles.[js/blog.js]}}"></script>
