@@ -11,9 +11,6 @@
   {{#if (eq section.mediaResources.length 1) }}
     {{#if section.description}}
       <div class="Annotation">
-        {{#if section.descriptionTitle}}
-          <h5 class="Annotation__title">{{section.descriptionTitle}}</h5>
-        {{/if}}
         <div class="Annotation__text">{{{section.description}}}</div>
       </div>
     {{/if}}
@@ -24,7 +21,7 @@
         <h5 class="Section__media__description__title Section__subtitle">{{section.descriptionTitle}}</h5>
       {{/if}}
       {{#if section.description}}
-        <p class="Section__media__description__text">{{section.description}}</p>
+        <div class="Section__media__description__text">{{{section.description}}}</div>
       {{/if}}
     </div>
   {{/if}}

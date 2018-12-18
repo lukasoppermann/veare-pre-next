@@ -14,13 +14,13 @@
 .Section__title--headline{
   @extend %font-headline--h2;
 }
-.Section__subtitle{
+.Section__media__description h5, .Section__subtitle{
   @extend %font-subtitle-small;
   color: var(--black-40);
   padding-left: calc(var(--vs-xl) + var(--size-xs));
   position: relative;
 }
-.Section__subtitle::before {
+.Section__media__description h5::before, .Section__subtitle::before {
   @include pseudo;
   height: 2px;
   width: var(--vs-xl);
@@ -49,7 +49,7 @@
 .Section .Separator{
   grid-column: columns / span 7;
 }
-.Section__text{
+.Section__copy{
   hyphens: auto;
   overflow-wrap: break-word;
   @extend %font-paragraph-sans;
