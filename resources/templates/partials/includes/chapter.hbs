@@ -1,10 +1,8 @@
 <page-section centered class="Chapter {{classes}} {{chapter.classes}}" name="{{chapter.slug}}">
-  <div class="Grid Chapter__Grid">
-    {{#if (eq chapter.titleType "subtitle")}}
-      <div class="Chapter__title-container"><h5 class="Chapter__title">{{chapter.title}}</h5></div>
-    {{/if}}
-    {{#each chapter.sections}}
-      {{> (join "includes/sections/" fields.type) section=fields}}
-    {{/each}}
-  </div>
+  {{#if (eq chapter.titleType "subtitle")}}
+    <div class="Chapter__title-container"><h5 class="Chapter__title">{{chapter.title}}</h5></div>
+  {{/if}}
+  {{#each chapter.sections}}
+    {{> (join "includes/sections/" fields.type) section=fields}}
+  {{/each}}
 </page-section>
