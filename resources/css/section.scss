@@ -29,7 +29,7 @@
   transform: translateY(-1px);
   background-color: var(--black-30);
 }
-.Section__intro{
+.SectionType__textSection.SectionType__textSection--introduction{
   hyphens: auto;
   overflow-wrap: break-word;
   @extend %font-paragraph-sans-big;
@@ -40,16 +40,16 @@
   @include baseline(3);
   grid-column: columns / span 7;
 }
-.Section__intro:first-child{
+.SectionType__textSection.SectionType__textSection--introduction:first-child{
   margin-top: 0;
 }
-.Section__intro p:not(:first-child){
+.SectionType__textSection.SectionType__textSection--introduction p:not(:first-child){
   @include baseline(2);
 }
 .Section .Separator{
   grid-column: columns / span 7;
 }
-.SectionType__textSection.SectionType__textSection--text{
+.Section__text{
   hyphens: auto;
   overflow-wrap: break-word;
   @extend %font-paragraph-sans;
@@ -64,17 +64,17 @@
     grid-column: columns;
   }
 }
-h2.SectionType__textSection--text{
+.SectionType__textSection--text h2{
   @extend %font-headline--h2;
   @include baseline(3);
   color: var(--black);
 }
-h3.SectionType__textSection--text{
+.SectionType__textSection--text h3{
   @extend %font-headline--h3;
   @include baseline(3);
   color: var(--black);
 }
-h4.SectionType__textSection--text{
+.SectionType__textSection--text h4{
   @extend %font-headline--h4;
   @include baseline(3);
   color: var(--black);

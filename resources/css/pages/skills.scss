@@ -32,7 +32,7 @@
   width: 100%;
   height: auto;
 }
-.skills__skill .Section__text{
+.skills__skill .SectionType__textSection{
   order: 2;
   color: var(--black);
   display: block;
@@ -49,7 +49,7 @@
     margin-top: 0 !important;
   }
 }
-.skills__skill:nth-child(2n) .Section__text{
+.skills__skill:nth-child(2n) .SectionType__textSection{
   grid-column: column / span 5;
   @include mq('m') {
     grid-column: sidebar-left 2 / span 6;
@@ -61,14 +61,12 @@
     grid-column: columns;
   }
 }
-.skills__skill .Section__text .Section__title{
+.skills__skill .Section__title{
   font-size: var(--size-h);
 }
-.skills__skill .Section__text .Section__intro{
+.skills__skill .SectionType__textSection blockquote{
   @extend %font-intro-paragraph;
   margin-top: calc(var(--baseline) * 1);
+  margin-bottom: calc(var(--baseline) * 3);
   hyphens: none;
-}
-.skills__skill .Section__text .Section__copy{
-  margin-top: calc(var(--baseline) * 3);
 }
