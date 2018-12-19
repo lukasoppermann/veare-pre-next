@@ -1,4 +1,4 @@
-.Annotation{
+.Annotation, .SectionType__textSection--annotation{
   @extend %font-annotation;
   position: relative;
   padding-top: calc(var(--baseline) * 2);
@@ -10,19 +10,19 @@
     font-style: italic;
   }
 }
-.Annotation p:not(:first-child){
+.Annotation p:not(:first-child), .SectionType__textSection--annotation p:not(:first-child){
   margin-top: calc(var(--baseline) * 2);
 }
 .Annotation--align-bottom{
   align-self: end;
 }
-.Grid > .Annotation {
+.Grid > .Annotation, .Grid > .SectionType__textSection--annotation {
   grid-column: sidebar-right;
   @include mq('s') {
     grid-column: columns;
   }
 }
-.Annotation:before{
+.Annotation:before, .SectionType__textSection--annotation:before{
   @include pseudo;
   top: 0;
   height: 2px;
