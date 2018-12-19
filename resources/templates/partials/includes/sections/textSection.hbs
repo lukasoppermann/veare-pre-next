@@ -1,8 +1,10 @@
-{{> "includes/sections/sectionTitle" classes=(join 'SectionType__' section.type '--' section.textType)}}
-{{#if section.intro}}
-  <div class="Section__text Section__intro">{{{section.intro}}}</div>
-{{/if}}
-{{> "includes/sections/sectionSeparator"}}
-{{#if section.text}}
-  <div class="{{join 'SectionType__' section.type}} {{join 'SectionType__' section.type '--' section.textType}}">{{{section.text}}}</div>
-{{/if}}
+<div class="{{join 'SectionType__' section.type}} {{join 'SectionType__' section.type '--' section.textType}}">
+  {{> "includes/sections/sectionTitle"}}
+  {{#if section.intro}}
+    <div class="Section__text Section__intro">{{{section.intro}}}</div>
+  {{/if}}
+  {{> "includes/sections/sectionSeparator"}}
+  {{#if section.text}}
+    <div class="Section__text">{{{section.text}}}</div>
+  {{/if}}
+</div>

@@ -13,7 +13,7 @@ class SectionTransformer extends Transformer {
       items: [data]
     }
     // overwrite if collection already
-    if (data.sys.contentType.sys.id === 'sectionCollection') {
+    if (data.sys.contentType.sys.id === 'section') {
       sections = {
         items: this.getContent(data, 'sections'),
         classes: this.getContent(data, 'classes')
