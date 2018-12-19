@@ -1,7 +1,8 @@
 const client = require('./client')
 const cache = require('./cacheService')()
+const errorLogFn = require('./errorLog')
 
-const contentful = (cb, errorFn = console.error) => {
+const contentful = (cb, errorLog = errorLogFn) => {
   // get all entries
   let entriesPromise = client.getEntries({
     limit: 1000,
@@ -18,7 +19,7 @@ const contentful = (cb, errorFn = console.error) => {
   Promise.all([entriesPromise, contentTypesPromise]).then((values) => {
     let [entries, contentTypes] = values
     initializeContent(contentTypes, entries, cb)
-  }).catch(errorFn)
+  }).catch(errorLog)
 }
 
 const initializeContent = (types, entries, cb) => {

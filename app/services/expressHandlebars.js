@@ -19,6 +19,9 @@ module.exports = expressHandlebars.create({
   layoutsDir: './resources/templates/partials/layouts',
   partialsDir: './resources/templates/partials',
   helpers: {
+    log: (value) => {
+      console.log(value)
+    },
     url_safe: function (url) {
       url = url.replace(/[`:]/g, '').replace(/[\W_]+/g, '-')
       return escape(url)
