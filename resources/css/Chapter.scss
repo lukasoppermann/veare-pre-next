@@ -1,6 +1,13 @@
 .Chapter:first-child{
   counter-reset: chapter-side;
 }
+.Chapter__title-Grid{
+  @include baseline(12);
+  grid-template-rows: 0px !important;
+  @include mq('s') {
+    grid-template-rows: auto !important;
+  }
+}
 .Chapter--side-title .Chapter__title-container{
   display: flex;
   height: calc(var(--baseline) * 2);

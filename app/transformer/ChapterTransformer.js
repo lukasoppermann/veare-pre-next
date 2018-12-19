@@ -13,13 +13,10 @@ class ChapterTransformer extends Transformer {
     // get plain text for readTime
     let plainText = new SectionTransformer(this.getContent(data, 'sections')).all()
       .flatMap(section => {
-        if (section.fields.type === 'sectionCollection') {
-          return section.fields.sections
-        }
-        return section
+        return section.items
       })
       .map(section => {
-        return striptags(`${section.fields.title || ''} ${section.fields.text || ''} ${section.fields.annotation || ''} ${section.fields.intro || ''}`)
+        return striptags(`${section.fields.title || ''} ${section.fields.text || ''}`)
       })
       .reduce((accumulator, current) => accumulator + current)
 

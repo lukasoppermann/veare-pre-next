@@ -49,7 +49,7 @@
 .Section .Separator{
   grid-column: columns / span 7;
 }
-.Section__copy{
+.SectionType__textSection.SectionType__textSection--text{
   hyphens: auto;
   overflow-wrap: break-word;
   @extend %font-paragraph-sans;
@@ -64,17 +64,17 @@
     grid-column: columns;
   }
 }
-.Section__text h2{
+h2.SectionType__textSection--text{
   @extend %font-headline--h2;
   @include baseline(3);
   color: var(--black);
 }
-.Section__text h3{
+h3.SectionType__textSection--text{
   @extend %font-headline--h3;
   @include baseline(3);
   color: var(--black);
 }
-.Section__text h4{
+h4.SectionType__textSection--text{
   @extend %font-headline--h4;
   @include baseline(3);
   color: var(--black);
