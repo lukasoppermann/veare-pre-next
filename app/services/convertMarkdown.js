@@ -26,6 +26,7 @@ const md = require('markdown-it')('commonmark', {
   .use(require('markdown-it-attrs'))
 
 md.renderer.rules.image = (tokens, idx, opts, _, slf) => '<div class="o-figure__image">' + slf.renderToken(tokens, idx, opts) + '</div>'
+md.renderer.rules.hr = (tokens, idx, opts, _, slf) => '<div class="horizontal-rule">' + slf.renderToken(tokens, idx, opts) + '</div>'
 
 module.exports = (content, mods = {}) => {
   const defaults = {

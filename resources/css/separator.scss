@@ -3,11 +3,18 @@
   height: 2px;
   width: var(--size-xxl);
   @include baseline(4);
-  background-color: var(--black);
-}
-.Separator--blue{
   background-color: var(--blue);
+  border: none;
 }
-.Separator--light-grey{
-  background-color: var(--black-25);
+.horizontal-rule{
+  display: block;
+  @include baseline(4);
+  @include baseline(4, 'margin-bottom');
+}
+.horizontal-rule hr{
+  border: none;
+  height: 2px;
+  width: var(--size-xxl);
+  background-color: var(--blue);
+  margin: 0;
 }

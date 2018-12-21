@@ -14,10 +14,6 @@ class TextSectionTransformer extends Transformer {
       updatedAt: data.sys.updatedAt,
       fields: {
         type: data.sys.contentType.sys.id,
-        title: this.getContent(data, 'title'),
-        titleType: this.getContent(data, 'titleType', 'hidden'),
-        options: this.getContent(data, 'stylingOptions', []),
-        intro: convertMarkdown(this.getContent(data, 'intro'), modifiers),
         text: convertMarkdown(this.getContent(data, 'text'), modifiers),
         textType: this.getContent(data, 'textType', 'text').toLowerCase()
       }

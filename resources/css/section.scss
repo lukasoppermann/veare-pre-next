@@ -7,8 +7,24 @@
 .SectionType__textSection{
   grid-column: columns / span 7;
 }
-.Section__title--subtitle{
+.SectionType__textSection--text h2{
+  @extend %font-headline--h2;
+  @include baseline(3);
+  color: var(--black);
+}
+.SectionType__textSection--text h3{
+  @extend %font-headline--h3;
+  @include baseline(3);
+  color: var(--black);
+}
+.SectionType__textSection--text h4{
+  @extend %font-headline--h4;
+  @include baseline(3);
+  color: var(--black);
+}
+.SectionType__textSection--text h5, .SectionType__textSection .Section__title--subtitle{
   @extend %font-subtitle-uppercase-small;
+  @include baseline(3);
   color: var(--black-40);
 }
 .Section__title--headline{
@@ -29,7 +45,7 @@
   transform: translateY(-1px);
   background-color: var(--black-30);
 }
-.SectionType__textSection.SectionType__textSection--introduction{
+.SectionType__textSection.SectionType__textSection--introduction, .Section__text blockquote{
   hyphens: auto;
   overflow-wrap: break-word;
   @extend %font-paragraph-sans-big;
@@ -46,8 +62,8 @@
 .SectionType__textSection.SectionType__textSection--introduction p:not(:first-child){
   @include baseline(2);
 }
-.Section .Separator{
-  grid-column: columns / span 7;
+.Section .Separator, .Section .horizontal-rule{
+  grid-column: columns;
 }
 .Section__text{
   hyphens: auto;
@@ -63,21 +79,6 @@
     word-break: break-word;
     grid-column: columns;
   }
-}
-.SectionType__textSection--text h2{
-  @extend %font-headline--h2;
-  @include baseline(3);
-  color: var(--black);
-}
-.SectionType__textSection--text h3{
-  @extend %font-headline--h3;
-  @include baseline(3);
-  color: var(--black);
-}
-.SectionType__textSection--text h4{
-  @extend %font-headline--h4;
-  @include baseline(3);
-  color: var(--black);
 }
 
 .Chapter__content--fullwidth .Section__text{
