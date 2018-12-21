@@ -91,7 +91,7 @@ module.exports = (app) => {
     // show individual project
     app.get(/^\/work\/([\w-]+)/, (req, res) => {
       return Projects.get(req, res, {
-        pageClass: 'Page--work',
+        pageClass: 'Page--work Project',
         htmlClass: 'Temp-Override'
       })
     })

@@ -10,6 +10,15 @@
     font-style: italic;
   }
 }
+.SectionType__textSection--annotation .Section__text{
+  margin-top: 0;
+  @extend %font-annotation;
+  @include mq('m') {
+    font-size: var(--size-m);
+    line-height: calc(var(--baseline) * 3);
+    font-style: italic;
+  }
+}
 .Annotation p:not(:first-child), .SectionType__textSection--annotation p:not(:first-child){
   margin-top: calc(var(--baseline) * 2);
 }

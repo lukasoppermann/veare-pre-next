@@ -4,7 +4,7 @@
 .Section ~ .Section {
   @include baseline(7);
 }
-.Section__title{
+.SectionType__textSection{
   grid-column: columns / span 7;
 }
 .Section__title--subtitle{
