@@ -12,14 +12,15 @@ class ChapterTransformer extends Transformer {
     }
     // get plain text for readTime
     let sections = new SectionTransformer(this.getContent(data, 'sections')).all()
-    let plainText = (Array.isArray(sections) ? sections : [])
-      .flatMap(section => {
-        return section.items
-      })
-      .map(section => {
-        return striptags(`${section.fields.title || ''} ${section.fields.text || ''}`)
-      })
-      .reduce((accumulator, current) => accumulator + current)
+    let plainText = ''
+    // sections
+    //   .flatMap(section => {
+    //     return section.items
+    //   })
+    //   .map(section => {
+    //     return striptags(`${section.fields.title || ''} ${section.fields.text || ''}`)
+    //   })
+    //   .reduce((accumulator, current) => accumulator + current)
 
     return {
       id: data.sys.id,
