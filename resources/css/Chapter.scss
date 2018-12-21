@@ -30,6 +30,7 @@
   flex: 0 0 auto;
   order: 1;
   padding-right: var(--vs-s);
+  @include baseline(0);
 }
 .Chapter--side-title .Chapter__title-container::before {
   @include pseudo("relative");

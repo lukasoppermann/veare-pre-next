@@ -1,4 +1,3 @@
-
 .skills__skill .Section__media{
   order: 1;
   display: flex;
@@ -61,7 +60,7 @@
     grid-column: columns;
   }
 }
-.skills__skill .Section__title{
+.skills__skill h2{
   font-size: var(--size-h);
 }
 .skills__skill .SectionType__textSection blockquote{
