@@ -11,7 +11,8 @@ class ChapterTransformer extends Transformer {
       return null
     }
     // get plain text for readTime
-    let plainText = new SectionTransformer(this.getContent(data, 'sections')).all()
+    let sections = new SectionTransformer(this.getContent(data, 'sections')).all()
+    let plainText = (Array.isArray(sections) ? sections : [])
       .flatMap(section => {
         return section.items
       })
@@ -29,7 +30,7 @@ class ChapterTransformer extends Transformer {
         titleType: this.getContent(data, 'titleType', 'hidden'),
         slug: this.getContent(data, 'slug'),
         classes: this.getContent(data, 'classes'),
-        sections: new SectionTransformer(this.getContent(data, 'sections')).all(),
+        sections: sections,
         plainText: plainText
       }
     }
