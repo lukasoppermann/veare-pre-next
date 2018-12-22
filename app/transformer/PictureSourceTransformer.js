@@ -10,7 +10,6 @@ class PictureSourceTransformer extends Transformer {
       createdAt: data.sys.createdAt,
       updatedAt: data.sys.updatedAt,
       fields: {
-        title: this.getContent(data, 'title'),
         mediaQuery: this.getContent(data, 'mediaQuery'),
         resolution: this.getContent(data, 'resolution'),
         image: new AssetTransformer(this.getContent(data, 'image')).first()

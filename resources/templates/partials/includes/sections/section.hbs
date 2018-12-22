@@ -1,5 +1,5 @@
 <div class="Section Grid {{section.classes}}">
   {{#each section.items}}
-    {{> (join "includes/sections/" this.fields.type) section=this.fields}}
+    {{> (join "includes/sections/" this.fields.type) item=this.fields}}
   {{/each}}
 </div>

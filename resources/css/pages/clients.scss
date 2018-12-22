@@ -3,14 +3,13 @@
     grid-row-gap: 0;
   }
 }
-.clients .Section__title{
+.clients h2{
   grid-column: columns;
   text-align: center;
   font-size: var(--size-l);
   color: var(--blue);
   font-family: var(--font-montserrat);
   font-weight: var(--font-montserrat-bold);
-  padding-bottom: var(--size-h);
   padding-top: var(--size-g);
 }
 .clients .Section__media__image{
