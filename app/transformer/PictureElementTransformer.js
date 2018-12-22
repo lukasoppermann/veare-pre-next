@@ -4,7 +4,7 @@ const Transformer = require('./Transformer')
 const AssetTransformer = require('./AssetTransformer')
 const PictureSourceTransformer = require('./PictureSourceTransformer')
 
-class MediaResourceTransformer extends Transformer {
+class PictureElementTransformer extends Transformer {
   transform (data) {
     return {
       id: data.sys.id,
@@ -20,4 +20,4 @@ class MediaResourceTransformer extends Transformer {
   }
 }
 
-module.exports = MediaResourceTransformer
+module.exports = PictureElementTransformer

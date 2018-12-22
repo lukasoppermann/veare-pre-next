@@ -1,0 +1,5 @@
+<lazy-picture class="Section__media__image" src="{{item.image.fields.url}}" alt="{{item.title}}">
+  {{#each item.sources}}
+    <source media="{{this.fields.mediaQuery}}" srcset="{{this.fields.image.fields.url}}">
+  {{/each}}
+</lazy-picture>

@@ -1,27 +1,27 @@
-<div class="Section Grid {{section.classes}} Section__media" mediacount="{{section.mediaResources.length}}">
+<div class="Section Grid {{item.classes}} Section__media" mediacount="{{item.mediaResources.length}}">
   {{> "includes/sections/sectionTitle"}}
 
-  {{#each section.mediaResources}}
+  {{#each item.mediaResources}}
     <lazy-picture class="Section__media__image" src="{{this.fields.image.fields.url}}" alt="{{this.fields.title}}">
       {{#each this.fields.sources}}
         <source media="{{this.fields.mediaQuery}}" srcset="{{this.fields.image.fields.url}}">
       {{/each}}
     </lazy-picture>
   {{/each}}
-  {{#if (eq section.mediaResources.length 1) }}
-    {{#if section.description}}
+  {{#if (eq item.mediaResources.length 1) }}
+    {{#if item.description}}
       <div class="Annotation">
-        <div class="Annotation__text">{{{section.description}}}</div>
+        <div class="Annotation__text">{{{item.description}}}</div>
       </div>
     {{/if}}
   {{/if}}
-  {{#if (gt section.mediaResources.length 1) }}
+  {{#if (gt item.mediaResources.length 1) }}
     <div class="Section__media__description">
-      {{#if section.descriptionTitle}}
-        <h5 class="Section__media__description__title Section__subtitle">{{section.descriptionTitle}}</h5>
+      {{#if item.descriptionTitle}}
+        <h5 class="Section__media__description__title Section__subtitle">{{item.descriptionTitle}}</h5>
       {{/if}}
-      {{#if section.description}}
-        <div class="Section__media__description__text">{{{section.description}}}</div>
+      {{#if item.description}}
+        <div class="Section__media__description__text">{{{item.description}}}</div>
       {{/if}}
     </div>
   {{/if}}
