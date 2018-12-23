@@ -3,7 +3,6 @@
 const Transformer = require('./Transformer')
 const Transform = {
   textSection: require('./TextSectionTransformer'),
-  mediaSection: require('./MediaSectionTransformer'),
   pictureElement: require('./PictureElementTransformer'),
   boxedContentSection: require('./BoxedContentSectionTransformer')
 }

@@ -1,4 +1,4 @@
-.skills__skill .Section__media{
+.skills__skill .Picture__Element{
   order: 1;
   display: flex;
   align-self: center;
@@ -15,7 +15,7 @@
     grid-column: columns;
   }
 }
-.skills__skill:nth-child(2n) .Section__media{
+.skills__skill:nth-child(2n) .Picture__Element{
   order: 3;
   grid-column: column 6 / span 3;
   @include mq('s') {
@@ -27,7 +27,7 @@
     grid-column: columns;
   }
 }
-.skills__skill .Section__media lazy-picture{
+.skills__skill .Picture__Element lazy-picture{
   width: 100%;
   height: auto;
 }

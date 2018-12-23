@@ -1,5 +1,4 @@
-<div class="{{join 'SectionType__' item.type}} {{join 'SectionType__' item.type '--' item.textType}}">
-  {{#if item.text}}
-    <div class="Section__text">{{{item.text}}}</div>
-  {{/if}}
+<div class="Text__Element Text__Element--{{item.textType}} SectionType__textSection {{join 'SectionType__' item.type '--' item.textType}}">
+  {{!-- This div should be removed as no double divs are needed --}}
+  <div class="Section__text">{{{item.text}}}</div>
 </div>

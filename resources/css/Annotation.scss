@@ -19,8 +19,8 @@
     font-style: italic;
   }
 }
-.Annotation p:not(:first-child), .SectionType__textSection--annotation p:not(:first-child){
-  margin-top: calc(var(--baseline) * 2);
+.Annotation:not(:nth-child(2)), .SectionType__textSection--annotation p:not(:first-child){
+  margin-top: calc(var(--baseline) * 3);
 }
 .Annotation--align-bottom{
   align-self: end;
