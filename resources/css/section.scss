@@ -4,6 +4,7 @@
 .Section ~ .Section {
   @include baseline(7);
 }
+
 .SectionType__textSection{
   grid-column: columns / span 7;
 }
@@ -69,7 +70,6 @@
   hyphens: auto;
   overflow-wrap: break-word;
   @extend %font-paragraph-sans;
-  @include baseline(3);
   grid-column: columns / span 5;
   @include mq('m') {
     word-break: break-word;
@@ -90,7 +90,7 @@
 .Section__text h4 ~ p:not(:first-child){
   @include baseline(1);
 }
-.Section__media__image{
+.Picture__Element{
   grid-column: columns;
   position: relative;
   z-index: 50;
@@ -104,7 +104,7 @@
     grid-column: full-bleed;
   }
 }
-.Section__media__image:not(:first-child){
+.Picture__Element:not(:first-child){
   @include baseline(3);
 }
 .Section__media__image:not(:first-child) + .Section__media__description{
@@ -165,5 +165,53 @@
 .Section__media.Section__media__images--description-bottom[mediacount="2"] .Section__media__description{
   @include mq('s', 'min') {
     grid-column: sidebar-left 2 / span 4;
+  }
+}
+/* ====================================
+  Section__pictures
+==================================== */
+.Section__pictures .Picture__Element:first-child{
+  order: 1;
+  grid-column: sidebar-left / span 6;
+}
+.Section__pictures .Picture__Element:nth-child(3){
+  order: 3;
+  transform: translateY(calc(var(--baseline) * -15));
+  grid-column: column 4 / span 6;
+  @include mq('s') {
+    transform: translateY(0);
+  }
+}
+.Section__pictures .Picture__Element{
+  @include mq('s') {
+    grid-column: columns !important;
+  }
+}
+.Section__pictures .Text__Element {
+  order: 2;
+  @include mq('m') {
+    grid-column: columns;
+  }
+}
+.Section__pictures.Section__pictures--description-bottom .Text__Element{
+  @include mq('s', 'min') {
+    grid-column: sidebar-left 2 / span 4;
+  }
+}
+.Section__pictures.Section__pictures--description-top .Text__Element{
+  @include mq('s', 'min') {
+    grid-column: column 5 / span 4;
+  }
+}
+
+/* ====================================
+    Text__Element
+==================================== */
+.Text__Element{
+  h2:first-child,
+  h3:first-child,
+  h4:first-child,
+  h5:first-child{
+    margin-top: 0;
   }
 }

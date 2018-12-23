@@ -71,17 +71,20 @@
   justify-content: space-between;
   align-items: flex-start;
 }
-.c-intro--slogan{
+.Intro__slogan{
   width: 24rem;
   font-family: var(--sans-serif);
   font-weight: 400;
   color: var(--black);
+  font-size: var(--size-l);
+  line-height: 130%;
+  margin: 0;
 }
-.c-intro--services-container{
+.Intro__services__container{
   position: relative;
   margin-bottom: var(--size-h);
 }
-.c-intro--services{
+.Intro__services{
   display: flex;
   flex-direction: column;
   width: 36rem;
@@ -89,18 +92,24 @@
   font-style: italic;
   font-weight: 400;
   color: var(--black);
+  font-size: var(--size-l);
+  line-height: 130%;
+  margin: 0;
+  padding: 0;
 }
-.c-intro--services-description{
+.Intro__services__description{
   position: absolute;
   top: calc(-1 * var(--size-l));
 }
-.c-intro--services-description,
-.c-intro--services-description-veare{
+.Intro__services__description,
+.Intro__services__description--veare{
   color: var(--black-50);
   font-size: var(--size-m);
+  line-height: 100% !important;
 }
-.c-intro--services-description-veare{
+.Intro__services__description--veare{
   display: inline-block;
+  margin: 0;
 }
 .c-intro-image{
   max-width: 500px;

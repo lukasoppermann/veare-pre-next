@@ -17,3 +17,8 @@
   z-index: 10;
   max-width: 700px;
 }
+.c-contact-content h3{
+  @extend %font-headline--h2;
+  @include baseline(3);
+  color: var(--blue);
+}

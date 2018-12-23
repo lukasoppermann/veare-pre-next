@@ -1,6 +1,4 @@
 <div class="Section Grid {{item.classes}} Section__media" mediacount="{{item.mediaResources.length}}">
-  {{> "includes/sections/sectionTitle"}}
-
   {{#each item.mediaResources}}
     <lazy-picture class="Section__media__image" src="{{this.fields.image.fields.url}}" alt="{{this.fields.title}}">
       {{#each this.fields.sources}}

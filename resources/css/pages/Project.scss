@@ -165,29 +165,3 @@
     display: none;
   }
 }
-.Project__Section-Title .Section__title{
-  @extend %font-title;
-  color: var(--blue);
-  font-size: var(--size-g);
-  line-height: calc(var(--baseline) * 11);
-  z-index: 100;
-  align-self: end;
-  grid-column: 7 / span 5;
-  grid-row-start: 1;
-  @include mq('m') {
-    grid-column: 7 / span 7;
-  }
-  @include mq('s') {
-    grid-column: columns;
-    grid-row-start: auto;
-  }
-}
-.Project__Section-Title .Section__title + .Section__media__image{
-  grid-row-start: 1;
-}
-.Project__Section-Title .Section__media__description{
-  grid-row-start: 1;
-  @include mq('m') {
-    grid-row-start: auto;
-  }
-}
