@@ -3,7 +3,7 @@ let content = []
 
 class Transformer {
   constructor (data) {
-    content = this.transformData(data).filter(item => item !== null)
+    content = this.transformData(data)
   }
 
   all () {
@@ -23,15 +23,10 @@ class Transformer {
   }
 
   transformData (data) {
-    // abort if no header
-    if (Array.isArray(data)) {
-      let that = this
-      return data.map((item) => that.transformOrNull(item))
-    } else if (data !== null) {
-      return [this.transformOrNull(data)]
-    } else {
-      return []
+    if (!Array.isArray(data)) {
+      data = [data]
     }
+    return data.map((item) => this.transformOrNull(item), this)
   }
 
   transformOrNull (data) {

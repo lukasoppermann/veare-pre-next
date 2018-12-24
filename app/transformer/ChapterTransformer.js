@@ -11,17 +11,19 @@ class ChapterTransformer extends Transformer {
       return null
     }
     // get sections
-    let sections = new SectionTransformer(this.getContent(data, 'sections')).all()
+    let sections = new SectionTransformer(this.getContent(data, 'sections')).all().filter(section => section !== null)
     // get plain text for readTime
     let plainText = ''
-    // sections
-    //   .map(section => {
-    //     return section.items
-    //   })
-    //   .map(section => {
-    //     return striptags(`${section.fields.title || ''} ${section.fields.text || ''}`)
-    //   })
-    //   .reduce((accumulator, current) => accumulator + current, '')
+    if (sections.length > 0) {
+      plainText = sections
+        .flatMap(section => {
+          return section.items
+        })
+        .map(section => {
+          return striptags(`${section.fields.title || ''} ${section.fields.text || ''}`)
+        })
+        .reduce((accumulator, current) => accumulator + current, '')
+    }
 
     return {
       id: data.sys.id,
