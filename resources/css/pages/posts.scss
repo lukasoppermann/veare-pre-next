@@ -19,7 +19,7 @@
   position: relative;
   width: 100%;
 }
-.o-article__title{
+.o-article h1{
   font-family: var(--font-noto-serif);
   font-style: italic;
   font-size: var(--size-g);
@@ -27,6 +27,15 @@
   max-width: 112rem;
   margin-bottom: var(--size-xl);
   text-align: center;
+}
+.o-article h2, h3, h4{
+  grid-column: column 3 / column 8;
+  @include mq('m') {
+    grid-column: column 2 / column 8;
+  }
+  @include mq('s') {
+    grid-column: columns;
+  }
 }
 .o-article__publication-details{
   display: block;
@@ -178,7 +187,7 @@ pre[class*="language-"] + .o-article__comment{
     padding: var(--size-s);
   }
 }
-.c-article__headline{
+.o-article p{
   grid-column: column 3 / column 8;
   @include mq('m') {
     grid-column: column 2 / column 8;
@@ -187,7 +196,7 @@ pre[class*="language-"] + .o-article__comment{
     grid-column: columns;
   }
 }
-.c-article__paragraph{
+.o-article ul, .o-article ol{
   grid-column: column 3 / column 8;
   @include mq('m') {
     grid-column: column 2 / column 8;
@@ -195,15 +204,30 @@ pre[class*="language-"] + .o-article__comment{
   @include mq('s') {
     grid-column: columns;
   }
+  line-height: 140%;
+  margin-top: var(--size-xxl);
+  margin-bottom: var(--size-xxl);
 }
-.c-article__list{
-  grid-column: column 3 / column 8;
-  @include mq('m') {
-    grid-column: column 2 / column 8;
-  }
-  @include mq('s') {
-    grid-column: columns;
-  }
+.o-article ul li{
+  position: relative;
+  margin-bottom: var(--size-s);
+  list-style: none;
+  padding-left: var(--size-xxl);
+}
+.o-article ul li:last-child{
+  margin-bottom: 0;
+}
+.o-article ul li:before{
+  position: absolute;
+  content: "–";
+  font-weight: 600;
+  color: var(--veare-orange);
+  top: -3px;
+  left: 0;
+}
+.o-article ol li{
+  list-style: decimal-leading-zero;
+  margin-left: 1.5em;
 }
 .c-article__figure{
   grid-column: sidebar-left / columns;
@@ -214,9 +238,14 @@ pre[class*="language-"] + .o-article__comment{
 .c-article__code{
   grid-column: columns;
 }
-.c-article__blockquote{
+.o-article blockquote{
   grid-column: columns;
 }
-.c-article__blockquote p {
+.o-article blockquote p {
   line-height: 115%;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  margin-top: var(--size-xl);
+  margin-bottom: var(--size-xl);
 }

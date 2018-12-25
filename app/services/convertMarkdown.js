@@ -29,54 +29,7 @@ md.renderer.rules.image = (tokens, idx, opts, _, slf) => '<div class="o-figure__
 md.renderer.rules.hr = (tokens, idx, opts, _, slf) => '<div class="horizontal-rule">' + slf.renderToken(tokens, idx, opts) + '</div>'
 
 module.exports = (content, mods = {}) => {
-  const defaults = {
-    h1: {
-      class: 'o-headline--h2 c-article__headline',
-      fn: (token) => { token.tag = 'h2' }
-    },
-    h2: {
-      class: 'o-headline--h3 c-article__headline',
-      fn: (token) => { token.tag = 'h3' }
-    },
-    h3: {
-      class: 'o-headline--h4 c-article__headline',
-      fn: (token) => { token.tag = 'h4' }
-    },
-    h4: {
-      class: 'o-headline--h5 c-article__headline',
-      fn: (token) => { token.tag = 'h5' }
-    },
-    blockquote: {
-      class: 'o-blockquote c-article__blockquote'
-    },
-    p: {
-      class: 'Paragraph-old Paragraph--xl c-article__paragraph'
-    },
-    ul: {
-      class: 'o-list type--xl c-article__list'
-    },
-    ol: {
-      class: 'o-list o-list--ordered type--xl c-article__list'
-    },
-    figure: {
-      class: 'o-figure c-article__figure'
-    },
-    figcaption: {
-      class: 'o-figure__caption'
-    },
-    img: {
-      class: 'o-figure__img'
-    },
-    code: {
-      istype: 'fence',
-      fn: (token) => {
-        if (token.info === '') {
-          token.info = 'bash'
-        }
-      }
-    }
-  }
-  modifiers = mergeOptions(mods.reset === true ? {} : defaults, mods)
+  modifiers = mergeOptions({}, mods)
 
   if (typeof content !== 'string') return content
   return md.render(content)

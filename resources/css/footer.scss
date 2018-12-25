@@ -76,6 +76,12 @@
   color: var(--grey);
   font-family: var(--font-source-sans);
   max-width: 600px;
+  display: block;
+  font-size: var(--size-l);
+  line-height: 140%;
+  font-family: var(--sans-serif);
+  font-weight: var(--sans-serif-normal);
+  margin-bottom: var(--size-m);
 }
 .Footer__content__link{
   color: var(--blue);

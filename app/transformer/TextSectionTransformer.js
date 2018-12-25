@@ -2,9 +2,6 @@
 
 const Transformer = require('./Transformer')
 const convertMarkdown = require('../services/convertMarkdown')
-let modifiers = {
-  reset: true
-}
 
 class TextSectionTransformer extends Transformer {
   transform (data) {
@@ -14,7 +11,7 @@ class TextSectionTransformer extends Transformer {
       updatedAt: data.sys.updatedAt,
       fields: {
         type: data.sys.contentType.sys.id,
-        text: convertMarkdown(this.getContent(data, 'text'), modifiers),
+        text: convertMarkdown(this.getContent(data, 'text')),
         textType: this.getContent(data, 'textType', 'text').toLowerCase()
       }
     }

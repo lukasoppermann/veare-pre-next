@@ -4,9 +4,6 @@ const Transformer = require('./Transformer')
 const AssetTransformer = require('./AssetTransformer')
 const PictureSourceTransformer = require('./PictureSourceTransformer')
 const convertMarkdown = require('../services/convertMarkdown')
-let modifiers = {
-  reset: true
-}
 
 class PictureElementTransformer extends Transformer {
   transform (data) {
@@ -17,7 +14,7 @@ class PictureElementTransformer extends Transformer {
       fields: {
         type: data.sys.contentType.sys.id,
         title: this.getContent(data, 'title'),
-        description: convertMarkdown(this.getContent(data, 'description'), modifiers),
+        description: convertMarkdown(this.getContent(data, 'description')),
         image: new AssetTransformer(this.getContent(data, 'image')).first(),
         sources: new PictureSourceTransformer(this.getContent(data, 'pictureSources')).all()
       }

@@ -7,9 +7,23 @@ const AssetTransformer = require('./AssetTransformer')
 const readingTime = require('reading-time')
 const convertMarkdown = require('../services/convertMarkdown')
 
-let modifiers = {
-  h1: {
-    class: 'o-headline o-headline--h2 o-headline--serif'
+const modifiers = {
+  figure: {
+    class: 'o-figure c-article__figure'
+  },
+  figcaption: {
+    class: 'o-figure__caption'
+  },
+  img: {
+    class: 'o-figure__img'
+  },
+  code: {
+    istype: 'fence',
+    fn: (token) => {
+      if (token.info === '') {
+        token.info = 'bash'
+      }
+    }
   }
 }
 
