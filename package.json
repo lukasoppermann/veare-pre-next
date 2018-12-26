@@ -37,9 +37,11 @@
     "snazzy": "^8.0.0",
     "standard": "^12.0.1",
     "supervisor": "^0.12.0",
+    "ts-node": "^7.0.1",
+    "ts-node-dev": "^1.0.0-pre.32",
     "tslib": "^1.9.3",
     "ttab": "^0.6.1",
-    "typescript": "^3.1.6",
+    "typescript": "^3.2.2",
     "typescript-eslint-parser": "^21.0.1"
   },
   "dependencies": {
@@ -77,8 +79,11 @@
     ]
   },
   "scripts": {
-    "start": "node_modules/.bin/ttab -t 'Node Server' 'npm run supervisor' && node_modules/.bin/ttab -t 'Building assets' 'npm run build'",
+    "start": "node_modules/.bin/ttab -t 'Node Server' 'npm run ts-node' && node_modules/.bin/ttab -t 'Building assets' 'npm run build'",
     "supervisor": "supervisor -w app,resources/templates --extensions node,js,hbs app.js",
+    "ts-node": "ts-node-dev --respawn app.ts",
+    "forever": "forever start -v -c ts-node app.ts",
+    "forever-stop": "forever stopall && forever list",
     "build": "npm run build:js:watch & npm run build:css:watch",
     "build:css:watch": "onchange -i 'resources/css/*.scss' 'resources/css/*/*.scss' -- npm run build:css",
     "build:css": "npm run css:clean && npm run css:compile && npm run css:rev",

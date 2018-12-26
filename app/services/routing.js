@@ -12,7 +12,7 @@ const Blog = require('../controller/Blog')()
 const Projects = require('../controller/Project')()
 const Pages = require('../controller/Pages')()
 
-let env = process.env.NODE_ENV || 'dev'
+let env = process.env.NODE_ENV || 'development'
 const PORT = process.env.NODE_PORT || 8080
 
 module.exports = (app) => {
@@ -27,7 +27,7 @@ module.exports = (app) => {
     // ---------------------------------- //
     // Development
     // ---------------------------------- //
-    if (env === 'dev') {
+    if (env === 'development') {
       app.use(require('../middleware/staticFilesReloadMiddleware')())
     }
     // ---------------------------------- //

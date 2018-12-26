@@ -1,7 +1,7 @@
 const contentful = require('contentful')
 const config = require('../config/contentful.js')
 
-const env = (process.env.NODE_ENV || 'dev')
+const env = (process.env.NODE_ENV || 'development')
 
 const retryOnError = () => {
   if (env !== 'production') {
@@ -9,7 +9,6 @@ const retryOnError = () => {
   }
   return true
 }
-
 const client = contentful.createClient({
   // This is the space ID. A space is like a project folder in Contentful terms
   space: config.space,
