@@ -1,8 +1,8 @@
 <div class="Section Grid">
   <div class="Boxed-group Grid--columns">
-    {{#each section.items}}
-      <div class="Boxed-item" {{#each this.attr}}{{@key}}="{{this}}"{{/each}}>
-        <span class="Headline--h5 text--light">{{this.title}}</span>
+    {{#each item.items}}
+      <div class="Boxed-item" style="flex-grow: {{this.grow}}">
+        <span class="Headline--h5 text--light">{{this.key}}</span>
         <div class="Paragraph Paragraph--sans-small">
           {{{this.value}}}
         </div>
