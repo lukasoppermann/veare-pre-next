@@ -15,14 +15,14 @@ class ChapterTransformer extends Transformer {
     // get plain text for readTime
     let plainText = ''
     if (sections.length > 0) {
-      plainText = sections
-        .flatMap(section => {
-          return section.items
-        })
-        .map(section => {
-          return striptags(`${section.fields.title || ''} ${section.fields.text || ''}`)
-        })
-        .reduce((accumulator, current) => accumulator + current, '')
+      // plainText = sections
+      //   .flatMap(section => {
+      //     return section.items
+      //   })
+      //   .map(section => {
+      //     return striptags(`${section.fields.title || ''} ${section.fields.text || ''}`)
+      //   })
+      //   .reduce((accumulator, current) => accumulator + current, '')
     }
 
     return {
