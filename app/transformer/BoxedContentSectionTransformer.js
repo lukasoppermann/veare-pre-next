@@ -11,7 +11,10 @@ class BoxedContentSectionTransformer extends Transformer {
       fields: {
         type: data.sys.contentType.sys.id,
         items: this.getContent(data, 'items').map(item => {
-          item.grow = item.type.replace('Size ', '')
+          item.grow = '1'
+          if (item.type !== undefined) {
+            item.grow = item.type.replace('Size ', '')
+          }
           return item
         })
       }
