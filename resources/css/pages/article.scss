@@ -5,6 +5,11 @@
   padding-top: var(--size-g);
   counter-reset: projects;
 }
+.Article__section {
+  grid-column: full-bleed;
+}
+.Article__featuredImage .Picture__Element {
+}
 .Article__title {
   grid-column: columns;
   font-family: var(--font-noto-serif);

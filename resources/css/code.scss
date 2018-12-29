@@ -1,3 +1,43 @@
+/* ====================================
+    Code__Element
+==================================== */
+.Code__Element {
+  position: relative;
+  overflow-x: scroll;
+  grid-column: columns / span 7;
+  white-space: unset;
+  background: rgb(55, 65, 78);
+  border-radius: 3px;
+}
+.Code__Element code, .Code__Element pre {
+  hyphens: none;
+}
+.Code__Element__file-or-path {
+  color: rgba(248, 248, 242, .6);
+  font-family: var(--monospace);
+  font-weight: bold;
+  background: rgba(0,0,0,.2);
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 3px 7px;
+  border-bottom-left-radius: 3px;
+}
+.Code__Element__file-or-path:before, .Code__Element__file-or-path:after {
+  content: "";
+  z-index: 10;
+  position: absolute;
+  height: 100%;
+  width: 4px;
+  background: rgba(0,0,0,.2);
+  left: -4px;
+  top: 0;
+}
+.Code__Element__file-or-path:before {
+  z-index: 11;
+  background: rgb(55, 65, 78);
+  border-top-right-radius: 10px;
+}
 code[class*="language-"],
 pre[class*="language-"]{
 	color: #f8f8f2;
@@ -36,27 +76,9 @@ pre[class*="language-"] code{
   display: block;
 }
 
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
-	background: rgb(55, 65, 78);
-}
-
 .line-numbers-rows, pre[class*="language-"] code{
 	padding-top: 25px;
 	padding-bottom: 25px;
-}
-
-code[data-label-file]:before {
-  content: attr(data-label-file);
-  position: absolute;
-  top: 0;
-  right: 0;
-	display: block;
-	font-size: 70%;
-	line-height: 100%;
-	padding: .8rem 1rem .7rem;
-	background: rgba(0, 0, 0, .15);
-	border-bottom-left-radius: .2rem;
 }
 
 /* Inline code */
@@ -65,75 +87,10 @@ code[data-label-file]:before {
 	white-space: normal;
 	word-break: break-word;
 	display: inline;
+  border-radius: 2px;
 	color: rgba(50, 50, 55, .7);
 	background-color: rgba(50, 50, 55, .05);
 }
-/* ----------------- */
-/* line-numbers */
-pre.line-numbers {
-	position: relative;
-	counter-reset: linenumber;
-}
-pre.line-numbers > code {
-	position: relative;
-}
-.line-numbers .line-numbers-rows {
-	position: absolute;
-	pointer-events: none;
-	top: 0;
-	font-size: 100%;
-	box-sizing: border-box;
-	height: 100%;
-	letter-spacing: -1px;
-	background: rgba(0, 0, 0, .15);
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-}
-.line-numbers-rows > span:only-child{
-	display: none;
-}
-.line-numbers-rows > span {
-	pointer-events: none;
-	display: block;
-	counter-increment: linenumber;
-}
-.line-numbers-rows > span:before {
-	content: counter(linenumber);
-	color: rgb(115, 125, 145);
-	display: block;
-	padding-right: 2rem;
-	text-align: right;
-}
-/* Line Number media queries */
-@media (max-width: 600px) {
-	pre.line-numbers {
-		padding-left: inherit;
-	}
-	.line-numbers .line-numbers-rows{
-		display: none;
-	}
-}
-@media (min-width: 600px) {
-	pre.line-numbers {
-		padding-left: 7rem;
-	}
-	.line-numbers .line-numbers-rows {
-		left: -(7rem);
-		width: 6rem;
-	}
-}
-@media (min-width: 1100px) {
-	pre.line-numbers {
-		padding-left: 18rem;
-	}
-	.line-numbers .line-numbers-rows {
-		left: -(18rem);
-		width: 16rem;
-	}
-}
-
 /* ----------------- */
 /* Code Syntax Style */
 .token.comment,
@@ -206,5 +163,5 @@ pre.line-numbers > code {
 }
 
 .token.entity {
-	cursor: help;
+	// cursor: help;
 }

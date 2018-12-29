@@ -16,6 +16,7 @@ class PictureElementTransformer extends Transformer {
         title: this.getContent(data, 'title'),
         description: convertMarkdown(this.getContent(data, 'description')),
         image: new AssetTransformer(this.getContent(data, 'image')).first(),
+        style: this.getContent(data, 'style', 'Center').toLowerCase().replace(' ', '-'),
         sources: new PictureSourceTransformer(this.getContent(data, 'pictureSources')).all()
       }
     }

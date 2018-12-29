@@ -3,7 +3,7 @@
 const Transformer = require('./Transformer')
 const Category = require('../models/Category')
 const Author = require('../models/Author')
-const AssetTransformer = require('./AssetTransformer')
+const PictureElementTransformer = require('./PictureElementTransformer')
 const ChapterTransformer = require('./ChapterTransformer')
 const readingTime = require('reading-time')
 
@@ -23,7 +23,7 @@ class ArticleTransformer extends Transformer {
       fields: {
         slug: this.getContent(data, 'slug'),
         title: this.getContent(data, 'title'),
-        banner: new AssetTransformer(this.getContent(data, 'banner')).first(),
+        featuredImage: new PictureElementTransformer(this.getContent(data, 'featuredImage')).first(),
         rawdate: this.getContent(data, 'date'),
         date: this.formatDate(this.getContent(data, 'date')),
         preview: this.getContent(data, 'preview'),
