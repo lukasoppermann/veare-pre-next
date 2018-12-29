@@ -3,7 +3,7 @@
 const Transformer = require('./Transformer')
 const Category = require('../models/Category')
 const Author = require('../models/Author')
-const AssetTransformer = require('./AssetTransformer')
+const PictureElementTransformer = require('./PictureElementTransformer')
 const ChapterTransformer = require('./ChapterTransformer')
 const readingTime = require('reading-time')
 
@@ -12,8 +12,8 @@ class ArticleTransformer extends Transformer {
     let chapters = new ChapterTransformer(this.getContent(data, 'chapters')).all()
     // calc reading time
     let readTime = Math.ceil(readingTime(chapters
-      .reduce((text, current) => `${text} ${current.fields.plainText}`) || ''
-    ).time / 60000)
+      .reduce((text, current) => `${text} ${current.fields.plainText}`, '')).time / 60000)
+
     // return
     return {
       id: data.sys.id,
@@ -23,7 +23,7 @@ class ArticleTransformer extends Transformer {
       fields: {
         slug: this.getContent(data, 'slug'),
         title: this.getContent(data, 'title'),
-        banner: new AssetTransformer(this.getContent(data, 'banner')).first(),
+        featuredImage: new PictureElementTransformer(this.getContent(data, 'featuredImage')).first(),
         rawdate: this.getContent(data, 'date'),
         date: this.formatDate(this.getContent(data, 'date')),
         preview: this.getContent(data, 'preview'),

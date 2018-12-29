@@ -18,6 +18,9 @@ module.exports = expressHandlebars.create({
   defaultLayout: false,
   layoutsDir: './resources/templates/partials/layouts',
   partialsDir: './resources/templates/partials',
+  compilerOptions: {
+    preventIndent: true
+  },
   helpers: {
     log: (value) => {
       console.log(value)
