@@ -9,13 +9,8 @@
   background: rgb(55, 65, 78);
   border-radius: 3px;
 }
-.Code__Element code, .Code__Element pre, pre > code, pre > .code {
+.Code__Element code, .Code__Element pre {
   hyphens: none;
-  background: rgb(55, 65, 78);
-}
-:not(.Code__Element) > pre > code, :not(.Code__Element) > pre > .code {
-  margin: 20px 0;
-  border-radius: 3px;
 }
 .Code__Element__file-or-path {
   color: rgba(248, 248, 242, .6);
@@ -46,8 +41,9 @@
 code[class*="language-"],
 pre[class*="language-"]{
 	color: #f8f8f2;
+	background: none;
 	font-family: var(--monospace);
-  font-size: 16px;
+  font-size: inherit;
 	text-align: left;
 	white-space: pre;
 	word-spacing: normal;
@@ -74,13 +70,13 @@ pre[class*="language-"] {
 	overflow-y: visible;
 	white-space: pre-wrap;
 }
-pre[class*="language-"] code, pre[class*="language-"] .code{
+pre[class*="language-"] code{
   padding-left: 2rem;
   padding-right: 2rem;
   display: block;
 }
 
-pre[class*="language-"] code, pre[class*="language-"] .code{
+.line-numbers-rows, pre[class*="language-"] code{
 	padding-top: 25px;
 	padding-bottom: 25px;
 }
@@ -88,13 +84,12 @@ pre[class*="language-"] code, pre[class*="language-"] .code{
 /* Inline code */
 :not(pre) > code {
 	padding: 0rem .4rem;
-	white-space: nowrap;
-	word-break: keep-all;
+	white-space: normal;
+	word-break: break-word;
 	display: inline;
   border-radius: 2px;
 	color: rgba(50, 50, 55, .7);
 	background-color: rgba(50, 50, 55, .05);
-  overflow-wrap: break-word;
 }
 /* ----------------- */
 /* Code Syntax Style */
