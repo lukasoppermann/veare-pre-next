@@ -3,7 +3,7 @@ let content = []
 
 class Transformer {
   constructor (data) {
-    content = this.transformData(data)
+    content = this.transformData(data).filter(item => item !== null)
   }
 
   all () {
