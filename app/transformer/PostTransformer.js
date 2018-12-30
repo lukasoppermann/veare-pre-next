@@ -6,6 +6,22 @@ const Author = require('../models/Author')
 const AssetTransformer = require('./AssetTransformer')
 const readingTime = require('reading-time')
 const convertMarkdown = require('../services/convertMarkdown')
+const Prism = require('prismjs')
+const Normalizer = require('prismjs/plugins/normalize-whitespace/prism-normalize-whitespace')
+const loadLanguages = require('prismjs/components/')
+loadLanguages(['yaml', 'php', 'markdown', 'bash', 'nginx', 'git', 'json'])
+let normalizer = new Normalizer({
+  'remove-trailing': true,
+  'remove-indent': true,
+  'left-trim': true,
+  'right-trim': true,
+  'tabs-to-spaces': 4
+})
+
+let highlightCode = (code, language = 'javascript') => {
+  code = normalizer.normalize(code)
+  return Prism.highlight(code, Prism.languages[language], language)
+}
 
 const modifiers = {
   figure: {
@@ -23,6 +39,7 @@ const modifiers = {
       if (token.info === '') {
         token.info = 'bash'
       }
+      token.content = highlightCode(token.content, token.info)
     }
   }
 }
