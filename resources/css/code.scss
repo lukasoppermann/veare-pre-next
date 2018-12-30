@@ -9,8 +9,13 @@
   background: rgb(55, 65, 78);
   border-radius: 3px;
 }
-.Code__Element code, .Code__Element pre {
+.Code__Element code, .Code__Element pre, pre > code {
   hyphens: none;
+  background: rgb(55, 65, 78);
+}
+:not(.Code__Element) > pre > code {
+  margin: 20px 0;
+  border-radius: 3px;
 }
 .Code__Element__file-or-path {
   color: rgba(248, 248, 242, .6);
@@ -41,7 +46,6 @@
 code[class*="language-"],
 pre[class*="language-"]{
 	color: #f8f8f2;
-	background: none;
 	font-family: var(--monospace);
   font-size: inherit;
 	text-align: left;
