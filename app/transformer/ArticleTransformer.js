@@ -12,8 +12,8 @@ class ArticleTransformer extends Transformer {
     let chapters = new ChapterTransformer(this.getContent(data, 'chapters')).all()
     // calc reading time
     let readTime = Math.ceil(readingTime(chapters
-      .reduce((text, current) => `${text} ${current.fields.plainText}`) || ''
-    ).time / 60000)
+      .reduce((text, current) => `${text} ${current.fields.plainText}`, '')).time / 60000)
+
     // return
     return {
       id: data.sys.id,
