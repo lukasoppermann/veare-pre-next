@@ -3,6 +3,9 @@
     grid-row-gap: 0;
   }
 }
+.clients .Text__Element{
+  grid-column: columns;
+}
 .clients h2{
   grid-column: columns;
   text-align: center;

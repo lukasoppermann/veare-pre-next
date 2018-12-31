@@ -1,19 +1,11 @@
-.Annotation, .SectionType__textSection--annotation{
+.Annotation, .Text__Element.SectionType__textSection--annotation{
   @extend %font-annotation;
   position: relative;
   padding-top: calc(var(--baseline) * 2);
+  margin-top: 0;
   @include mq('m') {
     @include baseline(2);
     padding-top: 0;
-    font-size: var(--size-m);
-    line-height: calc(var(--baseline) * 3);
-    font-style: italic;
-  }
-}
-.SectionType__textSection--annotation .Section__text{
-  margin-top: 0;
-  @extend %font-annotation;
-  @include mq('m') {
     font-size: var(--size-m);
     line-height: calc(var(--baseline) * 3);
     font-style: italic;
@@ -25,7 +17,7 @@
 .Annotation--align-bottom{
   align-self: end;
 }
-.Grid > .Annotation, .Grid > .SectionType__textSection--annotation {
+.Grid > .Annotation, .Grid > .Text__Element.SectionType__textSection--annotation {
   grid-column: sidebar-right;
   @include mq('s') {
     grid-column: columns;

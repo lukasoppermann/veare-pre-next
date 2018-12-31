@@ -1,11 +1,11 @@
-.Section{
+.Section {
   grid-column: full-bleed;
 }
 .Section ~ .Section {
   @include baseline(7);
 }
 
-.SectionType__textSection{
+.SectionType__textSection {
   grid-column: columns / span 7;
 }
 .SectionType__textSection--text h2{
@@ -46,7 +46,7 @@
   transform: translateY(-1px);
   background-color: var(--black-30);
 }
-.SectionType__textSection.SectionType__textSection--introduction, .Section__text blockquote{
+.Text__Element blockquote{
   hyphens: auto;
   overflow-wrap: break-word;
   @extend %font-paragraph-sans-big;
@@ -57,16 +57,10 @@
   @include baseline(3);
   grid-column: columns / span 7;
 }
-.SectionType__textSection.SectionType__textSection--introduction:first-child{
-  margin-top: 0;
-}
-.SectionType__textSection.SectionType__textSection--introduction p:not(:first-child){
-  @include baseline(2);
-}
 .Section .Separator, .Section .horizontal-rule{
   grid-column: columns;
 }
-.Section__text{
+.Text__Element{
   hyphens: auto;
   overflow-wrap: break-word;
   @extend %font-paragraph-sans;
@@ -81,13 +75,13 @@
   }
 }
 
-.Chapter__content--fullwidth .Section__text{
+.Chapter__content--fullwidth .Text__Element{
   grid-column: columns / span 7;
 }
-.Section__text p:not(:first-child){
+.Text__Element p:not(:first-child){
   @include baseline(2);
 }
-.Section__text h4 ~ p:not(:first-child){
+.Text__Element h4 ~ p:not(:first-child){
   @include baseline(1);
 }
 .Picture__Element{

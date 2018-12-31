@@ -1,6 +1,6 @@
 const syntaxHighlight = require('../services/syntaxHighlight')
 const md = require('markdown-it')('commonmark', {
-  html: false,
+  html: true,
   typographer: true,
   quotes: '“”‘’',
   highlight: function (str, lang) {
