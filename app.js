@@ -20,7 +20,6 @@ contentful(routes, (error) => {
   if (error.Error !== undefined) {
     console.error(error.Error)
   } else {
-    console.log('yo')
     console.error(error)
   }
   // run routes even when contentful connection fails

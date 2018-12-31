@@ -1,4 +1,4 @@
-.skills__skill .Picture__Element{
+.skills > .Section .Picture__Element{
   order: 1;
   display: flex;
   align-self: center;
@@ -15,7 +15,7 @@
     grid-column: columns;
   }
 }
-.skills__skill:nth-child(2n) .Picture__Element{
+.skills > .Section:nth-child(2n) .Picture__Element{
   order: 3;
   grid-column: column 6 / span 3;
   @include mq('s') {
@@ -27,11 +27,11 @@
     grid-column: columns;
   }
 }
-.skills__skill .Picture__Element lazy-picture{
+.skills > .Section .Picture__Element lazy-picture{
   width: 100%;
   height: auto;
 }
-.skills__skill .SectionType__textSection{
+.skills > .Section .SectionType__textSection{
   order: 2;
   color: var(--black);
   display: block;
@@ -48,7 +48,7 @@
     margin-top: 0 !important;
   }
 }
-.skills__skill:nth-child(2n) .SectionType__textSection{
+.skills > .Section:nth-child(2n) .SectionType__textSection{
   grid-column: column / span 5;
   @include mq('m') {
     grid-column: sidebar-left 2 / span 6;
@@ -60,10 +60,10 @@
     grid-column: columns;
   }
 }
-.skills__skill h2{
+.skills > .Section h2{
   font-size: var(--size-h);
 }
-.skills__skill .SectionType__textSection blockquote{
+.skills > .Section .SectionType__textSection blockquote{
   @extend %font-intro-paragraph;
   margin-top: calc(var(--baseline) * 1);
   margin-bottom: calc(var(--baseline) * 3);

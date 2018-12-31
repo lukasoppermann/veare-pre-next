@@ -9,11 +9,11 @@
   background: rgb(55, 65, 78);
   border-radius: 3px;
 }
-.Code__Element code, .Code__Element pre, pre > code {
+.Code__Element code, .Code__Element pre, pre > code, pre > .code {
   hyphens: none;
   background: rgb(55, 65, 78);
 }
-:not(.Code__Element) > pre > code {
+:not(.Code__Element) > pre > code, :not(.Code__Element) > pre > .code {
   margin: 20px 0;
   border-radius: 3px;
 }
@@ -47,7 +47,7 @@ code[class*="language-"],
 pre[class*="language-"]{
 	color: #f8f8f2;
 	font-family: var(--monospace);
-  font-size: inherit;
+  font-size: 16px;
 	text-align: left;
 	white-space: pre;
 	word-spacing: normal;
@@ -74,13 +74,13 @@ pre[class*="language-"] {
 	overflow-y: visible;
 	white-space: pre-wrap;
 }
-pre[class*="language-"] code{
+pre[class*="language-"] code, pre[class*="language-"] .code{
   padding-left: 2rem;
   padding-right: 2rem;
   display: block;
 }
 
-.line-numbers-rows, pre[class*="language-"] code{
+pre[class*="language-"] code, pre[class*="language-"] .code{
 	padding-top: 25px;
 	padding-bottom: 25px;
 }
@@ -88,12 +88,13 @@ pre[class*="language-"] code{
 /* Inline code */
 :not(pre) > code {
 	padding: 0rem .4rem;
-	white-space: normal;
-	word-break: break-word;
+	white-space: nowrap;
+	word-break: keep-all;
 	display: inline;
   border-radius: 2px;
 	color: rgba(50, 50, 55, .7);
 	background-color: rgba(50, 50, 55, .05);
+  overflow-wrap: break-word;
 }
 /* ----------------- */
 /* Code Syntax Style */

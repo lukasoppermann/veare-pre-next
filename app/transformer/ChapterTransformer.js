@@ -33,7 +33,7 @@ class ChapterTransformer extends Transformer {
         title: this.getContent(data, 'title'),
         titleType: this.getContent(data, 'titleType', 'hidden'),
         slug: this.getContent(data, 'slug'),
-        classes: this.getContent(data, 'classes'),
+        classes: (this.getContent(data, 'classes') || []).join(' '),
         sections: sections,
         plainText: plainText
       }

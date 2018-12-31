@@ -17,7 +17,7 @@ class SectionTransformer extends Transformer {
     if (data.sys.contentType.sys.id === 'section') {
       sections = {
         items: this.getContent(data, 'sections'),
-        classes: this.getContent(data, 'classes')
+        classes: (this.getContent(data, 'classes') || []).join(' ')
       }
     }
     // transform items
