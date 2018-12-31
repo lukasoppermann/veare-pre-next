@@ -1,6 +1,6 @@
 'use strict'
 
-const Model = require('./Model')
+import Model from './Model'
 const CategoryTransformer = require('../transformer/CategoryTransformer')
 
 class Category extends Model {

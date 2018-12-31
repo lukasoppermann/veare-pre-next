@@ -1,6 +1,6 @@
 'use strict'
 
-const Model = require('./Model')
+const Model = require('./ModelOld')
 const AuthorTransformer = require('../transformer/AuthorTransformer')
 
 class Author extends Model {

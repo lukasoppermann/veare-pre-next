@@ -1,6 +1,6 @@
 'use strict'
 
-const Model = require('./Model')
+const Model = require('./ModelOld')
 const PageTransformer = require('../transformer/PageTransformer')
 
 class Page extends Model {

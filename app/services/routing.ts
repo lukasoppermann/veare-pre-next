@@ -1,10 +1,10 @@
-const express = require('express')
+const expressServer = require('express')
 const compression = require('compression')
 const bodyParser = require('body-parser')
 const basicAuth = require('express-basic-auth')
 const contentfulConfig = require('../config/contentful.js')
 const contentfulWebhook = require('./contentfulWebhook')
-const ProjectModel = require('../models/Project')()
+const ProjectModel = require('../models/Project')
 const staticFilesMiddleware = require('../middleware/staticFilesMiddleware')()
 const revisionedFiles = require('./revisionedFiles')
 // Controller
@@ -16,7 +16,7 @@ let env = process.env.NODE_ENV || 'development'
 const PORT = process.env.NODE_PORT || 8080
 
 module.exports = (app) => {
-  return (response) => {
+  return () => {
     // ---------------------------------- //
     // MIDDLEWARE
     // ---------------------------------- //
@@ -43,7 +43,7 @@ module.exports = (app) => {
     })
     // Portfolio
     // no portfolio item selected
-    app.get(/^\/portfolio\/?$/, (req, res) => {
+    app.get(/^\/portfolio\/?$/, (_req, res) => {
       res.redirect('/#portfolio')
     })
     // show portfolio item
@@ -81,11 +81,11 @@ module.exports = (app) => {
     // pages
     app.get(/^\/(privacy)?$/, (req, res) => Pages.get(req, res))
     // About
-    app.get(/^\/about\/([\w-]+)?$/, (req, res) => {
+    app.get(/^\/about\/([\w-]+)?$/, (_req, res) => {
       res.redirect('/#about')
     })
     // contact
-    app.get(/^\/contact\/([\w-]+)?$/, (req, res) => {
+    app.get(/^\/contact\/([\w-]+)?$/, (_req, res) => {
       res.redirect('/#contact')
     })
     // show individual project
@@ -104,7 +104,7 @@ module.exports = (app) => {
       res.redirect('/')
     })
     // static content
-    app.use(express.static('public', { maxAge: '365d' }))
+    app.use(expressServer.static('public', { maxAge: '365d' }))
     // open port
     app.listen(PORT)
     if (env !== 'testing') {

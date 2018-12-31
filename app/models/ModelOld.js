@@ -1,13 +1,6 @@
-interface Resource {
-   id: string,
-   fields: object
-}
-
 const cache = require('../services/cacheService')()
 
-export default class Model implements Model {
-  private Transformer
-  private contentType
+class Model {
 
   constructor (transformer, type) {
     if (!transformer || typeof transformer !== 'function' || !type || typeof type !== 'string') {
@@ -17,7 +10,7 @@ export default class Model implements Model {
     this.Transformer = transformer
   }
 
-  content (): Array<Object> {
+  content (){
     return new this.Transformer(cache.get(this.contentType)).all()
   }
 
@@ -25,21 +18,22 @@ export default class Model implements Model {
     return this.content()
   }
 
-  find (id: string) {
-    return this.content().find((item: Resource) => {
+  find (id) {
+    return this.content().find((item) => {
       return item.id === id
     })
   }
 
-  findByField (type: string, value: any) {
-    return this.content().find((item: Resource) => {
+  findByField (type, value) {
+    return this.content().find((item) => {
       return item.fields[type] === value
     })
   }
 
-  findByArrayField (type: string, value: any) {
-    return this.content().find((item: Resource) => {
+  findByArrayField (type, value) {
+    return this.content().find((item) => {
       return item.fields[type] !== undefined && item.fields[type] !== null && item.fields[type].indexOf(value) > -1
     })
   }
 }
+module.exports = Model
