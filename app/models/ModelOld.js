@@ -1,7 +1,6 @@
 const cache = require('../services/cacheService')()
 
 class Model {
-
   constructor (transformer, type) {
     if (!transformer || typeof transformer !== 'function' || !type || typeof type !== 'string') {
       throw new Error(`'${this.constructor.name}' model can't be initialized, please provide a transformer and the content type.`)
@@ -10,7 +9,7 @@ class Model {
     this.Transformer = transformer
   }
 
-  content (){
+  content () {
     return new this.Transformer(cache.get(this.contentType)).all()
   }
 
