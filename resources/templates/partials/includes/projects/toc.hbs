@@ -1,0 +1,7 @@
+<ul class="Toc Project__toc" data-toc>
+{{#each @root.project.chapters}}
+  {{#if fields.slug}}
+    <li class="Toc__chapter"><a class="Toc__chapter__link" href="#{{fields.slug}}"><div class="Toc__chapter__title">{{fields.title}}</div></a></li>
+  {{/if}}
+{{/each}}
+</ul>

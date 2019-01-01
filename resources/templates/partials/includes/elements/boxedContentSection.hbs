@@ -1,12 +1,10 @@
-<div class="Section Grid">
-  <div class="Boxed-group Grid--columns">
-    {{#each item.items}}
-      <div class="Boxed-item" style="flex-grow: {{this.grow}}">
-        <span class="Headline--h5 text--light">{{{this.key}}}</span>
-        <div class="Paragraph Paragraph--sans-small">
-          {{{this.value}}}
-        </div>
+<div class="Boxed-group Grid--columns">
+  {{#each items}}
+    <div class="Boxed-item" style="flex-grow: {{this.optionalParameter}}">
+      <span class="Headline--h5 text--light">{{{this.key}}}</span>
+      <div class="Paragraph Paragraph--sans-small">
+        {{{this.value}}}
       </div>
-    {{/each}}
-  </div>
+    </div>
+  {{/each}}
 </div>

@@ -12,18 +12,18 @@ class ProjectTransformer extends Transformer {
       updatedAt: data.sys.updatedAt,
       fields: {
         title: this.getContent(data, 'title'),
-        published: this.getContent(data, 'published', true),
+        published: this.getContent(data, 'published', true).toString(),
         subtitle: this.getContent(data, 'subtitle'),
         titleStyle: this.getContent(data, 'titleStyle', 'default'),
         slug: this.getContent(data, 'slug'),
         headerImage: new AssetTransformer(this.getContent(data, 'headerImage')).first(),
         previewImage: new AssetTransformer(this.getContent(data, 'previewImage')).first(),
-        challenge: this.getContent(data, 'challenge'),
-        role: this.getContent(data, 'role'),
-        publicationYear: this.getContent(data, 'publicationYear'),
-        industry: this.getContent(data, 'industry'),
-        client: this.getContent(data, 'client'),
         chapters: new ChapterTransformer(this.getContent(data, 'chapters')).all()
+        // challenge: this.getContent(data, 'challenge'),
+        // role: this.getContent(data, 'role'),
+        // publicationYear: this.getContent(data, 'publicationYear'),
+        // industry: this.getContent(data, 'industry'),
+        // client: this.getContent(data, 'client'),
         // related:
         // tags:
       }
