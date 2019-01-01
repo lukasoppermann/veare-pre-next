@@ -14,7 +14,7 @@ class DynamicContentTransformer extends Transformer {
       fields: {
         type: data.sys.contentType.sys.id,
         variableType: type,
-        variable: value,
+        variable: value
       }
     }
   }
