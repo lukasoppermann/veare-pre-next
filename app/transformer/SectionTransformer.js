@@ -6,7 +6,8 @@ const Transform = {
   code: require('./CodeTransformer'),
   dynamicContent: require('./DynamicContentTransformer'),
   pictureElement: require('./PictureElementTransformer'),
-  boxedContentSection: require('./BoxedContentSectionTransformer')
+  boxedContentSection: require('./BoxedContentSectionTransformer'),
+  projectInfo: require('./ProjectInfoTransformer')
 }
 
 class SectionTransformer extends Transformer {

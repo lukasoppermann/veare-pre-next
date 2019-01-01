@@ -130,19 +130,18 @@
 /* ====================================
     PROJECT Page
 ==================================== */
-.Project__subtitle{
+.Project__challenge{
+  margin-top: var(--vs-xg);
   grid-column: column 1 / column 5;
   @include mq('xs') {
     grid-column: columns;
   }
 }
-.Project__challenge{
-  grid-column: column 1 / column 5;
-  @include mq('xs') {
-    grid-column: columns;
-  }
+.Project__challenge h2{
+  margin-top: 0;
 }
 .Project__toc{
+  margin-top: var(--vs-xg);
   grid-column: column 6 / column 8;
   @include mq('l') {
     grid-column: column 5 / column 8;
