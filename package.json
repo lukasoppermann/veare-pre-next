@@ -15,7 +15,7 @@
   "homepage": "https://github.com/lukasoppermann/veare#readme",
   "devDependencies": {
     "@nuclei-components/grid": "^1.1.0",
-    "@nuclei-components/lazy-picture": "0.0.4",
+    "@nuclei-components/lazy-picture": "^0.1.0",
     "@nuclei-components/page-sections": "^0.6.2",
     "@nuclei-components/responsive-image": "^0.3.3",
     "@types/contentful-resolve-response": "^0.1.30",

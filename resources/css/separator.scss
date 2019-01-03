@@ -1,4 +1,4 @@
-.Separator{
+.Separator {
   display: block;
   height: 2px;
   width: var(--size-xxl);
@@ -6,15 +6,15 @@
   background-color: var(--blue);
   border: none;
 }
-.horizontal-rule{
+.horizontal-rule {
   display: block;
   @include baseline(4);
   @include baseline(4, 'margin-bottom');
 }
-.horizontal-rule hr{
+.horizontal-rule hr {
   border: none;
   height: 2px;
   width: var(--size-xxl);
-  background-color: var(--blue);
+  background-color: var(--horizontal-rule-color, var(--blue));
   margin: 0;
 }

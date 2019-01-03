@@ -1,4 +1,5 @@
 .Section {
+  position: relative;
   grid-column: full-bleed;
 }
 .Section ~ .Section {
@@ -8,30 +9,30 @@
 .SectionType__textSection {
   grid-column: columns / span 7;
 }
-.SectionType__textSection--text h2{
+.SectionType__textSection--text h2 {
   @extend %font-headline--h2;
   @include baseline(3);
   color: var(--black);
 }
-.SectionType__textSection--text h3{
+.SectionType__textSection--text h3 {
   @extend %font-headline--h3;
   @include baseline(3);
   color: var(--black);
 }
-.SectionType__textSection--text h4{
+.SectionType__textSection--text h4 {
   @extend %font-headline--h4;
   @include baseline(3);
   color: var(--black);
 }
-.SectionType__textSection--text h5, .SectionType__textSection .Section__title--subtitle{
+.SectionType__textSection--text h5, .SectionType__textSection .Section__title--subtitle {
   @extend %font-subtitle-uppercase-small;
   @include baseline(3);
   color: var(--black-40);
 }
-.Section__title--headline{
+.Section__title--headline {
   @extend %font-headline--h2;
 }
-.Section__media__description h5, .Section__subtitle{
+.Section__media__description h5, .Section__subtitle {
   @extend %font-subtitle-small;
   color: var(--black-40);
   padding-left: calc(var(--vs-xl) + var(--size-xs));
@@ -46,7 +47,7 @@
   transform: translateY(-1px);
   background-color: var(--black-30);
 }
-.Text__Element blockquote{
+.Text__Element blockquote {
   hyphens: auto;
   overflow-wrap: break-word;
   @extend %font-paragraph-sans-big;
@@ -57,10 +58,10 @@
   @include baseline(3);
   grid-column: columns / span 7;
 }
-.Section .Separator, .Section .horizontal-rule{
+.Section .Separator, .Section .horizontal-rule {
   grid-column: columns;
 }
-.Text__Element{
+.Text__Element {
   hyphens: auto;
   overflow-wrap: break-word;
   @extend %font-paragraph-sans;
@@ -75,50 +76,39 @@
   }
 }
 
-.Chapter__content--fullwidth .Text__Element{
+.Chapter__content--fullwidth .Text__Element {
   grid-column: columns / span 7;
 }
-.Text__Element p:not(:first-child){
+.Text__Element p:not(:first-child) {
   @include baseline(2);
 }
-.Text__Element h4 ~ p:not(:first-child){
+.Text__Element h4 ~ p:not(:first-child) {
   @include baseline(1);
 }
-.Picture__Element{
-  grid-column: columns;
-  position: relative;
-  z-index: 50;
-  @include mq('m') {
-    grid-column: full-content;
-  }
-}
-.Section__media__image--big > .Section__media__image{
+.Section__media__image--big > .Section__media__image {
   grid-column: sidebar-left / column 8;
   @include mq('m') {
     grid-column: full-bleed;
   }
 }
-.Picture__Element:not(:first-child){
-  @include baseline(3);
-}
-.Section__media__image:not(:first-child) + .Section__media__description{
+.Section__media__image:not(:first-child) + .Section__media__description {
   @include mq('m', min) {
     @include baseline(3);
   }
 }
-.Section__media__image + .Section__media__description{
+.Section__media__image + .Section__media__description {
   @include mq('m') {
     grid-column: columns;
   }
 }
-.Section__media__description{
+.Section__media__description {
   @extend %font-paragraph-sans-big;
   @include mq('m') {
     font-size: var(--base-font);
     line-height: calc(var(--baseline) * 4);
   }
 }
-.Section__media__description .Section__subtitle + p{
+.Section__media__description .Section__subtitle + p {
   @include baseline(1);
 }
 .Section__media[mediacount="2"]{
@@ -127,7 +117,7 @@
     margin-bottom: 0;
   }
 }
-.Section__media[mediacount="2"] .Section__media__image:first-child{
+.Section__media[mediacount="2"] .Section__media__image:first-child {
   order: 1;
   grid-column: sidebar-left / span 6;
   @include mq('s') {
@@ -144,7 +134,7 @@
     transform: translateY(0);
   }
 }
-.Section__media[mediacount="2"] .Section__media__image + .Section__media__description{
+.Section__media[mediacount="2"] .Section__media__image + .Section__media__description {
   @include baseline(5);
   order: 2;
   grid-column: column 5 / span 4;
@@ -156,7 +146,7 @@
     order: 2;
   }
 }
-.Section__media.Section__media__images--description-bottom[mediacount="2"] .Section__media__description{
+.Section__media.Section__media__images--description-bottom[mediacount="2"] .Section__media__description {
   @include mq('s', 'min') {
     grid-column: sidebar-left 2 / span 4;
   }
@@ -164,7 +154,7 @@
 /* ====================================
   Section__pictures
 ==================================== */
-.Section__pictures .Picture__Element:first-child{
+.Section__pictures .Picture__Element:first-child {
   order: 1;
   grid-column: sidebar-left / span 6;
 }
@@ -176,7 +166,7 @@
     transform: translateY(0);
   }
 }
-.Section__pictures .Picture__Element{
+.Section__pictures .Picture__Element {
   @include mq('s') {
     grid-column: columns !important;
   }
@@ -187,24 +177,36 @@
     grid-column: columns;
   }
 }
-.Section__pictures.Section__pictures--description-bottom .Text__Element{
+.Section__pictures.Section__pictures--description-bottom .Text__Element {
   @include mq('s', 'min') {
     grid-column: sidebar-left 2 / span 4;
   }
 }
-.Section__pictures.Section__pictures--description-top .Text__Element{
+.Section__pictures.Section__pictures--description-top .Text__Element {
   @include mq('s', 'min') {
     grid-column: column 5 / span 4;
   }
 }
 
 /* ====================================
+  Section__pictures (single)
+==================================== */
+// .Section__picture {}
+.Section__picture--right .Text__Element {
+  grid-column: column 1 / span 4;
+}
+.Section__picture--right .Picture__Element {
+  grid-column: column 5 / span 3;
+  margin-top: 0;
+}
+
+/* ====================================
     Text__Element
 ==================================== */
-.Text__Element{
+.Text__Element {
   h3:first-child,
   h4:first-child,
-  h5:first-child{
+  h5:first-child {
     margin-top: 0;
   }
 }

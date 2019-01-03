@@ -1,19 +1,30 @@
-.Header{
+.Header {
   position: relative;
   z-index: 1;
-  box-sizing: border-box;
-  border: var(--size-m) solid var(--white);
+  box-sizing: content-box;
+  border-style: solid;
+  border-color: var(--white);
   border-width: var(--vs-g) var(--size-m) var(--vs-m);
-  height: 100%;
+  --header-inner-height: calc(100vh - var(--vs-g) - var(--vs-m));
+  height: var(--header-inner-height);
 }
-.Header__image{
+.Header .Section {
+  height: var(--header-inner-height);
+}
+.Header .Picture__Element {
+  height: var(--header-inner-height);
+  margin: 0 !important;
+}
+.Header .Picture__Element lazy-picture {
   height: 100%;
   width: 100%;
 }
-.Header__title{
+.Header__title {
+  margin: 0;
   position: absolute;
   font: var(--font-title);
   bottom: var(--vs-xxl);
   left: var(--hs-xl);
   color: var(--white);
+  z-index: 100;
 }

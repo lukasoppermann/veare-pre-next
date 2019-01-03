@@ -1,0 +1,48 @@
+/* ====================================
+    Picture__Element
+==================================== */
+.Picture__Element {
+  grid-column: columns;
+  position: relative;
+  z-index: 50;
+  @include mq('m') {
+    grid-column: full-content;
+  }
+}
+.Picture__Element lazy-picture,
+.Picture__Element .Annotation {
+  position: relative;
+  z-index: 50;
+}
+.Picture__Element:not(:first-child) {
+  @include baseline(3);
+}
+.Picture__Element.Picture__Element--center {
+  grid-column: columns;
+}
+.Picture__Element.Picture__Element--wide {
+  grid-column: sidebar-left 2 / sidebar-right 2;
+  @include mq('m') {
+    grid-column: full-content;
+  }
+}
+.Picture__Element.Picture__Element--full-width {
+  grid-column: full-bleed;
+}
+.Picture__Element--background,
+.Picture__Element--background--tilted {
+  padding: var(--vs-g);
+}
+.Picture__Element--background::after {
+  @include pseudo();
+  height: 100%;
+  width: calc(100vw + 400px);
+  background: var(--backgroundColor);
+  z-index: 0;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.Picture__Element--background--tilted::after {
+  transform: translateX(-50%) rotate(3deg);
+}

@@ -1,23 +1,23 @@
 /* ====================================
     Projects on Homepage
 ==================================== */
-.Projects{
+.Projects {
   counter-reset: projects;
 }
-.Projects__intro{
+.Projects__intro {
   margin-top: var(--vs-xg);
 }
-.Projects__headline{
+.Projects__headline {
   grid-column: columns;
   @extend %font-subtitle-uppercase-small;
   color: var(--black-40);
 }
-.Projects__body{
+.Projects__body {
   grid-column: columns;
   margin-top: var(--vs-l);
   @extend %font-paragraph-sans-big;
 }
-.Project-card{
+.Project-card {
   display: block;
   counter-increment: projects;
   margin-top: calc(var(--baseline) * 20);
@@ -28,10 +28,10 @@
     margin-top: 0;
   }
 }
-.Project-card:first-child{
+.Project-card:first-child {
   margin-top: var(--vs-g);
 }
-.Project-card__image-container{
+.Project-card__image-container {
   position: relative;
   grid-column: sidebar-left 2 / span 7;
   grid-row-start: 1;
@@ -47,12 +47,12 @@
     grid-row-start: auto;
   }
 }
-.Project-card:nth-child(2n) .Project-card__image-container{
+.Project-card:nth-child(2n) .Project-card__image-container {
   @include mq('s', 'min') {
     grid-column-start: column 2;
   }
 }
-.Project-card__image{
+.Project-card__image {
   position: absolute;
   top: 0;
   left: 0;
@@ -60,16 +60,16 @@
   transition: all .4s ease;
   filter: grayscale(50%);
 }
-.Project-card__link:hover .Project-card__image{
+.Project-card__link:hover .Project-card__image {
   @include mq('s','min') {
     transform: scale(1.1);
     filter: grayscale(0%);
   }
 }
-.Project-card__link{
+.Project-card__link {
   text-decoration: none;
 }
-.Project-card__text{
+.Project-card__text {
   z-index: 100;
   grid-column: column 6 / span 3;
   grid-row-start: 1;
@@ -87,12 +87,12 @@
     grid-column: column 1 / span 7;
   }
 }
-.Project-card:nth-child(2n) .Project-card__text{
+.Project-card:nth-child(2n) .Project-card__text {
   @include mq('s', 'min') {
     grid-column-start: sidebar-left 2;
   }
 }
-.Project-card__link:hover .Project-card__text{
+.Project-card__link:hover .Project-card__text {
   @include mq('s','min') {
     margin-top: 7%;
   }
@@ -100,13 +100,13 @@
     margin-top: 27%;
   }
 }
-.Project-card__text::before{
+.Project-card__text::before {
   @extend %font-title;
   display: block;
   content: counter(projects, decimal-leading-zero);
   font-feature-settings: "tnum", "zero";
 }
-.Project-card__client{
+.Project-card__client {
   margin-top: var(--vs-xl);
   display: flex;
   @extend %font-subtitle-uppercase-small;
@@ -115,32 +115,35 @@
     margin-top: var(--vs-s);
   }
 }
-.Project-card__link:hover .Project-card__text .Project-card__client{
+.Project-card__link:hover .Project-card__text .Project-card__client {
   @include mq('s','min') {
     margin-top: var(--vs-xxl);
   }
 }
-.Project-card__client::before{
+.Project-card__client::before {
   @extend %pseudo-line;
   margin-right: var(--hs-xs);
 }
-.Project-card__title{
+.Project-card__title {
   @extend %font-title;
 }
 /* ====================================
     PROJECT Page
 ==================================== */
-.Project__challenge{
+.Project {
+    --horizontal-rule-color: var(--project-color);
+}
+.Project__challenge {
   margin-top: var(--vs-xg);
   grid-column: column 1 / column 5;
   @include mq('xs') {
     grid-column: columns;
   }
 }
-.Project__challenge h2{
+.Project__challenge h2 {
   margin-top: 0;
 }
-.Project__toc{
+.Project__toc {
   margin-top: var(--vs-xg);
   grid-column: column 6 / column 8;
   @include mq('l') {
@@ -150,13 +153,13 @@
     grid-column: columns;
   }
 }
-.Project__pagination{
+.Project__pagination {
   z-index: 900;
   top: 200px;
   position: sticky;
   margin-top: 0;
 }
-.Project__pagination-container{
+.Project__pagination-container {
   display: block;
   position: absolute;
   margin-top: -4px; // to align with TOC

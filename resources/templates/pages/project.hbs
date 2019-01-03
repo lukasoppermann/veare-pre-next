@@ -1,15 +1,22 @@
 {{> layouts/base title=(join "| " project.title) wordmark=true}}
 
-{{#*inline "body"}}
+{{#*inline "header-block"}}
+<style media="screen">
+  :root{
+    --project-color: {{project.variables.color}};
+  }
+</style>
+{{/inline}}
 
-<page-section style="--page-section-height: 100vh; --page-section-max-height: 1000px" class="Section--Header">
-  <div class="Header">
+{{#*inline "body"}}
+{{!-- HEADER --}}
+<page-section class="Header">
+  <div class="Section Grid">
     <h2 class="Header__title">{{project.title}}</h2>
-    <responsive-image class="Header__image" src="{{project.headerImage.fields.url}}" alt="{{project.headerImage.fields.title}}"></responsive-image>
+    {{> "includes/elements/pictureElement" item=project.header.fields}}
   </div>
 </page-section>
-
-{{!-- Load Chapter --}}
+{{!-- Chapters --}}
 {{#each project.chapters}}
   {{> "includes/chapter" chapter=fields classes="Chapter--side-title"}}
 {{/each}}
