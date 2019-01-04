@@ -1,15 +1,15 @@
 const express = require('express')
-const csp = require('helmet-csp')
 const compression = require('compression')
 const bodyParser = require('body-parser')
 const basicAuth = require('express-basic-auth')
 const contentfulConfig = require('../config/contentful.js')
 const contentfulWebhook = require('./contentfulWebhook')
-const cspPolicies = require('../config/csp.js')
 const ProjectModel = require('../models/Project')()
 const staticFilesMiddleware = require('../middleware/staticFilesMiddleware')()
 const revisionedFiles = require('./revisionedFiles')
 const uuidv4 = require('uuid/v4')
+const helmet = require('helmet')
+const helmetSettings = require('../config/helmet-settings.js')
 // Controller
 const Blog = require('../controller/Blog')()
 const Projects = require('../controller/Project')()
@@ -23,8 +23,8 @@ module.exports = (app) => {
     // ---------------------------------- //
     // MIDDLEWARE
     // ---------------------------------- //
-    // CSP
-    app.use(csp(cspPolicies))
+    // SECURITY:
+    app.use(helmet(helmetSettings))
     // middleware to add nounce
     app.use(function (req, res, next) {
       res.locals.nonce = uuidv4()
