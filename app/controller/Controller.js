@@ -5,7 +5,8 @@ class Controller {
   render (req, res, view, data = {}) {
     res.render(view, Object.assign({
       staticFiles: req.staticFiles,
-      preview: req.query.preview
+      preview: req.query.preview,
+      response: res
     }, data))
   }
 }
