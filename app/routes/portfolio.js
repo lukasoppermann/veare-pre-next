@@ -2,9 +2,8 @@ const express = require('express')
 const router = express.Router()
 // DELETE once new portfolio from cms is done
 // show portfolio item
-router.get(/^\/([\w]*)$/, (req, res) => {
-  console.log(req, req.params[0])
-  res.render('./portfolio/' + req.params[0] + '.hbs', {
+router.get('/:item', (req, res) => {
+  res.render(`./portfolio/${req.params.item}.hbs`, {
     staticFiles: req.staticFiles,
     pageClass: 'c-page--portfolio-item',
     response: res

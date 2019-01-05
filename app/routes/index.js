@@ -10,7 +10,7 @@ const Projects = require('../controller/Project')()
 // Normal Routes
 ================= */
 router.get(/^\/(home|index)?$/, require('./home'))
-router.get('/portfolio', require('./portfolio'))
+router.use('/portfolio', require('./portfolio'))
 router.get('privacy', (req, res) => Pages.get(req, res))
 router.get('/about', (req, res) => { res.redirect('/#about') })
 router.get('/contact', (req, res) => { res.redirect('/#contact') })
