@@ -1,3 +1,6 @@
+# default deploy_config_path is 'config/deploy.rb'
+set :deploy_config_path, 'capistrano_config/deploy.rb'
+set :stage_config_path, 'capistrano_config/deploy'
 # Load DSL and Setup Up Stages
 require 'capistrano/setup'
 
@@ -25,4 +28,4 @@ require "capistrano/scm/git"
 # require 'capistrano/composer'
 
 # Loads custom tasks from `lib/capistrano/tasks' if you have any defined.
-Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }
+# Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }
