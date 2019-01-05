@@ -1,7 +1,7 @@
 const contentful = require('contentful')
 const config = require('../config/contentful.js')
 
-const env = (process.env.NODE_ENV || 'dev')
+const env = process.env.NODE_ENV
 
 const retryOnError = () => {
   if (env !== 'production') {

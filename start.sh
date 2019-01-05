@@ -9,5 +9,5 @@ npm install --save --prod
 #slc run server.js
 #node server.js --verbose
 #forever start server.js --verbose
-forever app.js -m 5000
+forever app/server.js -m 5000
 #slc run
