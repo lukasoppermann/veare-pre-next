@@ -15,7 +15,7 @@ class SectionTransformer extends Transformer {
     let sections = {
       items: [data]
     }
-    // overwrite if collection already
+    // overwrite if already a section
     if (data.sys.contentType.sys.id === 'section') {
       sections = {
         items: this.getContent(data, 'sections'),
