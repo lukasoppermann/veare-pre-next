@@ -42,10 +42,11 @@ module.exports = expressHandlebars.create({
     or: function () {
       return Array.prototype.slice.call(arguments, 0, -1).some(Boolean)
     },
-    ifDefined: (value, returnValue) => {
+    ifDefined: (value, returnValue, defaultValue) => {
       if (value) {
         return returnValue
       }
+      return defaultValue || ''
     },
     in_array: function (element, array) {
       return array.indexOf(element) > -1

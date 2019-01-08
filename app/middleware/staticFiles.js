@@ -1,6 +1,6 @@
 const fs = require('fs')
 const memoryCache = require('memory-cache')
-let cacheTime = process.env.NODE_ENV === 'development' ? 10 : null
+let cacheTime = process.env.NODE_ENV === 'development' ? 10 : 2592000000
 
 module.exports = (req, res, next) => {
   let staticFiles = memoryCache.get('files')

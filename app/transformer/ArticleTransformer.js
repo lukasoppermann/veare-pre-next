@@ -21,6 +21,7 @@ class ArticleTransformer extends Transformer {
       createdAt: data.sys.createdAt,
       updatedAt: data.sys.updatedAt,
       fields: {
+        type: data.sys.contentType.sys.id,
         slug: this.getContent(data, 'slug'),
         title: this.getContent(data, 'title'),
         featuredImage: new PictureElementTransformer(this.getContent(data, 'featuredImage')).first(),

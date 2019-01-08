@@ -7,7 +7,8 @@ const Transform = {
   dynamicContent: require('./DynamicContentTransformer'),
   pictureElement: require('./PictureElementTransformer'),
   boxedContentSection: require('./BoxedContentSectionTransformer'),
-  projectInfo: require('./ProjectInfoTransformer')
+  projectInfo: require('./ProjectInfoTransformer'),
+  collection: require('./CollectionTransformer')
 }
 
 class SectionTransformer extends Transformer {

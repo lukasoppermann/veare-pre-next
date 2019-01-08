@@ -18,7 +18,8 @@ class Project extends Controller {
   }
 
   get (req, res, data) {
-    let project = (model.findBySlug(req.params[0]) || model.findByAlias(req.params[0]))
+    let projectSlug = `work/${req.params[0]}`
+    let project = model.findBySlug(projectSlug)
     // redirect home if param is neither slug nor alias
     if (project === undefined) {
       return res.redirect(301, 'http://' + req.headers.host + '/')

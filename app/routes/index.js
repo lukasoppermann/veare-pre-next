@@ -9,19 +9,17 @@ const Projects = require('../controller/Project')()
 /* =================
 // Normal Routes
 ================= */
-router.get(/^\/(home|index)?$/, require('./home'))
+router.get(/^\/(home)?$/, require('./home'))
 router.use('/portfolio', require('./portfolio'))
-router.get('privacy', (req, res) => Pages.get(req, res))
+router.get('/privacy', (req, res) => Pages.get('privacy', req, res))
 router.get('/about', (req, res) => { res.redirect('/#about') })
 router.get('/contact', (req, res) => { res.redirect('/#contact') })
 router.get('/blog', (req, res) => Blog.index(req, res, {}))
 router.get(/^\/blog\/([\w-]+)/, (req, res) => Blog.get(req, res, {}))
-router.get(/^\/work\/([\w-]+)/, (req, res) => {
-  return Projects.get(req, res, {
-    pageClass: 'Page--work Project',
-    htmlClass: 'Temp-Override'
-  })
-})
+router.get(/^\/work\/([\w-]+)/, (req, res) => Projects.get(req, res, {
+  pageClass: 'Page--work Project',
+  htmlClass: 'Temp-Override'
+}))
 /* =================
 // UTILS
 ================= */

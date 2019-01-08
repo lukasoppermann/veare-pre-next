@@ -210,3 +210,9 @@
     margin-top: 0;
   }
 }
+/* ====================================
+    Collection
+==================================== */
+.Section > .Collection {
+  grid-column: full-bleed;
+}

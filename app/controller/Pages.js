@@ -12,8 +12,8 @@ class Page extends Controller {
     self = this
   }
 
-  get (req, res, data = {}, view) {
-    data.page = model.findBySlug(req.params[0] || 'home').fields
+  get (slug = 'home', req, res, data = {}, view) {
+    data.page = model.findBySlug(slug).fields
     let template = view || 'page'
     self.render(req, res, template, data)
   }
