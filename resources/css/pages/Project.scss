@@ -124,6 +124,7 @@
 ==================================== */
 .portfolio {
   margin-bottom: var(--vs-xg);
+  --lazy-picture-object-fit: contain;
 }
 .Project-cards--small .Project-card {
   position: relative;
