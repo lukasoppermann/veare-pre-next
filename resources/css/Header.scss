@@ -6,7 +6,9 @@
   border-color: var(--white);
   border-width: var(--vs-g) var(--size-m) var(--vs-m);
   --header-inner-height: calc(100vh - var(--vs-g) - var(--vs-m));
-  height: var(--header-inner-height);
+  min-height: var(--header-inner-height);
+  height: min-content;
+  overflow: hidden;
 }
 .Header .Section {
   height: var(--header-inner-height);
