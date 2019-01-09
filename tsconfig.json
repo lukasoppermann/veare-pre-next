@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es6",
     "lib": ["es6", "es2016", "dom"],
-    "module": "es6",
+    "module": "CommonJS",
     "isolatedModules": false,
     "declaration": true,
     "noUnusedLocals": true,
@@ -12,5 +12,9 @@
     "suppressImplicitAnyIndexErrors": false,
     "strictNullChecks": true,
     "rootDir": "./"
-  }
+  },
+  "typeRoots": [
+    "./app/types",
+    "./node_modules/@types"
+  ]
 }
