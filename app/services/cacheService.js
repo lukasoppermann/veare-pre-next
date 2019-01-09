@@ -40,7 +40,7 @@ const memoryCacheWrapper = () => {
 }
 
 module.exports = () => {
-  let env = process.env.NODE_ENV || 'development'
+  let env = process.env.NODE_ENV
 
   if (env !== 'development') {
     return memoryCache // keep original on production
