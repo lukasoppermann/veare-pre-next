@@ -1,4 +1,5 @@
-import uglify from 'rollup-plugin-uglify-es'
+// import uglify from 'rollup-plugin-uglify-es'
+import { terser } from 'rollup-plugin-terser' // uglify alternative
 import replace from 'rollup-plugin-replace'
 const typescript = require('rollup-plugin-typescript')
 const nodeResolve = require('rollup-plugin-node-resolve')
@@ -31,7 +32,7 @@ let plugins = {
       extensions: [ '.js', '.json' ],
       preferBuiltins: false
     }),
-    uglify()
+    terser()
   ]
 }
 
