@@ -4,7 +4,7 @@
 # lock '3.7.1'
 # lock '3.10.1'
 lock '3.11.0'
-set :stages, ["staging","production"]
+set :stages, ["production"] #"staging",
 set :default_stage, "production"
 set :ssh_options, {:forward_agent => true}
 
@@ -15,6 +15,12 @@ set :user, "lukasoppermann"
 set :format_options, log_file: "logs/capistrano.log"
 set :default_env, { path: "/usr/local/bin:$PATH" }
 
+# set :npm_target_path, -> { release_path } # default not set
+# #set :npm_flags, '--production'    # default  --silent --no-progress
+# set :npm_roles, :all                                     # default
+# #set :npm_env_variables, {}                               # default
+# set :npm_method, 'install'                               # default
+
 namespace :deploy do
 
     desc 'Setup release'
@@ -23,9 +29,8 @@ namespace :deploy do
             # move to app dir + remove current (bad due to root linkage) + add new current
             execute "cd #{fetch(:deploy_to)} && rm current && ln -sfn ./releases/#{fetch(:release_timestamp)} ./current"
             upload!('.env' , "#{fetch(:deploy_to)}/current/.env")
-            execute "docker stop veare || true && docker rm veare || true"
-            execute "cd #{fetch(:deploy_to)}/current/docker/node && docker-compose up -d"
-            execute "docker exec veare npm i --only=production"
+            execute "cd #{fetch(:deploy_to)}/current && node_modules/.bin/forever stopall"
+            execute "cd #{fetch(:deploy_to)}/current && npm run server"
         end
     end
 
