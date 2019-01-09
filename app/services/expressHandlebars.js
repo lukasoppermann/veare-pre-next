@@ -46,7 +46,7 @@ module.exports = expressHandlebars.create({
       if (value) {
         return returnValue
       }
-      return defaultValue || ''
+      return typeof defaultValue === 'string' ? defaultValue : ''
     },
     in_array: function (element, array) {
       return array.indexOf(element) > -1
