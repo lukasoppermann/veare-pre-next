@@ -6,8 +6,4 @@ fi
 #cd /usr/app/current
 npm install --save --prod
 ## start server
-#slc run server.js
-#node server.js --verbose
-#forever start server.js --verbose
-forever app/server.js -m 5000
-#slc run
+forever start -v -c ts-node app/server.ts -m 5000
