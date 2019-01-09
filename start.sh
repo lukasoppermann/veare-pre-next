@@ -7,4 +7,4 @@ fi
 npm install --save --prod
 ## start server
 #forever start -v -c node_modules/.bin/ts-node app/server.ts -m 5000
-forever start -v app/server.js -m 5000
+forever start app/server.js -m 5000
