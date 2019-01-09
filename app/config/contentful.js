@@ -1,3 +1,4 @@
+// this loads the .env config file so that it is available
 require('dotenv-safe').config()
 
 // login for contentful client
