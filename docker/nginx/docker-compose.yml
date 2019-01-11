@@ -1,0 +1,28 @@
+version: '3'
+services:
+    nginx:
+        image: nginx:alpine # using alpine for newer openssl for http2 with ALPAN
+        container_name: nginx
+        volumes:
+            - ../letsencrypt/:/etc/letsencrypt
+            - ./nginx/var/www/html:/var/www/html
+            - ./logs/nginx/:/var/log/nginx:rw
+            - ./nginx/includes:/etc/nginx/includes:ro
+            - ./nginx/conf.d:/etc/nginx/conf.d
+            - ../sites:/sites
+        ports:
+            - "80:80"
+            - "443:443"
+        restart: always # makes container restart on server restart
+        networks:
+            - appnet
+# used for interal communication within docker
+networks:
+    appnet:
+        driver: "bridge"
+# used to store and persist data
+# volumes:
+#     letsencrypt:
+#         driver: "local"
+#     apps:
+#          driver: "local"

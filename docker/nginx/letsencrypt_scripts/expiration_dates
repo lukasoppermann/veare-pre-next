@@ -1,0 +1,38 @@
+#!/bin/sh
+
+# send expiration via email without color codes
+# sh expiration_dates | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g" | sed "s/\x0f//g" > output ; mail -s "SSL Certificate expiration dates" "oppermann.lukas@gmail.com" < output
+
+live_dir=/home/letsencrypt/live/
+
+bold=$(tput bold)
+regular=$(tput sgr0)
+green=$(tput setaf 2)
+red=$(tput setaf 1)
+orange=$(tput setaf 214)
+white=$(tput setaf 15)
+days=3
+daysInSec=$(expr $days \* 86400)
+
+echo "############"
+echo " "
+for d in $(find $live_dir*/ -maxdepth 1 -type d);
+do
+  cert="${d}cert.pem"
+  site=${d##$live_dir}
+  if openssl x509 -checkend $daysInSec -noout -in $cert
+  then
+    echo "${green}✔︎${white} The certificate ${orange}${bold}$site${regular}${white} is good for at least another ${days} days"
+    today=`date +%D`
+    expiredate=`openssl x509 -enddate -noout -in $cert  | awk -F'=' '{print $2}'`
+    expdate="date +%D --date='$expiredate'"
+    ed=`eval $expdate`
+    daysleft=`echo $(($(($(date -u -d "$ed" "+%s") - $(date -u -d "$today" "+%s"))) / 86400))`
+    echo "Today's date: $today, expiring on: ${bold}$ed${regular}, ${bold}${green}$daysleft days left${white}${regular} to go."
+  else
+    echo "${bold}${red}🚨 ${white}${regular} The certificate $cert has expired or will do so within ${bold}${red}24 hours${white}${regular}"
+    echo "(or is invalid/not found)"
+  fi
+  echo " "
+done
+echo "############"

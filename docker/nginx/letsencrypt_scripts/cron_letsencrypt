@@ -1,0 +1,28 @@
+#!/bin/sh
+echo " "
+echo "================"
+echo "Checking letsencrypt certs"
+date
+echo "================"
+log_dir=/home/proxy/logs/letsencrypt/
+
+output=$(docker run --rm \
+  --volumes-from nginx \
+  certbot/certbot renew \
+  --text 2>&1)
+# Get Date
+date=`date +%Y-%m-%d_%H%M%S`
+# create log folder if it does not exist
+mkdir -p $log_dir
+# Write output to log file
+cat > ${log_dir}${date}_letsencrypt.txt << EOF
+Date: $date
+$output
+$nginx
+EOF
+# echo outout
+echo "$output"
+# remove log files older than 40 days
+find $log_dir -type f -mtime +40 -delete
+# send email if mail command is available
+echo " "

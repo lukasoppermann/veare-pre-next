@@ -24,7 +24,7 @@ namespace :deploy do
             execute "cd #{fetch(:deploy_to)} && rm current && ln -sfn ./releases/#{fetch(:release_timestamp)} ./current"
             upload!('.env' , "#{fetch(:deploy_to)}/current/.env")
             execute "docker stop veare || true && docker rm veare || true"
-            execute "cd #{fetch(:deploy_to)}/current && docker-compose up -d"
+            execute "cd #{fetch(:deploy_to)}/current/docker/node && docker-compose up -d"
             execute "docker exec veare npm i --only=production"
         end
     end

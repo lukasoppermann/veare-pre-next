@@ -2,13 +2,12 @@ const contentful = require('./services/contentful')
 const app = require('./app')
 
 // server function
-let startServer = (defaultPort = '8080', defaultHostname = 'localhost') => {
+let startServer = (defaultPort = '8080') => {
   let port = process.env.NODE_PORT || defaultPort
-  let hostname = process.env.NODE_HOST || defaultHostname
   // start
-  app.listen(port, hostname)
+  app.listen(port)
   if (process.env.NODE_ENV !== 'testing') {
-    console.log(`Running on http://${hostname}:${port} environment is set to "${process.env.NODE_ENV}"`)
+    console.log(`Running on http://localhost:${port} environment is set to "${process.env.NODE_ENV}"`)
   }
 }
 

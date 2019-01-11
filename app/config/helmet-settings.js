@@ -4,10 +4,10 @@ module.exports = {
   },
   hsts: {
     // Must be at least 1 year to be approved
-    maxAge: 63072000,
+    maxAge: 0
     // Must be enabled to be approved
-    includeSubDomains: true,
-    preload: true
+    // includeSubDomains: true,
+    // preload: false
   },
   hidePoweredBy: {
     setTo: 'PHP 4.2.0'
