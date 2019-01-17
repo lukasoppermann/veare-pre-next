@@ -14,14 +14,17 @@ template.innerHTML = `<style>
     z-index: 990;
     transform: translateZ(100px); /* safari hack */
     width: 100vw;
-    height: 66px;
   }
   /*Firefox bug: responsive-menu > [slot="items"]*/
   nav [slot="items"],
   ::slotted([slot="items"]){
     color: inherit;
     pointer-events: auto;
-    padding: var(--size-xl, 20px) var(--size-s, 10px) var(--size-m, 10px);
+    padding: 0 var(--size-s, 10px);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 0 var(--size-xs);
     text-decoration: none;
     text-transform: uppercase;
@@ -44,7 +47,7 @@ template.innerHTML = `<style>
     position: absolute;
     width: 0;
     height: 7px;
-    top: calc(50% + 5px);
+    top: 50%;
     transform: translateY(-50%);
     left: -4px;
     z-index: -1;

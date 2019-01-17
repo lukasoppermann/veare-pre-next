@@ -1,4 +1,4 @@
-<div class="Picture__Element Picture__Element--{{item.style}} {{item.classes}}
+<figure class="Picture__Element Picture__Element--{{item.style}} {{item.classes}}
   {{ifDefined item.backgroundColor ' Picture__Element--background'}}"
   {{{ifDefined item.backgroundColor (join ' style="--backgroundColor: ' item.backgroundColor '"')}}}
 >
@@ -7,7 +7,7 @@
       <source media="{{this.fields.mediaQuery}}" srcset="{{this.fields.image.fields.url}}">
     {{/each}}
   </lazy-picture>
-</div>
+</figure>
 {{#if item.description}}
   <div class="Annotation">
     <div class="Annotation__text">{{{item.description}}}</div>

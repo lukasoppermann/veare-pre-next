@@ -10,7 +10,7 @@ app.engine('hbs', hbs.engine)
 // register new view engine
 app.set('view engine', 'hbs')
 // works with caching
-app.set('view cache', true)
+// app.set('view cache', true) // should be enabled by default if process.env.NODE_ENV === "production"
 // ---------------------------------- //
 // MIDDLEWARE
 app.use(require('./middleware'))
