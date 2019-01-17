@@ -10,11 +10,11 @@
 
 {{#*inline "body"}}
 {{!-- HEADER --}}
-<page-section class="Header">
-  <div class="Section Grid">
+<page-section>
+  <header class="Header Header--project Grid Grid--rows">
     <h2 class="Header__title">{{project.title}}</h2>
     {{> "includes/elements/pictureElement" item=project.header.fields}}
-  </div>
+  </header>
 </page-section>
 {{!-- Chapters --}}
 {{#each project.chapters}}

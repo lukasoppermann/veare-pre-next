@@ -214,3 +214,11 @@
     line-height: 100% !important;
   }
 }
+.Header--project {
+  border: none;
+  .Picture__Element {
+    grid-column: full-width !important;
+    grid-row: row 2 / -2;
+    background-color: var(--color-sand);
+  }
+}
