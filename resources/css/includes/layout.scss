@@ -1,6 +1,5 @@
 /* max page width is 1600px if more it is centered and body bg is shown */
 body{
-  background: var(--white-grey);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,6 +8,4 @@ body{
   position: relative;
   background: var(--white);
   width: 100vw;
-  // max-width: 1440px;
-  // box-shadow: 0 0 20px 0 var(--black-5);
 }

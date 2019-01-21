@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 21.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 141.1 116.5" enable-background="new 0 0 141.1 116.5" xml:space="preserve">
+<g id="delete_1_">
+	<g id="delete">
+		
+			<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-70.4945" y1="219.5957" x2="-69.4945" y2="219.5957" gradientTransform="matrix(140.455 0 0 -115 9901.3047 25311)">
+			<stop  offset="0" style="stop-color:#F5AA0A"/>
+			<stop  offset="1" style="stop-color:#F08719"/>
+		</linearGradient>
+		<polygon fill="url(#SVGID_1_)" points="81.4,13.8 58,60.1 39.7,23.9 140.5,23.9 128.4,0 0,0 58,115 109,13.8 		"/>
+	</g>
+</g>
+<g id="veareLogo_1_">
+	<g id="veareLogoBody">
+		<defs>
+			<polygon id="veareLogoBodyClippingPath" points="81.4,13.8 58,60.1 39.7,23.9 140.5,23.9 128.4,0 0,0 58,115 109,13.8 			"/>
+		</defs>
+		<clipPath id="veareLogoBodyClippingPath_1_">
+			<use xlink:href="#veareLogoBodyClippingPath"  overflow="visible"/>
+		</clipPath>
+		
+			<polyline id="veareLogoLine" clip-path="url(#veareLogoBodyClippingPath_1_)" fill="none" stroke="#FA9600" stroke-width="40" stroke-miterlimit="10" points="
+			93.7,15.5 57,91 17.5,10.5 140.5,10.5 		"/>
+	</g>
+	<g id="veareLogoShadow">
+		<defs>
+			<polygon id="veareLogoShadowClippingMask" points="76.3,23.9 103.9,23.9 100.9,30 			"/>
+		</defs>
+		<clipPath id="veareLogoShadowClippingMask_1_">
+			<use xlink:href="#veareLogoShadowClippingMask"  overflow="visible"/>
+		</clipPath>
+		
+			<line clip-path="url(#veareLogoShadowClippingMask_1_)" fill="none" stroke="#E88603" stroke-width="7" stroke-miterlimit="10" x1="76" y1="24" x2="104" y2="27.2"/>
+	</g>
+</g>
+</svg>

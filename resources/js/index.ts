@@ -59,4 +59,11 @@ Promise.all([revisionedFiles, scriptPromise])
       .then(() => {
         document.querySelector('responsive-menu').style.display = 'block'
       })
+    // load animejs
+    // fetchInject([
+    //   `/js/anime.min.js?v=$Fetch_Inject_Version`
+    // ])
+    // .then(() => {
+    //   document.dispatchEvent(new Event('animejsReady'))
+    // })
   })

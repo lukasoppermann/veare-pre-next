@@ -10,8 +10,8 @@ html, body{
 }
 body{
 	font-display: optional;
-	font-family: var(--sans-serif);
-	font-weight: var(--sans-serif-normal);
+	font-family: var(--font-source-sans);
+	font-weight: var(--font-source-sans-regular);
   font-size: var(--size-m);
 	color: rgba(0,0,0,.8);
 	overflow-y: scroll;
