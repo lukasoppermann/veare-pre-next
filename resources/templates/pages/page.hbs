@@ -4,7 +4,7 @@
     {{> "includes/header" header=page.header.fields}}
   {{/if}}
   {{#each page.chapters}}
-    {{> "includes/chapter" chapter=fields}}
+    {{> (join "includes/" fields.type) chapter=fields}}
   {{/each}}
 
 {{/inline}}

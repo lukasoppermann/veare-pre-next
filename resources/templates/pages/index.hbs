@@ -3,12 +3,8 @@
 
   {{>includes/homepage/intro}}
 
-  {{!-- {{>includes/homepage/projects}}
-
-  {{>includes/homepage/portfolio}} --}}
-
   {{#each page.chapters}}
-    {{> "includes/chapter" chapter=fields}}
+    {{> (join "includes/" fields.type) chapter=fields}}
   {{/each}}
 
   <a name="contact"></a>
