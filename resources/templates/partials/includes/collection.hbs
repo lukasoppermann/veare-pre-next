@@ -1,5 +1,5 @@
-<div class="Collection Grid {{item.classes}}">
-  {{#each item.items}}
+<div class="Collection Grid {{chapter.classes}}">
+  {{#each chapter.items}}
     {{> (join "includes/collection/" this.fields.type) project=this.fields}}
   {{/each}}
 </div>

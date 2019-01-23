@@ -133,7 +133,7 @@ template.innerHTML = `<style>
     stroke: var(--responsive-menu-close-icon, rgb(255,255,255));
   }
   :host([overlayVisible]){
-    height: 100%;
+    height: 100% !important;
   }
   :host([overlayVisible]) nav{
     flex-direction: column;
@@ -153,6 +153,8 @@ template.innerHTML = `<style>
   :host([overlayVisible]) ::slotted([slot="items"]){
     font-size: var(--size-xl);
     color: rgba(var(--white-rgb), .75) !important;
+    height: calc((100% - 112px) / 5);
+    justify-content: flex-start;
   }
   :host([overlayVisible]) nav [slot="items"]:hover,
   :host([overlayVisible]) ::slotted([slot="items"]:hover){

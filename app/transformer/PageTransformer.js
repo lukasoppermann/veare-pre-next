@@ -1,8 +1,9 @@
 'use strict'
 
 const Transformer = require('./Transformer')
-const ChapterTransformer = require('./ChapterTransformer')
 const HeaderTransformer = require('./HeaderTransformer')
+const ChapterTransformer = require('./ChapterTransformer')
+const CollectionTransformer = require('./CollectionTransformer')
 
 class PageTransformer extends Transformer {
   transform (data) {
@@ -16,7 +17,13 @@ class PageTransformer extends Transformer {
         title: this.getContent(data, 'title'),
         header: new HeaderTransformer(this.getContent(data, 'header')).first(),
         isHomepage: this.getContent(data, 'homepage', false),
-        chapters: new ChapterTransformer(this.getContent(data, 'chapters')).all()
+        chapters: this.getContent(data, 'chapters').map((item) => {
+          if (item.sys.contentType.sys.id === 'collection') {
+            return new CollectionTransformer(item).first()
+          } else if (item.sys.contentType.sys.id === 'chapter') {
+            return new ChapterTransformer(item).first()
+          }
+        })
       }
     }
   }
