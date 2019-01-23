@@ -133,7 +133,7 @@
 /* ====================================
     Project Cards Small
 ==================================== */
-.portfolio {
+.Project-cards--small {
   margin-bottom: var(--vs-xg);
   --lazy-picture-object-fit: contain;
 }
@@ -220,7 +220,7 @@
   margin: 0;
   top: 10px;
   left: 10px;
-  box-sizing: borderborder-box;
+  box-sizing: border-box;
   transform: none;
   height: calc(100% - 20px);
   width: calc(100% - 20px);

@@ -2,7 +2,7 @@
   <a class="Grid Project-card__link" href="/work/{{project.slug}}">
     <div class="Project-card__image-container">
     {{#if project.previewImage}}
-      <responsive-image class="Project-card__image" src="{{project.previewImage.fields.url}}" alt="{{project.previewImage.fields.title}}"></responsive-image>
+      <lazy-picture class="Project-card__image" src="{{project.previewImage.fields.url}}" alt="{{project.previewImage.fields.title}}"></lazy-picture>
     {{/if}}
     </div>
     <div class="Project-card__text">
