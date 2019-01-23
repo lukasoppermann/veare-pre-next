@@ -9,6 +9,12 @@ const Projects = require('../controller/Project')()
 /* =================
 // Normal Routes
 ================= */
+router.get(/^\/slim$/, (req, res) => {
+  res.render('slim', Object.assign({
+    staticFiles: req.staticFiles,
+    response: res
+  }, {}))
+})
 router.get(/^\/(home)?$/, require('./home'))
 router.use('/portfolio', require('./portfolio'))
 router.get('/privacy', (req, res) => Pages.get('privacy', req, res))

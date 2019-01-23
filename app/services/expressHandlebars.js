@@ -9,7 +9,8 @@ const svgo = new SVGO({
     { removeTitle: {} }, // pass it an argument to enable
     'removeComments', // does enable default plugins. (using { full: true } )
     'removeMetadata',
-    { removeViewBox: false }
+    { removeViewBox: false },
+    { cleanupIDs: { remove: false, minify: false } }
   ]
 })
 
@@ -66,7 +67,7 @@ module.exports = expressHandlebars.create({
       return `<script>${js}</script>`
     },
     inline_css: (path) => {
-      path = `public/` + path
+      path = path.substring(0, 1) !== '/' ? `public/${path}` : path.substring(1)
       let css = fs.readFileSync(path, 'utf8')
       return `<style>${css}</style>`
     },

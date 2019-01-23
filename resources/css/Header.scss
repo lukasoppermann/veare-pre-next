@@ -1,19 +1,19 @@
 @keyframes blockReveal {
   0% {
     transform: scaleX(0);
-    transform-origin: left;
+    transform-origin: var(--origin-start, left);
   }
   50% {
     transform: scaleX(1);
-    transform-origin: left;
+    transform-origin: var(--origin-start, left);
   }
   60% {
     transform: scaleX(1);
-    transform-origin: right;
+    transform-origin: var(--origin-end, right);
   }
   100% {
     transform: scaleX(0);
-    transform-origin: right;
+    transform-origin: var(--origin-end, right);
   }
 }
 @keyframes blockFillFromLeft {
@@ -36,21 +36,6 @@
     transform-origin: right;
   }
 }
-@keyframes appear {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 0;
-  }
-  51% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 .Header {
   grid-column: full-bleed;
   grid-row: full-height;
@@ -132,10 +117,10 @@
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
-    max-height: calc(var(--max-row-height) * 2 + var(--baseline));
+    max-height: calc(var(--max-row-height) * 4 + var(--baseline) * 3);
     box-sizing: border-box;
     fill: var(--black);
-    grid-row: row 6 / span 2;
+    grid-row: row 6 / span 4;
     grid-column: sidebar-left 1 / span 6;
     @include mq(1300) {
       grid-column: sidebar-left 2 / span 6;
@@ -152,24 +137,49 @@
       flex-basis: 100%;
       max-height: 100%;
       max-width: 100%;
-      opacity: 0;
-      animation: 2s linear forwards 1.25s appear;
+      // opacity: 0;
+      // animation: 2s linear forwards 1.25s appear;
       z-index: 10;
     }
-    &::before {
-      z-index: 20;
-      animation: 2s var(--easeInOutQuint) 1.25s blockReveal;
-      display: block;
-      height: calc(100% + 10px);
-      width: calc(100% + 10px);
-      left: -5px;
-      top: -5px;
-      transform: scaleX(0);
-      transform-origin: left;
-      content: "";
-      position: absolute;
-      background-color: var(--veare-orange);
+    #interaction {
+      animation: var(--animation-appear);
+      animation-duration: 2.3s;
     }
+    #interactionBlockRect {
+      transform: scaleX(0);
+      fill: var(--veare-orange);
+      animation: 2.1s var(--easeInOutQuint) 1.25s blockReveal;
+    }
+    #isEverything {
+      animation: var(--animation-appear);
+      animation-duration: 2.6s;
+      fill: var(--black-50);
+    }
+    #isEverythingBlockRect {
+      --origin-end: 75% top;
+      fill: var(--veare-orange);
+      transform: scaleX(0);
+      animation: 2.1s var(--easeInOutQuint) 1.55s blockReveal;
+    }
+    #lineBlockRect {
+      fill: var(--veare-orange);
+      transform: scaleX(0);
+      animation: 1.5s var(--easeInOutQuint) 1.65s forwards blockFillFromLeft;
+    }
+    // &::before {
+    //   z-index: 20;
+    //   animation: 2s var(--easeInOutQuint) 1.25s blockReveal;
+    //   display: block;
+    //   height: calc(100% + 10px);
+    //   width: calc(100% + 10px);
+    //   left: -5px;
+    //   top: -5px;
+    //   transform: scaleX(0);
+    //   transform-origin: left;
+    //   content: "";
+    //   position: absolute;
+    //   background-color: var(--veare-orange);
+    // }
   }
   .Header--intro__subheadline {
     z-index: 10;
