@@ -14,7 +14,6 @@
   },
   "homepage": "https://github.com/lukasoppermann/veare#readme",
   "devDependencies": {
-    "@nuclei-components/grid": "^1.1.0",
     "@nuclei-components/lazy-picture": "^0.3.3",
     "@nuclei-components/page-sections": "^0.6.2",
     "@webcomponents/webcomponentsjs": "^2.2.4",
