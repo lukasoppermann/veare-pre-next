@@ -11,6 +11,7 @@ class HeaderTransformer extends Transformer {
       createdAt: data.sys.createdAt,
       updatedAt: data.sys.updatedAt,
       fields: {
+        type: data.sys.contentType.sys.id,
         title: this.getContent(data, 'title'),
         logo: this.getContent(data, 'logo', 'hidden'),
         image: new AssetTransformer(this.getContent(data, 'image')).first()

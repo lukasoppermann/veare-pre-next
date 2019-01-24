@@ -18,7 +18,6 @@ class ArticleTransformer extends Transformer {
     // return
     return {
       id: data.sys.id,
-      contentType: data.sys.contentType.sys.id,
       createdAt: data.sys.createdAt,
       updatedAt: data.sys.updatedAt,
       fields: {
