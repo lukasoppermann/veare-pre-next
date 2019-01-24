@@ -10,3 +10,23 @@ html,
 body {
   margin: 0;
 }
+body.fontsLoaded{
+  font-display: optional;
+  font-family: var(--font-source-sans);
+  font-weight: var(--font-source-sans-regular);
+}
+menu {
+  opacity: 0;
+  transition: opacity 2s ease 3s;
+  height: 67px;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: 990;
+  width: 100vw;
+}
+menu.loaded {
+  opacity: 1;
+}

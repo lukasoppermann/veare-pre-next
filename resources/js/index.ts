@@ -1,5 +1,5 @@
 /* global fetchInject fetch */
-import webComponentsSupported from './modules/wcSupported'
+import webComponentsSupported from './modules/webComponentsSupported'
 // get correct file name
 const revisionedFiles = fetch('/revisionedFiles').then(response => {
   return response.json()
@@ -7,16 +7,16 @@ const revisionedFiles = fetch('/revisionedFiles').then(response => {
 
 const baseUrl = `${window.location.protocol}//${window.location.host}`
 // get fetchInject class
-const scriptPromise = new Promise((resolve, reject) => {
-  const script = window.document.createElement('script')
-  window.document.head.appendChild(script)
+const fetchInjectLoaded = new Promise((resolve, reject) => {
+  const script = document.createElement('script')
+  document.head.appendChild(script)
   script.onload = resolve
   script.onerror = reject
   script.async = true
   script.src = baseUrl + '/js/fetch-inject.min.js?v=$Fetch_Inject_Version'
 })
 
-Promise.all([revisionedFiles, scriptPromise])
+Promise.all([revisionedFiles, fetchInjectLoaded])
   .then(results => {
     let json = results[0]
     // make sure WC are working
@@ -52,18 +52,10 @@ Promise.all([revisionedFiles, scriptPromise])
     // load responsiveMenu
     fetchInject([
       `${baseUrl}/${json['js/responsiveMenu.js']}`,
-      `${baseUrl}/${json['js/nucleiButton.js']}`,
       `${baseUrl}/${json['js/toc.js']}`,
       `${baseUrl}/${json['js/rest.js']}`
     ], webComponentsAvailable)
       .then(() => {
         document.querySelector('responsive-menu').style.display = 'block'
       })
-    // load animejs
-    // fetchInject([
-    //   `/js/anime.min.js?v=$Fetch_Inject_Version`
-    // ])
-    // .then(() => {
-    //   document.dispatchEvent(new Event('animejsReady'))
-    // })
   })

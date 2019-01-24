@@ -3,7 +3,7 @@
 ==================================== */
 :root {
   --max-row-height: calc((100vh - (16 * var(--baseline))) / 13);
-  --min-row-height: 40px;
+  --min-row-height: 35px;
   --row-gap: var(--baseline);
   --column-gap: var(--base-font);
   @include mq('s') {

@@ -9,9 +9,20 @@ const Projects = require('../controller/Project')()
 /* =================
 // Normal Routes
 ================= */
-router.get(/^\/slim$/, (req, res) => {
-  res.render('slim', Object.assign({
+router.get(/^\/fragment\/menu$/, (req, res) => {
+  res.render('menu', Object.assign({
     staticFiles: req.staticFiles,
+    response: res
+  }, {}))
+})
+router.get(/^\/index/, (req, res) => {
+  res.render('progressive', Object.assign({
+    staticFiles: req.staticFiles,
+    files: req.files,
+    filesStringify: {
+      js: JSON.stringify(req.files.js),
+      css: JSON.stringify(req.files.css)
+    },
     response: res
   }, {}))
 })
