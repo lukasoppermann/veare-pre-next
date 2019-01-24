@@ -46,3 +46,6 @@
 .Picture__Element--background--tilted::after {
   transform: translateX(-50%) rotate(3deg);
 }
+.Picture__Element--fit-contain {
+  --lazy-picture-object-fit: contain;
+}
