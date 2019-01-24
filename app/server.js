@@ -14,6 +14,11 @@ if (process.env.NODE_ENV === 'development') {
     app.listen('8080')
   }
 }
+if (process.env.NODE_ENV === 'test') {
+  startServer = () => {
+    app.listen(process.env.NODE_PORT || '3300')
+  }
+}
 // contentful has loaded
 contentful(startServer, (error) => {
   console.log(`🚨 \x1b[31mError: ${error.code} when trying to connect to ${error.hostname}\x1b[0m`)
