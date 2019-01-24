@@ -27,6 +27,7 @@
     "node-sass": "^4.11.0",
     "onchange": "^5.2.0",
     "pre-commit": "^1.2.2",
+    "pre-push": "^0.1.1",
     "rollup": "^1.1.2",
     "rollup-plugin-node-resolve": "^4.0.0",
     "rollup-plugin-replace": "^2.1.0",
@@ -44,6 +45,7 @@
     "@types/contentful-resolve-response": "^0.1.30",
     "@types/express": "^4.16.1",
     "@types/helmet": "0.0.42",
+    "@types/jest": "^23.3.13",
     "@types/node": "^10.12.18",
     "body-parser": "^1.18.3",
     "compression": "^1.7.3",
@@ -103,14 +105,19 @@
     "js:move": "cp $npm_package_config_moveFilesJs public/js/",
     "js:compile": "rollup --config --environment FETCHINJECTVERSION:$(npm list --depth=0 | grep fetch-inject | sed 's/[^0-9.]*\\([0-9.]*\\).*/\\1/')",
     "js:rev": "node-file-rev public/js/*.js --manifest=public/rev-manifest.json --root=public/",
-    "test": "NODE_PORT=3300 npm run test-server && NODE_PORT=3300 npm run test:js && forever stopall",
-    "test:js": "jest && standard --parser typescript-eslint-parser --plugin typescript 'app.js' 'resources/js/*.ts' 'app/**/*.js' | snazzy",
+    "test": "npm run test:js",
+    "test:all": "NODE_PORT=3300 npm run test-server && NODE_PORT=3300 npm run test:js && NODE_PORT=3300 npm run test:integration && forever stopall",
+    "test:js": "jest tests/unit && standard --parser typescript-eslint-parser --plugin typescript 'app.js' 'resources/js/*.ts' 'app/**/*.js' | snazzy",
+    "test:integration": "jest tests/integration",
     "test:css": "stylelint resources/css",
-    "travis": "npm run test:js",
+    "travis": "npm run test:all",
     "removeCompiled": "branch=$(git branch | grep \\* | cut -d ' ' -f2) && if test \"$branch\" != \"master\" ; then git reset HEAD public/ ; fi"
   },
   "pre-commit": [
     "test",
     "removeCompiled"
+  ],
+  "pre-push": [
+    "test:all"
   ]
 }
