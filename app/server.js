@@ -3,10 +3,16 @@ const app = require('./app.js')
 const contentful = require('./services/contentful')
 const letsencryptConfig = require('./config/letsencrypt')
 const greenlock = Greenlock.create(Object.assign(letsencryptConfig, { app: app }))
-
-const startServer = () => {
+let startServer = () => {
   console.log('✅ Listening on http://localhost:8080')
   greenlock.listen(80, 443)
+}
+
+if (process.env.NODE_ENV === 'development') {
+  startServer = () => {
+    console.log('✅ Listening on http://localhost:8080')
+    app.listen('8080')
+  }
 }
 // contentful has loaded
 contentful(startServer, (error) => {

@@ -74,8 +74,7 @@
     "uuid": "^3.3.2"
   },
   "config": {
-    "moveFilesJs": "node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce.js node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce.js.map node_modules/fetch-inject/dist/fetch-inject.min.js",
-    "dev_main": "app/dev-server.js"
+    "moveFilesJs": "node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce.js node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce.js.map node_modules/fetch-inject/dist/fetch-inject.min.js"
   },
   "standard": {
     "parser": "typescript-eslint-parser",
@@ -86,8 +85,8 @@
   "scripts": {
     "server": "NODE_ENV=production forever start -c 'node_modules/.bin/ts-node' $npm_package_main -m 5000 --pretty",
     "start": "node_modules/.bin/ttab -t 'Node Server' 'NODE_ENV=development npm run ts-node-dev' && node_modules/.bin/ttab -t 'Building assets' 'npm run build'",
-    "ts-node-dev": "ts-node-dev --respawn $npm_package_config_dev_main --pretty",
-    "dev-server": "forever stopall && NODE_ENV=development forever start -c 'node_modules/.bin/ts-node' $npm_package_config_dev_main -m 5000 --pretty",
+    "ts-node-dev": "ts-node-dev --respawn $npm_package_main --pretty",
+    "dev-server": "forever stopall && NODE_ENV=development forever start -c 'node_modules/.bin/ts-node' $npm_package_main -m 5000 --pretty",
     "forever-stop": "forever stopall && forever list",
     "build": "npm run build:js:watch & npm run build:css:watch",
     "build:css:watch": "onchange -i 'resources/css/*.scss' 'resources/css/*/*.scss' -- npm run build:css",
