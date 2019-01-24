@@ -1,3 +1,6 @@
+{{#if chapter.variables.slug}}
+  <a name="{{chapter.variables.slug}}"></a>
+{{/if}}
 <div class="Collection Grid {{chapter.classes}}">
   {{#each chapter.items}}
     {{> (join "includes/collection/" this.fields.type) project=this.fields}}

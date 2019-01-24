@@ -5,6 +5,7 @@ const portfolioItems = JSON.parse(fs.readFileSync('resources/templates/data/port
 
 module.exports = (req, res) => Pages.get('home', req, res, {
   projects: ProjectModel.all(),
+  partial: req.query.partial,
   portfolioItems: portfolioItems.map(item => {
     item.src = req.staticFiles[item.src]
     return item

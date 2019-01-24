@@ -14,7 +14,7 @@
     "rootDir": "./"
   },
   "typeRoots": [
-    "./app/types",
+    "./types",
     "./node_modules/@types"
   ]
 }

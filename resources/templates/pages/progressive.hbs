@@ -1,0 +1,18 @@
+{{> layouts/new_base title="& Creative Direction – Lukas Oppermann" }}
+
+{{#*inline "head"}}
+  {{> includes/meta}}
+  {{{ inline_css "css/slim.css" }}}
+  {{{ inline_js staticFiles.[js/appNamespace.js] }}}
+  <script>
+    app.files = {
+      js: {{{ filesStringify.js }}},
+      css: {{{ filesStringify.css }}}
+    }
+  </script>
+  {{{ inline_js staticFiles.[js/frontend.js] }}}
+{{/inline}}
+
+{{#*inline "header"}}
+  {{>includes/homepage/intro}}
+{{/inline}}

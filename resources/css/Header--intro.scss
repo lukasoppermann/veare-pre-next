@@ -37,7 +37,7 @@
       grid-row: row 2 / span 2;
     }
     margin: var(--column-gap) 0 0 var(--column-gap);
-    z-index: 1000;
+    z-index: 100;
     max-height: 150px;
     svg {
       width: auto;
@@ -71,11 +71,12 @@
     }
     @include mq('s') {
       grid-column: column 1 / span 6;
+      grid-row: row 5 / span 4;
       margin: 0 var(--hs-m);
     }
     @include mq('xs') {
       grid-column: columns;
-      grid-row: row 5 / span 4;
+      grid-row: row 4 / span 4;
     }
     svg {
       flex: 1;
@@ -132,7 +133,7 @@
       grid-column: columns;
       padding-left: var(--hs-m);
       font-size: var(--size-xl);
-      grid-row: row 10 / span 2;
+      grid-row: row 9 / span 2;
     }
     font-family: var(--font-source-sans);
     font-weight: 400;
@@ -159,7 +160,7 @@
       grid-column: columns;
       padding-left: var(--hs-m);
       font-size: var(--size-xl);
-      grid-row: row 12 / span 2;
+      grid-row: row 11 / span 2;
     }
   }
   .Header--intro__roles {
@@ -187,6 +188,11 @@
     color: var(--black-50);
     font-size: var(--size-m);
     line-height: 100% !important;
+    @include mq('xs') {
+      position: relative;
+      top: auto;
+      margin-bottom: 4px;
+    }
   }
   h2.Header--intro__services__veare {
     display: inline;
