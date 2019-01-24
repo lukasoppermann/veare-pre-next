@@ -1,0 +1,198 @@
+.Header--intro {
+  border: none;
+  .Header__Picture--Lukas-Oppermann {
+    opacity: 0;
+    animation: 4s var(--easeOutQuint) 3.8s forwards fadeIn;
+    position: relative;
+    z-index: 5;
+    overflow: hidden;
+    grid-row: row 2 / -2;
+    grid-column: column 5 / span 5;
+    @include mq('s') {
+      grid-column: column 4 / span 5;
+    }
+    @include mq('xs') {
+      display: none;
+    }
+  }
+  .Header__background {
+    grid-column: full-width;
+    grid-row: row 2 / -2;
+    background-color: var(--color-sand);
+    --origin-start: right;
+    animation: .75s var(--easeInOutQuint) forwards 1.5s blockFill;
+    transform: scaleX(0);
+    z-index: 1;
+  }
+  .Logo {
+    grid-column: margin-left / span 2;
+    grid-row: row 2 / span 3;
+    @include mq('l') {
+      grid-column: sidebar-left / span 2;
+    }
+    @include mq('s') {
+      grid-column: column 1 / span 2;
+    }
+    @include mq('xs') {
+      grid-row: row 2 / span 2;
+    }
+    margin: var(--column-gap) 0 0 var(--column-gap);
+    z-index: 1000;
+    max-height: 150px;
+    svg {
+      width: auto;
+      height: 100%;
+    }
+    #veareLogoLine {
+      stroke-dasharray: 340px;
+      stroke-dashoffset: 340px;
+      animation: 1.5s ease forwards .5s strokeDashoffset;
+    }
+    #veareLogoShadowLine {
+      stroke-dasharray: 30px;
+      stroke-dashoffset: 30px;
+      animation: .45s ease forwards 1s strokeDashoffset;
+    }
+  }
+  .Header--intro__headline {
+    margin: 0;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    max-height: calc(var(--max-row-height) * 4 + var(--baseline) * 3);
+    box-sizing: border-box;
+    fill: var(--black);
+    grid-row: row 6 / span 4;
+    grid-column: sidebar-left 1 / span 6;
+    @include mq(1300) {
+      grid-column: sidebar-left 2 / span 6;
+    }
+    @include mq('s') {
+      grid-column: column 1 / span 6;
+      margin: 0 var(--hs-m);
+    }
+    @include mq('xs') {
+      grid-column: columns;
+      grid-row: row 5 / span 4;
+    }
+    svg {
+      flex: 1;
+      flex-basis: 100%;
+      max-height: 100%;
+      max-width: 100%;
+      z-index: 10;
+    }
+    #interaction {
+      animation: var(--animation-appear);
+      animation-duration: 3s;
+    }
+    #interactionBlockRect {
+      transform: scaleX(0);
+      fill: var(--veare-orange);
+      animation: 2.5s var(--easeInOutQuint) 1.75s blockReveal;
+    }
+    #isEverything {
+      animation: var(--animation-appear);
+      animation-duration: 3.1s;
+      fill: var(--black-50);
+    }
+    #isEverythingBlockRect {
+      --origin-end: 75% top;
+      fill: var(--veare-orange);
+      transform: scaleX(0);
+      animation: 2.4s var(--easeInOutQuint) 2.05s blockReveal;
+    }
+    #lineBlockRect {
+      fill: var(--veare-orange);
+      transform: scaleX(0);
+      animation: 1.5s var(--easeInOutQuint) 2.15s forwards blockFill;
+    }
+  }
+  .Header--intro__slogan {
+    opacity: 0;
+    animation: 1.5s var(--easeOutQuint) 3.6s forwards fadeSlideIn;
+    z-index: 10;
+    grid-column: sidebar-left 1 / span 3;
+    font-size: var(--size-xl);
+    grid-row: row 11 / span 2;
+    @include mq(1300) {
+      grid-column: sidebar-left 2 / span 3;
+    }
+    @include mq('l') {
+      font-size: var(--size-l);
+    }
+    @include mq('s') {
+      grid-column: column / span 3;
+      padding-left: var(--hs-m);
+    }
+    @include mq('xs') {
+      max-width: 350px;
+      grid-column: columns;
+      padding-left: var(--hs-m);
+      font-size: var(--size-xl);
+      grid-row: row 10 / span 2;
+    }
+    font-family: var(--font-source-sans);
+    font-weight: 400;
+    color: var(--black);
+    line-height: 130%;
+    margin: 0;
+  }
+  .Header--intro__services {
+    opacity: 0;
+    animation: 1.5s var(--easeOutQuint) 3.8s forwards fadeSlideIn;
+    font-family: var(--font-source-sans);
+    font-weight: normal;
+    position: relative;
+    z-index: 10;
+    grid-row: row 11 / span 2;
+    grid-column: column 2 / span 3;
+    @include mq(1300) {
+      grid-column: column 4 / span 3;
+    }
+    @include mq('s') {
+      grid-column: column 5 / span 3;
+    }
+    @include mq('xs') {
+      grid-column: columns;
+      padding-left: var(--hs-m);
+      font-size: var(--size-xl);
+      grid-row: row 12 / span 2;
+    }
+  }
+  .Header--intro__roles {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    font-family: var(--font-noto-serif);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--black);
+    font-size: var(--size-xl);
+    @include mq('l') {
+      font-size: var(--size-l);
+    }
+    @include mq('s') {
+      font-size: calc(var(--size-l) - 1px);
+    }
+    line-height: 130%;
+    margin: 0;
+    padding: 0;
+  }
+  .Header--intro__services__description {
+    position: absolute;
+    top: calc(-1 * var(--size-l));
+    color: var(--black-50);
+    font-size: var(--size-m);
+    line-height: 100% !important;
+  }
+  h2.Header--intro__services__veare {
+    display: inline;
+    color: var(--black-50);
+    font-size: var(--size-m) !important;
+    font-weight: var(--font-source-sans-regular);
+    line-height: 100% !important;
+  }
+}

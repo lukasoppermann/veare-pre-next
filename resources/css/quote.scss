@@ -1,5 +1,5 @@
 .o-blockquote{
-  font-family: "Helvetica Neue", "Helvetica", var(--sans-serif);
+  font-family: "Helvetica Neue", "Helvetica", var(--font-source-sans);
   font-size: var(--size-g);
   line-height: 135%;
   font-weight: bold;
@@ -16,10 +16,10 @@
 }
 .o-blockquote .o-blockquote{
   position: relative;
-  font-family: var(--sans-serif);
+  font-family: var(--font-source-sans);
   font-size: var(--size-xl);
-  font-weight: var(--sans-serif-normal);
-  line-height: calc( var(--size-xl) + 10px);
+  font-weight: var(--font-source-sans-regular);
+  line-height: calc(var(--size-xl) + 10px);
   color: var(--black-50);
   padding-left: var(--size-xl);
 }

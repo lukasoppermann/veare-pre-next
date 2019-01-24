@@ -23,7 +23,7 @@
 .Article__publication-details {
   grid-column: columns;
   display: block;
-  font-family: var(--sans-serif);
+  font-family: var(--font-source-sans);
   font-size: var(--size-m);
   line-height: 135%;
   color: var(--black-50);
@@ -33,7 +33,7 @@
   grid-column: columns;
   display: block;
   text-align: center;
-  font-family: var(--sans-serif);
+  font-family: var(--font-source-sans);
   font-size: var(--size-m);
   line-height: 135%;
   color: var(--black-50);
