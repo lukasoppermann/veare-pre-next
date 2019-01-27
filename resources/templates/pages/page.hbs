@@ -1,8 +1,5 @@
 {{> layouts/base title="& Creative Direction – Lukas Oppermann" }}
 {{#*inline "body"}}
-  {{#if page.header}}
-    {{> "includes/header" header=page.header.fields}}
-  {{/if}}
   {{#each page.chapters}}
     {{> (join "includes/" fields.type) chapter=fields}}
   {{/each}}
