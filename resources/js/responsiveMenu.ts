@@ -1,8 +1,6 @@
 /* global HTMLElement CustomEvent */
 'use strict'
 
-// import { shape, timeline, render, play } from 'wilderness'
-
 declare const ShadyCSS // eslint-disable-line no-unused-vars
 let template = document.createElement('template')
 template.innerHTML = `<style>
@@ -312,6 +310,12 @@ class ResponsiveMenu extends HTMLElement { // eslint-disable-line no-unused-vars
     }.bind(this), 20))
     // menuIcon on click
     this.shadowRoot.querySelector('#menuIcon').addEventListener('click', this.toggleOverlay.bind(this))
+    // menu item on click
+    this.shadowRoot.querySelector('[name=items]').addEventListener('click', (e) => {
+      if (e.target.href.indexOf('#') > -1) {
+        this._hideOverlay().bind(this)
+      }
+    })
   }
   /**
   * @method throttle
@@ -415,8 +419,16 @@ class ResponsiveMenu extends HTMLElement { // eslint-disable-line no-unused-vars
         this.shadowRoot.querySelector('#background').classList.add('is-active')
       }
       this.classList.add('is-active')
-      return this.setAttribute('overlayVisible', '')
+      this.setAttribute('overlayVisible', '')
+    } else {
+      this._hideOverlay()
     }
+  }
+  /**
+   * @method _hideOverlay
+   * @description hides the overlay
+   */
+  _hideOverlay () {
     // hide overlay
     this.dispatchEvent(new CustomEvent('toggleOverlay', { detail: { visible: false } }))
     if (this.animateoverlaybg === true) {
