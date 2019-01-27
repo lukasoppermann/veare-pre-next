@@ -90,6 +90,7 @@ template.innerHTML = `<style>
     opacity: 1;
   }
   #menuIcon {
+    display: block;
     position: absolute;
     top: 0;
     right: 0;
@@ -112,6 +113,9 @@ template.innerHTML = `<style>
     transition: stroke-dashoffset 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25), stroke-dasharray 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25), stroke .3s ease;
     stroke-dashoffset: 240px;
     opacity: 0;
+  }
+  :host([extended]) #menuIcon {
+    pointer-events: none;
   }
   #menuIcon path#top,
   #menuIcon path#bottom {

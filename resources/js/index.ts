@@ -19,6 +19,7 @@ const fetchInjectLoaded = new Promise((resolve, reject) => {
 Promise.all([revisionedFiles, fetchInjectLoaded])
   .then(results => {
     let json = results[0]
+    console.log(json)
     // make sure WC are working
     const webComponentsAvailable = new Promise((resolve) => {
       if (!webComponentsSupported()) {
@@ -33,7 +34,7 @@ Promise.all([revisionedFiles, fetchInjectLoaded])
       resolve()
     })
     // load critical layout components
-    const layoutComponents = fetchInject([`${baseUrl}/${json['js/layoutComponents.js']}`], webComponentsAvailable)
+    const layoutComponents = fetchInject([`${baseUrl}/${json.js['js/layoutComponents.js']}`], webComponentsAvailable)
     let body = document.querySelector('body')
     // load webfont and view intro once downloaded
     fetchInject([
@@ -51,9 +52,9 @@ Promise.all([revisionedFiles, fetchInjectLoaded])
 
     // load responsiveMenu
     fetchInject([
-      `${baseUrl}/${json['js/responsiveMenu.js']}`,
-      `${baseUrl}/${json['js/toc.js']}`,
-      `${baseUrl}/${json['js/rest.js']}`
+      `${baseUrl}/${json.js['js/responsiveMenu.js']}`,
+      `${baseUrl}/${json.js['js/toc.js']}`,
+      `${baseUrl}/${json.js['js/rest.js']}`
     ], webComponentsAvailable)
       .then(() => {
         document.querySelector('responsive-menu').style.display = 'block'

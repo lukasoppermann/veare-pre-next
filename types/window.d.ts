@@ -9,6 +9,7 @@ declare interface Window {
     html?: (template: string) => string,
     render?: (template: string, node: Node) => void,
     unsafeHTML?: (HtmlString: string) => string,
-    webComponentsSupported?: () => boolean
+    webComponentsSupported?: () => boolean,
+    locals: any
   }
 }

@@ -1,6 +1,6 @@
 /* global fetch */
 let app = window.app
-const homepage = fetch('/?partial=true').then(response => response.text())
+const homepage = fetch('/home?partial=true').then(response => response.text())
 const menu = fetch('/fragment/menu').then(response => response.text())
 // Promise.all([revisionedFiles, fetchInjectLoaded]).then(json => json[0]).then((json) => {
 const litHtml = app.fetchInject([

@@ -7,7 +7,7 @@ module.exports = (req, res) => Pages.get('home', req, res, {
   projects: ProjectModel.all(),
   partial: req.query.partial,
   portfolioItems: portfolioItems.map(item => {
-    item.src = req.staticFiles[item.src]
+    item.src = req.app.locals.files.media[item.src]
     return item
   })
 }, 'index')

@@ -10,23 +10,17 @@ const Projects = require('../controller/Project')()
 // Normal Routes
 ================= */
 router.get(/^\/fragment\/menu$/, (req, res) => {
-  res.render('menu', Object.assign({
-    staticFiles: req.staticFiles,
-    response: res
-  }, {}))
+  res.render('menu')
 })
-router.get(/^\/index/, (req, res) => {
-  res.render('progressive', Object.assign({
-    staticFiles: req.staticFiles,
-    files: req.files,
+router.get(/^\/?$/, (req, res) => {
+  res.render('progressive', {
     filesStringify: {
-      js: JSON.stringify(req.files.js),
-      css: JSON.stringify(req.files.css)
-    },
-    response: res
-  }, {}))
+      js: JSON.stringify(req.app.locals.files.js),
+      css: JSON.stringify(req.app.locals.files.css)
+    }
+  })
 })
-router.get(/^\/(home)?$/, require('./home'))
+router.get(/^\/home$/, require('./home'))
 router.use('/portfolio', require('./portfolio'))
 router.get('/privacy', (req, res) => Pages.get('privacy', req, res))
 router.get('/about', (req, res) => { res.redirect('/#about') })

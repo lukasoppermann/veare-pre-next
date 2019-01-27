@@ -1,9 +1,9 @@
 const express = require('express')
 const app = express()
 const hbs = require('./services/expressHandlebars')
-
 // ---------------------------------- //
 // Settings
+app.locals.files = require('./modules/files')()
 // path to templates
 app.set('views', 'resources/templates/pages')
 app.engine('hbs', hbs.engine)
@@ -14,6 +14,11 @@ app.set('view engine', 'hbs')
 // ---------------------------------- //
 // MIDDLEWARE
 app.use(require('./middleware'))
+// ---------------------------------- //
+// Dev Middleware
+if (process.env.NODE_ENV === 'development') {
+  app.use(require('./middleware/dev.ts'))
+}
 // ---------------------------------- //
 // ROUTES
 app.use(require('./routes'))

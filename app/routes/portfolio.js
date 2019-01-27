@@ -4,7 +4,6 @@ const router = express.Router()
 // show portfolio item
 router.get('/:item', (req, res) => {
   res.render(`./portfolio/${req.params.item}.hbs`, {
-    staticFiles: req.staticFiles,
     pageClass: 'c-page--portfolio-item',
     response: res
   }, function (err, html) {
