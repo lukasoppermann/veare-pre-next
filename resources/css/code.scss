@@ -72,6 +72,7 @@ pre[class*="language-"] {
 	padding: 0;
 	overflow-x: auto;
 	overflow-y: visible;
+  -webkit-overflow-scrolling: touch;
 	white-space: pre-wrap;
 }
 pre[class*="language-"] code, pre[class*="language-"] .code{
