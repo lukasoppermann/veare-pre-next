@@ -24,9 +24,12 @@ module.exports = {
       connectSrc: ["'self'", 'apis.google.com', 'fonts.googleapis.com', 'polyfill.io'],
       fontSrc: ["'self'", 'fonts.gstatic.com', 'fonts.googleapis.com'],
       objectSrc: ["'none'"],
+      frameAncestors: ["'none'"],
       mediaSrc: ["'self'"],
       frameSrc: ["'none'"],
       workerSrc: ["'self'"],
+      formAction: ["'none'"],
+      baseUri: ["'none'"],
       reportUri: 'https://veare.report-uri.com/r/d/csp/enforce'
     }
   }
