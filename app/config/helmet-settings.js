@@ -18,7 +18,7 @@ module.exports = {
   contentSecurityPolicy: {
     directives: {
       defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "'strict-dynamic'", "'unsafe-inline'", 'www.google-analytics.com'],
+      scriptSrc: ["'self'", "'unsafe-inline'", 'www.google-analytics.com'],
       styleSrc: ["'self'", "'unsafe-inline'", 'fonts.googleapis.com'],
       imgSrc: ["'self'", 'www.google-analytics.com', 'images.contentful.com', 'images.ctfassets.net', 'data:'],
       connectSrc: ["'self'", 'apis.google.com', 'fonts.googleapis.com', 'polyfill.io'],
