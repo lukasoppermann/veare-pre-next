@@ -26,6 +26,7 @@ module.exports = {
       objectSrc: ["'none'"],
       frameAncestors: ["'none'"],
       mediaSrc: ["'self'"],
+      manifestSrc: ["'self'"],
       frameSrc: ["'none'"],
       workerSrc: ["'self'"],
       formAction: ["'none'"],
