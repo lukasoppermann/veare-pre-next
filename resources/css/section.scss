@@ -179,6 +179,7 @@
 }
 .Section__pictures.Section__pictures--description-bottom .Text__Element {
   @include mq('s', 'min') {
+    margin-top: var(--vs-l);
     grid-column: sidebar-left 2 / span 4;
   }
 }
