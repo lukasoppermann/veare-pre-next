@@ -78,7 +78,8 @@
     "ts-node": "^8.0.3",
     "tslib": "^1.9.3",
     "typescript": "^3.4.1",
-    "uuid": "^3.3.2"
+    "uuid": "^3.3.2",
+    "snyk": "^1.189.0"
   },
   "config": {
     "moveFilesJs": "node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce.js node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce.js.map node_modules/fetch-inject/dist/fetch-inject.min.js"
@@ -116,7 +117,9 @@
     "test:css": "stylelint resources/css",
     "travis": "npm run test:all",
     "removeCompiled": "branch=$(git branch | grep \\* | cut -d ' ' -f2) && if test \"$branch\" != \"master\" ; then git reset HEAD public/ ; fi",
-    "release": "git checkout latest-build && npm run build && git add dist/*.js dist/*.js.map -f && git commit -m 'create build'"
+    "release": "git checkout latest-build && npm run build && git add dist/*.js dist/*.js.map -f && git commit -m 'create build'",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "pre-commit": [
     "test",
@@ -124,5 +127,6 @@
   ],
   "pre-push": [
     "test:all"
-  ]
+  ],
+  "snyk": true
 }
