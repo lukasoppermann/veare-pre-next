@@ -1,7 +1,7 @@
-.Footer-Section{
+.Footer-Section {
   overflow: hidden;
 }
-.Footer{
+.Footer {
   width: 100%;
   max-width: 1200px;
   position: relative;
@@ -10,7 +10,7 @@
   padding-top: var(--size-xg);
   justify-content: space-between;
 }
-.Footer__svg{
+.Footer__svg {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -18,14 +18,12 @@
   vertical-align: middle;
   min-width: 100%;
   height: calc(100% - 50px);
-  /* For when cards are added */
-  /* height: calc(100% - 250px); */
 }
 
-.Footer__svg path{
+.Footer__svg path {
   fill: var(--white-grey);
 }
-.Footer__related{
+.Footer__related {
   margin-top: var(--size-xh);
   flex-grow: 0;
   display: flex;
@@ -34,10 +32,10 @@
   z-index: 10;
   justify-content: space-between;
 }
-.Footer__related > div{
+.Footer__related > div {
   flex-basis: calc(50% - 20px);
 }
-.Footer__content{
+.Footer__content {
   flex-grow: 1;
   flex-wrap: wrap;
   display: flex;
@@ -47,18 +45,18 @@
   margin-top: var(--size-xg);
   margin-bottom: var(--size-g);
 }
-.Footer__content > div{
+.Footer__content > div {
   flex-basis: calc(50% - 20px);
   flex-shrink: 0;
   position: relative;
   min-height: 200px;
 }
 @media (max-width: 900px) {
-  .Footer__content > div{
+  .Footer__content > div {
     flex-basis: 100%;
   }
 }
-.Footer__content__headline{
+.Footer__content__headline {
   color: var(--blue);
   font-size: var(--size-xh);
   font-family: var(--font-montserrat);
@@ -66,13 +64,13 @@
   margin: 0;
   display: block;
 }
-.Footer__content__subheadline{
+.Footer__content__subheadline {
   color: var(--black);
   font-size: var(--size-l);
   font-family: var(--font-montserrat);
   font-weight: var(--font-montserrat-bold);
 }
-.Footer__content__copy{
+.Footer__content__copy {
   color: var(--grey);
   font-family: var(--font-source-sans);
   max-width: 600px;
@@ -81,7 +79,7 @@
   line-height: 140%;
   margin-bottom: var(--size-m);
 }
-.Footer__content__link{
+.Footer__content__link {
   color: var(--blue);
   font-size: var(--size-m);
   text-transform: uppercase;
@@ -93,33 +91,10 @@
   float: left;
   position: relative;
 }
-.Footer__content__link:before{
-  z-index: 0;
+.Footer__content__link::before {
   content: "";
-  height: 18px;
-  width: 0;
-  background: var(--blue);
-  position: absolute;
-  left: -3px;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: width .5s ease;
-  overflow: hidden;
-}
-.Footer__content__link-arrow{
-  fill: var(--blue);
-  position: relative;
-  z-index: 10;
-  height: 8px;
-  transform: translateY(-2px);
-}
-.Footer__content__link-text{
-  position: relative;
-  z-index: 10;
-}
-.Footer__content__link:before{
   z-index: -1;
-  background: rgba(var(--blue-rgb), 0.15);
+  background: rgba(var(--blue-rgb), .15);
   position: absolute;
   top: calc(50%);
   transform: translateY(-50%);
@@ -129,26 +104,37 @@
   overflow: hidden;
   transition: width .5s ease;
 }
-.Footer__content__link:hover:before{
+.Footer__content__link-arrow {
+  fill: var(--blue);
+  position: relative;
+  z-index: 10;
+  height: 8px;
+  transform: translateY(-2px);
+}
+.Footer__content__link-text {
+  position: relative;
+  z-index: 10;
+}
+.Footer__content__link:hover::before {
   width: calc(100% + 12px);
 }
-.Footer__content__link .hover .Footer__content__link-text{
+.Footer__content__link .hover .Footer__content__link-text {
   height: 20px;
   width: 204px;
   display: block;
 }
-.Footer__content__link .hover .Footer__content__link-arrow{
+.Footer__content__link .hover .Footer__content__link-arrow {
   fill: var(--white);
   position: absolute;
   right: 0;
   top: 7px;
 }
-.Footer__content__hexagon-link{
+.Footer__content__hexagon-link {
   position: absolute;
   top: 85px;
   left: 100px;
 }
-.Footer__hexagons{
+.Footer__hexagons {
   z-index: -1;
   position: absolute;
   left: -75px;
@@ -156,22 +142,22 @@
   max-width: 615px;
 }
 @media (max-width: 1050px) {
-  .Footer__hexagons{
+  .Footer__hexagons {
     top: -50px;
     left: -50px;
     max-width: 500px;
   }
-  .Footer__content__hexagon-link{
+  .Footer__content__hexagon-link {
     top: 80px;
     left: 40px;
   }
 }
 @media (max-width: 900px) {
-  .Footer__hexagons{
-    right: 0px;
+  .Footer__hexagons {
+    right: 0;
     left: auto;
   }
-  .Footer__content__hexagon-link{
+  .Footer__content__hexagon-link {
     position: absolute;
     top: 80px;
     left: auto;
@@ -179,18 +165,18 @@
   }
 }
 @media (max-width: 500px) {
-  .Footer__hexagons{
+  .Footer__hexagons {
     left: 50%;
     transform: translateX(-45%);
   }
-  .Footer__content__hexagon-link{
+  .Footer__content__hexagon-link {
     position: absolute;
     top: 80px;
     left: 30px;
     right: auto;
   }
 }
-.Footer__links{
+.Footer__links {
   position: relative;
   z-index: 10;
   display: flex;
@@ -199,7 +185,7 @@
   margin: 0;
   padding: 0;
 }
-.Footer__link{
+.Footer__link {
   position: relative;
   font: var(--font-source-sans);
   font-size: var(--size-m);
@@ -209,10 +195,10 @@
   color: var(--medium-grey);
   transition: color .35s var(--easeInOutQuad);
 }
-.Footer__link:hover{
-  color: rgba(var(--black-rgb),.75);
+.Footer__link:hover {
+  color: rgba(var(--black-rgb), .75);
 }
-.Footer__link:before{
+.Footer__link::before {
   display: block;
   content: "";
   position: absolute;
@@ -225,42 +211,44 @@
   background-color: var(--veare-orange);
   transition: width .35s var(--easeInOutQuad);
 }
-.Footer__link:hover:before{
+.Footer__link:hover::before {
   width: calc(100% + 8px);
 }
 @media (min-width: 901px) {
-  .Footer__link:first-child{
+  .Footer__link:first-child {
     margin-left: 0;
   }
-  .Footer__link.Footer__link--end{
+  .Footer__link.Footer__link--end {
     margin-left: auto;
     margin-right: 0;
   }
 }
 @media (max-width: 1200px) {
-  .Footer__links, .Footer__content{
+  .Footer__links,
+  .Footer__content {
     margin-right: var(--size-xh);
     margin-left: var(--size-xh);
   }
 }
 @media (max-width: 900px) {
-  .Footer__links, .Footer__content{
+  .Footer__links,
+  .Footer__content {
     margin-right: var(--size-xl);
     margin-left: var(--size-xl);
   }
 }
 @media (max-width: 700px) {
-  .Footer__content > div{
+  .Footer__content > div {
     flex-basis: 100%;
     flex-shrink: 0;
   }
 }
 @media (max-width: 850px) {
-  .Footer__links{
+  .Footer__links {
     justify-content: center;
     margin: 0;
   }
-  .Footer__link{
+  .Footer__link {
     text-align: center;
     font-size: var(--size-l);
   }

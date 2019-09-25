@@ -8,8 +8,6 @@
 .Article__section {
   grid-column: full-bleed;
 }
-.Article__featuredImage .Picture__Element {
-}
 .Article__title {
   grid-column: columns;
   font-family: var(--font-noto-serif);
@@ -45,6 +43,6 @@
 .Article .Section {
   grid-column: full-bleed;
 }
-.Article .Text__Element{
+.Article .Text__Element {
   grid-column: columns;
 }
