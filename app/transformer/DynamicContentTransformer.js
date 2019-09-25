@@ -4,8 +4,8 @@ const Transformer = require('./Transformer')
 
 class DynamicContentTransformer extends Transformer {
   transform (data) {
-    let type = this.getContent(data, 'type').toLowerCase()
-    let value = this.getContent(data, 'variable')
+    const type = this.getContent(data, 'type').toLowerCase()
+    const value = this.getContent(data, 'variable')
 
     return {
       id: data.sys.id,
