@@ -15,7 +15,7 @@ class Page extends Controller {
   get (slug = 'home', req, res, data = {}, view) {
     data.page = model.findBySlug(slug).fields
     data.pageClass = slug
-    let template = view || 'page'
+    const template = view || 'page'
     self.render(req, res, template, data)
   }
 }

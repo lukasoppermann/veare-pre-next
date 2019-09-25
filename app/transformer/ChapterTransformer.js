@@ -7,7 +7,7 @@ const striptags = require('striptags')
 class ChapterTransformer extends Transformer {
   transform (data) {
     // get sections
-    let sections = new SectionTransformer(this.getContent(data, 'sections')).all().filter(section => section !== null)
+    const sections = new SectionTransformer(this.getContent(data, 'sections')).all().filter(section => section !== null)
     // get plain text for readTime
     let plainText = ''
     if (sections.length > 0) {

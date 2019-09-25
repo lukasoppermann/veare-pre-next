@@ -34,7 +34,7 @@
     "rollup-plugin-terser": "^4.0.4",
     "rollup-plugin-typescript": "^1.0.1",
     "snazzy": "^8.0.0",
-    "standard": "^12.0.1",
+    "standard": "^14.3.1",
     "stylelint": "^9.10.1",
     "stylelint-config-standard": "^18.2.0",
     "ts-node-dev": "^1.0.0-pre.32",
@@ -117,7 +117,8 @@
     "test:css": "stylelint resources/css",
     "travis": "npm run test:all",
     "removeCompiled": "branch=$(git branch | grep \\* | cut -d ' ' -f2) && if test \"$branch\" != \"master\" ; then git reset HEAD public/ ; fi",
-    "release": "git checkout latest-build && npm run build && git add dist/*.js dist/*.js.map -f && git commit -m 'create build'"
+    "release": "git checkout latest-build && npm run build && git add dist/*.js dist/*.js.map -f && git commit -m 'create build'",
+    "standard": "standard --parser typescript-eslint-parser --plugin typescript 'app.js' 'resources/js/*.ts' 'app/**/*.js' | snazzy"
   },
   "pre-commit": [
     "test",

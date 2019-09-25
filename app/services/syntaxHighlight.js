@@ -2,7 +2,7 @@ const Prism = require('prismjs')
 const Normalizer = require('prismjs/plugins/normalize-whitespace/prism-normalize-whitespace')
 const loadLanguages = require('prismjs/components/index')
 loadLanguages(['yaml', 'php', 'markdown', 'bash', 'nginx', 'git', 'json'])
-let normalizer = new Normalizer({
+const normalizer = new Normalizer({
   'remove-trailing': true,
   'remove-indent': true,
   'left-trim': true,
