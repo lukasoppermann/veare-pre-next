@@ -1,86 +1,91 @@
-a, a:active, a:focus{
+a,
+a:active,
+a:focus {
   color: inherit;
 }
-a:hover{
+a:hover {
   text-decoration: none;
 }
-.o-link{
+.o-link {
   font-size: inherit;
   text-decoration: none;
   color: inherit;
   display: inline-block;
 }
-.o-link:hover{
+.o-link:hover {
   text-decoration: underline;
   color: var(--blue);
   transition: color .25s ease;
 }
-.o-link--inline{
-    color: inherit;
-    position: relative;
-    padding: 0 3px;
+.o-link--inline {
+  color: inherit;
+  position: relative;
+  padding: 0 3px;
 }
-.o-link--block{
-    display: block;
+.o-link--block {
+  display: block;
 }
-.o-link--next{
-    float: right;
+.o-link--next {
+  float: right;
 }
-.o-link--back::after, .o-link--next::after{
-    content: "";
-    background-color: rgb(240, 170, 30);
-    display: block;
-    height: 3px;
-    width: 0;
-    position: absolute;
-    left: 0;
-    bottom: -1px;
-    -webkit-transition: width 1s ease;
-    transition: width 1s ease;
-    z-index: -1;
+.o-link--back::after,
+.o-link--next::after {
+  content: "";
+  background-color: rgb(240, 170, 30);
+  display: block;
+  height: 3px;
+  width: 0;
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  -webkit-transition: width 1s ease;
+  transition: width 1s ease;
+  z-index: -1;
 }
 @media (min-width: 600px) {
-    .o-link--back:hover::after, .o-link--next:hover::after{
-        height: 3px;
-        width: 100%;
-    }
+  .o-link--back:hover::after,
+  .o-link--next:hover::after {
+    height: 3px;
+    width: 100%;
+  }
 }
-.o-link--back, .o-link--next{
-    text-decoration: none;
-    display: inline-block;
-    margin: 10px 0;
+.o-link--back,
+.o-link--next {
+  text-decoration: none;
+  display: inline-block;
+  margin: 10px 0;
 }
 @media (max-width: 600px) {
-    .o-link--back{
-        margin-left: 25px;
-    }
-    .o-link--next{
-        margin-right: 25px;
-    }
+  .o-link--back {
+    margin-left: 25px;
+  }
+  .o-link--next {
+    margin-right: 25px;
+  }
 }
-.o-link--back::before{
-    font-family: sans-serif !important;
-    content: "";
-    display: block;
-    height: 9px;
-    width: 15px;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='svg-icon-back-arrow' viewBox='0 0 20 12' width='15px' height='9px' fill='rgba(0,0,0,.4)'><path d='M0,5.918L5.918,0v4.904H20v2.027H5.918v4.904L0,5.918z'/></svg>");
-    background-size: 100% 100%;
-    color: rgb(200, 200, 200);
-    position: absolute;
-    left: -25px;
-    top: 8px;
+.o-link--back::before {
+  font-family: sans-serif !important;
+  content: "";
+  display: block;
+  height: 9px;
+  width: 15px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' class='svg-icon-back-arrow' viewBox='0 0 20 12' width='15px' height='9px' fill='rgba(0,0,0,.4)'><path d='M0,5.918L5.918,0v4.904H20v2.027H5.918v4.904L0,5.918z'/></svg>");
+  background-size: 100% 100%;
+  color: rgb(200, 200, 200);
+  position: absolute;
+  left: -25px;
+  top: 8px;
 }
-.o-link--next::before{
-    font-family: sans-serif !important;
-    content: "";
-    display: block;
-    height: 9px;
-    width: 15px;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='15px' height='9px' viewBox='0 0 15 9' fill='rgba(0,0,0,.4)'><path d='M10.561,8.876V5.198H0l0-1.52l10.561,0V0L15,4.439L10.561,8.876z'/></svg>");
-    background-size: 100% 100%;
-    color: rgb(200, 200, 200);
-    position: absolute;
-    right: -25px;
-    top: 8px;
+.o-link--next::before {
+  font-family: sans-serif !important;
+  content: "";
+  display: block;
+  height: 9px;
+  width: 15px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='15px' height='9px' viewBox='0 0 15 9' fill='rgba(0,0,0,.4)'><path d='M10.561,8.876V5.198H0l0-1.52l10.561,0V0L15,4.439L10.561,8.876z'/></svg>");
+  background-size: 100% 100%;
+  color: rgb(200, 200, 200);
+  position: absolute;
+  right: -25px;
+  top: 8px;
 }
