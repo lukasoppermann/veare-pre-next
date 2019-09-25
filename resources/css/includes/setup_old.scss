@@ -1,9 +1,8 @@
-/*------------------*/
 /* setup */
-:root{
+:root {
   --grid-gutter: var(--size-m);
-  --grid-columns:16;
+  --grid-columns: 16;
 }
-body{
+body {
   transition: opacity .5s ease;
 }
