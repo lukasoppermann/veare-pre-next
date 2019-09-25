@@ -1,4 +1,4 @@
-%pseudo-line{
+%pseudo-line {
   /* parent needs display: flex; */
   @include pseudo("relative");
   flex: 0 0 auto;
