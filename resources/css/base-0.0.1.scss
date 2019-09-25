@@ -6,17 +6,18 @@
 html {
   font-size: 62.5%; /* sets 1rem = 10px */
 }
-html, body{
+html,
+body {
   min-height: 100vh;
   height: auto;
   position: relative;
 }
-body{
+body {
   font-display: optional;
   font-family: var(--font-source-sans);
   font-weight: var(--font-source-sans-regular);
   font-size: var(--size-m);
-  color: rgba(0,0,0,.8);
+  color: rgba(0, 0, 0, .8);
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   overflow-x: hidden;
@@ -27,13 +28,18 @@ body{
   display: flex;
   flex-direction: column;
 }
-html.menu-active{ overflow: hidden !important; }
-/*------------------*/
-/* images */
-img.async-img, img.loading{ visibility: hidden; opacity: 0; }
-img.loaded{
+html.menu-active { overflow: hidden !important; }
+
+/* ------------------
+  images */
+img.async-img,
+img.loading {
+  visibility: hidden;
+  opacity: 0;
+}
+img.loaded {
   visibility: visible;
-  opacity: 1.0;
+  opacity: 1;
   transition: opacity .4s ease;
   -webkit-transition: opacity .4s ease;
 }
