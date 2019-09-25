@@ -11,7 +11,12 @@
     "preserveConstEnums": true,
     "suppressImplicitAnyIndexErrors": false,
     "strictNullChecks": true,
-    "rootDir": "./"
+    "rootDir": "./",
+    "plugins": [
+      {
+        "name": "typescript-lit-html-plugin"
+      }
+    ]
   },
   "typeRoots": [
     "./types",
