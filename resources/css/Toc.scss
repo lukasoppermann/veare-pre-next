@@ -1,15 +1,15 @@
-.Toc{
+.Toc {
   list-style: none;
   counter-reset: chapter;
 }
-.Toc__chapter:not(:first-child){
+.Toc__chapter:not(:first-child) {
   margin-top: var(--vs-m);
 }
-.Toc__chapter__link{
+.Toc__chapter__link {
   text-decoration: none;
   display: flex;
 }
-.Toc__chapter__title{
+.Toc__chapter__title {
   position: relative;
   @extend %font-subtitle-uppercase-small;
   order: 1;
@@ -17,7 +17,7 @@
   padding-right: var(--hs-xs);
   transition: all .2s var(--easeInOutQuad);
 }
-.Toc__chapter__title::after{
+.Toc__chapter__title::after {
   @include pseudo;
   width: 0;
   height: calc(var(--baseline) * 2);
@@ -49,23 +49,24 @@
   content: counter(chapter, decimal-leading-zero);
   font-feature-settings: "tnum", "zero";
 }
+
 /* ====================================
     Animated Hover State
 ==================================== */
-.Toc__chapter__link:hover .Toc__chapter__title{
+.Toc__chapter__link:hover .Toc__chapter__title {
   color: var(--blue);
   padding-left: var(--hs-xs);
   transition: all .35s var(--easeInOutQuad);
 }
-.Toc__chapter__link:hover .Toc__chapter__title::after{
+.Toc__chapter__link:hover .Toc__chapter__title::after {
   width: calc(100% - var(--hs-s));
   transition: all .35s var(--easeInOutQuad);
 }
-.Toc__chapter__link:hover::before{
+.Toc__chapter__link:hover::before {
   background-position: -100% 0%;
   transition: all .35s .1s var(--easeInOutQuad);
 }
-.Toc__chapter__link:hover::after{
+.Toc__chapter__link:hover::after {
   color: var(--blue);
   transition: all .35s .2s var(--easeInOutQuad);
 }

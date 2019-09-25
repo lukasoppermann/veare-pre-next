@@ -1,12 +1,12 @@
-.o-list{
+.o-list {
   line-height: 140%;
   margin-top: var(--size-xxl);
   margin-bottom: var(--size-xxl);
 }
-.o-list--none{
+.o-list--none {
   list-style: none;
 }
-.o-list-svg-bullet{
+.o-list-svg-bullet {
   position: absolute;
   left: 0;
   height: var(--size-xl);
@@ -14,23 +14,22 @@
   top: 50%;
   transform: translateY(-50%);
 }
-.o-list li{
+.o-list li {
   position: relative;
   margin-bottom: var(--size-s);
 }
-.o-list li:last-child{
-  margin-bottom: 0;
-}
-
-.o-list:not(.o-list--ordered) li{
-  list-style: none;
-  padding-left: var(--size-xxl);
-}
-.o-list--ordered li{
+.o-list--ordered li {
   list-style: decimal-leading-zero;
   margin-left: 1.5em;
 }
-.o-list:not(.o-list--ordered):not(.o-list--none) li:before{
+.o-list li:last-child {
+  margin-bottom: 0;
+}
+.o-list:not(.o-list--ordered) li {
+  list-style: none;
+  padding-left: var(--size-xxl);
+}
+.o-list:not(.o-list--ordered):not(.o-list--none) li::before {
   position: absolute;
   content: "–";
   font-weight: 600;
