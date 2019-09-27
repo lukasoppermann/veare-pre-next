@@ -9,9 +9,9 @@ const readingTime = require('reading-time')
 
 class ArticleTransformer extends Transformer {
   transform (data) {
-    const chapters = new ChapterTransformer(this.getContent(data, 'chapters')).all()
+    let chapters = new ChapterTransformer(this.getContent(data, 'chapters')).all()
     // calc reading time
-    const readTime = Math.ceil(readingTime(
+    let readTime = Math.ceil(readingTime(
       chapters.reduce((text, current) => `${text} ${current.fields.plainText}`, ''))
       .time / 60000)
 

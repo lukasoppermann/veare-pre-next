@@ -2,9 +2,9 @@ const fs = require('fs')
 
 module.exports = () => {
   // get revisioned filenames
-  const revFiles = JSON.parse(fs.readFileSync('public/rev-manifest.json', 'utf8'))
+  let revFiles = JSON.parse(fs.readFileSync('public/rev-manifest.json', 'utf8'))
   // predefine structure
-  const files = {
+  let files = {
     css: {},
     js: {},
     media: {}

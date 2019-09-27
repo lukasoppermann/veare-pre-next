@@ -15,7 +15,7 @@ class Transformer {
   }
 
   getContent (data, fieldName, defaultValue = null) {
-    const field = data.fields[fieldName]
+    let field = data.fields[fieldName]
     if (typeof field !== 'object') {
       return defaultValue || null
     }
@@ -37,11 +37,11 @@ class Transformer {
   }
 
   formatDate (dateString, format) {
-    const date = new Date(dateString)
-    const day = ('0' + date.getDate()).slice(-2)
-    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-    const month = ('0' + (date.getMonth() + 1)).slice(-2)
-    const year = date.getFullYear()
+    let date = new Date(dateString)
+    let day = ('0' + date.getDate()).slice(-2)
+    let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    let month = ('0' + (date.getMonth() + 1)).slice(-2)
+    let year = date.getFullYear()
 
     return `${months[parseInt(month) - 1]} ${day}, ${year}`
   }

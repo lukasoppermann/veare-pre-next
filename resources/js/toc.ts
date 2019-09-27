@@ -1,7 +1,7 @@
 import throttle from './modules/throttle'
 
 document.querySelectorAll('[data-toc]').forEach((toc) => {
-  const sectionsContainer = toc.closest('page-sections')
+  let sectionsContainer = toc.closest('page-sections')
   toc.querySelectorAll('a.Toc__chapter__link').forEach((link) => {
     link.addEventListener('click', (event) => {
       event.preventDefault()
@@ -11,14 +11,14 @@ document.querySelectorAll('[data-toc]').forEach((toc) => {
 })
 
 if (document.querySelector('body').classList.contains('Page--work')) {
-  const paginationInit = throttle(() => {
-    const paginationContainer = document.querySelector('.Project__pagination-container')
-    const paginationItems = paginationContainer.querySelectorAll('.Pagination__item')
-    const pageSections = document.querySelector('page-sections')
-    const toc = document.querySelector('.Project__toc')
-    const tocOffset = toc.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop)
-    const padding = window.getComputedStyle(pageSections).getPropertyValue('--outer-padding')
-    const footerHeight = window.getComputedStyle(document.querySelector('.Footer-Section')).getPropertyValue('height')
+  let paginationInit = throttle(() => {
+    let paginationContainer = document.querySelector('.Project__pagination-container')
+    let paginationItems = paginationContainer.querySelectorAll('.Pagination__item')
+    let pageSections = document.querySelector('page-sections')
+    let toc = document.querySelector('.Project__toc')
+    let tocOffset = toc.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop)
+    let padding = window.getComputedStyle(pageSections).getPropertyValue('--outer-padding')
+    let footerHeight = window.getComputedStyle(document.querySelector('.Footer-Section')).getPropertyValue('height')
     paginationContainer.style.top = `${tocOffset}px`
     paginationContainer.style.left = padding
     paginationContainer.style.height = `calc(100% - ${tocOffset}px - ${footerHeight} - 190px)`

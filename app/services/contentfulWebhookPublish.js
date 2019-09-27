@@ -4,12 +4,12 @@ const client = require('./client')
 // Controller
 
 module.exports = (updatedItem, res) => {
-  const contentTypeId = updatedItem.sys.contentType.sys.id
-  const content = cache.get(contentTypeId)
+  let contentTypeId = updatedItem.sys.contentType.sys.id
+  let content = cache.get(contentTypeId)
   if (!content) {
     return res.status(400).json({
-      action: 'updating entry failed, content of this type does not exist',
-      entry: updatedItem
+      'action': 'updating entry failed, content of this type does not exist',
+      'entry': updatedItem
     })
   }
   // fetch entry by id with linked entries
@@ -20,15 +20,15 @@ module.exports = (updatedItem, res) => {
   })
     .then((entry) => {
       // get content without updated item
-      const updatedContent = removeItem(content, updatedItem.sys.id)
+      let updatedContent = removeItem(content, updatedItem.sys.id)
       // place new / updated item in cache
       updatedContent.push(entry.items[0])
       // update cache
       cache.put(contentTypeId, updatedContent)
       // return status OK
       return res.status(200).json({
-        action: 'entry updated',
-        entry: entry.items[0]
+        'action': 'entry updated',
+        'entry': entry.items[0]
       })
     })
     .catch(console.error)

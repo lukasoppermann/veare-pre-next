@@ -18,7 +18,7 @@ const fetchInjectLoaded = new Promise((resolve, reject) => {
 
 Promise.all([revisionedFiles, fetchInjectLoaded])
   .then(results => {
-    const json = results[0]
+    let json = results[0]
     console.log(json)
     // make sure WC are working
     const webComponentsAvailable = new Promise((resolve) => {
@@ -35,10 +35,10 @@ Promise.all([revisionedFiles, fetchInjectLoaded])
     })
     // load critical layout components
     const layoutComponents = fetchInject([`${baseUrl}/${json.js['js/layoutComponents.js']}`], webComponentsAvailable)
-    const body = document.querySelector('body')
+    let body = document.querySelector('body')
     // load webfont and view intro once downloaded
     fetchInject([
-      'https://fonts.googleapis.com/css?family=Montserrat:700|Noto+Serif:400,400i|Source+Sans+Pro:400,600'
+      `https://fonts.googleapis.com/css?family=Montserrat:700|Noto+Serif:400,400i|Source+Sans+Pro:400,600`
     ], layoutComponents)
       .then(() => {
         if (body !== null) {

@@ -4,7 +4,7 @@ const md = require('markdown-it')('commonmark', {
   typographer: true,
   quotes: '“”‘’',
   highlight: function (str, lang) {
-    return `<pre class="language-${lang}"><div class="code">${syntaxHighlight(str, lang)}</div></pre>`
+    return `<pre class="language-${lang}"><div class="code">` + syntaxHighlight(str, lang) + `</div></pre>`
   }
 })
   .use(require('markdown-it-anchor'))

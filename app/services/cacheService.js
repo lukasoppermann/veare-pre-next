@@ -4,7 +4,7 @@ const config = require('../config/contentful.js')
 const path = require('path')
 
 const flatCacheWrapper = () => {
-  const cache = {}
+  let cache = {}
   // store data
   cache.data = flatCache.load('offlineDbCache', path.resolve('../cache'))
   // define access methods
@@ -23,8 +23,8 @@ const flatCacheWrapper = () => {
 }
 
 const memoryCacheWrapper = () => {
-  const cache = {}
-  const flatCacheForOffline = flatCacheWrapper()
+  let cache = {}
+  let flatCacheForOffline = flatCacheWrapper()
   // define access methods
   // cache PUT
   cache.put = (key, value) => {
@@ -40,13 +40,13 @@ const memoryCacheWrapper = () => {
 }
 
 module.exports = () => {
-  const env = process.env.NODE_ENV
+  let env = process.env.NODE_ENV
 
   if (env !== 'development') {
     return memoryCache // keep original on production
   }
 
-  const online = require('dns-sync').resolve(config.host[env])
+  let online = require('dns-sync').resolve(config.host[env])
   if (online === null) {
     console.log(`"${config.host[env]}" not available, using file cache…`)
     return flatCacheWrapper()

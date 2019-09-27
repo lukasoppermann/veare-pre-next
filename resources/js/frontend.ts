@@ -1,5 +1,5 @@
 /* global fetch */
-const app = window.app
+let app = window.app
 const homepage = fetch('/home?partial=true').then(response => response.text())
 const menu = fetch('/fragment/menu').then(response => response.text())
 // Promise.all([revisionedFiles, fetchInjectLoaded]).then(json => json[0]).then((json) => {
@@ -37,7 +37,7 @@ Promise.all([menu, litHtml, responsiveMenu, homepage, layout]).then(([menuHtml, 
 })
 
 window.app.fetchInject([
-  'https://fonts.googleapis.com/css?family=Montserrat:700|Noto+Serif:400,400i|Source+Sans+Pro:400,600'
+  `https://fonts.googleapis.com/css?family=Montserrat:700|Noto+Serif:400,400i|Source+Sans+Pro:400,600`
 ]).then(() => {
   document.body.classList.add('fontsLoaded')
 })

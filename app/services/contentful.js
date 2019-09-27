@@ -4,7 +4,7 @@ const errorLogFn = require('./errorLog')
 
 const contentful = (cb, errorLog = errorLogFn) => {
   // get all entries
-  const entriesPromise = client.getEntries({
+  let entriesPromise = client.getEntries({
     limit: 1000,
     order: 'sys.createdAt',
     locale: '*'
@@ -12,12 +12,12 @@ const contentful = (cb, errorLog = errorLogFn) => {
     return response
   })
   // get all content types
-  const contentTypesPromise = client.getContentTypes().then((res) => {
+  let contentTypesPromise = client.getContentTypes().then((res) => {
     return res
   })
 
   Promise.all([entriesPromise, contentTypesPromise]).then((values) => {
-    const [entries, contentTypes] = values
+    let [entries, contentTypes] = values
     initializeContent(contentTypes, entries, cb)
   }).catch(errorLog)
 }
@@ -25,10 +25,10 @@ const contentful = (cb, errorLog = errorLogFn) => {
 const initializeContent = (types, entries, cb) => {
   // get type ids
   if (types !== undefined) {
-    const typeIds = types.items.map((item) => item.sys.id)
+    let typeIds = types.items.map((item) => item.sys.id)
     // get content by type
     typeIds.forEach((contentTypeId) => {
-      const content = entries.items.filter((entry) => {
+      let content = entries.items.filter((entry) => {
         return entry.sys.contentType.sys.id === contentTypeId
       })
       cache.put(contentTypeId, content)

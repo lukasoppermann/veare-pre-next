@@ -2,7 +2,7 @@
 'use strict'
 
 declare const ShadyCSS // eslint-disable-line no-unused-vars
-const template = document.createElement('template')
+let template = document.createElement('template')
 template.innerHTML = `<style>
   :host{
     pointer-events: none;
@@ -266,7 +266,7 @@ class ResponsiveMenu extends HTMLElement { // eslint-disable-line no-unused-vars
     // This is specific to CE and required by the spec.
     super()
     // create shadowRoot
-    const shadowRoot = this.attachShadow({ mode: 'open', delegatesFocus: false })
+    let shadowRoot = this.attachShadow({ mode: 'open', delegatesFocus: false })
     // check if polyfill is used
     if (typeof ShadyCSS !== 'undefined') {
       ShadyCSS.prepareTemplate(template, 'responsive-menu') // eslint-disable-line no-undef
@@ -276,7 +276,6 @@ class ResponsiveMenu extends HTMLElement { // eslint-disable-line no-unused-vars
     // add content to shadowRoot
     shadowRoot.appendChild(document.importNode(template.content, true))
   }
-
   /**
   * @method observedAttributes
   * @description return attributes that should be watched for updates
@@ -284,7 +283,6 @@ class ResponsiveMenu extends HTMLElement { // eslint-disable-line no-unused-vars
   static get observedAttributes () {
     return ['thresholdy', 'collapsesize', 'hideoverlaydelay', 'animateoverlaybg']
   }
-
   /**
   * @method observedAttributes
   * @description return attributes that should be watched for updates
@@ -323,7 +321,6 @@ class ResponsiveMenu extends HTMLElement { // eslint-disable-line no-unused-vars
       }
     })
   }
-
   /**
   * @method throttle
   * @description throttle function
@@ -340,7 +337,6 @@ class ResponsiveMenu extends HTMLElement { // eslint-disable-line no-unused-vars
       }
     }
   }
-
   /**
   * @method toggleExtendedOnY
   * @description toggle extended attribute when scrollPosY is bigger than this._thresholdY
@@ -354,7 +350,6 @@ class ResponsiveMenu extends HTMLElement { // eslint-disable-line no-unused-vars
     }
     this.setAttribute('extended', '')
   }
-
   /**
   * @method setter thresholdY
   * @description set the thresholdY property
@@ -363,7 +358,6 @@ class ResponsiveMenu extends HTMLElement { // eslint-disable-line no-unused-vars
     if (this._thresholdY === thresholdY) return
     this._thresholdY = thresholdY
   }
-
   /**
    * @method getter thresholdY
    * @description get the thresholdY property
@@ -371,7 +365,6 @@ class ResponsiveMenu extends HTMLElement { // eslint-disable-line no-unused-vars
   get thresholdy () {
     return this._thresholdY
   }
-
   /**
   * @method setter collapseSize
   * @description set the collapseSize property
@@ -380,7 +373,6 @@ class ResponsiveMenu extends HTMLElement { // eslint-disable-line no-unused-vars
     if (this._collapseSize === collapseSize) return
     this._collapseSize = collapseSize
   }
-
   /**
    * @method getter collapseSize
    * @description get the collapseSize property
@@ -388,7 +380,6 @@ class ResponsiveMenu extends HTMLElement { // eslint-disable-line no-unused-vars
   get collapsesize () {
     return this._collapseSize
   }
-
   /**
   * @method setter hideOverlayDelay
   * @description set the hideOverlayDelay property
@@ -397,7 +388,6 @@ class ResponsiveMenu extends HTMLElement { // eslint-disable-line no-unused-vars
     if (this._hideOverlayDelay === hideOverlayDelay) return
     this._hideOverlayDelay = hideOverlayDelay
   }
-
   /**
    * @method getter hideOverlayDelay
    * @description get the hideOverlayDelay property
@@ -405,7 +395,6 @@ class ResponsiveMenu extends HTMLElement { // eslint-disable-line no-unused-vars
   get hideoverlaydelay () {
     return this._hideOverlayDelay
   }
-
   /**
   * @method setter animateOverlayBg
   * @description set the animateOverlayBg property
@@ -414,7 +403,6 @@ class ResponsiveMenu extends HTMLElement { // eslint-disable-line no-unused-vars
     if (this._animateOverlayBg === animateOverlayBg) return
     this._animateOverlayBg = animateOverlayBg
   }
-
   /**
    * @method getter animateOverlayBg
    * @description get the animateOverlayBg property
@@ -422,7 +410,6 @@ class ResponsiveMenu extends HTMLElement { // eslint-disable-line no-unused-vars
   get animateoverlaybg () {
     return this._animateOverlayBg
   }
-
   /**
    * @method toggleOverlay
    * @description everything tha happens when toggling the overlay
@@ -441,7 +428,6 @@ class ResponsiveMenu extends HTMLElement { // eslint-disable-line no-unused-vars
       this._hideOverlay()
     }
   }
-
   /**
    * @method _hideOverlay
    * @description hides the overlay

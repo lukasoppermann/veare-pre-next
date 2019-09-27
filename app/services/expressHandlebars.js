@@ -31,7 +31,7 @@ module.exports = expressHandlebars.create({
       return escape(url)
     },
     join: function () {
-      const args = Array.from(Object.values(arguments)).slice(0, -1)
+      let args = Array.from(Object.values(arguments)).slice(0, -1)
       return args.join('')
     },
     eq: (...params) => {
@@ -62,26 +62,26 @@ module.exports = expressHandlebars.create({
       return new Date().getFullYear()
     },
     inline_js: function (path) {
-      path = `public/${path}`
-      const js = fs.readFileSync(path, 'utf8')
+      path = `public/` + path
+      let js = fs.readFileSync(path, 'utf8')
       return `<script>${js}</script>`
     },
     inline_css: (path) => {
       path = path.substring(0, 1) !== '/' ? `public/${path}` : path.substring(1)
-      const css = fs.readFileSync(path, 'utf8')
+      let css = fs.readFileSync(path, 'utf8')
       return `<style>${css}</style>`
     },
     inline_svg: function (path, options) {
       // optimizing fn
       function svgoOptimizeSync (svgo, path) {
         let res = null
-        const svg = fs.readFileSync(path, 'utf8')
+        let svg = fs.readFileSync(path, 'utf8')
         svgo.optimize(svg, { path: path }).then(result => { res = result })
         deasync.loopWhile(() => !res)
         return res.data
       }
       // prep attributes
-      const attrs = Object.keys(options.hash || {}).map(function (key) {
+      let attrs = Object.keys(options.hash || {}).map(function (key) {
         return key + '="' + options.hash[key] + '"'
       }).join(' ')
 

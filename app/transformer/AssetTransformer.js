@@ -4,7 +4,7 @@ const Transformer = require('./Transformer')
 
 class AssetTransformer extends Transformer {
   transform (data) {
-    const file = this.getContent(data, 'file')
+    let file = this.getContent(data, 'file')
     return {
       id: data.sys.id,
       createdAt: data.sys.createdAt,

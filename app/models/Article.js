@@ -10,8 +10,8 @@ class Article extends Model {
 
   all () {
     return super.all().sort((a, b) => {
-      const dateA = new Date(a.fields.rawdate)
-      const dateB = new Date(b.fields.rawdate)
+      let dateA = new Date(a.fields.rawdate)
+      let dateB = new Date(b.fields.rawdate)
       if (dateA < dateB) {
         return 1
       }
