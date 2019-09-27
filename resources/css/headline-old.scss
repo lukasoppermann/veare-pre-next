@@ -1,25 +1,22 @@
 /*
  * headine styles
  */
-
 /* --------------- */
-
 /* OLD */
-.o-headline,
-[class*="o-headline"] {
+.o-headline, [class*="o-headline"]{
   display: block;
 }
-.o-headline--h2 {
+.o-headline--h2{
   font-size: var(--size-h);
   line-height: 140%;
   margin-bottom: var(--size-l);
   margin-top: var(--size-h);
 }
-.o-headline--h3 {
+.o-headline--h3{
   font-family: var(--font-montserrat);
   font-weight: var(--font-montserrat-bold);
 }
-.o-headline--h4 {
+.o-headline--h4{
   font-size: var(--size-xl);
   line-height: 140%;
   font-family: var(--font-montserrat);
@@ -27,7 +24,7 @@
   margin-bottom: var(--size-s);
   margin-top: var(--size-l);
 }
-.o-headline--h5 {
+.o-headline--h5{
   font-size: var(--size-l);
   line-height: 130%;
   font-family: var(--font-montserrat);

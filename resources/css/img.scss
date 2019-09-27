@@ -2,12 +2,12 @@
   display: block;
   position: relative;
 }
-.c-figure--banner {
+.c-figure--banner{
   max-width: calc(100vw - var(--size-g));
   margin-top: var(--size-g);
   margin-bottom: var(--size-g);
 }
-.o-figure__inner {
+.o-figure__inner{
   position: relative;
   padding-bottom: 62.5%;
   height: 0;

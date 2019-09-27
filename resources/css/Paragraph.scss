@@ -1,14 +1,14 @@
-[class*="Paragraph"] {
+[class*="Paragraph"]{
   overflow-wrap: normal;
 }
-.Paragraph {
+.Paragraph{
   @extend %font-paragraph-serif;
   margin-top: var(--vs-s);
 }
-.Paragraph--sans {
+.Paragraph--sans{
   margin-top: var(--vs-l);
   @extend %font-paragraph-sans;
 }
-.Paragraph--sans-small {
+.Paragraph--sans-small{
   @extend %font-paragraph-sans;
 }

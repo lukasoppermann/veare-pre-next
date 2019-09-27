@@ -1,12 +1,12 @@
-ul {
+ul{
   margin-top: calc(var(--baseline) * 2);
 }
-li:not(:first-child) {
+li:not(:first-child){
   margin-top: var(--baseline);
 }
-ul + * {
+ul + *{
   margin-top: calc(var(--baseline) * 2);
 }
-ul + p {
+ul + p{
   margin-top: calc(var(--baseline) * 2) !important;
 }
