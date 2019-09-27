@@ -8,6 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Lighthouse Audit
-        uses: jakejarvis/lighthouse-action@v0.3.2
+ #     - name: Lighthouse Audit
+ #       uses: jakejarvis/lighthouse-action@v0.3.2
 
