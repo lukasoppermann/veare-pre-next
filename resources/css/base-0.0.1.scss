@@ -1,29 +1,26 @@
-
-/* ------------------ */
-
+/*------------------*/
 /* general */
-
-html {
-  font-size: 62.5%; /* sets 1rem = 10px */
+html{
+	font-size: 62.5%; /* sets 1rem = 10px */
 }
 html, body{
-  min-height: 100vh;
-  height: auto;
-  position: relative;
+	min-height: 100vh;
+	height: auto;
+	position: relative;
 }
 body{
-  font-display: optional;
-  font-family: var(--font-source-sans);
-  font-weight: var(--font-source-sans-regular);
+	font-display: optional;
+	font-family: var(--font-source-sans);
+	font-weight: var(--font-source-sans-regular);
   font-size: var(--size-m);
-  color: rgba(0,0,0,.8);
-  overflow-y: scroll;
+	color: rgba(0,0,0,.8);
+	overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
-  overflow-x: hidden;
-  position: relative;
+	overflow-x: hidden;
+	position: relative;
   min-height: 100vh;
-  min-width: 280px;
-  width: 100%;
+	min-width: 280px;
+	width: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -32,8 +29,8 @@ html.menu-active{ overflow: hidden !important; }
 /* images */
 img.async-img, img.loading{ visibility: hidden; opacity: 0; }
 img.loaded{
-  visibility: visible;
-  opacity: 1.0;
-  transition: opacity .4s ease;
-  -webkit-transition: opacity .4s ease;
+	visibility: visible;
+	opacity: 1.0;
+	transition: opacity .4s ease;
+	-webkit-transition: opacity .4s ease;
 }

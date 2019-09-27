@@ -1,7 +1,7 @@
-.about {
+.about{
   margin-top: calc(var(--baseline) * 7);
 }
-.about::after {
+.about::after{
   @include pseudo("relative");
   display: block;
   background-color: var(--blue-muted);
@@ -15,7 +15,7 @@
     grid-column: full-bleed;
   }
 }
-.about::before {
+.about::before{
   content: "+";
   display: block;
   @include mq('s') {
@@ -33,7 +33,7 @@
 }
 // First Image and Text
 .about :nth-child(1),
-.about :nth-child(2) {
+.about :nth-child(2){
   z-index: 10;
   grid-column: column 1 / span 3;
   @include mq('l') {
@@ -44,7 +44,7 @@
   }
 }
 .about :nth-child(3),
-.about :nth-child(4) {
+.about :nth-child(4){
   grid-column: column 5 / span 3;
   @include mq('l') {
     grid-column: column 5 / span 4;
@@ -54,10 +54,10 @@
     grid-column: columns;
   }
 }
-.about :nth-child(1) {
+.about :nth-child(1){
   grid-row: 1;
 }
-.about :nth-child(2) {
+.about :nth-child(2){
   grid-row: 2;
 }
 .about :nth-child(3) {
@@ -75,7 +75,7 @@
     grid-row: 4;
   }
 }
-.about .Picture__Element {
+.about .Picture__Element{
   display: flex;
   z-index: 10;
   flex-direction: column;
@@ -85,14 +85,14 @@
   box-sizing: border-box;
   overflow: hidden;
 }
-.about .Picture__Element {
+.about .Picture__Element{
   align-self: center;
   display: flex !important;
   align-items: center;
   justify-content: center;
 }
-.about .Picture__Element lazy-picture {
-  background-color: rgba(0, 0, 0, .1);
+.about .Picture__Element lazy-picture{
+  background-color: rgba(0, 0, 0, 0.1);
   position: relative;
   width: 220px;
   height: 220px;
@@ -105,7 +105,7 @@
   justify-content: center;
   z-index: 1;
 }
-.about .SectionType__textSection {
+.about .SectionType__textSection{
   display: block !important;
   z-index: 10;
   margin-top: calc(-1 * var(--baseline) * 7) !important;
@@ -114,7 +114,7 @@
     margin-bottom: calc(var(--baseline) * 4);
   }
 }
-.about h4 {
+.about h4{
   @extend %font-headline--h2;
   color: rgb(255, 255, 255);
   display: block;
@@ -129,7 +129,7 @@
   font-size: var(--size-h);
   line-height: calc(var(--baseline) * 5);
 }
-.about .Text__Element {
+.about .Text__Element{
   color: rgb(255, 255, 255);
   text-align: left;
   vertical-align: top;

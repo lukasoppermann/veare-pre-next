@@ -17,42 +17,42 @@
   grid-auto-rows: auto;
   grid-template-columns:
     [full-bleed-start]
-    0
+      0
     [margin-left full-width-start]
-    minmax(0, 1fr)
+      minmax(0, 1fr)
     [sidebar-left-start sidebar-left full-content-start]
-    minmax(53px, 75px)
+      minmax(53px, 75px)
     [sidebar-left]
-    minmax(53px, 75px)
+      minmax(53px, 75px)
     [sidebar-left-end sidebar-left columns-start]
-    repeat(7, [column] minmax(64px, 95px))
+      repeat(7, [column] minmax(64px, 95px))
     [column columns-end sidebar-right sidebar-right-start]
-    minmax(53px, 75px)
+      minmax(53px, 75px)
     [sidebar-right]
-    minmax(53px, 75px)
+      minmax(53px, 75px)
     [sidebar-right sidebar-right-end full-content-end]
-    minmax(0, 1fr)
+      minmax(0, 1fr)
     [margin-right full-width-end]
-    0
+      0
     [full-bleed-end];
   grid-column-gap: var(--column-gap); /* 12 gaps */
   grid-row-gap: var(--row-gap); /* 12 gaps */
   @include mq('l') {
     grid-template-columns:
       [full-bleed-start margin-left]
-      minmax(0, 1fr)
+        minmax(0, 1fr)
       [full-width-start sidebar-left-start sidebar-left full-content-start]
-      minmax(53px, 75px)
+        minmax(53px, 75px)
       [sidebar-left]
-      minmax(53px, 75px)
+        minmax(53px, 75px)
       [sidebar-left-end sidebar-left columns-start]
-      repeat(7, [column] minmax(64px, 95px))
+        repeat(7, [column] minmax(64px, 95px))
       [column columns-end sidebar-right sidebar-right-start]
-      minmax(53px, 75px)
+        minmax(53px, 75px)
       [sidebar-right]
-      minmax(53px, 75px)
+        minmax(53px, 75px)
       [sidebar-right sidebar-right-end full-content-end full-width-end]
-      minmax(0, 1fr)
+        minmax(0, 1fr)
       [margin-right full-bleed-end];
   }
   @include mq('s') {
