@@ -58,7 +58,7 @@
     "express-basic-auth": "^1.2.0",
     "express-handlebars": "^3.1.0",
     "flat-cache": "^2.0.1",
-    "forever": "^0.15.3",
+    "forever": "^1.0.0",
     "greenlock-express": "^2.7.17",
     "helmet": "^3.21.1",
     "lit-html": "^1.1.2",
