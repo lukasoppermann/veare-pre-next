@@ -1,7 +1,6 @@
 /* ====================================
     Setup
 ==================================== */
-html.Temp-Override,
-html.Temp-Override body { /* change to only html once base-0.0.1.css is removed  */
+html.Temp-Override, html.Temp-Override body{ /* change to only html once base-0.0.1.css is removed  */
   font-size: var(--base-font) !important; /* remove once base-0.0.1.css is removed */
 }

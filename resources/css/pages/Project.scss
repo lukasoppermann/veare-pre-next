@@ -180,7 +180,7 @@
   height: calc(100% - 40px);
   width: calc(100% - 40px);
 }
-.Project-cards--small .Project-card__link .Project-card__image {
+.Project-cards--small .Project-card__image {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -194,8 +194,7 @@
     opacity: .25;
   }
 }
-.Project-cards--small .Project-card__client,
-.Project-cards--small .Project-card:hover .Project-card__client {
+.Project-cards--small .Project-card__client, .Project-cards--small .Project-card:hover .Project-card__client {
   @include mq('m','min') {
     margin-top: var(--vs-l);
   }
@@ -248,7 +247,7 @@
     PROJECT Page
 ==================================== */
 .Project {
-  --horizontal-rule-color: var(--project-color);
+    --horizontal-rule-color: var(--project-color);
 }
 .Project__challenge {
   margin-top: var(--vs-xg);
