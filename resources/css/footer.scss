@@ -92,17 +92,17 @@
   position: relative;
 }
 .Footer__content__link::before {
+  z-index: 0;
   content: "";
-  z-index: -1;
-  background: rgba(var(--blue-rgb), .15);
-  position: absolute;
-  top: calc(50%);
-  transform: translateY(-50%);
+  height: 18px;
   width: 0;
-  height: 9px;
-  left: -6px;
-  overflow: hidden;
+  background: var(--blue);
+  position: absolute;
+  left: -3px;
+  top: 50%;
+  transform: translateY(-50%);
   transition: width .5s ease;
+  overflow: hidden;
 }
 .Footer__content__link-arrow {
   fill: var(--blue);
@@ -114,6 +114,18 @@
 .Footer__content__link-text {
   position: relative;
   z-index: 10;
+}
+.Footer__content__link::before {
+  z-index: -1;
+  background: rgba(var(--blue-rgb), .15);
+  position: absolute;
+  top: calc(50%);
+  transform: translateY(-50%);
+  width: 0;
+  height: 9px;
+  left: -6px;
+  overflow: hidden;
+  transition: width .5s ease;
 }
 .Footer__content__link:hover::before {
   width: calc(100% + 12px);
