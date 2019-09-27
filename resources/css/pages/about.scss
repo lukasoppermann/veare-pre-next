@@ -76,11 +76,16 @@
   }
 }
 .about .Picture__Element {
+  display: flex;
   z-index: 10;
   flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
   padding: var(--size-h) 0 var(--size-xh);
   box-sizing: border-box;
   overflow: hidden;
+}
+.about .Picture__Element {
   align-self: center;
   display: flex !important;
   align-items: center;
