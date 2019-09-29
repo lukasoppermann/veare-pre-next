@@ -1,0 +1,48 @@
+/* ====================================
+    Projects on Homepage
+==================================== */
+.Article {
+  padding-top: var(--size-g);
+  counter-reset: projects;
+}
+.Article__section {
+  grid-column: full-bleed;
+}
+.Article__title {
+  grid-column: columns;
+  font-family: var(--font-noto-serif);
+  font-style: italic;
+  font-size: var(--size-xh);
+  line-height: 130%;
+  max-width: 112rem;
+  margin-bottom: var(--size-xl);
+  text-align: center;
+}
+.Article__publication-details {
+  grid-column: columns;
+  display: block;
+  font-family: var(--font-source-sans);
+  font-size: var(--size-m);
+  line-height: 135%;
+  color: var(--black-50);
+  text-align: center;
+}
+.Article__author {
+  grid-column: columns;
+  display: block;
+  text-align: center;
+  font-family: var(--font-source-sans);
+  font-size: var(--size-m);
+  line-height: 135%;
+  color: var(--black-50);
+  margin-bottom: var(--size-g);
+}
+.Article .Chapter {
+  grid-column: full-bleed;
+}
+.Article .Section {
+  grid-column: full-bleed;
+}
+.Article .Text__Element {
+  grid-column: columns;
+}

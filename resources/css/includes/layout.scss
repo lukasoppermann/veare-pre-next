@@ -12,3 +12,15 @@ main {
   background: var(--white);
   width: 100vw;
 }
+.temp-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--white-grey);
+}
+#page {
+  position: relative;
+  background: var(--white);
+  width: 100vw;
+  max-width: 1200px;
+}

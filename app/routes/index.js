@@ -22,8 +22,9 @@ router.use('/portfolio', require('./portfolio'))
 router.get('/privacy', (req, res) => require('./pages')(req, res, 'privacy'))
 router.get('/about', (req, res) => { res.redirect('/#about') })
 router.get('/contact', (req, res) => { res.redirect('/#contact') })
-router.get('/blog', require('./blog'))
-router.get(/^\/blog\/([\w-]+)/, require('./blog'))
+router.get('/blog', require('./blog').index)
+// router.get('/blog', require('./blog'))
+router.get(/^\/blog\/([\w-]+)/, require('./blog').get)
 router.get(/^\/work\/([\w-]+)/, require('./projects'))
 /* =================
 // UTILS
