@@ -2,9 +2,6 @@ const express = require('express')
 const router = express.Router()
 const basicAuth = require('express-basic-auth')
 const contentfulConfig = require('../config/contentful.js')
-const Pages = require('../controller/Pages')()
-const Blog = require('../controller/Blog')()
-const Projects = require('../controller/Project')()
 
 /* =================
 // Normal Routes
@@ -22,15 +19,12 @@ router.get(/^\/?$/, (req, res) => {
 })
 router.get(/^\/home$/, require('./home'))
 router.use('/portfolio', require('./portfolio'))
-router.get('/privacy', (req, res) => Pages.get('privacy', req, res))
+router.get('/privacy', (req, res) => require('./pages')(req, res, 'privacy'))
 router.get('/about', (req, res) => { res.redirect('/#about') })
 router.get('/contact', (req, res) => { res.redirect('/#contact') })
-router.get('/blog', (req, res) => Blog.index(req, res, {}))
-router.get(/^\/blog\/([\w-]+)/, (req, res) => Blog.get(req, res, {}))
-router.get(/^\/work\/([\w-]+)/, (req, res) => Projects.get(req, res, {
-  pageClass: 'Page--work Project',
-  htmlClass: 'Temp-Override'
-}))
+router.get('/blog', require('./blog'))
+router.get(/^\/blog\/([\w-]+)/, require('./blog'))
+router.get(/^\/work\/([\w-]+)/, require('./projects'))
 /* =================
 // UTILS
 ================= */
