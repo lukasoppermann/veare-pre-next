@@ -14,7 +14,7 @@ class CodeTransformer extends Transformer {
       fields: {
         type: data.sys.contentType.sys.id,
         fileOrPath: this.getContent(data, 'fileOrPath'),
-        code: hljs.highlight(programmingLanguage, this.getContent(data, 'code')).value,
+        code: hljs.highlight(programmingLanguage, this.getContent(data, 'code', true)).value,
         language: programmingLanguage
       }
     }
