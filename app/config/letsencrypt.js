@@ -17,6 +17,7 @@ module.exports = {
   // You MUST have access to write to directory where certs are saved
   // ex: /home/foouser/acme/etc
   configDir: '/home/shared/acme', // MUST have write access,
-  communityMember: true
+  communityMember: true,
+  store: require('greenlock-store-fs')
   //, debug: true
 }

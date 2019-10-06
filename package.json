@@ -60,6 +60,7 @@
     "flat-cache": "^2.0.1",
     "forever": "^1.0.0",
     "greenlock-express": "^2.7.17",
+    "greenlock-store-fs": "^3.0.2",
     "helmet": "^3.21.1",
     "lit-html": "^1.1.2",
     "markdown-it": "^10.0.0",

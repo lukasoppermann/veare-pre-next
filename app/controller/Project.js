@@ -1,20 +1,16 @@
 'use strict'
 
-const Controller = require('./Controller')
 const ProjectModel = require('../models/Project')
-let self
 let model
 
-class Project extends Controller {
+class Project {
   constructor () {
-    super()
     model = ProjectModel()
-    self = this
   }
 
   index (req, res, data) {
     data.projects = model.all()
-    self.render(req, res, 'portfolio', data)
+    res.render('portfolio', data)
   }
 
   get (req, res, data) {
@@ -27,7 +23,7 @@ class Project extends Controller {
     // if exists get fields
     data.project = project.fields
     // render project
-    self.render(req, res, 'project', data)
+    res.render('project', data)
   }
 }
 

@@ -1,20 +1,16 @@
 'use strict'
 
-const Controller = require('./Controller')
 const ArticleModel = require('../models/Article')
-let self
 let articles
 
-class Blog extends Controller {
+class Blog {
   constructor () {
-    super()
     articles = ArticleModel()
-    self = this
   }
 
   index (req, res, data) {
     data.posts = articles.all()
-    self.render(req, res, 'blog', data)
+    res.render('blog', data)
   }
 
   get (req, res, data) {
@@ -22,7 +18,7 @@ class Blog extends Controller {
     if (data.post === undefined) {
       return res.redirect(301, 'http://' + req.headers.host + '/blog')
     }
-    self.render(req, res, 'article', data)
+    res.render('article', data)
   }
 }
 
