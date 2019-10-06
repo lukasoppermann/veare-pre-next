@@ -3,6 +3,9 @@ const flatCache = require('flat-cache')
 const config = require('../config/contentful.js')
 const path = require('path')
 
+const env = process.env.NODE_ENV
+const online = require('dns-sync').resolve(config.host[env])
+
 const flatCacheWrapper = () => {
   const cache = {}
   // store data
@@ -39,19 +42,18 @@ const memoryCacheWrapper = () => {
   return cache
 }
 
-module.exports = () => {
-  const env = process.env.NODE_ENV
+// if (env !== 'development')
+// keep original on production
+let usedCache = memoryCache
 
-  if (env !== 'development') {
-    return memoryCache // keep original on production
-  }
-
-  const online = require('dns-sync').resolve(config.host[env])
+if (env === 'development') {
   if (online === null) {
     console.log(`"${config.host[env]}" not available, using file cache…`)
-    return flatCacheWrapper()
+    usedCache = flatCacheWrapper()
   } else {
     console.log(`Database available at "${config.host[env]}", refreshing file cache…`)
-    return memoryCacheWrapper()
+    usedCache = memoryCacheWrapper()
   }
 }
+
+module.exports = () => usedCache
