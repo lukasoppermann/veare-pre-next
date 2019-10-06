@@ -3,7 +3,7 @@ const app = express()
 const hbs = require('./services/expressHandlebars')
 // ---------------------------------- //
 // Settings
-app.locals.files = require('./modules/files')()
+app.locals.files = require('./services/files')()
 // path to templates
 app.set('views', 'resources/templates/pages')
 app.engine('hbs', hbs.engine)
