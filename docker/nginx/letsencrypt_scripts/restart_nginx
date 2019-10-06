@@ -1,3 +1,0 @@
-#!/bin/sh
-date
-docker exec nginx nginx -s reload && docker exec nginx nginx -v
