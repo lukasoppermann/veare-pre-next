@@ -4,14 +4,31 @@ const { html } = require('@popeindustries/lit-html-server')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 // define special article styling options
 const options = {
-
-}
-export default (article) => layout(html`
-  ${article.fields.title}
-  ${unsafeHTML(convertRichText(article.fields.content, options))}
-`, {
-  bodyClass: 'Page-Type__Article',
+  bodyClass: 'Page-Type__Article Article',
   head: html`
   <link type="text/css" href="/css/article.css" rel="stylesheet" />
   `
-})
+}
+// export template
+export default (article) => layout(html`
+  <link type="text/css" href="/css/article.css" rel="stylesheet" />
+  <h1>${article.fields.title}</h1>
+  <div class="Article__publication-details">
+      <time class="Article__time" itemprop="datePublished" datetime="${article.fields.rawdate}">${article.fields.date}</time> •&nbsp;
+      <time class="Article__read-time" datetime="${article.fields.readingTime}m">${article.fields.readingTime} min read</time>
+  </div>
+
+  <div class="Article__author">
+    — Published by <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <a class="author" href="https://twitter.com/lukasoppermann" itemprop="url" title="about ${article.fields.author.fields.name}" rel="author">
+        <span itemprop="name">${article.fields.author.fields.name}</span>
+      </a></span>
+       /
+      <span itemprop="publisher" itemtype="http://schema.org/Organization" itemscope>
+        <a itemprop="url" href="http://vea.re">
+          <span itemprop="name">vea.re</span>
+        </a>
+      </span> —
+  </div>
+  ${unsafeHTML(convertRichText(article.fields.content, options))}
+`, options)

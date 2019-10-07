@@ -2,7 +2,6 @@ import blog from '../../resources/litTemplates/pages/blog'
 import article from '../../resources/litTemplates/pages/article'
 const { renderToString } = require('@popeindustries/lit-html-server')
 const ArticleModel = require('../models/Article')()
-
 module.exports = {
   index: async (_req, res) => res.send(await renderToString(blog(ArticleModel.all()))),
   get: async (req, res) => {
