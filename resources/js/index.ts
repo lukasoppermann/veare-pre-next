@@ -19,7 +19,6 @@ const fetchInjectLoaded = new Promise((resolve, reject) => {
 Promise.all([revisionedFiles, fetchInjectLoaded])
   .then(results => {
     const json = results[0]
-    console.log(json)
     // make sure WC are working
     const webComponentsAvailable = new Promise((resolve) => {
       if (!webComponentsSupported()) {

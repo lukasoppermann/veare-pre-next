@@ -1,7 +1,38 @@
 // NEW CSS File
 @import "../includes/sizes.scss";
-.Page-Type__Article {
+@import "../includes/typography.scss";
+.Article {
   #page {
     padding-top: var(--size-g);
+  }
+  h1 {
+    grid-column: columns;
+    font-family: var(--font-noto-serif);
+    font-style: italic;
+    font-size: var(--size-xh);
+    line-height: 130%;
+    max-width: 112rem;
+    margin-bottom: var(--size-xl);
+    text-align: left;
+  }
+  h2,
+  h3,
+  h4 {
+    grid-column: columns;
+  }
+  h2 {
+    @extend %font-headline--h2;
+  }
+  h3 {
+    @extend %font-headline--h3;
+  }
+  h4 {
+    @extend %font-headline--h4;
+  }
+  p {
+    grid-column: columns;
+  }
+  blockquote {
+    grid-column: sidebar-left 2 / columns;
   }
 }
