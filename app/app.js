@@ -1,9 +1,12 @@
 const express = require('express')
 const app = express()
 const hbs = require('./services/expressHandlebars')
+const cache = require('./services/cacheService')()
 // ---------------------------------- //
 // Add files to cache & app locals
 app.locals.files = require('./services/files')()
+// add files to cache
+cache.put('files', require('./services/files')())
 // path to templates
 app.set('views', 'resources/templates/pages')
 app.engine('hbs', hbs.engine)
