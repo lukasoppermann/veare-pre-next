@@ -1,9 +1,12 @@
 const express = require('express')
 const router = express.Router()
-const getFiles = require('../services/files')
+const cache = require('../services/cacheService')()
+const revFiles = require('../services/files')
 
 router.use((req, _res, next) => {
-  req.app.locals.files = getFiles()
+  req.app.locals.files = revFiles(true)
+  // add files to cache
+  cache.put('files', revFiles(true))
   next()
 })
 

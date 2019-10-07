@@ -97,13 +97,8 @@
   "scripts": {
     "server": "NODE_ENV=production forever start -c 'node_modules/.bin/ts-node' $npm_package_main -m 5000 --pretty",
     "start": "node_modules/.bin/ttab -t 'Node Server' 'NODE_ENV=development npm run ts-node-dev' && node_modules/.bin/ttab -t 'Building assets' 'npm run build'",
-<<<<<<< HEAD
     "ts-node-dev": "ts-node-dev --respawn $npm_package_main --pretty",
     "dev-server": "forever stopall && echo 'Running on http://localhost:8080' && NODE_ENV=development forever start -c 'node_modules/.bin/ts-node' $npm_package_main -m 5000 --pretty && forever list",
-=======
-    "ts-node-dev": "ts-node-dev --respawn $npm_package_main --pretty --watch 'resources/litTemplates'",
-    "dev-server": "forever stopall && echo 'Running on http://localhost:8080' && NODE_ENV=development forever start -c 'node_modules/.bin/ts-node' $npm_package_main -m 5000 --pretty && forever logs 0 -f",
->>>>>>> working on getting blog listing to lit
     "test-server": "forever stopall && NODE_ENV=test forever start -c 'node_modules/.bin/ts-node' $npm_package_main",
     "forever-stop": "forever stopall && forever list",
     "build": "npm run build:js:watch & npm run build:css:watch",

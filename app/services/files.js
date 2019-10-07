@@ -1,9 +1,9 @@
 const fs = require('fs')
-
-module.exports = () => {
-  // get revisioned filenames
+// get revisioned files in object
+const getRevFiles = () => {
+  // get revisioned files
   const revFiles = JSON.parse(fs.readFileSync('public/rev-manifest.json', 'utf8'))
-  // predefine structure
+  // create files structure
   const files = {
     css: {},
     js: {},
@@ -13,6 +13,18 @@ module.exports = () => {
   Object.keys(revFiles).map(key => {
     files[key.slice(0, key.indexOf('/'))][key] = revFiles[key]
   })
-
+  // return object
   return files
+}
+// set revisionedFiles
+let revisionedFiles = getRevFiles()
+
+module.exports = (refresh = false) => {
+  // if refresh is true, refresh revisioned files
+  if (refresh === true) {
+    revisionedFiles = getRevFiles()
+  }
+
+  // return files
+  return revisionedFiles
 }

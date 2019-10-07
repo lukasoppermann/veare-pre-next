@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const basicAuth = require('express-basic-auth')
 const contentfulConfig = require('../config/contentful.js')
+const cache = require('../services/cacheService')()
 
 /* =================
 // Normal Routes
@@ -12,8 +13,8 @@ router.get(/^\/fragment\/menu$/, (req, res) => {
 router.get(/^\/?$/, (req, res) => {
   res.render('progressive', {
     filesStringify: {
-      js: JSON.stringify(req.app.locals.files.js),
-      css: JSON.stringify(req.app.locals.files.css)
+      js: JSON.stringify(cache.get('files').js),
+      css: JSON.stringify(cache.get('files').css)
     }
   })
 })

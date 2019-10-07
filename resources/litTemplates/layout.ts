@@ -5,7 +5,8 @@ const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsaf
 const files = require('../../app/services/files')()
 // read file to inline directly into template
 const indexjs = require('fs').readFileSync('./public/' + files.js['js/index.js'])
-export default (content, options?) => html`
+// { [prop: string]: string; }
+export default (content: string, options: { [prop: string]: string; } = {}) => html`
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,9 +14,9 @@ export default (content, options?) => html`
   <script>${unsafeHTML(indexjs)}
   </script>
   <link type="text/css" href="/${files.css['css/app.css']}" rel="stylesheet" />
-  ${options.head || ''}
+  ${typeof options.head !== 'undefined' ? options.head : ''}
 </head>
-<body class="${options.bodyClass} temp-body">
+<body class="${typeof options.bodyClass !== 'undefined' ? options.bodyClass : ''} temp-body">
   <div id="page">
     ${content || ''}
   </div>

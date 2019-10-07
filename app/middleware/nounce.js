@@ -1,6 +1,7 @@
-const uuidv4 = require('uuid/v4')
+// const uuidv4 = require('uuid/v4')
 
 module.exports = (req, res, next) => {
-  res.locals.nonce = uuidv4()
+  // export nonce somehow
+  // res.locals.nonce = uuidv4()
   next()
 }
