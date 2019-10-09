@@ -14,16 +14,18 @@ export default (content: string, options: { [prop: string]: string; } = {}) => h
 <html lang="en">
 <head>
   ${meta()}
+  <link type="text/css" href="/${files.css['css/litApp.css']}" rel="stylesheet" />
   <script>${unsafeHTML(indexjs)}
   </script>
+
   ${options.head || ''}
 </head>
 <body class="${typeof options.bodyClass !== 'undefined' ? options.bodyClass : ''} temp-body">
   ${menu}
   <div id="page" class="Grid">
     ${content || ''}
+    ${footer}
   </div>
-  ${footer}
 </body>
 </html>
 `

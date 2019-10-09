@@ -3,6 +3,19 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+main {
+  width: 100vw;
+}
+.Page {
+  position: relative;
+  background: var(--white);
+  width: 100vw;
+}
+.temp-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: var(--white-grey);
 }
 #page {

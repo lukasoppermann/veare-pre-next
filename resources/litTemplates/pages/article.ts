@@ -2,16 +2,17 @@ import layout from '../layout'
 import convertRichText from '../../../app/services/convertRichText'
 const { html } = require('@popeindustries/lit-html-server')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
+// get correct filesnames after appending unique string
+const files = require('../../../app/services/files')()
 // define special article styling options
 const options = {
   bodyClass: 'Page-Type__Article Article',
   head: html`
-  <link type="text/css" href="/css/article.css" rel="stylesheet" />
+  <link type="text/css" href="/${files.css['css/blog.css']}" rel="stylesheet" />
   `
 }
 // export template
 export default (article) => layout(html`
-  <link type="text/css" href="/css/article.css" rel="stylesheet" />
   <h1>${article.fields.title}</h1>
   <div class="Article__publication-details">
       <time class="Article__time" itemprop="datePublished" datetime="${article.fields.rawdate}">${article.fields.date}</time> •&nbsp;

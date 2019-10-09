@@ -1,4 +1,5 @@
-@import "./includes/colors.scss";
+@import "../includes/colors.scss";
 footer {
+  grid-column: full-bleed;
   background: var(--black);
 }
