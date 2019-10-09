@@ -104,7 +104,7 @@
     "build:css": "npm run css:clean && npm run css:compile && npm run css:rev",
     "css:clean": "rm -f public/css/*",
     "css:compile:slim": "node-sass --output-style compressed -o public/css/ resources/css/slim/slim.scss",
-    "css:compile": "npm run css:compile:slim && node-sass --output-style compressed -o public/css/ resources/css/app.scss",
+    "css:compile": "npm run css:compile:slim && node-sass --output-style compressed -o public/css/ resources/css/bundles/",
     "css:rev": "node-file-rev public/css/app.css --manifest=public/rev-manifest.json --root=public/",
     "build:js:watch": "onchange -i 'resources/js/*.ts' 'resources/ts/*/*.ts' -- npm run build:js",
     "build:js": "npm run js:clean && npm run js:compile && npm run js:rev && npm run js:move",
