@@ -1,5 +1,13 @@
 @import "../includes/colors.scss";
 footer {
+  height: 100vh;
+  width: 100vw;
   grid-column: full-bleed;
   background: var(--black);
+  color: var(--white);
+  // wordmark
+  .veare-wordmark {
+    fill: var(--white);
+    height: 30px;
+  }
 }

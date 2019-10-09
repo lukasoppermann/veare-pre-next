@@ -21,7 +21,7 @@ let revisionedFiles = getRevFiles()
 
 module.exports = (refresh = false) => {
   // if refresh is true, refresh revisioned files
-  if (refresh === true) {
+  if (refresh !== false) {
     revisionedFiles = getRevFiles()
   }
 

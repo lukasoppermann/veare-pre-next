@@ -12,6 +12,6 @@ const options = {
   }
 }
 
-export default (richText, _options) => {
+export default (richText, _options?) => {
   return documentToHtmlString(richText, { ...options, ..._options })
 }
