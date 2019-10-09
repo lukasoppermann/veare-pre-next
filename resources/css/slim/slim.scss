@@ -4,8 +4,8 @@
 @import 'slim-sizes';
 @import 'slim-colors';
 @import 'slim-typography';
-@import '../Grid';
-@import '../Header--intro';
+@import '../components/Grid';
+@import '../components/Header--intro';
 html,
 body {
   margin: 0;
