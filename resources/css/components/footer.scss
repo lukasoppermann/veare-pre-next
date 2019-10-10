@@ -1,13 +1,37 @@
 @import "../includes/colors.scss";
-footer {
+@import "../includes/sizes.scss";
+@import "../includes/typography.scss";
+.Footer {
   height: 100vh;
   width: 100vw;
   grid-column: full-bleed;
   background: var(--black);
   color: var(--white);
+  &.Grid {
+    grid-template-rows: [footer-main] 1fr [footer-separator] var(--size-s) [footer-bottom] var(--size-g);
+  }
   // wordmark
+  hr {
+    border: none;
+    height: 1px;
+    background-color: var(--dark-grey);
+    margin: 0;
+    grid-row: footer-separator;
+    grid-column: sidebar-left / sidebar-right;
+  }
   .veare-wordmark {
+    padding-left: 2px;
+    grid-row: footer-bottom;
+    grid-column: sidebar-left;
     fill: var(--white);
-    height: 30px;
+    height: var(--size-xl);
+  }
+  .Footer__copyright {
+    grid-row: footer-bottom;
+    grid-column: columns / sidebar-right;
+    text-align: right;
+    justify-self: end;
+    @extend %font-subtitle-uppercase-tiny;
+    color: var(--white);
   }
 }

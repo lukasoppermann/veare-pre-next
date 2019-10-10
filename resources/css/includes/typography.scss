@@ -119,7 +119,6 @@ font-feature-settings:"liga", "dlig";
 %font-subtitle-uppercase-tiny {
   @extend %font-subtitle-uppercase-small;
   font-size: var(--size-s);
-  line-height: calc(var(--baseline) * 1);
 }
 %font-subtitle-small {
   font-weight: var(--font-source-sans-semibold);

@@ -2,10 +2,10 @@ const { html } = require('@popeindustries/lit-html-server')
 const fs = require('fs')
 
 export default html`
-  <footer>
+<footer class="Footer Grid">
   Lukas Oppermann
-
-  Copyright ${new Date().getFullYear()} by veare
+  <hr />
   ${fs.readFileSync('./resources/svgs/veare-wordmark.svg')}
-  </footer>
+  <small class="Footer__copyright">Copyright ${new Date().getFullYear()} — Lukas Oppermann</small>
+</footer>
 `
