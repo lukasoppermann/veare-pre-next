@@ -14,10 +14,10 @@ module.exports = {
     'vea.re', 'www.vea.re',
     'veare.de', 'www.veare.de'
   ],
+  store: require('greenlock-store-fs'),
   // You MUST have access to write to directory where certs are saved
   // ex: /home/foouser/acme/etc
   configDir: '/home/shared/acme', // MUST have write access,
-  communityMember: true,
-  store: require('greenlock-store-fs')
+  communityMember: true
   //, debug: true
 }

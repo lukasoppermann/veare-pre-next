@@ -26,10 +26,9 @@ let plugins = {
       ]
     }),
     nodeResolve({
-      module: true,
-      jsnext: true,
+      mainFields: ['module', 'jsnext:main'],
       browser: true,
-      extensions: [ '.js', '.json' ],
+      extensions: ['.js', '.json'],
       preferBuiltins: false
     }),
     terser()

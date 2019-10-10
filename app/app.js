@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const hbs = require('./services/expressHandlebars')
 // ---------------------------------- //
-// Settings
+// Add files to cache & app locals
 app.locals.files = require('./services/files')()
 // path to templates
 app.set('views', 'resources/templates/pages')
