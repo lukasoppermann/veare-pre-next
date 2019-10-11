@@ -9,8 +9,8 @@
   color: var(--white);
   &.Grid {
     grid-template-rows:
-      [footer-top] var(--size-s)
-      repeat(6, [footer-rows] 1fr)
+      [footer-top] minmax(var(--size-s), var(--size-g))
+      repeat(5, [footer-rows] minmax(50px, 1fr))
       [footer-separator] var(--size-s)
       [footer-bottom] var(--size-g);
   }
@@ -27,21 +27,28 @@
   .veare-wordmark {
     padding-left: 2px;
     grid-row: footer-bottom;
-    grid-column: columns; // sidebar-left
+    grid-column: column / column 2;
     fill: var(--white);
-    height: var(--size-xl);
+    height: var(--size-l);
   }
   .Footer__copyright {
     grid-row: footer-bottom;
-    grid-column: columns; // columns / sidebar-right;
+    grid-column: column 3 / columns;
     text-align: right;
     justify-self: end;
     @extend %font-subtitle-uppercase-tiny;
     color: var(--white);
   }
+  h4 {
+    @extend %font-headline--h3;
+  }
+  p {
+    @extend %font-paragraph-sans;
+    color: var(--white);
+  }
   .Footer__bio {
     grid-column: column / column 4;
-    grid-row: footer-rows / footer-rows 2;
+    grid-row: footer-rows / footer-rows 3;
     order: 1;
   }
   .Footer__contact {
@@ -51,7 +58,7 @@
   }
   .Footer__connect {
     grid-column: column 5 / column 8;
-    grid-row: footer-rows / footer-rows 2;
+    grid-row: footer-rows / footer-rows 3;
     order: 1;
   }
   .Footer__legal {
