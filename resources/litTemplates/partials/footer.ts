@@ -10,19 +10,21 @@ export default html`
   </div>
   <div class="Footer__contact">
     <h4>Contact</h4>
-    <p>lukas@vea.re</p>
+    <p><a target="_blank" href="mailto:lukas@vea.re">lukas@vea.re</a></p>
   </div>
   <div class="Footer__connect">
     <h4>Connect</h4>
-    <p>dribbble<br />
-    linkedIn<br />
-    twitter<br />
-    github</p>
+    <p>
+      <a href="https://dribbble.com/lukasoppermann">Dribbble</a><br />
+      <a href="https://www.linkedin.com/in/lukasoppermann/">LinkedIn</a><br />
+      <a href="https://twitter.com/lukasoppermann">Twitter</a><br />
+      <a href="https://github.com/lukasoppermann">Github</a>
+    </p>
   </div>
   <div class="Footer__legal">
     <h4>Legal</h4>
-    <p>Imprint<br />
-    Privacy policy</p>
+    <p><a href="/imprint">Imprint</a><br />
+    <a href="/privacy-policy">Privacy policy</a></p>
   </div>
   <hr />
   ${fs.readFileSync('./resources/svgs/veare-wordmark.svg')}
