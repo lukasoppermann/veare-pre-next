@@ -1,24 +1,22 @@
 const Greenlock = require('greenlock-express')
-const app = require('./app.js')
+
 const contentful = require('./services/contentful')
 const letsencryptConfig = require('./config/letsencrypt')
-const greenlock = Greenlock.create(Object.assign(letsencryptConfig, { app: app }))
-let startServer = () => {
-  console.log('✅ Listening on http://localhost:8080')
-  greenlock.listen(80, 443)
-}
-
-if (process.env.NODE_ENV === 'development') {
-  startServer = () => {
+const startServer = async () => {
+  const app = await require('./app.js')()
+  const greenlock = Greenlock.create(Object.assign(letsencryptConfig, { app: app }))
+  // development server
+  if (process.env.NODE_ENV === 'development') {
     console.log('✅ Listening on http://localhost:8080')
     app.listen('8080')
-  }
-}
-if (process.env.NODE_ENV === 'test') {
-  startServer = () => {
+  } else if (process.env.NODE_ENV === 'test') {
     app.listen(process.env.NODE_PORT || '3300')
+  } else {
+    // live server server
+    greenlock.listen(80, 443)
   }
 }
+
 // contentful has loaded
 contentful(startServer, (error) => {
   console.log(`🚨 \x1b[31mError: ${error.code} when trying to connect to ${error.hostname}\x1b[0m`)
