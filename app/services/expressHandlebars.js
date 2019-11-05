@@ -1,18 +1,17 @@
 const fs = require('fs')
 const expressHandlebars = require('express-handlebars')
-const SVGO = require('svgo')
-const deasync = require('deasync')
-
-const svgo = new SVGO({
-  plugins: [
-    { removeDesc: { removeAny: true } },
-    { removeTitle: {} }, // pass it an argument to enable
-    'removeComments', // does enable default plugins. (using { full: true } )
-    'removeMetadata',
-    { removeViewBox: false },
-    { cleanupIDs: { remove: false, minify: false } }
-  ]
-})
+// const SVGO = require('svgo')
+//
+// const svgo = new SVGO({
+//   plugins: [
+//     { removeDesc: true },
+//     { removeTitle: true }, // pass it an argument to enable
+//     { removeComments: true }, // does enable default plugins. (using { full: true } )
+//     { removeMetadata: true },
+//     { removeViewBox: false },
+//     { cleanupIDs: { remove: false, minify: false } }
+//   ]
+// })
 
 module.exports = expressHandlebars.create({
   extname: '.hbs',
@@ -62,30 +61,37 @@ module.exports = expressHandlebars.create({
       return new Date().getFullYear()
     },
     inline_js: function (path) {
+      if (path === undefined) {
+        console.log('ERROR: No path provided to inline_css function')
+        return
+      }
       path = `public/${path}`
       const js = fs.readFileSync(path, 'utf8')
       return `<script>${js}</script>`
     },
     inline_css: (path) => {
+      if (path === undefined) {
+        console.log('ERROR: No path provided to inline_css function')
+        return
+      }
       path = path.substring(0, 1) !== '/' ? `public/${path}` : path.substring(1)
       const css = fs.readFileSync(path, 'utf8')
       return `<style>${css}</style>`
     },
-    inline_svg: function (path, options) {
+    inline_svg: (path, options) => {
       // optimizing fn
-      function svgoOptimizeSync (svgo, path) {
-        let res = null
-        const svg = fs.readFileSync(path, 'utf8')
-        svgo.optimize(svg, { path: path }).then(result => { res = result })
-        deasync.loopWhile(() => !res)
-        return res.data
-      }
+      // const svgoOptimizeSync = async (svgo, path) => {
+      //   const svg = fs.readFileSync(path, 'utf8')
+      //   return svgo.optimize(svg, { path: path }).then(result => result.data)
+      // }
+      const svg = fs.readFileSync(path, 'utf8')
       // prep attributes
       const attrs = Object.keys(options.hash || {}).map(function (key) {
         return key + '="' + options.hash[key] + '"'
       }).join(' ')
-
-      return svgoOptimizeSync(svgo, path).replace(/<svg/g, `<svg ${attrs}`)
+      // const optimizedSvg = await svgoOptimizeSync(svgo, path).replace(/<svg/g, `<svg ${attrs}`)
+      // return optimizedSvg
+      return svg.replace(/<svg/g, `<svg ${attrs}`)
     }
   }
 })

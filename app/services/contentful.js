@@ -2,7 +2,7 @@ const client = require('./client')
 const cache = require('./cacheService')()
 const errorLogFn = require('./errorLog')
 
-const contentful = (cb, errorLog = errorLogFn) => {
+const contentful = async (cb, errorLog = errorLogFn) => {
   // get all entries
   const entriesPromise = client.getEntries({
     limit: 1000,
