@@ -1,7 +1,7 @@
 const { html } = require('@popeindustries/lit-html-server')
 
 export default html`
-  <nav>
+  <!-- <nav> -->
     <responsive-menu hidden collapseSize="800">
     <aside slot="info">
     <div class="c-contact-content">
@@ -21,5 +21,5 @@ export default html`
     <a slot="footer" href="/privacy" class="responsive-menu">imprint</a>
     <a slot="footer" href="/privacy" class="responsive-menu">privacy policy</a>
     </responsive-menu>
-  </nav>
+  <!-- </nav> -->
 `

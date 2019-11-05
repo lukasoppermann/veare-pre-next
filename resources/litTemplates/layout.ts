@@ -13,14 +13,17 @@ export default (content: string, options: { [prop: string]: string; } = {}) => h
 <head>
   ${meta()}
   <link type="text/css" href="/${files().css['css/litApp.css']}" rel="stylesheet" />
+  <link type="text/css" href="/${files().css['css/app.css']}" rel="stylesheet" />
   <script>${unsafeHTML(fs.readFileSync('./public/' + files().js['js/index.js']))}
   </script>
 
   ${options.head || ''}
 </head>
 <body class="${options.bodyClass || ''} temp-body">
-  ${menu}
-  <div id="page" class="Grid">
+  <!-- NEW STUFF -->
+  <!-- <div id="page" class="Grid"> -->
+  <div class="Page">
+    ${menu}
     ${content || ''}
   </div>
   ${footer}
