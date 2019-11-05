@@ -7,4 +7,6 @@ export default (page) => layout(html`
   <page-sections>
     ${repeat(page.chapters, (chapterData) => chapter(chapterData.fields))}
   </page-sections>
-`)
+`, {
+  bodyClass: page.slug
+})
