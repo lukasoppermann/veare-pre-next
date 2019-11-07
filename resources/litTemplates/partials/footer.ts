@@ -9,7 +9,7 @@ export default html`
     Lead UI/UX Designer</p>
   </div>
   <div class="Footer__contact">
-    <h4>Contact</h4>
+    <h4>Say hello</h4>
     <p><a target="_blank" href="mailto:lukas@vea.re">lukas@vea.re</a></p>
   </div>
   <div class="Footer__connect">
@@ -23,8 +23,8 @@ export default html`
   </div>
   <div class="Footer__legal">
     <h4>Legal</h4>
-    <p><a href="/imprint">Imprint</a><br />
-    <a href="/privacy-policy">Privacy policy</a></p>
+    <p><a href="/privacy">Imprint</a><br />
+    <a href="/privacy">Privacy policy</a></p>
   </div>
   <hr />
   ${fs.readFileSync('./resources/svgs/veare-wordmark.svg')}

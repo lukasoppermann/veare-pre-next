@@ -25,11 +25,14 @@
     grid-column: columns;
   }
   .veare-wordmark {
+    top: auto;
+    left: auto;
+    position: relative;
     padding-left: 2px;
-    grid-row: footer-bottom;
-    grid-column: column / column 2;
     fill: var(--white);
     height: var(--size-l);
+    grid-row: footer-bottom;
+    grid-column: column / column 2;
   }
   .Footer__copyright {
     grid-row: footer-bottom;
@@ -40,11 +43,22 @@
     color: var(--white);
   }
   h4 {
-    @extend %font-headline--h3;
+    font-weight: var(--font-montserrat-bold);
+    font-size: var(--size-l);
+    line-height: calc(var(--baseline) * 4);
+    font-family: var(--font-montserrat);
+    letter-spacing: .5px;
+    color: var(--middle-grey);
   }
   p {
     @extend %font-paragraph-sans;
     color: var(--white);
+  }
+  p a {
+    text-decoration: none;
+  }
+  p a:hover {
+    text-decoration: underline;
   }
   .Footer__bio {
     grid-column: column / column 4;

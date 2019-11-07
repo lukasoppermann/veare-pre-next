@@ -14,10 +14,10 @@ export default html`
     </div>
     </aside>
     <a slot="items" class="responsive-menu" href="/">Home</a>
-    <a slot="items" class="responsive-menu" href="#portfolio">Portfolio</a>
-    <a slot="items" class="responsive-menu" href="#about">About</a>
+    <a slot="items" class="responsive-menu" href="/home#portfolio">Portfolio</a>
+    <a slot="items" class="responsive-menu" href="/home#about">About</a>
     <a slot="items" class="responsive-menu" href="/blog/">Blog</a>
-    <a slot="items" class="responsive-menu" href="#contact">Contact</a>
+    <a slot="items" class="responsive-menu" href="/home#contact">Contact</a>
     <a slot="footer" href="/privacy" class="responsive-menu">imprint</a>
     <a slot="footer" href="/privacy" class="responsive-menu">privacy policy</a>
     </responsive-menu>

@@ -11,7 +11,7 @@ export default (content: string, options: { [prop: string]: string; } = {}) => h
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  ${meta()}
+  ${meta(options.title || undefined)}
   <link type="text/css" href="/${files().css['css/litApp.css']}" rel="stylesheet" />
   <link type="text/css" href="/${files().css['css/app.css']}" rel="stylesheet" />
   <script>${unsafeHTML(fs.readFileSync('./public/' + files().js['js/index.js']))}
