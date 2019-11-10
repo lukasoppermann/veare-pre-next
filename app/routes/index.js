@@ -9,9 +9,7 @@ const cache = require('../services/cacheService')()
 /* =================
 // Normal Routes
 ================= */
-router.get(/^\/fragment\/menu$/, (_req, res) => {
-  res.render('menu')
-})
+router.get(/^\/fragment\/menu$/, require('./menu'))
 router.get(/^\/?$/, (_req, res) => {
   res.render('progressive', {
     filesStringify: {
@@ -20,11 +18,7 @@ router.get(/^\/?$/, (_req, res) => {
     }
   })
 })
-router.get(/^\/home$/, async (req, res) => {
-  return require('./home')(req, res, {
-    // footer: await renderToString(footer)
-  })
-})
+router.get(/^\/home$/, require('./home'))
 router.use(/^\/portfolio\/([\w-]+)/, require('./portfolio'))
 router.get('/privacy', (req, res) => require('./pages')(req, res, 'privacy'))
 router.get('/about', (_req, res) => { res.redirect('/#about') })
