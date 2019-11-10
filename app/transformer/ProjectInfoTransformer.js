@@ -11,7 +11,7 @@ class ProjectInfoTransformer extends Transformer {
       updatedAt: data.sys.updatedAt,
       fields: {
         type: data.sys.contentType.sys.id,
-        facts: this.getContent(data, 'facts'),
+        items: this.getContent(data, 'facts'),
         tableOfContent: this.getContent(data, 'tableOfContent'),
         challenge: convertMarkdown(this.getContent(data, 'challenge'))
       }

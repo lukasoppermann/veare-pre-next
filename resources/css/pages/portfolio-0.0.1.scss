@@ -1,3 +1,10 @@
+.portfolio-link-back {
+  text-decoration: none;
+  @extend %font-subtitle-uppercase-small;
+  position: absolute;
+  left: var(--size-s);
+  top: var(--size-xxl);
+}
 .c-portfolio {
   min-height: 100vh;
   width: 100vw;
@@ -41,7 +48,7 @@
   margin-bottom: var(--size-g);
 }
 .o-project-section-container {
-  padding: 0 var(--size-l);
+  padding: 0 var(--size-l) var(--size-g);
 }
 .o-project-info__item {
   flex-shrink: 1;

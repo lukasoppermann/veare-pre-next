@@ -4,7 +4,9 @@ import pictureElement from '../partials/pictureElement'
 const { html } = require('@popeindustries/lit-html-server')
 const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
 
-export default (project) => layout(html`
+export default (project) => {
+  console.log({ project })
+  return layout(html`
   <style media="screen">
     :root{
       --project-color: ${project.variables.color};
@@ -17,7 +19,9 @@ export default (project) => layout(html`
     </header>
   </page-section>
   ${repeat(project.chapters, (chapterData) => chapter(chapterData.fields, 'Chapter--side-title'))}
-
 `, {
-  title: project.title
-})
+    title: project.title,
+    bodyClass: 'Page--work Project',
+    htmlClass: 'Temp-Override'
+  })
+}

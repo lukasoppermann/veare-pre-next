@@ -25,7 +25,7 @@ router.get(/^\/home$/, async (req, res) => {
     // footer: await renderToString(footer)
   })
 })
-router.use('/portfolio', require('./portfolio'))
+router.use(/^\/portfolio\/([\w-]+)/, require('./portfolio'))
 router.get('/privacy', (req, res) => require('./pages')(req, res, 'privacy'))
 router.get('/about', (_req, res) => { res.redirect('/#about') })
 router.get('/contact', (_req, res) => { res.redirect('/#contact') })

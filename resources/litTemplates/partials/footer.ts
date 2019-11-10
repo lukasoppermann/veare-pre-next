@@ -27,7 +27,7 @@ export default html`
     <a href="/privacy">Privacy policy</a></p>
   </div>
   <hr />
-  ${fs.readFileSync('./resources/svgs/veare-wordmark.svg')}
+  <a class="veare-wordmark" href="/home">${fs.readFileSync('./resources/svgs/veare-wordmark.svg')}</a>
   <small class="Footer__copyright">Copyright ${new Date().getFullYear()} — Lukas&nbsp;Oppermann</small>
 </footer>
 `
