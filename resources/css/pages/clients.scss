@@ -1,3 +1,6 @@
+.clients {
+  margin-bottom: var(--size-g);
+}
 .clients .Section.Grid {
   @include mq('m', 'min') {
     grid-row-gap: 0;

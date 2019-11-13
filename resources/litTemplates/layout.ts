@@ -7,26 +7,31 @@ const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsaf
 const files = require('../../app/services/files')
 const fs = require('fs')
 //
-export default (content: string, options: { [prop: string]: string; } = {}) => html`
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  ${meta(options.title || undefined)}
-  <link type="text/css" href="/${files().css['css/litApp.css']}" rel="stylesheet" />
-  <link type="text/css" href="/${files().css['css/app.css']}" rel="stylesheet" />
-  <script>${unsafeHTML(fs.readFileSync('./public/' + files().js['js/index.js']))}
-  </script>
+export default (content: string, options: { [prop: string]: string; } = {}, partial: string = 'false') => {
+  if (partial === 'true') {
+    return html`${content}`
+  }
+  return html`
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      ${meta(options.title || undefined)}
+      <link type="text/css" href="/${files().css['css/litApp.css']}" rel="stylesheet" />
+      <link type="text/css" href="/${files().css['css/app.css']}" rel="stylesheet" />
+      <script>${unsafeHTML(fs.readFileSync('./public/' + files().js['js/index.js']))}
+      </script>
 
-  ${options.head || ''}
-</head>
-<body class="${options.bodyClass || ''} temp-body">
-  <!-- NEW STUFF -->
-  <!-- <div id="page" class="Grid"> -->
-  <div class="Page">
-    ${menu}
-    ${content || ''}
-  </div>
-  ${footer}
-</body>
-</html>
+      ${options.head || ''}
+    </head>
+    <body class="${options.bodyClass || ''} temp-body">
+      <!-- NEW STUFF -->
+      <!-- <div id="page" class="Grid"> -->
+      <div class="Page">
+        ${menu}
+        ${content || ''}
+      </div>
+      ${footer}
+    </body>
+    </html>
 `
+}
