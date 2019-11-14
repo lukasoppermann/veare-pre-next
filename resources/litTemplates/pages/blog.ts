@@ -1,5 +1,5 @@
 import layout from '../layout'
-import preview from '../partials/article-preview'
+import preview from '../partials/article_preview'
 const { html } = require('@popeindustries/lit-html-server')
 const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
 // get correct filesnames after appending unique string

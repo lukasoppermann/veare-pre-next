@@ -3,7 +3,6 @@ const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 
 export default (item) => {
-  console.log('PictureElement', item, 'END PIC')
   return html`
   <figure class="Picture__Element Picture__Element--${item.style} ${item.classes}">
     <lazy-picture src="${item.image.fields.url}" alt="${item.title}">
