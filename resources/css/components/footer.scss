@@ -8,11 +8,13 @@
   background: var(--black);
   color: var(--white);
   &.Grid {
-    grid-template-rows:
-      [footer-top] minmax(var(--size-s), var(--size-g))
-      repeat(5, [footer-rows] minmax(50px, 1fr))
-      [footer-separator] var(--size-s)
-      [footer-bottom] var(--size-g);
+    @media screen and (min-width: 600px) {
+      grid-template-rows:
+        [footer-top] minmax(var(--size-s), var(--size-g))
+        repeat(5, [footer-rows] minmax(50px, 1fr))
+        [footer-separator] var(--size-s)
+        [footer-bottom] var(--size-g);
+    }
   }
   // wordmark
   hr {
@@ -20,9 +22,10 @@
     height: 1px;
     background-color: var(--dark-grey);
     margin: 0;
-    grid-row: footer-separator;
-    // grid-column: sidebar-left / sidebar-right;
     grid-column: columns;
+    @media screen and (min-width: 600px) {
+      grid-row: footer-separator;
+    }
   }
   .veare-wordmark {
     top: auto;
@@ -31,11 +34,15 @@
     padding-left: 2px;
     fill: var(--white);
     height: var(--size-l);
-    grid-row: footer-bottom;
     grid-column: column / column 2;
+    @media screen and (min-width: 600px) {
+      grid-row: footer-bottom;
+    }
   }
   .Footer__copyright {
-    grid-row: footer-bottom;
+    @media screen and (min-width: 600px) {
+      grid-row: footer-bottom;
+    }
     grid-column: column 3 / columns;
     text-align: right;
     justify-self: end;
@@ -60,24 +67,38 @@
   p a:hover {
     text-decoration: underline;
   }
+  .Footer__bio,
+  .Footer__contact,
+  .Footer__connect,
+  .Footer__legal {
+    grid-column: columns;
+  }
   .Footer__bio {
-    grid-column: column / column 4;
-    grid-row: footer-rows / footer-rows 3;
-    order: 1;
+    @media screen and (min-width: 600px) {
+      grid-column: column / column 4;
+      grid-row: footer-rows / footer-rows 3;
+      order: 1;
+    }
   }
   .Footer__contact {
-    grid-column: column / column 4;
-    grid-row: footer-rows 3 / footer-rows 5;
-    order: 2;
+    @media screen and (min-width: 600px) {
+      grid-column: column / column 4;
+      grid-row: footer-rows 3 / footer-rows 5;
+      order: 2;
+    }
   }
   .Footer__connect {
-    grid-column: column 5 / column 8;
-    grid-row: footer-rows / footer-rows 3;
-    order: 1;
+    @media screen and (min-width: 600px) {
+      grid-column: column 5 / column 8;
+      grid-row: footer-rows / footer-rows 3;
+      order: 1;
+    }
   }
   .Footer__legal {
-    grid-column: column 5 / column 8;
-    grid-row: footer-rows 3 / footer-rows 5;
-    order: 2;
+    @media screen and (min-width: 600px) {
+      grid-column: column 5 / column 8;
+      grid-row: footer-rows 3 / footer-rows 5;
+      order: 2;
+    }
   }
 }
