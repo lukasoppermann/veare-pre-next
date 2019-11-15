@@ -2,9 +2,6 @@
 @import "../includes/sizes.scss";
 @import "../includes/typography.scss";
 .Article {
-  #page {
-    padding-top: var(--size-g);
-  }
   h1 {
     grid-column: columns;
     font-family: var(--font-noto-serif);
@@ -12,6 +9,7 @@
     font-size: var(--size-xh);
     line-height: 130%;
     max-width: 112rem;
+    margin-top: var(--size-xxg);
     margin-bottom: var(--size-xl);
     text-align: left;
   }
@@ -34,5 +32,26 @@
   }
   blockquote {
     grid-column: sidebar-left 2 / columns;
+  }
+  .Text__Element {
+    grid-column: columns;
+  }
+  .Article__publication-details,
+  .Article__author {
+    grid-column: columns;
+  }
+  .Article__author {
+    margin-bottom: var(--size-xl);
+  }
+  .Chapter {
+    margin-bottom: var(--size-xl);
+  }
+  .Article__back_link {
+    display: block;
+    grid-column: columns;
+    text-decoration: none;
+    @extend %font-subtitle-uppercase-small;
+    margin-top: var(--size-xl);
+    margin-bottom: var(--size-xxg);
   }
 }

@@ -4,7 +4,6 @@ const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsaf
 // const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
 
 export default (projectInfo) => {
-  console.log('projectInfo: ', projectInfo)
   return html`
   ${boxedContent(projectInfo)}
   <!-- {{!-- Intro text --}} -->

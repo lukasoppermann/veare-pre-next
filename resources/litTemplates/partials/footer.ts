@@ -3,6 +3,7 @@ const fs = require('fs')
 
 export default html`
 <footer class="Footer Grid">
+  <a name="contact"></a>
   <div class="Footer__bio">
     <h4>Lukas Oppermann</h4>
     <p>Creative Director &<br />

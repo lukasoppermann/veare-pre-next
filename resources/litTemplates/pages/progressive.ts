@@ -28,7 +28,8 @@ export default html`
       ${headerIntro}
     <main>
     </main>
-    <footer></footer>
+    <footer>
+    </footer>
   </body>
   </html>
 `

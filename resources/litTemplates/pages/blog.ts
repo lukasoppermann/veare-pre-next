@@ -5,7 +5,7 @@ const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js
 // get correct filesnames after appending unique string
 const files = require('../../../app/services/files.ts')
 export default (articles) => layout(html`
-  <ul class="Article-list" itemscope itemtype="http://schema.org/Blog">
+  <ul class="Article-list Grid" itemscope itemtype="http://schema.org/Blog">
     ${repeat(articles, (article) => preview(article))}
   </ul>
 `, {

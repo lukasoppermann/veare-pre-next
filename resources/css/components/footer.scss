@@ -34,7 +34,10 @@
     padding-left: 2px;
     fill: var(--white);
     height: var(--size-l);
-    grid-column: column / column 2;
+    grid-column: column / column 3;
+    @media screen and (min-width: 500px) {
+      grid-column: column / column 2;
+    }
     @media screen and (min-width: 600px) {
       grid-row: footer-bottom;
     }
