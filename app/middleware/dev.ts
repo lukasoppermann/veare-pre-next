@@ -3,8 +3,8 @@ const router = express.Router()
 const cache = require('../services/cacheService')()
 const revFiles = require('../services/files')
 
-router.use((req, _res, next) => {
-  req.app.locals.files = revFiles(true)
+router.use((_req, _res, next) => {
+  console.log('Running dev middleware')
   // add files to cache
   cache.put('files', revFiles(true))
   next()
