@@ -1,7 +1,9 @@
 // get revisioned files
-module.exports = (req, res) => {
+const cache = require('../services/cacheService')()
+
+module.exports = (_req, res) => {
   res.json({
-    css: req.app.locals.files.css,
-    js: req.app.locals.files.js
+    css: cache.get('files').css,
+    js: cache.get('files').js
   })
 }

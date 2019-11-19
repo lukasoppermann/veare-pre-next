@@ -45,6 +45,9 @@
     "typescript-lit-html-plugin": "^0.9.0"
   },
   "dependencies": {
+    "@contentful/rich-text-html-renderer": "^13.4.0",
+    "@contentful/rich-text-types": "^13.4.0",
+    "@popeindustries/lit-html-server": "^1.6.0",
     "@types/contentful-resolve-response": "^0.1.30",
     "@types/express": "^4.17.2",
     "@types/helmet": "0.0.45",
@@ -100,7 +103,7 @@
     "test-server": "forever stopall && NODE_ENV=test forever start -c 'node_modules/.bin/ts-node' $npm_package_main",
     "forever-stop": "forever stopall && forever list",
     "build": "npm run build:js:watch & npm run build:css:watch",
-    "build:css:watch": "onchange -i 'resources/css/*.scss' 'resources/css/*/*.scss' -- npm run build:css",
+    "build:css:watch": "onchange -i 'resources/css/*/*.scss' -- npm run build:css",
     "build:css": "npm run css:clean && npm run css:compile && npm run css:rev",
     "css:clean": "rm -f public/css/*",
     "css:compile:slim": "node-sass --output-style compressed -o public/css/ resources/css/slim/slim.scss",
@@ -117,7 +120,7 @@
     "test:js": "jest tests/unit && standard --parser typescript-eslint-parser --plugin typescript 'app.js' 'resources/js/*.ts' 'app/**/*.js' | snazzy",
     "test:integration": "jest tests/integration",
     "test:css": "stylelint resources/css",
-    "travis": "npm run test:all",
+    "travis": "npm run build:css && npm run build:js && npm run test:all",
     "removeCompiled": "branch=$(git branch | grep \\* | cut -d ' ' -f2) && if test \"$branch\" != \"master\" ; then git reset HEAD public/ ; fi",
     "release": "git checkout latest-build && npm run build && git add dist/*.js dist/*.js.map -f && git commit -m 'create build'",
     "standard": "standard --parser typescript-eslint-parser --plugin typescript 'app.js' 'resources/js/*.ts' 'app/**/*.js' | snazzy"

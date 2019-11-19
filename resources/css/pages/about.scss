@@ -109,7 +109,7 @@
     margin-bottom: calc(var(--baseline) * 4);
   }
 }
-.about h4 {
+.about .SectionType__textSection--text h4 {
   @extend %font-headline--h2;
   color: rgb(255, 255, 255);
   display: block;

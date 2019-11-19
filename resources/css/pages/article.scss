@@ -1,48 +1,57 @@
-/* ====================================
-    Projects on Homepage
-==================================== */
+// NEW CSS File
+@import "../includes/sizes.scss";
+@import "../includes/typography.scss";
 .Article {
-  padding-top: var(--size-g);
-  counter-reset: projects;
-}
-.Article__section {
-  grid-column: full-bleed;
-}
-.Article__title {
-  grid-column: columns;
-  font-family: var(--font-noto-serif);
-  font-style: italic;
-  font-size: var(--size-xh);
-  line-height: 130%;
-  max-width: 112rem;
-  margin-bottom: var(--size-xl);
-  text-align: center;
-}
-.Article__publication-details {
-  grid-column: columns;
-  display: block;
-  font-family: var(--font-source-sans);
-  font-size: var(--size-m);
-  line-height: 135%;
-  color: var(--black-50);
-  text-align: center;
-}
-.Article__author {
-  grid-column: columns;
-  display: block;
-  text-align: center;
-  font-family: var(--font-source-sans);
-  font-size: var(--size-m);
-  line-height: 135%;
-  color: var(--black-50);
-  margin-bottom: var(--size-g);
-}
-.Article .Chapter {
-  grid-column: full-bleed;
-}
-.Article .Section {
-  grid-column: full-bleed;
-}
-.Article .Text__Element {
-  grid-column: columns;
+  h1 {
+    grid-column: columns;
+    font-family: var(--font-noto-serif);
+    font-style: italic;
+    font-size: var(--size-xh);
+    line-height: 130%;
+    max-width: 112rem;
+    margin-top: var(--size-xxg);
+    margin-bottom: var(--size-xl);
+    text-align: left;
+  }
+  h2,
+  h3,
+  h4 {
+    grid-column: columns;
+  }
+  h2 {
+    @extend %font-headline--h2;
+  }
+  h3 {
+    @extend %font-headline--h3;
+  }
+  h4 {
+    @extend %font-headline--h4;
+  }
+  p {
+    grid-column: columns;
+  }
+  blockquote {
+    grid-column: sidebar-left 2 / columns;
+  }
+  .Text__Element {
+    grid-column: columns;
+  }
+  .Article__publication-details,
+  .Article__author {
+    grid-column: columns;
+  }
+  .Article__author {
+    margin-bottom: var(--size-xl);
+  }
+  .Chapter {
+    margin-bottom: var(--size-xl);
+  }
+  .Article__back_link {
+    display: block;
+    grid-column: columns;
+    text-decoration: none;
+    @extend %font-subtitle-uppercase-small;
+    margin-top: var(--size-xl);
+    margin-bottom: var(--size-xxg);
+  }
 }

@@ -1,18 +1,13 @@
 const express = require('express')
 const app = express()
-const hbs = require('./services/expressHandlebars')
+const cache = require('./services/cacheService')()
 
 module.exports = async () => {
   // ---------------------------------- //
-  // Add files to cache & app locals
-  app.locals.files = require('./services/files')()
-  // path to templates
-  app.set('views', 'resources/templates/pages')
-  app.engine('hbs', hbs.engine)
-  // register new view engine
-  app.set('view engine', 'hbs')
+  // Add files to cache
+  cache.put('files', require('./services/files')())
   // works with caching
-  // app.set('view cache', true) // should be enabled by default if process.env.NODE_ENV === "production"
+  app.set('view cache', false) // should be enabled by default if process.env.NODE_ENV === "production"
   // ---------------------------------- //
   // MIDDLEWARE
   app.use(require('./middleware'))

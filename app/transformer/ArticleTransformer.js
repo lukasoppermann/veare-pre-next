@@ -29,6 +29,7 @@ class ArticleTransformer extends Transformer {
         date: this.formatDate(this.getContent(data, 'date')),
         preview: this.getContent(data, 'preview'),
         chapters: chapters,
+        content: this.getContent(data, 'content'),
         readingTime: readTime,
         category: new Category().find(this.getContent(data, 'category').sys.id),
         author: new Author().find(this.getContent(data, 'author').sys.id)

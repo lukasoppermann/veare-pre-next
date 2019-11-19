@@ -1,6 +1,12 @@
 ul {
   margin-top: calc(var(--baseline) * 2);
 }
+li {
+  display: list-item;
+  @media screen and (max-width: 900px) {
+    list-style-position: inside;
+  }
+}
 li:not(:first-child) {
   margin-top: var(--baseline);
 }
