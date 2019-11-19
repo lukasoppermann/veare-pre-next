@@ -120,7 +120,7 @@
     "test:js": "jest tests/unit && standard --parser typescript-eslint-parser --plugin typescript 'app.js' 'resources/js/*.ts' 'app/**/*.js' | snazzy",
     "test:integration": "jest tests/integration",
     "test:css": "stylelint resources/css",
-    "travis": "npm run test:all",
+    "travis": "npm run build:css && npm run build:js && npm run test:all",
     "removeCompiled": "branch=$(git branch | grep \\* | cut -d ' ' -f2) && if test \"$branch\" != \"master\" ; then git reset HEAD public/ ; fi",
     "release": "git checkout latest-build && npm run build && git add dist/*.js dist/*.js.map -f && git commit -m 'create build'",
     "standard": "standard --parser typescript-eslint-parser --plugin typescript 'app.js' 'resources/js/*.ts' 'app/**/*.js' | snazzy"
