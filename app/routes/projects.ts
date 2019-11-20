@@ -1,4 +1,4 @@
-import project from '../../resources/litTemplates/pages/project'
+import project from '../templates/pages/project'
 const { renderToString } = require('@popeindustries/lit-html-server')
 const ProjectModel = require('../models/Project')()
 

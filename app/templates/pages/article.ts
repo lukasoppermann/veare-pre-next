@@ -5,7 +5,7 @@ const { html } = require('@popeindustries/lit-html-server')
 const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
 // const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 // get correct filesnames after appending unique string
-const files = require('../../../app/services/files')
+const files = require('../../services/files')
 // export template
 export default (article) => layout(html`
   <div class="Grid">

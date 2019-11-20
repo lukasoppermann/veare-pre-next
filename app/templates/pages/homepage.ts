@@ -5,7 +5,7 @@ import collection from '../partials/collection'
 import headerIntro from '../partials/header_intro'
 const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
 const { html } = require('@popeindustries/lit-html-server')
-const PageModel = require('../../../app/models/Page')()
+const PageModel = require('../../models/Page')()
 const page = PageModel.findBySlug('home').fields
 const elements = {
   chapter: chapter,

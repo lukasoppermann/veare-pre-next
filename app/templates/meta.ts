@@ -1,5 +1,5 @@
 const { html } = require('@popeindustries/lit-html-server')
-const files = require('../../app/services/files')()
+const files = require('../services/files')()
 export default (title?: string) =>
   html`<title>vea.re UI/UX Design${title || ' & Creative Direction'}</title>
   <meta name="apple-mobile-web-app-title" content="veare" />

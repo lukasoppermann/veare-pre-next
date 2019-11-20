@@ -1,5 +1,5 @@
-import blog from '../../resources/litTemplates/pages/blog'
-import article from '../../resources/litTemplates/pages/article'
+import blog from '../templates/pages/blog'
+import article from '../templates/pages/article'
 const { renderToString } = require('@popeindustries/lit-html-server')
 const ArticleModel = require('../models/Article')()
 module.exports = {
