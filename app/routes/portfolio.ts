@@ -1,5 +1,5 @@
-import layout from '../../resources/litTemplates/layout'
-import portfolioItems from '../../resources/litTemplates/portfolio/portfolioItems'
+import layout from '../templates/layout'
+import portfolioItems from '../templates/portfolio/portfolioItems'
 const { renderToString } = require('@popeindustries/lit-html-server')
 // DELETE once new portfolio from cms is done
 // show portfolio item

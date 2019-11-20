@@ -4,7 +4,7 @@ import menu from './partials/menu'
 const { html } = require('@popeindustries/lit-html-server')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 // get correct filesnames after appending unique string
-const files = require('../../app/services/files')
+const files = require('../services/files')
 const fs = require('fs')
 //
 export default (content: string, options: { [prop: string]: string; } = {}, partial: string = 'false') => {

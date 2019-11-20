@@ -1,4 +1,4 @@
-import page from '../../resources/litTemplates/pages/page'
+import page from '../templates/pages/page'
 const { renderToString } = require('@popeindustries/lit-html-server')
 const PageModel = require('../models/Page')()
 

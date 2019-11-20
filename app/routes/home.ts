@@ -1,5 +1,5 @@
-import progressive from '../../resources/litTemplates/pages/progressive'
-import homepage from '../../resources/litTemplates/pages/homepage'
+import progressive from '../templates/pages/progressive'
+import homepage from '../templates/pages/homepage'
 const { renderToString } = require('@popeindustries/lit-html-server')
 
 module.exports = {

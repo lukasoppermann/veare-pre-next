@@ -1,5 +1,5 @@
 const { html } = require('@popeindustries/lit-html-server')
-const cache = require('../../../app/services/cacheService.js')()
+const cache = require('../../services/cacheService.js')()
 const fs = require('fs')
 
 export default html`

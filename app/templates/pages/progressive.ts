@@ -1,6 +1,6 @@
 import meta from '../meta'
 import headerIntro from '../partials/header_intro'
-const cache = require('../../../app/services/cacheService')()
+const cache = require('../../services/cacheService')()
 const { html } = require('@popeindustries/lit-html-server')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 const fs = require('fs')
