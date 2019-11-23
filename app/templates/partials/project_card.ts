@@ -6,8 +6,11 @@ export default (project) => html`
     <h4 class="Project-card__client">${project.variables.client}</h4>
     <h2 class="Project-card__title">${project.subtitle}</h2>
   </div>
-  <div class="Project-card__image-container">
-    <lazy-picture class="Project-card__image" src="${project.previewImage.fields.url}" alt="${project.previewImage.fields.title}"></lazy-picture>
-  </div>
+  <figure class="Project-card__image-container">
+    <picture class="Project-card__image">
+      <source type="image/webp" srcset="${project.previewImage.fields.url}?fm=webp">
+      <img src="${project.previewImage.fields.url}" alt="${project.previewImage.fields.title}" loading="lazy"/>
+    </picture>
+  </figure>
 </a>
 `

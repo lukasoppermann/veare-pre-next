@@ -22,10 +22,9 @@ export default html`
     </h1>
   </div>
   <figure class="Header__Picture--Lukas-Oppermann">
-    <lazy-picture
-      src="/${cache.get('files').media['media/lukas-oppermann@2x.png']}"
-      alt="Lukas Oppermann"
-    ></lazy-picture>
+    <picture>
+      <img src="/${cache.get('files').media['media/lukas-oppermann@2x.png']}" alt="Lukas Oppermann" loading="lazy"/>
+    </picture>
   </figure>
   <div class="Header__background"></div>
 </header>

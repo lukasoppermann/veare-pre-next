@@ -52,6 +52,9 @@
   @include mq('m','min') {
     filter: grayscale(50%);
   }
+  img {
+    min-height: 100%;
+  }
 }
 .Project-card__link:hover .Project-card__image {
   @include mq('m','min') {
@@ -173,12 +176,18 @@
       grid-column: columns;
     }
   }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
 }
 .Project-cards--small .Project-card__image-container {
   background: transparent;
-  margin: 20px;
-  height: calc(100% - 40px);
-  width: calc(100% - 40px);
+  margin: 10px;
+  height: calc(100% - 20px);
+  width: calc(100% - 20px);
 }
 .Project-cards--small .Project-card__link .Project-card__image {
   position: absolute;

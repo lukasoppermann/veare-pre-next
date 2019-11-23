@@ -8,8 +8,13 @@
   @include mq('m') {
     grid-column: full-content;
   }
+  img {
+    object-fit: cover;
+    object-position: top;
+    position: relative;
+    z-index: 50;
+  }
 }
-.Picture__Element lazy-picture,
 .Picture__Element .Annotation {
   position: relative;
   z-index: 50;
@@ -45,7 +50,4 @@
 }
 .Picture__Element--background--tilted::after {
   transform: translateX(-50%) rotate(3deg);
-}
-.Picture__Element--fit-contain {
-  --lazy-picture-object-fit: contain;
 }

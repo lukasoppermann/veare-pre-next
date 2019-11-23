@@ -15,7 +15,7 @@ export default (project) => {
     <page-section>
       <header class="Header Header--project Grid Grid--rows">
         <h2 class="Header__title">${project.title}</h2>
-        ${pictureElement(project.header.fields)}
+        ${pictureElement(project.header.fields, 'eager')}
       </header>
     </page-section>
     ${repeat(project.chapters, (chapterData) => chapter(chapterData.fields, 'Chapter--side-title'))}
