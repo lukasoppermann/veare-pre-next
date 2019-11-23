@@ -6,7 +6,7 @@ const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsaf
 const fs = require('fs')
 const path = require('path')
 
-export default html`
+export default () => html`
 <!DOCTYPE html>
 <html lang="en">
 <head>
