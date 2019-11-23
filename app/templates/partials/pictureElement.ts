@@ -7,8 +7,10 @@ export default (item, loading = 'lazy') => {
   <figure class="Picture__Element Picture__Element--${item.style} ${item.classes}" style="--aspect-ratio:${item.image.fields.details.image.width / item.image.fields.details.image.height};">
     <picture>
       ${repeat(item.sources, (source) => html`<source media="${source.fields.mediaQuery}" type="image/webp" srcset="${source.fields.image.fields.url}?fm=webp">`)}
-      <source type="image/webp" srcset="${item.image.fields.url}?fm=webp">
+      ${item.image.fields.contentType !== 'image/svg+xml'
+      ? html`<source type="image/webp" srcset="${item.image.fields.url}?fm=webp">` : ''}
       <img src="${item.image.fields.url}" alt="${item.title}" loading="${loading}"/>
+
     </picture>
   </figure>
   ${item.description
