@@ -28,11 +28,9 @@ export default (article) => layout(html`
         </span>
     </div>
   </div>
-  <page-sections>
-    ${repeat(article.fields.chapters, (chapterData) => {
-      return chapter(chapterData.fields)
-    })}
-  </page-sections>
+  ${repeat(article.fields.chapters, (chapterData) => {
+    return chapter(chapterData.fields)
+  })}
   <div class="Grid">
     <a class="Article__back_link" href="/blog">← Back</a>
   </div>

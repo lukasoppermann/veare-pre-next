@@ -24,7 +24,7 @@ const responsiveMenu = app.fetchInject([
 ])
 
 Promise.all([homepage, litHtml, layout]).then(([homepageHtml, lit, layout]) => {
-  const content = (content) => app.html`<page-sections>${app.unsafeHTML(content)}</page-sections>`
+  const content = (content) => app.html`${app.unsafeHTML(content)}`
   //
   window.app.render(content(homepageHtml), document.querySelector('main'))
 })
