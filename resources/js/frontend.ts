@@ -2,25 +2,12 @@
 const app = window.app
 const homepage = fetch('/home?partial=true').then(response => response.text())
 const menu = fetch('/fragment/menu').then(response => response.text())
-// Promise.all([revisionedFiles, fetchInjectLoaded]).then(json => json[0]).then((json) => {
+
 const litHtml = app.fetchInject([
   `${app.baseUrl}/${app.files.js['js/litHtml.js']}`
 ])
 const layout = app.fetchInject([
-  `${app.baseUrl}/${app.files.css['css/app.css']}`,
-  `${app.baseUrl}/${app.files.js['js/layoutComponents.js']}`
-]).then(() => {
-  if (!window.webComponentsSupported()) {
-    return app.fetchInject([
-      // polyfill
-      `${app.baseUrl}/js/webcomponents-sd-ce.js`,
-      'https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver'
-    ])
-  }
-})
-
-const responsiveMenu = app.fetchInject([
-  `${app.baseUrl}/${app.files.js['js/responsiveMenu.js']}`
+  `${app.baseUrl}/${app.files.css['css/app.css']}`
 ])
 
 Promise.all([homepage, litHtml, layout]).then(([homepageHtml, lit, layout]) => {
@@ -29,7 +16,7 @@ Promise.all([homepage, litHtml, layout]).then(([homepageHtml, lit, layout]) => {
   window.app.render(content(homepageHtml), document.querySelector('main'))
 })
 
-Promise.all([menu, litHtml, responsiveMenu, homepage, layout]).then(([menuHtml, litHtml, responsiveMenu, homepage, layout]) => {
+Promise.all([menu, litHtml, homepage, layout]).then(([menuHtml, litHtml, homepage, layout]) => {
   const content = (content) => window.app.html`${app.unsafeHTML(content)}`
   //
   window.app.render(content(menuHtml), document.querySelector('menu'))
