@@ -14,7 +14,6 @@
   },
   "homepage": "https://github.com/lukasoppermann/veare#readme",
   "devDependencies": {
-    "@nuclei-components/page-sections": "^0.6.2",
     "@types/jest": "^24.0.23",
     "@typescript-eslint/parser": "^2.8.0",
     "@webcomponents/webcomponentsjs": "^2.4.0",
