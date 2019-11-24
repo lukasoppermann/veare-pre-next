@@ -2,17 +2,16 @@ const { html } = require('@popeindustries/lit-html-server')
 const cache = require('../../services/cacheService.js')()
 
 export default html`
-  <page-section>
-    <div class="stage type-full" style="background-color: rgb(246,245,243)">
-      <img class="full-width image" src="/${cache.get('files').media['media/swift-stage.jpg']}" alt="swift / we are fast" />
-    </div>
-  </page-section>
-  <page-section centered maxwidth="1000px">
+<div class="Grid portfolio-item--old">
+  <section class="stage type-full" style="background-color: rgb(246,245,243)">
+    <img class="full-width image" src="/${cache.get('files').media['media/swift-stage.jpg']}" alt="swift / we are fast" />
+  </section>
+  <section>
     <a class="portfolio-link-back" href="/home#portfolio">← Back</a>
     <h3 class="o-headline--h2 o-headline--portfolio">swift / we are fast</h3>
-  </page-section>
-  <page-section class="c-section-portfolio-intro" centered maxwidth="1000px">
-    <div class="o-project-info o-project-section-container">
+  </section>
+  <section class="c-section-portfolio-intro">
+    <div class="o-project-info">
       <div class="o-project-info__item">
         <h4 class="o-project-info__title">Industry</h4>
         <div class="o-project-info__description">Travel</div>
@@ -26,8 +25,9 @@ export default html`
         <p class="type--l">Branding for a modern airline which differentiates itself by speed instead of entering the endless pricing battle.</p>
       </div>
     </div>
-  </page-section>
-  <page-section centered class="o-project-section-container">
+  </section>
+  <section centered class="o-project-section-container">
+  <section centered class="o-project-section-container">
     <div class="Grid">
       <h3 class="o-headline--h2 o-headline--portfolio Grid--columns">Swift Logo Design</h3>
       <div class="Grid--columns">
@@ -78,5 +78,6 @@ export default html`
         <img src="/${cache.get('files').media['media/swift-lounge.jpg']}" alt="swift passanger lounge" class="u-full-width" />
       </div>
     </div>
-  </page-section>
+  </section>
+</div>
 `

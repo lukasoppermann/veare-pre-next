@@ -2,7 +2,6 @@ const express = require('express')
 const router = express.Router()
 const basicAuth = require('express-basic-auth')
 const contentfulConfig = require('../config/contentful.js')
-
 /* =================
 // Normal Routes
 ================= */

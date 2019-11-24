@@ -11,20 +11,14 @@ export default (project) => {
       --project-color: ${project.variables.color};
     }
   </style>
-  <page-sections>
-    <page-section>
-      <header class="Header Header--project Grid Grid--rows">
-        <h2 class="Header__title">${project.title}</h2>
-        ${pictureElement(project.header.fields, 'eager')}
-      </header>
-    </page-section>
-    ${repeat(project.chapters, (chapterData) => chapter(chapterData.fields, 'Chapter--side-title'))}
-    <page-section>
-      <div class="Grid">
-        <a class="Project__back_link" href="/home#portfolio">← Back</a>
-      </div>
-    </page-section>
-  </page-sections>
+  <header class="Header Header--project Grid Grid--rows">
+    <h2 class="Header__title">${project.title}</h2>
+    ${pictureElement(project.header.fields, 'eager')}
+  </header>
+${repeat(project.chapters, (chapterData) => chapter(chapterData.fields, 'Chapter--side-title'))}
+  <div class="Grid">
+    <a class="Project__back_link" href="/home#portfolio">← Back</a>
+  </div>
 `, {
     title: project.title,
     bodyClass: 'Page--work Project',
