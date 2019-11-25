@@ -27,7 +27,9 @@ export default (content: string, options: { [prop: string]: string; } = {}, part
       <!-- NEW STUFF -->
       <!-- <div id="page" class="Grid"> -->
       <div class="Page">
-        ${menu}
+        <menu class="responsive-menu">
+          ${menu}
+        </menu>
         ${content || ''}
       </div>
       ${footer}

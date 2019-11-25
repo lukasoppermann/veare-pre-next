@@ -37,9 +37,15 @@
 .Picture__Element--background,
 .Picture__Element--background--tilted {
   padding: var(--vs-g);
+  @include mq('s') {
+    padding: 0;
+  }
 }
-.Picture__Element--background::after {
-  @include pseudo();
+.Picture__Element--background::after,
+.Picture__Element--background--tilted::after {
+  content: '';
+  display: block;
+  position: absolute;
   height: 100%;
   width: calc(100vw + 400px);
   background: var(--backgroundColor);
@@ -50,4 +56,7 @@
 }
 .Picture__Element--background--tilted::after {
   transform: translateX(-50%) rotate(3deg);
+  @include mq('s') {
+    display: none;
+  }
 }

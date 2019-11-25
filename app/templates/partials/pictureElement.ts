@@ -4,7 +4,7 @@ const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsaf
 
 export default (item, loading = 'lazy') => {
   return html`
-  <figure class="Picture__Element Picture__Element--${item.style} ${item.classes}" style="--aspect-ratio:${item.image.fields.details.image.width / item.image.fields.details.image.height};">
+  <figure class="Picture__Element Picture__Element--${item.style} ${item.classes}" style="--aspect-ratio:${item.image.fields.details.image.width / item.image.fields.details.image.height}; ${item.backgroundColor !== null ? '--backgroundColor: ' + item.backgroundColor + ';' : ''}">
     <picture>
       ${repeat(item.sources, (source) => html`<source media="${source.fields.mediaQuery}" type="image/webp" srcset="${source.fields.image.fields.url}?fm=webp">`)}
       ${item.image.fields.contentType !== 'image/svg+xml'

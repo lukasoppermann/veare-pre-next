@@ -1,3 +1,221 @@
-responsive-menu {
+.responsive-menu {
   height: 67px;
+  width: 100vw;
+  position: fixed;
+  pointer-events: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 990;
+  transform: translateZ(100px); /* safari hack */
+  nav.responsive-menu__items {
+    display: flex;
+    position: absolute;
+    z-index: 10;
+    height: 66px;
+    top: -66px;
+    right: 0;
+    opacity: 0;
+    transition-property: opacity, top;
+    transition-duration: .35s;
+  }
+  &[extended] nav.responsive-menu__items {
+    top: 0;
+    opacity: 1;
+  }
+  &[overlayVisible] nav.responsive-menu__items {
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+    width: 30%;
+    min-width: 300px;
+    opacity: 0;
+    padding-top: var(--size-xl);
+  }
+  &.is-active nav.responsive-menu__items {
+    opacity: 1;
+    top: 0;
+  }
+  .responsive-menu__item {
+    color: inherit;
+    pointer-events: auto;
+    padding: 0 var(--size-s, 10px);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 var(--size-xs);
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    position: relative;
+    font-size: var(--size-l);
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-montserrat-bold);
+    letter-spacing: var(--font-montserrat-spacing);
+    transition: color .35s var(--easeInOutQuad);
+    &:hover {
+      color: var(--black);
+    }
+    &::before {
+      display: block;
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 7px;
+      top: 50%;
+      transform: translateY(-50%);
+      left: -4px;
+      z-index: -1;
+      opacity: 1;
+      background-color: var(--veare-orange);
+      transition: width .35s var(--easeInOutQuad);
+    }
+    &:hover::before,
+    &:focus::before {
+      width: calc(100% + 8px);
+    }
+  }
+  &[overlayVisible] .responsive-menu__item {
+    font-size: var(--size-xl);
+    color: rgba(var(--white-rgb), .75) !important;
+    height: calc((100% - 112px) / 5);
+    justify-content: flex-start;
+    &:hover {
+      color: rgba(var(--white-rgb), 1) !important;
+    }
+    &::before {
+      background-color: rgba(var(--black-rgb), .5);
+    }
+  }
+  #menuIcon {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    pointer-events: all;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    transform: translate3d(4px, 0, 0);
+  }
+  #menuIcon path,
+  &[extended] #menuIcon path,
+  &[overlayvisible] #menuIcon path {
+    fill: none;
+    stroke-width: 40px;
+    stroke: var(--responsive-menu-menu-icon, rgb(33, 37, 41));
+    stroke-dashoffset: 0;
+    opacity: 1;
+    transition: opacity .5s .2s ease, stroke-dashoffset .5s .2s ease, stroke .3s ease;
+  }
+  &[extended] #menuIcon path {
+    transition: stroke-dashoffset .5s cubic-bezier(.25, -.25, .75, 1.25), stroke-dasharray .5s cubic-bezier(.25, -.25, .75, 1.25), stroke .3s ease;
+    stroke-dashoffset: 240px;
+    opacity: 0;
+  }
+  &[extended] #menuIcon {
+    pointer-events: none;
+  }
+  #menuIcon path#top,
+  #menuIcon path#bottom {
+    stroke-dasharray: 270px 950px;
+  }
+  #menuIcon path#middle {
+    stroke-dasharray: 270px 270px;
+  }
+  &[overlayVisible] #menuIcon path#top,
+  &[overlayVisible] #menuIcon path#bottom {
+    stroke-dashoffset: -666px;
+  }
+  &[overlayVisible] #menuIcon path#middle {
+    stroke-dashoffset: -270px;
+  }
+  &[overlayVisible] #menuIcon path {
+    stroke: var(--responsive-menu-close-icon, rgb(255, 255, 255));
+  }
+  &[overlayVisible] {
+    height: 100% !important;
+  }
+  #background {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    transition: background-color .3s ease;
+    &.is-active {
+      background-color: var(--blue);
+    }
+  }
+  .responsive-menu__footer-item {
+    color: rgba(var(--white-rgb), .6) !important;
+    position: relative;
+    display: inline-block;
+    font-size: 16px;
+    text-decoration: none;
+    padding: var(--size-m, 10px) var(--size-s, 10px);
+    margin: 0;
+    transition: color .35s var(--easeInOutQuad);
+    &:hover {
+      color: var(--white) !important;
+    }
+  }
+  #info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    pointer-events: none;
+    position: absolute;
+    z-index: 10;
+    opacity: 0;
+    bottom: -50px;
+    left: 0;
+    transition: bottom .3s ease, opacity .3s ease;
+    width: 70%;
+    height: 100%;
+    max-width: calc(100% - 300px);
+    background: rgb(255, 255, 255);
+  }
+  &[overlayVisible] #info {
+    opacity: 0;
+    bottom: -50px;
+    pointer-events: all;
+    transition: bottom .3s ease, opacity .3s ease;
+  }
+  &.is-active #info {
+    opacity: 1;
+    bottom: 0;
+    transition: bottom .3s ease, opacity .3s ease;
+  }
+  @media (max-width: 700px) {
+    &[overlayVisible] #info {
+      display: none;
+    }
+  }
+  footer {
+    display: none;
+    pointer-events: all;
+  }
+  &[overlayVisible] footer {
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+    z-index: 10;
+    height: 50px;
+    width: calc(30% - 2 * var(--size-xs));
+    min-width: calc(300px - 2 * var(--size-xs));
+    opacity: 0;
+    margin: 0 var(--size-xs);
+    transition: bottom .3s ease, opacity .3s ease;
+  }
+  &.is-active footer {
+    bottom: 0;
+    opacity: 1;
+  }
 }

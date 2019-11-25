@@ -167,10 +167,16 @@
 // .Section__picture {}
 .Section__picture--right .Text__Element {
   grid-column: column 1 / span 4;
+  @include mq('s') {
+    grid-column: columns !important;
+  }
 }
 .Section__picture--right .Picture__Element {
   grid-column: column 5 / span 3;
   margin-top: 0;
+  @include mq('s') {
+    grid-column: columns !important;
+  }
 }
 
 /* ====================================

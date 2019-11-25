@@ -2,7 +2,7 @@
 @import "../includes/sizes.scss";
 @import "../includes/typography.scss";
 .Footer {
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   grid-column: full-bleed;
   background: var(--black);
@@ -54,6 +54,7 @@
     justify-self: end;
     @extend %font-subtitle-uppercase-tiny;
     color: var(--white);
+    padding-bottom: var(--size-m);
   }
   h4 {
     font-weight: var(--font-montserrat-bold);

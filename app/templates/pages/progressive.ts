@@ -24,12 +24,12 @@ export default () => html`
   </script>
   </head>
   <body>
-    <menu></menu>
-      ${headerIntro}
-    <main>
-    </main>
-    <footer>
-    </footer>
+    <div class="Page">
+      <menu class="responsive-menu"></menu>
+        ${headerIntro}
+      <main>
+      </main>
+    </div>
   </body>
   </html>
 `
