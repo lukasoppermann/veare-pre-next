@@ -16,7 +16,6 @@
   "devDependencies": {
     "@types/jest": "^24.0.23",
     "@typescript-eslint/parser": "^2.8.0",
-    "@webcomponents/webcomponentsjs": "^2.4.0",
     "acorn": "^7.1.0",
     "check-links": "^1.1.8",
     "eslint": "^6.7.0",
@@ -82,7 +81,7 @@
     "uuid": "^3.3.3"
   },
   "config": {
-    "moveFilesJs": "node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce.js node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce.js.map node_modules/fetch-inject/dist/fetch-inject.min.js"
+    "moveFilesJs": "node_modules/fetch-inject/dist/fetch-inject.min.js"
   },
   "standard": {
     "parser": "@typescript-eslint/parser",
@@ -98,13 +97,13 @@
     "test-server": "forever stopall && NODE_ENV=test forever start -c 'node_modules/.bin/ts-node' $npm_package_main",
     "forever-stop": "forever stopall && forever list",
     "build": "npm run build:js:watch & npm run build:css:watch",
-    "build:css:watch": "onchange -i 'resources/css/*/*.scss' -- npm run build:css",
+    "build:css:watch": "onchange -k -i 'resources/css/*/*.scss' -- npm run build:css",
     "build:css": "npm run css:clean && npm run css:compile && npm run css:rev",
     "css:clean": "rm -f public/css/*",
     "css:compile:slim": "node-sass --output-style compressed -o public/css/ resources/css/slim/slim.scss",
     "css:compile": "npm run css:compile:slim && node-sass --output-style compressed -o public/css/ resources/css/bundles/",
     "css:rev": "node-file-rev public/css/*.css --manifest=public/rev-manifest.json --root=public/",
-    "build:js:watch": "onchange -i 'resources/js/*.ts' 'resources/ts/*/*.ts' -- npm run build:js",
+    "build:js:watch": "onchange -k -i 'resources/js/*.ts' 'resources/ts/*/*.ts' -- npm run build:js",
     "build:js": "npm run js:clean && npm run js:compile && npm run js:rev && npm run js:move",
     "js:clean": "rm -f public/js/*",
     "js:move": "cp $npm_package_config_moveFilesJs public/js/",
