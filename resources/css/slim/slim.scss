@@ -15,7 +15,7 @@ body.fontsLoaded {
   font-family: var(--font-source-sans);
   font-weight: var(--font-source-sans-regular);
 }
-menu {
+.responsive-menu {
   opacity: 0;
   transition: opacity 2s ease 3s;
   height: 67px;
@@ -27,6 +27,6 @@ menu {
   z-index: 990;
   width: 100vw;
 }
-menu.loaded {
+.responsive-menu.loaded {
   opacity: 1;
 }

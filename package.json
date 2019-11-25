@@ -16,7 +16,6 @@
   "devDependencies": {
     "@types/jest": "^24.0.23",
     "@typescript-eslint/parser": "^2.8.0",
-    "@webcomponents/webcomponentsjs": "^2.4.0",
     "acorn": "^7.1.0",
     "check-links": "^1.1.8",
     "eslint": "^6.7.0",
@@ -82,7 +81,7 @@
     "uuid": "^3.3.3"
   },
   "config": {
-    "moveFilesJs": "node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce.js node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce.js.map node_modules/fetch-inject/dist/fetch-inject.min.js"
+    "moveFilesJs": "node_modules/fetch-inject/dist/fetch-inject.min.js"
   },
   "standard": {
     "parser": "@typescript-eslint/parser",

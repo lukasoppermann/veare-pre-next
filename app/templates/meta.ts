@@ -6,8 +6,9 @@ export default (title?: string) =>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   <meta name="copyright" content="${new Date().getUTCFullYear()}" />
   <meta name="robots" content="index,follow" />
+  <meta name="description" content="Lukas Oppermann is a design lead & creative director from berlin, germany. He loves creating experiences with a focus on usability.">
   <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="theme-color" content="rgb(240, 170, 30)" />
   <link rel="icon" href="/${files.media['media/veare-icon-32.png']}" type="image/png" />

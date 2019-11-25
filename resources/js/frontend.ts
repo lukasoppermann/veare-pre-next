@@ -13,14 +13,18 @@ const layout = app.fetchInject([
 Promise.all([homepage, litHtml, layout]).then(([homepageHtml, lit, layout]) => {
   const content = (content) => app.html`${app.unsafeHTML(content)}`
   //
-  window.app.render(content(homepageHtml), document.querySelector('main'))
+  app.render(content(homepageHtml), document.querySelector('main'))
 })
 
 Promise.all([menu, litHtml, homepage, layout]).then(([menuHtml, litHtml, homepage, layout]) => {
-  const content = (content) => window.app.html`${app.unsafeHTML(content)}`
+  const content = (content) => app.html`${app.unsafeHTML(content)}`
   //
-  window.app.render(content(menuHtml), document.querySelector('menu'))
-  document.querySelector('menu').classList.add('loaded')
+  app.render(content(menuHtml), document.querySelector('.responsive-menu'))
+  document.querySelector('.responsive-menu').classList.add('loaded')
+}).then(() => {
+  app.fetchInject([
+    `${app.baseUrl}/${app.files.js['js/responsiveMenu.js']}`
+  ])
 })
 
 window.app.fetchInject([

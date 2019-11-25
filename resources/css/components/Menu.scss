@@ -1,14 +1,14 @@
 .responsive-menu {
   height: 67px;
+  width: 100vw;
+  position: fixed;
   pointer-events: none;
   padding: 0;
   margin: 0;
   display: flex;
-  position: fixed;
   justify-content: flex-end;
   z-index: 990;
   transform: translateZ(100px); /* safari hack */
-  width: 100vw;
   nav.responsive-menu__items {
     display: flex;
     position: absolute;
