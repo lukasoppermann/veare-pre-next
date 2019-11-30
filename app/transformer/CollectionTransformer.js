@@ -3,7 +3,8 @@
 const Transformer = require('./Transformer')
 const Transformers = {
   project: require('./ProjectPreviewTransformer'),
-  article: require('./ArticleTransformer')
+  article: require('./ArticleTransformer'),
+  link: require('./LinkTransformer')
 }
 
 class CollectionTransformer extends Transformer {
