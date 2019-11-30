@@ -1,8 +1,10 @@
 import projectCollectionItem from './project_card'
+import linkItem from './link'
 const { html } = require('@popeindustries/lit-html-server')
 const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
 const elements = {
-  project: projectCollectionItem
+  project: projectCollectionItem,
+  link: linkItem
 }
 
 export default (collection) => html`
