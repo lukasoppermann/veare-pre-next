@@ -16,6 +16,7 @@ class ProjectTransformer extends Transformer {
         subtitle: this.getContent(data, 'subtitle'),
         titleStyle: this.getContent(data, 'titleStyle', 'default'),
         slug: this.getContent(data, 'slug'),
+        toc: this.getContent(data, 'tableOfContent', false),
         header: new PictureElementTransformer(this.getContent(data, 'header')).first(),
         previewImage: new AssetTransformer(this.getContent(data, 'previewImage')).first(),
         variables: this.getContent(data, 'variables', []).reduce(

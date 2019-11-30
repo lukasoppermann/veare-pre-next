@@ -1,10 +1,9 @@
-'use strict'
-
+import convertRichText from '../services/convertRichText'
 const Transformer = require('./Transformer')
-const convertMarkdown = require('../services/convertMarkdown')
 
 class TextSectionTransformer extends Transformer {
   transform (data) {
+    console.log(data, this.getContent(data, 'newChallenge', ''))
     return {
       id: data.sys.id,
       createdAt: data.sys.createdAt,

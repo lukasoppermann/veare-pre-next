@@ -1,9 +1,6 @@
 import layout from '../layout'
-import chapter from '../partials/chapter'
-// import convertRichText from '../../../app/services/convertRichText'
 const { html } = require('@popeindustries/lit-html-server')
-const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
-// const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
+const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 // get correct filesnames after appending unique string
 const files = require('../../services/files')
 // export template
@@ -28,9 +25,7 @@ export default (article) => layout(html`
         </span>
     </div>
   </div>
-  ${repeat(article.fields.chapters, (chapterData) => {
-    return chapter(chapterData.fields)
-  })}
+  ${unsafeHTML(article.fields.content)}
   <div class="Grid">
     <a class="Article__back_link" href="/blog">← Back</a>
   </div>
@@ -40,4 +35,3 @@ export default (article) => layout(html`
   <link type="text/css" href="/${files().css['css/blog.css']}" rel="stylesheet" />
   `
 })
-// ${unsafeHTML(convertRichText(article.fields.content))}
