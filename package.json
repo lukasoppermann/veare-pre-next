@@ -120,7 +120,7 @@
     "standard": "standard --parser typescript-eslint-parser --plugin typescript 'app.js' 'resources/js/*.ts' 'app/**/*.js' | snazzy"
   },
   "pre-commit": [
-    "test",
+    "test:css",
     "removeCompiled"
   ],
   "pre-push": [
