@@ -1,8 +1,10 @@
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
 import { BLOCKS } from '@contentful/rich-text-types'
-import code from './richTextEntryTypes/code'
+import code from '../templates/partials/richTextEntryTypes/code'
+import picture from '../templates/partials/richTextEntryTypes/picture'
 const entryTypes = {
-  code: code
+  code: code,
+  pictureElement: picture
 }
 const options = {
   renderNode: {
