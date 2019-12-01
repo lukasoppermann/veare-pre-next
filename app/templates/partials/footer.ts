@@ -11,7 +11,7 @@ export default html`
   </div>
   <div class="Footer__contact">
     <h4>Say hello</h4>
-    <p><a target="_blank" href="mailto:lukas@vea.re">lukas@vea.re</a></p>
+    <p><a target="_blank" href="mailto:lukas@vea.re?subject=Hey,%20what&apos;s%20up?&body=Great%20to%20hear%20from%20you,%20how%20can%20I%20help?">lukas@vea.re</a></p>
   </div>
   <div class="Footer__connect">
     <h4>Connect</h4>
