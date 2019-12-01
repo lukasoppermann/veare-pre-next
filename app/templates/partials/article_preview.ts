@@ -3,7 +3,7 @@ const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsaf
 export default (article) => html`
 <li class="Article__preview o-article-preview--${article.fields.category.fields.slug}" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
     <div class="Article__preview__meta">
-        <meta itemprop="author" content="${article.fields.author.name}" />
+        <meta itemprop="author" content="Lukas Oppermann" />
         <meta itemprop="publisher" content="vea.re" />
         <time itemprop="datePublished" class="Article__preview__date" datetime="${article.fields.date}">${article.fields.date}</time>
         ${!article.fields.category.fields.title ? ''

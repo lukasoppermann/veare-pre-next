@@ -16,10 +16,10 @@ export default (article) => layout(html`
     </div>
 
     <div class="Article__author">
-      — Published by <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <a class="author" href="https://twitter.com/lukasoppermann" itemprop="url" title="about ${article.fields.author.fields.name}" rel="author">
-          <span itemprop="name">${article.fields.author.fields.name}</span>
-        </a></span>
+        — Published by <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <a class="author" href="https://twitter.com/lukasoppermann" itemprop="url" title="Twitter account of Lukas Oppermann" rel="author">
+            <span itemprop="name">Lukas Oppermann</span>
+          </a></span>
          /
         <span itemprop="publisher" itemtype="http://schema.org/Organization" itemscope>
           <a itemprop="url" href="http://vea.re">
