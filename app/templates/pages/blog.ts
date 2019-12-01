@@ -7,6 +7,9 @@ const files = require('../../services/files.ts')
 export default (articles) => layout(html`
   <ul class="Article-list Grid" itemscope itemtype="http://schema.org/Blog">
     ${repeat(articles, (article) => preview(article))}
+    <li class="Article__more_on_medium Article__preview">
+      <a href="https://medium.com/@lukasoppermann" target="_blank">More articles on medium</a>
+    </li>
   </ul>
 `, {
   head: html`

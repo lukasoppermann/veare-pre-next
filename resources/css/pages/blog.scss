@@ -247,3 +247,25 @@
     margin: 0 auto 2.5rem auto;
   }
 }
+.Article__more_on_medium {
+  border-top: 1px solid var(--light-grey);
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  a {
+    display: inline-block;
+    line-height: 100%;
+    margin-top: var(--size-xl);
+    text-decoration: none;
+    font-size: var(--size-l);
+    border: 2px solid var(--black);
+    padding: var(--size-xs) var(--size-s);
+    transition: color .3s ease, background .3s ease;
+    &:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+  }
+}
