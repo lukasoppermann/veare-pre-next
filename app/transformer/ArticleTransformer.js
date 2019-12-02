@@ -29,7 +29,7 @@ class ArticleTransformer extends Transformer {
         chapters: chapters,
         content: this.getContent(data, 'content'),
         readingTime: readTime,
-        category: 'design'
+        category: this.getContent(data, 'category', 'design')
       }
     }
   }
