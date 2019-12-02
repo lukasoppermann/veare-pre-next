@@ -1,7 +1,6 @@
 'use strict'
 
 const Transformer = require('./Transformer')
-const Category = require('../models/Category')
 const PictureElementTransformer = require('./PictureElementTransformer')
 const ChapterTransformer = require('./ChapterTransformer')
 const readingTime = require('reading-time')
@@ -30,7 +29,7 @@ class ArticleTransformer extends Transformer {
         chapters: chapters,
         content: this.getContent(data, 'content'),
         readingTime: readTime,
-        category: new Category().find(this.getContent(data, 'category').sys.id)
+        category: 'design'
       }
     }
   }
