@@ -210,7 +210,7 @@
     color: var(--blue);
   }
   &.o-article-preview--code .Article__preview__link::before,
-  .o-article-preview--technology .Article__preview__link::before {
+  &.o-article-preview--technology .Article__preview__link::before {
     background: rgba(var(--blue-rgb), .95);
   }
   &__title {
