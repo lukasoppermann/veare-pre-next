@@ -15,8 +15,6 @@ const codeBlock = (item) => {
 //
 const pictureElement = (item, loading = 'lazy') => {
   item = new PictureElementTransformer(item).first().fields
-  console.log('TRansformed: ', item)
-  console.log(item.image.fields)
   return `
   <figure class="Picture__Element Picture__Element--${item.style} ${item.classes}" style="--aspect-ratio:${item.image.fields.details.image.width / item.image.fields.details.image.height}; ${item.backgroundColor !== null ? '--backgroundColor: ' + item.backgroundColor + ';' : ''}">
     <picture>

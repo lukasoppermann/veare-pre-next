@@ -13,6 +13,10 @@
     margin-top: var(--size-xxg);
     margin-bottom: var(--size-xl);
     text-align: left;
+    @include mq('s') {
+      line-height: 110%;
+      text-align: center;
+    }
   }
   h2,
   h3,
@@ -66,6 +70,9 @@
   .Article__publication-details,
   .Article__author {
     grid-column: columns;
+    @include mq('s') {
+      text-align: center;
+    }
   }
   .Article__author {
     margin-bottom: var(--size-xl);
