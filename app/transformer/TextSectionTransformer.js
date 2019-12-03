@@ -1,5 +1,5 @@
 // import convertRichText from '../services/convertRichText'
-import convertMarkdown from '../services/convertMarkdown'
+const convertMarkdown = require('../services/convertMarkdown')
 const Transformer = require('./Transformer')
 
 class TextSectionTransformer extends Transformer {
