@@ -1,6 +1,7 @@
 // NEW CSS File
 @import "../includes/sizes.scss";
 @import "../includes/typography.scss";
+@import "../includes/mediaqueries.scss";
 .Article {
   h1 {
     grid-column: columns;
@@ -29,9 +30,35 @@
   }
   p {
     grid-column: columns;
+    font: var(--font-copy-serif);
+    margin-bottom: var(--size-l);
   }
   blockquote {
     grid-column: sidebar-left 2 / columns;
+    @include mq('s') {
+      grid-column: columns;
+    }
+    margin-top: var(--size-xl);
+    margin-bottom: var(--size-xl);
+    p {
+      hyphens: auto;
+      overflow-wrap: break-word;
+      @extend %font-paragraph-sans-big;
+      @include mq('xxs') {
+        font-size: var(--base-font);
+        line-height: calc(var(--baseline) * 4);
+      }
+      @include baseline(3);
+    }
+  }
+  .Annotation {
+    @include mq('s') {
+      margin-top: var(--size-s);
+      margin-bottom: var(--size-xl);
+    }
+    .Annotation__text {
+      @extend %font-annotation;
+    }
   }
   .Text__Element {
     grid-column: columns;

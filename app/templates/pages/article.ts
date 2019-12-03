@@ -5,7 +5,7 @@ const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsaf
 const files = require('../../services/files')
 // export template
 export default (article) => layout(html`
-  <div class="Grid">
+  <div class="Article Grid">
     <h1>${article.fields.title}</h1>
     <div class="Article__publication-details">
         <time class="Article__time" itemprop="datePublished" datetime="${article.fields.rawdate}">${article.fields.date}</time> •&nbsp;
@@ -24,13 +24,13 @@ export default (article) => layout(html`
           </a>
         </span>
     </div>
-  
+
   ${unsafeHTML(article.fields.content)}
 
     <a class="Article__back_link" href="/blog">← Back</a>
   </div>
 `, {
-  bodyClass: 'Page-Type__Article Article',
+  bodyClass: 'Page-Type__Article',
   head: html`
   <link type="text/css" href="/${files().css['css/blog.css']}" rel="stylesheet" />
   `
