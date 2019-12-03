@@ -1,7 +1,7 @@
 const { html } = require('@popeindustries/lit-html-server')
 const files = require('../services/files')()
 export default (title?: string) =>
-  html`<title>vea.re UI/UX Design${title || ' & Creative Direction'}</title>
+  html`<title>vea.re UI/UX Design ${title || '& Creative Direction'}</title>
   <meta name="apple-mobile-web-app-title" content="veare" />
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   <meta name="copyright" content="${new Date().getUTCFullYear()}" />

@@ -3,7 +3,6 @@
 const Transformer = require('./Transformer')
 const AssetTransformer = require('./AssetTransformer')
 const PictureSourceTransformer = require('./PictureSourceTransformer')
-const convertMarkdown = require('../services/convertMarkdown')
 
 class PictureElementTransformer extends Transformer {
   transform (data) {
@@ -14,7 +13,7 @@ class PictureElementTransformer extends Transformer {
       fields: {
         type: data.sys.contentType.sys.id,
         title: this.getContent(data, 'title'),
-        description: convertMarkdown(this.getContent(data, 'description')),
+        description: this.getContent(data, 'description'),
         image: new AssetTransformer(this.getContent(data, 'image')).first(),
         style: this.getContent(data, 'style', 'center').toLowerCase().replace(' ', '-'),
         sources: new PictureSourceTransformer(this.getContent(data, 'pictureSources')).all(),
