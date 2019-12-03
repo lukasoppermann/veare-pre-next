@@ -4,7 +4,7 @@ const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js
 const { ifDefined } = require('@popeindustries/lit-html-server/directives/if-defined.js')
 
 export default (chapter, classes?: String) => html`
-  <section centered class="Chapter ${classes || ''} ${chapter.classes || ''}" name="${ifDefined(chapter.slug)}">
+  <section centered class="Chapter ${classes || ''} ${chapter.classes || ''}" name="${ifDefined(chapter.slug)}" id="${ifDefined(chapter.slug)}">
     ${(chapter.titleType !== 'subtitle') ? ''
     : html`<div class="Grid Chapter__title-Grid">
         <div class="Chapter__title-container"><h5 class="Chapter__title">${chapter.title}</h5></div>
