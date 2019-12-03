@@ -1,15 +1,13 @@
-// import convertRichText from '../services/convertRichText'
+const convertRichText = require('../services/convertRichText')
 const Transformer = require('./Transformer')
 const PictureElementTransformer = require('./PictureElementTransformer')
-const RichTextTransformer = require('./RichTextTransformer')
-// const readingTime = require('reading-time')
+const readingTime = require('reading-time')
 
 class ArticleTransformer extends Transformer {
   transform (data) {
-    // console.log(this.getContent(data, 'content'))
-    const content = new RichTextTransformer(this.getContent(data, 'content')).first()
+    const content = convertRichText(this.getContent(data, 'content'))
     // calc reading time
-    const readTime = 'Math.ceil(readingTime(content).time / 60000)'
+    const readTime = Math.ceil(readingTime(content).time / 60000)
     // return
     return {
       id: data.sys.id,

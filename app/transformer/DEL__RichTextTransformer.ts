@@ -2,7 +2,7 @@
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
 import { BLOCKS } from '@contentful/rich-text-types'
 const hljs = require('highlight.js')
-const PictureElementTransformer = require('./PictureElementTransformer')
+// const PictureElementTransformer = require('./PictureElementTransformer')
 let content = ''
 
 const codeBlock = (code, language, fileOrPath) => `
@@ -13,7 +13,7 @@ const codeBlock = (code, language, fileOrPath) => `
 
 const pictureElement = item => {
   console.log(item.image['en-US'])
-  item.image = new PictureElementTransformer(item.image['en-US']).first()
+  // item.image = new PictureElementTransformer(item.image['en-US']).first()
   console.log(item.image)
   return `${console.log(item.image['en-US'].fields)}
     <figure class="Picture__Element Picture__Element--${item.style} ${item.classes}" style="--aspect-ratio:${item.image.fields.details.image.width / item.image.fields.details.image.height}; ${item.backgroundColor !== null ? '--backgroundColor: ' + item.backgroundColor + ';' : ''}">

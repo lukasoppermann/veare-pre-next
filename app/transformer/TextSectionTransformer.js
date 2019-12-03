@@ -4,7 +4,6 @@ const Transformer = require('./Transformer')
 
 class TextSectionTransformer extends Transformer {
   transform (data) {
-    console.log(data, this.getContent(data, 'newChallenge', ''))
     return {
       id: data.sys.id,
       createdAt: data.sys.createdAt,

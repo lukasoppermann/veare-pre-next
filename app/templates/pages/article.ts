@@ -24,9 +24,9 @@ export default (article) => layout(html`
           </a>
         </span>
     </div>
-  </div>
+  
   ${unsafeHTML(article.fields.content)}
-  <div class="Grid">
+
     <a class="Article__back_link" href="/blog">← Back</a>
   </div>
 `, {
