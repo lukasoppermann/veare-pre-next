@@ -17,7 +17,7 @@ const links = (base) => [
 ]
 
 test('all links are reachable', async () => {
-  jest.setTimeout(20000)
+  jest.setTimeout(200000)
   const port = process.env.NODE_PORT || '8080'
   const host = 'http://127.0.0.1'
   console.log(`Testing on ${host}:${port}${links('').map(item => '\n' + item)}`)
