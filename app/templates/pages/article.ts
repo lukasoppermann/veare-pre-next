@@ -1,14 +1,11 @@
 import layout from '../layout'
-import chapter from '../partials/chapter'
-// import convertRichText from '../../../app/services/convertRichText'
 const { html } = require('@popeindustries/lit-html-server')
-const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
-// const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
+const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 // get correct filesnames after appending unique string
 const files = require('../../services/files')
 // export template
 export default (article) => layout(html`
-  <div class="Grid">
+  <div class="Article Grid">
     <h1>${article.fields.title}</h1>
     <div class="Article__publication-details">
         <time class="Article__time" itemprop="datePublished" datetime="${article.fields.rawdate}">${article.fields.date}</time> •&nbsp;
@@ -27,17 +24,14 @@ export default (article) => layout(html`
           </a>
         </span>
     </div>
-  </div>
-  ${repeat(article.fields.chapters, (chapterData) => {
-    return chapter(chapterData.fields)
-  })}
-  <div class="Grid">
+
+  ${unsafeHTML(article.fields.content)}
+
     <a class="Article__back_link" href="/blog">← Back</a>
   </div>
 `, {
-  bodyClass: 'Page-Type__Article Article',
+  bodyClass: 'Page-Type__Article',
   head: html`
   <link type="text/css" href="/${files().css['css/blog.css']}" rel="stylesheet" />
   `
 })
-// ${unsafeHTML(convertRichText(article.fields.content))}

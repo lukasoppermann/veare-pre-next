@@ -1,18 +1,13 @@
-'use strict'
-
+const convertRichText = require('../services/convertRichText')
 const Transformer = require('./Transformer')
 const PictureElementTransformer = require('./PictureElementTransformer')
-const ChapterTransformer = require('./ChapterTransformer')
 const readingTime = require('reading-time')
 
 class ArticleTransformer extends Transformer {
   transform (data) {
-    const chapters = new ChapterTransformer(this.getContent(data, 'chapters')).all()
+    const content = convertRichText(this.getContent(data, 'content'))
     // calc reading time
-    const readTime = Math.ceil(readingTime(
-      chapters.reduce((text, current) => `${text} ${current.fields.plainText}`, ''))
-      .time / 60000)
-
+    const readTime = Math.ceil(readingTime(content).time / 60000)
     // return
     return {
       id: data.sys.id,
@@ -26,8 +21,7 @@ class ArticleTransformer extends Transformer {
         rawdate: this.getContent(data, 'date'),
         date: this.formatDate(this.getContent(data, 'date')),
         preview: this.getContent(data, 'preview'),
-        chapters: chapters,
-        content: this.getContent(data, 'content'),
+        content: content,
         readingTime: readTime,
         category: this.getContent(data, 'category', 'design')
       }

@@ -1,7 +1,6 @@
-'use strict'
-
-const Transformer = require('./Transformer')
+// import convertRichText from '../services/convertRichText'
 const convertMarkdown = require('../services/convertMarkdown')
+const Transformer = require('./Transformer')
 
 class TextSectionTransformer extends Transformer {
   transform (data) {

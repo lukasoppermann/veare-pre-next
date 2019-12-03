@@ -1,3 +1,5 @@
+@import "../includes/mediaqueries.scss";
+
 /* ====================================
      Text Settings
  ==================================== */
@@ -43,8 +45,9 @@ font-feature-settings:"liga", "dlig";
   ==================================== */
 
   /* Copy Styles */
-  --font-copy-serif: var(--base-font)/vacalc(var(--baseline) * 4) var(--font-noto-serif);
+  --font-copy-serif: var(--base-font)/calc(var(--baseline) * 4) var(--font-noto-serif);
   --font-copy-serif-italic: italic var(--base-font)/calc(var(--baseline) * 4) var(--font-noto-serif);
+  --font-copy-serif-bold: bold var(--base-font)/calc(var(--baseline) * 4) var(--font-noto-serif);
   --font-copy-sans: var(--base-font)/calc(var(--baseline) * 4) var(--font-source-sans);
 
   /* Headline Styles */
@@ -105,6 +108,10 @@ font-feature-settings:"liga", "dlig";
   line-height: calc(var(--baseline) * 2);
   font-family: var(--font-source-sans);
   color: var(--black-60);
+  @include mq('s') {
+    font-size: var(--size-l);
+    line-height: calc(var(--baseline) * 3);
+  }
 }
 
 %font-subtitle-uppercase-small {

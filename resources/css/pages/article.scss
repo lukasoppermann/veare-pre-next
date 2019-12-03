@@ -1,6 +1,8 @@
 // NEW CSS File
+@import "../includes/colors.scss";
 @import "../includes/sizes.scss";
 @import "../includes/typography.scss";
+@import "../includes/mediaqueries.scss";
 .Article {
   h1 {
     grid-column: columns;
@@ -12,6 +14,10 @@
     margin-top: var(--size-xxg);
     margin-bottom: var(--size-xl);
     text-align: left;
+    @include mq('s') {
+      line-height: 110%;
+      text-align: center;
+    }
   }
   h2,
   h3,
@@ -29,9 +35,62 @@
   }
   p {
     grid-column: columns;
+    font: var(--font-copy-serif);
+    margin-bottom: var(--size-l);
+    color: var(--middle-dark-grey);
+    b {
+      font: var(--font-copy-serif-bold);
+    }
+  }
+  ul,
+  ol {
+    grid-column: columns;
+  }
+  li {
+    list-style: none;
+    margin-left: 0;
+    display: block;
+    position: relative;
+    @include mq('s') {
+      margin-left: 1.4em;
+    }
+    &::before {
+      content: "☞";
+      position: absolute;
+      left: -1.4em;
+      top: .1em;
+      font-size: 130%;
+    }
+  }
+  .horizontal-rule {
+    grid-column: columns;
   }
   blockquote {
     grid-column: sidebar-left 2 / columns;
+    @include mq('s') {
+      grid-column: columns;
+    }
+    margin-top: var(--size-xl);
+    margin-bottom: var(--size-xl);
+    p {
+      hyphens: auto;
+      overflow-wrap: break-word;
+      @extend %font-paragraph-sans-big;
+      @include mq('xxs') {
+        font-size: var(--base-font);
+        line-height: calc(var(--baseline) * 4);
+      }
+      @include baseline(3);
+    }
+  }
+  .Annotation {
+    @include mq('s') {
+      margin-top: var(--size-s);
+      margin-bottom: var(--size-xl);
+    }
+    .Annotation__text {
+      @extend %font-annotation;
+    }
   }
   .Text__Element {
     grid-column: columns;
@@ -39,6 +98,9 @@
   .Article__publication-details,
   .Article__author {
     grid-column: columns;
+    @include mq('s') {
+      text-align: center;
+    }
   }
   .Article__author {
     margin-bottom: var(--size-xl);
