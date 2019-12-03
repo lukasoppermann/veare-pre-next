@@ -47,6 +47,7 @@ font-feature-settings:"liga", "dlig";
   /* Copy Styles */
   --font-copy-serif: var(--base-font)/calc(var(--baseline) * 4) var(--font-noto-serif);
   --font-copy-serif-italic: italic var(--base-font)/calc(var(--baseline) * 4) var(--font-noto-serif);
+  --font-copy-serif-bold: bold var(--base-font)/calc(var(--baseline) * 4) var(--font-noto-serif);
   --font-copy-sans: var(--base-font)/calc(var(--baseline) * 4) var(--font-source-sans);
 
   /* Headline Styles */

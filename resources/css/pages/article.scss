@@ -1,4 +1,5 @@
 // NEW CSS File
+@import "../includes/colors.scss";
 @import "../includes/sizes.scss";
 @import "../includes/typography.scss";
 @import "../includes/mediaqueries.scss";
@@ -36,6 +37,33 @@
     grid-column: columns;
     font: var(--font-copy-serif);
     margin-bottom: var(--size-l);
+    color: var(--middle-dark-grey);
+    b {
+      font: var(--font-copy-serif-bold);
+    }
+  }
+  ul,
+  ol {
+    grid-column: columns;
+  }
+  li {
+    list-style: none;
+    margin-left: 0;
+    display: block;
+    position: relative;
+    @include mq('s') {
+      margin-left: 1.4em;
+    }
+    &::before {
+      content: "☞";
+      position: absolute;
+      left: -1.4em;
+      top: .1em;
+      font-size: 130%;
+    }
+  }
+  .horizontal-rule {
+    grid-column: columns;
   }
   blockquote {
     grid-column: sidebar-left 2 / columns;

@@ -28,7 +28,7 @@ Promise.all([menu, litHtml, homepage, layout]).then(([menuHtml, litHtml, homepag
 })
 
 window.app.fetchInject([
-  'https://fonts.googleapis.com/css?family=Montserrat:700|Noto+Serif:400,400i|Source+Sans+Pro:400,600'
+  'https://fonts.googleapis.com/css?family=Montserrat:700|Noto+Serif:400,400i,400b|Source+Sans+Pro:400,600'
 ]).then(() => {
   document.body.classList.add('fontsLoaded')
 })

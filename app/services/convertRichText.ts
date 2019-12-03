@@ -3,7 +3,7 @@ import { BLOCKS } from '@contentful/rich-text-types'
 const hljs = require('highlight.js')
 const PictureElementTransformer = require('../transformer/PictureElementTransformer')
 
-const codeBlock = (item) => {
+const codeBlock = item => {
   const language = item.fields.language['en-US'] || 'bash'
 
   return `
@@ -46,7 +46,8 @@ module.exports = (richText) => {
         } catch (e) {
           console.log(e)
         }
-      }
+      },
+      [BLOCKS.HR]: () => '<div class="horizontal-rule"><hr></div>'
     }
   })
 }

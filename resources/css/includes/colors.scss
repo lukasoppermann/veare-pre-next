@@ -7,6 +7,7 @@
   --white-rgb: 255, 255, 255;
   --black-rgb: 33, 37, 41;
   --dark-grey-rgb: 58, 60, 68;
+  --middle-dark-grey-rgb: 88, 90, 98;
   --middle-grey-rgb: 108, 110, 119;
   --grey-rgb: 168, 170, 179;
   --medium-grey-rgb: 196, 198, 207;
@@ -49,6 +50,7 @@
    * COLORS: Greys
    */
   --dark-grey: rgb(var(--dark-grey-rgb));
+  --middle-dark-grey: rgb(var(--middle-dark-grey-rgb));
   --middle-grey: rgb(var(--middle-grey-rgb));
   --grey: rgb(var(--grey-rgb));
   --medium-grey: rgb(var(--medium-grey-rgb));
