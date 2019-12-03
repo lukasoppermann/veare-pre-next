@@ -1,5 +1,6 @@
 .about {
   margin-top: calc(var(--baseline) * 7);
+  margin-bottom: calc(var(--baseline) * 7);
 }
 .about::after {
   @include pseudo("relative");
