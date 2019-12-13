@@ -7,15 +7,15 @@ const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsaf
 const files = require('../services/files')
 const fs = require('fs')
 //
-export default (content: string, options: { [prop: string]: string; } = {}, partial: string = 'false') => {
+export default (content: string, options: { [prop: string]: any; } = {}, partial: string = 'false') => {
   if (partial === 'true') {
     return html`${content}`
   }
   return html`
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang="en" prefix="og: http://ogp.me/ns#">
     <head>
-      ${meta(options.title || undefined)}
+      ${meta(options.title || undefined, options.og || [])}
       <link type="text/css" href="/${files().css['css/litApp.css']}" rel="stylesheet" />
       <link type="text/css" href="/${files().css['css/app.css']}" rel="stylesheet" />
       <script>${unsafeHTML(fs.readFileSync('./public/' + files().js['js/index.js']))}

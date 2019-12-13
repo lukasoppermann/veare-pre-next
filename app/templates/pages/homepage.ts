@@ -19,5 +19,18 @@ export default (partial) => {
       ${repeat(page.chapters, (chapterData) => elements[chapterData.fields.type](chapterData.fields))}
     </main>
     ${partial === 'true' ? footer : ''}
-`, {}, partial)
+`, {
+    og: [
+      {
+        property: 'og:image',
+        value: '/media/veare-open-graph.jpg'
+      }, {
+        property: 'og:image:type',
+        value: 'image/jpeg'
+      }, {
+        property: 'og:image:alt',
+        value: 'Lukas Oppermann — Lead UI/UX Design & Creative Direction — vea.re'
+      }
+    ]
+  }, partial)
 }
