@@ -3,6 +3,7 @@ import chapter from '../partials/chapter'
 import footer from '../partials/footer'
 import collection from '../partials/collection'
 import headerIntro from '../partials/header_intro'
+const files = require('../../services/files')()
 const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
 const { html } = require('@popeindustries/lit-html-server')
 const PageModel = require('../../models/Page')()
@@ -19,5 +20,18 @@ export default (partial) => {
       ${repeat(page.chapters, (chapterData) => elements[chapterData.fields.type](chapterData.fields))}
     </main>
     ${partial === 'true' ? footer : ''}
-`, {}, partial)
+`, {
+    og: [
+      {
+        property: 'og:image',
+        value: files.media['media/veare-icon-180.png']
+      }, {
+        property: 'og:image:type',
+        value: 'image/jpeg'
+      }, {
+        property: 'og:image:alt',
+        value: 'Lukas Oppermann — Lead UI/UX Design & Creative Direction — vea.re'
+      }
+    ]
+  }, partial)
 }
