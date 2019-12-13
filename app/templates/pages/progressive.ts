@@ -22,7 +22,7 @@ export default () => html`
           value: '//vea.re'
         }, {
           property: 'og:image',
-          value: '/media/veare-open-graph.jpg'
+          value: '//vea.re/media/veare-open-graph.jpg'
         }, {
           property: 'og:image:type',
           value: 'image/jpeg'
