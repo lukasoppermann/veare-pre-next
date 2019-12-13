@@ -17,8 +17,8 @@ export default html`
       <span>supports clients with</span>
     </div>
     <h1 class="Header--intro__roles">
-      Creative Direction<br />
-      UI / UX Concept & Design
+      Design Lead UI / UX &<br />
+      Creative Direction
     </h1>
   </div>
   <figure class="Header__Picture--Lukas-Oppermann">

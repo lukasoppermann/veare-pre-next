@@ -57,6 +57,18 @@ export default (project) => {
   </div>
 `, {
     title: project.title,
+    og: [
+      {
+        property: 'og:image',
+        value: project.previewImage.fields.url + '?fm=jpg'
+      }, {
+        property: 'og:image:type',
+        value: 'image/jpeg'
+      }, {
+        property: 'og:image:alt',
+        value: project.header.fields.title
+      }
+    ],
     bodyClass: 'Page--work Project',
     htmlClass: 'Temp-Override'
   })
