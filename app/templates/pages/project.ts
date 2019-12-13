@@ -59,6 +59,10 @@ export default (project) => {
     title: project.title,
     og: [
       {
+        property: 'og:type',
+        value: 'website'
+      },
+      {
         property: 'og:title',
         value: 'Lukas Oppermann — Lead UI/UX Design & Creative Direction — Project: ' + project.title
       },
@@ -68,11 +72,11 @@ export default (project) => {
       },
       {
         property: 'og:url',
-        value: '//vea.re/work/' + project.slug
+        value: 'https://vea.re/work/' + project.slug
       },
       {
         property: 'og:image',
-        value: project.previewImage.fields.url + '?fm=jpg'
+        value: 'https:' + project.previewImage.fields.url + '?fm=jpg'
       }, {
         property: 'og:image:type',
         value: 'image/jpeg'
