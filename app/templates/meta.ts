@@ -2,7 +2,7 @@ const { html } = require('@popeindustries/lit-html-server')
 const files = require('../services/files')()
 const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
 export default (title?: string, og?: any) =>
-  html`<title>vea.re UI/UX Design ${title || '& Creative Direction'}</title>
+  html`<title>vea.re Lead UI/UX Design ${title || '& Creative Direction'}</title>
   <meta name="apple-mobile-web-app-title" content="veare" />
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   <meta name="copyright" content="${new Date().getUTCFullYear()}" />
@@ -13,7 +13,7 @@ export default (title?: string, og?: any) =>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="theme-color" content="rgb(240, 170, 30)" />
   <meta property="og:locale" content="en_US" />
-  ${repeat(og || [], (ogProperty) => html`<meta property="og:${ogProperty.property}" content="${ogProperty.value}" />\n`)}
+  ${repeat(og || [], (ogProperty) => html`<meta property="${ogProperty.property}" content="${ogProperty.value}" />\n`)}
   <link rel="icon" href="/${files.media['media/veare-icon-32.png']}" type="image/png" />
   <link rel="icon" href="/${files.media['media/veare-icon-32.png']}" type="image/png" sizes="32x32" />
   <link rel="icon" href="/${files.media['media/veare-icon-96.png']}" type="image/png" sizes="96x96" />

@@ -22,6 +22,15 @@ export default (partial) => {
 `, {
     og: [
       {
+        property: 'og:title',
+        value: 'Lukas Oppermann — Lead UI/UX Design & Creative Direction — vea.re'
+      }, {
+        property: 'og:description',
+        value: 'Lukas Oppermann is a design lead & creative director from berlin, germany. He loves creating experiences with a focus on usability.'
+      }, {
+        property: 'og:url',
+        value: '//vea.re'
+      }, {
         property: 'og:image',
         value: '/media/veare-open-graph.jpg'
       }, {
