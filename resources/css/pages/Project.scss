@@ -208,6 +208,7 @@
 }
 .Project-cards--small .Project-card__client,
 .Project-cards--small .Project-card:hover .Project-card__client {
+  color: white;
   @include mq('m','min') {
     margin-top: var(--vs-l);
   }
