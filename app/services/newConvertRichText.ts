@@ -27,10 +27,10 @@ const transformEmbeddedEntries = async node => {
 
 const convertBlocks = async (richText): Promise<any> => {
 
-  const embeddedEntries = richText.content.filter(node => node.nodeType === 'embedded-entry-block')
-        .map(node => transformEmbeddedEntries(node))
-
-  return Promise.all(embeddedEntries)
+  return Promise.all(richText.content
+    .filter(node => node.nodeType === 'embedded-entry-block')
+    .map(node => transformEmbeddedEntries(node))
+  )
 }
 
 export default async (richText) => {
@@ -42,9 +42,7 @@ export default async (richText) => {
         try {
           return embedded.find((entry: any) => entry.id === node.data.target.sys.id).html
         } catch (e) {
-          console.log('🚨 ERROR');
-          console.log(node.data.target);
-          console.log(e)
+          console.log('🚨 ERROR: ', node.data.target, e)
         }
       },
       [BLOCKS.HR]: () => '<div class="horizontal-rule"><hr></div>'
