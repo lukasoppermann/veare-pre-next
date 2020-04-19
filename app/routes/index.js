@@ -28,7 +28,7 @@ router.post('/contentful', basicAuth({
 }), require('../services/contentfulWebhook'))
 // log non-existent pages
 router.get('/:pageCalled', (req, res) => {
-  console.log('tried to retrieve non-existing page: ' + req.params.pageCalled)
+  console.info('tried to retrieve non-existing page: ' + req.params.pageCalled)
   res.redirect('/')
 })
 

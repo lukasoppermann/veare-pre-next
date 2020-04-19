@@ -1,8 +1,8 @@
 export interface transformerInterface {
-  (rawData): Promise<transformedData>;
+  (rawData): Promise<transformedDataInterface>;
 }
 
-export interface transformedData {
+export interface transformedDataInterface {
   id: String,
   createdAt: String,
   updatedAt: String,

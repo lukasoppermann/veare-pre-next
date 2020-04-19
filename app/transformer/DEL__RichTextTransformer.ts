@@ -12,10 +12,10 @@ const codeBlock = (code, language, fileOrPath) => `
 </div>`
 
 const pictureElement = item => {
-  console.log(item.image['en-US'])
+
   // item.image = new PictureElementTransformer(item.image['en-US']).first()
-  console.log(item.image)
-  return `${console.log(item.image['en-US'].fields)}
+
+  return `
     <figure class="Picture__Element Picture__Element--${item.style} ${item.classes}" style="--aspect-ratio:${item.image.fields.details.image.width / item.image.fields.details.image.height}; ${item.backgroundColor !== null ? '--backgroundColor: ' + item.backgroundColor + ';' : ''}">
       <picture>
         ${item.image.fields.contentType !== 'image/svg+xml'
@@ -34,7 +34,6 @@ const pictureElement = item => {
 
 class RichTextTransformer {
   constructor (data) {
-    // console.log(data)
     content = this.transform(data)
   }
 

@@ -22,9 +22,6 @@ module.exports = expressHandlebars.create({
     preventIndent: true
   },
   helpers: {
-    log: (value) => {
-      console.log(value)
-    },
     url_safe: function (url) {
       url = url.replace(/[`:]/g, '').replace(/[\W_]+/g, '-')
       return escape(url)
@@ -62,7 +59,7 @@ module.exports = expressHandlebars.create({
     },
     inline_js: function (path) {
       if (path === undefined) {
-        console.log('ERROR: No path provided to inline_css function')
+        console.error('ERROR: No path provided to inline_css function')
         return
       }
       path = `public/${path}`
@@ -71,7 +68,7 @@ module.exports = expressHandlebars.create({
     },
     inline_css: (path) => {
       if (path === undefined) {
-        console.log('ERROR: No path provided to inline_css function')
+        console.error('ERROR: No path provided to inline_css function')
         return
       }
       path = path.substring(0, 1) !== '/' ? `public/${path}` : path.substring(1)

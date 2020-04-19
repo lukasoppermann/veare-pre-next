@@ -21,7 +21,7 @@ test('all links are reachable', async () => {
   jest.setTimeout(20000)
   const port = process.env.NODE_PORT || '8080'
   const host = 'http://127.0.0.1'
-  console.log(`Testing on ${host}:${port}${links('').map(item => '\n' + item)}`)
+  console.info(`Testing on ${host}:${port}${links('').map(item => '\n' + item)}`)
   // const requests = links(`${host}:${port}`).map(link => {
   //   request.head(link, (error, res) => {
   //     if (!error) {
@@ -31,12 +31,10 @@ test('all links are reachable', async () => {
   //         message: res.statusMessage || error
   //       }
   //     } else {
-  //       console.log(error, res.statusCode, res.statusMessage)
+  //       console.error(error, res.statusCode, res.statusMessage)
   //     }
   //   })
   // })
-  // console.log(requests)
-  // console.log(links(`${host}:${port}`))
   // .filter(link => link.status > 299)
   //
   // expect(requests.length).toBe(0)
@@ -46,7 +44,7 @@ test('all links are reachable', async () => {
       url: item[0]
     }, item[1])
   })
-  console.log(results.filter(link => link.status !== 'alive'))
+  console.error(results.filter(link => link.status !== 'alive'))
   // assertion
   expect(results.filter(link => link.status !== 'alive').length).toBe(0)
 })

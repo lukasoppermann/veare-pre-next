@@ -1,54 +1,76 @@
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
-import { BLOCKS } from '@contentful/rich-text-types'
+import { Document as richTextDocument, BLOCKS } from '@contentful/rich-text-types'
 const { renderToString } = require('@popeindustries/lit-html-server')
-import boxedContentSection from '../templates/partials/boxedContent'
+import boxedContentSection from '../templates/newPartials/boxedContent'
+import boxedContentTransformer from '../transformer/BoxedContentTransformerModule'
+import sectionTransformer from '../transformer/sectionTransformerModule'
+import collectionTransformer from '../transformer/collectionTransformerModule'
 
 const { html } = require('@popeindustries/lit-html-server')
 
-
-// html render functions for embeddedEntries
-let embeddedEntriesFn = {}
-embeddedEntriesFn['boxedContentSection'] = fields => boxedContentSection({items: fields.items['en-US']})
-embeddedEntriesFn['section'] = fields => html`${fields.cmsTitle['en-US']}`
-embeddedEntriesFn['collection'] = fields => html`${fields.cmsTitle['en-US']}`
-
-const transformEmbeddedEntries = async node => {
-  // render and await html
-  try {
-    let html = await renderToString(embeddedEntriesFn[node.data.target.sys.contentType.sys.id](node.data.target.fields))
-    return {
-      id: node.data.target.sys.id,
-      html: html
-    }
-  } catch (e) {
-    console.log("Error trying to convert",node.data.target.sys.contentType.sys.id);
-  }
+let transformerFunctions = {
+  'boxedContentSection': boxedContentTransformer,
+  'section': sectionTransformer,
+  'collection': collectionTransformer
 }
 
-const convertBlocks = async (richText): Promise<any> => {
+// html render functions for embeddedEntries
+let embeddedEntriesFn = {
+  'boxedContentSection': boxedContentSection,
+  'section': () => html`te`,
+  'collection': () => html`test`
+}
 
-  return Promise.all(richText.content
+/**
+ * asnyc convertEmbeddedEntries
+ * @param  richText          richTextDocument
+ * @param  embeddedEntriesFn Object with functions
+ * @return                   [description]
+ */
+const convertEmbeddedEntries = async (richText: richTextDocument, embeddedEntriesFn: {[key: string]: Function}): Promise<Array<any>> => {
+  // await conversion to resolive
+  return Promise.all(
+    // all nodes from richText
+    richText.content
+    // filter to only embedded-entry-block
     .filter(node => node.nodeType === 'embedded-entry-block')
-    .map(node => transformEmbeddedEntries(node))
+    // trasform data and convert to HTML
+    .map(async node => {
+      // run transformer on data
+      const transfomedData = await transformerFunctions[node.data.target.sys.contentType.sys.id](node.data.target)
+      console.debug(transfomedData[0].fields);
+
+      // return id & html
+      return {
+        // unique id of the node
+        id: node.data.target.sys.id,
+        // converted HTML
+        html: await renderToString(embeddedEntriesFn[node.data.target.sys.contentType.sys.id](transfomedData[0].fields))
+      }
+    })
   )
 }
 
-export default async (richText) => {
-  const embedded = await convertBlocks(richText)
-
-  const rendered = documentToHtmlString(richText, {
+/**
+ * async convertRichText
+ * @param  richText contentful
+ * @return          [description]
+ */
+export default async (richText: richTextDocument) => {
+  // get all converted embedded-entries
+  const embedded = await convertEmbeddedEntries(richText, embeddedEntriesFn)
+  // return richText as HTML
+  return documentToHtmlString(richText, {
     renderNode: {
       [BLOCKS.EMBEDDED_ENTRY]: (node) => {
         try {
           return embedded.find((entry: any) => entry.id === node.data.target.sys.id).html
         } catch (e) {
-          console.log('🚨 ERROR: ', node.data.target, e)
+          console.error('🚨 ERROR: ', node.data.target, e)
         }
       },
       [BLOCKS.HR]: () => '<div class="horizontal-rule"><hr></div>'
     }
   })
-
-  return rendered
 
 }

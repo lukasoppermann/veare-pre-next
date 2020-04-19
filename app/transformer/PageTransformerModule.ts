@@ -1,14 +1,14 @@
-import { transformedData } from '../../types/transformer'
+import { transformedDataInterface } from '../../types/transformer'
 import {default as transformer, getField } from './transformerModule'
 
 import richText from '../services/newConvertRichText'
-console.log(getField, typeof getField);
 
 export default async (page) => {
-  return transformer(page, async (page): Promise<transformedData> => {
-    const content = await richText(getField(page, 'content'))
-
-    return {
+  return transformer(page, async (page): Promise<transformedDataInterface> => {
+    // transform richText
+    let content = await richText(getField(page, 'content'))
+    // return format
+    return <transformedDataInterface>{
       id: page.sys.id,
       createdAt: page.sys.createdAt,
       updatedAt: page.sys.updatedAt,
@@ -20,5 +20,4 @@ export default async (page) => {
       }
     }
   })
-
 }

@@ -48,10 +48,10 @@ let usedCache = memoryCache
 
 if (env === 'development') {
   if (online === null) {
-    console.log(`"${config.host[env]}" not available, using file cache…`)
+    console.info(`"${config.host[env]}" not available, using file cache…`)
     usedCache = flatCacheWrapper()
   } else {
-    console.log(`Database available at "${config.host[env]}", refreshing file cache…`)
+    console.info(`Database available at "${config.host[env]}", refreshing file cache…`)
     usedCache = memoryCacheWrapper()
   }
 }
