@@ -15,7 +15,8 @@
   "homepage": "https://github.com/lukasoppermann/veare#readme",
   "devDependencies": {
     "@types/jest": "^24.0.23",
-    "@typescript-eslint/parser": "^2.11.0",
+    "@typescript-eslint/eslint-plugin": "^2.29.0",
+    "@typescript-eslint/parser": "^2.29.0",
     "acorn": "^7.1.0",
     "check-links": "^1.1.8",
     "eslint": "^6.7.2",
@@ -35,7 +36,7 @@
     "rollup-plugin-terser": "^5.1.3",
     "rollup-plugin-typescript": "^1.0.1",
     "snazzy": "^8.0.0",
-    "standard": "^14.3.1",
+    "standardx": "^5.0.0",
     "stylelint": "^12.0.0",
     "stylelint-config-standard": "^19.0.0",
     "ts-node-dev": "^1.0.0-pre.44",
@@ -85,11 +86,15 @@
   "config": {
     "moveFilesJs": "node_modules/fetch-inject/dist/fetch-inject.min.js"
   },
-  "standard": {
+  "eslintConfig": {
+    "rules": {
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": "error"
+    }
+  },
+  "standardx": {
     "parser": "@typescript-eslint/parser",
-    "plugins": [
-      "typescript"
-    ]
+    "plugins": ["@typescript-eslint"]
   },
   "scripts": {
     "server": "NODE_ENV=production forever start -c 'node_modules/.bin/ts-node' $npm_package_main -m 5000 --pretty",
@@ -120,7 +125,7 @@
     "travis": "npm run build:css && npm run build:js && npm run test:all",
     "removeCompiled": "branch=$(git branch | grep \\* | cut -d ' ' -f2) && if test \"$branch\" != \"master\" ; then git reset HEAD public/ ; fi",
     "release": "git checkout latest-build && npm run build && git add dist/*.js dist/*.js.map -f && git commit -m 'create build'",
-    "standard": "standard --parser typescript-eslint-parser --plugin typescript 'app.js' 'resources/js/*.ts' 'app/**/*.js' | snazzy"
+    "standard": "standardx --parser typescript-eslint-parser --plugin @typescript-eslint/eslint-plugin 'app.js' 'resources/js/*.ts' 'app/**/*.js' 'app/**/*.ts' | snazzy"
   },
   "pre-commit": [
     "test:css",

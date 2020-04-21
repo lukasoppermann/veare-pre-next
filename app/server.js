@@ -7,7 +7,7 @@ const startServer = async () => {
   const greenlock = Greenlock.create(Object.assign(letsencryptConfig, { app: app }))
   // development server
   if (process.env.NODE_ENV === 'development') {
-    console.info('\033[36m############################ Reloaded ############################\033[0m')
+    console.info('\u001b[36m############################ Reloaded ############################\u001b[0m')
     console.info('Environment: ' + process.env.NODE_ENV)
     console.info('✅ Listening on http://localhost:8080')
     app.listen('8080')

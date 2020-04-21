@@ -1,24 +1,27 @@
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
 import { Document as richTextDocument, BLOCKS } from '@contentful/rich-text-types'
-const { renderToString } = require('@popeindustries/lit-html-server')
+// templates
 import boxedContentSection from '../templates/newPartials/boxedContent'
-import boxedContentTransformer from '../transformer/BoxedContentTransformerModule'
-import sectionTransformer from '../transformer/sectionTransformerModule'
-import collectionTransformer from '../transformer/collectionTransformerModule'
+import section from '../templates/newPartials/section'
+import collection from '../templates/newPartials/collection'
+// Transformer
+import boxedContentTransformer from '../transformer/new/boxedContentTransformer'
+import sectionTransformer from '../transformer/new/sectionTransformer'
+import collectionTransformer from '../transformer/new/collectionTransformer'
 
-const { html } = require('@popeindustries/lit-html-server')
-
-let transformerFunctions = {
-  'boxedContentSection': boxedContentTransformer,
-  'section': sectionTransformer,
-  'collection': collectionTransformer
+const { renderToString } = require('@popeindustries/lit-html-server')
+// Transformer functions
+const transformerFunctions = {
+  boxedContentSection: boxedContentTransformer,
+  section: sectionTransformer,
+  collection: collectionTransformer
 }
 
-// html render functions for embeddedEntries
-let embeddedEntriesFn = {
-  'boxedContentSection': boxedContentSection,
-  'section': () => html`te`,
-  'collection': () => html`test`
+// templates functions for embeddedEntries
+const templates = {
+  boxedContentSection: boxedContentSection,
+  section: section,
+  collection: collection
 }
 
 /**
@@ -27,27 +30,25 @@ let embeddedEntriesFn = {
  * @param  embeddedEntriesFn Object with functions
  * @return                   [description]
  */
-const convertEmbeddedEntries = async (richText: richTextDocument, embeddedEntriesFn: {[key: string]: Function}): Promise<Array<any>> => {
+const convertEmbeddedEntries = async (richText: richTextDocument, templates: {[key: string]: Function}): Promise<Array<any>> => {
   // await conversion to resolive
   return Promise.all(
     // all nodes from richText
     richText.content
-    // filter to only embedded-entry-block
-    .filter(node => node.nodeType === 'embedded-entry-block')
-    // trasform data and convert to HTML
-    .map(async node => {
-      // run transformer on data
-      const transfomedData = await transformerFunctions[node.data.target.sys.contentType.sys.id](node.data.target)
-      console.debug(transfomedData[0].fields);
-
-      // return id & html
-      return {
-        // unique id of the node
-        id: node.data.target.sys.id,
-        // converted HTML
-        html: await renderToString(embeddedEntriesFn[node.data.target.sys.contentType.sys.id](transfomedData[0].fields))
-      }
-    })
+      // filter to only embedded-entry-block
+      .filter(node => node.nodeType === 'embedded-entry-block')
+      // trasform data and convert to HTML
+      .map(async node => {
+        // run transformer on data
+        const transfomedData = await transformerFunctions[node.data.target.sys.contentType.sys.id](node.data.target)
+        // return id & html
+        return {
+          // unique id of the node
+          id: node.data.target.sys.id,
+          // converted HTML
+          html: await renderToString(templates[node.data.target.sys.contentType.sys.id](transfomedData[0].fields))
+        }
+      })
   )
 }
 
@@ -58,7 +59,7 @@ const convertEmbeddedEntries = async (richText: richTextDocument, embeddedEntrie
  */
 export default async (richText: richTextDocument) => {
   // get all converted embedded-entries
-  const embedded = await convertEmbeddedEntries(richText, embeddedEntriesFn)
+  const embedded = await convertEmbeddedEntries(richText, templates)
   // return richText as HTML
   return documentToHtmlString(richText, {
     renderNode: {
@@ -72,5 +73,4 @@ export default async (richText: richTextDocument) => {
       [BLOCKS.HR]: () => '<div class="horizontal-rule"><hr></div>'
     }
   })
-
 }

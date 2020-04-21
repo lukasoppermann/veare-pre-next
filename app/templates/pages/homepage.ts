@@ -1,24 +1,26 @@
 import layout from '../layout'
-import chapter from '../partials/chapter'
+// import chapter from '../partials/chapter'
 import footer from '../partials/footer'
-import collection from '../partials/collection'
+// import collection from '../partials/collection'
 import headerIntro from '../partials/header_intro'
-const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
+import { templateInterface } from '../../../types/template'
+// const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
 const { html } = require('@popeindustries/lit-html-server')
-const PageModel = require('../../models/Page')()
-const page = PageModel.findBySlug('home').fields
-const elements = {
-  chapter: chapter,
-  collection: collection
-}
+const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
+// const PageModel = require('../../models/Page')()
+// const page = PageModel.findBySlug('home').fields
+// const elements = {
+//   chapter: chapter,
+//   collection: collection
+// }
 
-export default (partial) => {
+export default (page, _req): templateInterface => {
   return layout(html`
-    ${partial === 'true' ? '' : headerIntro}
+    ${_req.query.partial === 'true' ? '' : headerIntro}
     <main>
-      ${repeat(page.chapters, (chapterData) => elements[chapterData.fields.type](chapterData.fields))}
+      ${unsafeHTML(page.content)}
     </main>
-    ${partial === 'true' ? footer : ''}
+    ${_req.query.partial === 'true' ? footer : ''}
 `, {
     og: [
       {
@@ -44,5 +46,5 @@ export default (partial) => {
         value: 'Lukas Oppermann — Lead UI/UX Design & Creative Direction — vea.re'
       }
     ]
-  }, partial)
+  }, _req.query.partial)
 }

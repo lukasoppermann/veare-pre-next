@@ -1,15 +1,26 @@
+import pageTransformer from '../transformer/new/pageTransformer'
+// templates
+import { templateInterface } from '../../types/template'
 import page from '../templates/pages/page'
+import homepage from '../templates/pages/homepage'
+
 const { renderToString } = require('@popeindustries/lit-html-server')
 const cache = require('../services/cacheService')()
-import PageTransformer from '../transformer/PageTransformerModule'
 
-module.exports = async (req, res) => {
+const templates: {[key:string]: templateInterface} = {
+  page: page,
+  homepage: homepage
+}
+
+module.exports = async (req, res, template: string = 'page') => {
+  console.debug(template)
+
   // get slug
   const slug = req.url.replace(/^\/|\/$/g, '')
   // get content
-  const content = await PageTransformer(cache.get('page'))
+  const content = await pageTransformer(cache.get('page'))
   // get this page
-  const pageContent = content.find((item: any) => item.fields['slug'] === slug).fields
+  const pageContent = content.find((item: any) => item.fields.slug === slug).fields
   // return final page
-  return res.send(await renderToString(page(pageContent)))
+  return res.send(await renderToString(templates[template](pageContent, req)))
 }

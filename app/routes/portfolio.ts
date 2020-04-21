@@ -13,5 +13,4 @@ module.exports = async (req, res) => {
     bodyClass: 'c-page--portfolio-item',
     title: 'Portfolio'
   })))
-
 }

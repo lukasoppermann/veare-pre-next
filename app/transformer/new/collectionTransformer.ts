@@ -1,5 +1,15 @@
-import { transformedDataInterface } from '../../types/transformer'
-import {default as transformer, getField } from './transformerModule'
+import { transformedDataInterface } from '../../../types/transformer'
+import { default as transformer, getField } from './transformer'
+// Transformer
+import articleTransformer from './articleTransformer'
+import linkTransformer from './linkTransformer'
+import projectTransformer from './projectTransformer'
+
+const transformers: {[key: string]: any} = {
+  article: articleTransformer,
+  link: linkTransformer,
+  project: projectTransformer
+}
 
 export default async (data) => {
   return transformer(data, async (data): Promise<transformedDataInterface> => {
@@ -11,7 +21,7 @@ export default async (data) => {
       fields: {
         type: data.sys.contentType.sys.id,
         classes: getField(data, 'classes', []).join(' '),
-        items: getField(data, 'items'),
+        items: await Promise.all(getField(data, 'items').map(async item => (await transformers[item.sys.contentType.sys.id](item))[0])),
         variables: getField(data, 'variables', []).reduce(
           (obj, item) => Object.assign(obj, { [item.key]: item.value }), {}
         )
@@ -20,6 +30,9 @@ export default async (data) => {
   })
 }
 
+// project: require('./ProjectPreviewTransformer'),
+// article: require('./ArticleTransformer'),
+// link: require('./LinkTransformer')
 
 // items: this.getContent(data, 'items').map(item => {
 //   return new Transformers[item.sys.contentType.sys.id](item).first()

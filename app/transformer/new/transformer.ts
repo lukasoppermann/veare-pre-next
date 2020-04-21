@@ -1,11 +1,11 @@
-import { transformerInterface } from '../../types/transformer'
+import { transformerInterface } from '../../../types/transformer'
 
 const transformData = async (items, transformer): Promise<any> => {
   if (!Array.isArray(items)) {
     items = [items]
   }
 
-  return await Promise.all(
+  return Promise.all(
     // run transformer on all items
     items.map((item) => transformOrNull(item, transformer), this))
     // remove items that are null
@@ -21,7 +21,7 @@ const transformOrNull = (item, transformer) => {
 }
 
 export default async (data: Object, transformer: transformerInterface) => {
-  return await transformData(data, transformer)
+  return transformData(data, transformer)
 }
 
 export const getField = (data, fieldName: string, defaultValue: any = null) => {
