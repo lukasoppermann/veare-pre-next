@@ -31,6 +31,9 @@ const templates = {
  * @return                   [description]
  */
 const convertEmbeddedEntries = async (richText: richTextDocument, templates: {[key: string]: Function}): Promise<Array<any>> => {
+  if( richText === null ) {
+    return []
+  }
   // await conversion to resolive
   return Promise.all(
     // all nodes from richText
