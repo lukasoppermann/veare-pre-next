@@ -1,6 +1,6 @@
 import { transformedDataInterface } from '../../../types/transformer'
-import { default as transformer, getField } from './transformer'
-
+import transformer, { getField } from './transformer'
+import assetTransformer from './assetTransformer'
 import richText from '../../services/newConvertRichText'
 
 export default async (data) => {
@@ -22,8 +22,9 @@ export default async (data) => {
         challenge: await richText(getField(data, 'challenge')),
         roleAndTeam: await richText(getField(data, 'roleAndTeam')),
         // header: new PictureElementTransformer(this.getContent(data, 'header')).first(),
-        // previewImage: new AssetTransformer(this.getContent(data, 'previewImage')).first(),
+        previewImage: (await assetTransformer(getField(data, 'previewImage')))[0],
         // chapters: new ChapterTransformer(this.getContent(data, 'chapters')).all(),
+        content: await richText(getField(data, 'content')),
         variables: getField(data, 'variables', []).reduce(
           (obj, item) => Object.assign(obj, { [item.key]: item.value }), {}
         )

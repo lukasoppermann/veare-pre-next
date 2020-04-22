@@ -1,5 +1,5 @@
 import { transformedDataInterface } from '../../../types/transformer'
-import { default as transformer, getField } from './transformer'
+import transformer, { getField } from './transformer'
 
 export default async (data) => {
   return transformer(data, async (data): Promise<transformedDataInterface> => {

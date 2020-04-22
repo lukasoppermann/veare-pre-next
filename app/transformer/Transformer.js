@@ -36,7 +36,7 @@ class Transformer {
     return null
   }
 
-  formatDate (dateString, format) {
+  formatDate (dateString) {
     const date = new Date(dateString)
     const day = ('0' + date.getDate()).slice(-2)
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']

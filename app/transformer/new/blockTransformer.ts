@@ -1,5 +1,6 @@
 import { transformedDataInterface } from '../../../types/transformer'
 import transformer, { getField } from './transformer'
+import richText from '../../services/newConvertRichText'
 
 export default async (data) => {
   return transformer(data, async (data): Promise<transformedDataInterface> => {
@@ -11,7 +12,7 @@ export default async (data) => {
       fields: {
         type: data.sys.contentType.sys.id,
         classes: getField(data, 'classes', []).join(' '),
-        items: getField(data, 'sections')
+        content: await richText(getField(data, 'content'))
       }
     }
   })

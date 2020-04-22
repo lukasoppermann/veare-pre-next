@@ -1,8 +1,7 @@
 import { transformedDataInterface } from '../../../types/transformer'
-import { default as transformer, getField } from './transformer'
+import transformer, { getField } from './transformer'
 
 import richText from '../../services/newConvertRichText'
-import formatDate from '../../services/formatDate'
 const readingTime = require('reading-time')
 
 
@@ -27,7 +26,7 @@ export default async (data) => {
         title: getField(data, 'title'),
         // featuredImage: new PictureElementTransformer(this.getContent(data, 'featuredImage')).first(),
         rawdate: getField(data, 'date'),
-        date: formatDate(getField(data, 'date')),
+        date: new Date(getField(data, 'date')).toLocaleDateString('en-US', { month: 'long', year: 'numeric', day: 'numeric' }),
         preview: getField(data, 'preview'),
         content: content,
         readingTime: Math.ceil(readingTime(content).time / 60000),

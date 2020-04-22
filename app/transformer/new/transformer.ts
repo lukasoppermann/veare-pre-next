@@ -10,7 +10,7 @@ const transformData = async (items, transformer): Promise<any> => {
     items.map((item) => transformOrNull(item, transformer), this))
     // remove items that are null
     .then(items => items.filter(item => item !== null)
-  )
+    )
 }
 
 const transformOrNull = (item, transformer) => {

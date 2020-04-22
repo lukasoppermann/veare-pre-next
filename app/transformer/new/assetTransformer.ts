@@ -9,13 +9,13 @@ export default async (data) => {
       createdAt: data.sys.createdAt,
       updatedAt: data.sys.updatedAt,
       fields: {
-        type: data.sys.contentType.sys.id,
+        type: data.sys.type,
         title: getField(data, 'title'),
-        subtitle: getField(data, 'subtitle'),
-        link: getField(data, 'link'),
-        target: getField(data, 'targetBlank') ? '_blank' : '_self',
-        // picture: new PictureElementTransformer(this.getContent(data, 'picture')).first(),
-        classes: getField(data, 'cssClasses', []).join(' ')
+        description: getField(data, 'description'),
+        url: getField(data, 'file').url,
+        fileName: getField(data, 'file').fileName,
+        details: getField(data, 'file').details,
+        contentType: getField(data, 'file').contentType
       }
     }
   })

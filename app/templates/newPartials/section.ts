@@ -1,3 +1,4 @@
+// Templates
 // import boxedContentSection from './boxedContent'
 // import textSection from './text'
 // import code from './code'
@@ -14,7 +15,7 @@ const { html } = require('@popeindustries/lit-html-server')
 export default (fields) => html`
 
   <div class="Section Grid ${fields.classes || ''}">
-
+    
   </div>
 `
 // ${repeat(section.items, (item) => elements[item.fields.type](item.fields))}

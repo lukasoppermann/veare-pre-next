@@ -1,5 +1,5 @@
 import { transformedDataInterface } from '../../../types/transformer'
-import { default as transformer, getField } from './transformer'
+import transformer, { getField } from './transformer'
 // Transformer
 import articleTransformer from './articleTransformer'
 import linkTransformer from './linkTransformer'

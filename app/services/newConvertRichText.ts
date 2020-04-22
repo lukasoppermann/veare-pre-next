@@ -5,6 +5,7 @@ import boxedContentSection from '../templates/newPartials/boxedContent'
 import section from '../templates/newPartials/section'
 import collection from '../templates/newPartials/collection'
 // Transformer
+import blockTransformer from '../transformer/new/blockTransformer'
 import boxedContentTransformer from '../transformer/new/boxedContentTransformer'
 import sectionTransformer from '../transformer/new/sectionTransformer'
 import collectionTransformer from '../transformer/new/collectionTransformer'
@@ -12,6 +13,7 @@ import collectionTransformer from '../transformer/new/collectionTransformer'
 const { renderToString } = require('@popeindustries/lit-html-server')
 // Transformer functions
 const transformerFunctions = {
+  block: blockTransformer,
   boxedContentSection: boxedContentTransformer,
   section: sectionTransformer,
   collection: collectionTransformer
@@ -31,7 +33,7 @@ const templates = {
  * @return                   [description]
  */
 const convertEmbeddedEntries = async (richText: richTextDocument, templates: {[key: string]: Function}): Promise<Array<any>> => {
-  if( richText === null ) {
+  if (richText === null) {
     return []
   }
   // await conversion to resolive
