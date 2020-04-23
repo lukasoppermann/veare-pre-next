@@ -1,5 +1,8 @@
 .clients {
   margin-bottom: var(--size-g);
+  @include mq('m', 'min') {
+    grid-row-gap: 0;
+  }
 }
 .clients .Section.Grid {
   @include mq('m', 'min') {
@@ -9,7 +12,7 @@
 .clients .Text__Element {
   grid-column: columns;
 }
-.clients .SectionType__textSection--text h2 {
+.clients h2 {
   grid-column: columns;
   text-align: center;
   font-size: var(--size-l);

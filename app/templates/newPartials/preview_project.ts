@@ -1,7 +1,6 @@
 const { html } = require('@popeindustries/lit-html-server')
 
 export default (project) => html`
-${console.debug(project, project.previewImage.fields)}
 <a class="Project-card Project-card__link" href="${project.slug}" style="background-color: ${project.variables.bgcolor ? project.variables.bgcolor : 'none'};">
   <div class="Project-card__text">
     <h4 class="Project-card__client">${project.title}</h4>

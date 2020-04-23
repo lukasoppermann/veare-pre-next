@@ -16,7 +16,6 @@ export default (fields) => html`
 ${fields.variables.slug ? html`<a name="${fields.variables.slug}"></a>` : ''}
 <div class="Collection Grid ${fields.classes || ''}">
   ${repeat(fields.items, (item) => {
-    console.debug(item.fields.type)
     return elements[item.fields.type](item.fields)
   })}
 </div>

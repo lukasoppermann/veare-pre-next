@@ -1,6 +1,6 @@
 import { transformedDataInterface } from '../../../types/transformer'
 import transformer, { getField } from './transformer'
-import pictureElementTransformer from './pictureElementTransformer'
+import assetTransformer from './assetTransformer'
 
 export default async (data) => {
   return transformer(data, async (data): Promise<transformedDataInterface> => {
@@ -11,12 +11,9 @@ export default async (data) => {
       updatedAt: data.sys.updatedAt,
       fields: {
         type: data.sys.contentType.sys.id,
-        title: getField(data, 'title'),
-        subtitle: getField(data, 'subtitle'),
-        link: getField(data, 'link'),
-        target: getField(data, 'targetBlank') ? '_blank' : '_self',
-        picture: (await pictureElementTransformer(getField(data, 'picture')))[0],
-        classes: getField(data, 'cssClasses', []).join(' ')
+        mediaQuery: getField(data, 'mediaQuery'),
+        resolution: getField(data, 'resolution'),
+        image: (await assetTransformer(getField(data, 'image')))[0]
       }
     }
   })
