@@ -38,6 +38,13 @@ const initializeContent = (types, entries, cb) => {
   // get type ids
   if (types !== undefined) {
     const typeIds = types.items.map((item) => item.sys.id)
+    // prepare entries
+    // entries.items = entries.items.map(entry => {
+    //   Object.keys(entry.fields).forEach(function (key) {
+    //     entry.fields[key] = entry.fields[key]['en-US']
+    //   })
+    //   return entry
+    // })
     // get content by type
     typeIds.forEach((contentTypeId) => {
       const content = entries.items.filter((entry) => {

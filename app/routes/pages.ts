@@ -13,10 +13,9 @@ const templates: {[key:string]: templateInterface} = {
 }
 
 module.exports = async (req, res, template: string = 'page') => {
-  console.debug(template)
-
+  console.debug(`DEBUG message: URL is "${req.url}" template is "${template}"`) // print current template
   // get slug
-  const slug = req.url.replace(/^\/|\/$/g, '')
+  const slug = req.path.replace(/^\/|\/$/g, '')
   // get content
   const content = await pageTransformer(cache.get('page'))
   // get this page

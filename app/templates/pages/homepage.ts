@@ -1,18 +1,10 @@
 import layout from '../layout'
-// import chapter from '../partials/chapter'
 import footer from '../partials/footer'
-// import collection from '../partials/collection'
 import headerIntro from '../partials/header_intro'
 import { templateInterface } from '../../../types/template'
-// const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
+
 const { html } = require('@popeindustries/lit-html-server')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
-// const PageModel = require('../../models/Page')()
-// const page = PageModel.findBySlug('home').fields
-// const elements = {
-//   chapter: chapter,
-//   collection: collection
-// }
 
 export default (page, _req): templateInterface => {
   return layout(html`

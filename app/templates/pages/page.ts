@@ -4,7 +4,9 @@ const { html } = require('@popeindustries/lit-html-server')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 
 export default (page): templateInterface => layout(html`
-  ${unsafeHTML(page.content)}
+  <section class="Grid">
+    ${unsafeHTML(page.content)}
+  </section>
 `, {
   bodyClass: page.slug
 })

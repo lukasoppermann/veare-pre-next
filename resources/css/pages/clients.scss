@@ -1,11 +1,6 @@
 .clients {
   margin-bottom: var(--size-g);
-  grid-row-gap: 0;
-}
-.clients .Section.Grid {
-  @include mq('m', 'min') {
-    grid-row-gap: 0;
-  }
+  grid-row-gap: 0 !important;
 }
 .clients h2 {
   grid-column: columns;
