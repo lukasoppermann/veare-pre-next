@@ -1,15 +1,8 @@
 .clients {
   margin-bottom: var(--size-g);
+  grid-row-gap: 0 !important;
 }
-.clients .Section.Grid {
-  @include mq('m', 'min') {
-    grid-row-gap: 0;
-  }
-}
-.clients .Text__Element {
-  grid-column: columns;
-}
-.clients .SectionType__textSection--text h2 {
+.clients h2 {
   grid-column: columns;
   text-align: center;
   font-size: var(--size-l);
@@ -20,6 +13,9 @@
 }
 .clients .Picture__Element {
   margin-top: 0 !important;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 .clients .Picture__Element:nth-of-type(3n+1) {
   grid-column: sidebar-left 2 / column 3;

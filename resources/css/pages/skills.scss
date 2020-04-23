@@ -1,9 +1,16 @@
-.skills > .Section .Picture__Element {
+.skills {
+  grid-row-gap: 0;
+}
+.skills:nth-child(2n+1) {
+  margin-top: calc(var(--baseline) * 7);
+}
+.skills .Picture__Element {
   order: 1;
   display: flex;
   align-self: center;
   width: 100%;
   height: auto;
+  grid-row: 1 / 5;
   grid-column: sidebar-left 2 / span 3;
   @include mq('m') {
     grid-column: sidebar-left 2 / span 3;
@@ -15,7 +22,7 @@
     grid-column: columns;
   }
 }
-.skills > .Section:nth-child(2n) .Picture__Element {
+.skills:nth-child(2n+1) .Picture__Element {
   order: 3;
   grid-column: column 6 / span 3;
   @include mq('s') {
@@ -27,13 +34,14 @@
     grid-column: columns;
   }
 }
-.skills > .Section .Picture__Element picture {
+.skills .Picture__Element picture {
   width: 100%;
   height: auto;
 }
-.skills > .Section .SectionType__textSection {
+.skills h2,
+.skills blockquote,
+.skills p {
   order: 2;
-  color: var(--black);
   display: block;
   text-align: left;
   grid-column: column 3 / span 5;
@@ -48,7 +56,12 @@
     margin-top: 0 !important;
   }
 }
-.skills > .Section:nth-child(2n) .SectionType__textSection {
+.skills p:not(:first-child) {
+  @include baseline(2);
+}
+.skills:nth-child(2n+1) h2,
+.skills:nth-child(2n+1) blockquote,
+.skills:nth-child(2n+1) p {
   grid-column: column / span 5;
   @include mq('m') {
     grid-column: sidebar-left 2 / span 6;
@@ -60,12 +73,16 @@
     grid-column: columns;
   }
 }
-.skills > .Section h2 {
+.skills h2 {
   font-size: var(--size-h);
 }
-.skills > .Section .SectionType__textSection blockquote {
+.skills > p {
+  @extend %font-paragraph-sans;
+  color: var(--black) !important;
+}
+.skills blockquote {
   @extend %font-intro-paragraph;
   margin-top: calc(var(--baseline) * 1);
-  margin-bottom: calc(var(--baseline) * 3);
+  margin-bottom: calc(var(--baseline) * 2);
   hyphens: none;
 }

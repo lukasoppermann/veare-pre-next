@@ -2,6 +2,20 @@
   padding-top: 100px;
   padding-bottom: 50px;
 }
+.privacy {
+  h2,
+  h3,
+  h4,
+  h5,
+  p,
+  ul {
+    grid-column: columns / span 7;
+  }
+  p,
+  li {
+    @extend %font-paragraph-sans;
+  }
+}
 .c-section-privacy {
   margin: 0 var(--hs-s);
 }

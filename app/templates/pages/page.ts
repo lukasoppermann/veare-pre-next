@@ -1,10 +1,12 @@
 import layout from '../layout'
-import chapter from '../partials/chapter'
+import { templateInterface } from '../../../types/template'
 const { html } = require('@popeindustries/lit-html-server')
-const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
+const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 
-export default (page) => layout(html`
-  ${repeat(page.chapters, (chapterData) => chapter(chapterData.fields))}
+export default (page): templateInterface => layout(html`
+  <section class="Grid">
+    ${unsafeHTML(page.content)}
+  </section>
 `, {
   bodyClass: page.slug
 })

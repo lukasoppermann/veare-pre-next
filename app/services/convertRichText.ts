@@ -44,7 +44,7 @@ module.exports = (richText) => {
         try {
           return entryTypes[node.data.target.sys.contentType.sys.id](node.data.target)
         } catch (e) {
-          console.log(e)
+          console.error(e)
         }
       },
       [BLOCKS.HR]: () => '<div class="horizontal-rule"><hr></div>'

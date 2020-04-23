@@ -4,7 +4,7 @@ ul {
 li {
   display: list-item;
   @media screen and (max-width: 900px) {
-    list-style-position: inside;
+    margin-left: 20px;
   }
 }
 li:not(:first-child) {

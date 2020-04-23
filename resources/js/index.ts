@@ -37,7 +37,6 @@ Promise.all([revFileList, fetchInjectLoaded])
     // load responsiveMenu
     fetchInject([
       `${baseUrl}/${json.js['js/responsiveMenu.js']}`,
-      // `${baseUrl}/${json.js['js/toc.js']}`,
       `${baseUrl}/${json.js['js/rest.js']}`
     ])
   })

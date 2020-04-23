@@ -1,6 +1,18 @@
 const client = require('./client')
 const cache = require('./cacheService')()
-const errorLogFn = require('./errorLog')
+// errorHandler
+const errorLogFn = error => {
+  if (typeof error === 'string') {
+    console.error(error)
+  } else {
+    console.error('An error occured …',
+      error.Error || null,
+      error.host || null,
+      error.errorno || null,
+      error.code || null
+    )
+  }
+}
 
 const contentful = async (cb, errorLog = errorLogFn) => {
   // get all entries
@@ -26,6 +38,13 @@ const initializeContent = (types, entries, cb) => {
   // get type ids
   if (types !== undefined) {
     const typeIds = types.items.map((item) => item.sys.id)
+    // prepare entries
+    // entries.items = entries.items.map(entry => {
+    //   Object.keys(entry.fields).forEach(function (key) {
+    //     entry.fields[key] = entry.fields[key]['en-US']
+    //   })
+    //   return entry
+    // })
     // get content by type
     typeIds.forEach((contentTypeId) => {
       const content = entries.items.filter((entry) => {

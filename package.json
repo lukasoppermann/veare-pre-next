@@ -15,8 +15,9 @@
   "homepage": "https://github.com/lukasoppermann/veare#readme",
   "devDependencies": {
     "@types/jest": "^24.0.23",
-    "@typescript-eslint/parser": "^2.11.0",
-    "acorn": "^7.1.0",
+    "@typescript-eslint/eslint-plugin": "^2.29.0",
+    "@typescript-eslint/parser": "^2.29.0",
+    "acorn": "^7.1.1",
     "check-links": "^1.1.8",
     "eslint": "^6.7.2",
     "eslint-plugin-typescript": "^0.14.0",
@@ -35,7 +36,7 @@
     "rollup-plugin-terser": "^5.1.3",
     "rollup-plugin-typescript": "^1.0.1",
     "snazzy": "^8.0.0",
-    "standard": "^14.3.1",
+    "standardx": "^5.0.0",
     "stylelint": "^12.0.0",
     "stylelint-config-standard": "^19.0.0",
     "ts-node-dev": "^1.0.0-pre.44",
@@ -64,6 +65,7 @@
     "greenlock-store-fs": "^3.0.2",
     "helmet": "^3.21.2",
     "highlight.js": "^9.17.1",
+    "json5": "^2.1.3",
     "lit-html": "^1.1.2",
     "markdown-it": "^10.0.0",
     "markdown-it-anchor": "^5.2.5",
@@ -79,16 +81,21 @@
     "svgo": "^1.3.2",
     "ts-node": "^8.5.4",
     "tslib": "^1.10.0",
-    "typescript": "^3.7.3",
-    "uuid": "^3.3.3"
+    "typescript": "^3.7.3"
   },
   "config": {
     "moveFilesJs": "node_modules/fetch-inject/dist/fetch-inject.min.js"
   },
-  "standard": {
+  "eslintConfig": {
+    "rules": {
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": "error"
+    }
+  },
+  "standardx": {
     "parser": "@typescript-eslint/parser",
     "plugins": [
-      "typescript"
+      "@typescript-eslint"
     ]
   },
   "scripts": {
@@ -113,14 +120,14 @@
     "js:rev": "node-file-rev public/js/*.js --manifest=public/rev-manifest.json --root=public/",
     "test": "npm run test:js",
     "test:all": "npm run test:css && NODE_PORT=3300 npm run test-server && NODE_PORT=3300 npm run test:js && NODE_PORT=3300 npm run test:integration && forever stopall",
-    "test:js": "jest tests/unit && standard --parser typescript-eslint-parser --plugin typescript 'app.js' 'resources/js/*.ts' 'app/**/*.js' | snazzy",
+    "test:js": "jest tests/unit && standardx 'app.js' 'resources/js/*.ts' 'app/**/*.js' | snazzy",
     "test:integration": "jest tests/integration --detectOpenHandles",
     "integration": "NODE_PORT=3300 npm run test-server && NODE_PORT=3300 jest tests/integration --detectOpenHandles",
     "test:css": "stylelint resources/css",
     "travis": "npm run build:css && npm run build:js && npm run test:all",
     "removeCompiled": "branch=$(git branch | grep \\* | cut -d ' ' -f2) && if test \"$branch\" != \"master\" ; then git reset HEAD public/ ; fi",
     "release": "git checkout latest-build && npm run build && git add dist/*.js dist/*.js.map -f && git commit -m 'create build'",
-    "standard": "standard --parser typescript-eslint-parser --plugin typescript 'app.js' 'resources/js/*.ts' 'app/**/*.js' | snazzy"
+    "standard": "standardx 'app.js' 'resources/js/*.ts' 'app/**/*.js' 'app/**/*.ts' | snazzy"
   },
   "pre-commit": [
     "test:css",

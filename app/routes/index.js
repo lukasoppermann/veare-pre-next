@@ -6,14 +6,21 @@ const contentfulConfig = require('../config/contentful.js')
 // Normal Routes
 ================= */
 router.get(/^\/fragment\/menu$/, require('./menu'))
+// ## Home
 router.get(/^\/?$/, require('./home').progressive)
-router.get(/^\/home$/, require('./home').index)
+router.get(/^\/home$/, (req, res) => require('./pages')(req, res, 'homepage'))
+// ## Portfolio
 router.use(/^\/portfolio\/([\w-]+)/, require('./portfolio'))
-router.get('/privacy', (req, res) => require('./pages')(req, res, 'privacy'))
+// ## Privacy
+router.get('/privacy', (req, res) => require('./pages')(req, res, 'page'))
+// ## About
 router.get('/about', (_req, res) => { res.redirect('/#about') })
+// ## Contact
 router.get('/contact', (_req, res) => { res.redirect('/#contact') })
+// ## Blog
 router.get('/blog', require('./blog').index)
 router.get(/^\/blog\/([\w-]+)/, require('./blog').get)
+// ## Work
 router.get(/^\/work\/([\w-]+)/, require('./projects'))
 /* =================
 // UTILS
@@ -28,7 +35,7 @@ router.post('/contentful', basicAuth({
 }), require('../services/contentfulWebhook'))
 // log non-existent pages
 router.get('/:pageCalled', (req, res) => {
-  console.log('tried to retrieve non-existing page: ' + req.params.pageCalled)
+  console.info('tried to retrieve non-existing page: ' + req.params.pageCalled)
   res.redirect('/')
 })
 

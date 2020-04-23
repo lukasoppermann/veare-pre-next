@@ -5,7 +5,7 @@ const { renderToString } = require('@popeindustries/lit-html-server')
 // show portfolio item
 module.exports = async (req, res) => {
   if (!portfolioItems[req.params[0]]) {
-    console.log('Requested missing page: ' + req.params[0])
+    console.info('Requested missing page: ' + req.params[0])
     return res.redirect('/#portfolio')
   }
 
@@ -13,17 +13,4 @@ module.exports = async (req, res) => {
     bodyClass: 'c-page--portfolio-item',
     title: 'Portfolio'
   })))
-
-  // router.get('/:item', (req, res) => {
-  //   res.render(`./portfolio/${req.params.item}.hbs`, {
-  //     pageClass: 'c-page--portfolio-item',
-  //     response: res
-  //   }, function (err, html) {
-  //     if (err) {
-  //       console.log(err)
-  //       res.redirect('/#portfolio')
-  //     }
-  //     res.send(html)
-  //   })
-  // })
 }
