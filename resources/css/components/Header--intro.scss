@@ -2,7 +2,7 @@
   border: none;
   .Header__Picture--Lukas-Oppermann {
     opacity: 0;
-    animation: 4s var(--easeOutQuint) 3.8s forwards fadeIn;
+    animation: 4s var(--easeOutQuint) 1.75s forwards fadeIn;
     position: relative;
     z-index: 5;
     overflow: hidden;
@@ -20,7 +20,7 @@
     grid-row: row 2 / -2;
     background-color: var(--color-sand);
     --origin-start: right;
-    animation: .75s var(--easeInOutQuint) forwards 1.5s blockFill;
+    animation: .75s var(--easeInOutQuint) forwards .5s blockFill;
     transform: scaleX(0);
     z-index: 1;
   }
@@ -46,12 +46,12 @@
     #veareLogoLine {
       stroke-dasharray: 340px;
       stroke-dashoffset: 340px;
-      animation: 1.5s ease forwards .5s strokeDashoffset;
+      animation: 1.25s ease forwards .25s strokeDashoffset;
     }
     #veareLogoShadowLine {
       stroke-dasharray: 30px;
       stroke-dashoffset: 30px;
-      animation: .45s ease forwards 1s strokeDashoffset;
+      animation: .25s ease forwards .75s strokeDashoffset;
     }
   }
   .Header--intro__headline {
@@ -87,33 +87,33 @@
     }
     #interaction {
       animation: var(--animation-appear);
-      animation-duration: 3s;
+      animation-duration: 1.75s;
     }
     #interactionBlockRect {
       transform: scaleX(0);
       fill: var(--veare-orange);
-      animation: 2.5s var(--easeInOutQuint) 1.75s blockReveal;
+      animation: 1.25s var(--easeInOutQuint) 1s blockReveal;
     }
     #isEverything {
       animation: var(--animation-appear);
-      animation-duration: 3.1s;
+      animation-duration: 1.85s;
       fill: var(--black-50);
     }
     #isEverythingBlockRect {
       --origin-end: 75% top;
       fill: var(--veare-orange);
       transform: scaleX(0);
-      animation: 2.4s var(--easeInOutQuint) 2.05s blockReveal;
+      animation: 1s var(--easeInOutQuint) 1.25s blockReveal;
     }
     #lineBlockRect {
       fill: var(--veare-orange);
       transform: scaleX(0);
-      animation: 1.5s var(--easeInOutQuint) 2.15s forwards blockFill;
+      animation: .5s var(--easeInOutQuint) 1.35s forwards blockFill;
     }
   }
   .Header--intro__slogan {
     opacity: 0;
-    animation: 1.5s var(--easeOutQuint) 3.6s forwards fadeSlideIn;
+    animation: 1.5s var(--easeOutQuint) 1.5s forwards fadeSlideIn;
     z-index: 10;
     grid-column: sidebar-left 1 / span 3;
     font-size: var(--size-xl);
@@ -143,7 +143,7 @@
   }
   .Header--intro__services {
     opacity: 0;
-    animation: 1.5s var(--easeOutQuint) 3.8s forwards fadeSlideIn;
+    animation: 1.5s var(--easeOutQuint) 1.75s forwards fadeSlideIn;
     font-family: var(--font-source-sans);
     font-weight: normal;
     position: relative;
