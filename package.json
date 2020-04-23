@@ -17,7 +17,7 @@
     "@types/jest": "^24.0.23",
     "@typescript-eslint/eslint-plugin": "^2.29.0",
     "@typescript-eslint/parser": "^2.29.0",
-    "acorn": "^7.1.0",
+    "acorn": "^7.1.1",
     "check-links": "^1.1.8",
     "eslint": "^6.7.2",
     "eslint-plugin-typescript": "^0.14.0",

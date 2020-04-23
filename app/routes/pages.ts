@@ -13,7 +13,7 @@ const templates: {[key:string]: templateInterface} = {
 }
 
 module.exports = async (req, res, template: string = 'page') => {
-  console.debug(`DEBUG message: URL is "${req.url}" template is "${template}"`) // print current template
+  // console.debug(`DEBUG message: URL is "${req.url}" template is "${template}"`) // print current template
   // get slug
   const slug = req.path.replace(/^\/|\/$/g, '')
   // get content
