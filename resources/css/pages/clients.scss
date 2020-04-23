@@ -1,16 +1,11 @@
 .clients {
   margin-bottom: var(--size-g);
-  @include mq('m', 'min') {
-    grid-row-gap: 0;
-  }
+  grid-row-gap: 0;
 }
 .clients .Section.Grid {
   @include mq('m', 'min') {
     grid-row-gap: 0;
   }
-}
-.clients .Text__Element {
-  grid-column: columns;
 }
 .clients h2 {
   grid-column: columns;
@@ -23,6 +18,9 @@
 }
 .clients .Picture__Element {
   margin-top: 0 !important;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 .clients .Picture__Element:nth-of-type(3n+1) {
   grid-column: sidebar-left 2 / column 3;

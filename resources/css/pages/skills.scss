@@ -1,6 +1,9 @@
 .skills {
   grid-row-gap: 0;
 }
+.skills:nth-child(2n+1) {
+  margin-top: calc(var(--baseline) * 7);
+}
 .skills .Picture__Element {
   order: 1;
   display: flex;
@@ -75,7 +78,7 @@
 }
 .skills > p {
   @extend %font-paragraph-sans;
-  color: var(--black);
+  color: var(--black) !important;
 }
 .skills blockquote {
   @extend %font-intro-paragraph;
