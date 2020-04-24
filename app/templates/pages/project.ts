@@ -1,15 +1,14 @@
 import layout from '../layout'
-import chapter from '../partials/chapter'
 import pictureElement from '../partials/pictureElement'
 const { html } = require('@popeindustries/lit-html-server')
-const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 
 export default (project) => {
   return layout(html`
+  ${console.debug('IN TEMp:',project)}
   <style media="screen">
     :root{
-      --project-color: ${project.variables.color};
+      ${ project.variables.color !== undefined ? '--project-color:' + project.variables.color + ';': ''}
     }
   </style>
   <header class="Header Header--project Grid Grid--rows">
@@ -43,15 +42,11 @@ export default (project) => {
       </div>
       <!-- {{!-- TOC --}} -->
       <ul class="Toc Project__toc" data-toc>
-      ${repeat(project.chapters, (chapter) => {
-        if (chapter.fields.slug !== undefined) {
-          return html`<li class="Toc__chapter"><a class="Toc__chapter__link" href="#${chapter.fields.slug}"><div class="Toc__chapter__title">${chapter.fields.title}</div></a></li>`
-        }
-      })}
+      <!-- TOC HERE -->
       </ul>
     </div>
   </section>
-  ${repeat(project.chapters, (chapterData) => chapter(chapterData.fields, 'Chapter--side-title'))}
+  ${unsafeHTML(project.content)}
   <div class="Grid">
     <a class="Project__back_link" href="/home#portfolio">← Back</a>
   </div>
@@ -89,3 +84,12 @@ export default (project) => {
     htmlClass: 'Temp-Override'
   })
 }
+// TOC
+// ${repeat(project.chapters, (chapter) => {
+//   if (chapter.fields.slug !== undefined) {
+//     return html`<li class="Toc__chapter"><a class="Toc__chapter__link" href="#${chapter.fields.slug}"><div class="Toc__chapter__title">${chapter.fields.title}</div></a></li>`
+//   }
+// })}
+
+// CHAPTERS
+// ${repeat(project.chapters, (chapterData) => chapter(chapterData.fields, 'Chapter--side-title'))}

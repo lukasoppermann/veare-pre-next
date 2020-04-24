@@ -269,6 +269,9 @@
 /* ====================================
     PROJECT Page
 ==================================== */
+.Project {
+  --horizontal-rule-color: var(--project-color);
+}
 .Project__challenge {
   margin-top: var(--vs-xg);
   grid-column: column 1 / column 5;
@@ -310,51 +313,4 @@
   @extend %font-subtitle-uppercase-small;
   margin-top: var(--size-xl);
   margin-bottom: var(--size-xxg);
-}
-// NEW Project page
-.Project {
-  --horizontal-rule-color: var(--project-color, var(--blue));
-  h2,
-  h3,
-  h4,
-  h5,
-  p,
-  blockquote {
-    grid-column: columns / span 5;
-    @include mq('m') {
-      word-break: break-word;
-      grid-column: columns / span 6;
-    }
-    @include mq('xs') {
-      word-break: break-word;
-      grid-column: columns;
-    }
-  }
-  h5 {
-    @extend %font-subtitle-uppercase-small;
-    @include baseline(3);
-    color: var(--black-40);
-    grid-column: columns;
-  }
-  p {
-    @extend %font-paragraph-sans;
-    &:not(:first-child) {
-      margin-top: calc(var(--baseline) * 2);
-    }
-  }
-  blockquote {
-    hyphens: auto;
-    overflow-wrap: break-word;
-    @include mq('xxs') {
-      font-size: var(--base-font);
-      line-height: calc(var(--baseline) * 4);
-    }
-    @include baseline(3);
-    p {
-      @extend %font-paragraph-sans-big;
-    }
-  }
-  .horizontal-rule {
-    grid-column: columns;
-  }
 }
