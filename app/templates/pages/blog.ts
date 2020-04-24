@@ -1,10 +1,11 @@
 import layout from '../layout'
 import preview from '../partials/article_preview'
+import { templateInterface } from '../../../types/template'
 const { html } = require('@popeindustries/lit-html-server')
 const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
 // get correct filesnames after appending unique string
 const files = require('../../services/files.ts')
-export default (articles) => layout(html`
+export default (articles): templateInterface => layout(html`
   <ul class="Article-list Grid" itemscope itemtype="http://schema.org/Blog">
     ${repeat(articles, (article) => preview(article))}
     <li class="Article__more_on_medium Article__preview">

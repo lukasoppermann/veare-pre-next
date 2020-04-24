@@ -1,15 +1,39 @@
+import articleTransformer from '../transformer/new/articleTransformer'
+
 import blog from '../templates/pages/blog'
 import article from '../templates/pages/article'
 const { renderToString } = require('@popeindustries/lit-html-server')
-const ArticleModel = require('../models/Article')()
+const cache = require('../services/cacheService')()
+
 module.exports = {
-  index: async (_req, res) => res.send(await renderToString(blog(ArticleModel.all()))),
+  index: async (_req, res) => {
+    // get articles from cache
+    let content = await articleTransformer(cache.get('article'))
+    // sort by date
+    content = content.sort((a, b) => {
+      const dateA = new Date(a.fields.rawdate)
+      const dateB = new Date(b.fields.rawdate)
+      if (dateA < dateB) {
+        return 1
+      }
+      if (dateA > dateB) {
+        return -1
+      }
+      return 0
+    })
+    // return rendered template
+    return res.send(await renderToString(blog(content)))
+  },
   get: async (req, res) => {
-    const articleData = ArticleModel.findBySlug(req.params[0])
-    if (articleData) {
-      return res.send(await renderToString(article(articleData)))
-    } else {
-      return res.redirect(301, req.protocol + '://' + req.headers.host + req.url.replace(req.params[0], ''))
+    // get articles from cache
+    let content = await articleTransformer(cache.get('article'))
+    // get individual article
+    const articleContent = content.find((item: any) => item.fields.slug === req.params[0]).fields
+    // if content exists
+    if (articleContent) {
+      return res.send(await renderToString(article(articleContent)))
     }
+    // if not content existds redirect to blog
+    return res.redirect(301, req.protocol + '://' + req.headers.host + req.url.replace(req.params[0], ''))
   }
 }

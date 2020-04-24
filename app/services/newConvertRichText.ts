@@ -6,12 +6,14 @@ import boxedContentSection from '../templates/newPartials/boxedContent'
 import section from '../templates/newPartials/section'
 import collection from '../templates/newPartials/collection'
 import pictureElement from '../templates/newPartials/pictureElement'
+import code from '../templates/newPartials/code'
 // Transformer
 import blockTransformer from '../transformer/new/blockTransformer'
 import boxedContentTransformer from '../transformer/new/boxedContentTransformer'
 import sectionTransformer from '../transformer/new/sectionTransformer'
 import collectionTransformer from '../transformer/new/collectionTransformer'
 import pictureElementTransformer from '../transformer/new/pictureElementTransformer'
+import codeTransformer from '../transformer/new/codeTransformer'
 
 const { renderToString } = require('@popeindustries/lit-html-server')
 // Transformer functions
@@ -20,6 +22,7 @@ const transformerFunctions = {
   boxedContentSection: boxedContentTransformer,
   section: sectionTransformer,
   collection: collectionTransformer,
+  code: codeTransformer,
   pictureElement: pictureElementTransformer
 }
 
@@ -29,6 +32,7 @@ const templates = {
   boxedContentSection: boxedContentSection,
   section: section,
   collection: collection,
+  code: code,
   pictureElement: pictureElement
 }
 

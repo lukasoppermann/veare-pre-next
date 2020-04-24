@@ -1,15 +1,16 @@
 import layout from '../layout'
+import { templateInterface } from '../../../types/template'
 const { html } = require('@popeindustries/lit-html-server')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 // get correct filesnames after appending unique string
 const files = require('../../services/files')
 // export template
-export default (article) => layout(html`
+export default (article): templateInterface => layout(html`
   <div class="Article Grid">
-    <h1>${article.fields.title}</h1>
+    <h1>${article.title}</h1>
     <div class="Article__publication-details">
-        <time class="Article__time" itemprop="datePublished" datetime="${article.fields.rawdate}">${article.fields.date}</time> •&nbsp;
-        <time class="Article__read-time" datetime="${article.fields.readingTime}m">${article.fields.readingTime} min read</time>
+        <time class="Article__time" itemprop="datePublished" datetime="${article.rawdate}">${article.date}</time> •&nbsp;
+        <time class="Article__read-time" datetime="${article.readingTime}m">${article.readingTime} min read</time>
     </div>
 
     <div class="Article__author">
@@ -25,7 +26,7 @@ export default (article) => layout(html`
         </span>
     </div>
 
-  ${unsafeHTML(article.fields.content)}
+  ${unsafeHTML(article.content)}
 
     <a class="Article__back_link" href="/blog">← Back</a>
   </div>
