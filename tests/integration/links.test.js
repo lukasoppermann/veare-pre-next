@@ -44,7 +44,9 @@ test('all links are reachable', async () => {
       url: item[0]
     }, item[1])
   })
-  console.error(results.filter(link => link.status !== 'alive'))
   // assertion
-  expect(results.filter(link => link.status !== 'alive').length).toBe(0)
+  results.forEach(result => {
+    expect(result.status).toBe('alive')
+  })
+  // expect(results.filter(link => link.status !== 'alive').length).toBe(0)
 })
