@@ -65,7 +65,7 @@ const convertEmbeddedEntries = async (richText: richTextDocument, templates: {[k
             html: await renderToString(templates[node.data.target.sys.contentType.sys.id](transfomedData[0].fields))
           }
         } catch (e) {
-          console.error(`🚨 \x1b[31mError: No function exists for type "${node.data.target.sys.contentType.sys.id}"\x1b[0m`)
+          console.error(`🚨 \x1b[31mError: Trying to convert and render of type "${node.data.target.sys.contentType.sys.id}"\x1b[0m`)
         }
       })
   )
