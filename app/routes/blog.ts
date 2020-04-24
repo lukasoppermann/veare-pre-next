@@ -26,7 +26,7 @@ module.exports = {
   },
   get: async (req, res) => {
     // get articles from cache
-    let content = await articleTransformer(cache.get('article'))
+    const content = await articleTransformer(cache.get('article'))
     // get individual article
     const articleContent = content.find((item: any) => item.fields.slug === req.params[0]).fields
     // if content exists

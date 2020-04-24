@@ -10,13 +10,13 @@ const layout = app.fetchInject([
   `${app.baseUrl}/${app.files.css['css/app.css']}`
 ])
 
-Promise.all([homepage, litHtml, layout]).then(([homepageHtml, lit, layout]) => {
+Promise.all([homepage, litHtml, layout]).then(([homepageHtml]) => {
   const content = (content) => app.html`${app.unsafeHTML(content)}`
   //
   app.render(content(homepageHtml), document.querySelector('main'))
 })
 
-Promise.all([menu, litHtml, homepage, layout]).then(([menuHtml, litHtml, homepage, layout]) => {
+Promise.all([menu, litHtml, homepage, layout]).then(([menuHtml]) => {
   const content = (content) => app.html`${app.unsafeHTML(content)}`
   //
   app.render(content(menuHtml), document.querySelector('.responsive-menu'))
