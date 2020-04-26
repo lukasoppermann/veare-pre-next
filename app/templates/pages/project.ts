@@ -8,7 +8,7 @@ export default (project) => {
   return layout(html`
   <style media="screen">
     :root{
-      ${ project.variables.color !== undefined ? '--project-color:' + project.variables.color + ';': ''}
+      ${project.variables.color !== undefined ? '--project-color:' + project.variables.color + ';' : ''}
     }
   </style>
   <header class="Header Header--project Grid Grid--rows">
@@ -42,7 +42,7 @@ export default (project) => {
       </div>
       <!-- {{!-- TOC --}} -->
       <ul class="Toc Project__toc" data-toc>
-      ${repeat(project.anchors, (anchor) => html`<li class="Toc__chapter"><a class="Toc__chapter__link" href="#${anchor}"><div class="Toc__chapter__title">${anchor.replace(/-/g,' ')}</div></a></li>`)}
+      ${repeat(project.anchors, (anchor) => html`<li class="Toc__chapter"><a class="Toc__chapter__link" href="#${anchor}"><div class="Toc__chapter__title">${anchor.replace(/-/g, ' ')}</div></a></li>`)}
       </ul>
     </div>
   </section>

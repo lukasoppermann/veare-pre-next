@@ -5,7 +5,7 @@ import richText from '../../services/newConvertRichText'
 
 const styles = {
   'Centered (default)': 'center',
-  'Wide': 'wide',
+  Wide: 'wide',
   'Full width': 'full-width'
 }
 
@@ -22,7 +22,7 @@ export default async (data) => {
         description: (await richText(getField(data, 'description'))).html,
         sources: await assetTransformer(getField(data, 'sources')),
         style: styles[getField(data, 'style')] || Object.values(styles)[0],
-        classes: getField(data, 'classes', []).join(' '),
+        classes: getField(data, 'classes', []).join(' ')
       }
     }
   })

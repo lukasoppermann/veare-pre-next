@@ -13,7 +13,6 @@ export default (json: string) => {
   try {
     return JSON5.parse(json)
   } catch (e) {
-    throw `🚨 \x1b[31mError: Parsing json failed for string: \x1b[0m"${json}"`
+    throw new Error(`🚨 \x1b[31mError: Parsing json failed for string: \x1b[0m"${json}"`)
   }
-  return null
 }

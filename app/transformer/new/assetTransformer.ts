@@ -7,7 +7,7 @@ export default async (data) => {
     let description = getField(data, 'description')
     try {
       description = jsonParse(description)
-   } catch(e) {}
+    } catch (e) {}
     // return format
     return <transformedDataInterface>{
       id: data.sys.id,

@@ -48,7 +48,7 @@ const templates = {
  */
 const convertHyperlinks = (node, next, anchors) => {
   // split uri
-  const uri = node.data.uri.split("#")
+  const uri = node.data.uri.split('#')
   // test if link is anchor
   if (uri[0] === 'name=') {
     const name = uri[1].toLowerCase().replace(/\s/g, '-').replace(/[^&-A-Za-z0-9]/g, '')

@@ -16,7 +16,7 @@ export default async (data) => {
         image: (await assetTransformer(getField(data, 'image')))[0],
         style: getField(data, 'style', 'center').toLowerCase().replace(' ', '-'),
         sources: [],
-        classes: getField(data, 'cssClasses', []).join(' '),
+        classes: getField(data, 'cssClasses', []).join(' ')
       }
     }
   })
