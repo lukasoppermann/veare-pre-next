@@ -1,9 +1,8 @@
 # config valid only for Capistrano 3.1
 # require 'capistrano/ext/multistage'
-# lock '3.5.0'
-# lock '3.7.1'
 # lock '3.10.1'
-lock '3.11.0'
+# lock '3.11.0'
+lock '3.13.0'
 set :stages, ["production"] #"staging",
 set :default_stage, "production"
 set :ssh_options, {:forward_agent => true}
