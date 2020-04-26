@@ -4,6 +4,8 @@ import richText from '../../services/newConvertRichText'
 
 export default async (data) => {
   return transformer(data, async (data): Promise<transformedDataInterface> => {
+    // transform richText
+    const content = await richText(getField(data, 'content'))
     // return format
     return <transformedDataInterface>{
       id: data.sys.id,
@@ -13,7 +15,7 @@ export default async (data) => {
         type: data.sys.contentType.sys.id,
         slug: getField(data, 'slug'),
         title: getField(data, 'title'),
-        content: await richText(getField(data, 'content'))
+        content: content.html
       }
     }
   })

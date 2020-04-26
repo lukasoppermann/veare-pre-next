@@ -88,7 +88,8 @@
       margin-top: var(--size-s);
       margin-bottom: var(--size-xl);
     }
-    .Annotation__text {
+    .Annotation__text,
+    .Annotation__text p {
       @extend %font-annotation;
     }
   }

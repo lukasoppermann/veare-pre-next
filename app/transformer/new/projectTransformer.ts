@@ -6,6 +6,8 @@ import richText from '../../services/newConvertRichText'
 
 export default async (data) => {
   return transformer(data, async (data): Promise<transformedDataInterface> => {
+    // transform richText
+    const content = await richText(getField(data, 'content'))
     // return format
     return <transformedDataInterface>{
       id: data.sys.id,
@@ -20,11 +22,12 @@ export default async (data) => {
         durationEnd: getField(data, 'durationEnd'),
         year: new Date(getField(data, 'durationStart')).getFullYear(),
         client: getField(data, 'client'),
-        challenge: await richText(getField(data, 'challenge')),
-        roleAndTeam: await richText(getField(data, 'roleAndTeam')),
+        challenge: (await richText(getField(data, 'challenge'))).html,
+        roleAndTeam: (await richText(getField(data, 'roleAndTeam'))).html,
         header: (await pictureElementTransformer(getField(data, 'header')))[0],
         previewImage: (await assetTransformer(getField(data, 'previewImage')))[0],
-        content: await richText(getField(data, 'content')),
+        content: content.html,
+        anchors: content.anchors,
         variables: getField(data, 'variables', []).reduce(
           (obj, item) => Object.assign(obj, { [item.key]: item.value }), {}
         )
@@ -32,20 +35,3 @@ export default async (data) => {
     }
   })
 }
-
-// type: data.sys.contentType.sys.id,
-// title: this.getContent(data, 'title'),
-// subtitle: this.getContent(data, 'subtitle'),
-// slug: this.getContent(data, 'slug'),
-// durationStart: this.getContent(data, 'durationStart'),
-// durationEnd: this.getContent(data, 'durationEnd'),
-// year: new Date(this.getContent(data, 'durationStart')).getFullYear(),
-// client: this.getContent(data, 'client'),
-// challenge: documentToHtmlString(this.getContent(data, 'challenge')),
-// roleAndTeam: documentToHtmlString(this.getContent(data, 'roleAndTeam')),
-// header: new PictureElementTransformer(this.getContent(data, 'header')).first(),
-// previewImage: new AssetTransformer(this.getContent(data, 'previewImage')).first(),
-// chapters: new ChapterTransformer(this.getContent(data, 'chapters')).all(),
-// variables: this.getContent(data, 'variables', []).reduce(
-//   (obj, item) => Object.assign(obj, { [item.key]: item.value }), {}
-// )

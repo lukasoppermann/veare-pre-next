@@ -13,7 +13,7 @@ export default async (data) => {
         type: data.sys.contentType.sys.id,
         slug: getField(data, 'slug'),
         classes: getField(data, 'classes', []).join(' '),
-        content: await richText(getField(data, 'content'))
+        content: (await richText(getField(data, 'content'))).html
       }
     }
   })

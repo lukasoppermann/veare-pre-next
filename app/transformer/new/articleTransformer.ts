@@ -21,7 +21,7 @@ export default async (data) => {
         rawdate: getField(data, 'date'),
         date: new Date(getField(data, 'date')).toLocaleDateString('en-US', { month: 'long', year: 'numeric', day: 'numeric' }),
         preview: getField(data, 'preview'),
-        content: content,
+        content: content.html,
         readingTime: Math.ceil(readingTime(content).time / 60000),
         category: getField(data, 'category', 'design')
       }

@@ -15,6 +15,9 @@
     z-index: 50;
   }
 }
+.Picture__Element--background-color--fafafc {
+  --backgroundColor: #fafafc;
+}
 .Picture__Element .Annotation {
   position: relative;
   z-index: 50;
@@ -40,6 +43,9 @@
   @include mq('s') {
     padding: 0;
   }
+}
+.Picture__Element--background--tilted {
+  margin-top: calc(var(--baseline) * 6) !important;
 }
 .Picture__Element--background::after,
 .Picture__Element--background--tilted::after {

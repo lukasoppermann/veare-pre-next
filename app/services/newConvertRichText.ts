@@ -1,5 +1,5 @@
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
-import { Document as richTextDocument, BLOCKS } from '@contentful/rich-text-types'
+import { Document as richTextDocument, BLOCKS, INLINES } from '@contentful/rich-text-types'
 // templates
 import block from '../templates/newPartials/block'
 import boxedContentSection from '../templates/newPartials/boxedContent'
@@ -7,15 +7,18 @@ import section from '../templates/newPartials/section'
 import collection from '../templates/newPartials/collection'
 import pictureElement from '../templates/newPartials/pictureElement'
 import code from '../templates/newPartials/code'
+import picture from '../templates/newPartials/picture'
 // Transformer
 import blockTransformer from '../transformer/new/blockTransformer'
 import boxedContentTransformer from '../transformer/new/boxedContentTransformer'
 import sectionTransformer from '../transformer/new/sectionTransformer'
 import collectionTransformer from '../transformer/new/collectionTransformer'
 import pictureElementTransformer from '../transformer/new/pictureElementTransformer'
+import pictureTransformer from '../transformer/new/pictureTransformer'
 import codeTransformer from '../transformer/new/codeTransformer'
 
 const { renderToString } = require('@popeindustries/lit-html-server')
+
 // Transformer functions
 const transformerFunctions = {
   block: blockTransformer,
@@ -23,7 +26,8 @@ const transformerFunctions = {
   section: sectionTransformer,
   collection: collectionTransformer,
   code: codeTransformer,
-  pictureElement: pictureElementTransformer
+  pictureElement: pictureElementTransformer,
+  picture: pictureTransformer
 }
 
 // templates functions for embeddedEntries
@@ -33,9 +37,29 @@ const templates = {
   section: section,
   collection: collection,
   code: code,
-  pictureElement: pictureElement
+  pictureElement: pictureElement,
+  picture: picture
 }
-
+/**
+ * convertHyperlinks
+ * @param  node          richTextNode
+ * @param  next
+ * @return                   [description]
+ */
+const convertHyperlinks = (node, next, anchors) => {
+  // split uri
+  const uri = node.data.uri.split("#")
+  // test if link is anchor
+  if (uri[0] === 'name=') {
+    const name = uri[1].toLowerCase().replace(/\s/g, '-').replace(/[^&-A-Za-z0-9]/g, '')
+    // store anchor in data store
+    anchors.push(name)
+    // return anchor link with name tag
+    return `<a name="${name}">${next(node.content)}</a>`
+  }
+  // return normal link
+  return `<a href="${node.data.uri}">${next(node.content)}</a>`
+}
 /**
  * asnyc convertEmbeddedEntries
  * @param  richText          richTextDocument
@@ -43,6 +67,7 @@ const templates = {
  * @return                   [description]
  */
 const convertEmbeddedEntries = async (richText: richTextDocument, templates: {[key: string]: Function}): Promise<Array<any>> => {
+  // return if richText is empty
   if (richText === null) {
     return []
   }
@@ -71,12 +96,6 @@ const convertEmbeddedEntries = async (richText: richTextDocument, templates: {[k
   )
 }
 /**
- * stringToAnchor
- * @param  string text string
- * @return          [description]
- */
-const stringToAnchor = (string:any) => typeof string.value !== 'string' ? '' : string.value.toLowerCase().replace(/\s/g, '-').replace(/[^-A-Za-z0-9]/g, '')
-/**
  * async convertRichText
  * @param  richText contentful
  * @return          [description]
@@ -84,8 +103,10 @@ const stringToAnchor = (string:any) => typeof string.value !== 'string' ? '' : s
 export default async (richText: richTextDocument) => {
   // get all converted embedded-entries
   const embedded = await convertEmbeddedEntries(richText, templates)
-  // return richText as HTML
-  return documentToHtmlString(richText, {
+  // reset anchor variable
+  const anchors: Array<String> = []
+  // convert richText as HTML
+  const html: String = documentToHtmlString(richText, {
     renderNode: {
       [BLOCKS.EMBEDDED_ENTRY]: (node) => {
         try {
@@ -95,13 +116,12 @@ export default async (richText: richTextDocument) => {
         }
       },
       [BLOCKS.HR]: () => '<div class="horizontal-rule"><hr></div>',
-      // [BLOCKS.PARAGRAPH]: (node, next) => await renderToString(html`<p>${unsafeHTML(next(node.content))}</p>`),
-      [BLOCKS.HEADING_1]: (node, next) => `<a class="link__anchor" name="heading-${stringToAnchor(node.content[0])}"></a><h1>${next(node.content)}</h1>`,
-      [BLOCKS.HEADING_2]: (node, next) => `<a class="link__anchor" name="heading-${stringToAnchor(node.content[0])}"></a><h2>${next(node.content)}</h2>`,
-      [BLOCKS.HEADING_3]: (node, next) => `<a class="link__anchor" name="heading-${stringToAnchor(node.content[0])}"></a><h3>${next(node.content)}</h3>`,
-      [BLOCKS.HEADING_4]: (node, next) => `<a class="link__anchor" name="heading-${stringToAnchor(node.content[0])}"></a><h4>${next(node.content)}</h4>`,
-      [BLOCKS.HEADING_5]: (node, next) => `<a class="link__anchor" name="heading-${stringToAnchor(node.content[0])}"></a><h5>${next(node.content)}</h5>`,
-      [BLOCKS.HEADING_6]: (node, next) => `<a class="link__anchor" name="heading-${stringToAnchor(node.content[0])}"></a><h6>${next(node.content)}</h6>`
+      [INLINES.HYPERLINK]: (node, next) => convertHyperlinks(node, next, anchors)
     }
   })
+  // return data object
+  return {
+    html: html,
+    anchors: anchors
+  }
 }

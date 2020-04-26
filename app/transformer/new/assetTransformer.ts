@@ -4,6 +4,10 @@ import jsonParse from '../../services/jsonParse'
 
 export default async (data) => {
   return transformer(data, async (data): Promise<transformedDataInterface> => {
+    let description = getField(data, 'description')
+    try {
+      description = jsonParse(description)
+   } catch(e) {}
     // return format
     return <transformedDataInterface>{
       id: data.sys.id,
@@ -12,7 +16,7 @@ export default async (data) => {
       fields: {
         type: data.sys.type,
         title: getField(data, 'title'),
-        description: jsonParse(getField(data, 'description')),
+        description: description,
         url: getField(data, 'file').url,
         fileName: getField(data, 'file').fileName,
         details: getField(data, 'file').details,

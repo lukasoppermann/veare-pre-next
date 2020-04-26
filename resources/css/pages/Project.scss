@@ -313,6 +313,8 @@
 }
 // NEW Project page
 .Project {
+  --section-gap: 12;
+  --row-gap: 0;
   --horizontal-rule-color: var(--project-color, var(--blue));
   h2,
   h3,
@@ -332,15 +334,15 @@
   }
   h5 {
     @extend %font-subtitle-uppercase-small;
-    @include baseline(3);
+    @include baseline(var(--section-gap));
     color: var(--black-40);
     grid-column: columns;
   }
+  h6 {
+    @extend %titled-title;
+  }
   p {
     @extend %font-paragraph-sans;
-    &:not(:first-child) {
-      margin-top: calc(var(--baseline) * 2);
-    }
   }
   blockquote {
     hyphens: auto;
@@ -354,7 +356,62 @@
       @extend %font-paragraph-sans-big;
     }
   }
+  p:not(:first-child) {
+    margin-top: calc(var(--baseline) * 2);
+  }
+  .Annotation p {
+    @extend %font-annotation;
+  }
+  figure + p:not(:first-child) {
+    margin-top: calc(var(--baseline) * 4);
+  }
   .horizontal-rule {
     grid-column: columns;
+  }
+  .Block {
+    grid-column: full-bleed;
+  }
+}
+
+/* ====================================
+    Tilted Title
+==================================== */
+%titled-title {
+  display: flex;
+  height: calc(var(--baseline) * 2);
+  overflow: visible;
+  grid-column-start: sidebar-left 1;
+  width: 300px;
+  transform-origin: top left;
+  transform: rotate(90deg) translateY(-100%);
+  @include mq('s') {
+    grid-column: columns;
+    grid-row-start: auto;
+    transform: rotate(0deg);
+    @include baseline(2,"margin-bottom");
+  }
+  counter-increment: titled-title-counter;
+  @extend %font-subtitle-uppercase-small;
+  flex: 0 0 auto;
+  @include baseline(var(--section-gap));
+  margin-bottom: 0;
+  a {
+    padding-right: var(--vs-s);
+  }
+  &::before {
+    @include pseudo("relative");
+    order: 2;
+    height: 2px;
+    width: var(--vs-xl);
+    align-self: center;
+    transform: translateY(-1px);
+    background-color: var(--black);
+  }
+  &::after {
+    @extend %font-subtitle-uppercase-small;
+    order: 3;
+    padding-left: var(--vs-s);
+    content: counter(titled-title-counter, decimal-leading-zero);
+    font-feature-settings: "tnum", "zero";
   }
 }

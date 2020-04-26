@@ -14,7 +14,11 @@ const links = (base) => [
   `${base}/portfolio/lufthansa-germanwings`,
   `${base}/portfolio/juice-control`,
   `${base}/portfolio/decks`,
-  `${base}/privacy`
+  `${base}/privacy`,
+  // missing
+  `${base}/work/missing`,
+  `${base}/blog/missing`,
+  `${base}/page-missing`
 ]
 
 test('all links are reachable', async () => {

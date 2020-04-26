@@ -1,11 +1,11 @@
 import layout from '../layout'
 import pictureElement from '../partials/pictureElement'
 const { html } = require('@popeindustries/lit-html-server')
+const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 
 export default (project) => {
   return layout(html`
-  ${console.debug('IN TEMp:',project)}
   <style media="screen">
     :root{
       ${ project.variables.color !== undefined ? '--project-color:' + project.variables.color + ';': ''}
@@ -42,12 +42,12 @@ export default (project) => {
       </div>
       <!-- {{!-- TOC --}} -->
       <ul class="Toc Project__toc" data-toc>
-      <!-- TOC HERE -->
+      ${repeat(project.anchors, (anchor) => html`<li class="Toc__chapter"><a class="Toc__chapter__link" href="#${anchor}"><div class="Toc__chapter__title">${anchor.replace(/-/g,' ')}</div></a></li>`)}
       </ul>
     </div>
   </section>
-  ${unsafeHTML(project.content)}
   <div class="Grid">
+    ${unsafeHTML(project.content)}
     <a class="Project__back_link" href="/home#portfolio">← Back</a>
   </div>
 `, {
@@ -90,6 +90,3 @@ export default (project) => {
 //     return html`<li class="Toc__chapter"><a class="Toc__chapter__link" href="#${chapter.fields.slug}"><div class="Toc__chapter__title">${chapter.fields.title}</div></a></li>`
 //   }
 // })}
-
-// CHAPTERS
-// ${repeat(project.chapters, (chapterData) => chapter(chapterData.fields, 'Chapter--side-title'))}
