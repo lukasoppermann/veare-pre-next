@@ -7,5 +7,8 @@ before_script: npm install
 env:
   - NODE_PORT=3300 NODE_ENV=test
 script:
-  - npm run ts-node-dev &
-  - npm run travis
+  - npm run test:js
+  - npm run test:css
+  - npm run build:css
+  - npm run build:js
+  - NODE_PORT=3300 npm run test-server && NODE_PORT=3300 npm run test:integration && forever stopall

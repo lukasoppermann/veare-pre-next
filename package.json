@@ -124,7 +124,8 @@
     "test:integration": "jest tests/integration --detectOpenHandles",
     "integration": "NODE_PORT=3300 npm run test-server && NODE_PORT=3300 jest tests/integration --detectOpenHandles",
     "test:css": "stylelint resources/css",
-    "travis": "npm run build:css && npm run build:js && npm run test:all",
+    "travis-master": "npm run build:css && npm run build:js && npm run test:all",
+    "travis": "npm run build:css && npm run build:js && npm run test:js && npm run test:css",
     "removeCompiled": "branch=$(git branch | grep \\* | cut -d ' ' -f2) && if test \"$branch\" != \"master\" ; then git reset HEAD public/ ; fi",
     "release": "git checkout latest-build && npm run build && git add dist/*.js dist/*.js.map -f && git commit -m 'create build'",
     "standard": "standardx 'app.js' 'resources/js/*.ts' 'app/**/*.js' 'app/**/*.ts' | snazzy"
