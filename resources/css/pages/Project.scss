@@ -332,14 +332,22 @@
       grid-column: columns;
     }
   }
+  h4 {
+    @include baseline(5);
+  }
   h5 {
     @extend %font-subtitle-uppercase-small;
-    @include baseline(var(--section-gap));
+    @include baseline(4);
     color: var(--black-40);
     grid-column: columns;
   }
   h6 {
     @extend %titled-title;
+  }
+  h6 + h5 {
+    @include mq('s', 'min') {
+      @include baseline(var(--section-gap));
+    }
   }
   p {
     @extend %font-paragraph-sans;

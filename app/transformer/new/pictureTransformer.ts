@@ -3,7 +3,6 @@ import transformer, { getField } from './transformer'
 import assetTransformer from './assetTransformer'
 import richText from '../../services/newConvertRichText'
 
-
 const styles = {
   'Centered (default)': 'center',
   'Wide': 'wide',

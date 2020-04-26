@@ -2,6 +2,9 @@
   list-style: none;
   counter-reset: chapter;
 }
+.Toc__chapter {
+  margin-left: 0;
+}
 .Toc__chapter:not(:first-child) {
   margin-top: var(--vs-m);
 }
