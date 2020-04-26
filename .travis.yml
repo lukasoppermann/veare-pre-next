@@ -11,4 +11,4 @@ script:
   - npm run test:css
   - npm run build:css
   - npm run build:js
-  - NODE_PORT=3300 npm run test-server && NODE_PORT=3300 npm run test:integration && forever stopall
+  - if [ $TRAVIS_BRANCH == "master" ]; then NODE_PORT=3300 npm run test-server && NODE_PORT=3300 npm run test:integration && forever stopall; fi
