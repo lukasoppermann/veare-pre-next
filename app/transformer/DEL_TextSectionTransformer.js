@@ -1,5 +1,5 @@
 // import convertRichText from '../services/convertRichText'
-const convertMarkdown = require('../services/convertMarkdown')
+// const convertMarkdown = require('../services/convertMarkdown')
 const Transformer = require('./Transformer')
 
 class TextSectionTransformer extends Transformer {
@@ -10,7 +10,7 @@ class TextSectionTransformer extends Transformer {
       updatedAt: data.sys.updatedAt,
       fields: {
         type: data.sys.contentType.sys.id,
-        text: convertMarkdown(this.getContent(data, 'text')),
+        // text: convertMarkdown(this.getContent(data, 'text')),
         textType: this.getContent(data, 'textType', 'text').toLowerCase()
       }
     }
