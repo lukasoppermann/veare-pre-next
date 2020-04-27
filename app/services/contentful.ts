@@ -1,18 +1,6 @@
+import { errorLog as errorLogFn } from './errorhandling'
 const client = require('./client')
 const cache = require('./cacheService')()
-// errorHandler
-const errorLogFn = error => {
-  if (typeof error === 'string') {
-    console.error(error)
-  } else {
-    console.error('An error occured …',
-      error.Error || null,
-      error.host || null,
-      error.errorno || null,
-      error.code || null
-    )
-  }
-}
 
 const contentful = async (cb, errorLog = errorLogFn) => {
   // get all entries
