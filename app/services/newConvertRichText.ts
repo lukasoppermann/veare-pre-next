@@ -3,19 +3,19 @@ import { Document as richTextDocument, BLOCKS, INLINES } from '@contentful/rich-
 // templates
 import block from '../templates/newPartials/block'
 import boxedContentSection from '../templates/newPartials/boxedContent'
-import section from '../templates/newPartials/section'
-import collection from '../templates/newPartials/collection'
 import pictureElement from '../templates/newPartials/pictureElement'
 import code from '../templates/newPartials/code'
 import picture from '../templates/newPartials/picture'
+import projectPreview from '../templates/newPartials/projectPreview'
+import link from '../templates/newPartials/link'
 // Transformer
 import blockTransformer from '../transformer/new/blockTransformer'
 import boxedContentTransformer from '../transformer/new/boxedContentTransformer'
-import sectionTransformer from '../transformer/new/sectionTransformer'
-import collectionTransformer from '../transformer/new/collectionTransformer'
 import pictureElementTransformer from '../transformer/new/pictureElementTransformer'
 import pictureTransformer from '../transformer/new/pictureTransformer'
 import codeTransformer from '../transformer/new/codeTransformer'
+import projectTransformer from '../transformer/new/projectTransformer'
+import linkTransformer from '../transformer/new/linkTransformer'
 
 const { renderToString } = require('@popeindustries/lit-html-server')
 
@@ -23,22 +23,22 @@ const { renderToString } = require('@popeindustries/lit-html-server')
 const transformerFunctions = {
   block: blockTransformer,
   boxedContentSection: boxedContentTransformer,
-  section: sectionTransformer,
-  collection: collectionTransformer,
+  project: projectTransformer,
   code: codeTransformer,
   pictureElement: pictureElementTransformer,
-  picture: pictureTransformer
+  picture: pictureTransformer,
+  link: linkTransformer
 }
 
 // templates functions for embeddedEntries
 const templates = {
   block: block,
   boxedContentSection: boxedContentSection,
-  section: section,
-  collection: collection,
+  project: projectPreview,
   code: code,
   pictureElement: pictureElement,
-  picture: picture
+  picture: picture,
+  link: link
 }
 /**
  * convertHyperlinks
