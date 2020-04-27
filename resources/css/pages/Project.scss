@@ -23,7 +23,7 @@
   }
   @include mq('s','min') {
     margin-top: var(--vs-xg);
-    &:nth-child(2n) {
+    &:nth-of-type(2n+1) {
       grid-column-start: column 2;
     }
   }
@@ -92,7 +92,7 @@
     transform: translate(0, 0);
   }
 }
-.Project-card:nth-child(2n) .Project-card__text {
+.Project-card:nth-of-type(2n+1) .Project-card__text {
   @include mq('s', 'min') {
     right: auto;
     left: 0;

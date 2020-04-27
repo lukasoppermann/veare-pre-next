@@ -1,5 +1,5 @@
 // templates
-import projectPreviewTemplate from './preview_project'
+import projectPreviewTemplate from './projectPreview'
 import linkTemplate from './link'
 // import linkItem from './link'
 // utlities
