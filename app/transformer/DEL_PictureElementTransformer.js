@@ -2,7 +2,7 @@
 
 const Transformer = require('./Transformer')
 const AssetTransformer = require('./AssetTransformer')
-const PictureSourceTransformer = require('./PictureSourceTransformer')
+// const PictureSourceTransformer = require('./PictureSourceTransformer')
 
 class PictureElementTransformer extends Transformer {
   transform (data) {
