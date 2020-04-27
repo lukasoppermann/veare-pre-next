@@ -11,8 +11,8 @@ export default async (data) => {
       id: data.sys.id,
       createdAt: data.sys.createdAt,
       updatedAt: data.sys.updatedAt,
+      contentType: data.sys.contentType.sys.id,
       fields: {
-        type: data.sys.contentType.sys.id,
         fileOrPath: getField(data, 'fileOrPath'),
         code: hljs.highlight(programmingLanguage, getField(data, 'code', true)).value,
         language: programmingLanguage

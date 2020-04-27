@@ -21,7 +21,7 @@ const startServer = async () => {
 
 // contentful has loaded
 contentful(startServer, (error) => {
-  console.error(`🚨 \x1b[31mError: ${error.code} when trying to connect to ${error.hostname}\x1b[0m`)
+  console.error(`🚨 \x1b[31mError: ${error.code} when trying to connect to ${error.hostname}\x1b[0m`, error)
   // run routes even when contentful connection fails
   startServer()
 })

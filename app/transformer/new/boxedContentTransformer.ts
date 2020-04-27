@@ -8,8 +8,8 @@ export default async (data) => {
       id: data.sys.id,
       createdAt: data.sys.createdAt,
       updatedAt: data.sys.updatedAt,
+      contentType: data.sys.contentType.sys.id,
       fields: {
-        type: data.sys.contentType.sys.id,
         items: getField(data, 'items').map(item => {
           item.grow = '1'
           if (item.type !== undefined) {

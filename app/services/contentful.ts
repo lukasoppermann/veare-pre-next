@@ -1,49 +1,71 @@
 import { errorLog as errorLogFn } from './errorhandling'
+// transformer
+import articleTransformer from '../transformer/new/articleTransformer'
+import assetTransformer from '../transformer/new/assetTransformer'
+import blockTransformer from '../transformer/new/blockTransformer'
+import boxedContentTransformer from '../transformer/new/boxedContentTransformer'
+import codeTransformer from '../transformer/new/codeTransformer'
+import linkTransformer from '../transformer/new/linkTransformer'
+import pageTransformer from '../transformer/new/pageTransformer'
+import pictureElementTransformer from '../transformer/new/pictureElementTransformer'
+import pictureTransformer from '../transformer/new/pictureTransformer'
+import projectTransformer from '../transformer/new/projectTransformer'
+// Transformer functions
+const transformerFunctions = {
+  article: articleTransformer,
+  asset: assetTransformer,
+  block: blockTransformer,
+  boxedContentSection: boxedContentTransformer,
+  code: codeTransformer,
+  link: linkTransformer,
+  page: pageTransformer,
+  pictureElement: pictureElementTransformer,
+  picture: pictureTransformer,
+  project: projectTransformer
+}
+// utils
 const client = require('./client')
 const cache = require('./cacheService')()
 
-const contentful = async (cb, errorLog = errorLogFn) => {
-  // get all entries
-  const entriesPromise = client.getEntries({
-    limit: 1000,
-    order: 'sys.createdAt',
-    locale: '*'
-  }).then((response) => {
-    return response
-  })
-  // get all content types
-  const contentTypesPromise = client.getContentTypes().then((res) => {
-    return res
-  })
-
-  Promise.all([entriesPromise, contentTypesPromise]).then((values) => {
-    const [entries, contentTypes] = values
-    initializeContent(contentTypes, entries, cb)
-  }).catch(errorLog)
+const contentful = async (callback, errorLog = errorLogFn) => {
+  try {
+    // get all entries
+    const entriesPromise = client.getEntries({
+      limit: 1000,
+      order: 'sys.createdAt',
+      locale: '*'
+    }).then(entries => transformEntries(entries))
+    // get all content types
+    const contentTypesPromise = client.getContentTypes()
+    // await content
+    const [entries, contentTypes] = await Promise.all([entriesPromise, contentTypesPromise])
+    // console.debug(entries[1].fields.previewImage.fields)
+    // console.debug(contentTypes.items)
+    // cache content
+    cacheContent(contentTypes, entries)
+    // run callback
+    callback()
+  } catch (e) {
+    errorLog(e)
+  }
 }
 
-const initializeContent = (types, entries, cb) => {
+const cacheContent = (contentTypes, entries) => {
   // get type ids
-  if (types !== undefined) {
-    const typeIds = types.items.map((item) => item.sys.id)
-    // prepare entries
-    // entries.items = entries.items.map(entry => {
-    //   Object.keys(entry.fields).forEach(function (key) {
-    //     entry.fields[key] = entry.fields[key]['en-US']
-    //   })
-    //   return entry
-    // })
-    // get content by type
-    typeIds.forEach((contentTypeId) => {
-      const content = entries.items.filter((entry) => {
-        return entry.sys.contentType.sys.id === contentTypeId
-      })
-      cache.put(contentTypeId, content)
-    })
-  } else {
-    throw new Error('No types array provided to initializeContent function.')
-  }
-  cb()
+  contentTypes.items.forEach(item => {
+  // get content by type
+    cache.put(item.sys.id, entries.filter(entry => {
+      // console.debug('WEEEEE',entry)
+      return entry.contentType === item.sys.id
+    }))
+  })
+}
+
+const transformEntries = async entries => {
+  // transform all entries
+  entries = entries.items.map(entry => transformerFunctions[entry.sys.contentType.sys.id](entry))
+  // await all transformations and make sure to extract the items from the array
+  return Promise.all(entries).then(entries => entries.map(entry => entry[0]))
 }
 
 module.exports = contentful
