@@ -1,6 +1,6 @@
-const Greenlock = require('greenlock-express')
+import contentful from './services/contentful'
 
-const contentful = require('./services/contentful')
+const Greenlock = require('greenlock-express')
 const letsencryptConfig = require('./config/letsencrypt')
 const startServer = async () => {
   const app = await require('./app.js')()
@@ -19,9 +19,15 @@ const startServer = async () => {
   }
 }
 
-// contentful has loaded
-contentful(startServer, (error) => {
+try {
+  // get content from contentful & run transformers
+  contentful()
+  // start server
+    .then(startServer())
+} catch (error) {
+  // catch & print error
   console.error(`🚨 \x1b[31mError: ${error.code} when trying to connect to ${error.hostname}\x1b[0m`, error)
-  // run routes even when contentful connection fails
+  console.error(error)
+  // try to start server anyway
   startServer()
-})
+}

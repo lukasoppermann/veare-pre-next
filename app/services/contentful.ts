@@ -1,4 +1,3 @@
-import { errorLog as errorLogFn } from './errorhandling'
 // transformer
 import articleTransformer from '../transformer/new/articleTransformer'
 import assetTransformer from '../transformer/new/assetTransformer'
@@ -27,27 +26,19 @@ const transformerFunctions = {
 const client = require('./client')
 const cache = require('./cacheService')()
 
-const contentful = async (callback, errorLog = errorLogFn) => {
-  try {
-    // get all entries
-    const entriesPromise = client.getEntries({
-      limit: 1000,
-      order: 'sys.createdAt',
-      locale: '*'
-    }).then(entries => transformEntries(entries))
-    // get all content types
-    const contentTypesPromise = client.getContentTypes()
-    // await content
-    const [entries, contentTypes] = await Promise.all([entriesPromise, contentTypesPromise])
-    // console.debug(entries[1].fields.previewImage.fields)
-    // console.debug(contentTypes.items)
-    // cache content
-    cacheContent(contentTypes, entries)
-    // run callback
-    callback()
-  } catch (e) {
-    errorLog(e)
-  }
+export default async () => {
+  // get all entries
+  const entriesPromise = client.getEntries({
+    limit: 1000,
+    order: 'sys.createdAt',
+    locale: '*'
+  }).then(entries => transformEntries(entries))
+  // get all content types
+  const contentTypesPromise = client.getContentTypes()
+  // await content
+  const [entries, contentTypes] = await Promise.all([entriesPromise, contentTypesPromise])
+  // cache content
+  return cacheContent(contentTypes, entries)
 }
 
 const cacheContent = (contentTypes, entries) => {
@@ -55,7 +46,6 @@ const cacheContent = (contentTypes, entries) => {
   contentTypes.items.forEach(item => {
   // get content by type
     cache.put(item.sys.id, entries.filter(entry => {
-      // console.debug('WEEEEE',entry)
       return entry.contentType === item.sys.id
     }))
   })
@@ -67,5 +57,3 @@ const transformEntries = async entries => {
   // await all transformations and make sure to extract the items from the array
   return Promise.all(entries).then(entries => entries.map(entry => entry[0]))
 }
-
-module.exports = contentful
