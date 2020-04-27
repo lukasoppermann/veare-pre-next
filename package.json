@@ -131,10 +131,8 @@
     "standard": "standardx 'app.js' 'resources/js/*.ts' 'app/**/*.js' 'app/**/*.ts' | snazzy"
   },
   "pre-commit": [
+    "test:js",
     "test:css",
     "removeCompiled"
-  ],
-  "pre-push": [
-    "test:all"
   ]
 }
