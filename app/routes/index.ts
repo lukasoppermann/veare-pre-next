@@ -1,3 +1,4 @@
+import contentful from '../services/contentful'
 const express = require('express')
 const router = express.Router()
 const basicAuth = require('express-basic-auth')
@@ -32,7 +33,7 @@ router.post('/contentful', basicAuth({
   users: {
     [contentfulConfig.webhookUser]: contentfulConfig.webhookPassword
   }
-}), require('../services/contentfulWebhook'))
+}), contentful)
 // log non-existent pages
 router.get('/:pageCalled', (req, res) => {
   console.info('tried to retrieve non-existing page: ' + req.params.pageCalled)
