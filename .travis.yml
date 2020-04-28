@@ -7,6 +7,7 @@ before_script: npm install
 env:
   - NODE_PORT=3300 NODE_ENV=test
 script:
+  - echo $TRAVIS_BRANCH
   - npm run test:js
   - npm run test:css
   - npm run build:css

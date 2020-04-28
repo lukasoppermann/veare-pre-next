@@ -19,6 +19,10 @@
       }
     ]
   },
+  "include": [
+      "app/**/*",
+      "types/**/*"
+  ],
   "typeRoots": [
     "./types",
     "./node_modules/@types",

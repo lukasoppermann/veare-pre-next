@@ -18,9 +18,7 @@ const flatCacheWrapper = () => {
     return true
   }
   // cache get
-  cache.get = (key) => {
-    return cache.data.getKey(key)
-  }
+  cache.get = key => cache.data.getKey(key)
   // return cache
   return cache
 }
@@ -35,9 +33,8 @@ const memoryCacheWrapper = () => {
     return memoryCache.put(key, value)
   }
   // cache get
-  cache.get = (key) => {
-    return memoryCache.get(key)
-  }
+  cache.get = key => memoryCache.get(key)
+
   // return cache
   return cache
 }

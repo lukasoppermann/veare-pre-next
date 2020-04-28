@@ -1,15 +1,12 @@
-import projectTransformer from '../transformer/new/projectTransformer'
-
 import project from '../templates/pages/project'
 const { renderToString } = require('@popeindustries/lit-html-server')
 const cache = require('../services/cacheService')()
-// const ProjectModel = require('../models/Project')()
 
 module.exports = async (req, res) => {
   // get slug
   const slug = req.path.replace(/^\/|\/$/g, '')
   // return one project
-  const content = await projectTransformer(cache.get('project'))
+  const content = cache.get('project')
   // get this page
   const projectContent = content.find((item: any) => item.fields.slug === slug)
   // redirect home if param is neither slug nor alias

@@ -1,5 +1,5 @@
 import layout from '../layout'
-import pictureElement from '../partials/pictureElement'
+import pictureElement from '../newPartials/pictureElement'
 const { html } = require('@popeindustries/lit-html-server')
 const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')

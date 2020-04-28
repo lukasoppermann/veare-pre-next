@@ -1,6 +1,6 @@
 import { transformerInterface } from '../../../types/transformer'
 
-const transformData = async (items, transformer): Promise<any> => {
+const transformData = async (items, transformer): Promise<Array<any>> => {
   if (!Array.isArray(items)) {
     items = [items]
   }

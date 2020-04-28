@@ -13,8 +13,8 @@ export default async (data) => {
       id: data.sys.id,
       createdAt: data.sys.createdAt,
       updatedAt: data.sys.updatedAt,
+      contentType: data.sys.type,
       fields: {
-        type: data.sys.type,
         title: getField(data, 'title'),
         description: description,
         url: getField(data, 'file').url,
