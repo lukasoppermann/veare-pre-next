@@ -108,12 +108,12 @@
     "js:compile": "rollup --config --environment FETCHINJECTVERSION:$(npm list --depth=0 | grep fetch-inject | sed 's/[^0-9.]*\\([0-9.]*\\).*/\\1/')",
     "js:rev": "node-file-rev public/js/*.js --manifest=public/rev-manifest.json --root=public/",
     "test": "npm run test:js",
-    "test:all": "npm run test:css && NODE_PORT=3300 npm run test-server && NODE_PORT=3300 npm run test:js && NODE_PORT=3300 npm run test:integration && forever stopall",
-    "test:js": "jest tests/unit && standardx 'app.js' 'resources/js/*.ts' 'app/**/*.js' | snazzy",
+    "test:all": "npm run test:css && npm run ts && NODE_PORT=3300 npm run test-server && NODE_PORT=3300 npm run test:js && NODE_PORT=3300 npm run test:integration && forever stopall",
+    "test:js": "npm run ts && jest tests/unit && standardx 'app.js' 'resources/js/*.ts' 'app/**/*.js' | snazzy",
     "test:integration": "jest tests/integration --detectOpenHandles",
     "integration": "NODE_PORT=3300 npm run test-server && NODE_PORT=3300 jest tests/integration --detectOpenHandles",
     "test:css": "stylelint resources/css",
-    "ts": "tsc app/**/*ts --noEmit --pretty",
+    "ts": "tsc --noEmit --pretty",
     "travis-master": "npm run build:css && npm run build:js && npm run test:all",
     "travis": "npm run build:css && npm run build:js && npm run test:js && npm run test:css",
     "removeCompiled": "branch=$(git branch | grep \\* | cut -d ' ' -f2) && if test \"$branch\" != \"master\" ; then git reset HEAD public/ ; fi",
@@ -122,6 +122,7 @@
   },
   "pre-commit": [
     "standard",
+    "ts",
     "test:css",
     "removeCompiled"
   ]

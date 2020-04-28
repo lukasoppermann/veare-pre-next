@@ -23,7 +23,7 @@ try {
   // get content from contentful & run transformers
   contentful()
   // start server
-    .then(startServer())
+    .then(() => startServer())
 } catch (error) {
   // catch & print error
   console.error(`🚨 \x1b[31mError: ${error.code} when trying to connect to ${error.hostname}\x1b[0m`, error)

@@ -1,3 +1,4 @@
+import { transformedDataInterface } from '../../types/transformer'
 // transformer
 import articleTransformer from '../transformer/new/articleTransformer'
 import assetTransformer from '../transformer/new/assetTransformer'
@@ -53,7 +54,7 @@ const cacheContent = (contentTypes, entries) => {
 
 const transformEntries = async entries => {
   // transform all entries
-  entries = entries.items.map(entry => transformerFunctions[entry.sys.contentType.sys.id](entry))
+  const transformedEntries: [transformedDataInterface] = entries.items.map(entry => transformerFunctions[entry.sys.contentType.sys.id](entry))
   // await all transformations and make sure to extract the items from the array
-  return Promise.all(entries).then(entries => entries.map(entry => entry[0]))
+  return Promise.all(transformedEntries).then((entries: Array<transformedDataInterface>) => entries.map(entry => entry[0]))
 }
