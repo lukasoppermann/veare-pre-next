@@ -8,8 +8,8 @@ export default (link) => html`
   </div>
   <figure class="Project-card__image-container">
     <picture class="Project-card__image">
-    <source type="image/webp" srcset="${link.picture.fields.image.fields.url}?fm=webp">
-    <img src="${link.picture.fields.image.fields.url}" alt="${link.picture.fields.title}" loading="lazy"/>
+    <source type="image/webp" srcset="${link.picture.fields.sources[0].fields.url}?fm=webp">
+    <img src="${link.picture.fields.sources[0].fields.url}" alt="${link.picture.fields.title}" loading="lazy"/>
     </picture>
   </figure>
 </a>
