@@ -107,7 +107,7 @@
     "js:move": "cp $npm_package_config_moveFilesJs public/js/",
     "js:compile": "rollup --config --environment FETCHINJECTVERSION:$(npm list --depth=0 | grep fetch-inject | sed 's/[^0-9.]*\\([0-9.]*\\).*/\\1/')",
     "js:rev": "node-file-rev public/js/*.js --manifest=public/rev-manifest.json --root=public/",
-    "test": "npm run test:js",
+    "test": "npm run test:js && npm run test:css",
     "test:all": "npm run test:css && npm run ts && NODE_PORT=3300 npm run test-server && NODE_PORT=3300 npm run test:js && NODE_PORT=3300 npm run test:integration && forever stopall",
     "test:js": "npm run ts && jest tests/unit && standardx 'app.js' 'resources/js/*.ts' 'app/**/*.js' | snazzy",
     "test:integration": "jest tests/integration --detectOpenHandles",
