@@ -1,6 +1,6 @@
 import { transformedDataInterface } from '../../../types/transformer'
 import transformer, { getField } from './transformer'
-import pictureElementTransformer from './pictureElementTransformer'
+// import pictureTransformer from './pictureTransformer'
 import richText from '../../services/newConvertRichText'
 const readingTime = require('reading-time')
 
@@ -17,7 +17,7 @@ export default async (data) => {
       fields: {
         slug: getField(data, 'slug'),
         title: getField(data, 'title'),
-        featuredImage: (pictureElementTransformer(getField(data, 'featuredImage')))[0],
+        // featuredImage: (await pictureTransformer(getField(data, 'featuredImage')))[0],
         rawdate: getField(data, 'date'),
         date: new Date(getField(data, 'date')).toLocaleDateString('en-US', { month: 'long', year: 'numeric', day: 'numeric' }),
         preview: getField(data, 'preview'),
