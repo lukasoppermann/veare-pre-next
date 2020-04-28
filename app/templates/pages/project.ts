@@ -1,5 +1,5 @@
 import layout from '../layout'
-import pictureElement from '../newPartials/pictureElement'
+import picture from '../newPartials/picture'
 const { html } = require('@popeindustries/lit-html-server')
 const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
@@ -13,7 +13,7 @@ export default (project) => {
   </style>
   <header class="Header Header--project Grid Grid--rows">
     <h2 class="Header__title">${project.title}</h2>
-    ${pictureElement(project.header.fields, 'eager')}
+    ${picture(project.header.fields, 'eager')}
   </header>
   <section class="Chapter">
     <div class="Section Grid">
