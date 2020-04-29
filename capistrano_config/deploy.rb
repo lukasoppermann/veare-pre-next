@@ -23,7 +23,7 @@ namespace :deploy do
             # upload .env file from local computer to current directory on server
             upload!('.env' , "#{fetch(:deploy_to)}/current/.env")
             # upload app/config/greenlock-config.json file from local computer to shared/greenlock.d/config.json
-            upload!('app/config/greenlock-config.json' , "#{fetch(:deploy_to)}/shared/greenlock.d/config.json")
+            # upload!('app/config/greenlock-config.json' , "#{fetch(:deploy_to)}/shared/greenlock.d/config.json")
             # stop all forever servers
             execute "cd #{fetch(:deploy_to)}/current && node_modules/.bin/forever stopall"
             # start server
