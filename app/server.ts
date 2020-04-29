@@ -19,9 +19,9 @@ const startServer = async () => {
     require('greenlock-express')
       .init({
         // packageRoot: __dirname,
-        packageRoot: "../",
+        packageRoot: '../',
         // contact for security and critical bug notices
-        maintainerEmail: "oppermann.lukas@gmail.com",
+        maintainerEmail: 'oppermann.lukas@gmail.com',
         // where to look for configuration
         configDir: './greenlock.d',
         // whether or not to run at cloudscale
@@ -29,7 +29,7 @@ const startServer = async () => {
       })
       // Serves on 80 and 443
       // Get's SSL certificates magically!
-      .serve(app);
+      .serve(app)
   }
 }
 
