@@ -18,12 +18,12 @@ const startServer = async () => {
     // live server server
     require('greenlock-express')
       .init({
-        // packageRoot: __dirname,
+        // path.join(__dirname, '/../')
         packageRoot: path.join(__dirname, '/../'),
         // contact for security and critical bug notices
         maintainerEmail: 'oppermann.lukas@gmail.com',
         // where to look for configuration
-        configDir: './greenlock.d',
+        configDir: '../../../shared/greenlock.d',
         // whether or not to run at cloudscale
         cluster: false
       })
