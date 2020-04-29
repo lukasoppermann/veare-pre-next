@@ -18,35 +18,40 @@
     {
       "subject": "vea.re",
       "altnames": [
-        "vea.re"
+        "vea.re",
+        "www.vea.re"
       ],
       "renewAt": 1
     },
     {
       "subject": "veare.de",
       "altnames": [
-        "veare.de"
+        "veare.de",
+        "www.veare.de"
       ],
       "renewAt": 1
     },
     {
       "subject": "lukas-oppermann.de",
       "altnames": [
-        "lukas-oppermann.de"
+        "lukas-oppermann.de",
+        "www.lukas-oppermann.de"
       ],
       "renewAt": 1
     },
     {
       "subject": "lukasoppermann.de",
       "altnames": [
-        "lukasoppermann.de"
+        "lukasoppermann.de",
+        "www.lukasoppermann.de"
       ],
       "renewAt": 1
     },
     {
       "subject": "lukasoppermann.com",
       "altnames": [
-        "lukasoppermann.com"
+        "lukasoppermann.com",
+        "www.lukasoppermann.com"
       ],
       "renewAt": 1
     }
