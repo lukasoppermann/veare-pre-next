@@ -1,0 +1,54 @@
+{
+  "defaults": {
+    "store": {
+      "module": "greenlock-store-fs"
+    },
+    "challenges": {
+      "http-01": {
+        "module": "acme-http-01-standalone"
+      }
+    },
+    "renewOffset": "-45d",
+    "renewStagger": "3d",
+    "accountKeyType": "EC-P256",
+    "serverKeyType": "RSA-2048",
+    "subscriberEmail": "oppermann.lukas@gmail.com"
+  },
+  "sites": [
+    {
+      "subject": "vea.re",
+      "altnames": [
+        "vea.re"
+      ],
+      "renewAt": 1
+    },
+    {
+      "subject": "veare.de",
+      "altnames": [
+        "veare.de"
+      ],
+      "renewAt": 1
+    },
+    {
+      "subject": "lukas-oppermann.de",
+      "altnames": [
+        "lukas-oppermann.de"
+      ],
+      "renewAt": 1
+    },
+    {
+      "subject": "lukasoppermann.de",
+      "altnames": [
+        "lukasoppermann.de"
+      ],
+      "renewAt": 1
+    },
+    {
+      "subject": "lukasoppermann.com",
+      "altnames": [
+        "lukasoppermann.com"
+      ],
+      "renewAt": 1
+    }
+  ]
+}
