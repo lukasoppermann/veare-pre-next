@@ -9,7 +9,7 @@ const online = require('dns-sync').resolve(config.host[env])
 const flatCacheWrapper = () => {
   const cache = {}
   // store data
-  cache.data = flatCache.load('offlineDbCache', path.resolve('../cache'))
+  cache.data = flatCache.load('offlineDbCache', path.resolve('./.cache'))
   // define access methods
   // cache PUT
   cache.put = (key, value) => {
