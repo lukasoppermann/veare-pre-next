@@ -7,7 +7,6 @@ import boxedContentTransformer from '../transformer/new/boxedContentTransformer'
 import codeTransformer from '../transformer/new/codeTransformer'
 import linkTransformer from '../transformer/new/linkTransformer'
 import pageTransformer from '../transformer/new/pageTransformer'
-import pictureElementTransformer from '../transformer/new/pictureElementTransformer'
 import pictureTransformer from '../transformer/new/pictureTransformer'
 import projectTransformer from '../transformer/new/projectTransformer'
 // Transformer functions
@@ -19,7 +18,6 @@ const transformerFunctions = {
   code: codeTransformer,
   link: linkTransformer,
   page: pageTransformer,
-  pictureElement: pictureElementTransformer,
   picture: pictureTransformer,
   project: projectTransformer
 }

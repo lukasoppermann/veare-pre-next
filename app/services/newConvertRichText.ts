@@ -3,7 +3,6 @@ import { Document as richTextDocument, BLOCKS, INLINES } from '@contentful/rich-
 // templates
 import block from '../templates/newPartials/block'
 import boxedContentSection from '../templates/newPartials/boxedContent'
-import pictureElement from '../templates/newPartials/pictureElement'
 import code from '../templates/newPartials/code'
 import picture from '../templates/newPartials/picture'
 import projectPreview from '../templates/newPartials/projectPreview'
@@ -11,7 +10,6 @@ import link from '../templates/newPartials/link'
 // Transformer
 import blockTransformer from '../transformer/new/blockTransformer'
 import boxedContentTransformer from '../transformer/new/boxedContentTransformer'
-import pictureElementTransformer from '../transformer/new/pictureElementTransformer'
 import pictureTransformer from '../transformer/new/pictureTransformer'
 import codeTransformer from '../transformer/new/codeTransformer'
 import projectTransformer from '../transformer/new/projectTransformer'
@@ -25,7 +23,6 @@ const transformerFunctions = {
   boxedContentSection: boxedContentTransformer,
   project: projectTransformer,
   code: codeTransformer,
-  pictureElement: pictureElementTransformer,
   picture: pictureTransformer,
   link: linkTransformer
 }
@@ -36,7 +33,6 @@ const templates = {
   boxedContentSection: boxedContentSection,
   project: projectPreview,
   code: code,
-  pictureElement: pictureElement,
   picture: picture,
   link: link
 }
