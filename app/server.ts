@@ -23,7 +23,7 @@ const startServer = async () => {
         // contact for security and critical bug notices
         maintainerEmail: 'oppermann.lukas@gmail.com',
         // where to look for configuration
-        configDir: '../../../shared/greenlock.d',
+        configDir: './../../shared/greenlock.d',
         // whether or not to run at cloudscale
         cluster: false
       })
