@@ -1,10 +1,11 @@
+import cacheService from '../../services/cacheService'
 import meta from '../meta'
 import headerIntro from '../partials/header_intro'
-const cache = require('../../services/cacheService')()
 const { html } = require('@popeindustries/lit-html-server')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 const fs = require('fs')
 const path = require('path')
+const cache = cacheService()
 
 export default () => html`
 <!DOCTYPE html>

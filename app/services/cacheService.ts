@@ -1,20 +1,21 @@
+import config from '../config/contentful'
+import { cacheServiceInterface } from '../../types/cacheService'
 const memoryCache = require('memory-cache')
 const flatCache = require('flat-cache')
-const config = require('../config/contentful.js')
 const path = require('path')
 
-const env = process.env.NODE_ENV
+const env = process.env.NODE_ENV || 'development'
 const online = require('dns-sync').resolve(config.host[env])
 
-const flatCacheWrapper = () => {
-  const cache = {}
+const flatCacheWrapper = (): cacheServiceInterface => {
+  const cache = {} as any
   // store data
-  cache.data = flatCache.load('offlineDbCache', path.resolve('./.cache'))
+  cache._data = flatCache.load('offlineDbCache', path.resolve('./.cache'))
   // define access methods
   // cache PUT
   cache.put = (key, value) => {
-    cache.data.setKey(key, value)
-    cache.data.save(true)
+    cache._data.setKey(key, value)
+    cache._data.save(true)
     return true
   }
   // cache get
@@ -23,8 +24,8 @@ const flatCacheWrapper = () => {
   return cache
 }
 
-const memoryCacheWrapper = () => {
-  const cache = {}
+const memoryCacheWrapper = (): cacheServiceInterface => {
+  const cache = {} as any
   const flatCacheForOffline = flatCacheWrapper()
   // define access methods
   // cache PUT
@@ -53,4 +54,4 @@ if (env === 'development') {
   }
 }
 
-module.exports = () => usedCache
+export default () => usedCache

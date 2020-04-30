@@ -1,5 +1,5 @@
+import cache from '../../services/cacheService'
 const { html } = require('@popeindustries/lit-html-server')
-const cache = require('../../services/cacheService.js')()
 const fs = require('fs')
 
 export default html`
@@ -23,7 +23,7 @@ export default html`
   </div>
   <figure class="Header__Picture--Lukas-Oppermann">
     <picture>
-      <img src="/${cache.get('files').media['media/lukas-oppermann@2x.png']}" alt="Lukas Oppermann" loading="lazy"/>
+      <img src="/${cache().get('files').media['media/lukas-oppermann@2x.png']}" alt="Lukas Oppermann" loading="lazy"/>
     </picture>
   </figure>
   <div class="Header__background"></div>

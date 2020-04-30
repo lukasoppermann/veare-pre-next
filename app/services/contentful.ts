@@ -1,3 +1,4 @@
+import cache from './cacheService'
 import { transformedDataInterface } from '../../types/transformer'
 // transformer
 import articleTransformer from '../transformer/new/articleTransformer'
@@ -23,7 +24,6 @@ const transformerFunctions = {
 }
 // utils
 const client = require('./client')
-const cache = require('./cacheService')()
 
 export default async () => {
   // get all entries
@@ -44,7 +44,7 @@ const cacheContent = (contentTypes, entries) => {
   // get type ids
   contentTypes.items.forEach(item => {
   // get content by type
-    cache.put(item.sys.id, entries.filter(entry => {
+    cache().put(item.sys.id, entries.filter(entry => {
       return entry.contentType === item.sys.id
     }))
   })

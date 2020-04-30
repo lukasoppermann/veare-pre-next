@@ -1,5 +1,6 @@
+import cacheService from '../../services/cacheService'
+const cache = cacheService()
 const { html } = require('@popeindustries/lit-html-server')
-const cache = require('../../services/cacheService.js')()
 
 export default html`
   <div class="Grid portfolio-item--old">

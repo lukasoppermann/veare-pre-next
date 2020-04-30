@@ -2,7 +2,7 @@
 require('dotenv-safe').config()
 
 // login for contentful client
-module.exports = {
+export default {
   space: process.env.CONTENTFUL_SPACE,
   accessToken: {
     development: process.env.CONTENTFUL_TOKEN_PREVIEW,

@@ -1,12 +1,12 @@
 import blog from '../templates/pages/blog'
 import article from '../templates/pages/article'
+import cache from '../services/cacheService'
 const { renderToString } = require('@popeindustries/lit-html-server')
-const cache = require('../services/cacheService')()
 
 module.exports = {
   index: async (_req, res) => {
     // get articles from cache
-    let content = cache.get('article')
+    let content = cache().get('article')
     // sort by date
     content = content.sort((a, b) => {
       const dateA = new Date(a.fields.rawdate)
@@ -24,7 +24,7 @@ module.exports = {
   },
   get: async (req, res) => {
     // get articles from cache
-    const content = cache.get('article')
+    const content = cache().get('article')
     // get individual article
     const articleContent = content.find((item: any) => item.fields.slug === req.params[0]).fields
     // if content exists
