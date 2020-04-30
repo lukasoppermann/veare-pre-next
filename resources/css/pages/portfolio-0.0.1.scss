@@ -35,6 +35,15 @@
 }
 
 /* NEW PORTFOLIO */
+[class*="o-headline"] {
+  display: block;
+}
+.o-headline--h2 {
+  font-size: var(--size-h);
+  line-height: 140%;
+  margin-bottom: var(--size-l);
+  margin-top: var(--size-h);
+}
 .o-headline--portfolio {
   font-family: var(--font-noto-serif);
   font-style: italic;

@@ -5,10 +5,6 @@
   @extend %font-paragraph-serif;
   margin-top: var(--vs-s);
 }
-.Paragraph--sans {
-  margin-top: var(--vs-l);
-  @extend %font-paragraph-sans;
-}
 .Paragraph--sans-small {
   @extend %font-paragraph-sans;
 }
