@@ -12,7 +12,7 @@ export default (project) => {
     }
   </style>
   <header class="Header Header--project Grid Grid--rows">
-    <h2>${project.title}</h2>
+    <h2 class="Project__title">${project.title}</h2>
     ${picture(project.header.fields, 'eager')}
   </header>
   <article class="Grid">

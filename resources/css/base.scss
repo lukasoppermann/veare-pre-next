@@ -1,0 +1,67 @@
+/* ====================================
+    CSS RESET
+==================================== */
+html,
+body,
+p,
+ol,
+ul,
+li,
+blockquote,
+figure,
+pre,
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-size: 100%;
+  font-weight: normal;
+}
+html,
+div {
+  box-sizing: border-box;
+}
+img,
+video {
+  height: auto;
+  max-width: 100%;
+  vertical-align: top; /* removes margin below */
+}
+a,
+a:active,
+a:focus {
+  color: inherit;
+}
+a:hover {
+  text-decoration: none;
+}
+
+/* ====================================
+  LIST
+==================================== */
+ul,
+ol {
+  margin-top: calc(var(--baseline) * 2);
+}
+li {
+  display: list-item;
+  @media screen and (max-width: 900px) {
+    margin-left: 20px;
+  }
+}
+li:not(:first-child) {
+  margin-top: var(--baseline);
+}
+ul + *,
+ol + * {
+  margin-top: calc(var(--baseline) * 2) !important;
+}
