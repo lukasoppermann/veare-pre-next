@@ -1,8 +1,8 @@
 import contentful from '../services/contentful'
+import contentfulConfig from '../config/contentful'
 const express = require('express')
 const router = express.Router()
 const basicAuth = require('express-basic-auth')
-const contentfulConfig = require('../config/contentful.js')
 /* =================
 // Normal Routes
 ================= */
@@ -31,7 +31,7 @@ router.use('/revisionedFiles', require('./revisionedFiles'))
 // activate webhook
 router.post('/contentful', basicAuth({
   users: {
-    [contentfulConfig.webhookUser]: contentfulConfig.webhookPassword
+    [<string>contentfulConfig.webhookUser]: contentfulConfig.webhookPassword
   }
 }), contentful)
 // log non-existent pages

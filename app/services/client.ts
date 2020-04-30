@@ -1,7 +1,7 @@
+import config from '../config/contentful'
 const contentful = require('contentful')
-const config = require('../config/contentful.js')
 
-const env = process.env.NODE_ENV
+const env: string = process.env.NODE_ENV || 'development'
 
 const retryOnError = () => {
   if (env !== 'production') {

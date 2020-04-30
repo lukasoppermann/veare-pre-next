@@ -1,7 +1,8 @@
 import contentful from './services/contentful'
+import makeApp from './app'
 
 const startServer = async () => {
-  const app = await require('./app.js')()
+  const app = await makeApp()
   // ------------------------
   // development server
   // ------------------------

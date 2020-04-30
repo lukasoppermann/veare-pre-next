@@ -1,11 +1,11 @@
+import cache from './services/cacheService'
 const express = require('express')
 const app = express()
-const cache = require('./services/cacheService')()
 
-module.exports = async () => {
+export default async () => {
   // ---------------------------------- //
   // Add files to cache
-  cache.put('files', require('./services/files')())
+  cache().put('files', require('./services/files')())
   // works with caching
   app.set('view cache', false) // should be enabled by default if process.env.NODE_ENV === "production"
   // ---------------------------------- //
