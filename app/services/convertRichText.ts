@@ -8,12 +8,12 @@ import picture from '../templates/newPartials/picture'
 import projectPreview from '../templates/newPartials/projectPreview'
 import link from '../templates/newPartials/link'
 // Transformer
-import blockTransformer from '../transformer/new/blockTransformer'
-import boxedContentTransformer from '../transformer/new/boxedContentTransformer'
-import pictureTransformer from '../transformer/new/pictureTransformer'
-import codeTransformer from '../transformer/new/codeTransformer'
-import projectTransformer from '../transformer/new/projectTransformer'
-import linkTransformer from '../transformer/new/linkTransformer'
+import blockTransformer from '../transformer/blockTransformer'
+import boxedContentTransformer from '../transformer/boxedContentTransformer'
+import pictureTransformer from '../transformer/pictureTransformer'
+import codeTransformer from '../transformer/codeTransformer'
+import projectTransformer from '../transformer/projectTransformer'
+import linkTransformer from '../transformer/linkTransformer'
 
 const { renderToString } = require('@popeindustries/lit-html-server')
 

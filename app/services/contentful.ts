@@ -1,15 +1,15 @@
 import cache from './cacheService'
 import { transformedDataInterface } from '../../types/transformer'
 // transformer
-import articleTransformer from '../transformer/new/articleTransformer'
-import assetTransformer from '../transformer/new/assetTransformer'
-import blockTransformer from '../transformer/new/blockTransformer'
-import boxedContentTransformer from '../transformer/new/boxedContentTransformer'
-import codeTransformer from '../transformer/new/codeTransformer'
-import linkTransformer from '../transformer/new/linkTransformer'
-import pageTransformer from '../transformer/new/pageTransformer'
-import pictureTransformer from '../transformer/new/pictureTransformer'
-import projectTransformer from '../transformer/new/projectTransformer'
+import articleTransformer from '../transformer/articleTransformer'
+import assetTransformer from '../transformer/assetTransformer'
+import blockTransformer from '../transformer/blockTransformer'
+import boxedContentTransformer from '../transformer/boxedContentTransformer'
+import codeTransformer from '../transformer/codeTransformer'
+import linkTransformer from '../transformer/linkTransformer'
+import pageTransformer from '../transformer/pageTransformer'
+import pictureTransformer from '../transformer/pictureTransformer'
+import projectTransformer from '../transformer/projectTransformer'
 // Transformer functions
 const transformerFunctions = {
   article: articleTransformer,
