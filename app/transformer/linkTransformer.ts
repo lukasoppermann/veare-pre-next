@@ -1,4 +1,4 @@
-import { transformedDataInterface } from '../../../types/transformer'
+import { transformedDataInterface } from '../../types/transformer'
 import transformer, { getField } from './transformer'
 import pictureTransformer from './pictureTransformer'
 

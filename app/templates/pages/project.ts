@@ -12,44 +12,40 @@ export default (project) => {
     }
   </style>
   <header class="Header Header--project Grid Grid--rows">
-    <h2 class="Header__title">${project.title}</h2>
+    <h2>${project.title}</h2>
     ${picture(project.header.fields, 'eager')}
   </header>
-  <section class="Chapter">
-    <div class="Section Grid">
-      <div class="Boxed-group Grid--columns">
-        <div class="Boxed-item" style="flex-grow: 3">
-          <span class="Headline--h5 text--light">client</span>
-          <div class="Paragraph Paragraph--sans-small">
-            ${project.client}
-          </div>
-        </div>
-        <div class="Boxed-item" style="flex-grow: 2">
-          <span class="Headline--h5 text--light">year</span>
-          <div class="Paragraph Paragraph--sans-small">
-            ${project.year}
-          </div>
-        </div>
-        <div class="Boxed-item" style="flex-grow: 4">
-          <span class="Headline--h5 text--light">role</span>
-          <div class="Paragraph Paragraph--sans-small">
-            ${project.roleAndTeam}
-          </div>
+  <article class="Grid">
+    <section class="Boxed-group Grid--columns">
+      <div class="Boxed-item" style="flex-grow: 3">
+        <h5>client</h5>
+        <div class="Paragraph Paragraph--sans-small">
+          ${project.client}
         </div>
       </div>
-      <div class="Text__Element Project__challenge">
-        ${unsafeHTML(project.challenge)}
+      <div class="Boxed-item" style="flex-grow: 2">
+        <h5>year</h5>
+        <div class="Paragraph Paragraph--sans-small">
+          ${project.year}
+        </div>
       </div>
-      <!-- {{!-- TOC --}} -->
-      <ul class="Toc Project__toc" data-toc>
-      ${repeat(project.anchors, (anchor) => html`<li class="Toc__chapter"><a class="Toc__chapter__link" href="#${anchor}"><div class="Toc__chapter__title">${anchor.replace(/-/g, ' ')}</div></a></li>`)}
-      </ul>
-    </div>
-  </section>
-  <div class="Grid">
+      <div class="Boxed-item" style="flex-grow: 4">
+        <h5>role</h5>
+        <div class="Paragraph Paragraph--sans-small">
+          ${project.roleAndTeam}
+        </div>
+      </div>
+    </section>
+    <section class="Project__challenge">
+      ${unsafeHTML(project.challenge)}
+    </section>
+    <!-- {{!-- TOC --}} -->
+    <ul class="Toc Project__toc" data-toc>
+    ${repeat(project.anchors, (anchor) => html`<li class="Toc__chapter"><a class="Toc__chapter__link" href="#${anchor}"><div class="Toc__chapter__title">${anchor.replace(/-/g, ' ')}</div></a></li>`)}
+    </ul>
     ${unsafeHTML(project.content)}
     <a class="Project__back_link" href="/home#portfolio">← Back</a>
-  </div>
+  </article>
 `, {
     title: project.title,
     og: [

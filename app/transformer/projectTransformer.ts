@@ -1,8 +1,8 @@
-import { transformedDataInterface } from '../../../types/transformer'
+import { transformedDataInterface } from '../../types/transformer'
 import transformer, { getField } from './transformer'
 import assetTransformer from './assetTransformer'
 import pictureTransformer from './pictureTransformer'
-import richText from '../../services/newConvertRichText'
+import richText from '../services/convertRichText'
 
 export default async (data) => {
   return transformer(data, async (data): Promise<transformedDataInterface> => {

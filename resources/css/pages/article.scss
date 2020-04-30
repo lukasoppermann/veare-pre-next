@@ -62,7 +62,7 @@
       font-size: 130%;
     }
   }
-  .horizontal-rule {
+  .Rule--horizontal {
     grid-column: columns;
   }
   blockquote {
@@ -93,9 +93,6 @@
       @extend %font-annotation;
     }
   }
-  .Text__Element {
-    grid-column: columns;
-  }
   .Article__publication-details,
   .Article__author {
     grid-column: columns;
@@ -104,9 +101,6 @@
     }
   }
   .Article__author {
-    margin-bottom: var(--size-xl);
-  }
-  .Chapter {
     margin-bottom: var(--size-xl);
   }
   .Article__back_link {

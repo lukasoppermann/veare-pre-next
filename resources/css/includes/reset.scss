@@ -33,3 +33,11 @@ video {
   max-width: 100%;
   vertical-align: top; /* removes margin below */
 }
+a,
+a:active,
+a:focus {
+  color: inherit;
+}
+a:hover {
+  text-decoration: none;
+}

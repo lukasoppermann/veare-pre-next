@@ -85,6 +85,13 @@ font-feature-settings:"liga", "dlig";
   font-family: var(--font-source-sans);
   font-weight: var(--font-source-sans-semibold);
 }
+%font-headline--h5 {
+  font-size: var(--size-m);
+  line-height: calc(var(--baseline) * 2);
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-montserrat-bold);
+  text-transform: uppercase;
+}
 %font-paragraph-serif {
   font-size: var(--base-font);
   line-height: calc(var(--baseline) * 4);
@@ -121,7 +128,7 @@ font-feature-settings:"liga", "dlig";
   line-height: calc(var(--baseline) * 2);
   font-family: var(--font-montserrat);
   letter-spacing: .5px;
-  color: var(--black);
+  color: inherit;
 }
 %font-subtitle-uppercase-tiny {
   @extend %font-subtitle-uppercase-small;
@@ -142,41 +149,3 @@ font-feature-settings:"liga", "dlig";
   line-height: calc(var(--baseline) * 4);
   color: var(--black-50);
 }
-
-/* ====================================
-    Text Colors
-==================================== */
-.text--light {
-  color: var(--grey);
-}
-
-/*
- * type styles
- */
-.type--m {
-  font-size: var(--size-m);
-  line-height: 135%;
-}
-.type--l {
-  font-size: var(--size-l);
-  line-height: 130%;
-}
-.type--xl {
-  font-size: var(--size-xl);
-  line-height: 140%;
-}
-.type--xxl {
-  font-size: var(--size-xxl);
-  line-height: 140%;
-}
-.type--h {
-  font-size: var(--size-h);
-  line-height: 140%;
-}
-
-/*
- * type colors OLD
- */
-.type--dark-grey { color: rgba(var(--black-rgb), .6); }
-.type--grey { color: rgba(var(--black-rgb), .5); }
-.type--blue { color: var(--blue); }

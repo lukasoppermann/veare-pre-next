@@ -1,6 +1,6 @@
-import { transformedDataInterface } from '../../../types/transformer'
+import { transformedDataInterface } from '../../types/transformer'
 import transformer, { getField } from './transformer'
-import jsonParse from '../../services/jsonParse'
+import jsonParse from '../services/jsonParse'
 
 export default async (data) => {
   return transformer(data, async (data): Promise<transformedDataInterface> => {

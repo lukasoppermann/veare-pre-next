@@ -42,9 +42,6 @@
   position: relative;
   z-index: 1;
   box-sizing: content-box;
-  border-style: solid;
-  border-color: var(--white);
-  border-width: calc(var(--max-row-height) + var(--row-gap)) var(--size-m) var(--vs-m);
   overflow: hidden;
   .Section {
     height: var(--header-inner-height);
@@ -57,19 +54,9 @@
       width: 100%;
     }
   }
-  .Header__title {
-    margin: 0;
-    position: absolute;
-    font: var(--font-title);
-    bottom: var(--vs-xxl);
-    left: var(--hs-xl);
-    color: var(--white);
-    z-index: 100;
-  }
 }
 
 .Header--project {
-  border: none;
   .Picture__Element {
     grid-column: full-width !important;
     grid-row: row 2 / -2;
