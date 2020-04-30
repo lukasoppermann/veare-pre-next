@@ -1,12 +1,14 @@
 import contentful from './services/contentful'
 import makeApp from './app'
 
+const env = process.env.NODE_ENV || 'development'
+
 const startServer = async () => {
   const app = await makeApp()
   // ------------------------
   // development server
   // ------------------------
-  if (process.env.NODE_ENV === 'development') {
+  if (env === 'development') {
     console.info('\u001b[36m############################ Reloaded ############################\u001b[0m')
     console.info('Environment: ' + process.env.NODE_ENV)
     console.info('✅ Listening on http://localhost:8080')
@@ -14,7 +16,7 @@ const startServer = async () => {
   // ------------------------
   // TEST server
   // ------------------------
-  } else if (process.env.NODE_ENV === 'test') {
+  } else if (env === 'test') {
     app.listen(process.env.NODE_PORT || '3300')
   // ------------------------
   // live server server
