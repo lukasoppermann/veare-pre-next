@@ -257,3 +257,16 @@
   color: var(--blue);
   transition: color .25s ease;
 }
+.type--m {
+  font-size: var(--size-m);
+  line-height: 135%;
+}
+.type--l {
+  font-size: var(--size-l);
+  line-height: 130%;
+}
+.type--xl {
+  font-size: var(--size-xl);
+  line-height: 140%;
+}
+.type--grey { color: rgba(var(--black-rgb), .5); }

@@ -111,7 +111,7 @@ export default async (richText: richTextDocument) => {
           console.error('🚨 ERROR: ', node.data.target, e)
         }
       },
-      [BLOCKS.HR]: () => '<div class="horizontal-rule"><hr></div>',
+      [BLOCKS.HR]: () => '<div class="Rule--horizontal"><hr></div>',
       [INLINES.HYPERLINK]: (node, next) => convertHyperlinks(node, next, anchors)
     }
   })

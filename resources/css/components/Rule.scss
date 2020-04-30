@@ -1,0 +1,12 @@
+.Rule--horizontal {
+  display: block;
+  @include baseline(4);
+  @include baseline(4, 'margin-bottom');
+  hr {
+    border: none;
+    height: 2px;
+    width: var(--size-xxl);
+    background-color: var(--rule-color, var(--blue));
+    margin: 0;
+  }
+}

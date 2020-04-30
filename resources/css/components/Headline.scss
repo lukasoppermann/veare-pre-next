@@ -1,23 +1,4 @@
 /* ====================================
-    OLD Headlines
-==================================== */
-[class*="Headline"] {
-  display: block;
-}
-.Headline--h2 {
-  font: var(--font-h2);
-  margin-top: var(--vs-xl);
-}
-.Headline--h5 {
-  font: var(--font-h5);
-  text-transform: uppercase;
-  margin-top: var(--baseline);
-}
-.Headline--h5 + * {
-  margin-top: var(--vs-s);
-}
-
-/* ====================================
     New Headlines
 ==================================== */
 h2 {

@@ -316,7 +316,7 @@
 .Project {
   --section-gap: 12;
   --row-gap: 0;
-  --horizontal-rule-color: var(--project-color, var(--blue));
+  --rule-color: var(--project-color, var(--blue));
   h2,
   h3,
   h4,
@@ -332,6 +332,15 @@
       word-break: break-word;
       grid-column: columns;
     }
+  }
+  h2 {
+    margin: 0;
+    position: absolute;
+    font: var(--font-title);
+    bottom: var(--vs-xxl);
+    left: var(--hs-xl);
+    color: var(--white);
+    z-index: 100;
   }
   h4 {
     @include baseline(5);
@@ -374,7 +383,7 @@
   figure + p:not(:first-child) {
     margin-top: calc(var(--baseline) * 4);
   }
-  .horizontal-rule {
+  .Rule--horizontal {
     grid-column: columns;
   }
   .Block {

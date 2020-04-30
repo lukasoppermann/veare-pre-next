@@ -6,7 +6,7 @@ export default (fields) => html`
 <div class="Boxed-group Grid--columns">
   ${repeat(fields.items, (item) => unsafeHTML(`
     <div class="Boxed-item" style="flex-grow: ${item.optionalParameter}">
-      <span class="Headline--h5 text--light">${item.key}</span>
+      <h5>${item.key}</h5>
       <div class="Paragraph Paragraph--sans-small">
         ${item.value}
       </div>

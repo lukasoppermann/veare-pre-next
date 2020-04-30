@@ -12,25 +12,25 @@ export default (project) => {
     }
   </style>
   <header class="Header Header--project Grid Grid--rows">
-    <h2 class="Header__title">${project.title}</h2>
+    <h2>${project.title}</h2>
     ${picture(project.header.fields, 'eager')}
   </header>
   <article class="Grid">
     <section class="Boxed-group Grid--columns">
       <div class="Boxed-item" style="flex-grow: 3">
-        <span class="Headline--h5 text--light">client</span>
+        <h5>client</h5>
         <div class="Paragraph Paragraph--sans-small">
           ${project.client}
         </div>
       </div>
       <div class="Boxed-item" style="flex-grow: 2">
-        <span class="Headline--h5 text--light">year</span>
+        <h5>year</h5>
         <div class="Paragraph Paragraph--sans-small">
           ${project.year}
         </div>
       </div>
       <div class="Boxed-item" style="flex-grow: 4">
-        <span class="Headline--h5 text--light">role</span>
+        <h5>role</h5>
         <div class="Paragraph Paragraph--sans-small">
           ${project.roleAndTeam}
         </div>

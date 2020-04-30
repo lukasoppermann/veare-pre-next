@@ -14,9 +14,6 @@
 .Annotation:not(:nth-child(2)) {
   margin-top: calc(var(--baseline) * 3);
 }
-.Annotation--align-bottom {
-  align-self: end;
-}
 .Grid > .Annotation {
   grid-column: sidebar-right;
   @include mq('s') {
