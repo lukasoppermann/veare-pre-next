@@ -39,7 +39,6 @@
     "stylelint": "^13.3.3",
     "stylelint-config-standard": "^20.0.0",
     "ts-node-dev": "^1.0.0-pre.44",
-    "ttab": "^0.6.1",
     "typescript-lit-html-plugin": "^0.9.0"
   },
   "dependencies": {
@@ -89,7 +88,6 @@
   },
   "scripts": {
     "server": "NODE_ENV=production forever start -c 'node_modules/.bin/ts-node' $npm_package_main -m 5000 --pretty",
-    "start": "node_modules/.bin/ttab -t 'Node Server' 'NODE_ENV=development npm run ts-node-dev' && node_modules/.bin/ttab -t 'Building assets' 'npm run build'",
     "ts-node-dev": "ts-node-dev --respawn $npm_package_main --pretty",
     "dev-server": "forever stopall && echo 'Running on http://localhost:8080' && NODE_ENV=development forever start -c 'node_modules/.bin/ts-node' $npm_package_main -m 5000 --pretty && forever list",
     "test-server": "forever stopall && NODE_ENV=test forever start -c 'node_modules/.bin/ts-node' $npm_package_main",
