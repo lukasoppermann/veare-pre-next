@@ -85,9 +85,6 @@
   }
 }
 
-.Chapter__content--fullwidth .Text__Element {
-  grid-column: columns / span 7;
-}
 .Text__Element p:not(:first-child) {
   @include baseline(2);
 }
