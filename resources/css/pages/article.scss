@@ -93,9 +93,6 @@
       @extend %font-annotation;
     }
   }
-  .Text__Element {
-    grid-column: columns;
-  }
   .Article__publication-details,
   .Article__author {
     grid-column: columns;

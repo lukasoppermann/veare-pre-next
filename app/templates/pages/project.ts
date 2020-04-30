@@ -15,8 +15,8 @@ export default (project) => {
     <h2 class="Header__title">${project.title}</h2>
     ${picture(project.header.fields, 'eager')}
   </header>
-  <section class="Section Grid">
-    <div class="Boxed-group Grid--columns">
+  <article class="Grid">
+    <section class="Boxed-group Grid--columns">
       <div class="Boxed-item" style="flex-grow: 3">
         <span class="Headline--h5 text--light">client</span>
         <div class="Paragraph Paragraph--sans-small">
@@ -35,19 +35,17 @@ export default (project) => {
           ${project.roleAndTeam}
         </div>
       </div>
-    </div>
-    <div class="Text__Element Project__challenge">
+    </section>
+    <section class="Project__challenge">
       ${unsafeHTML(project.challenge)}
-    </div>
+    </section>
     <!-- {{!-- TOC --}} -->
     <ul class="Toc Project__toc" data-toc>
     ${repeat(project.anchors, (anchor) => html`<li class="Toc__chapter"><a class="Toc__chapter__link" href="#${anchor}"><div class="Toc__chapter__title">${anchor.replace(/-/g, ' ')}</div></a></li>`)}
     </ul>
-  </section>
-  <div class="Grid">
     ${unsafeHTML(project.content)}
     <a class="Project__back_link" href="/home#portfolio">← Back</a>
-  </div>
+  </article>
 `, {
     title: project.title,
     og: [

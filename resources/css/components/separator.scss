@@ -1,11 +1,3 @@
-.Separator {
-  display: block;
-  height: 2px;
-  width: var(--size-xxl);
-  @include baseline(4);
-  background-color: var(--blue);
-  border: none;
-}
 .horizontal-rule {
   display: block;
   @include baseline(4);

@@ -270,14 +270,15 @@
     PROJECT Page
 ==================================== */
 .Project__challenge {
+  hyphens: auto;
   margin-top: var(--vs-xg);
   grid-column: column 1 / column 5;
   @include mq('xs') {
     grid-column: columns;
   }
-}
-.Project__challenge h2 {
-  margin-top: 0;
+  h2 {
+    margin-top: 0;
+  }
 }
 .Project__toc {
   margin-top: var(--vs-xg);
