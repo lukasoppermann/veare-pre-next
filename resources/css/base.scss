@@ -46,5 +46,25 @@ a:hover {
 }
 
 /* ====================================
-    CSS RESET
+  LIST
 ==================================== */
+ul,
+ol {
+  margin-top: calc(var(--baseline) * 2);
+}
+li {
+  display: list-item;
+  @media screen and (max-width: 900px) {
+    margin-left: 20px;
+  }
+}
+li:not(:first-child) {
+  margin-top: var(--baseline);
+}
+ul + *,
+ol + * {
+  margin-top: calc(var(--baseline) * 2);
+}
+// ul + p {
+//   margin-top: calc(var(--baseline) * 2) !important;
+// }
