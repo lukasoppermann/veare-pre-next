@@ -246,3 +246,14 @@
 .u-margin-top--m { margin-top: var(--size-m) !important; }
 .u-margin-bottom--xs { margin-bottom: var(--size-xs) !important; }
 .u-margin-bottom--h { margin-bottom: var(--size-h) !important; }
+.o-link {
+  font-size: inherit;
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+.o-link:hover {
+  text-decoration: underline;
+  color: var(--blue);
+  transition: color .25s ease;
+}
