@@ -63,8 +63,5 @@ li:not(:first-child) {
 }
 ul + *,
 ol + * {
-  margin-top: calc(var(--baseline) * 2);
+  margin-top: calc(var(--baseline) * 2) !important;
 }
-// ul + p {
-//   margin-top: calc(var(--baseline) * 2) !important;
-// }

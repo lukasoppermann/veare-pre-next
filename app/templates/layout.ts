@@ -25,7 +25,6 @@ export default (content: string, options: { [prop: string]: any; } = {}, partial
     </head>
     <body class="${options.bodyClass || ''} temp-body">
       <!-- NEW STUFF -->
-      <!-- <div id="page" class="Grid"> -->
       <div class="Page">
         <menu class="responsive-menu">
           ${menu}
