@@ -38,9 +38,9 @@ describe('screenshot', () => {
     await page.goto('http://localhost:3300/work/nyon')
     await page.waitFor(4000)
     const height = await page.evaluate(() => document.documentElement.offsetHeight)
-    const shotCount = Math.ceil(height/900)
+    const shotCount = 2 //Math.ceil(height/900)
     console.debug('shotCount:',shotCount, height)
-    // await page.evaluate(() => window.scrollTo(0, Number.MAX_SAFE_INTEGER/900));
+    await page.evaluate(() => window.scrollTo(0, Number.MAX_SAFE_INTEGER/900));
     for(let i = 0; i < shotCount; i++ ) {
       await page.evaluate((i) => window.scrollTo(0, 900*i))
       await page.waitFor(2000)
