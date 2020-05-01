@@ -51,6 +51,14 @@ a:hover {
 html {
   font-size: 62.5%; /* sets 1rem = 10px */
 }
+body {
+  background: var(--white-grey); // visible when over-pulling
+}
+.Page { // replace maybe with MAIN??`
+  position: relative;
+  background: var(--white);
+  width: 100vw;
+}
 
 /* ====================================
   LIST

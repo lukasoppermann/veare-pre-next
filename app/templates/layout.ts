@@ -23,7 +23,7 @@ export default (content: string, options: { [prop: string]: any; } = {}, partial
 
       ${options.head || ''}
     </head>
-    <body class="${options.bodyClass || ''} temp-body">
+    <body class="${options.bodyClass || ''}">
       <!-- NEW STUFF -->
       <div class="Page">
         <menu class="responsive-menu">

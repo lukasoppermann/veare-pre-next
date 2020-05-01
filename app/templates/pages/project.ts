@@ -76,8 +76,7 @@ export default (project) => {
         value: project.header.fields.title
       }
     ],
-    bodyClass: 'Page--work Project',
-    htmlClass: 'Temp-Override'
+    bodyClass: 'Page--work Project'
   })
 }
 // TOC
