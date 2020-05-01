@@ -27,7 +27,7 @@ jobs:
     - name: npm install dependencies
       run: npm ci
       env:
-        NODE_PORT=3300
+        NODE_PORT: 3300
     - run: npm run test:js
     - run: npm run test:css
     - run: npm run build:css
