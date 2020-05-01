@@ -24,9 +24,13 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install
+    - name: npm install dependencies
+      run: npm ci
+      env:
+        NODE_PORT=3300
     - run: npm run test:js
     - run: npm run test:css
     - run: npm run build:css
     - run: npm run build:js
-    - run: NODE_PORT=3300 npm run test-server && NODE_PORT=3300 npm run test:integration && forever stopall;
+    - run: npm run test-server
+    - run: npm run test:integration
