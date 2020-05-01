@@ -1,8 +1,0 @@
-/* max page width is 1600px if more it is centered and body bg is shown */
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background: var(--white-grey);
-}
