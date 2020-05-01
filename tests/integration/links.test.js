@@ -2,21 +2,21 @@
 const checkLinks = require('check-links')
 // const request = require('request')
 const links = (base) => [
-  `${base}/`,
-  `${base}/blog`,
-  `${base}/blog/make-npm-your-build-tool`,
-  `${base}/work`,
-  `${base}/work/nyon`,
-  `${base}/work/copra`,
-  `${base}/portfolio`,
-  `${base}/portfolio/open-everything`,
-  `${base}/portfolio/swift`,
-  `${base}/portfolio/decks`,
-  `${base}/privacy`,
-  // missing
-  `${base}/work/missing`,
-  // `${base}/blog/missing`,
-  `${base}/page-missing`
+  // `${base}/`,
+  // `${base}/blog`,
+  // `${base}/blog/make-npm-your-build-tool`,
+  // `${base}/work`,
+  // `${base}/work/nyon`,
+  // `${base}/work/copra`,
+  // `${base}/portfolio`,
+  // `${base}/portfolio/open-everything`,
+  // `${base}/portfolio/swift`,
+  // `${base}/portfolio/decks`,
+  // `${base}/privacy`,
+  // // missing
+  // `${base}/work/missing`,
+  // // `${base}/blog/missing`,
+  // `${base}/page-missing`
 ]
 const port = process.env.NODE_PORT || '8080'
 const host = 'http://127.0.0.1'
