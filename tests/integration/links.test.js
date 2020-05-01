@@ -11,8 +11,6 @@ const links = (base) => [
   `${base}/portfolio`,
   `${base}/portfolio/open-everything`,
   `${base}/portfolio/swift`,
-  `${base}/portfolio/lufthansa-germanwings`,
-  `${base}/portfolio/juice-control`,
   `${base}/portfolio/decks`,
   `${base}/privacy`,
   // missing
