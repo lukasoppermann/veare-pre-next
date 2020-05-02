@@ -33,6 +33,6 @@ jobs:
     - run: npm run test-server
       env:
         NODE_PORT: 3300
-    - run: npm run test:integration
+    - run: npm run github:integration
       env:
         NODE_PORT: 3300
