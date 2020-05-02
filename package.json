@@ -34,7 +34,7 @@
     "onchange": "^7.0.1",
     "pre-commit": "^1.2.2",
     "pre-push": "^0.1.1",
-    "puppeteer": "^3.0.2",
+    "puppeteer": "^2.1.1",
     "rollup": "^2.7.3",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-replace": "^2.2.0",

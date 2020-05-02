@@ -13,7 +13,7 @@ const testCases = [
   ['/work/nyon', 19],
   ['/work/copra', 15],
   ['/privacy', 16],
-  ['/blog', 2]
+  ['/blog', 3]
 ]
 
 testCases.forEach(item => {
@@ -22,14 +22,6 @@ testCases.forEach(item => {
       fs.mkdirSync(dir)
   }
 })
-
-
-
-const browserConfig = {
-  ignoreHTTPSErrors: true,
-  headless: true,
-  args: ['--no-sandbox', '--disable-setuid-sandbox'],
-}
 
 // jest-image-snapshot custom configuration in order to save screenshots and compare the with the baseline
 function setConfig (filename, path) {
@@ -44,7 +36,11 @@ function setConfig (filename, path) {
 
 beforeAll(async () => {
   // start Puppeteer with a custom configuration, see above the setup
-  browser = await puppeteer.launch(browserConfig);
+  browser = await puppeteer.launch({
+    ignoreHTTPSErrors: true,
+    headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  })
   expect.extend({ toMatchImageSnapshot })
   page = await browser.newPage()
   await page.setViewport({
