@@ -19,7 +19,10 @@ const testCases = [
 testCases.forEach(item => {
   let dir = `${__dirname}/../screenshots${item[0]}`
   if (!fs.existsSync(dir)){
+      console.debug(`Creating directory: ${dir}`)
       fs.mkdirSync(dir)
+  } else {
+    console.debug(`Directory already exists: ${dir}`)
   }
 })
 
