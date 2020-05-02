@@ -32,4 +32,4 @@ jobs:
     - run: npm run build:js
     - run: npm run test-server && npm run github:integration
       env:
-        NODE_PORT: 3300
+        NODE_ENV: test

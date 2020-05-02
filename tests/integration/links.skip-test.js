@@ -18,7 +18,7 @@ const links = (base) => [
   // // `${base}/blog/missing`,
   // `${base}/page-missing`
 ]
-const port = process.env.NODE_PORT || '8080'
+const port = '3300'
 const host = 'http://127.0.0.1'
 
 beforeAll(() => {

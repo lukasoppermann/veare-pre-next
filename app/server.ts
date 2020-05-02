@@ -17,7 +17,7 @@ const startServer = async () => {
   // TEST server
   // ------------------------
   } else if (env === 'test') {
-    app.listen(process.env.NODE_PORT || '3300')
+    app.listen('3300')
   // ------------------------
   // live server server
   // ------------------------
