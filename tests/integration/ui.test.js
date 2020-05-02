@@ -9,7 +9,7 @@ let page
 const viewportHeight = 900
 const viewportWidth = 1680
 const testCases = [
-  ['home/', 8],
+  ['/home', 8],
   ['/work/nyon', 19],
   ['/work/copra', 15],
   ['/privacy', 16],
