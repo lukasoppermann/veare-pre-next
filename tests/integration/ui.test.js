@@ -17,7 +17,7 @@ const testCases = [
 ]
 
 // create screenshots folder
-const screenshotsFolder = `${__dirname}/base_screenshots`
+const screenshotsFolder = `${__dirname}/test_snaps`
 if (!fs.existsSync(screenshotsFolder)){
     console.debug(`Creating directory: ${screenshotsFolder}`)
     fs.mkdirSync(screenshotsFolder)
@@ -28,16 +28,15 @@ testCases.forEach(item => {
   if (!fs.existsSync(dir)){
       console.debug(`Creating directory: ${dir}`)
       fs.mkdirSync(dir)
-  } else {
-    console.debug(`Directory already exists: ${dir}`)
   }
 })
 
 // jest-image-snapshot custom configuration in order to save screenshots and compare the with the baseline
 function setConfig (filename, path) {
   return {
-    failureThreshold: '0.01',
-    failureThresholdType: 'percent',
+    customDiffConfig: {
+      threshold: 0.01
+    },
     customSnapshotsDir: path,
     customSnapshotIdentifier: filename,
     noColors: true
@@ -67,11 +66,11 @@ describe.each(testCases)('Testing: %s', (link, folder, count) => {
     await page.evaluate(() => {
       window.scrollTo(0, Number.MAX_SAFE_INTEGER)
     })
-    await page.waitFor(4000)
+    await page.waitFor(1000)
     await page.evaluate(() => {
       window.scrollBy(0, 0)
     })
-    await page.waitFor(4000)
+    await page.waitFor(1000)
   });
 
   test.each(Array.from(Array(count), (_, i) => i))('Taking screenshot #%i', async i => {
@@ -80,7 +79,7 @@ describe.each(testCases)('Testing: %s', (link, folder, count) => {
       window.scrollTo(0, scrollHeight)
     }, scrollHeight)
     let image = await page.screenshot({ path: `${screenshotsFolder}/${folder}/screenshot-${i}.png`})
-    expect(image).toMatchImageSnapshot(setConfig(`screenshot-${i}`, `${__dirname}/snaps/${folder}`))
+    expect(image).toMatchImageSnapshot(setConfig(`screenshot-${i}`, `${__dirname}/baseline/${folder}`))
   }, 15000)
 
 })

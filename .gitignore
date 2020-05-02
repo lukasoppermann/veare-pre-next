@@ -3,5 +3,5 @@
 /_*
 /logs
 /.cache
-/tests/integration/snaps
+/tests/integration/test_snaps
 .DS_Store

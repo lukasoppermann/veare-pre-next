@@ -53,6 +53,10 @@ html {
 }
 body {
   background: var(--white-grey); // visible when over-pulling
+  &.testing * { // for ui tests
+    transition: none !important;
+    animation-duration: 0s !important;
+  }
 }
 .Page { // replace maybe with MAIN??`
   position: relative;

@@ -92,6 +92,11 @@
       "@typescript-eslint"
     ]
   },
+  "stylelint": {
+    "rules": {
+      "no-descending-specificity": null
+    }
+  },
   "jest": {
     "preset": "jest-puppeteer",
     "globals": {
@@ -104,7 +109,7 @@
     "server": "NODE_ENV=production forever start -c 'node_modules/.bin/ts-node' $npm_package_main -m 5000 --pretty",
     "forever-stop": "forever stopall && forever list",
     "build": "npm run build:js:watch & npm run build:css:watch",
-    "build:css:watch": "onchange -k -i 'resources/css/*/*.scss' -- npm run build:css",
+    "build:css:watch": "onchange -k -i 'resources/css/**/*.scss' -- npm run build:css",
     "build:css": "rm -f public/css/* && npm run css:compile && npm run css:rev",
     "css:clean": "rm -f public/css/*",
     "css:compile:slim": "node-sass --output-style compressed -o public/css/ resources/css/slim/slim.scss",
@@ -119,7 +124,7 @@
     "test:css": "stylelint resources/css",
     "tsc": "tsc --noEmit --pretty",
     "standard": "standardx 'app.js' 'resources/js/*.ts' 'app/**/*.js' 'app/**/*.ts' | snazzy",
-    "test:integration": "jest tests/integration --detectOpenHandles --updateSnapshot",
+    "test:integration": "jest tests/integration --detectOpenHandles",
     "test:js": "npm run tsc && jest tests/unit && npm run standard",
     "test": "npm run test:js && npm run test:css",
     "removeCompiled": "branch=$(git branch | grep \\* | cut -d ' ' -f2) && if test \"$branch\" != \"master\" ; then git reset HEAD public/ ; fi"
