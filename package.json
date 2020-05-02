@@ -100,11 +100,8 @@
     "verbose": true
   },
   "scripts": {
-    "start": "ts-node-dev $npm_package_main --pretty",
+    "start": "ts-node-dev --respawn $npm_package_main --pretty",
     "server": "NODE_ENV=production forever start -c 'node_modules/.bin/ts-node' $npm_package_main -m 5000 --pretty",
-    "ts-node-dev": "ts-node-dev --respawn $npm_package_main --pretty",
-    "dev-server": "forever stopall && echo 'Running on http://localhost:8080' && NODE_ENV=development forever start -c 'node_modules/.bin/ts-node' $npm_package_main -m 5000 --pretty && forever list",
-    "test-server": "forever stopall && NODE_ENV=test forever start -c 'node_modules/.bin/ts-node' $npm_package_main",
     "forever-stop": "forever stopall && forever list",
     "build": "npm run build:js:watch & npm run build:css:watch",
     "build:css:watch": "onchange -k -i 'resources/css/*/*.scss' -- npm run build:css",
@@ -122,12 +119,10 @@
     "test:css": "stylelint resources/css",
     "tsc": "tsc --noEmit --pretty",
     "standard": "standardx 'app.js' 'resources/js/*.ts' 'app/**/*.js' 'app/**/*.ts' | snazzy",
-    "test:integration": "npm run test-server && jest tests/integration --detectOpenHandles && forever stopall",
+    "test:integration": "jest tests/integration --detectOpenHandles --updateSnapshot",
     "test:js": "npm run tsc && jest tests/unit && npm run standard",
-    "test:all": "npm run test:css && npm run test:js && npm run test:integration && forever stopall",
     "test": "npm run test:js && npm run test:css",
-    "removeCompiled": "branch=$(git branch | grep \\* | cut -d ' ' -f2) && if test \"$branch\" != \"master\" ; then git reset HEAD public/ ; fi",
-    "github:integration": "jest tests/integration --detectOpenHandles --updateSnapshot"
+    "removeCompiled": "branch=$(git branch | grep \\* | cut -d ' ' -f2) && if test \"$branch\" != \"master\" ; then git reset HEAD public/ ; fi"
   },
   "pre-commit": [
     "standard",

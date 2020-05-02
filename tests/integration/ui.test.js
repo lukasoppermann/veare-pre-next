@@ -17,7 +17,7 @@ const testCases = [
 ]
 
 // create screenshots folder
-const screenshotsFolder = `${__dirname}/../screenshots`
+const screenshotsFolder = `${__dirname}/base_screenshots`
 if (!fs.existsSync(screenshotsFolder)){
     console.debug(`Creating directory: ${screenshotsFolder}`)
     fs.mkdirSync(screenshotsFolder)
@@ -80,7 +80,7 @@ describe.each(testCases)('Testing: %s', (link, folder, count) => {
       window.scrollTo(0, scrollHeight)
     }, scrollHeight)
     let image = await page.screenshot({ path: `${screenshotsFolder}/${folder}/screenshot-${i}.png`})
-    expect(image).toMatchImageSnapshot(setConfig(`screenshot-${i}`, `${screenshotsFolder}/${folder}/snaps/`))
+    expect(image).toMatchImageSnapshot(setConfig(`screenshot-${i}`, `${__dirname}/snaps/${folder}`))
   }, 15000)
 
 })
