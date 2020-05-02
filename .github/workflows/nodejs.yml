@@ -30,7 +30,6 @@ jobs:
     - run: npm run test:css
     - run: npm run build:css
     - run: npm run build:js
-    - run: npm run test-server
-           npm run github:integration
+    - run: npm run test-server && npm run github:integration
       env:
         NODE_PORT: 3300
