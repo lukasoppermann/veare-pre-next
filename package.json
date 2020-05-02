@@ -127,7 +127,7 @@
     "test:all": "npm run test:css && npm run test:js && npm run test:integration && forever stopall",
     "test": "npm run test:js && npm run test:css",
     "removeCompiled": "branch=$(git branch | grep \\* | cut -d ' ' -f2) && if test \"$branch\" != \"master\" ; then git reset HEAD public/ ; fi",
-    "github:integration": "jest tests/integration --detectOpenHandles"
+    "github:integration": "jest tests/integration --detectOpenHandles --updateSnapshot"
   },
   "pre-commit": [
     "standard",
