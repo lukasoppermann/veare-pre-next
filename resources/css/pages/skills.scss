@@ -4,7 +4,7 @@
 .skills:nth-child(2n+1) {
   margin-top: calc(var(--baseline) * 7);
 }
-.skills .Picture__Element {
+.skills .Picture {
   order: 1;
   display: flex;
   align-self: center;
@@ -22,7 +22,7 @@
     grid-column: columns;
   }
 }
-.skills:nth-child(2n+1) .Picture__Element {
+.skills:nth-child(2n+1) .Picture {
   order: 3;
   grid-column: column 6 / span 3;
   @include mq('s') {
@@ -34,7 +34,7 @@
     grid-column: columns;
   }
 }
-.skills .Picture__Element picture {
+.skills .Picture picture {
   width: 100%;
   height: auto;
 }

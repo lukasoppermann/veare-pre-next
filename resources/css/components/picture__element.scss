@@ -1,41 +1,8 @@
 /* ====================================
     Picture__Element
 ==================================== */
-.Picture__Element {
-  grid-column: columns;
-  position: relative;
-  z-index: 50;
-  @include mq('m') {
-    grid-column: full-content;
-  }
-  img {
-    object-fit: cover;
-    object-position: top;
-    position: relative;
-    z-index: 50;
-  }
-}
 .Picture__Element--background-color--fafafc {
   --backgroundColor: #fafafc;
-}
-.Picture__Element .Annotation {
-  position: relative;
-  z-index: 50;
-}
-.Picture__Element:not(:first-child) {
-  @include baseline(3);
-}
-.Picture__Element.Picture__Element--center {
-  grid-column: columns;
-}
-.Picture__Element.Picture__Element--wide {
-  grid-column: sidebar-left 2 / sidebar-right 2;
-  @include mq('m') {
-    grid-column: full-content;
-  }
-}
-.Picture__Element.Picture__Element--full-width {
-  grid-column: full-bleed;
 }
 .Picture__Element--background,
 .Picture__Element--background--tilted {

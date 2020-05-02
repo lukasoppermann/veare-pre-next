@@ -4,7 +4,7 @@ const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsaf
 
 export default (item, loading = 'lazy') => {
   return html`
-  <figure class="Picture Picture__Element Picture__Element--${item.style} ${item.classes}">
+  <figure class="Picture Picture--${item.style} ${item.classes}">
     <picture>
       ${item.sources[0].fields.contentType !== 'image/svg+xml'
       ? html`<source type="image/webp" srcset="${item.sources[0].fields.url}?fm=webp">` : ''}

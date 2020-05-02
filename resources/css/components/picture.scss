@@ -1,0 +1,29 @@
+.Picture {
+  grid-column: columns;
+  position: relative;
+  z-index: 50;
+  @include mq('m') {
+    grid-column: full-content;
+  }
+  img {
+    object-fit: cover;
+    object-position: top;
+    position: relative;
+    z-index: 50;
+  }
+  &:not(:first-child) {
+    @include baseline(3);
+  }
+  &.Picture--center {
+    grid-column: columns;
+  }
+  &.Picture--wide {
+    grid-column: sidebar-left 2 / sidebar-right 2;
+    @include mq('m') {
+      grid-column: full-content;
+    }
+  }
+  &.Picture--full-width {
+    grid-column: full-bleed;
+  }
+}

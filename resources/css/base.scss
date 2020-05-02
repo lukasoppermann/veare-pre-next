@@ -58,6 +58,7 @@ body {
   position: relative;
   background: var(--white);
   width: 100vw;
+  overflow-x: hidden; // used for tilted bg on images in projects
 }
 
 /* ====================================
