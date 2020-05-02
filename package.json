@@ -100,6 +100,7 @@
     "verbose": true
   },
   "scripts": {
+    "start": "ts-node-dev $npm_package_main --pretty",
     "server": "NODE_ENV=production forever start -c 'node_modules/.bin/ts-node' $npm_package_main -m 5000 --pretty",
     "ts-node-dev": "ts-node-dev --respawn $npm_package_main --pretty",
     "dev-server": "forever stopall && echo 'Running on http://localhost:8080' && NODE_ENV=development forever start -c 'node_modules/.bin/ts-node' $npm_package_main -m 5000 --pretty && forever list",
