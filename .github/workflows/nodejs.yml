@@ -27,9 +27,21 @@ jobs:
     - name: npm install dependencies
       run: npm ci
     - run: npm run test:js
+      env:
+        NODE_ENV: test
+        CONTENTFUL_HOOK_PW: ${{ secrets.CONTENTFUL_HOOK_PW }}
+        CONTENTFUL_HOOK_USER: ${{ secrets.CONTENTFUL_HOOK_USER }}
+        CONTENTFUL_TOKEN_PREVIEW: ${{ secrets.CONTENTFUL_TOKEN_PREVIEW }}
+        CONTENTFUL_TOKEN: ${{ secrets.CONTENTFUL_TOKEN }}
+        CONTENTFUL_SPACE: ${{ secrets.CONTENTFUL_SPACE }}
     - run: npm run test:css
     - run: npm run build:css
     - run: npm run build:js
-    - run: npm run test-server && npm run github:integration
+    - run: npm run github:integration
       env:
         NODE_ENV: test
+        CONTENTFUL_HOOK_PW: ${{ secrets.CONTENTFUL_HOOK_PW }}
+        CONTENTFUL_HOOK_USER: ${{ secrets.CONTENTFUL_HOOK_USER }}
+        CONTENTFUL_TOKEN_PREVIEW: ${{ secrets.CONTENTFUL_TOKEN_PREVIEW }}
+        CONTENTFUL_TOKEN: ${{ secrets.CONTENTFUL_TOKEN }}
+        CONTENTFUL_SPACE: ${{ secrets.CONTENTFUL_SPACE }}
