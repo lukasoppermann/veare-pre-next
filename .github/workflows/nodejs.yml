@@ -47,6 +47,7 @@ jobs:
         CONTENTFUL_TOKEN: ${{ secrets.CONTENTFUL_TOKEN }}
         CONTENTFUL_SPACE: ${{ secrets.CONTENTFUL_SPACE }}
     - uses: actions/upload-artifact@v2
+      # if: failure()
       with:
         name: Snapshots
         path: ${{ github.workspace }}/test_snaps

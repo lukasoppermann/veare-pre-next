@@ -83,7 +83,7 @@ describe.each(testCases)('Testing: %s', (link, folder, count) => {
     let image = await page.screenshot({ path: `${screenshotsFolder}/${folder}/screenshot-${i}.png`})
     expect(image).toMatchImageSnapshot(setConfig({
       filename: `screenshot-${i}`,
-      snapshotPath: `${basePath}/baseline/${folder}`,
+      snapshotPath: `${basePath}/tests/integration/baseline/${folder}`,
       diffPath: `${screenshotsFolder}/${folder}`
     }))
   }, 15000)
