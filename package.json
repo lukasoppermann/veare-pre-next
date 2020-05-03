@@ -93,8 +93,16 @@
     ]
   },
   "stylelint": {
+    "extends": "stylelint-config-standard",
     "rules": {
-      "no-descending-specificity": null
+      "no-descending-specificity": null,
+      "at-rule-no-unknown": null,
+      "selector-type-no-unknown": null,
+      "rule-empty-line-before": null,
+      "declaration-empty-line-before": null,
+      "custom-property-empty-line-before": null,
+      "at-rule-empty-line-before": null,
+      "number-leading-zero": null
     }
   },
   "jest": {

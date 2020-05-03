@@ -37,17 +37,17 @@ jobs:
     - run: npm run test:css
     - run: npm run build:css
     - run: npm run build:js
-    - run: npm run test:integration
-      env:
-        SNAPSHOT_PATH: ${{ github.workspace }}
-        NODE_ENV: test
-        CONTENTFUL_HOOK_PW: ${{ secrets.CONTENTFUL_HOOK_PW }}
-        CONTENTFUL_HOOK_USER: ${{ secrets.CONTENTFUL_HOOK_USER }}
-        CONTENTFUL_TOKEN_PREVIEW: ${{ secrets.CONTENTFUL_TOKEN_PREVIEW }}
-        CONTENTFUL_TOKEN: ${{ secrets.CONTENTFUL_TOKEN }}
-        CONTENTFUL_SPACE: ${{ secrets.CONTENTFUL_SPACE }}
-    - uses: actions/upload-artifact@v2
-      # if: failure()
-      with:
-        name: Snapshots
-        path: ${{ github.workspace }}/test_snaps
+    # - run: npm run test:integration
+    #   env:
+    #     SNAPSHOT_PATH: ${{ github.workspace }}
+    #     NODE_ENV: test
+    #     CONTENTFUL_HOOK_PW: ${{ secrets.CONTENTFUL_HOOK_PW }}
+    #     CONTENTFUL_HOOK_USER: ${{ secrets.CONTENTFUL_HOOK_USER }}
+    #     CONTENTFUL_TOKEN_PREVIEW: ${{ secrets.CONTENTFUL_TOKEN_PREVIEW }}
+    #     CONTENTFUL_TOKEN: ${{ secrets.CONTENTFUL_TOKEN }}
+    #     CONTENTFUL_SPACE: ${{ secrets.CONTENTFUL_SPACE }}
+    # - uses: actions/upload-artifact@v2
+    #   if: failure()
+    #   with:
+    #     name: Snapshots
+    #     path: ${{ github.workspace }}/test_snaps
