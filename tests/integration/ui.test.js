@@ -3,7 +3,7 @@ const puppeteer = require('puppeteer')
 const { toMatchImageSnapshot } = require('jest-image-snapshot')
 
 jest.setTimeout(30000);
-
+let basePath = process.env.SNAPSHOT_PATH  || __dirname
 let browser
 let page
 const viewportHeight = 900
@@ -17,7 +17,7 @@ const testCases = [
 ]
 
 // create screenshots folder
-const screenshotsFolder = `${__dirname}/test_snaps`
+const screenshotsFolder = `${basePath}/test_snaps`
 if (!fs.existsSync(screenshotsFolder)){
     console.debug(`Creating directory: ${screenshotsFolder}`)
     fs.mkdirSync(screenshotsFolder)
@@ -32,13 +32,15 @@ testCases.forEach(item => {
 })
 
 // jest-image-snapshot custom configuration in order to save screenshots and compare the with the baseline
-function setConfig (filename, path) {
+function setConfig (opts) {
+
   return {
     customDiffConfig: {
       threshold: 0.01
     },
-    customSnapshotsDir: path,
-    customSnapshotIdentifier: filename,
+    customDiffDir: opts.diffPath,
+    customSnapshotsDir: opts.snapshotPath,
+    customSnapshotIdentifier: opts.filename,
     noColors: true
   }
 }
@@ -79,7 +81,11 @@ describe.each(testCases)('Testing: %s', (link, folder, count) => {
       window.scrollTo(0, scrollHeight)
     }, scrollHeight)
     let image = await page.screenshot({ path: `${screenshotsFolder}/${folder}/screenshot-${i}.png`})
-    expect(image).toMatchImageSnapshot(setConfig(`screenshot-${i}`, `${__dirname}/baseline/${folder}`))
+    expect(image).toMatchImageSnapshot(setConfig({
+      filename: `screenshot-${i}`,
+      snapshotPath: `${basePath}/baseline/${folder}`,
+      diffPath: `${screenshotsFolder}/${folder}`
+    }))
   }, 15000)
 
 })

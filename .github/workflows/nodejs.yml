@@ -39,6 +39,7 @@ jobs:
     - run: npm run build:js
     - run: npm run test:integration
       env:
+        SNAPSHOT_PATH: ${{ github.workspace }}
         NODE_ENV: test
         CONTENTFUL_HOOK_PW: ${{ secrets.CONTENTFUL_HOOK_PW }}
         CONTENTFUL_HOOK_USER: ${{ secrets.CONTENTFUL_HOOK_USER }}
@@ -48,4 +49,4 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: Snapshots
-        path: tests/integration/test_snaps
+        path: ${{ github.workspace }}/test_snaps
