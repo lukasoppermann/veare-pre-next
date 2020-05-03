@@ -1,13 +1,8 @@
 import { transformedDataInterface } from '../../types/transformer'
 import transformer, { getField } from './transformer'
-import jsonParse from '../services/jsonParse'
 
 export default async (data) => {
   return transformer(data, async (data): Promise<transformedDataInterface> => {
-    let description = getField(data, 'description')
-    try {
-      description = jsonParse(description)
-    } catch (e) {}
     // return format
     return <transformedDataInterface>{
       id: data.sys.id,
@@ -16,7 +11,7 @@ export default async (data) => {
       contentType: data.sys.type,
       fields: {
         title: getField(data, 'title'),
-        description: description,
+        description: getField(data, 'description'),
         url: getField(data, 'file').url,
         fileName: getField(data, 'file').fileName,
         details: getField(data, 'file').details,

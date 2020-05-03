@@ -38,7 +38,7 @@
     top: 0;
   }
   .responsive-menu__item {
-    color: inherit;
+    color: var(--black);
     pointer-events: auto;
     padding: 0 var(--size-s, 10px);
     height: 100%;

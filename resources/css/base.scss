@@ -1,3 +1,5 @@
+@import './includes/typography.scss';
+
 /* ====================================
     CSS RESET
 ==================================== */
@@ -50,9 +52,19 @@ a:hover {
 ==================================== */
 html {
   font-size: 62.5%; /* sets 1rem = 10px */
+  font-display: optional;
+  -webkit-overflow-scrolling: touch;
 }
 body {
+  // sizing of the body element
+  min-height: 100vh;
+  min-width: 280px;
+  margin: 0;
+  width: 100vw;
   background: var(--white-grey); // visible when over-pulling
+  overflow-x: hidden; // used for tilted bg on images in projects
+  // basic typography
+  @include font-paragraph-sans(rgba(0,0,0,.8));
   &.testing * { // for ui tests
     transition: none !important;
     animation-duration: 0s !important;
@@ -62,7 +74,7 @@ body {
   position: relative;
   background: var(--white);
   width: 100vw;
-  overflow-x: hidden; // used for tilted bg on images in projects
+  overflow-y: hidden;
 }
 
 /* ====================================
@@ -80,8 +92,4 @@ li {
 }
 li:not(:first-child) {
   margin-top: var(--baseline);
-}
-ul + *,
-ol + * {
-  margin-top: calc(var(--baseline) * 2) !important;
 }
