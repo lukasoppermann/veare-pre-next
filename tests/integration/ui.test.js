@@ -4,6 +4,7 @@ const { toMatchImageSnapshot } = require('jest-image-snapshot')
 
 jest.setTimeout(30000);
 let basePath = process.env.SNAPSHOT_PATH  || __dirname
+let snapshotPath = process.env.SNAPSHOT_PATH ? `${process.env.SNAPSHOT_PATH}/tests/integration` : __dirname
 let browser
 let page
 const viewportHeight = 900
@@ -13,7 +14,8 @@ const testCases = [
   ['/work/nyon', 'work-nyon', 19],
   ['/work/copra', 'work-copra', 15],
   ['/privacy', 'privacy', 16],
-  ['/blog', 'blog', 3]
+  ['/blog', 'blog', 3],
+  ['/blog/framer-x-a-review', 'blog-framer', 13]
 ]
 
 // create screenshots folder
@@ -83,7 +85,7 @@ describe.each(testCases)('Testing: %s', (link, folder, count) => {
     let image = await page.screenshot({ path: `${screenshotsFolder}/${folder}/screenshot-${i}.png`})
     expect(image).toMatchImageSnapshot(setConfig({
       filename: `screenshot-${i}`,
-      snapshotPath: `${basePath}/tests/integration/baseline/${folder}`,
+      snapshotPath: `${basePath}/baseline/${folder}`,
       diffPath: `${screenshotsFolder}/${folder}`
     }))
   }, 15000)
