@@ -3,36 +3,46 @@ const puppeteer = require('puppeteer')
 const { toMatchImageSnapshot } = require('jest-image-snapshot')
 
 jest.setTimeout(30000);
-
+let basePath = process.env.SNAPSHOT_PATH  || __dirname
+let snapshotPath = process.env.SNAPSHOT_PATH ? `${process.env.SNAPSHOT_PATH}/tests/integration` : __dirname
 let browser
 let page
 const viewportHeight = 900
 const viewportWidth = 1680
 const testCases = [
-  ['/home', 8],
-  ['/work/nyon', 19],
-  ['/work/copra', 15],
-  ['/privacy', 16],
-  ['/blog', 3]
+  ['/home', 'home', 8],
+  ['/work/nyon', 'work-nyon', 19],
+  ['/work/copra', 'work-copra', 15],
+  ['/privacy', 'privacy', 16],
+  ['/blog', 'blog', 3],
+  ['/blog/framer-x-a-review', 'blog-framer', 13]
 ]
 
+// create screenshots folder
+const screenshotsFolder = `${basePath}/test_snaps`
+if (!fs.existsSync(screenshotsFolder)){
+    console.debug(`Creating directory: ${screenshotsFolder}`)
+    fs.mkdirSync(screenshotsFolder)
+}
+
 testCases.forEach(item => {
-  let dir = `${__dirname}/../screenshots${item[0]}`
+  let dir = `${screenshotsFolder}/${item[1]}`
   if (!fs.existsSync(dir)){
       console.debug(`Creating directory: ${dir}`)
       fs.mkdirSync(dir)
-  } else {
-    console.debug(`Directory already exists: ${dir}`)
   }
 })
 
 // jest-image-snapshot custom configuration in order to save screenshots and compare the with the baseline
-function setConfig (filename, path) {
+function setConfig (opts) {
+
   return {
-    failureThreshold: '0.01',
-    failureThresholdType: 'percent',
-    customSnapshotsDir: path,
-    customSnapshotIdentifier: filename,
+    customDiffConfig: {
+      threshold: 0.01
+    },
+    customDiffDir: opts.diffPath,
+    customSnapshotsDir: opts.snapshotPath,
+    customSnapshotIdentifier: opts.filename,
     noColors: true
   }
 }
@@ -53,18 +63,18 @@ beforeAll(async () => {
   })
 })
 
-describe.each(testCases)('Testing: %s', (link, count) => {
+describe.each(testCases)('Testing: %s', (link, folder, count) => {
 
   beforeAll(async () => {
     await page.goto(`http://localhost:3300${link}`)
     await page.evaluate(() => {
       window.scrollTo(0, Number.MAX_SAFE_INTEGER)
     })
-    await page.waitFor(4000)
+    await page.waitFor(1000)
     await page.evaluate(() => {
       window.scrollBy(0, 0)
     })
-    await page.waitFor(4000)
+    await page.waitFor(1000)
   });
 
   test.each(Array.from(Array(count), (_, i) => i))('Taking screenshot #%i', async i => {
@@ -72,36 +82,16 @@ describe.each(testCases)('Testing: %s', (link, count) => {
     await page.evaluate(scrollHeight => {
       window.scrollTo(0, scrollHeight)
     }, scrollHeight)
-    let image = await page.screenshot({ path: `${__dirname}/../screenshots${link}/screenshot-${i}.png`})
-    expect(image).toMatchImageSnapshot(setConfig(`screenshot-${i}`, `${__dirname}/../screenshots${link}/snaps/`))
+    let image = await page.screenshot({ path: `${screenshotsFolder}/${folder}/screenshot-${i}.png`})
+    expect(image).toMatchImageSnapshot(setConfig({
+      filename: `screenshot-${i}`,
+      snapshotPath: `${basePath}/baseline/${folder}`,
+      diffPath: `${screenshotsFolder}/${folder}`
+    }))
   }, 15000)
 
 })
 
-// describe('/work/nyon', () => {
-//
-//   beforeAll(async () => {
-//     await page.goto('http://localhost:3300/work/nyon')
-//     await page.evaluate(() => {
-//       window.scrollTo(0, Number.MAX_SAFE_INTEGER)
-//     })
-//     await page.waitFor(4000)
-//     await page.evaluate(() => {
-//       window.scrollBy(0, 0)
-//     })
-//     await page.waitFor(4000)
-//   });
-//
-//   test.each(Array.from(Array(19), (_, i) => i))('Taking screenshot #%i', async i => {
-//     let scrollHeight = i * viewportHeight
-//     await page.evaluate(scrollHeight => {
-//       window.scrollTo(0, scrollHeight)
-//     }, scrollHeight)
-//     let image = await page.screenshot({ path: `${__dirname}/../screenshots/work-nyon-${i}.png`})
-//     expect(image).toMatchImageSnapshot(setConfig(`screenshot-${i}`))
-//   }, 15000)
-//
-// })
 
 afterAll(async () => {
   await browser.close()

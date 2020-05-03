@@ -20,7 +20,6 @@
     "@types/puppeteer": "^2.0.1",
     "@typescript-eslint/eslint-plugin": "^2.30.0",
     "@typescript-eslint/parser": "^2.30.0",
-    "acorn": "^7.1.1",
     "check-links": "^1.1.8",
     "eslint": "^6.7.2",
     "eslint-plugin-typescript": "^0.14.0",
@@ -33,7 +32,6 @@
     "node-sass": "^4.13.0",
     "onchange": "^7.0.1",
     "pre-commit": "^1.2.2",
-    "pre-push": "^0.1.1",
     "puppeteer": "^2.1.1",
     "rollup": "^2.7.3",
     "rollup-plugin-node-resolve": "^5.2.0",
@@ -66,7 +64,6 @@
     "flat-cache": "^2.0.1",
     "forever": "^2.0.0",
     "greenlock-express": "^4.0.3",
-    "greenlock-store-fs": "^3.0.2",
     "helmet": "^3.21.2",
     "highlight.js": "^10.0.1",
     "json5": "^2.1.3",
@@ -92,6 +89,19 @@
       "@typescript-eslint"
     ]
   },
+  "stylelint": {
+    "extends": "stylelint-config-standard",
+    "rules": {
+      "no-descending-specificity": null,
+      "at-rule-no-unknown": null,
+      "selector-type-no-unknown": null,
+      "rule-empty-line-before": null,
+      "declaration-empty-line-before": null,
+      "custom-property-empty-line-before": null,
+      "at-rule-empty-line-before": null,
+      "number-leading-zero": null
+    }
+  },
   "jest": {
     "preset": "jest-puppeteer",
     "globals": {
@@ -100,13 +110,11 @@
     "verbose": true
   },
   "scripts": {
+    "start": "ts-node-dev --respawn $npm_package_main --pretty",
     "server": "NODE_ENV=production forever start -c 'node_modules/.bin/ts-node' $npm_package_main -m 5000 --pretty",
-    "ts-node-dev": "ts-node-dev --respawn $npm_package_main --pretty",
-    "dev-server": "forever stopall && echo 'Running on http://localhost:8080' && NODE_ENV=development forever start -c 'node_modules/.bin/ts-node' $npm_package_main -m 5000 --pretty && forever list",
-    "test-server": "forever stopall && NODE_ENV=test forever start -c 'node_modules/.bin/ts-node' $npm_package_main",
     "forever-stop": "forever stopall && forever list",
     "build": "npm run build:js:watch & npm run build:css:watch",
-    "build:css:watch": "onchange -k -i 'resources/css/*/*.scss' -- npm run build:css",
+    "build:css:watch": "onchange -k -i 'resources/css/**/*.scss' -- npm run build:css",
     "build:css": "rm -f public/css/* && npm run css:compile && npm run css:rev",
     "css:clean": "rm -f public/css/*",
     "css:compile:slim": "node-sass --output-style compressed -o public/css/ resources/css/slim/slim.scss",
@@ -121,12 +129,10 @@
     "test:css": "stylelint resources/css",
     "tsc": "tsc --noEmit --pretty",
     "standard": "standardx 'app.js' 'resources/js/*.ts' 'app/**/*.js' 'app/**/*.ts' | snazzy",
-    "test:integration": "NODE_PORT=3300 npm run test-server && NODE_PORT=3300 jest tests/integration --detectOpenHandles && forever stopall",
+    "test:integration": "jest tests/integration --detectOpenHandles",
     "test:js": "npm run tsc && jest tests/unit && npm run standard",
-    "test:all": "npm run test:css && npm run test:js && npm run test:integration && forever stopall",
     "test": "npm run test:js && npm run test:css",
-    "removeCompiled": "branch=$(git branch | grep \\* | cut -d ' ' -f2) && if test \"$branch\" != \"master\" ; then git reset HEAD public/ ; fi",
-    "github:integration": "jest tests/integration --detectOpenHandles"
+    "removeCompiled": "branch=$(git branch | grep \\* | cut -d ' ' -f2) && if test \"$branch\" != \"master\" ; then git reset HEAD public/ ; fi"
   },
   "pre-commit": [
     "standard",

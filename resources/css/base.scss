@@ -46,6 +46,26 @@ a:hover {
 }
 
 /* ====================================
+  GENERAL
+==================================== */
+html {
+  font-size: 62.5%; /* sets 1rem = 10px */
+}
+body {
+  background: var(--white-grey); // visible when over-pulling
+  &.testing * { // for ui tests
+    transition: none !important;
+    animation-duration: 0s !important;
+  }
+}
+.Page { // replace maybe with MAIN??`
+  position: relative;
+  background: var(--white);
+  width: 100vw;
+  overflow-x: hidden; // used for tilted bg on images in projects
+}
+
+/* ====================================
   LIST
 ==================================== */
 ul,

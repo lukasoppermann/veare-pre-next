@@ -3,4 +3,6 @@
 /_*
 /logs
 /.cache
-/tests/screenshots
+/tests/integration/test_snaps
+.DS_Store
+__diff_output__
