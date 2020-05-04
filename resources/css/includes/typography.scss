@@ -110,6 +110,12 @@ font-feature-settings:"liga", "dlig";
   font-family: var(--font-source-sans);
   color: var(--black-60);
 }
+@mixin font-paragraph-sans($color: var(--black-60)) {
+  font-size: var(--base-font);
+  line-height: calc(var(--baseline) * 4);
+  font-family: var(--font-source-sans);
+  color: $color;
+}
 %font-annotation {
   font-size: var(--size-s);
   line-height: calc(var(--baseline) * 2);

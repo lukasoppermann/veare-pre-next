@@ -59,9 +59,7 @@
       color: var(--black);
     }
     &::before {
-      display: block;
-      content: "";
-      position: absolute;
+      @include pseudo();
       width: 0;
       height: 7px;
       top: 50%;
