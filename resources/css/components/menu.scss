@@ -38,7 +38,7 @@
     top: 0;
   }
   .responsive-menu__item {
-    color: var(--black);
+    color: inherit;
     pointer-events: auto;
     padding: 0 var(--size-s, 10px);
     height: 100%;
@@ -59,9 +59,7 @@
       color: var(--black);
     }
     &::before {
-      display: block;
-      content: "";
-      position: absolute;
+      @include pseudo();
       width: 0;
       height: 7px;
       top: 50%;

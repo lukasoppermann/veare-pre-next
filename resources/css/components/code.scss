@@ -46,9 +46,8 @@ pre > .code {
   }
   .Code__file-or-path::before,
   .Code__file-or-path::after {
-    content: "";
+    @include pseudo();
     z-index: 10;
-    position: absolute;
     height: 100%;
     width: 4px;
     background: rgba(0, 0, 0, .2);

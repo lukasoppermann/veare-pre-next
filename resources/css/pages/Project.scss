@@ -127,7 +127,12 @@
   }
 }
 .Project-card__client::before {
-  @extend %pseudo-line;
+  @include pseudo("relative");
+  flex: 0 0 auto;
+  align-self: center;
+  height: 2px;
+  width: var(--hs-l);
+  transform: translateY(-1px);
   background: currentColor;
   margin-right: var(--hs-xs);
 }

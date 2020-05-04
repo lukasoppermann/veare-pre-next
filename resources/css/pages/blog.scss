@@ -75,9 +75,7 @@
     padding-right: 2rem;
   }
   &__date::before {
-    content: "";
-    display: block;
-    position: absolute;
+    @include pseudo();
     left: 0;
     top: 0;
     width: 2rem;
@@ -157,12 +155,10 @@
   &__link::after,
   &__link::before {
     pointer-events: none;
-    content: "";
-    display: block;
+    @include pseudo();
     height: 100%;
     min-height: 13rem;
     width: 100%;
-    position: absolute;
     opacity: 0;
     top: -3rem;
     left: 0;
