@@ -2,7 +2,7 @@
 @import "../includes/colors.scss";
 @import "../includes/sizes.scss";
 @import "../includes/typography.scss";
-@import "../includes/mediaqueries.scss";
+@import "../_mixins/mixins.scss";
 .Article {
   h1 {
     grid-column: columns;
