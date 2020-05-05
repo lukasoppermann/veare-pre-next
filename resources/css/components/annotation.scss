@@ -3,7 +3,7 @@
   position: relative;
   padding-top: calc(var(--baseline) * 2);
   margin-top: 0;
-  @include mq('m') {
+  @include max-width('m') {
     @include baseline_top(2);
     padding-top: 0;
     font-size: var(--size-m);
@@ -16,7 +16,7 @@
 }
 .Grid > .Annotation {
   grid-column: sidebar-right;
-  @include mq('s') {
+  @include max-width('s') {
     grid-column: columns;
   }
 }
@@ -26,7 +26,7 @@
   height: 2px;
   width: 50%;
   background-color: rgb(var(--light-grey-rgb));
-  @include mq('m') {
+  @include max-width('m') {
     display: none;
   }
 }

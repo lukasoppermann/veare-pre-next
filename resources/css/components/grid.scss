@@ -3,7 +3,7 @@
   --min-row-height: 35px;
   --row-gap: var(--baseline);
   --column-gap: var(--base-font);
-  @include mq('s') {
+  @include max-width('s') {
     --column-gap: var(--size-m);
   }
 }
@@ -34,7 +34,7 @@
     [full-bleed-end];
   grid-column-gap: var(--column-gap); /* 12 gaps */
   grid-row-gap: var(--row-gap); /* 12 gaps */
-  @include mq('l') {
+  @include max-width('l') {
     grid-template-columns:
       [full-bleed-start margin-left]
       minmax(0, 1fr)
@@ -52,7 +52,7 @@
       minmax(0, 1fr)
       [margin-right full-bleed-end];
   }
-  @include mq('s') {
+  @include max-width('s') {
     grid-template-columns:
       [margin-left full-bleed-start]
       0

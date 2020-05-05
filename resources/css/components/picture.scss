@@ -2,7 +2,7 @@
   grid-column: columns;
   position: relative;
   z-index: 50;
-  @include mq('m') {
+  @include max-width('m') {
     grid-column: full-content;
   }
   img {
@@ -19,7 +19,7 @@
   }
   &.Picture--wide {
     grid-column: sidebar-left 2 / sidebar-right 2;
-    @include mq('m') {
+    @include max-width('m') {
       grid-column: full-content;
     }
   }

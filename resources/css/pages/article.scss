@@ -14,7 +14,7 @@
     margin-top: var(--size-xxg);
     margin-bottom: var(--size-xl);
     text-align: left;
-    @include mq('s') {
+    @include max-width('s') {
       line-height: 110%;
       text-align: center;
     }
@@ -51,7 +51,7 @@
     margin-left: 0;
     display: block;
     position: relative;
-    @include mq('s') {
+    @include max-width('s') {
       margin-left: 1.4em;
     }
     &::before {
@@ -67,7 +67,7 @@
   }
   blockquote {
     grid-column: sidebar-left 2 / columns;
-    @include mq('s') {
+    @include max-width('s') {
       grid-column: columns;
     }
     margin-top: var(--size-xl);
@@ -76,7 +76,7 @@
       hyphens: auto;
       overflow-wrap: break-word;
       @include font-paragraph-sans-big;
-      @include mq('xxs') {
+      @include max-width('xxs') {
         font-size: var(--base-font);
         line-height: calc(var(--baseline) * 4);
       }
@@ -84,7 +84,7 @@
     }
   }
   .Annotation {
-    @include mq('s') {
+    @include max-width('s') {
       margin-top: var(--size-s);
       margin-bottom: var(--size-xl);
     }
@@ -96,7 +96,7 @@
   .Article__publication-details,
   .Article__author {
     grid-column: columns;
-    @include mq('s') {
+    @include max-width('s') {
       text-align: center;
     }
   }

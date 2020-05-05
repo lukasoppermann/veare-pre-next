@@ -12,24 +12,24 @@
   height: auto;
   grid-row: 1 / 5;
   grid-column: sidebar-left 2 / span 3;
-  @include mq('m') {
+  @include max-width('m') {
     grid-column: sidebar-left 2 / span 3;
   }
-  @include mq('s') {
+  @include max-width('s') {
     grid-column: column 3 / span 3;
   }
-  @include mq('xs') {
+  @include max-width('xs') {
     grid-column: columns;
   }
 }
 .skills:nth-child(2n+1) .Picture {
   order: 3;
   grid-column: column 6 / span 3;
-  @include mq('s') {
+  @include max-width('s') {
     order: 1;
     grid-column: column 3 / span 3;
   }
-  @include mq('xs') {
+  @include max-width('xs') {
     order: 1;
     grid-column: columns;
   }
@@ -45,13 +45,13 @@
   display: block;
   text-align: left;
   grid-column: column 3 / span 5;
-  @include mq('m') {
+  @include max-width('m') {
     grid-column: column 3 / span 6;
   }
-  @include mq('s') {
+  @include max-width('s') {
     grid-column: column 2 / span 5;
   }
-  @include mq('xs') {
+  @include max-width('xs') {
     grid-column: columns;
     margin-top: 0 !important;
   }
@@ -77,13 +77,13 @@
 .skills:nth-child(2n+1) blockquote,
 .skills:nth-child(2n+1) p {
   grid-column: column / span 5;
-  @include mq('m') {
+  @include max-width('m') {
     grid-column: sidebar-left 2 / span 6;
   }
-  @include mq('s') {
+  @include max-width('s') {
     grid-column: column 2 / span 5;
   }
-  @include mq('xs') {
+  @include max-width('xs') {
     grid-column: columns;
   }
 }

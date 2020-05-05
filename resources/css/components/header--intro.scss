@@ -8,10 +8,10 @@
     overflow: hidden;
     grid-row: row 2 / -2;
     grid-column: column 5 / span 5;
-    @include mq('s') {
+    @include max-width('s') {
       grid-column: column 4 / span 5;
     }
-    @include mq('xs') {
+    @include max-width('xs') {
       display: none;
     }
   }
@@ -27,13 +27,13 @@
   .Logo {
     grid-column: margin-left / span 2;
     grid-row: row 2 / span 3;
-    @include mq('l') {
+    @include max-width('l') {
       grid-column: sidebar-left / span 2;
     }
-    @include mq('s') {
+    @include max-width('s') {
       grid-column: column 1 / span 2;
     }
-    @include mq('xs') {
+    @include max-width('xs') {
       grid-row: row 2 / span 2;
     }
     margin: var(--column-gap) 0 0 var(--column-gap);
@@ -66,15 +66,15 @@
     fill: rgb(var(--black-rgb));
     grid-row: row 6 / span 4;
     grid-column: sidebar-left 1 / span 6;
-    @include mq(1300) {
+    @include max-width(1300) {
       grid-column: sidebar-left 2 / span 6;
     }
-    @include mq('s') {
+    @include max-width('s') {
       grid-column: column 1 / span 6;
       grid-row: row 5 / span 4;
       margin: 0 var(--hs-m);
     }
-    @include mq('xs') {
+    @include max-width('xs') {
       grid-column: columns;
       grid-row: row 4 / span 4;
     }
@@ -118,17 +118,17 @@
     grid-column: sidebar-left 1 / span 3;
     font-size: var(--size-xl);
     grid-row: row 11 / span 2;
-    @include mq(1300) {
+    @include max-width(1300) {
       grid-column: sidebar-left 2 / span 3;
     }
-    @include mq('l') {
+    @include max-width('l') {
       font-size: var(--size-l);
     }
-    @include mq('s') {
+    @include max-width('s') {
       grid-column: column / span 3;
       padding-left: var(--hs-m);
     }
-    @include mq('xs') {
+    @include max-width('xs') {
       max-width: 350px;
       grid-column: columns;
       padding-left: var(--hs-m);
@@ -150,13 +150,13 @@
     z-index: 10;
     grid-row: row 11 / span 2;
     grid-column: column 2 / span 3;
-    @include mq(1300) {
+    @include max-width(1300) {
       grid-column: column 4 / span 3;
     }
-    @include mq('s') {
+    @include max-width('s') {
       grid-column: column 5 / span 3;
     }
-    @include mq('xs') {
+    @include max-width('xs') {
       grid-column: columns;
       padding-left: var(--hs-m);
       font-size: var(--size-xl);
@@ -172,10 +172,10 @@
     font-weight: 400;
     color: rgb(var(--black-rgb));
     font-size: var(--size-xl);
-    @include mq('l') {
+    @include max-width('l') {
       font-size: var(--size-l);
     }
-    @include mq('s') {
+    @include max-width('s') {
       font-size: calc(var(--size-l) - 1px);
     }
     line-height: 130%;
@@ -188,7 +188,7 @@
     color: rgba(var(--black-rgba-50));
     font-size: var(--size-m);
     line-height: 100% !important;
-    @include mq('xs') {
+    @include max-width('xs') {
       position: relative;
       top: auto;
       margin-bottom: 4px;
