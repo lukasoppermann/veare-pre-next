@@ -12,7 +12,7 @@
     z-index: 50;
   }
   &:not(:first-child) {
-    @include baseline(3);
+    @include baseline_top(3);
   }
   &.Picture--center {
     grid-column: columns;

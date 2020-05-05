@@ -70,7 +70,7 @@
   hyphens: none;
 }
 .skills p:not(:first-child) {
-  @include baseline(2);
+  @include baseline_top(2);
 }
 .skills:nth-child(2n+1) h2,
 .skills:nth-child(2n+1) blockquote,

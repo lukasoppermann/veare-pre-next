@@ -80,7 +80,7 @@
         font-size: var(--base-font);
         line-height: calc(var(--baseline) * 4);
       }
-      @include baseline(3);
+      @include baseline_top(3);
     }
   }
   .Annotation {

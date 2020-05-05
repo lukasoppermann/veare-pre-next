@@ -18,6 +18,6 @@
 }
 .c-contact-content h3 {
   @extend %font-headline--h2;
-  @include baseline(3);
+  @include baseline_top(3);
   color: rgb(var(--blue-rgb));
 }

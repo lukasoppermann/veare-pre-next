@@ -18,7 +18,7 @@
   .Picture + .Annotation {
     grid-column: columns;
     @include mq('s', "min") {
-      @include baseline(5);
+      @include baseline_top(5);
     }
     &::before {
       display: none;
