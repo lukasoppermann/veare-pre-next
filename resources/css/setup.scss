@@ -84,7 +84,7 @@ body {
   overflow-x: hidden; // used for tilted bg on images in projects
   // basic typography
   @include typography-paragraph-sans;
-  color: rgba(var(--black-rgba-80));
+  color: rgb(var(--black-rgb));
   &.testing * { // for ui tests
     transition: none !important;
     animation-duration: 0s !important;

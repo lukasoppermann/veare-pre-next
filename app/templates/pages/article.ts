@@ -16,9 +16,7 @@ export default (article): templateInterface => layout(html`
     <div class="Article__author">
         — Published by <span itemprop="author" itemscope itemtype="http://schema.org/Person">
           <a class="author" href="https://twitter.com/lukasoppermann" itemprop="url" title="Twitter account of Lukas Oppermann" rel="author">
-            <span itemprop="name">Lukas Oppermann</span>
-          </a></span>
-         /
+            <span itemprop="name">Lukas Oppermann</span></a></span> /
         <span itemprop="publisher" itemtype="http://schema.org/Organization" itemscope>
           <a itemprop="url" href="http://vea.re">
             <span itemprop="name">vea.re</span>

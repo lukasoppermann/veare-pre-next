@@ -93,6 +93,7 @@
   }
   .Article__publication-details,
   .Article__author {
+    color: rgba(var(--black-rgba-80));
     grid-column: columns;
     @include max-width('s') {
       text-align: center;
