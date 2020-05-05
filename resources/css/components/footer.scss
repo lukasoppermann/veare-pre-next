@@ -65,7 +65,7 @@
     color: rgba(var(--white-blue-rgb), .25);
   }
   p {
-    @extend %font-paragraph-sans;
+    @include font-paragraph-sans;
     color: rgb(var(--white-rgb));
   }
   p a {

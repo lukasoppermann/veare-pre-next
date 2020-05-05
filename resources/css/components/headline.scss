@@ -2,17 +2,17 @@
     New Headlines
 ==================================== */
 h2 {
-  @extend %font-headline--h2;
+  @include typography-h2;
   @include baseline_top(3);
   color: rgb(var(--black-rgb));
 }
 h3 {
-  @extend %font-headline--h3;
+  @include typography-h3;
   @include baseline_top(3);
   color: rgb(var(--black-rgb));
 }
 h4 {
-  @extend %font-headline--h4;
+  @include typography-h4;
   @include baseline_top(3);
   color: rgb(var(--black-rgb));
 }

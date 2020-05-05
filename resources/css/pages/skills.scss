@@ -60,11 +60,12 @@
   font-size: var(--size-h);
 }
 .skills > p {
-  @extend %font-paragraph-sans;
+  @include font-paragraph-sans;
   color: rgb(var(--black-rgb)) !important;
 }
 .skills blockquote {
-  @extend %font-intro-paragraph;
+  @include typography-paragraph-serif-big;
+  color: rgba(var(--black-rgba-50));
   margin-top: calc(var(--baseline) * 1);
   margin-bottom: calc(var(--baseline) * 2);
   hyphens: none;

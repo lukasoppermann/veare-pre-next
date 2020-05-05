@@ -1,5 +1,5 @@
 .Annotation {
-  @extend %font-annotation;
+  @include typography-annotation;
   position: relative;
   padding-top: calc(var(--baseline) * 2);
   margin-top: 0;

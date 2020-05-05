@@ -13,7 +13,7 @@
   }
   p,
   li {
-    @extend %font-paragraph-sans;
+    @include font-paragraph-sans;
   }
 }
 .c-section-privacy {

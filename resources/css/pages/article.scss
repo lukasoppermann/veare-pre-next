@@ -25,13 +25,13 @@
     grid-column: columns;
   }
   h2 {
-    @extend %font-headline--h2;
+    @include typography-h2;
   }
   h3 {
-    @extend %font-headline--h3;
+    @include typography-h3;
   }
   h4 {
-    @extend %font-headline--h4;
+    @include typography-h4;
   }
   p {
     grid-column: columns;
@@ -75,7 +75,7 @@
     p {
       hyphens: auto;
       overflow-wrap: break-word;
-      @extend %font-paragraph-sans-big;
+      @include font-paragraph-sans-big;
       @include mq('xxs') {
         font-size: var(--base-font);
         line-height: calc(var(--baseline) * 4);
@@ -90,7 +90,7 @@
     }
     .Annotation__text,
     .Annotation__text p {
-      @extend %font-annotation;
+      @include typography-annotation;
     }
   }
   .Article__publication-details,

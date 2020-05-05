@@ -59,68 +59,62 @@ font-feature-settings:"liga", "dlig";
   --font-h3: var(--font-source-sans-semibold) var(--size-xl)/calc(var(--baseline) * 4) var(--font-source-sans);
   --font-h5: var(--font-montserrat-bold) var(--size-s)/calc(var(--baseline) * 2) var(--font-montserrat);
 }
-%font-title {
+@mixin typography-title {
+  font-family: var(--font-montserrat);
   font-weight: var(--font-montserrat-bold);
   font-size: var(--size-xl);
   line-height: calc(var(--baseline) * 4);
-  font-family: var(--font-montserrat);
   letter-spacing: .5px;
-  color: rgb(var(--black-rgb));
 }
-%font-headline--h2 {
+@mixin typography-h2 {
+  font-family: var(--font-source-sans);
+  font-weight: var(--font-source-sans-regular);
   font-size: var(--size-xxl);
   line-height: calc(var(--baseline) * 5);
-  font-family: var(--font-source-sans);
-  font-weight: 400;
 }
-%font-headline--h3 {
-  font-size: var(--size-xl);
-  line-height: calc(var(--baseline) * 4);
+@mixin typography-h3 {
   font-family: var(--font-source-sans);
   font-weight: var(--font-source-sans-semibold);
+  font-size: var(--size-xl);
+  line-height: calc(var(--baseline) * 4);
 }
-%font-headline--h4 {
+@mixin typography-h4 {
+  font-family: var(--font-source-sans);
+  font-weight: var(--font-source-sans-semibold);
   font-size: var(--size-l);
   line-height: calc(var(--baseline) * 3);
-  font-family: var(--font-source-sans);
-  font-weight: var(--font-source-sans-semibold);
 }
-%font-headline--h5 {
-  font-size: var(--size-m);
-  line-height: calc(var(--baseline) * 2);
+@mixin typography-h5 {
   font-family: var(--font-montserrat);
   font-weight: var(--font-montserrat-bold);
+  font-size: var(--size-m);
+  line-height: calc(var(--baseline) * 2);
   text-transform: uppercase;
 }
-%font-paragraph-serif {
-  font-size: var(--base-font);
-  line-height: calc(var(--baseline) * 4);
+@mixin typography-paragraph-serif-big {
   font-family: var(--font-noto-serif);
-  color: rgb(var(--black-rgb));
-}
-%font-paragraph-sans-big {
+  font-style: var(--font-noto-serif-italic);
   font-size: var(--size-xl);
   line-height: calc(var(--baseline) * 4);
-  font-family: var(--font-source-sans);
-  color: rgb(var(--black-rgb));
 }
-%font-paragraph-sans {
-  font-size: var(--base-font);
-  line-height: calc(var(--baseline) * 4);
+@mixin font-paragraph-sans-big {
   font-family: var(--font-source-sans);
-  color: rgba(var(--black-rgb), .6);
+  font-weight: var(--font-source-sans-regular);
+  font-size: var(--size-xl);
+  line-height: calc(var(--baseline) * 4);
 }
 @mixin font-paragraph-sans {
+  font-family: var(--font-source-sans);
+  font-weight: var(--font-source-sans-regular);
   font-size: var(--base-font);
   line-height: calc(var(--baseline) * 4);
-  font-family: var(--font-source-sans);
 }
-%font-annotation {
+@mixin typography-annotation {
   font-size: var(--size-s);
   line-height: calc(var(--baseline) * 2);
   font-family: var(--font-source-sans);
   color: rgba(var(--black-rgba-50));
-  @include mq('s') {
+  @include max-width('s') {
     font-size: var(--size-l);
     line-height: calc(var(--baseline) * 3);
   }
@@ -146,11 +140,4 @@ font-feature-settings:"liga", "dlig";
   font-family: var(--font-source-sans);
   letter-spacing: .5px;
   color: rgb(var(--black-rgb));
-}
-%font-intro-paragraph {
-  font-family: var(--font-noto-serif);
-  font-style: italic;
-  font-size: var(--size-xl);
-  line-height: calc(var(--baseline) * 4);
-  color: rgba(var(--black-rgba-50));
 }

@@ -1,7 +1,7 @@
 .Boxed-group {
   display: flex;
   justify-content: space-between;
-  @include mq('xxs') {
+  @include max-width('xxs') {
     flex-direction: column;
   }
   .Boxed-item {
@@ -17,8 +17,8 @@
       margin-top: var(--baseline);
       color: rgba(var(--black-rgba-50)) !important;
     }
-    .Paragraph,
-    .Paragraph p {
+    p {
+      margin-top: var(--baseline) !important;
       color: rgb(var(--black-rgb)) !important;
     }
   }
