@@ -1,9 +1,7 @@
 @import "../_mixins/mixins.scss";
 :root {
   /* FONT: Noto Serif */
-  --font-georgia: georgia, serif;
   --font-noto-serif: 'Noto Serif', georgia, serif;
-  --font-noto-serif-italic: italic;
 
   /* FONT: Source Sans */
   --font-source-sans: 'Source Sans Pro', helvetica, sans-serif;
@@ -61,7 +59,7 @@
 }
 @mixin typography-paragraph-serif-big {
   @include typography-paragraph-serif;
-  font-style: var(--font-noto-serif-italic);
+  font-style: italic;
   font-size: var(--size-xl);
 }
 @mixin typography-paragraph-sans {
