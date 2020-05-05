@@ -60,7 +60,7 @@
   font-size: var(--size-h);
 }
 .skills > p {
-  @include font-paragraph-sans;
+  @include typography-paragraph-sans;
   color: rgb(var(--black-rgb)) !important;
 }
 .skills blockquote {

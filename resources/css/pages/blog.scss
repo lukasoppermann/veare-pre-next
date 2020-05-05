@@ -66,7 +66,7 @@
   }
   &__date {
     flex: 0 1 auto;
-    font: var(--font-h5);
+    @include typography-h6;
     text-transform: uppercase;
     color: rgba(var(--black-rgba-50));
     display: inline-block;
@@ -106,7 +106,7 @@
     flex: 0 1 auto;
     position: relative;
     display: inline-block;
-    font: var(--font-h5);
+    @include typography-h6;
     padding-left: 0;
     padding-top: .8rem;
     box-sizing: border-box;
@@ -137,7 +137,7 @@
   }
   &__read-time {
     flex: 0 1 auto;
-    font: var(--font-h5);
+    @include typography-h6;
     color: rgba(var(--black-rgba-50));
     display: inline-block;
     position: relative;
@@ -176,9 +176,8 @@
   }
   &__link::before {
     content: "READ →";
+    @include typography-uppercase;
     color: rgb(var(--white-rgb));
-    font-family: var(--font-montserrat);
-    font-weight: var(--font-montserrat-bold);
     font-size: 8rem;
     box-sizing: border-box;
     padding: 3rem;
@@ -219,7 +218,8 @@
   &__excerpt {
     margin-top: 1rem;
     padding-bottom: var(--size-m);
-    font: var(--font-copy-serif-italic);
+    @include typography-paragraph-serif;
+    font-style: italic;
     line-height: 135%;
     color: rgba(var(--black-rgba-50));
   }

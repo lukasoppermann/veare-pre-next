@@ -38,6 +38,8 @@
     top: 0;
   }
   .responsive-menu__item {
+    @include typography-uppercase;
+    font-size: var(--size-l);
     color: rgb(var(--black-rgb));
     pointer-events: auto;
     padding: 0 var(--size-s, 10px);
@@ -50,10 +52,6 @@
     text-transform: uppercase;
     overflow: hidden;
     position: relative;
-    font-size: var(--size-l);
-    font-family: var(--font-montserrat);
-    font-weight: var(--font-montserrat-bold);
-    letter-spacing: var(--font-montserrat-spacing);
     transition: color .35s var(--easeInOutQuad);
     &:hover {
       color: rgb(var(--black-rgb));
@@ -218,15 +216,14 @@
   }
 }
 .big-blue-button {
-  position: relative;
-  cursor: pointer;
+  @include typography-uppercase;
+  font-size: var(--size-l);
   line-height: 100%;
   color: rgb(var(--white-rgb));
   text-decoration: none;
+  position: relative;
+  cursor: pointer;
   padding: 13px 16px;
-  font-family: var(--font-montserrat);
-  font-weight: var(--font-montserrat-semibold);
-  font-size: var(--size-l);
   background: rgb(var(--blue-rgb));
   box-shadow:
     0 5px 10px 0 rgba(var(--blue-rgb), .25),

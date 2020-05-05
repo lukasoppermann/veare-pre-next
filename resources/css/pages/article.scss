@@ -36,12 +36,9 @@
   }
   p {
     grid-column: columns;
-    font: var(--font-copy-serif);
+    @include typography-paragraph-serif;
     margin-bottom: var(--size-l);
     color: rgba(var(--black-rgba-80));
-    b {
-      font: var(--font-copy-serif-bold);
-    }
   }
   ul,
   ol {
@@ -76,7 +73,7 @@
     p {
       hyphens: auto;
       overflow-wrap: break-word;
-      @include font-paragraph-sans-big;
+      @include typography-paragraph-sans-big;
       @include max-width('xxs') {
         font-size: var(--base-font);
         line-height: calc(var(--baseline) * 4);
@@ -96,6 +93,7 @@
   }
   .Article__publication-details,
   .Article__author {
+    color: rgba(var(--black-rgba-80));
     grid-column: columns;
     @include max-width('s') {
       text-align: center;
