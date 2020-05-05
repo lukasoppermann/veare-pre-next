@@ -61,7 +61,7 @@
 }
 .skills > p {
   @extend %font-paragraph-sans;
-  color: var(--black) !important;
+  color: rgb(var(--black-rgb)) !important;
 }
 .skills blockquote {
   @extend %font-intro-paragraph;

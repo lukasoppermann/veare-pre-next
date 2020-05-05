@@ -1,5 +1,3 @@
-@import "../_mixins/_mixins.scss";
-
 :root {
   --max-row-height: calc((100vh - (16 * var(--baseline))) / 13);
   --min-row-height: 35px;

@@ -4,20 +4,20 @@
 h2 {
   @extend %font-headline--h2;
   @include baseline(3);
-  color: var(--black);
+  color: rgb(var(--black-rgb));
 }
 h3 {
   @extend %font-headline--h3;
   @include baseline(3);
-  color: var(--black);
+  color: rgb(var(--black-rgb));
 }
 h4 {
   @extend %font-headline--h4;
   @include baseline(3);
-  color: var(--black);
+  color: rgb(var(--black-rgb));
 }
 h5 {
   @extend %font-subtitle-uppercase-small;
   @include baseline(3);
-  color: var(--black-40);
+  color: rgb(var(--black-rgb));
 }

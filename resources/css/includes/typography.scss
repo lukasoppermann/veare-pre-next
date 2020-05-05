@@ -65,7 +65,7 @@ font-feature-settings:"liga", "dlig";
   line-height: calc(var(--baseline) * 4);
   font-family: var(--font-montserrat);
   letter-spacing: .5px;
-  color: var(--black);
+  color: rgb(var(--black-rgb));
 }
 %font-headline--h2 {
   font-size: var(--size-xxl);
@@ -96,31 +96,30 @@ font-feature-settings:"liga", "dlig";
   font-size: var(--base-font);
   line-height: calc(var(--baseline) * 4);
   font-family: var(--font-noto-serif);
-  color: var(--black);
+  color: rgb(var(--black-rgb));
 }
 %font-paragraph-sans-big {
   font-size: var(--size-xl);
   line-height: calc(var(--baseline) * 4);
   font-family: var(--font-source-sans);
-  color: var(--black);
+  color: rgb(var(--black-rgb));
 }
 %font-paragraph-sans {
   font-size: var(--base-font);
   line-height: calc(var(--baseline) * 4);
   font-family: var(--font-source-sans);
-  color: var(--black-60);
+  color: rgba(var(--black-rgb), .6);
 }
-@mixin font-paragraph-sans($color: var(--black-60)) {
+@mixin font-paragraph-sans {
   font-size: var(--base-font);
   line-height: calc(var(--baseline) * 4);
   font-family: var(--font-source-sans);
-  color: $color;
 }
 %font-annotation {
   font-size: var(--size-s);
   line-height: calc(var(--baseline) * 2);
   font-family: var(--font-source-sans);
-  color: var(--black-60);
+  color: rgba(var(--black-rgba-50));
   @include mq('s') {
     font-size: var(--size-l);
     line-height: calc(var(--baseline) * 3);
@@ -146,12 +145,12 @@ font-feature-settings:"liga", "dlig";
   line-height: calc(var(--baseline) * 2);
   font-family: var(--font-source-sans);
   letter-spacing: .5px;
-  color: var(--black);
+  color: rgb(var(--black-rgb));
 }
 %font-intro-paragraph {
   font-family: var(--font-noto-serif);
   font-style: italic;
   font-size: var(--size-xl);
   line-height: calc(var(--baseline) * 4);
-  color: var(--black-50);
+  color: rgba(var(--black-rgba-50));
 }

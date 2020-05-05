@@ -19,5 +19,5 @@
 .c-contact-content h3 {
   @extend %font-headline--h2;
   @include baseline(3);
-  color: var(--blue);
+  color: rgb(var(--blue-rgb));
 }

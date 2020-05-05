@@ -1,0 +1,29 @@
+// FIX for Sass Bug:
+//
+@function rgb($r, $g: null, $b: null ) {
+  @if ($g == null) {
+    @return unquote('rgb(#{$r})');
+  }
+
+  @if ($g and $b) {
+    @return unquote('rgb(#{$r}, #{$g}, #{$b})');
+  }
+
+  @error "wrong number of arguments";
+}
+
+@function rgba($r, $g: null, $b: null, $a: null ) {
+  @if ($g == null) {
+    @return unquote('rgba(#{$r})');
+  }
+
+  @if ($b == null) {
+    @return unquote('rgba(#{$r}, #{$g})');
+  }
+
+  @if ($b and $a) {
+    @return unquote('rgba(#{$r}, #{$g}, #{$b}, #{$a})');
+  }
+
+  @error "wrong number of arguments";
+}

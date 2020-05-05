@@ -34,7 +34,7 @@
   order: 1;
   padding-top: 62.5%;
   overflow: hidden;
-  background-color: var(--white-blue);
+  background-color: rgb(var(--white-blue-rgb));
   @include mq('s', 'min') {
     grid-column: column 1 / span 5;
   }
@@ -69,7 +69,7 @@
   text-decoration: none;
 }
 .Projects__cards-container .Project-card__text {
-  color: var(--black);
+  color: rgb(var(--black-rgb));
   z-index: 100;
   max-width: 320px;
   position: absolute;
@@ -83,7 +83,7 @@
     margin-top: 0;
     position: relative;
     order: 2;
-    background: var(--white);
+    background: rgb(var(--white-rgb));
     padding: var(--vs-m);
     max-width: 500px;
     transform: translate(0, -60%);
@@ -151,7 +151,7 @@
 .Project-cards--small .Project-card {
   position: relative;
   height: 350px;
-  background-color: var(--blue);
+  background-color: rgb(var(--blue-rgb));
   transition: all .4s ease;
   margin-top: 0;
   &:hover {
@@ -234,7 +234,7 @@
   }
 }
 .Project-cards--small .Project-card .Project-card__text {
-  color: var(--white);
+  color: rgb(var(--white-rgb));
   position: absolute;
   margin: 0;
   top: 10px;
@@ -243,7 +243,7 @@
   transform: none;
   height: calc(100% - 20px);
   width: calc(100% - 20px);
-  border: 4px solid var(--white);
+  border: 4px solid rgb(var(--white-rgb));
   padding: 20px;
   display: flex;
   justify-content: flex-end;
@@ -252,13 +252,13 @@
   transition: all .4s ease;
 }
 .Project-cards--small .Project-card .Project-card__text::before {
-  color: var(--white);
+  color: rgb(var(--white-rgb));
 }
 .Project-cards--small .Project-card .Project-card__text .Project-card__title {
-  color: var(--white);
+  color: rgb(var(--white-rgb));
 }
 .Project-cards--small .Project-card .Project-card__text .Project-card__client::before {
-  color: var(--white);
+  color: rgb(var(--white-rgb));
 }
 .Project-cards--small .Project-card:hover .Project-card__text {
   @include mq('m','min') {
@@ -321,7 +321,7 @@
 .Project {
   --section-gap: 12;
   --row-gap: 0;
-  --rule-color: var(--project-color, var(--blue));
+  --rule-color: var(--project-color, rgb(var(--blue-rgb)));
   h2,
   h3,
   h4,
@@ -344,7 +344,7 @@
     font: var(--font-title);
     bottom: var(--vs-xxl);
     left: var(--hs-xl);
-    color: var(--white);
+    color: rgb(var(--white-rgb));
     z-index: 100;
   }
   h4 {
@@ -353,11 +353,11 @@
   h5 {
     @extend %font-subtitle-uppercase-small;
     @include baseline(4);
-    color: var(--black-40);
     grid-column: columns;
   }
   h6 {
     @extend %titled-title;
+    color: rgb(var(--black-rgb)) !important;
   }
   h6 + h5 {
     @include mq('s', 'min') {
@@ -428,7 +428,7 @@
     width: var(--vs-xl);
     align-self: center;
     transform: translateY(-1px);
-    background-color: var(--black);
+    background-color: rgb(var(--black-rgb));
   }
   &::after {
     @extend %font-subtitle-uppercase-small;

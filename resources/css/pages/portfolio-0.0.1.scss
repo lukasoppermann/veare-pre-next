@@ -83,12 +83,12 @@
 }
 .o-project-info__title {
   font-size: var(--size-m);
-  color: var(--black-50);
+  color: rgba(var(--black-rgba-50));
   text-transform: uppercase;
 }
 .o-project-info__description {
   font-size: var(--size-xl);
-  color: var(--black);
+  color: rgb(var(--black-rgb));
 }
 .o-project-section {
   min-height: auto;
@@ -232,7 +232,7 @@
   transition: width .3s ease .2s, font-size .3s ease .2s, line-height .3s ease .2s;
 }
 .o-card__content {
-  color: var(--white);
+  color: rgb(var(--white-rgb));
 }
 .o-card__copy {
   box-sizing: border-box;

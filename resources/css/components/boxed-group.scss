@@ -6,7 +6,7 @@
   }
   .Boxed-item {
     &:not(.Boxed-group) {
-      box-shadow: inset 2px 0 var(--black), 0 2px var(--black);
+      box-shadow: inset 2px 0 rgb(var(--black-rgb)), 0 2px rgb(var(--black-rgb));
       padding: 0 var(--hs-s) var(--baseline);
       flex-shrink: 0;
       flex-grow: 1;
@@ -15,16 +15,17 @@
     h5 {
       @extend %font-subtitle-uppercase-tiny;
       margin-top: var(--baseline);
-      color: var(--grey) !important;
+      color: rgba(var(--black-rgba-50)) !important;
     }
-    .Paragraph {
-      color: var(--black);
+    .Paragraph,
+    .Paragraph p {
+      color: rgb(var(--black-rgb)) !important;
     }
   }
 }
 .Boxed-group:not(.Boxed-group--nested) {
   margin-top: var(--vs-xl);
-  box-shadow: 0 2px var(--black), 0 -2px var(--black), inset -2px 0 var(--black), inset 2px 0 var(--black);
+  box-shadow: 0 2px rgb(var(--black-rgb)), 0 -2px rgb(var(--black-rgb)), inset -2px 0 rgb(var(--black-rgb)), inset 2px 0 rgb(var(--black-rgb));
 }
 .Boxed-group--nested {
   flex-wrap: wrap;

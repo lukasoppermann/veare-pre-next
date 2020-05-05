@@ -16,8 +16,8 @@
   align-self: center;
   height: 2px;
   transform: translateY(-1px);
-  background-color: var(--black);
-  background-image: linear-gradient(90deg, var(--black) 0%, var(--black) 50%, var(--blue) 50%, var(--blue) 100%);
+  background-color: rgb(var(--black-rgb));
+  background-image: linear-gradient(90deg, rgb(var(--black-rgb)) 0%, rgb(var(--black-rgb)) 50%, rgb(var(--blue-rgb)) 50%, rgb(var(--blue-rgb)) 100%);
   background-size: 200% 100%;
   background-position: 0% 0%;
   transition: all .2s var(--easeInOutQuad);
