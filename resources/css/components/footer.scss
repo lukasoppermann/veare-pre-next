@@ -52,7 +52,7 @@
     grid-column: column 3 / columns;
     text-align: right;
     justify-self: end;
-    @extend %font-subtitle-uppercase-tiny;
+    @include typography-h6;
     color: rgb(var(--white-rgb));
     padding-bottom: var(--size-m);
   }

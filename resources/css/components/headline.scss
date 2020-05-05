@@ -17,7 +17,7 @@ h4 {
   color: rgb(var(--black-rgb));
 }
 h5 {
-  @extend %font-subtitle-uppercase-small;
+  @include typography-h5;
   @include baseline_top(3);
   color: rgb(var(--black-rgb));
 }

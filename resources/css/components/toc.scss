@@ -14,7 +14,7 @@
 }
 .Toc__chapter__title {
   position: relative;
-  @extend %font-subtitle-uppercase-small;
+  @include typography-h5;
   color: rgb(var(--black-rgb)) !important;
   order: 1;
   flex: 0 0 auto;
@@ -45,7 +45,7 @@
   transition: all .2s var(--easeInOutQuad);
 }
 .Toc__chapter__link::after {
-  @extend %font-subtitle-uppercase-small;
+  @include typography-h5;
   order: 3;
   padding-left: var(--hs-xs);
   align-self: flex-end;

@@ -1,6 +1,6 @@
 .portfolio-link-back {
   text-decoration: none;
-  @extend %font-subtitle-uppercase-small;
+  @include typography-h5;
   position: absolute;
   left: 0;
   top: var(--size-xxl);

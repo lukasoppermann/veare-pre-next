@@ -117,7 +117,7 @@
   font-feature-settings: "tnum", "zero";
 }
 .Project-card__client {
-  @extend %font-subtitle-uppercase-small;
+  @include typography-h5;
   margin-top: var(--vs-xl);
   display: flex;
   color: inherit;
@@ -313,11 +313,58 @@
   display: block;
   grid-column: columns;
   text-decoration: none;
-  @extend %font-subtitle-uppercase-small;
+  @include typography-h5;
   margin-top: var(--size-xl);
   margin-bottom: var(--size-xxg);
 }
 // NEW Project page
+
+/* ====================================
+    Tilted Title
+==================================== */
+@mixin titled-title {
+  display: flex;
+  height: calc(var(--baseline) * 2);
+  overflow: visible;
+  grid-column-start: sidebar-left 1;
+  width: 300px;
+  transform-origin: top left;
+  transform: rotate(90deg) translateY(-100%);
+  @include max-width('s') {
+    grid-column: columns;
+    grid-row-start: auto;
+    transform: rotate(0deg);
+    @include baseline_bottom(2);
+  }
+  counter-increment: titled-title-counter;
+  @include typography-h5;
+  flex: 0 0 auto;
+  @include baseline_top(var(--section-gap));
+  margin-bottom: 0;
+  a {
+    padding-right: var(--vs-s);
+  }
+  &::before {
+    @include pseudo("relative");
+    order: 2;
+    height: 2px;
+    width: var(--vs-xl);
+    align-self: center;
+    transform: translateY(-1px);
+    background-color: rgb(var(--black-rgb));
+  }
+  &::after {
+    @include typography-h5;
+    order: 3;
+    padding-left: var(--vs-s);
+    content: counter(titled-title-counter, decimal-leading-zero);
+    font-feature-settings: "tnum", "zero";
+  }
+}
+
+/* ====================================
+    PROJECT
+==================================== */
 .Project {
   --section-gap: 12;
   --row-gap: 0;
@@ -351,12 +398,12 @@
     @include baseline_top(5);
   }
   h5 {
-    @extend %font-subtitle-uppercase-small;
+    @include typography-h5;
     @include baseline_top(4);
     grid-column: columns;
   }
   h6 {
-    @extend %titled-title;
+    @include titled-title;
     color: rgb(var(--black-rgb)) !important;
   }
   h6 + h5 {
@@ -394,48 +441,5 @@
   }
   .Block {
     grid-column: full-bleed;
-  }
-}
-
-/* ====================================
-    Tilted Title
-==================================== */
-%titled-title {
-  display: flex;
-  height: calc(var(--baseline) * 2);
-  overflow: visible;
-  grid-column-start: sidebar-left 1;
-  width: 300px;
-  transform-origin: top left;
-  transform: rotate(90deg) translateY(-100%);
-  @include max-width('s') {
-    grid-column: columns;
-    grid-row-start: auto;
-    transform: rotate(0deg);
-    @include baseline_bottom(2);
-  }
-  counter-increment: titled-title-counter;
-  @extend %font-subtitle-uppercase-small;
-  flex: 0 0 auto;
-  @include baseline_top(var(--section-gap));
-  margin-bottom: 0;
-  a {
-    padding-right: var(--vs-s);
-  }
-  &::before {
-    @include pseudo("relative");
-    order: 2;
-    height: 2px;
-    width: var(--vs-xl);
-    align-self: center;
-    transform: translateY(-1px);
-    background-color: rgb(var(--black-rgb));
-  }
-  &::after {
-    @extend %font-subtitle-uppercase-small;
-    order: 3;
-    padding-left: var(--vs-s);
-    content: counter(titled-title-counter, decimal-leading-zero);
-    font-feature-settings: "tnum", "zero";
   }
 }

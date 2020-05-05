@@ -5,6 +5,7 @@
 @import "../_mixins/mixins.scss";
 .Article {
   h1 {
+    color: rgb(var(--black-rgb));
     grid-column: columns;
     font-family: var(--font-noto-serif);
     font-style: italic;
@@ -107,7 +108,7 @@
     display: block;
     grid-column: columns;
     text-decoration: none;
-    @extend %font-subtitle-uppercase-small;
+    @include typography-h5;
     margin-top: var(--size-xl);
     margin-bottom: var(--size-xxg);
   }

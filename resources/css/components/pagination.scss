@@ -23,7 +23,7 @@
   transition: all .2s var(--easeInOutQuad);
 }
 .Pagination__item__link::after {
-  @extend %font-subtitle-uppercase-tiny;
+  @include typography-h6;
   position: absolute;
   transform: translate(-100%, -10%);
   order: 1;
@@ -37,7 +37,7 @@
   transition: all .3s .05s var(--easeInOutQuad);
 }
 .Pagination__item__title {
-  @extend %font-subtitle-uppercase-tiny;
+  @include typography-h6;
   opacity: 0;
   position: relative;
   transform: translate(0, -10%);

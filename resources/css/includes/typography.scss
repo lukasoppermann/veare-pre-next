@@ -90,6 +90,11 @@ font-feature-settings:"liga", "dlig";
   font-size: var(--size-m);
   line-height: calc(var(--baseline) * 2);
   text-transform: uppercase;
+  letter-spacing: .5px;
+}
+@mixin typography-h6 {
+  @include typography-h5;
+  font-size: var(--size-s);
 }
 @mixin typography-paragraph-serif-big {
   font-family: var(--font-noto-serif);
@@ -118,26 +123,4 @@ font-feature-settings:"liga", "dlig";
     font-size: var(--size-l);
     line-height: calc(var(--baseline) * 3);
   }
-}
-
-%font-subtitle-uppercase-small {
-  text-transform: uppercase;
-  font-weight: var(--font-montserrat-bold);
-  font-size: var(--size-m);
-  line-height: calc(var(--baseline) * 2);
-  font-family: var(--font-montserrat);
-  letter-spacing: .5px;
-  color: inherit;
-}
-%font-subtitle-uppercase-tiny {
-  @extend %font-subtitle-uppercase-small;
-  font-size: var(--size-s);
-}
-%font-subtitle-small {
-  font-weight: var(--font-source-sans-semibold);
-  font-size: var(--size-m);
-  line-height: calc(var(--baseline) * 2);
-  font-family: var(--font-source-sans);
-  letter-spacing: .5px;
-  color: rgb(var(--black-rgb));
 }

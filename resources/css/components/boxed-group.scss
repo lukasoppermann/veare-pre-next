@@ -13,7 +13,7 @@
       flex-basis: 0;
     }
     h5 {
-      @extend %font-subtitle-uppercase-tiny;
+      @include typography-h6;
       margin-top: var(--baseline);
       color: rgba(var(--black-rgba-50)) !important;
     }
