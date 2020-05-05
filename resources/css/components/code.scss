@@ -14,7 +14,7 @@
 pre > code,
 pre > .code {
   hyphens: none;
-  background: var(--dark-grey);
+  background: rgb(var(--dark-grey-rgb));
 }
 
 /* ====================================
@@ -25,13 +25,13 @@ pre > .code {
   overflow-x: scroll;
   grid-column: columns / span 7;
   white-space: unset;
-  background: var(--dark-grey);
+  background: rgb(var(--dark-grey-rgb));
   border-radius: 3px;
   padding: 10px;
   code,
   pre {
     hyphens: none;
-    background: var(--dark-grey);
+    background: rgb(var(--dark-grey-rgb));
   }
   .Code__file-or-path {
     color: rgba(var(--sand-grey-rgb), .6);
@@ -56,7 +56,7 @@ pre > .code {
   }
   .Code__file-or-path::before {
     z-index: 11;
-    background: var(--dark-grey);
+    background: rgb(var(--dark-grey-rgb));
     border-top-right-radius: 10px;
   }
 }
