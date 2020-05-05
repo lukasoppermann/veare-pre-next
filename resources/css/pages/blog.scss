@@ -68,7 +68,7 @@
     flex: 0 1 auto;
     font: var(--font-h5);
     text-transform: uppercase;
-    color: var(--black-50);
+    color: rgba(var(--black-rgba-50));
     display: inline-block;
     position: relative;
     padding-top: .8rem;
@@ -80,22 +80,22 @@
     top: 0;
     width: 2rem;
     height: .3rem;
-    background: var(--blue);
+    background: rgb(var(--blue-rgb));
   }
   &.o-article-preview--code .Article__preview__date::before,
   &.o-article-preview--technology .Article__preview__date::before {
-    background: var(--blue);
+    background: rgb(var(--blue-rgb));
   }
   &.o-article-preview--design .Article__preview__date::before {
     background: rgba(var(--green-rgb), .95);
   }
   &.o-article-preview--life .Article__preview__date::before {
-    background: var(--red);
+    background: rgb(var(--red-rgb));
   }
   &__date::after {
     position: absolute;
     display: block;
-    color: var(--medium-grey);
+    color: rgb(var(--medium-grey-rgb));
     font-size: var(--size-m);
     background: transparent;
     right: .75rem;
@@ -107,7 +107,6 @@
     position: relative;
     display: inline-block;
     font: var(--font-h5);
-    color: var(--white);
     padding-left: 0;
     padding-top: .8rem;
     box-sizing: border-box;
@@ -117,19 +116,19 @@
     padding-right: 2rem;
   }
   &.o-article-preview--life .Article__preview__category {
-    color: var(--red);
+    color: rgb(var(--red-rgb));
   }
   &.o-article-preview--code .Article__preview__category,
   &.o-article-preview--technology .Article__preview__category {
-    color: var(--blue);
+    color: rgb(var(--blue-rgb));
   }
   &.o-article-preview--design .Article__preview__category {
-    color: var(--green);
+    color: rgb(var(--green-rgb));
   }
   &__category::after {
     position: absolute;
     display: block;
-    color: var(--medium-grey);
+    color: rgb(var(--medium-grey-rgb));
     font-size: var(--size-m);
     background: transparent;
     right: .75rem;
@@ -139,7 +138,7 @@
   &__read-time {
     flex: 0 1 auto;
     font: var(--font-h5);
-    color: var(--black-50);
+    color: rgba(var(--black-rgba-50));
     display: inline-block;
     position: relative;
     padding-top: .8rem;
@@ -165,7 +164,7 @@
     transition: opacity .4s ease, top .5s ease, left .5s ease;
   }
   &__link::after {
-    background: var(--black);
+    background: rgb(var(--black-rgb));
     height: calc(100% + 2rem);
   }
   &__link:hover::after {
@@ -177,7 +176,7 @@
   }
   &__link::before {
     content: "READ →";
-    color: var(--white);
+    color: rgb(var(--white-rgb));
     font-family: var(--font-montserrat);
     font-weight: var(--font-montserrat-bold);
     font-size: 8rem;
@@ -203,7 +202,7 @@
     background: rgba(var(--green-rgb), .95);
   }
   &.o-article-preview--technology .Article__preview__category {
-    color: var(--blue);
+    color: rgb(var(--blue-rgb));
   }
   &.o-article-preview--code .Article__preview__link::before,
   &.o-article-preview--technology .Article__preview__link::before {
@@ -222,7 +221,7 @@
     padding-bottom: var(--size-m);
     font: var(--font-copy-serif-italic);
     line-height: 135%;
-    color: var(--black-50);
+    color: rgba(var(--black-rgba-50));
   }
 }
 @media (max-width: 900px) {
@@ -239,29 +238,30 @@
 }
 @media (max-width: 600px) {
   .Article__preview {
-    border-bottom: .1rem solid var(--light-grey);
+    border-bottom: .1rem solid rgb(var(--light-grey-rgb));
     margin: 0 auto 2.5rem auto;
   }
 }
 .Article__more_on_medium {
-  border-top: 1px solid var(--light-grey);
+  border-top: 1px solid rgb(var(--light-grey-rgb));
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
   a {
+    color: rgb(var(--black-rgb));
     display: inline-block;
     line-height: 100%;
     margin-top: var(--size-xl);
     text-decoration: none;
     font-size: var(--size-l);
-    border: 2px solid var(--black);
+    border: 2px solid rgb(var(--black-rgb));
     padding: var(--size-xs) var(--size-s);
     transition: color .3s ease, background .3s ease;
     &:hover {
-      background: var(--black);
-      color: var(--white);
+      background: rgb(var(--black-rgb));
+      color: rgb(var(--white-rgb));
     }
   }
 }

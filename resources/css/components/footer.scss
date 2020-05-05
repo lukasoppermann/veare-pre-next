@@ -5,8 +5,8 @@
   min-height: 100vh;
   width: 100vw;
   grid-column: full-bleed;
-  background: var(--black);
-  color: var(--white);
+  background: rgb(var(--black-rgb));
+  color: rgb(var(--white-rgb));
   @media screen and (min-width: 600px) {
     min-height: 650px;
   }
@@ -23,7 +23,7 @@
   hr {
     border: none;
     height: 1px;
-    background-color: var(--dark-grey);
+    background-color: rgb(var(--dark-grey-rgb));
     margin: 0;
     grid-column: columns;
     @media screen and (min-width: 600px) {
@@ -35,7 +35,7 @@
     left: auto;
     position: relative;
     padding-left: 2px;
-    fill: var(--white);
+    fill: rgb(var(--white-rgb));
     height: var(--size-l);
     grid-column: column / column 3;
     @media screen and (min-width: 500px) {
@@ -52,8 +52,8 @@
     grid-column: column 3 / columns;
     text-align: right;
     justify-self: end;
-    @extend %font-subtitle-uppercase-tiny;
-    color: var(--white);
+    @include typography-h6;
+    color: rgb(var(--white-rgb));
     padding-bottom: var(--size-m);
   }
   h4 {
@@ -62,11 +62,11 @@
     line-height: calc(var(--baseline) * 4);
     font-family: var(--font-montserrat);
     letter-spacing: .5px;
-    color: var(--middle-grey);
+    color: rgba(var(--white-blue-rgb), .25);
   }
   p {
-    @extend %font-paragraph-sans;
-    color: var(--white);
+    @include font-paragraph-sans;
+    color: rgb(var(--white-rgb));
   }
   p a {
     text-decoration: none;

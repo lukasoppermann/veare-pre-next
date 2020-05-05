@@ -51,6 +51,3 @@
   --hs-l: var(--size-h);
   --hs-xl: var(--size-xxh);
 }
-@mixin baseline($amount, $property: margin-top) {
-  #{$property}: calc(var(--baseline) * #{$amount});
-}

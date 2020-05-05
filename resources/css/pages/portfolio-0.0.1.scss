@@ -1,6 +1,6 @@
 .portfolio-link-back {
   text-decoration: none;
-  @extend %font-subtitle-uppercase-small;
+  @include typography-h5;
   position: absolute;
   left: 0;
   top: var(--size-xxl);
@@ -83,12 +83,12 @@
 }
 .o-project-info__title {
   font-size: var(--size-m);
-  color: var(--black-50);
+  color: rgba(var(--black-rgba-50));
   text-transform: uppercase;
 }
 .o-project-info__description {
   font-size: var(--size-xl);
-  color: var(--black);
+  color: rgb(var(--black-rgb));
 }
 .o-project-section {
   min-height: auto;
@@ -135,17 +135,17 @@
   grid-column: column 6 / span 3;
 }
 .o-card__container:nth-child(2n+1) { // first
-  @include mq('s') {
+  @include max-width('s') {
     grid-column: columns / span 3;
   }
 }
 .o-card__container:nth-child(2n) { // second
-  @include mq('s') {
+  @include max-width('s') {
     grid-column: column 5 / span 3;
   }
 }
 .o-card__container:nth-child(1n) {
-  @include mq('xs') {
+  @include max-width('xs') {
     grid-column: columns;
   }
 }
@@ -232,7 +232,7 @@
   transition: width .3s ease .2s, font-size .3s ease .2s, line-height .3s ease .2s;
 }
 .o-card__content {
-  color: var(--white);
+  color: rgb(var(--white-rgb));
 }
 .o-card__copy {
   box-sizing: border-box;
@@ -283,37 +283,37 @@
 }
 .old-project-grid-text {
   grid-column: column 1 / column 6;
-  @include mq('m') {
+  @include max-width('m') {
     grid-column: columns;
   }
 }
 .old-project-grid-image-main {
   grid-column: column 1 / column 5;
-  @include mq('m') {
+  @include max-width('m') {
     grid-column: columns;
   }
 }
 .old-project-grid-image-main-right {
   grid-column: column 4 / column 8;
-  @include mq('m') {
+  @include max-width('m') {
     grid-column: columns;
   }
 }
 .old-project-grid-image-side {
   grid-column: column 5 / column 8;
-  @include mq('m') {
+  @include max-width('m') {
     grid-column: columns;
   }
 }
 .old-project-grid-image-side-start {
   grid-column: column 1 / column 4;
-  @include mq('m') {
+  @include max-width('m') {
     grid-column: columns;
   }
 }
 .old-project-grid-image-centered {
   grid-column: column 2 / column 7;
-  @include mq('m') {
+  @include max-width('m') {
     grid-column: columns;
   }
 }
@@ -328,7 +328,7 @@
   section.portfolio-item--old--copy {
     grid-column: column 3 / columns;
     margin-bottom: var(--size-g);
-    @include mq('m') {
+    @include max-width('m') {
       grid-column: columns;
     }
   }
@@ -347,14 +347,14 @@
     img:nth-child(1) {
       width: 59%;
       margin-right: 1%;
-      @include mq('m') {
+      @include max-width('m') {
         width: 100%;
         margin-bottom: var(--size-m);
       }
     }
     img:nth-child(2) {
       width: 39%;
-      @include mq('m') {
+      @include max-width('m') {
         width: 100%;
       }
     }

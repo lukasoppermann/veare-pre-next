@@ -14,7 +14,8 @@
 }
 .Toc__chapter__title {
   position: relative;
-  @extend %font-subtitle-uppercase-small;
+  @include typography-h5;
+  color: rgb(var(--black-rgb)) !important;
   order: 1;
   flex: 0 0 auto;
   padding-right: var(--hs-xs);
@@ -24,10 +25,11 @@
   @include pseudo;
   width: 0;
   height: calc(var(--baseline) * 2);
-  background-color: var(--blue);
+  background-color: rgb(var(--blue-rgb));
   opacity: .25;
   top: var(--baseline);
   left: 0;
+  color: rgb(var(--black-rgb)) !important;
 }
 .Toc__chapter__link::before {
   @include pseudo("relative");
@@ -36,14 +38,14 @@
   align-self: center;
   height: 2px;
   transform: translateY(-1px);
-  background-color: var(--black);
-  background-image: linear-gradient(90deg, var(--black) 0%, var(--black) 50%, var(--blue) 50%, var(--blue) 100%);
+  background-color: rgb(var(--black-rgb));
+  background-image: linear-gradient(90deg, rgb(var(--black-rgb)) 0%, rgb(var(--black-rgb)) 50%, rgb(var(--blue-rgb)) 50%, rgb(var(--blue-rgb)) 100%);
   background-size: 200% 100%;
   background-position: 0% 0%;
   transition: all .2s var(--easeInOutQuad);
 }
 .Toc__chapter__link::after {
-  @extend %font-subtitle-uppercase-small;
+  @include typography-h5;
   order: 3;
   padding-left: var(--hs-xs);
   align-self: flex-end;
@@ -57,7 +59,7 @@
     Animated Hover State
 ==================================== */
 .Toc__chapter__link:hover .Toc__chapter__title {
-  color: var(--blue);
+  color: rgb(var(--blue-rgb));
   padding-left: var(--hs-xs);
   transition: all .35s var(--easeInOutQuad);
 }
@@ -70,6 +72,6 @@
   transition: all .35s .1s var(--easeInOutQuad);
 }
 .Toc__chapter__link:hover::after {
-  color: var(--blue);
+  color: rgb(var(--blue-rgb));
   transition: all .35s .2s var(--easeInOutQuad);
 }

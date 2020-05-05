@@ -19,21 +19,15 @@ export default (project) => {
     <section class="Boxed-group Grid--columns">
       <div class="Boxed-item" style="flex-grow: 3">
         <h5>client</h5>
-        <div class="Paragraph Paragraph--sans-small">
-          ${project.client}
-        </div>
+        <p>${project.client}</p>
       </div>
       <div class="Boxed-item" style="flex-grow: 2">
         <h5>year</h5>
-        <div class="Paragraph Paragraph--sans-small">
-          ${project.year}
-        </div>
+        <p>${project.year}</p>
       </div>
       <div class="Boxed-item" style="flex-grow: 4">
         <h5>role</h5>
-        <div class="Paragraph Paragraph--sans-small">
-          ${project.roleAndTeam}
-        </div>
+        ${project.roleAndTeam}
       </div>
     </section>
     <section class="Project__challenge">

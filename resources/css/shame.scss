@@ -7,7 +7,7 @@
 .Picture__Element--background,
 .Picture__Element--background--tilted {
   padding: var(--vs-g);
-  @include mq('s') {
+  @include max-width('s') {
     padding: 0;
   }
 }
@@ -29,7 +29,7 @@
 }
 .Picture__Element--background--tilted::after {
   transform: translateX(-50%) rotate(3deg);
-  @include mq('s') {
+  @include max-width('s') {
     display: none;
   }
 }

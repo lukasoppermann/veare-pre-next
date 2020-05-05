@@ -1,4 +1,4 @@
-@import "../includes/mediaqueries.scss";
+@import "../_mixins/mixins.scss";
 
 /* ====================================
      Text Settings
@@ -59,99 +59,68 @@ font-feature-settings:"liga", "dlig";
   --font-h3: var(--font-source-sans-semibold) var(--size-xl)/calc(var(--baseline) * 4) var(--font-source-sans);
   --font-h5: var(--font-montserrat-bold) var(--size-s)/calc(var(--baseline) * 2) var(--font-montserrat);
 }
-%font-title {
+@mixin typography-title {
+  font-family: var(--font-montserrat);
   font-weight: var(--font-montserrat-bold);
   font-size: var(--size-xl);
   line-height: calc(var(--baseline) * 4);
-  font-family: var(--font-montserrat);
   letter-spacing: .5px;
-  color: var(--black);
 }
-%font-headline--h2 {
+@mixin typography-h2 {
+  font-family: var(--font-source-sans);
+  font-weight: var(--font-source-sans-regular);
   font-size: var(--size-xxl);
   line-height: calc(var(--baseline) * 5);
-  font-family: var(--font-source-sans);
-  font-weight: 400;
 }
-%font-headline--h3 {
-  font-size: var(--size-xl);
-  line-height: calc(var(--baseline) * 4);
+@mixin typography-h3 {
   font-family: var(--font-source-sans);
   font-weight: var(--font-source-sans-semibold);
+  font-size: var(--size-xl);
+  line-height: calc(var(--baseline) * 4);
 }
-%font-headline--h4 {
+@mixin typography-h4 {
+  font-family: var(--font-source-sans);
+  font-weight: var(--font-source-sans-semibold);
   font-size: var(--size-l);
   line-height: calc(var(--baseline) * 3);
-  font-family: var(--font-source-sans);
-  font-weight: var(--font-source-sans-semibold);
 }
-%font-headline--h5 {
-  font-size: var(--size-m);
-  line-height: calc(var(--baseline) * 2);
+@mixin typography-h5 {
   font-family: var(--font-montserrat);
   font-weight: var(--font-montserrat-bold);
+  font-size: var(--size-m);
+  line-height: calc(var(--baseline) * 2);
   text-transform: uppercase;
+  letter-spacing: .5px;
 }
-%font-paragraph-serif {
-  font-size: var(--base-font);
-  line-height: calc(var(--baseline) * 4);
+@mixin typography-h6 {
+  @include typography-h5;
+  font-size: var(--size-s);
+}
+@mixin typography-paragraph-serif-big {
   font-family: var(--font-noto-serif);
-  color: var(--black);
-}
-%font-paragraph-sans-big {
+  font-style: var(--font-noto-serif-italic);
   font-size: var(--size-xl);
   line-height: calc(var(--baseline) * 4);
-  font-family: var(--font-source-sans);
-  color: var(--black);
 }
-%font-paragraph-sans {
+@mixin font-paragraph-sans-big {
+  font-family: var(--font-source-sans);
+  font-weight: var(--font-source-sans-regular);
+  font-size: var(--size-xl);
+  line-height: calc(var(--baseline) * 4);
+}
+@mixin font-paragraph-sans {
+  font-family: var(--font-source-sans);
+  font-weight: var(--font-source-sans-regular);
   font-size: var(--base-font);
   line-height: calc(var(--baseline) * 4);
-  font-family: var(--font-source-sans);
-  color: var(--black-60);
 }
-@mixin font-paragraph-sans($color: var(--black-60)) {
-  font-size: var(--base-font);
-  line-height: calc(var(--baseline) * 4);
-  font-family: var(--font-source-sans);
-  color: $color;
-}
-%font-annotation {
+@mixin typography-annotation {
   font-size: var(--size-s);
   line-height: calc(var(--baseline) * 2);
   font-family: var(--font-source-sans);
-  color: var(--black-60);
-  @include mq('s') {
+  color: rgba(var(--black-rgba-50));
+  @include max-width('s') {
     font-size: var(--size-l);
     line-height: calc(var(--baseline) * 3);
   }
-}
-
-%font-subtitle-uppercase-small {
-  text-transform: uppercase;
-  font-weight: var(--font-montserrat-bold);
-  font-size: var(--size-m);
-  line-height: calc(var(--baseline) * 2);
-  font-family: var(--font-montserrat);
-  letter-spacing: .5px;
-  color: inherit;
-}
-%font-subtitle-uppercase-tiny {
-  @extend %font-subtitle-uppercase-small;
-  font-size: var(--size-s);
-}
-%font-subtitle-small {
-  font-weight: var(--font-source-sans-semibold);
-  font-size: var(--size-m);
-  line-height: calc(var(--baseline) * 2);
-  font-family: var(--font-source-sans);
-  letter-spacing: .5px;
-  color: var(--black);
-}
-%font-intro-paragraph {
-  font-family: var(--font-noto-serif);
-  font-style: italic;
-  font-size: var(--size-xl);
-  line-height: calc(var(--baseline) * 4);
-  color: var(--black-50);
 }

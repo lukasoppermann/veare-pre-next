@@ -7,9 +7,7 @@ export default (fields) => html`
   ${repeat(fields.items, (item) => unsafeHTML(`
     <div class="Boxed-item" style="flex-grow: ${item.optionalParameter}">
       <h5>${item.key}</h5>
-      <div class="Paragraph Paragraph--sans-small">
-        ${item.value}
-      </div>
+      <p>${item.value}</p>
     </div>
   `))}
 </div>

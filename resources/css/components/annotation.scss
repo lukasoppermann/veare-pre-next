@@ -1,10 +1,10 @@
 .Annotation {
-  @extend %font-annotation;
+  @include typography-annotation;
   position: relative;
   padding-top: calc(var(--baseline) * 2);
   margin-top: 0;
-  @include mq('m') {
-    @include baseline(2);
+  @include max-width('m') {
+    @include baseline_top(2);
     padding-top: 0;
     font-size: var(--size-m);
     line-height: calc(var(--baseline) * 3);
@@ -16,7 +16,7 @@
 }
 .Grid > .Annotation {
   grid-column: sidebar-right;
-  @include mq('s') {
+  @include max-width('s') {
     grid-column: columns;
   }
 }
@@ -25,8 +25,8 @@
   top: 0;
   height: 2px;
   width: 50%;
-  background-color: var(--light-grey);
-  @include mq('m') {
+  background-color: rgb(var(--light-grey-rgb));
+  @include max-width('m') {
     display: none;
   }
 }

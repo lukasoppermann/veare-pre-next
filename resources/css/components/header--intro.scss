@@ -8,17 +8,17 @@
     overflow: hidden;
     grid-row: row 2 / -2;
     grid-column: column 5 / span 5;
-    @include mq('s') {
+    @include max-width('s') {
       grid-column: column 4 / span 5;
     }
-    @include mq('xs') {
+    @include max-width('xs') {
       display: none;
     }
   }
   .Header__background {
     grid-column: full-width;
     grid-row: row 2 / -2;
-    background-color: var(--color-sand);
+    background-color: rgb(var(--sand-grey-rgb));
     --origin-start: right;
     animation: .75s var(--easeInOutQuint) forwards .5s blockFill;
     transform: scaleX(0);
@@ -27,13 +27,13 @@
   .Logo {
     grid-column: margin-left / span 2;
     grid-row: row 2 / span 3;
-    @include mq('l') {
+    @include max-width('l') {
       grid-column: sidebar-left / span 2;
     }
-    @include mq('s') {
+    @include max-width('s') {
       grid-column: column 1 / span 2;
     }
-    @include mq('xs') {
+    @include max-width('xs') {
       grid-row: row 2 / span 2;
     }
     margin: var(--column-gap) 0 0 var(--column-gap);
@@ -63,18 +63,18 @@
     align-items: flex-end;
     max-height: calc(var(--max-row-height) * 4 + var(--baseline) * 3);
     box-sizing: border-box;
-    fill: var(--black);
+    fill: rgb(var(--black-rgb));
     grid-row: row 6 / span 4;
     grid-column: sidebar-left 1 / span 6;
-    @include mq(1300) {
+    @include max-width(1300) {
       grid-column: sidebar-left 2 / span 6;
     }
-    @include mq('s') {
+    @include max-width('s') {
       grid-column: column 1 / span 6;
       grid-row: row 5 / span 4;
       margin: 0 var(--hs-m);
     }
-    @include mq('xs') {
+    @include max-width('xs') {
       grid-column: columns;
       grid-row: row 4 / span 4;
     }
@@ -91,22 +91,22 @@
     }
     #interactionBlockRect {
       transform: scaleX(0);
-      fill: var(--veare-orange);
+      fill: rgb(var(--veare-orange-rgb));
       animation: 1.25s var(--easeInOutQuint) 1s blockReveal;
     }
     #isEverything {
       animation: var(--animation-appear);
       animation-duration: 1.85s;
-      fill: var(--black-50);
+      fill: rgba(var(--black-rgba-50));
     }
     #isEverythingBlockRect {
       --origin-end: 75% top;
-      fill: var(--veare-orange);
+      fill: rgb(var(--veare-orange-rgb));
       transform: scaleX(0);
       animation: 1s var(--easeInOutQuint) 1.25s blockReveal;
     }
     #lineBlockRect {
-      fill: var(--veare-orange);
+      fill: rgb(var(--veare-orange-rgb));
       transform: scaleX(0);
       animation: .5s var(--easeInOutQuint) 1.35s forwards blockFill;
     }
@@ -118,17 +118,17 @@
     grid-column: sidebar-left 1 / span 3;
     font-size: var(--size-xl);
     grid-row: row 11 / span 2;
-    @include mq(1300) {
+    @include max-width(1300) {
       grid-column: sidebar-left 2 / span 3;
     }
-    @include mq('l') {
+    @include max-width('l') {
       font-size: var(--size-l);
     }
-    @include mq('s') {
+    @include max-width('s') {
       grid-column: column / span 3;
       padding-left: var(--hs-m);
     }
-    @include mq('xs') {
+    @include max-width('xs') {
       max-width: 350px;
       grid-column: columns;
       padding-left: var(--hs-m);
@@ -137,7 +137,7 @@
     }
     font-family: var(--font-source-sans);
     font-weight: 400;
-    color: var(--black);
+    color: rgb(var(--black-rgb));
     line-height: 130%;
     margin: 0;
   }
@@ -150,13 +150,13 @@
     z-index: 10;
     grid-row: row 11 / span 2;
     grid-column: column 2 / span 3;
-    @include mq(1300) {
+    @include max-width(1300) {
       grid-column: column 4 / span 3;
     }
-    @include mq('s') {
+    @include max-width('s') {
       grid-column: column 5 / span 3;
     }
-    @include mq('xs') {
+    @include max-width('xs') {
       grid-column: columns;
       padding-left: var(--hs-m);
       font-size: var(--size-xl);
@@ -170,12 +170,12 @@
     font-family: var(--font-noto-serif);
     font-style: italic;
     font-weight: 400;
-    color: var(--black);
+    color: rgb(var(--black-rgb));
     font-size: var(--size-xl);
-    @include mq('l') {
+    @include max-width('l') {
       font-size: var(--size-l);
     }
-    @include mq('s') {
+    @include max-width('s') {
       font-size: calc(var(--size-l) - 1px);
     }
     line-height: 130%;
@@ -185,10 +185,10 @@
   .Header--intro__services__description {
     position: absolute;
     top: calc(-1 * var(--size-l));
-    color: var(--black-50);
+    color: rgba(var(--black-rgba-50));
     font-size: var(--size-m);
     line-height: 100% !important;
-    @include mq('xs') {
+    @include max-width('xs') {
       position: relative;
       top: auto;
       margin-bottom: 4px;
@@ -196,7 +196,7 @@
   }
   h2.Header--intro__services__veare {
     display: inline;
-    color: var(--black-50);
+    color: rgba(var(--black-rgba-50));
     font-size: var(--size-m) !important;
     font-weight: var(--font-source-sans-regular);
     line-height: 100% !important;
