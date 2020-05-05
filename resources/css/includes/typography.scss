@@ -14,6 +14,12 @@
   --font-montserrat: 'Montserrat', helvetica, sans-serif;
   --font-montserrat-bold: 700;
 }
+@mixin typography-uppercase {
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-montserrat-bold);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
 @mixin typography-title {
   font-family: var(--font-montserrat);
   font-weight: var(--font-montserrat-bold);
@@ -40,12 +46,9 @@
   line-height: calc(var(--baseline) * 3);
 }
 @mixin typography-h5 {
-  font-family: var(--font-montserrat);
-  font-weight: var(--font-montserrat-bold);
+  @include typography-uppercase;
   font-size: var(--size-m);
   line-height: calc(var(--baseline) * 2);
-  text-transform: uppercase;
-  letter-spacing: .5px;
 }
 @mixin typography-h6 {
   @include typography-h5;
@@ -61,14 +64,14 @@
   font-style: var(--font-noto-serif-italic);
   font-size: var(--size-xl);
 }
-@mixin font-paragraph-sans {
+@mixin typography-paragraph-sans {
   font-family: var(--font-source-sans);
   font-weight: var(--font-source-sans-regular);
   font-size: var(--base-font);
   line-height: calc(var(--baseline) * 4);
 }
-@mixin font-paragraph-sans-big {
-  @include font-paragraph-sans;
+@mixin typography-paragraph-sans-big {
+  @include typography-paragraph-sans;
   font-size: var(--size-xl);
 }
 @mixin typography-annotation {

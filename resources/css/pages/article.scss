@@ -73,7 +73,7 @@
     p {
       hyphens: auto;
       overflow-wrap: break-word;
-      @include font-paragraph-sans-big;
+      @include typography-paragraph-sans-big;
       @include max-width('xxs') {
         font-size: var(--base-font);
         line-height: calc(var(--baseline) * 4);

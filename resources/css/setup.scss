@@ -83,7 +83,7 @@ body {
   background: rgb(var(--white-blue-rgb)); // visible when over-pulling
   overflow-x: hidden; // used for tilted bg on images in projects
   // basic typography
-  @include font-paragraph-sans;
+  @include typography-paragraph-sans;
   color: rgba(var(--black-rgba-80));
   &.testing * { // for ui tests
     transition: none !important;

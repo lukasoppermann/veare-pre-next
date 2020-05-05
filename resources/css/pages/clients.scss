@@ -3,12 +3,9 @@
   grid-row-gap: 0 !important;
 }
 .clients h2 {
+  @include typography-h5;
   grid-column: columns;
   text-align: center;
-  font-size: var(--size-l);
-  color: rgb(var(--black-rgb));
-  font-family: var(--font-montserrat);
-  font-weight: var(--font-montserrat-bold);
   padding-top: var(--size-g);
 }
 .clients .Picture {

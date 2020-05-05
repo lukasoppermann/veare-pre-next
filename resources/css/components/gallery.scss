@@ -24,7 +24,7 @@
       display: none;
     }
     p {
-      @include font-paragraph-sans;
+      @include typography-paragraph-sans;
       @include max-width('s') {
         font-size: var(--base-font);
         line-height: calc(var(--baseline) * 4);
