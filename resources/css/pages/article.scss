@@ -36,12 +36,9 @@
   }
   p {
     grid-column: columns;
-    font: var(--font-copy-serif);
+    @include typography-paragraph-serif;
     margin-bottom: var(--size-l);
     color: rgba(var(--black-rgba-80));
-    b {
-      font: var(--font-copy-serif-bold);
-    }
   }
   ul,
   ol {

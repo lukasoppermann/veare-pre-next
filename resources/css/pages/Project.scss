@@ -111,6 +111,7 @@
 }
 .Project-card__text::before {
   @include typography-title;
+  font-size: var(--size-xl);
   color: inherit;
   display: block;
   content: counter(projects, decimal-leading-zero);
@@ -138,6 +139,7 @@
 }
 .Project-card__title {
   @include typography-title;
+  font-size: var(--size-xl);
   color: inherit;
 }
 
@@ -386,13 +388,16 @@
     }
   }
   .Project__title {
+    @include typography-title;
+    color: rgb(var(--white-rgb));
     margin: 0;
     position: absolute;
-    font: var(--font-title);
-    bottom: var(--vs-xxl);
-    left: var(--hs-xl);
-    color: rgb(var(--white-rgb));
     z-index: 100;
+    bottom: var(--vs-xxl);
+
+    @include max-width('s') {
+      left: var(--hs-xl);
+    }
   }
   h4 {
     @include baseline_top(5);
