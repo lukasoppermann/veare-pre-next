@@ -50,9 +50,7 @@ export default () => html`
   <body>
     <div class="Page">
       <menu class="responsive-menu"></menu>
-        ${headerIntro}
-      <main>
-      </main>
+      ${headerIntro}
     </div>
   </body>
   </html>

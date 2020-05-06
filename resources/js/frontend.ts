@@ -12,8 +12,9 @@ const layout = app.fetchInject([
 
 Promise.all([homepage, litHtml, layout]).then(([homepageHtml]) => {
   const content = (content) => app.html`${app.unsafeHTML(content)}`
+  let html = document.querySelector('.Page').innerHTML + ' ' + homepageHtml
   //
-  app.render(content(homepageHtml), document.querySelector('main'))
+  app.render(content(html), document.querySelector('.Page'))
 })
 
 Promise.all([menu, litHtml, homepage, layout]).then(([menuHtml]) => {
