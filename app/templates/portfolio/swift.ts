@@ -23,7 +23,7 @@ export default html`
       </div>
       <div class="o-project-info__item">
         <h4 class="o-project-info__title">Objective</h4>
-        <p class="type--l">Branding for a modern airline which differentiates itself by speed instead of entering the endless pricing battle.</p>
+        <p>Branding for a modern airline which differentiates itself by speed instead of entering the endless pricing battle.</p>
       </div>
     </div>
   </section>
@@ -41,15 +41,15 @@ export default html`
         <img src="/${cache.get('files').media['media/swift-logo-lockup.jpg']}" alt="Swift logo lockup" class="u-full-width" />
       </div>
       <div class="old-project-grid-text">
-        <p class="type--l">It took about 100 different variations of 6 names to find the one that was just right, a reduced Logotype that is bend to the right to give a feeling of movement and a rough resemblence of the shape of an airplane.</p>
-        <p class="type--l">The logo did not only have to be trustworthy, but needed to fit with the target audience of mainly traveling business people.</p>
+        <p>It took about 100 different variations of 6 names to find the one that was just right, a reduced Logotype that is bend to the right to give a feeling of movement and a rough resemblence of the shape of an airplane.</p>
+        <p>The logo did not only have to be trustworthy, but needed to fit with the target audience of mainly traveling business people.</p>
       </div>
       <div class="old-project-grid-image-centered">
         <img src="/${cache.get('files').media['media/swift-logo-sketches.jpg']}" alt="Swift logo Ideas" class="u-full-width" />
       </div>
       <h3 class="o-headline--h2 o-headline--portfolio Grid--columns">Corporate Colors & Patterns</h3>
       <div class="old-project-grid-text">
-        <p class="type--l">The swift corporate identity focusing on the corporate values comfort, trust and speed. The primary color yellow visualises speed and is mainly used in communication and marketing, while the dark green stands for comfort and calmness and is mainly used inside the airplanes & lounge areas.</p>
+        <p>The swift corporate identity focusing on the corporate values comfort, trust and speed. The primary color yellow visualises speed and is mainly used in communication and marketing, while the dark green stands for comfort and calmness and is mainly used inside the airplanes & lounge areas.</p>
       </div>
       <div class="Grid--columns">
         <img src="/${cache.get('files').media['media/swift-colors.jpg']}" alt="Corporate Colors" class="u-full-width" />

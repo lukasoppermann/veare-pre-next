@@ -23,7 +23,7 @@ export default html`
       </div>
       <div class="o-project-info__item">
         <h4 class="o-project-info__title">Objective</h4>
-        <p class="type--l">This magazine for the re:publica conference 2013 combines different articles on the topic “Open Everything”. <br />The idea is to bring digital content into an analog form but keep some digital mechanics like tags, which are used in the table of content to connect the articles. The reader can following the lines from an article to a tag and from there to a connected article, similar to tags on a web page.</p>
+        <p>This magazine for the re:publica conference 2013 combines different articles on the topic “Open Everything”. <br />The idea is to bring digital content into an analog form but keep some digital mechanics like tags, which are used in the table of content to connect the articles. The reader can following the lines from an article to a tag and from there to a connected article, similar to tags on a web page.</p>
       </div>
     </div>
   </section>
