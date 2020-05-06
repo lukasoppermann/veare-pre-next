@@ -1,5 +1,7 @@
 name: Lighthouse audit live site
-on: push
+on:
+  push:
+    branches: [ master ]
 
 jobs:
   audit:

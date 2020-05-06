@@ -11,9 +11,8 @@
   ul {
     grid-column: columns / span 7;
   }
-  p,
-  li {
-    @include typography-paragraph-sans;
+  p {
+    color: rgba(var(--black-rgba-80));
   }
 }
 .c-section-privacy {

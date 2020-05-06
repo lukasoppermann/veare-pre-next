@@ -59,10 +59,6 @@
 .skills h2 {
   font-size: var(--size-h);
 }
-.skills > p {
-  @include typography-paragraph-sans;
-  color: rgb(var(--black-rgb)) !important;
-}
 .skills blockquote {
   @include typography-paragraph-serif-big;
   color: rgba(var(--black-rgba-50));
