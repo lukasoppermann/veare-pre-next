@@ -1,32 +1,32 @@
 .Annotation {
-  @include typography-annotation;
   position: relative;
   padding-top: calc(var(--baseline) * 2);
   margin-top: 0;
-  @include max-width('m') {
+  @include max-width('s') {
     @include baseline_top(2);
+    @include baseline_bottom(4);
     padding-top: 0;
-    font-size: var(--size-m);
-    line-height: calc(var(--baseline) * 3);
-    font-style: italic;
   }
-}
-.Annotation:not(:nth-child(2)) {
-  margin-top: calc(var(--baseline) * 3);
+  p:nth-child(1n) {
+    @include typography-annotation;
+  }
+  &:not(:nth-child(2)) {
+    margin-top: calc(var(--baseline) * 3);
+  }
+  &::before {
+    @include pseudo;
+    top: 0;
+    height: 2px;
+    width: 50%;
+    background-color: rgb(var(--light-grey-rgb));
+    @include max-width('s') {
+      display: none;
+    }
+  }
 }
 .Grid > .Annotation {
   grid-column: sidebar-right;
   @include max-width('s') {
     grid-column: columns;
-  }
-}
-.Annotation::before {
-  @include pseudo;
-  top: 0;
-  height: 2px;
-  width: 50%;
-  background-color: rgb(var(--light-grey-rgb));
-  @include max-width('m') {
-    display: none;
   }
 }

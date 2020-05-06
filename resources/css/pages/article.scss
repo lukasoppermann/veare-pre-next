@@ -77,10 +77,6 @@
       margin-top: var(--size-s);
       margin-bottom: var(--size-xl);
     }
-    .Annotation__text,
-    .Annotation__text p {
-      @include typography-annotation;
-    }
   }
   .Article__publication-details,
   .Article__author {

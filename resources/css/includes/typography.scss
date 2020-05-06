@@ -78,7 +78,9 @@
   font-family: var(--font-source-sans);
   color: rgba(var(--black-rgba-50));
   @include max-width('s') {
-    font-size: var(--size-l);
+    // font-size: var(--size-l);
+    font-size: var(--size-m);
     line-height: calc(var(--baseline) * 3);
+    font-style: italic;
   }
 }
