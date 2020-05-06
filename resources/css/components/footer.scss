@@ -57,7 +57,6 @@
     padding-bottom: var(--size-m);
   }
   h4 {
-    @include typography-h4;
     color: rgba(var(--white-blue-rgb), .25);
   }
   p {

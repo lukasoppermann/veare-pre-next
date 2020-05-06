@@ -436,9 +436,6 @@
   p:not(:first-child) {
     margin-top: calc(var(--baseline) * 2);
   }
-  .Annotation p {
-    @include typography-annotation;
-  }
   figure + p:not(:first-child) {
     margin-top: calc(var(--baseline) * 4);
   }

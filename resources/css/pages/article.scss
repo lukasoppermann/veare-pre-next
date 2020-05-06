@@ -25,15 +25,6 @@
   h4 {
     grid-column: columns;
   }
-  h2 {
-    @include typography-h2;
-  }
-  h3 {
-    @include typography-h3;
-  }
-  h4 {
-    @include typography-h4;
-  }
   p {
     grid-column: columns;
     @include typography-paragraph-serif;
@@ -85,10 +76,6 @@
     @include max-width('s') {
       margin-top: var(--size-s);
       margin-bottom: var(--size-xl);
-    }
-    .Annotation__text,
-    .Annotation__text p {
-      @include typography-annotation;
     }
   }
   .Article__publication-details,

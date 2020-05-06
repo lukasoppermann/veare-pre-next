@@ -1,25 +1,59 @@
 .skills {
   grid-row-gap: 0;
-}
-.skills:nth-child(2n+1) {
-  margin-top: calc(var(--baseline) * 7);
-}
-.skills .Picture {
-  order: 1;
-  display: flex;
-  align-self: center;
-  width: 100%;
-  height: auto;
-  grid-row: 1 / 5;
-  grid-column: sidebar-left 2 / span 3;
-  @include max-width('m') {
+  &:nth-child(2n+1) {
+    margin-top: calc(var(--baseline) * 7);
+  }
+  .Picture {
+    order: 1;
+    display: flex;
+    align-self: center;
+    width: 100%;
+    height: auto;
+    grid-row: 1 / 5;
     grid-column: sidebar-left 2 / span 3;
+    @include max-width('m') {
+      grid-column: sidebar-left 2 / span 3;
+    }
+    @include max-width('s') {
+      grid-column: column 3 / span 3;
+    }
+    @include max-width('xs') {
+      grid-column: columns;
+    }
+    picture {
+      width: 100%;
+      height: auto;
+    }
   }
-  @include max-width('s') {
-    grid-column: column 3 / span 3;
+  h2,
+  blockquote,
+  p {
+    order: 2;
+    display: block;
+    text-align: left;
+    grid-column: column 3 / span 5;
+    @include max-width('m') {
+      grid-column: column 3 / span 6;
+    }
+    @include max-width('s') {
+      grid-column: column 2 / span 5;
+    }
+    @include max-width('xs') {
+      grid-column: columns;
+      margin-top: 0 !important;
+    }
   }
-  @include max-width('xs') {
-    grid-column: columns;
+  h2 {
+    font-size: var(--size-h);
+  }
+  blockquote {
+    p {
+      @include typography-paragraph-serif-big;
+    }
+    color: rgba(var(--black-rgba-50));
+    margin-top: calc(var(--baseline) * 1);
+    margin-bottom: calc(var(--baseline) * 2);
+    hyphens: none;
   }
 }
 .skills:nth-child(2n+1) .Picture {
@@ -33,42 +67,6 @@
     order: 1;
     grid-column: columns;
   }
-}
-.skills .Picture picture {
-  width: 100%;
-  height: auto;
-}
-.skills h2,
-.skills blockquote,
-.skills p {
-  order: 2;
-  display: block;
-  text-align: left;
-  grid-column: column 3 / span 5;
-  @include max-width('m') {
-    grid-column: column 3 / span 6;
-  }
-  @include max-width('s') {
-    grid-column: column 2 / span 5;
-  }
-  @include max-width('xs') {
-    grid-column: columns;
-    margin-top: 0 !important;
-  }
-}
-.skills h2 {
-  font-size: var(--size-h);
-}
-.skills > p {
-  @include typography-paragraph-sans;
-  color: rgb(var(--black-rgb)) !important;
-}
-.skills blockquote {
-  @include typography-paragraph-serif-big;
-  color: rgba(var(--black-rgba-50));
-  margin-top: calc(var(--baseline) * 1);
-  margin-bottom: calc(var(--baseline) * 2);
-  hyphens: none;
 }
 .skills p:not(:first-child) {
   @include baseline_top(2);

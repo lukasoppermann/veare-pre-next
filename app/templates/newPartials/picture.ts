@@ -14,7 +14,7 @@ export default (item, loading = 'lazy') => {
   </figure>
   ${item.description
     ? html`<div class="Annotation">
-        <div class="Annotation__text">${unsafeHTML(item.description)}</div>
+        ${unsafeHTML(item.description)}
       </div>`
   : ''}
 `

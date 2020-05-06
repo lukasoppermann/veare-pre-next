@@ -25,10 +25,6 @@
     }
     p {
       @include typography-paragraph-sans;
-      @include max-width('s') {
-        font-size: var(--base-font);
-        line-height: calc(var(--baseline) * 4);
-      }
     }
     h4,
     h5,
