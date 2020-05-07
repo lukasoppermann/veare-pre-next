@@ -169,6 +169,10 @@
           padding: 0 var(--size-xs);
           color: rgba(var(--white-blue-rgba-25));
         }
+        .link-show-all {
+          @include typography-paragraph-sans;
+          font-size: var(--size-m);
+        }
       }
     }
     .Footer__contact {
@@ -202,10 +206,27 @@
         line-height: calc(var(--size-m) * 1.5);
         color: rgba(var(--white-blue-rgba-50));
         margin-top: var(--size-xl);
+        margin-bottom: 0;
         text-transform: none;
         .smilie {
           color: rgb(var(--white-blue-rgb));
         }
+      }
+      .Footer__contact__email {
+        display: block;
+        color: rgb(var(--white-blue-rgb));
+        text-decoration: underline;
+        font-size: var(--size-m);
+        margin-top: var(--size-xxs);
+        &:hover {
+          text-decoration: none;
+          color: rgba(var(--veare-orange-rgb));
+        }
+      }
+      .Footer__contact__cv {
+        display: block;
+        margin-top: var(--size-h);
+        font-size: var(--size-m);
       }
     }
   }
@@ -255,22 +276,43 @@
       }
     }
     .Footer__legal__info {
-      grid-column: column 8 / columns;
+      grid-column: column 6 / columns;
       height: var(--size-xl);
       display: flex;
       justify-content: flex-end;
       @include typography-paragraph-sans;
       font-size: var(--size-m);
-      .Footer__separator {
-        line-height: 16px;
-        padding: 0 1rem;
-        color: rgba(var(--white-blue-rgba-25));
+      a {
+        &:not(:first-child) {
+          position: relative;
+          margin-left: 3rem;
+          &::before {
+            @include pseudo();
+            content: "/";
+            padding: 0 1.2rem;
+            left: -3rem;
+            color: rgba(var(--white-blue-rgba-25));
+          }
+          &:hover::before {
+            text-decoration: none;
+          }
+        }
+        &:hover {
+          text-decoration: none;
+          color: rgb(var(--white-blue-rgb));
+        }
       }
       .Footer__copyright {
         text-align: right;
         color: rgb(var(--white-blue-rgb));
         font-size: inherit;
         line-height: 100%;
+        &::before {
+          @include pseudo("relative");
+          content: "•";
+          padding: 0 1.5rem;
+          color: rgba(var(--white-blue-rgba-25));
+        }
       }
     }
   }
