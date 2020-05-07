@@ -145,7 +145,7 @@
     }
     .Footer__read__articles {
       margin-top: 0;
-      grid-column: column 4 / span 3;
+      grid-column: column 4 / span 4;
       color: rgb(var(--white-blue-rgb));
       li {
         list-style-type: none;
@@ -168,6 +168,43 @@
           content: "•";
           padding: 0 var(--size-xs);
           color: rgba(var(--white-blue-rgba-25));
+        }
+      }
+    }
+    .Footer__contact {
+      grid-column: column 10 / span 3;
+      .Footer__contact__headline {
+        color: rgb(var(--white-blue-rgb));
+        @include typography-paragraph-sans;
+        font-weight: bold;
+        font-size: var(--size-xl);
+        text-transform: none;
+        margin-top: 0;
+        margin-bottom: var(--size-l);
+      }
+      .Footer__contact__lukas {
+        color: rgb(var(--white-blue-rgb));
+        @include typography-paragraph-sans;
+        font-size: var(--size-m);
+        font-weight: bold;
+        margin-top: 0;
+      }
+      .Footer__contact__job-title {
+        @include typography-paragraph-sans;
+        font-size: var(--size-m);
+        line-height: calc(var(--size-m) * 1.5);
+        color: rgba(var(--white-blue-rgba-50));
+        margin-top: 0;
+      }
+      .Footer__contact__say-hi {
+        @include typography-paragraph-sans;
+        font-size: var(--size-m);
+        line-height: calc(var(--size-m) * 1.5);
+        color: rgba(var(--white-blue-rgba-50));
+        margin-top: var(--size-xl);
+        text-transform: none;
+        .smilie {
+          color: rgb(var(--white-blue-rgb));
         }
       }
     }

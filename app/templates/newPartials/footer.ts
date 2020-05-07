@@ -42,7 +42,20 @@ export default html`
           <time class="read-time" datetime="13m">13 min read</time>
         </div>
       </li>
+      <li>
+        <a href="/blog/">See all</a>
+      </li>
     </ol>
+    <div class="Footer__contact">
+      <h6 class="Footer__contact__headline">Get in touch</h6>
+      <h2 class="Footer__contact__lukas">Lukas Oppermann</h2>
+      <h3 class="Footer__contact__job-title">Creative Director &<br /> Lead UI/UX Designer</h3>
+
+      <h6 class="Footer__contact__say-hi">Schedule a call or just say hi <span class="smilie">👋</span></h6>
+      <a target="_blank" href="mailto:lukas@vea.re?subject=Hey,%20what&apos;s%20up?&body=Great%20to%20hear%20from%20you,%20how%20can%20I%20help?">lukas@vea.re</a>
+
+      <p>Download my full <a target="_blank" href="mailto:lukas@vea.re?subject=Hey,%20what&apos;s%20up?&body=Great%20to%20hear%20from%20you,%20how%20can%20I%20help?">CV (pdf)</a></p>
+    </div>
   </section>
   <section class="Footer__connect GridNew">
     <hr />
