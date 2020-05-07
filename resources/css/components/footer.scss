@@ -107,8 +107,6 @@
 }
 
 .FooterNew {
-  --row-gap: 0;
-  height: 10rem;
   width: 100vw;
   grid-column: full-bleed;
   background: rgb(var(--black-rgb));
@@ -116,7 +114,6 @@
   // @media screen and (min-width: 600px) {
   //   min-height: 650px;
   // }
-  // wordmark
   hr {
     border: none;
     height: 1px;
@@ -124,62 +121,120 @@
     margin: 0;
     grid-column: columns;
   }
-  .veare-wordmark {
-    top: auto;
-    left: auto;
-    position: relative;
-    padding-left: 2px;
-    fill: rgb(var(--white-rgb));
-    height: var(--size-l);
-    grid-column: column / column 3;
-    @media screen and (min-width: 500px) {
-      grid-column: column / column 2;
-    }
-  }
-  .Footer__copyright {
-    grid-column: column 3 / columns;
-    text-align: right;
-    justify-self: end;
-    color: rgb(var(--white-rgb));
-    padding-bottom: var(--size-m);
-    font-size: inherit;
-  }
   h4 {
     color: rgba(var(--white-blue-rgb), .25);
-  }
-  p {
-    @include typography-paragraph-sans;
-    color: rgb(var(--white-rgb));
   }
   a {
     color: rgba(var(--white-blue-rgba-50));
     text-decoration: none;
+    line-height: 100%;
   }
   a:hover {
     color: rgb(var(--white-blue-rgb));
     text-decoration: underline;
   }
+  .Footer__read-and-write {
+    padding: 8rem 0;
+    .Footer__read__headline {
+      grid-column: columns / span 3;
+      @include typography-paragraph-serif-big;
+      font-weight: normal;
+      color: rgb(var(--white-blue-rgb));
+      margin-top: 0;
+      text-transform: none;
+    }
+    .Footer__read__articles {
+      margin-top: 0;
+      grid-column: column 4 / span 3;
+      color: rgb(var(--white-blue-rgb));
+      li {
+        list-style-type: none;
+        &:not(:first-child) {
+          margin-top: var(--size-xl);
+        }
+        h3 {
+          @include typography-paragraph-serif;
+          font-weight: normal;
+          color: rgb(var(--white-blue-rgb));
+          margin-top: 0;
+        }
+        .details {
+          display: flex;
+          @include typography-mono(var(--size-s));
+          color: rgba(var(--white-blue-rgba-50));
+        }
+        .read-time::before {
+          @include pseudo("relative");
+          content: "•";
+          padding: 0 var(--size-xs);
+          color: rgba(var(--white-blue-rgba-25));
+        }
+      }
+    }
+  }
+  .Footer__connect {
+    width: 100%;
+    grid-template-rows: 1px auto;
+    align-items: center;
+    height: 12rem;
+    .Footer__connect__block {
+      grid-column-end: span 3;
+      &:first-of-type {
+        grid-column-start: columns;
+      }
+      h6 {
+        @include typography-mono(var(--size-s));
+        color: rgb(var(--white-blue-rgb));
+        text-transform: uppercase;
+        margin-bottom: var(--unit);
+        margin-top: 0;
+      }
+      p {
+        @include typography-mono(var(--size-s));
+        color: rgba(var(--white-blue-rgba-50));
+        max-width: 180px;
+        a {
+          color: rgb(var(--white-blue-rgb));
+        }
+      }
+    }
+  }
   .Footer__legal {
-    font-size: var(--size-m);
-    @media screen and (min-width: 600px) {
-      grid-column: column 3 / column 8;
+    width: 100%;
+    grid-template-rows: 1px auto;
+    align-items: center;
+    height: 12rem;
+    .veare-wordmark {
+      position: relative;
+      fill: rgb(var(--white-blue-rgb));
+      height: var(--size-xl);
+      grid-column: column / column 3;
+      @media screen and (min-width: 500px) {
+        grid-column: column / column 2;
+      }
+      svg {
+        vertical-align: top;
+        max-height: var(--size-l);
+      }
+    }
+    .Footer__legal__info {
+      grid-column: column 8 / columns;
+      height: var(--size-xl);
       display: flex;
       justify-content: flex-end;
-      order: 2;
-    }
-    *:not(:first-child) {
-      margin-left: 3rem;
-    }
-    *:not(:first-child)::before {
-      pointer-events: none;
-      @include pseudo();
-      content: "•";
-      width: 1rem;
-      padding: 0;
-      margin-left: -2rem;
-      text-align: center;
-      color: rgba(var(--white-blue-rgba-25));
-      font-size: var(--size-l);
+      @include typography-paragraph-sans;
+      font-size: var(--size-m);
+      .Footer__separator {
+        line-height: 16px;
+        padding: 0 1rem;
+        color: rgba(var(--white-blue-rgba-25));
+      }
+      .Footer__copyright {
+        text-align: right;
+        color: rgb(var(--white-blue-rgb));
+        font-size: inherit;
+        line-height: 100%;
+      }
     }
   }
 }

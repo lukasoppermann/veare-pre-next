@@ -11,6 +11,10 @@
   /* FONT: Montserrat */
   --font-montserrat: 'Montserrat', helvetica, sans-serif;
   --font-montserrat-bold: 700;
+
+  /* FONT: Mono */
+  --font-mono: 'Source Code Pro', monospace;
+  --font-mono-bold: 600;
 }
 @mixin typography-uppercase {
   font-family: var(--font-montserrat);
@@ -83,4 +87,9 @@
     line-height: calc(var(--baseline) * 3);
     font-style: italic;
   }
+}
+@mixin typography-mono($size: var(--size-m)) {
+  font-size: $size;
+  line-height: calc(#{$size} * 1.5);
+  font-family: var(--font-mono);
 }
