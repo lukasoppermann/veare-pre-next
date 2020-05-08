@@ -1,5 +1,5 @@
 import layout from '../layout'
-import footer from '../partials/footer'
+import footer from '../newPartials/footer'
 import headerIntro from '../partials/header_intro'
 import { templateInterface } from '../../../types/template'
 

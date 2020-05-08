@@ -1,6 +1,62 @@
 @import "../_mixins/mixins.scss";
 :root {
-  @include create-type-scale(1.6rem, 1.2);
+  /* ====================================
+      Type Scale
+  ==================================== */
+  // xs
+  --ts-size-xs: 1.3rem;
+  --ts-line-height-xs: 1.5;
+  // sm
+  --ts-size-sm: 1.6rem;
+  --ts-line-height-sm: 1.5;
+  // md
+  --ts-size-md: 2rem;
+  --ts-line-height-md: 1.4;
+  // lg
+  --ts-size-lg: 2.5rem;
+  --ts-line-height-lg: 1.3;
+  // xl
+  --ts-size-xl: 3.1rem;
+  --ts-line-height-xl: 1.3;
+  // xxl
+  --ts-size-xxl: 3.9rem;
+  --ts-line-height-xxl: 1.2;
+  // hg
+  --ts-size-hg: 4.9rem;
+  --ts-line-height-hg: 1.1;
+  // xh
+  --ts-size-xh: 6.1rem;
+  --ts-line-height-xh: 1.1;
+
+  /* ====================================
+      Font families
+  ==================================== */
+  // Sans Serif
+  --font-sans: 'Source Sans Pro', helvetica, sans-serif;
+  // weights
+  --font-sans-weight-regular: 400;
+  --font-sans-weight-bold: 600;
+  // styles
+  --font-sans-style-normal: normal;
+  --font-sans-style-italic: italic;
+  // ====================================
+  // Serif
+  --font-serif: 'Noto Serif', georgia, serif;
+  // weights
+  --font-serif-weight-regular: 400;
+  --font-serif-weight-bold: 700;
+  // styles
+  --font-serif-style-normal: normal;
+  --font-serif-style-italic: italic;
+  // ====================================
+  // Monospace
+  --font-mono: 'Source Code Pro', monospace;
+  // weights
+  --font-mono-weight-regular: 400;
+  --font-mono-weight-bold: 600;
+  // styles
+  --font-mono-style-normal: normal;
+  --font-mono-style-italic: italic;
 
   /* FONT: Noto Serif */
   --font-noto-serif: 'Noto Serif', georgia, serif;
@@ -94,4 +150,21 @@
   font-size: $size;
   line-height: calc(#{$size} * 1.5);
   font-family: var(--font-mono);
+}
+
+/*
+  Get a value from the typographic scale for your font
+ */
+@mixin type-scale($size) {
+  font-size: var(--ts-size-#{$size});
+  line-height: calc(var(--ts-size-#{$size}) * var(--ts-line-height-#{$size}));
+}
+
+/*
+  Get font family
+ */
+@mixin font($type: sans, $weight: regular, $style: normal) {
+  font-family: var(--font-#{$type});
+  font-weight: var(--font-#{$type}-weight-#{$weight});
+  font-style: var(--font-#{$type}-style-#{$style});
 }

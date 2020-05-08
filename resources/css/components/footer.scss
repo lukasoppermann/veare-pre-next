@@ -1,119 +1,8 @@
-@import "../_mixins/mixins.scss";
-@import "../includes/colors.scss";
-@import "../includes/sizes.scss";
-@import "../includes/typography.scss";
 .Footer {
-  min-height: 100vh;
   width: 100vw;
   grid-column: full-bleed;
   background: rgb(var(--black-rgb));
   color: rgb(var(--white-rgb));
-  @media screen and (min-width: 600px) {
-    min-height: 650px;
-  }
-  &.Grid {
-    @media screen and (min-width: 600px) {
-      grid-template-rows:
-        [footer-top] minmax(var(--size-s), var(--size-g))
-        repeat(5, [footer-rows] minmax(50px, 1fr))
-        [footer-separator] var(--size-s)
-        [footer-bottom] var(--size-g);
-    }
-  }
-  // wordmark
-  hr {
-    border: none;
-    height: 1px;
-    background-color: rgb(var(--dark-grey-rgb));
-    margin: 0;
-    grid-column: columns;
-    @media screen and (min-width: 600px) {
-      grid-row: footer-separator;
-    }
-  }
-  .veare-wordmark {
-    top: auto;
-    left: auto;
-    position: relative;
-    padding-left: 2px;
-    fill: rgb(var(--white-rgb));
-    height: var(--size-l);
-    grid-column: column / column 3;
-    @media screen and (min-width: 500px) {
-      grid-column: column / column 2;
-    }
-    @media screen and (min-width: 600px) {
-      grid-row: footer-bottom;
-    }
-  }
-  .Footer__copyright {
-    @media screen and (min-width: 600px) {
-      grid-row: footer-bottom;
-    }
-    grid-column: column 3 / columns;
-    text-align: right;
-    justify-self: end;
-    @include typography-h6;
-    color: rgb(var(--white-rgb));
-    padding-bottom: var(--size-m);
-  }
-  h4 {
-    color: rgba(var(--white-blue-rgb), .25);
-  }
-  p {
-    @include typography-paragraph-sans;
-    color: rgb(var(--white-rgb));
-  }
-  p a {
-    text-decoration: none;
-  }
-  p a:hover {
-    text-decoration: underline;
-  }
-  .Footer__bio,
-  .Footer__contact,
-  .Footer__connect,
-  .Footer__legal {
-    grid-column: columns;
-  }
-  .Footer__bio {
-    @media screen and (min-width: 600px) {
-      grid-column: column / column 4;
-      grid-row: footer-rows / footer-rows 3;
-      order: 1;
-    }
-  }
-  .Footer__contact {
-    @media screen and (min-width: 600px) {
-      grid-column: column / column 4;
-      grid-row: footer-rows 3 / footer-rows 5;
-      order: 2;
-    }
-  }
-  .Footer__connect {
-    @media screen and (min-width: 600px) {
-      grid-column: column 5 / column 8;
-      grid-row: footer-rows / footer-rows 3;
-      order: 1;
-    }
-  }
-  .Footer__legal {
-    @media screen and (min-width: 600px) {
-      grid-column: column 5 / column 8;
-      grid-row: footer-rows 3 / footer-rows 5;
-      order: 2;
-    }
-  }
-}
-
-.FooterNew {
-  width: 100vw;
-  grid-column: full-bleed;
-  background: rgb(var(--black-rgb));
-  color: rgb(var(--white-rgb));
-  // @media screen and (min-width: 600px) {
-  //   min-height: 650px;
-  // }
   hr {
     border: none;
     height: 1px;
@@ -134,7 +23,7 @@
     text-decoration: underline;
   }
   .Footer__read-and-write {
-    padding: 8rem 0;
+    padding: size(10) 0;
     .Footer__read__headline {
       grid-column: columns / span 3;
       @include typography-paragraph-serif-big;
@@ -154,7 +43,7 @@
         }
         h3 {
           @include typography-paragraph-serif;
-          @include type-scale(3);
+          @include type-scale(lg);
           font-weight: normal;
           color: rgb(var(--white-blue-rgb));
           margin-top: 0;
@@ -167,7 +56,7 @@
         .read-time::before {
           @include pseudo("relative");
           content: "•";
-          padding: 0 var(--size-xs);
+          padding: 0 size(1);
           color: rgba(var(--white-blue-rgba-25));
         }
         .link-show-all {
@@ -206,7 +95,7 @@
         font-size: var(--size-m);
         line-height: calc(var(--size-m) * 1.5);
         color: rgba(var(--white-blue-rgba-50));
-        margin-top: var(--size-xl);
+        margin-top: size(4);
         margin-bottom: 0;
         text-transform: none;
         .smilie {
@@ -218,7 +107,7 @@
         color: rgb(var(--white-blue-rgb));
         text-decoration: underline;
         font-size: var(--size-m);
-        margin-top: var(--size-xxs);
+        margin-top: size(.5);
         &:hover {
           text-decoration: none;
           color: rgba(var(--veare-orange-rgb));
@@ -226,7 +115,7 @@
       }
       .Footer__contact__cv {
         display: block;
-        margin-top: var(--size-h);
+        margin-top: size(5);
         font-size: var(--size-m);
       }
     }
@@ -235,7 +124,7 @@
     width: 100%;
     grid-template-rows: 1px auto;
     align-items: center;
-    height: 12rem;
+    height: size(15);
     .Footer__connect__block {
       grid-column-end: span 3;
       &:first-of-type {
@@ -262,23 +151,23 @@
     width: 100%;
     grid-template-rows: 1px auto;
     align-items: center;
-    height: 12rem;
+    height: size(15);
     .veare-wordmark {
       position: relative;
       fill: rgb(var(--white-blue-rgb));
-      height: var(--size-xl);
+      height: size(2.5);
       grid-column: column / column 3;
       @media screen and (min-width: 500px) {
         grid-column: column / column 2;
       }
       svg {
         vertical-align: top;
-        max-height: var(--size-l);
+        max-height: size(2.5);
       }
     }
     .Footer__legal__info {
       grid-column: column 6 / columns;
-      height: var(--size-xl);
+      height: size(3);
       display: flex;
       justify-content: flex-end;
       @include typography-paragraph-sans;
@@ -286,12 +175,12 @@
       a {
         &:not(:first-child) {
           position: relative;
-          margin-left: 3rem;
+          margin-left: size(4);
           &::before {
             @include pseudo();
             content: "/";
-            padding: 0 1.2rem;
-            left: -3rem;
+            padding: 0 size(1.5);
+            left: size(-4);
             color: rgba(var(--white-blue-rgba-25));
           }
           &:hover::before {
@@ -311,44 +200,10 @@
         &::before {
           @include pseudo("relative");
           content: "•";
-          padding: 0 1.5rem;
+          padding: 0 size(2);
           color: rgba(var(--white-blue-rgba-25));
         }
       }
     }
   }
-}
-[class^="cl"] {
-  color: rgb(var(--white-blue-rgb));
-  display: block;
-  width: 500px;
-  padding-left: 100px;
-  padding-top: 30px;
-}
-.cl--2 {
-  @include type-scale(-2);
-}
-.cl--1 {
-  @include type-scale(-1);
-}
-.cl-1 {
-  @include type-scale(1);
-}
-.cl-2 {
-  @include type-scale(2);
-}
-.cl-3 {
-  @include type-scale(3);
-}
-.cl-4 {
-  @include type-scale(4);
-}
-.cl-5 {
-  @include type-scale(5);
-}
-.cl-6 {
-  @include type-scale(6);
-}
-.cl-7 {
-  @include type-scale(7);
 }

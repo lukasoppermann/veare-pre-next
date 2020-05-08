@@ -75,6 +75,11 @@ html {
   font-feature-settings:"liga", "dlig";
   */
   background-color: rgb(var(--black-rgb)) !important; // visible when over-pulling
+
+  /* ====================================
+      Base css varibales
+  ==================================== */
+  --base-unit: .8rem;
 }
 body {
   // sizing of the body element
