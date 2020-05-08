@@ -150,10 +150,11 @@
       li {
         list-style-type: none;
         &:not(:first-child) {
-          margin-top: var(--size-xl);
+          margin-top: size(3);
         }
         h3 {
           @include typography-paragraph-serif;
+          @include type-scale(3);
           font-weight: normal;
           color: rgb(var(--white-blue-rgb));
           margin-top: 0;
@@ -184,7 +185,7 @@
         font-size: var(--size-xl);
         text-transform: none;
         margin-top: 0;
-        margin-bottom: var(--size-l);
+        margin-bottom: size(3);
       }
       .Footer__contact__lukas {
         color: rgb(var(--white-blue-rgb));
@@ -244,7 +245,7 @@
         @include typography-mono(var(--size-s));
         color: rgb(var(--white-blue-rgb));
         text-transform: uppercase;
-        margin-bottom: var(--unit);
+        margin-bottom: size(1);
         margin-top: 0;
       }
       p {

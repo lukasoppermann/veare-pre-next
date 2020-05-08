@@ -1,5 +1,7 @@
 @import "../_mixins/mixins.scss";
 :root {
+  @include create-type-scale(1.6rem, 1.25);
+
   /* FONT: Noto Serif */
   --font-noto-serif: 'Noto Serif', georgia, serif;
 

@@ -3,20 +3,8 @@ import cache from '../../services/cacheService'
 const { html } = require('@popeindustries/lit-html-server')
 const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
 const fs = require('fs')
-
-const articles = cache().get('article').sort((a, b) => {
-  const dateA = new Date(a.fields.rawdate)
-  const dateB = new Date(b.fields.rawdate)
-  if (dateA < dateB) {
-    return 1
-  }
-  if (dateA > dateB) {
-    return -1
-  }
-  return 0
-}).slice(0, 4)
-
-console.debug(articles)
+// get latest 4 articles
+const articles = cache().get('article').slice(0, 4)
 
 export default html`
 <footer class="FooterNew">
