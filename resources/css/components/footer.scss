@@ -318,3 +318,37 @@
     }
   }
 }
+[class^="cl"] {
+  color: rgb(var(--white-blue-rgb));
+  display: block;
+  width: 500px;
+  padding-left: 100px;
+  padding-top: 30px;
+}
+.cl--2 {
+  @include type-scale(-2);
+}
+.cl--1 {
+  @include type-scale(-1);
+}
+.cl-1 {
+  @include type-scale(1);
+}
+.cl-2 {
+  @include type-scale(2);
+}
+.cl-3 {
+  @include type-scale(3);
+}
+.cl-4 {
+  @include type-scale(4);
+}
+.cl-5 {
+  @include type-scale(5);
+}
+.cl-6 {
+  @include type-scale(6);
+}
+.cl-7 {
+  @include type-scale(7);
+}

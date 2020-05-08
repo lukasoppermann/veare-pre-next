@@ -14,7 +14,7 @@
 /*
   Create a named typoghraphic scale
  */
-@mixin create-type-scale($base: null, $scale: null, $name: "default", $increase: 6, $decrease: 2) {
+@mixin create-type-scale($base: null, $scale: null, $name: "default", $increase: 7, $decrease: 2) {
   @if $base == null {
     @error "All $base and $scale must be set. $name is 'default' if not specified";
   }
@@ -26,7 +26,7 @@
   --ts-#{$name}-1: #{$base};
   // increasing sizes
   @for $i from 2 through $increase {
-    --ts-#{$name}-#{$i}: #{round($base * power($scale, $i) * 10)/10};
+    --ts-#{$name}-#{$i}: #{round($base * power($scale, $i - 1) * 10)/10};
   }
 }
 
@@ -34,9 +34,25 @@
   Get a value from the typographic scale for your font
  */
 @mixin type-scale($factor: 1, $scale: "default") {
+  $lineHeights: (
+    -2: 1.5,
+    -1: 1.5,
+    1: 1.5,
+    2: 1.4,
+    3:  1.3,
+    4:  1.3,
+    5:  1.2,
+    6:  1.1,
+    7:  1.1,
+  );
+
   @if var(--ts-#{$scale}-#{$factor}) != null {
+    $lineHeightFactor: 1.5;
+    @if map_has_key($lineHeights, $factor) {
+      $lineHeightFactor: map_get($lineHeights, $factor);
+    }
     font-size: var(--ts-#{$scale}-#{$factor});
-    line-height: 100px;
+    line-height: calc(var(--ts-#{$scale}-#{$factor}) * #{$lineHeightFactor});
   }
   @elseif {
     @error "Scale #{$scale} does not exist or Factor: #{$factor} is out of range.";

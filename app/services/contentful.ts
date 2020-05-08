@@ -36,7 +36,6 @@ export default async () => {
   const contentTypesPromise = client.getContentTypes()
   // await content
   const [entries, contentTypes] = await Promise.all([entriesPromise, contentTypesPromise])
-  console.debug(contentTypes.items.map(item => item.sys.id))
   // sort content
   const content = sortContentByType(contentTypes, entries)
   // transform Articles
