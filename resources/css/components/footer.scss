@@ -68,6 +68,9 @@
     }
     .Footer__contact {
       grid-column: column 10 / span 3;
+      @include max-width ('l') {
+        grid-column: column 9 / span 3;
+      }
       .Footer__contact__headline {
         color: rgb(var(--white-blue-rgb));
         @include font(sans);
@@ -207,6 +210,37 @@
           color: rgba(var(--white-blue-rgba-25));
         }
       }
+    }
+  }
+}
+.redfill {
+  counter-reset: div;
+  div {
+    position: relative;
+    counter-increment: div;
+    display: block;
+    background-color: red;
+    grid-column: span 1;
+    height: 200px;
+    &::before {
+      color: white;
+      position: absolute;
+      width: 100%;
+      top: 5px;
+      left: 0;
+      text-align: center;
+      content: counter(div);
+    }
+  }
+  :first-child,
+  :last-child {
+    background-color: orange;
+  }
+  :nth-child(2),
+  :nth-child(15) {
+    background-color: blue;
+    @include max-width(l) {
+      display: none;
     }
   }
 }
