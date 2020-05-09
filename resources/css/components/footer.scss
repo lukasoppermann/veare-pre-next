@@ -26,6 +26,9 @@
     padding: size(10) 0;
     .Footer__read__headline {
       grid-column: columns / span 3;
+      @include max-width(s) {
+        grid-column: columns / span 4;
+      }
       @include font(serif, regular, italic);
       @include type-scale(lg);
       font-weight: normal;
@@ -36,9 +39,13 @@
     .Footer__read__articles {
       margin-top: 0;
       grid-column: column 4 / span 4;
+      @include max-width(s) {
+        grid-column: columns / span 4;
+      }
       color: rgb(var(--white-blue-rgb));
       li {
         list-style-type: none;
+        margin-left: 0;
         &:not(:first-child) {
           margin-top: size(3);
         }
@@ -70,6 +77,9 @@
       grid-column: column 10 / span 3;
       @include max-width ('l') {
         grid-column: column 9 / span 3;
+      }
+      @include max-width(s) {
+        grid-column: column 5 / span 3;
       }
       .Footer__contact__headline {
         color: rgb(var(--white-blue-rgb));
@@ -128,11 +138,27 @@
     width: 100%;
     grid-template-rows: 1px auto;
     align-items: center;
-    height: size(15);
+    padding-bottom: size(4);
     .Footer__connect__block {
+      margin-top: size(4);
       grid-column-end: span 3;
       &:first-of-type {
         grid-column-start: columns;
+      }
+      @include max-width(s) {
+        &:nth-of-type(2n+1) {
+          grid-column-start: columns;
+        }
+      }
+      @include max-width(xs) {
+        grid-column-end: span 1;
+        &:nth-of-type(2n) {
+          grid-column-start: column 2;
+        }
+      }
+      @include max-width(xxs) {
+        grid-column-end: span 2;
+        grid-column-start: columns !important;
       }
       h6 {
         @include font(mono);
