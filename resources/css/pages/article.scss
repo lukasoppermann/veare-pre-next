@@ -27,7 +27,8 @@
   }
   p {
     grid-column: columns;
-    @include typography-paragraph-serif;
+    @include font(serif);
+    @include type-scale(md);
     margin-bottom: var(--size-l);
     color: rgba(var(--black-rgba-80));
   }
@@ -64,10 +65,10 @@
     p {
       hyphens: auto;
       overflow-wrap: break-word;
-      @include typography-paragraph-sans-big;
+      @include font(sans);
+      @include type-scale(xl);
       @include max-width('xxs') {
-        font-size: var(--base-font);
-        line-height: calc(var(--baseline) * 4);
+        @include type-scale(lg);
       }
       @include baseline_top(3);
     }

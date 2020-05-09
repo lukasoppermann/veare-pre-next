@@ -48,7 +48,8 @@
   }
   blockquote {
     p {
-      @include typography-paragraph-serif-big;
+      @include font(serif, italic);
+      @include type-scale(lg);
     }
     color: rgba(var(--black-rgba-50));
     margin-top: calc(var(--baseline) * 1);

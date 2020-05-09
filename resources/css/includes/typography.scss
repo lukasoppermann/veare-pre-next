@@ -5,19 +5,19 @@
   ==================================== */
   // xs
   --ts-size-xs: 1.3rem;
-  --ts-line-height-xs: 1.5;
+  --ts-line-height-xs: 1.4;
   // sm
   --ts-size-sm: 1.6rem;
   --ts-line-height-sm: 1.5;
   // md
   --ts-size-md: 2rem;
-  --ts-line-height-md: 1.4;
+  --ts-line-height-md: 1.6;
   // lg
   --ts-size-lg: 2.5rem;
-  --ts-line-height-lg: 1.3;
+  --ts-line-height-lg: 1.45;
   // xl
   --ts-size-xl: 3.1rem;
-  --ts-line-height-xl: 1.3;
+  --ts-line-height-xl: 1.35;
   // xxl
   --ts-size-xxl: 3.9rem;
   --ts-line-height-xxl: 1.2;
@@ -53,7 +53,7 @@
   --font-mono: 'Source Code Pro', monospace;
   // weights
   --font-mono-weight-regular: 400;
-  --font-mono-weight-bold: 600;
+  // --font-mono-weight-bold: 600;
   // styles
   --font-mono-style-normal: normal;
   --font-mono-style-italic: italic;
@@ -114,56 +114,34 @@
   @include typography-h5;
   font-size: var(--size-s);
 }
-@mixin typography-paragraph-serif {
-  font-family: var(--font-noto-serif);
-  font-size: var(--base-font);
-  line-height: calc(var(--baseline) * 4);
-}
-@mixin typography-paragraph-serif-big {
-  @include typography-paragraph-serif;
-  font-style: italic;
-  font-size: var(--size-xl);
-}
 @mixin typography-paragraph-sans {
   font-family: var(--font-source-sans);
   font-weight: var(--font-source-sans-regular);
   font-size: var(--base-font);
   line-height: calc(var(--baseline) * 4);
 }
-@mixin typography-paragraph-sans-big {
-  @include typography-paragraph-sans;
-  font-size: var(--size-xl);
-}
-@mixin typography-annotation {
-  font-size: var(--size-s);
-  line-height: calc(var(--baseline) * 2);
-  font-family: var(--font-source-sans);
-  color: rgba(var(--black-rgba-50));
-  @include max-width('s') {
-    // font-size: var(--size-l);
-    font-size: var(--size-m);
-    line-height: calc(var(--baseline) * 3);
-    font-style: italic;
-  }
-}
-@mixin typography-mono($size: var(--size-m)) {
-  font-size: $size;
-  line-height: calc(#{$size} * 1.5);
-  font-family: var(--font-mono);
-}
 
 /*
   Get a value from the typographic scale for your font
  */
-@mixin type-scale($size) {
+@mixin type-scale($size, $lineHeightFactor: null) {
   font-size: var(--ts-size-#{$size});
-  line-height: calc(var(--ts-size-#{$size}) * var(--ts-line-height-#{$size}));
+  @if $lineHeightFactor == null {
+    line-height: calc(var(--ts-size-#{$size}) * var(--ts-line-height-#{$size}));
+  }
+  @elseif {
+    line-height: calc(var(--ts-size-#{$size}) * #{$lineHeightFactor});
+  }
 }
 
 /*
   Get font family
  */
 @mixin font($type: sans, $weight: regular, $style: normal) {
+  @if $weight == italic {
+    $weight: regular;
+    $style: italic;
+  }
   font-family: var(--font-#{$type});
   font-weight: var(--font-#{$type}-weight-#{$weight});
   font-style: var(--font-#{$type}-style-#{$style});

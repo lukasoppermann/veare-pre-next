@@ -26,7 +26,8 @@
     padding: size(10) 0;
     .Footer__read__headline {
       grid-column: columns / span 3;
-      @include typography-paragraph-serif-big;
+      @include font(serif, regular, italic);
+      @include type-scale(lg);
       font-weight: normal;
       color: rgb(var(--white-blue-rgb));
       margin-top: 0;
@@ -42,15 +43,15 @@
           margin-top: size(3);
         }
         h3 {
-          @include typography-paragraph-serif;
+          @include font(serif);
           @include type-scale(lg);
-          font-weight: normal;
           color: rgb(var(--white-blue-rgb));
           margin-top: 0;
         }
         .details {
           display: flex;
-          @include typography-mono(var(--size-s));
+          @include font(mono);
+          @include type-scale(xs);
           color: rgba(var(--white-blue-rgba-50));
         }
         .read-time::before {
@@ -60,8 +61,8 @@
           color: rgba(var(--white-blue-rgba-25));
         }
         .link-show-all {
-          @include typography-paragraph-sans;
-          font-size: var(--size-m);
+          @include font(sans);
+          @include type-scale(sm);
         }
       }
     }
@@ -69,30 +70,30 @@
       grid-column: column 10 / span 3;
       .Footer__contact__headline {
         color: rgb(var(--white-blue-rgb));
-        @include typography-paragraph-sans;
+        @include font(sans);
         font-weight: bold;
-        font-size: var(--size-xl);
+        @include type-scale(lg);
         text-transform: none;
         margin-top: 0;
         margin-bottom: size(3);
       }
       .Footer__contact__lukas {
         color: rgb(var(--white-blue-rgb));
-        @include typography-paragraph-sans;
-        font-size: var(--size-m);
+        @include font(sans);
+        @include type-scale(sm);
         font-weight: bold;
         margin-top: 0;
       }
       .Footer__contact__job-title {
-        @include typography-paragraph-sans;
-        font-size: var(--size-m);
+        @include font(sans);
+        @include type-scale(sm);
         line-height: calc(var(--size-m) * 1.5);
         color: rgba(var(--white-blue-rgba-50));
         margin-top: 0;
       }
       .Footer__contact__say-hi {
-        @include typography-paragraph-sans;
-        font-size: var(--size-m);
+        @include font(sans);
+        @include type-scale(sm);
         line-height: calc(var(--size-m) * 1.5);
         color: rgba(var(--white-blue-rgba-50));
         margin-top: size(4);
@@ -106,7 +107,7 @@
         display: block;
         color: rgb(var(--white-blue-rgb));
         text-decoration: underline;
-        font-size: var(--size-m);
+        @include type-scale(sm);
         margin-top: size(.5);
         &:hover {
           text-decoration: none;
@@ -116,7 +117,7 @@
       .Footer__contact__cv {
         display: block;
         margin-top: size(5);
-        font-size: var(--size-m);
+        @include type-scale(sm);
       }
     }
   }
@@ -131,14 +132,16 @@
         grid-column-start: columns;
       }
       h6 {
-        @include typography-mono(var(--size-s));
+        @include font(mono);
+        @include type-scale(xs);
         color: rgb(var(--white-blue-rgb));
         text-transform: uppercase;
         margin-bottom: size(1);
         margin-top: 0;
       }
       p {
-        @include typography-mono(var(--size-s));
+        @include font(mono);
+        @include type-scale(xs);
         color: rgba(var(--white-blue-rgba-50));
         max-width: 180px;
         a {
@@ -170,8 +173,8 @@
       height: size(3);
       display: flex;
       justify-content: flex-end;
-      @include typography-paragraph-sans;
-      font-size: var(--size-m);
+      @include font(sans);
+      @include type-scale(sm);
       a {
         &:not(:first-child) {
           position: relative;
