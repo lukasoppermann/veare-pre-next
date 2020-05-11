@@ -8,24 +8,6 @@ const articles = cache().get('article').slice(0, 4)
 
 export default html`
 <footer class="Footer">
-  <section class="GridNew redfill">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-  </section>
   <section class="Footer__read-and-write GridNew">
     <h6 class="Footer__read__headline">Writing</h6>
     <ol class="Footer__read__articles">
