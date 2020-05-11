@@ -11,6 +11,9 @@
    * White & Black
    */
   --white-rgb: 255, 255, 255;
+  --white-blue-rgb: 245, 246, 250;
+  --white-blue-rgba-25: var(--white-blue-rgb), .25;
+  --white-blue-rgba-50: var(--white-blue-rgb), .5;
   --black-rgb: 33, 37, 41;
   --black-rgba-50: var(--black-rgb), .5;
   --black-rgba-80: var(--black-rgb), .8;
@@ -21,6 +24,5 @@
   --dark-grey-rgb: 58, 60, 68;
   --medium-grey-rgb: 196, 198, 207;
   --light-grey-rgb: 240, 240, 245;
-  --white-blue-rgb: 245, 246, 250;
   --sand-grey-rgb: 246, 245, 243;
 }

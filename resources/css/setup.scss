@@ -40,6 +40,7 @@ a,
 a:active,
 a:focus {
   color: inherit;
+  transition: color .3s ease;
 }
 a:hover {
   text-decoration: none;
@@ -73,6 +74,12 @@ html {
   -webkit-font-feature-settings:"liga", "dlig";
   font-feature-settings:"liga", "dlig";
   */
+  background-color: rgb(var(--black-rgb)) !important; // visible when over-pulling
+
+  /* ====================================
+      Base css varibales
+  ==================================== */
+  --base-unit: .8rem;
 }
 body {
   // sizing of the body element
@@ -80,7 +87,6 @@ body {
   min-width: 280px;
   margin: 0;
   width: 100vw;
-  background: rgb(var(--white-blue-rgb)); // visible when over-pulling
   overflow-x: hidden; // used for tilted bg on images in projects
   // basic typography
   @include typography-paragraph-sans;

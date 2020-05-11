@@ -1,5 +1,5 @@
 import meta from './meta'
-import footer from './partials/footer'
+import footer from './newPartials/footer'
 import menu from './partials/menu'
 const { html } = require('@popeindustries/lit-html-server')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')

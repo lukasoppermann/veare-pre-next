@@ -19,7 +19,7 @@ export default async (data) => {
         title: getField(data, 'title'),
         // featuredImage: (await pictureTransformer(getField(data, 'featuredImage')))[0],
         rawdate: getField(data, 'date'),
-        date: new Date(getField(data, 'date')).toLocaleDateString('en-US', { month: 'long', year: 'numeric', day: 'numeric' }),
+        date: new Date(getField(data, 'date')).toLocaleDateString('en-US', { month: 'short', year: 'numeric', day: 'numeric' }),
         preview: getField(data, 'preview'),
         content: content.html,
         readingTime: Math.ceil(readingTime(content.html).time / 60000),

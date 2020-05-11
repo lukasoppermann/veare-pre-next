@@ -3,6 +3,9 @@
   --min-row-height: 35px;
   --row-gap: var(--baseline);
   --column-gap: var(--base-font);
+  --new-min-row-height: 32px;
+  --new-column-gap: 16px;
+  --new-row-gap: 0;
   @include max-width('s') {
     --column-gap: var(--size-m);
   }
@@ -72,4 +75,76 @@
 }
 .Grid--columns {
   grid-column: columns;
+}
+
+/* ====================================
+    New GRID
+==================================== */
+.GridNew {
+  width: 100%;
+  display: grid;
+  grid-column-gap: var(--new-column-gap);
+  grid-row-gap: var(--new-row-gap);
+  grid-template-rows: auto;
+  grid-auto-rows: auto;
+  // mobile columns
+  grid-template-columns:
+    [margin-left full-bleed-start]
+    0
+    [full-width-start columns-start full-content-start]
+    repeat(2, [column] 1fr)
+    [column columns-end full-content-end full-width-end]
+    0
+    [full-bleed-end margin-right];
+  // mobile landscape
+  @include at_least(tablet) {
+    grid-template-columns:
+      [margin-left full-bleed-start]
+      8px
+      [full-width-start columns-start full-content-start]
+      repeat(6, [column] 1fr)
+      [column columns-end full-content-end full-width-end]
+      8px
+      [full-bleed-end margin-right];
+  }
+  @include at_least(desktop) {
+    grid-template-columns:
+      [full-bleed-start margin-left]
+      minmax(8px, 1fr)
+      [column full-width-start sidebar-left-start sidebar-left full-content-start columns-start]
+      minmax(53px, 95px)
+      [column sidebar-left]
+      minmax(53px, 95px)
+      [column sidebar-left-end sidebar-left]
+      repeat(8, [column] minmax(53px, 95px))
+      [column sidebar-right sidebar-right-start]
+      minmax(53px, 95px)
+      [column sidebar-right]
+      minmax(53px, 95px)
+      [column sidebar-right sidebar-right-end full-content-end full-width-end  columns-end]
+      minmax(8px, 1fr)
+      [margin-right full-bleed-end];
+  }
+  @include at_least(large) {
+    grid-template-columns:
+      [full-bleed-start]
+      8px
+      [margin-left full-width-start]
+      minmax(0, 1fr)
+      [column sidebar-left-start sidebar-left columns-start column]
+      minmax(64px, 95px)
+      [column sidebar-left]
+      minmax(64px, 95px)
+      [sidebar-left-end sidebar-left]
+      repeat(8, [column] minmax(64px, 95px))
+      [column sidebar-right sidebar-right-start]
+      minmax(64px, 95px)
+      [column sidebar-right]
+      minmax(64px, 95px)
+      [column sidebar-right sidebar-right-end columns-end]
+      minmax(0, 1fr)
+      [margin-right full-width-end]
+      8px
+      [full-bleed-end];
+  }
 }
