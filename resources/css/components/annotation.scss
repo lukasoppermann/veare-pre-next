@@ -8,7 +8,13 @@
     padding-top: 0;
   }
   p:nth-child(1n) {
-    @include typography-annotation;
+    @include font(mono);
+    @include type-scale(xs);
+    color: rgba(var(--black-rgba-50));
+    @include max-width('s') {
+      @include font(sans, regular, italic);
+      @include type-scale(md);
+    }
   }
   &:not(:nth-child(2)) {
     margin-top: calc(var(--baseline) * 3);

@@ -218,9 +218,8 @@
   &__excerpt {
     margin-top: 1rem;
     padding-bottom: var(--size-m);
-    @include typography-paragraph-serif;
-    font-style: italic;
-    line-height: 135%;
+    @include font(serif, regular, italic);
+    @include type-scale(md, 1.4);
     color: rgba(var(--black-rgba-50));
   }
 }

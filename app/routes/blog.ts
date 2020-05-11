@@ -4,24 +4,7 @@ import cache from '../services/cacheService'
 const { renderToString } = require('@popeindustries/lit-html-server')
 
 module.exports = {
-  index: async (_req, res) => {
-    // get articles from cache
-    let content = cache().get('article')
-    // sort by date
-    content = content.sort((a, b) => {
-      const dateA = new Date(a.fields.rawdate)
-      const dateB = new Date(b.fields.rawdate)
-      if (dateA < dateB) {
-        return 1
-      }
-      if (dateA > dateB) {
-        return -1
-      }
-      return 0
-    })
-    // return rendered template
-    return res.send(await renderToString(blog(content)))
-  },
+  index: async (_req, res) => res.send(await renderToString(blog(cache().get('article')))),
   get: async (req, res) => {
     // get articles from cache
     const content = cache().get('article')

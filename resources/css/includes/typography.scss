@@ -1,5 +1,63 @@
 @import "../_mixins/mixins.scss";
 :root {
+  /* ====================================
+      Type Scale
+  ==================================== */
+  // xs
+  --ts-size-xs: 1.3rem;
+  --ts-line-height-xs: 1.4;
+  // sm
+  --ts-size-sm: 1.6rem;
+  --ts-line-height-sm: 1.5;
+  // md
+  --ts-size-md: 2rem;
+  --ts-line-height-md: 1.6;
+  // lg
+  --ts-size-lg: 2.5rem;
+  --ts-line-height-lg: 1.45;
+  // xl
+  --ts-size-xl: 3.1rem;
+  --ts-line-height-xl: 1.35;
+  // xxl
+  --ts-size-xxl: 3.9rem;
+  --ts-line-height-xxl: 1.2;
+  // hg
+  --ts-size-hg: 4.9rem;
+  --ts-line-height-hg: 1.1;
+  // xh
+  --ts-size-xh: 6.1rem;
+  --ts-line-height-xh: 1.1;
+
+  /* ====================================
+      Font families
+  ==================================== */
+  // Sans Serif
+  --font-sans: 'Source Sans Pro', helvetica, sans-serif;
+  // weights
+  --font-sans-weight-regular: 400;
+  --font-sans-weight-bold: 600;
+  // styles
+  --font-sans-style-normal: normal;
+  --font-sans-style-italic: italic;
+  // ====================================
+  // Serif
+  --font-serif: 'Noto Serif', georgia, serif;
+  // weights
+  --font-serif-weight-regular: 400;
+  --font-serif-weight-bold: 700;
+  // styles
+  --font-serif-style-normal: normal;
+  --font-serif-style-italic: italic;
+  // ====================================
+  // Monospace
+  --font-mono: 'Source Code Pro', monospace;
+  // weights
+  --font-mono-weight-regular: 400;
+  // --font-mono-weight-bold: 600;
+  // styles
+  --font-mono-style-normal: normal;
+  --font-mono-style-italic: italic;
+
   /* FONT: Noto Serif */
   --font-noto-serif: 'Noto Serif', georgia, serif;
 
@@ -11,6 +69,10 @@
   /* FONT: Montserrat */
   --font-montserrat: 'Montserrat', helvetica, sans-serif;
   --font-montserrat-bold: 700;
+
+  /* FONT: Mono */
+  --font-mono: 'Source Code Pro', monospace;
+  --font-mono-bold: 600;
 }
 @mixin typography-uppercase {
   font-family: var(--font-montserrat);
@@ -52,35 +114,35 @@
   @include typography-h5;
   font-size: var(--size-s);
 }
-@mixin typography-paragraph-serif {
-  font-family: var(--font-noto-serif);
-  font-size: var(--base-font);
-  line-height: calc(var(--baseline) * 4);
-}
-@mixin typography-paragraph-serif-big {
-  @include typography-paragraph-serif;
-  font-style: italic;
-  font-size: var(--size-xl);
-}
 @mixin typography-paragraph-sans {
   font-family: var(--font-source-sans);
   font-weight: var(--font-source-sans-regular);
   font-size: var(--base-font);
   line-height: calc(var(--baseline) * 4);
 }
-@mixin typography-paragraph-sans-big {
-  @include typography-paragraph-sans;
-  font-size: var(--size-xl);
-}
-@mixin typography-annotation {
-  font-size: var(--size-s);
-  line-height: calc(var(--baseline) * 2);
-  font-family: var(--font-source-sans);
-  color: rgba(var(--black-rgba-50));
-  @include max-width('s') {
-    // font-size: var(--size-l);
-    font-size: var(--size-m);
-    line-height: calc(var(--baseline) * 3);
-    font-style: italic;
+
+/*
+  Get a value from the typographic scale for your font
+ */
+@mixin type-scale($size, $lineHeightFactor: null) {
+  font-size: var(--ts-size-#{$size});
+  @if $lineHeightFactor == null {
+    line-height: calc(var(--ts-size-#{$size}) * var(--ts-line-height-#{$size}));
   }
+  @elseif {
+    line-height: calc(var(--ts-size-#{$size}) * #{$lineHeightFactor});
+  }
+}
+
+/*
+  Get font family
+ */
+@mixin font($type: sans, $weight: regular, $style: normal) {
+  @if $weight == italic {
+    $weight: regular;
+    $style: italic;
+  }
+  font-family: var(--font-#{$type});
+  font-weight: var(--font-#{$type}-weight-#{$weight});
+  font-style: var(--font-#{$type}-style-#{$style});
 }

@@ -1,7 +1,7 @@
 {
   "name": "veare",
   "description": "veare website",
-  "version": "1.6.6",
+  "version": "1.7.0",
   "main": "app/server.ts",
   "repository": {
     "type": "git",
@@ -29,7 +29,7 @@
     "jest-image-snapshot": "^3.1.0",
     "jest-puppeteer": "^4.4.0",
     "node-file-rev": "^1.1.2",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.14.1",
     "onchange": "^7.0.1",
     "pre-commit": "^1.2.2",
     "puppeteer": "^2.1.1",

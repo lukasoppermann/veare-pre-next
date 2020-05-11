@@ -1,0 +1,53 @@
+$_breakpoints: (
+  "landscape": 576px, // >= mobile landscape phones
+  "tablet": 768px, // >= tablets
+  "desktop":  992px,  // >= desktop
+  "large":  1200px, // >= large desktop
+  "extra":  1440px // >= extra large desktop
+);
+
+@mixin smaller_than($width: null) {
+  @include _mediaquery ($width, max, 0.02px) {
+    @content;
+  }
+}
+
+@mixin at_least($width: null) {
+  @include _mediaquery ($width, min) {
+    @content;
+  }
+}
+
+@function _get_breakpoint($name: null) {
+  @if $name != null {
+    @if map_has_key($breakpoints, $name) {
+      @return map_get($breakpoints, $name);
+    }
+    @elseif map_has_key($_breakpoints, $name) {
+      @return map_get($_breakpoints, $name);
+    }
+    @return false;
+  }
+  @elseif {
+    @error "Variable $name not defined in _get_breakpoint";
+  }
+}
+
+@mixin _mediaquery($width:null, $type:null, $substract: 0) {
+  // get correct width
+  $breakpoint: _get_breakpoint($width);
+  @if $breakpoint != false {
+    $width: $breakpoint;
+  }
+  // guard against erronious $width
+  @if type_of($width) == number {
+    // remove one px if using max-width
+    $width: $width - $substract;
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
+  }
+  @elseif {
+    @error "Wrongly specified device with '#{$width}' use px width or one of the keys (landscape, tablet, desktop, large or extra)";
+  }
+}

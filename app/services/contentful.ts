@@ -36,18 +36,35 @@ export default async () => {
   const contentTypesPromise = client.getContentTypes()
   // await content
   const [entries, contentTypes] = await Promise.all([entriesPromise, contentTypesPromise])
+  // sort content
+  const content = sortContentByType(contentTypes, entries)
+  // transform Articles
+  content.article = transformArticles(content.article)
   // cache content
-  return cacheContent(contentTypes, entries)
+  return Object.keys(content).forEach(contentType => {
+    cache().put(contentType, content[contentType])
+  })
 }
 
-const cacheContent = (contentTypes, entries) => {
+const sortContentByType = (contentTypes, entries): {
+  article?: any[];
+  project?: any[];
+  link?: any[];
+  picture?: any[];
+  page?: any[];
+  block?: any[];
+  code?: any[];
+  boxedContentSection?: any[];
+} => {
+  const content = {}
   // get type ids
   contentTypes.items.forEach(item => {
   // get content by type
-    cache().put(item.sys.id, entries.filter(entry => {
+    content[item.sys.id] = entries.filter(entry => {
       return entry.contentType === item.sys.id
-    }))
+    })
   })
+  return content
 }
 
 const transformEntries = async entries => {
@@ -55,4 +72,18 @@ const transformEntries = async entries => {
   const transformedEntries: [transformedDataInterface] = entries.items.map(entry => transformerFunctions[entry.sys.contentType.sys.id](entry))
   // await all transformations and make sure to extract the items from the array
   return Promise.all(transformedEntries).then((entries: Array<transformedDataInterface>) => entries.map(entry => entry[0]))
+}
+
+const transformArticles = articles => {
+  return articles.sort((a, b) => {
+    const dateA = new Date(a.fields.rawdate)
+    const dateB = new Date(b.fields.rawdate)
+    if (dateA < dateB) {
+      return 1
+    }
+    if (dateA > dateB) {
+      return -1
+    }
+    return 0
+  })
 }
