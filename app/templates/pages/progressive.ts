@@ -48,7 +48,7 @@ export default () => html`
   </script>
   </head>
   <body>
-    <div class="Page">
+    <div class="Page Page__index">
       <menu class="responsive-menu"></menu>
       ${headerIntro}
     </div>
