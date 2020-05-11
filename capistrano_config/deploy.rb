@@ -2,7 +2,7 @@
 # lock '3.10.1'
 # lock '3.11.0'
 lock '3.13.0'
-set :stages, ["production"] #"staging",
+set :stages, ["production"]
 set :default_stage, "production"
 set :ssh_options, {:forward_agent => true}
 
@@ -21,7 +21,7 @@ namespace :deploy do
             # move to app dir + remove current (bad due to root linkage) + add new current
             execute "cd #{fetch(:deploy_to)} && rm current && ln -sfn ./releases/#{fetch(:release_timestamp)} ./current"
             # upload .env file from local computer to current directory on server
-            upload!('.env' , "#{fetch(:deploy_to)}/current/.env")
+            # upload!('.env' , "#{fetch(:deploy_to)}/current/.env")
             # upload app/config/greenlock-config.json file from local computer to shared/greenlock.d/config.json
             # upload!('app/config/greenlock-config.json' , "#{fetch(:deploy_to)}/shared/greenlock.d/config.json")
             # stop all forever servers

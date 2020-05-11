@@ -1,6 +1,8 @@
+const envPath = process.env.NODE_ENV === 'development' ? './.env' : '/home/shared/.env'
 // this loads the .env config file so that it is available
-require('dotenv-safe').config()
-
+require('dotenv-safe').config({
+  path: envPath
+})
 // login for contentful client
 export default {
   space: process.env.CONTENTFUL_SPACE,
