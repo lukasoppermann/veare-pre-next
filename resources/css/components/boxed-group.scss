@@ -12,9 +12,9 @@
       flex-grow: 1;
       flex-basis: 0;
     }
-    h5 {
+    h5:not(:last-child) {
       @include typography-h6;
-      margin-top: var(--baseline);
+      margin-top: var(--baseline) !important;
       color: rgba(var(--black-rgba-50)) !important;
     }
     p {

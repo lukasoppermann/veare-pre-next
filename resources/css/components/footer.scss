@@ -17,7 +17,7 @@
     Read & write
   ==================================== */
   .Footer__read-and-write {
-    padding-bottom: size(5);
+    padding: size(5) 0;
     @include at_least(mobile) {
       padding: size(10) 0;
     }
@@ -140,6 +140,7 @@
         grid-column: column 10 / span 3;
       }
       .Footer__contact__headline {
+        align-self: stretch;
         color: rgb(var(--white-blue-rgb));
         @include font(sans);
         font-weight: bold;
