@@ -25,13 +25,15 @@
     "eslint-plugin-typescript": "^0.14.0",
     "fetch-inject": "^2.0.4",
     "glob": "^7.1.6",
-    "jest": "^25.5.1",
+    "jest": "^25.5.4",
     "jest-image-snapshot": "^3.1.0",
     "jest-puppeteer": "^4.4.0",
+    "jest-runner-prettier": "^0.3.6",
     "node-file-rev": "^1.1.2",
     "node-sass": "^4.14.1",
     "onchange": "^7.0.1",
     "pre-commit": "^1.2.2",
+    "prettier": "^2.0.5",
     "puppeteer": "^2.1.1",
     "rollup": "^2.7.3",
     "rollup-plugin-node-resolve": "^5.2.0",
@@ -106,7 +108,11 @@
     "globals": {
       "URL": "http://localhost:3300"
     },
-    "verbose": true
+    "setupFilesAfterEnv": [
+      "./tests/integration/ui.setup.js"
+    ],
+    "verbose": false,
+    "testTimeout": 15000
   },
   "scripts": {
     "start": "ts-node-dev --respawn $npm_package_main --pretty",
