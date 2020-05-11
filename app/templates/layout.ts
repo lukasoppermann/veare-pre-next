@@ -25,7 +25,7 @@ export default (content: string, options: { [prop: string]: any; } = {}, partial
     </head>
     <body class="${options.bodyClass || ''}${process.env.NODE_ENV === 'test' ? ' testing' : ''}">
       <!-- NEW STUFF -->
-      <div class="Page">
+      <div class="Page ${options.pageClass || ''}">
         <menu class="responsive-menu">
           ${menu}
         </menu>
