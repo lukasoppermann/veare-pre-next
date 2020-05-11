@@ -12,15 +12,6 @@
   h4 {
     color: rgba(var(--white-blue-rgb), .25);
   }
-  a {
-    color: rgba(var(--white-blue-rgba-50));
-    text-decoration: none;
-    line-height: 100%;
-  }
-  a:hover {
-    color: rgb(var(--white-blue-rgb));
-    text-decoration: underline;
-  }
 
   /* ====================================
     Read & write
@@ -59,30 +50,75 @@
       li {
         list-style-type: none;
         margin-left: 0;
-        &:not(:first-child) {
-          margin-top: size(3);
-        }
-        h3 {
-          @include font(serif);
-          @include type-scale(lg);
-          color: rgb(var(--white-blue-rgb));
-          margin-top: 0;
-        }
-        .details {
-          display: flex;
-          @include font(mono);
-          @include type-scale(xs);
-          color: rgba(var(--white-blue-rgba-50));
-        }
-        .read-time::before {
-          @include pseudo("relative");
-          content: "•";
-          padding: 0 size(1);
-          color: rgba(var(--white-blue-rgba-25));
+        .article__preview {
+          text-decoration: none;
+          &:not(:first-child) {
+            margin-top: size(3);
+          }
+          h3 {
+            @include font(serif);
+            @include type-scale(lg);
+            display: inline-block;
+            position: relative;
+            z-index: 0;
+            color: rgb(var(--white-blue-rgb));
+            margin-top: 0;
+            &::after {
+              @include pseudo;
+              width: 0;
+              height: calc(100% + #{size(1)});
+              background-color: rgb(var(--blue-rgb));
+              top: size(2);
+              left: size(-1);
+              z-index: -1;
+              transition: all .4s ease;
+            }
+          }
+          .details {
+            position: relative;
+            z-index: 0;
+            display: flex;
+            @include font(mono);
+            @include type-scale(xs);
+            color: rgba(var(--white-blue-rgba-50));
+            padding-left: 0;
+            transition: color .3s ease, padding .3s ease;
+            &::before {
+              @include pseudo();
+              top: calc(50% - 1px);
+              left: size(.5);
+              width: 0;
+              height: 2px;
+              background-color: rgb(var(--white-blue-rgb));
+              transition: width .1s ease;
+            }
+          }
+          .read-time::before {
+            @include pseudo("relative");
+            content: "•";
+            padding: 0 size(1);
+            color: rgba(var(--white-blue-rgba-25));
+          }
+          // article preview hover
+          &:hover {
+            .details {
+              padding-left: size(3);
+              color: rgb(var(--white-blue-rgb));
+              &::before {
+                width: size(2);
+                transition: width .3s ease .075s;
+              }
+            }
+            h3::after {
+              width: calc(100% + #{size(2)});
+            }
+          }
         }
         .link-show-all {
           @include font(sans);
           @include type-scale(sm);
+          @include fillSide(rgb(var(--blue-rgb)));
+          padding: 2px 0;
         }
       }
     }
@@ -93,6 +129,9 @@
     .Footer__contact {
       margin-top: size(5);
       grid-column: columns;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
       @include at_least(tablet) {
         margin-top: 0;
         grid-column: column 5 / span 3;
@@ -150,18 +189,20 @@
         }
       }
       .Footer__contact__email {
-        display: block;
         color: rgb(var(--white-blue-rgb));
-        text-decoration: underline;
+        text-decoration: none;
         margin-top: size(.5);
-        &:hover {
-          text-decoration: none;
-          color: rgba(var(--veare-orange-rgb));
-        }
+        @include underlineFill(rgb(var(--blue-rgb)));
       }
       .Footer__contact__cv {
-        display: block;
+        color: rgba(var(--white-blue-rgba-50));
+        text-decoration: none;
+        display: inline-block;
         margin-top: size(5);
+        @include underlineFill(rgb(var(--blue-rgb)), rgba(var(--white-blue-rgba-25)), 0);
+        &:hover {
+          color: rgb(var(--white-blue-rgb));
+        }
       }
     }
   }
@@ -218,6 +259,8 @@
         }
         a {
           color: rgb(var(--white-blue-rgb));
+          text-decoration: none;
+          @include underlineFill(rgb(var(--blue-rgb)), rgba(var(--white-blue-rgba-25)), 0);
         }
       }
     }
@@ -266,6 +309,8 @@
       }
       .Footer__copyright,
       a {
+        color: rgba(var(--white-blue-rgba-50));
+        text-decoration: none;
         padding: size(2) 0;
         font-size: inherit;
         line-height: inherit;

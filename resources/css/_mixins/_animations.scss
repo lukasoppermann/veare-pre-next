@@ -1,0 +1,106 @@
+/* ====================================
+    Animation Mixins
+==================================== */
+@mixin underlineFill ($color: #fff, $inactiveColor: null, $height: 2px) {
+  @if $inactiveColor == null {
+    $inactiveColor: $color;
+  }
+  position: relative;
+  z-index: 0;
+  transition: color .3s ease;
+  text-decoration: none;
+  display: inline-block;
+  &::before {
+    background-color: $inactiveColor;
+    height: $height;
+    content: "";
+    z-index: -1;
+    display: inline-block;
+    position: absolute;
+    overflow: hidden;
+    bottom: 0;
+    left: -2px;
+    width: calc(100% + 4px);
+    transition: height .3s ease, background .3s ease;
+    vertical-align: bottom;
+  }
+  &:hover {
+    text-decoration: none;
+    &::before {
+      background-color: $color;
+      height: 100%;
+    }
+  }
+}
+
+@keyframes slideOverFromLeftIn {
+  0% {
+    left: -2px;
+    right: auto;
+    width: 0;
+  }
+  100% {
+    left: -2px;
+    right: auto;
+    width: calc(100% + 4px);
+  }
+}
+@keyframes slideOverFromLeftOut {
+  0% {
+    left: auto;
+    right: -2px;
+    width: calc(100% + 4px);
+  }
+  100% {
+    left: auto;
+    right: -2px;
+    width: 0;
+  }
+}
+
+@mixin fillSide ($color: #fff, $side: left, $height: 2px) {
+  position: relative;
+  z-index: 0;
+  transition: color .3s ease;
+  text-decoration: none;
+  display: inline-block;
+  &::before {
+    background-color: $color;
+    height: 100%;
+    content: "";
+    z-index: -1;
+    display: inline-block;
+    position: absolute;
+    overflow: hidden;
+    bottom: 0;
+    left: -2px;
+    width: 0;
+    vertical-align: bottom;
+    animation-duration: .3s;
+    animation-name: slideOverFromLeftOut;
+    animation-fill-mode: forwards;
+  }
+  &::after {
+    background-color: $color;
+    height: $height;
+    content: "";
+    z-index: -1;
+    display: inline-block;
+    position: absolute;
+    overflow: hidden;
+    bottom: 0;
+    left: -2px;
+    width: 0;
+    transition: width .3s ease, background .3s ease;
+    vertical-align: bottom;
+  }
+  &:hover {
+    text-decoration: none;
+    &::before {
+      background-color: $color;
+      animation-duration: .3s;
+      animation-name: slideOverFromLeftIn;
+      animation-fill-mode: forwards;
+    }
+  }
+}

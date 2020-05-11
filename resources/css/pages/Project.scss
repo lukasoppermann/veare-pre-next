@@ -367,7 +367,7 @@
 /* ====================================
     PROJECT
 ==================================== */
-.Project {
+.Project .Page {
   --section-gap: 12;
   --row-gap: 0;
   --rule-color: var(--project-color, rgb(var(--blue-rgb)));
@@ -416,7 +416,7 @@
       @include baseline_top(var(--section-gap));
     }
   }
-  p {
+  :not(.Annotation) > p {
     @include typography-paragraph-sans;
     color: rgba(var(--black-rgba-80));
   }

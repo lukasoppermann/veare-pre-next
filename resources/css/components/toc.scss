@@ -59,7 +59,7 @@
     Animated Hover State
 ==================================== */
 .Toc__chapter__link:hover .Toc__chapter__title {
-  color: rgb(var(--blue-rgb));
+  color: rgb(var(--blue-rgb)) !important;
   padding-left: var(--hs-xs);
   transition: all .35s var(--easeInOutQuad);
 }
