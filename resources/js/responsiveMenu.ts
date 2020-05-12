@@ -72,6 +72,14 @@ const responsiveMenu = menu => {
     toggleExtended()
   }, 20))
   // add click event to menuIcon
+  menu.querySelector('.Menu__icon').addEventListener('mouseover', () => {
+    console.debug('over')
+    menu.classList.add('is-hovered')
+  })
+  menu.querySelector('.Menu__icon').addEventListener('mouseout', () => {
+    console.debug('out')
+    menu.classList.remove('is-hovered')
+  })
   menu.querySelector('#menuIcon').addEventListener('click', toggleOverlay)
   // close menu on link click
   menu.querySelectorAll('.responsive-menu__item').forEach(link => {
@@ -85,4 +93,4 @@ const responsiveMenu = menu => {
   toggleExtended()
 }
 //
-responsiveMenu(document.querySelector('.responsive-menu'))
+responsiveMenu(document.querySelector('.Menu'))

@@ -48,8 +48,8 @@ export default () => html`
   </script>
   </head>
   <body>
+    <menu class="responsive-menu"></menu>
     <div class="Page Page__index">
-      <menu class="responsive-menu"></menu>
       ${headerIntro}
     </div>
   </body>

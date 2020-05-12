@@ -103,11 +103,11 @@
     stroke: var(--responsive-menu-menu-icon, rgb(33, 37, 41));
     stroke-dashoffset: 0;
     opacity: 1;
-    transition: opacity .5s .2s ease, stroke-dashoffset .5s .2s ease, stroke .3s ease;
+    transition: opacity .5s .2s ease, stroke-dashoffset .5s ease, stroke .3s ease;
   }
   &[extended] #menuIcon path {
     transition: stroke-dashoffset .5s cubic-bezier(.25, -.25, .75, 1.25), stroke-dasharray .5s cubic-bezier(.25, -.25, .75, 1.25), stroke .3s ease;
-    stroke-dashoffset: 240px;
+    stroke-dashoffset: 200px;
     opacity: 0;
   }
   &[extended] #menuIcon {
@@ -144,6 +144,34 @@
     transition: background-color .3s ease;
     &.is-active {
       background-color: rgb(var(--white-blue-rgb));
+    }
+  }
+}
+
+/* ====================================
+    MENU
+==================================== */
+.Menu {
+  &::before {
+    @include pseudo();
+    display: block;
+    top: 35px;
+    right: 25px;
+    transform: translate(50%, -50%);
+    background-color: rgb(var(--black-rgb));
+    border-radius: 100%;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    z-index: -1;
+    transition: width .3s ease, height .3s ease, transform .3s ease, opacity .1s .3s;
+  }
+  &.is-hovered {
+    &::before {
+      opacity: 1;
+      width: 100px;
+      height: 100px;
+      transition: width .3s ease, height .3s ease, transform .3s ease, opacity 0s;
     }
   }
 }
