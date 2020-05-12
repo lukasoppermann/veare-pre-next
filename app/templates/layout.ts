@@ -1,6 +1,6 @@
 import meta from './meta'
 import footer from './newPartials/footer'
-import menu from './partials/menu'
+import menu from './newPartials/menu'
 const { html } = require('@popeindustries/lit-html-server')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 // get correct filesnames after appending unique string
@@ -24,7 +24,9 @@ export default (content: string, options: { [prop: string]: any; } = {}, partial
     </head>
     <body class="${options.bodyClass || ''}${process.env.NODE_ENV === 'test' ? ' testing' : ''}">
       <!-- NEW STUFF -->
-      ${menu}
+      <menu class="responsive-menu">
+        ${menu}
+      </menu>
       <div class="Page ${options.pageClass || ''}">
         ${content || ''}
       </div>
