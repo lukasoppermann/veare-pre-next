@@ -29,7 +29,7 @@ export default (article): templateInterface => layout(html`
     <a class="Article__back_link" href="/blog">← Back</a>
   </div>
 `, {
-  bodyClass: 'Page-Type__Article',
+  pageClass: 'Page__article',
   head: html`
   <link type="text/css" href="/${files().css['css/blog.css']}" rel="stylesheet" />
   `

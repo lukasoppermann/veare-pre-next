@@ -1,4 +1,4 @@
-const envPath = process.env.NODE_ENV === 'development' ? './.env' : '/home/shared/.env'
+const envPath = process.env.NODE_ENV !== 'production' ? './.env' : '/home/shared/.env'
 // this loads the .env config file so that it is available
 require('dotenv-safe').config({
   path: envPath

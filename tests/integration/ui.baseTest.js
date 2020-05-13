@@ -42,10 +42,13 @@ module.exports = (viewport, viewportWidth, viewportHeight, currentCase) => {
       window.scrollTo(0, scrollHeight)
     }, scrollHeight)
     // take screenshot
-    let image = await page.screenshot({ path: `${config.testSnaps}/${currentCase.folder}/${viewport}-screenshot-${i}.png`})
+    let image = await page.screenshot({
+      path: `${config.testSnaps}/${currentCase.folder}/${viewport}-${i}.png`,
+      type: 'png'
+    })
     // compare screenshot
     expect(image).toMatchImageSnapshot(config.setConfig({
-      filename: `${viewport}-screenshot-${i}`,
+      filename: `${viewport}-${i}`,
       snapshotPath: `${config.basePath}/baseline/${currentCase.folder}`,
       diffPath: `${config.testSnaps}/${currentCase.folder}`
     }))

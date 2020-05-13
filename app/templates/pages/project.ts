@@ -41,6 +41,8 @@ export default (project) => {
     <a class="Project__back_link" href="/home#portfolio">← Back</a>
   </article>
 `, {
+    bodyClass: 'Project',
+    pageClass: 'Page__project',
     title: project.title,
     og: [
       {
@@ -69,8 +71,7 @@ export default (project) => {
         property: 'og:image:alt',
         value: project.header.fields.title
       }
-    ],
-    bodyClass: 'Page--work Project'
+    ]
   })
 }
 // TOC

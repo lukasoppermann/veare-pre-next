@@ -20,15 +20,14 @@ export default (content: string, options: { [prop: string]: any; } = {}, partial
       <link type="text/css" href="/${files().css['css/app.css']}" rel="stylesheet" />
       <script>${unsafeHTML(fs.readFileSync('./public/' + files().js['js/index.js']))}
       </script>
-
       ${options.head || ''}
     </head>
     <body class="${options.bodyClass || ''}${process.env.NODE_ENV === 'test' ? ' testing' : ''}">
       <!-- NEW STUFF -->
-      <div class="Page">
-        <menu class="responsive-menu">
-          ${menu}
-        </menu>
+      <menu class="responsive-menu">
+        ${menu}
+      </menu>
+      <div class="Page ${options.pageClass || ''}">
         ${content || ''}
       </div>
       ${footer}
