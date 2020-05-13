@@ -199,10 +199,22 @@
         color: rgba(var(--white-blue-rgba-50));
         text-decoration: none;
         display: inline-block;
-        margin-top: size(5);
         @include underlineFill(rgb(var(--blue-rgb)), rgba(var(--white-blue-rgba-25)), 0);
+        margin-top: size(4);
+        margin-left: -4px;
+        svg {
+          fill: rgba(var(--white-blue-rgba-50));
+          display: block;
+          float: left;
+          padding: size(.5) size(1) size(.5) 2px;
+          height: 19px;
+          transition: fill .3s ease;
+        }
         &:hover {
           color: rgb(var(--white-blue-rgb));
+          svg {
+            fill: rgb(var(--white-blue-rgb));
+          }
         }
       }
     }
