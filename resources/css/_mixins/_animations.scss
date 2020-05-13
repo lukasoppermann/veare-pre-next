@@ -1,7 +1,7 @@
 /* ====================================
     Animation Mixins
 ==================================== */
-@mixin underlineFill ($color: #fff, $inactiveColor: null, $height: 2px) {
+@mixin underlineFill ($color: #fff, $inactiveColor: null, $height: 2px, $finalHeight: 100%) {
   @if $inactiveColor == null {
     $inactiveColor: $color;
   }
@@ -28,59 +28,47 @@
     text-decoration: none;
     &::before {
       background-color: $color;
-      height: 100%;
+      height: $finalHeight;
     }
   }
 }
 
 @keyframes slideOverFromLeftIn {
   0% {
-    left: -2px;
+    left: calc(-1 * var(--animation-overflow));
     right: auto;
     width: 0;
   }
   100% {
-    left: -2px;
+    left: calc(-1 * var(--animation-overflow));
     right: auto;
-    width: calc(100% + 4px);
+    width: calc(100% + 2 * var(--animation-overflow));
   }
 }
 @keyframes slideOverFromLeftOut {
   0% {
     left: auto;
-    right: -2px;
-    width: calc(100% + 4px);
+    right: calc(-1 * var(--animation-overflow));
+    width: calc(100% + 2 * var(--animation-overflow));
   }
   100% {
     left: auto;
-    right: -2px;
+    right: calc(-1 * var(--animation-overflow));
     width: 0;
   }
 }
 
-@mixin fillSide ($color: #fff, $side: left, $height: 2px) {
+@mixin fillSide ($color: #fff, $height: 100%, $overflow: 2px) {
+  @if $overflow == 0 {
+    $overflow: calc(0 * 1px);
+  }
+  --animation-overflow: #{$overflow};
   position: relative;
   z-index: 0;
   transition: color .3s ease;
   text-decoration: none;
   display: inline-block;
   &::before {
-    background-color: $color;
-    height: 100%;
-    content: "";
-    z-index: -1;
-    display: inline-block;
-    position: absolute;
-    overflow: hidden;
-    bottom: 0;
-    left: -2px;
-    width: 0;
-    vertical-align: bottom;
-    animation-duration: .3s;
-    animation-name: slideOverFromLeftOut;
-    animation-fill-mode: forwards;
-  }
-  &::after {
     background-color: $color;
     height: $height;
     content: "";
@@ -89,10 +77,12 @@
     position: absolute;
     overflow: hidden;
     bottom: 0;
-    left: -2px;
+    left: -#{$overflow}px;
     width: 0;
-    transition: width .3s ease, background .3s ease;
     vertical-align: bottom;
+    animation-duration: .3s;
+    animation-name: slideOverFromLeftOut;
+    animation-fill-mode: forwards;
   }
   &:hover {
     text-decoration: none;

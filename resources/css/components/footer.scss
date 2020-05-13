@@ -199,10 +199,59 @@
         color: rgba(var(--white-blue-rgba-50));
         text-decoration: none;
         display: inline-block;
-        margin-top: size(5);
-        @include underlineFill(rgb(var(--blue-rgb)), rgba(var(--white-blue-rgba-25)), 0);
+        // @include underlineFill(rgb(var(--blue-rgb)), rgba(var(--white-blue-rgba-25)), 0);
+        @include fillSide(rgb(var(--blue-rgb)), 2px, 0);
+        margin-top: size(4);
+        margin-left: 28px;
+        svg {
+          fill: rgba(var(--white-blue-rgba-50));
+          display: block;
+          position: absolute;
+          top: 0;
+          left: -30px;
+          padding: size(.5) size(1) size(.5) 2px;
+          height: 25px;
+          transition: fill .3s ease;
+          @include at_least(tablet) {
+            height: 19px;
+          }
+          rect {
+            fill: rgb(var(--white-blue-rgb));
+            fill: rgb(var(--blue-rgb));
+            height: 0;
+            transition: height .3s ease;
+          }
+          .paper {
+            fill: rgba(var(--white-blue-rgba-50));
+            transition: fill .3s ease;
+          }
+          .shadow,
+          .shadow-2 {
+            fill: rgba(0, 0, 0, 0);
+            transition: color .3s ease;
+          }
+        }
         &:hover {
           color: rgb(var(--white-blue-rgb));
+          svg {
+            fill: rgba(var(--white-blue-rgba-50));
+            rect {
+              height: 100%;
+            }
+            .paper {
+              fill: rgb(var(--blue-rgb));
+            }
+            .arrow {
+              fill: rgb(var(--black-rgb));
+              fill: rgb(var(--white-blue-rgb));
+            }
+            .shadow {
+              fill: rgba(0, 0, 0, 0.3);
+            }
+            .shadow-2 {
+              fill: rgba(0, 0, 0, 0.2);
+            }
+          }
         }
       }
     }
