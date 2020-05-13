@@ -189,11 +189,11 @@
       @include pseudo();
       top: size(3);
       right: size(3);
-      transform-origin: top left;
+      transform-origin: bottom left;
       background-color: rgb(var(--black-rgb));
       height: 2px;
       width: size(3);
-      transition: background .3s ease, transform .3s .15s ease, width .15s ease;
+      transition: background .3s ease, transform .3s .15s ease, width .15s ease, right .3s ease;
     }
     &::after {
       top: calc(#{size(4)} - 2px);
@@ -213,7 +213,11 @@
     .Menu__icon {
       &::before,
       &::after {
+        width: size(2);
         background-color: rgb(var(--white-blue-rgb));
+      }
+      &::after {
+        right: size(4);
       }
     }
   }
@@ -232,14 +236,16 @@
     .Menu__icon {
       &::before,
       &::after {
+        width: size(3) !important;
         background-color: rgb(var(--white-blue-rgb));
+        transition: background .3s ease, transform .3s ease, width .15s .3s ease;
       }
       &::before {
-        transform: rotate(45deg);
+        transform: rotate(45deg) translate(-5px, -7px);
       }
       &::after {
-        transform: rotate(-45deg);
-        width: size(3);
+        transform: rotate(-45deg) translate(6px, 9px);
+        right: size(4);
       }
     }
   }
