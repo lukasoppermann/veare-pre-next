@@ -152,9 +152,53 @@
     MENU
 ==================================== */
 .Menu {
+  width: 100vw;
+  height: size(8);
+  background-color: rgb(var(--white-rgb));
+  padding: 0;
+  margin: 0;
+  .Menu__items {
+    display: none;
+    @include at_least(tablet) {
+      display: flex;
+    }
+    align-items: center;
+    justify-content: flex-end;
+    grid-column: columns / span 5;
+    @include at_least(desktop) {
+      grid-column: columns / span 11;
+    }
+    @include at_least(extra) {
+      grid-column-end: span 12;
+    }
+    a {
+      padding: 0 size(2);
+      text-decoration: none;
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
+}
+.Menu__overlay {
+  width: size(8);
+  height: size(8);
+  position: fixed;
+  top: 0;
+  right: 0;
+  pointer-events: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 990;
+  transform: translateZ(100px); /* safari hack */
   --max-circle: 100vw;
   @media (orientation: portrait) {
     --max-circle: 100vh;
+  }
+  .Menu__items {
+    display: none;
   }
   &::before {
     @include pseudo();
@@ -193,7 +237,7 @@
       background-color: rgb(var(--black-rgb));
       height: 2px;
       width: size(3);
-      transition: background .3s ease, transform .3s .15s ease, width .15s ease, right .3s ease;
+      transition: background .3s ease, transform .2s .15s ease, width .15s ease, right .3s ease;
     }
     &::after {
       top: calc(#{size(4)} - 2px);
@@ -208,7 +252,7 @@
     &::before {
       opacity: 1;
       transform: translate(50%, -50%) scale(.1);
-      transition: width .3s ease, height .3s ease, transform .3s ease, opacity 0s;
+      transition: width .3s ease, height .3s ease, transform .45s ease, opacity 0s;
     }
     .Menu__icon {
       &::before,
@@ -230,15 +274,15 @@
     overflow: hidden;
     &::before {
       opacity: 1;
-      transform: translate(50%, -50%) scale(2.5);
-      transition: width 3s ease, height 3s ease, transform .3s ease, opacity 0s;
+      transform: translate(50%, -50%) scale(3);
+      transition: width 3s ease, height 3s ease, transform .8s ease, opacity 0s;
     }
     .Menu__icon {
       &::before,
       &::after {
         width: size(3) !important;
         background-color: rgb(var(--white-blue-rgb));
-        transition: background .3s ease, transform .3s ease, width .15s .3s ease;
+        transition: background .3s ease, transform .2s .15s ease, width .15s ease;
       }
       &::before {
         transform: rotate(45deg) translate(-5px, -7px);
