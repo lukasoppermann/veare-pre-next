@@ -13,7 +13,6 @@ export default (articles): templateInterface => layout(html`
     </li>
   </ul>
 `, {
-  pageClass: 'Page__blog',
   head: html`
   <link type="text/css" href="/${files().css['css/blog.css']}" rel="stylesheet" />
   `

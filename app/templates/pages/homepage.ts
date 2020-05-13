@@ -14,7 +14,6 @@ export default (page, _req): templateInterface => {
     </main>
     ${_req.query.partial === 'true' ? footer : ''}
 `, {
-    pageClass: 'Page__index',
     og: [
       {
         property: 'og:type',
