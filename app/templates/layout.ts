@@ -24,12 +24,9 @@ export default (content: string, options: { [prop: string]: any; } = {}, partial
     </head>
     <body class="${options.bodyClass || ''}${process.env.NODE_ENV === 'test' ? ' testing' : ''}">
       <!-- NEW STUFF -->
-      ${menu(`
-        <a href="/">Index</a>
-        <a href="/home#about">Resume</a>
-        <a href="/blog/">Writing</a>
-        <a target="_blank" href="mailto:lukas@vea.re?subject=Hey 👋,%20what&apos;s%20up?&body=Great%20to%20hear%20from%20you,%20how%20can%20I%20help?">Contact</a>
-      `)}
+      <menu class="responsive-menu">
+        ${menu}
+      </menu>
       <div class="Page ${options.pageClass || ''}">
         ${content || ''}
       </div>
