@@ -10,7 +10,7 @@ document.querySelectorAll('[data-toc]').forEach((toc) => {
   })
 })
 
-if (document.querySelector('body').classList.contains('Project')) {
+if (document.querySelector('body').classList.contains('Page--work')) {
   const paginationInit = throttle(() => {
     const paginationContainer = document.querySelector('.Project__pagination-container')
     const paginationItems = paginationContainer.querySelectorAll('.Pagination__item')

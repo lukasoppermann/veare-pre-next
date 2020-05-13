@@ -34,29 +34,29 @@ const responsiveMenu = menu => {
    */
   const _hideOverlay = () => {
     // hide overlay
-    // menu.querySelector('#background').classList.remove('is-active')
+    menu.querySelector('#background').classList.remove('is-active')
     menu.classList.remove('is-active')
 
-    // setTimeout(() => {
-    //   // menu.removeAttribute('overlayVisible')
-    //   document.body.style.overflow = 'auto'
-    // }, 300)
+    setTimeout(() => {
+      menu.removeAttribute('overlayVisible')
+      document.body.style.overflow = 'auto'
+    }, 300)
   }
   /**
    * @method toggleOverlay
    * @description everything tha happens when toggling the overlay
    */
-  // const toggleOverlay = () => {
-  //   // show overlay
-  //   if (!menu.hasAttribute('overlayVisible')) {
-  //     document.body.style.overflow = 'hidden'
-  //     // menu.querySelector('#background').classList.add('is-active')
-  //     // menu.classList.add('is-active')
-  //     menu.setAttribute('overlayVisible', '')
-  //   } else {
-  //     _hideOverlay()
-  //   }
-  // }
+  const toggleOverlay = () => {
+    // show overlay
+    if (!menu.hasAttribute('overlayVisible')) {
+      document.body.style.overflow = 'hidden'
+      menu.querySelector('#background').classList.add('is-active')
+      menu.classList.add('is-active')
+      menu.setAttribute('overlayVisible', '')
+    } else {
+      _hideOverlay()
+    }
+  }
   // hide / show on scroll
   let scrollEnded
   document.addEventListener('scroll', throttle(function () {
@@ -72,18 +72,9 @@ const responsiveMenu = menu => {
     toggleExtended()
   }, 20))
   // add click event to menuIcon
-  menu.querySelector('.Menu__icon').addEventListener('mouseover', () => {
-    menu.classList.add('is-hovered')
-  })
-  menu.querySelector('.Menu__icon').addEventListener('mouseout', () => {
-    menu.classList.remove('is-hovered')
-  })
-  menu.querySelector('.Menu__icon').addEventListener('click', () => {
-    menu.classList.toggle('is-active')
-    menu.classList.remove('is-hovered')
-  })
+  menu.querySelector('#menuIcon').addEventListener('click', toggleOverlay)
   // close menu on link click
-  menu.querySelectorAll('.Menu__items a').forEach(link => {
+  menu.querySelectorAll('.responsive-menu__item').forEach(link => {
     link.addEventListener('click', (e) => {
       if (e.target.href.indexOf('#') > -1) {
         _hideOverlay()
@@ -94,4 +85,4 @@ const responsiveMenu = menu => {
   toggleExtended()
 }
 //
-responsiveMenu(document.querySelector('.Menu__overlay'))
+responsiveMenu(document.querySelector('.responsive-menu'))
