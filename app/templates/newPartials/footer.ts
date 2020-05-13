@@ -20,6 +20,7 @@ export default html`
       <h6 class="Footer__contact__headline">Get in touch</h6>
       <h2 class="Footer__contact__lukas">Lukas Oppermann</h2>
       <h3 class="Footer__contact__job-title">Creative Director &<br /> Lead UI/UX Designer</h3>
+
       <h6 class="Footer__contact__say-hi">Schedule a call or just say&nbsp;hi&nbsp;<span class="smilie">👋</span></h6>
       <a class="Footer__contact__email" target="_blank" href="mailto:lukas@vea.re?subject=Hey 👋,%20what&apos;s%20up?&body=Great%20to%20hear%20from%20you,%20how%20can%20I%20help?">lukas@vea.re</a>
 

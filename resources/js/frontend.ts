@@ -29,7 +29,7 @@ Promise.all([menu, litHtml, homepage, layout]).then(([menuHtml]) => {
 })
 
 window.app.fetchInject([
-  'https://fonts.googleapis.com/css?family=Montserrat:700|Noto+Serif:400,400i|Source+Sans+Pro:400,600|Source+Code+Pro:400'
+  'https://fonts.googleapis.com/css?family=Montserrat:700|Noto+Serif:400,400i,700|Source+Sans+Pro:400,600|Source+Code+Pro:400'
 ]).then(() => {
   document.body.classList.add('fontsLoaded')
 })
