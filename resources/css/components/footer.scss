@@ -207,8 +207,11 @@
           display: block;
           float: left;
           padding: size(.5) size(1) size(.5) 2px;
-          height: 19px;
+          height: 25px;
           transition: fill .3s ease;
+          @include at_least(tablet) {
+            height: 19px;
+          }
         }
         &:hover {
           color: rgb(var(--white-blue-rgb));
