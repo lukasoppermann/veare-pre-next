@@ -186,7 +186,6 @@
   position: fixed;
   top: 0;
   right: 0;
-  pointer-events: none;
   padding: 0;
   margin: 0;
   display: flex;
@@ -212,7 +211,7 @@
     height: var(--max-circle);
     opacity: 0;
     z-index: -1;
-    transition: width .3s ease, height .3s ease, transform .3s ease, opacity .1s .3s;
+    transition: width .3s ease, height .3s ease, transform .45s ease, opacity .1s .3s;
   }
   .Menu__icon {
     color: transparent;
@@ -290,6 +289,22 @@
       &::after {
         transform: rotate(-45deg) translate(6px, 9px);
         right: size(4);
+      }
+    }
+    .Menu__items {
+      display: flex;
+      width: 100%;
+      height: calc(100% - (100vh / 20) * 2);
+      padding: calc(100vh / 20);
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      a {
+        color: rgb(var(--white-blue-rgb));
+        text-decoration: none;
+        @include type-scale(xh);
+        @include font(serif, italic);
+        padding: size(2);
       }
     }
   }
