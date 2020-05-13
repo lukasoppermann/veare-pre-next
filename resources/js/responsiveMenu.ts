@@ -80,9 +80,10 @@ const responsiveMenu = menu => {
   })
   menu.querySelector('.Menu__icon').addEventListener('click', () => {
     menu.classList.toggle('is-active')
+    menu.classList.remove('is-hovered')
   })
   // close menu on link click
-  menu.querySelectorAll('.responsive-menu__item').forEach(link => {
+  menu.querySelectorAll('.Menu__items a').forEach(link => {
     link.addEventListener('click', (e) => {
       if (e.target.href.indexOf('#') > -1) {
         _hideOverlay()
