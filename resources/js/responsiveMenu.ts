@@ -93,4 +93,4 @@ const responsiveMenu = menu => {
   toggleExtended()
 }
 //
-responsiveMenu(document.querySelector('.Menu'))
+responsiveMenu(document.querySelector('.Menu__overlay'))
