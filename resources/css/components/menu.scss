@@ -154,10 +154,15 @@
 .Menu {
   width: 100vw;
   height: size(8);
-  background-color: rgb(var(--white-rgb));
   padding: 0;
   margin: 0;
+  position: relative;
+  background-color: rgb(var(--white-rgb));
+  &.loaded .Menu__items {
+    opacity: 1 !important;
+  }
   .Menu__items {
+    transition: opacity 1s .2s ease;
     display: none;
     @include at_least(tablet) {
       display: flex;
@@ -171,16 +176,37 @@
     @include at_least(extra) {
       grid-column-end: span 12;
     }
-    a {
+    .Menu__link {
       padding: 0 size(2);
       text-decoration: none;
       &:last-child {
         padding-right: 0;
       }
+      position: relative;
+      display: inline-block;
+      &::before {
+        @include pseudo();
+        width: 4px;
+        height: 4px;
+        background: rgb(var(--black-rgb));
+        border-radius: 100%;
+        left: 50%;
+        transform: translate(-50%, 0);
+        opacity: 0;
+        transition: opacity .3s ease, bottom .3s ease;
+        bottom: 0;
+      }
+      &.is-active {
+        &::before {
+          bottom: size(-.5);
+          opacity: 1;
+        }
+      }
     }
   }
 }
 .Menu__overlay {
+  pointer-events: none;
   width: size(8);
   height: size(8);
   position: fixed;
@@ -190,7 +216,7 @@
   margin: 0;
   display: flex;
   justify-content: flex-end;
-  z-index: 990;
+  z-index: 900;
   transform: translateZ(100px); /* safari hack */
   --max-circle: 100vw;
   @media (orientation: portrait) {
@@ -271,6 +297,7 @@
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+    pointer-events: all;
     &::before {
       opacity: 1;
       transform: translate(50%, -50%) scale(3);
@@ -294,17 +321,16 @@
     .Menu__items {
       display: flex;
       width: 100%;
-      height: calc(100% - (100vh / 20) * 2);
-      padding: calc(100vh / 20);
       flex-direction: column;
-      align-items: center;
-      justify-content: space-around;
-      a {
+      align-items: flex-start;
+      justify-content: center;
+      grid-column: column 6 / span 2;
+      .Menu__link {
         color: rgb(var(--white-blue-rgb));
         text-decoration: none;
-        @include type-scale(xh);
+        @include type-scale(xl);
         @include font(serif, italic);
-        padding: size(2);
+        padding: size(3);
       }
     }
   }

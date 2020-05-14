@@ -12,5 +12,5 @@ module.exports = async (req, res) => {
   return res.send(await renderToString(layout(portfolioItems[req.params[0]], {
     bodyClass: 'c-page--portfolio-item',
     title: 'Portfolio'
-  })))
+  }, req)))
 }

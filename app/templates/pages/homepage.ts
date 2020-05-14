@@ -38,5 +38,5 @@ export default (page, _req): templateInterface => {
         value: 'Lukas Oppermann — Lead UI/UX Design & Creative Direction — vea.re'
       }
     ]
-  }, _req.query.partial)
+  }, _req)
 }

@@ -1,6 +1,7 @@
 import cacheService from '../../services/cacheService'
 import meta from '../meta'
 import headerIntro from '../partials/header_intro'
+import menu from '../newPartials/menu'
 const { html } = require('@popeindustries/lit-html-server')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 const fs = require('fs')
@@ -48,7 +49,7 @@ export default () => html`
   </script>
   </head>
   <body>
-    <menu class="responsive-menu"></menu>
+    ${menu('/home', true)}
     <div class="Page Page__index">
       ${headerIntro}
     </div>

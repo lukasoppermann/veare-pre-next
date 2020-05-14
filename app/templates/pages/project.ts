@@ -4,7 +4,7 @@ const { html } = require('@popeindustries/lit-html-server')
 const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 
-export default (project) => {
+export default (project, req) => {
   return layout(html`
   <style media="screen">
     :root{
@@ -71,7 +71,7 @@ export default (project) => {
       }
     ],
     bodyClass: 'Page--work Project'
-  })
+  }, req)
 }
 // TOC
 // ${repeat(project.chapters, (chapter) => {
