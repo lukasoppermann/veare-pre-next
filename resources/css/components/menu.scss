@@ -177,14 +177,18 @@
       grid-column-end: span 12;
     }
     .Menu__link {
-      padding: 0 size(2);
       text-decoration: none;
+      @include font(sans, bold);
+      @include type-scale(sm);
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      position: relative;
+      display: inline-block;
+      padding: 0 size(2);
       &:last-child {
         padding-right: 0;
       }
-      position: relative;
-      display: inline-block;
-      &::before {
+      &::after {
         @include pseudo();
         width: 4px;
         height: 4px;
@@ -193,14 +197,17 @@
         left: 50%;
         transform: translate(-50%, 0);
         opacity: 0;
-        transition: opacity .3s ease, bottom .3s ease;
+        transition: opacity .3s ease, bottom .3s ease, width .3s ease;
         bottom: 0;
       }
       &.is-active {
-        &::before {
-          bottom: size(-.5);
+        &::after {
+          bottom: size(-1);
           opacity: 1;
         }
+      }
+      &:hover {
+        color: rgba(var(--black-rgba-50));
       }
     }
   }
@@ -255,7 +262,7 @@
     &::before,
     &::after {
       @include pseudo();
-      top: size(3);
+      top: size(3.5);
       right: size(3);
       transform-origin: bottom left;
       background-color: rgb(var(--black-rgb));
@@ -264,7 +271,7 @@
       transition: background .3s ease, transform .2s .15s ease, width .15s ease, right .3s ease;
     }
     &::after {
-      top: calc(#{size(4)} - 2px);
+      top: calc(#{size(4.5)} - 2px);
       width: size(2);
       transform-origin: bottom left;
     }
@@ -323,11 +330,20 @@
       flex-direction: column;
       align-items: flex-start;
       justify-content: center;
-      grid-column: column 6 / span 2;
+      grid-column: columns;
+      @include at_least(tablet) {
+        grid-column: column 3 / span 2;
+      }
+      @include at_least(desktop) {
+        grid-column: column 6 / span 2;
+      }
       .Menu__link {
         color: rgb(var(--white-blue-rgb));
         text-decoration: none;
-        @include type-scale(xl);
+        @include type-scale(hg);
+        @include at_least(desktop) {
+          @include type-scale(xl);
+        }
         @include font(serif, italic);
         padding: size(3);
       }
