@@ -162,6 +162,7 @@
     opacity: 1 !important;
   }
   .Menu__items {
+    margin-right: size(-2);
     transition: opacity 1s .2s ease;
     display: none;
     @include at_least(tablet) {
@@ -185,9 +186,6 @@
       position: relative;
       display: inline-block;
       padding: 0 size(2);
-      &:last-child {
-        padding-right: 0;
-      }
       &::after {
         @include pseudo();
         width: 4px;
@@ -207,7 +205,14 @@
         }
       }
       &:hover {
-        color: rgba(var(--black-rgba-50));
+        color: rgba(var(--black-rgba-80));
+        &::after {
+          bottom: size(-1);
+          opacity: 1;
+          &:not(.is-active) {
+            background: rgba(var(--black-rgba-25));
+          }
+        }
       }
     }
   }
@@ -221,8 +226,6 @@
   right: 0;
   padding: 0;
   margin: 0;
-  display: flex;
-  justify-content: flex-end;
   z-index: 900;
   transform: translateZ(100px); /* safari hack */
   --max-circle: 100vw;
@@ -337,15 +340,66 @@
       @include at_least(desktop) {
         grid-column: column 6 / span 2;
       }
+      counter-reset: menuItemCount;
       .Menu__link {
-        color: rgb(var(--white-blue-rgb));
+        counter-increment: menuItemCount;
+        position: relative;
+        color: rgba(var(--white-blue-rgba-80));
         text-decoration: none;
         @include type-scale(hg);
         @include at_least(desktop) {
           @include type-scale(xl);
         }
         @include font(serif, italic);
-        padding: size(3);
+        margin: size(3);
+        &::before {
+          @include pseudo;
+          content: counter(menuItemCount, decimal-leading-zero);
+          bottom: size(-2);
+          left: 0;
+          @include font(mono);
+          @include type-scale(sm);
+          color: rgba(var(--white-blue-rgba-50));
+        }
+        &::after {
+          @include pseudo;
+          width: 0;
+          height: calc(100% + #{size(0)});
+          background-color: rgb(var(--blue-rgb));
+          top: size(2);
+          left: size(-1);
+          z-index: -1;
+          transition: all .4s ease;
+        }
+        &:hover {
+          color: rgb(var(--white-blue-rgb));
+          &::after {
+            width: calc(100% + #{size(2)});
+          }
+        }
+        .Menu__link-text {
+          position: relative;
+          &::after {
+            @include pseudo();
+            width: 4px;
+            height: 4px;
+            background: rgba(var(--white-blue-rgba-50));
+            border-radius: 100%;
+            top: 50%;
+            left: 0;
+            transform: translate(0, -50%);
+            opacity: 0;
+            transition: opacity .3s ease, bottom .3s ease, width .3s ease;
+          }
+        }
+        &.is-active {
+          .Menu__link-text {
+            &::after {
+              left: size(-3);
+              opacity: 1;
+            }
+          }
+        }
       }
     }
   }

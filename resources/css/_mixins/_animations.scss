@@ -131,9 +131,8 @@
   }
   &:hover {
     text-decoration: none;
-    &::before {
-      background-color: $color;
-      width: calc(var(--fill-animation-width, 100%) + 2 * var(--animation-overflow));
+    &::after {
+      width: calc(100% + #{size(2)});
     }
   }
 }
