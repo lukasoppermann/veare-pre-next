@@ -18,6 +18,8 @@ export default (content: string, options: { [prop: string]: any; } = {}, req) =>
       ${meta(options.title || undefined, options.og || [])}
       <link type="text/css" href="/${files().css['css/litApp.css']}" rel="stylesheet" />
       <link type="text/css" href="/${files().css['css/app.css']}" rel="stylesheet" />
+      <link rel="preconnect" href="http://images.ctfassets.net">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
       <script>${unsafeHTML(fs.readFileSync('./public/' + files().js['js/index.js']))}
       </script>
       ${options.head || ''}

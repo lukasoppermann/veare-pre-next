@@ -15,6 +15,7 @@ export default async (data) => {
         subtitle: getField(data, 'subtitle'),
         link: getField(data, 'link'),
         target: getField(data, 'targetBlank') ? '_blank' : '_self',
+        rel: getField(data, 'targetBlank') ? 'noopener' : '',
         picture: (await pictureTransformer(getField(data, 'picture')))[0],
         classes: getField(data, 'cssClasses', []).join(' ')
       }

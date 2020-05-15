@@ -22,33 +22,33 @@ export default html`
       <h3 class="Footer__contact__job-title">Creative Director &<br /> Lead UI/UX Designer</h3>
 
       <h6 class="Footer__contact__say-hi">Schedule a call or just say&nbsp;hi&nbsp;<span class="smilie">👋</span></h6>
-      <a class="Footer__contact__email" target="_blank" href="mailto:lukas@vea.re?subject=Hey 👋,%20what&apos;s%20up?&body=Great%20to%20hear%20from%20you,%20how%20can%20I%20help?">lukas@vea.re</a>
+      <a class="Footer__contact__email" target="_blank" rel="noopener" href="mailto:lukas@vea.re?subject=Hey 👋,%20what&apos;s%20up?&body=Great%20to%20hear%20from%20you,%20how%20can%20I%20help?">lukas@vea.re</a>
 
-      <a class="Footer__contact__cv" target="_blank" href="https://drive.google.com/open?id=10K9F9o0hokq4iPAbF5mseKJn_yflt19k">${fs.readFileSync('./resources/svgs/file-download.svg')}Download my full CV (pdf)</a>
+      <a class="Footer__contact__cv" target="_blank" rel="noopener" href="https://drive.google.com/open?id=10K9F9o0hokq4iPAbF5mseKJn_yflt19k">${fs.readFileSync('./resources/svgs/file-download.svg')}Download my full CV (pdf)</a>
     </div>
   </section>
   <section class="Footer__connect GridNew">
     <hr />
     <div class="Footer__connect__block">
       <h6>Business</h6>
-      <p>For networking connect on <a href="https://www.linkedin.com/in/lukasoppermann" target="_blank">LinkedIn</a></p>
+      <p>For networking connect on <a href="https://www.linkedin.com/in/lukasoppermann" rel="noopener" target="_blank">LinkedIn</a></p>
     </div>
     <div class="Footer__connect__block">
       <h6>Design</h6>
-      <p>Find my latest work on <a href="https://dribbble.com/lukasoppermann" target="_blank">Dribbble</a> and <a href="https://www.behance.net/lukasoppermann" target="_blank">Behance</a></p>
+      <p>Find my latest work on <a href="https://dribbble.com/lukasoppermann" rel="noopener" target="_blank">Dribbble</a> and <a href="https://www.behance.net/lukasoppermann" rel="noopener" target="_blank">Behance</a></p>
     </div>
     <div class="Footer__connect__block">
       <h6>Thoughts</h6>
-      <p>Explore my thoughts on <a href="https://twitter.com/lukasoppermann" target="_blank">Twitter</a></p>
+      <p>Explore my thoughts on <a href="https://twitter.com/lukasoppermann" rel="noopener" target="_blank">Twitter</a></p>
     </div>
     <div class="Footer__connect__block">
       <h6>Code</h6>
-      <p>$ git checkout my code projects on <a href="https://github.com/lukasoppermann" target="_blank">Github</a></p>
+      <p>$ git checkout my code projects on <a href="https://github.com/lukasoppermann" rel="noopener" target="_blank">Github</a></p>
     </div>
   </section>
   <section class="Footer__legal GridNew">
     <hr />
-    <a class="veare-wordmark" href="/home" name="footer-home-link">${fs.readFileSync('./resources/svgs/veare-wordmark.svg')}</a>
+    <a class="veare-wordmark" href="/home" aria-label="Go to homepage" name="footer home link">${fs.readFileSync('./resources/svgs/veare-wordmark.svg')}</a>
     <div class="Footer__legal__info">
       <a href="/">Index</a>
       <a href="/blog">Writing</a>
