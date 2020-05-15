@@ -16,6 +16,7 @@ module.exports = (viewport, viewportWidth, viewportHeight, currentCase) => {
     page = await browser.newPage()
 
     await page.goto(`http://localhost:3300${currentCase.path}`)
+    await page.waitFor(1000)
     await page.evaluate(() => {
       window.scrollTo(0, Number.MAX_SAFE_INTEGER)
     })

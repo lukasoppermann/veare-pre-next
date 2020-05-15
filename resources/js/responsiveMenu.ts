@@ -7,7 +7,18 @@ const responsiveMenu = menu => {
     menu.classList.remove('is-hovered')
   })
   menu.querySelector('.Menu__icon').addEventListener('click', () => {
-    menu.classList.toggle('is-active')
+    if (menu.classList.contains('is-active')) {
+      // as active class is needed to adjust transition speed for black bubble when hovering vs when deactivating
+      menu.classList.add('was-active')
+      setTimeout(() => {
+        menu.classList.remove('was-active')
+      }, 1000)
+      // remove is-active class
+      menu.classList.remove('is-active')
+    } else {
+      menu.classList.add('is-active')
+      menu.classList.remove('was-active')
+    }
     menu.classList.remove('is-hovered')
   })
   // close menu on link click

@@ -183,6 +183,9 @@
     height: var(--max-circle);
     opacity: 0;
     z-index: -1;
+    transition: width .5s ease, height .5s ease, transform .5s ease, opacity .5s ease;
+  }
+  &.was-active::before {
     transition: width .5s .3s ease, height .5s .3s ease, transform .5s .3s ease, opacity .5s .5s ease;
   }
   .Menu__icon {

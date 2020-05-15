@@ -16,7 +16,7 @@ const menuTest = (viewport, viewportWidth, viewportHeight, currentCase) => {
     page = await browser.newPage()
 
     await page.goto(`http://localhost:3300${currentCase.path}`)
-    await page.waitFor(500)
+    await page.waitFor(1000)
     await page.$eval('.Menu__icon', elem => elem.click());
     await page.waitFor(1000)
   })
