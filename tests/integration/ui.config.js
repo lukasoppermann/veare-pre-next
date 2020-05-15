@@ -24,8 +24,13 @@ module.exports = {
     ['desktop-extra-large', 1440, 900]
   ],
   cases: {
-    home: {
+    menu: {
       path: '/home',
+      folder: 'menu',
+      sections: 1
+    },
+    home: {
+      path: '/',
       folder: 'home',
       sections: 8
     },
