@@ -18,7 +18,7 @@ const menuTest = (viewport, viewportWidth, viewportHeight, currentCase) => {
     await page.goto(`http://localhost:3300${currentCase.path}`)
     await page.waitFor(500)
     await page.$eval('.Menu__icon', elem => elem.click());
-    await page.waitFor(500)
+    await page.waitFor(1000)
   })
 
   test.each(Array.from(Array(currentCase.sections), (_, i) => i))(`Screenshot: ${currentCase.path} %i of ${currentCase.sections}`, async i => {
