@@ -14,7 +14,6 @@ export default (page, _req): templateInterface => {
     </main>
     ${_req.query.partial === 'true' ? footer : ''}
 `, {
-    pageClass: 'Page__index',
     og: [
       {
         property: 'og:type',
@@ -39,5 +38,5 @@ export default (page, _req): templateInterface => {
         value: 'Lukas Oppermann — Lead UI/UX Design & Creative Direction — vea.re'
       }
     ]
-  }, _req.query.partial)
+  }, _req)
 }

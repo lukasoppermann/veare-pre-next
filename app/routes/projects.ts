@@ -14,5 +14,5 @@ module.exports = async (req, res) => {
     return res.redirect(301, 'http://' + req.headers.host + '/')
   }
   // render project
-  return res.send(await renderToString(project(projectContent.fields)))
+  return res.send(await renderToString(project(projectContent.fields, req)))
 }

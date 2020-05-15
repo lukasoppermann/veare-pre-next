@@ -4,7 +4,7 @@ const config = require('./ui.config.js')
 let browser
 let page
 
-module.exports = (viewport, viewportWidth, viewportHeight, currentCase) => {
+const menuTest = (viewport, viewportWidth, viewportHeight, currentCase) => {
   beforeAll(async () => {
     // start Puppeteer with a custom configuration, see above the setup
     browser = await puppeteer.launch({
@@ -17,14 +17,8 @@ module.exports = (viewport, viewportWidth, viewportHeight, currentCase) => {
 
     await page.goto(`http://localhost:3300${currentCase.path}`)
     await page.waitFor(1000)
-    await page.evaluate(() => {
-      window.scrollTo(0, Number.MAX_SAFE_INTEGER)
-    })
-    await page.waitFor(500)
-    await page.evaluate(() => {
-      window.scrollBy(0, 0)
-    })
-    await page.waitFor(500)
+    await page.$eval('.Menu__icon', elem => elem.click());
+    await page.waitFor(1000)
   })
 
   test.each(Array.from(Array(currentCase.sections), (_, i) => i))(`Screenshot: ${currentCase.path} %i of ${currentCase.sections}`, async i => {
@@ -35,7 +29,7 @@ module.exports = (viewport, viewportWidth, viewportHeight, currentCase) => {
       deviceScaleFactor: 1
     })
     // wait for css to adjust
-    await page.waitFor(500)
+    await page.waitFor(3000)
     // set scroll location
     let scrollHeight = i * viewportHeight
     // scroll
@@ -60,3 +54,7 @@ module.exports = (viewport, viewportWidth, viewportHeight, currentCase) => {
   })
 
 }
+
+const currentCase = config.cases.menu;
+
+describe.each(config.viewports)('Testing viewport: %s', (viewport, viewportWidth, viewportHeight) => menuTest(viewport, viewportWidth, viewportHeight, currentCase))

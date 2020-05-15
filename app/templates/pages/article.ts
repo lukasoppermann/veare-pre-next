@@ -5,7 +5,7 @@ const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsaf
 // get correct filesnames after appending unique string
 const files = require('../../services/files')
 // export template
-export default (article): templateInterface => layout(html`
+export default (article, req): templateInterface => layout(html`
   <div class="Article Grid">
     <h1>${article.title}</h1>
     <div class="Article__publication-details">
@@ -29,8 +29,8 @@ export default (article): templateInterface => layout(html`
     <a class="Article__back_link" href="/blog">← Back</a>
   </div>
 `, {
-  pageClass: 'Page__article',
+  bodyClass: 'Page-Type__Article',
   head: html`
   <link type="text/css" href="/${files().css['css/blog.css']}" rel="stylesheet" />
   `
-})
+}, req)

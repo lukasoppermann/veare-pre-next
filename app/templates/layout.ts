@@ -1,14 +1,14 @@
 import meta from './meta'
 import footer from './newPartials/footer'
-import menu from './partials/menu'
+import menu from './newPartials/menu'
 const { html } = require('@popeindustries/lit-html-server')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 // get correct filesnames after appending unique string
 const files = require('../services/files')
 const fs = require('fs')
 //
-export default (content: string, options: { [prop: string]: any; } = {}, partial: string = 'false') => {
-  if (partial === 'true') {
+export default (content: string, options: { [prop: string]: any; } = {}, req) => {
+  if (req.query.partial === 'true') {
     return html`${content}`
   }
   return html`
@@ -18,15 +18,15 @@ export default (content: string, options: { [prop: string]: any; } = {}, partial
       ${meta(options.title || undefined, options.og || [])}
       <link type="text/css" href="/${files().css['css/litApp.css']}" rel="stylesheet" />
       <link type="text/css" href="/${files().css['css/app.css']}" rel="stylesheet" />
+      <link rel="preconnect" href="http://images.ctfassets.net">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
       <script>${unsafeHTML(fs.readFileSync('./public/' + files().js['js/index.js']))}
       </script>
       ${options.head || ''}
     </head>
     <body class="${options.bodyClass || ''}${process.env.NODE_ENV === 'test' ? ' testing' : ''}">
       <!-- NEW STUFF -->
-      <menu class="responsive-menu">
-        ${menu}
-      </menu>
+      ${menu('/' + req.path.split('/')[1])}
       <div class="Page ${options.pageClass || ''}">
         ${content || ''}
       </div>

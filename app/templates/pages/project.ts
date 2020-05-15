@@ -4,7 +4,7 @@ const { html } = require('@popeindustries/lit-html-server')
 const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 
-export default (project) => {
+export default (project, req) => {
   return layout(html`
   <style media="screen">
     :root{
@@ -41,8 +41,6 @@ export default (project) => {
     <a class="Project__back_link" href="/home#portfolio">← Back</a>
   </article>
 `, {
-    bodyClass: 'Project',
-    pageClass: 'Page__project',
     title: project.title,
     og: [
       {
@@ -71,8 +69,9 @@ export default (project) => {
         property: 'og:image:alt',
         value: project.header.fields.title
       }
-    ]
-  })
+    ],
+    bodyClass: 'Page--work Project'
+  }, req)
 }
 // TOC
 // ${repeat(project.chapters, (chapter) => {

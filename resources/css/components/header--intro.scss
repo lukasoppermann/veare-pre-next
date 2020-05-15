@@ -6,7 +6,7 @@
     position: relative;
     z-index: 5;
     overflow: hidden;
-    grid-row: row 2 / -2;
+    grid-row: row 1 / -3;
     grid-column: column 5 / span 5;
     @include max-width('s') {
       grid-column: column 4 / span 5;
@@ -17,7 +17,7 @@
   }
   .Header__background {
     grid-column: full-width;
-    grid-row: row 2 / -2;
+    grid-row: row 1 / -3;
     background-color: rgb(var(--sand-grey-rgb));
     --origin-start: right;
     animation: .75s var(--easeInOutQuint) forwards .5s blockFill;
@@ -26,7 +26,7 @@
   }
   .Logo {
     grid-column: margin-left / span 2;
-    grid-row: row 2 / span 3;
+    grid-row: row 1 / span 3;
     @include max-width('l') {
       grid-column: sidebar-left / span 2;
     }
@@ -64,7 +64,7 @@
     max-height: calc(var(--max-row-height) * 4 + var(--baseline) * 3);
     box-sizing: border-box;
     fill: rgb(var(--black-rgb));
-    grid-row: row 6 / span 4;
+    grid-row: row 5 / span 4;
     grid-column: sidebar-left 1 / span 6;
     @include max-width(1300) {
       grid-column: sidebar-left 2 / span 6;
@@ -117,7 +117,7 @@
     z-index: 10;
     grid-column: sidebar-left 1 / span 3;
     font-size: var(--size-xl);
-    grid-row: row 11 / span 2;
+    grid-row: row 10 / span 2;
     @include max-width(1300) {
       grid-column: sidebar-left 2 / span 3;
     }
@@ -148,7 +148,7 @@
     font-weight: normal;
     position: relative;
     z-index: 10;
-    grid-row: row 11 / span 2;
+    grid-row: row 10 / span 2;
     grid-column: column 2 / span 3;
     @include max-width(1300) {
       grid-column: column 4 / span 3;
