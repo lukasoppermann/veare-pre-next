@@ -78,12 +78,98 @@
   margin: 0;
   z-index: 900;
   transform: translateZ(100px); /* safari hack */
+  transition: width 0s 1s, height 0s 1s;
   --max-circle: 100vw;
   @media (orientation: portrait) {
     --max-circle: 100vh;
   }
   .Menu__items {
-    display: none;
+    display: flex !important;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    grid-column: columns;
+    @include at_least(tablet) {
+      grid-column: column 3 / span 2;
+    }
+    @include at_least(desktop) {
+      grid-column: column 6 / span 2;
+    }
+    counter-reset: menuItemCount;
+    .Menu__link {
+      opacity: 0;
+      bottom: size(-2);
+      --transition-delay: .3s;
+      &:nth-child(2) {
+        --transition-delay: .2s;
+      }
+      &:nth-child(3) {
+        --transition-delay: .1s;
+      }
+      &:nth-child(4) {
+        --transition-delay: 0s;
+      }
+      transition: opacity .3s var(--transition-delay, 1.5s) ease, bottom .3s var(--transition-delay, 1.5s) ease;
+      counter-increment: menuItemCount;
+      position: relative;
+      color: rgba(var(--white-blue-rgba-80));
+      text-decoration: none;
+      @include type-scale(hg);
+      @include at_least(desktop) {
+        @include type-scale(xl);
+      }
+      @include font(serif, italic);
+      margin: size(3);
+      &::before {
+        @include pseudo;
+        content: counter(menuItemCount, decimal-leading-zero);
+        bottom: size(-2);
+        left: 0;
+        @include font(mono);
+        @include type-scale(sm);
+        color: rgba(var(--white-blue-rgba-50));
+      }
+      &::after {
+        @include pseudo;
+        width: 0;
+        height: calc(100% + #{size(0)});
+        background-color: rgb(var(--blue-rgb));
+        top: size(2);
+        left: size(-1);
+        z-index: -1;
+        transition: all .4s ease;
+      }
+      &:hover {
+        color: rgb(var(--white-blue-rgb));
+        &::after {
+          width: calc(100% + #{size(2)});
+        }
+      }
+      .Menu__link-text {
+        position: relative;
+        &::after {
+          @include pseudo();
+          width: 4px;
+          height: 4px;
+          background: rgba(var(--white-blue-rgba-50));
+          border-radius: 100%;
+          top: 50%;
+          left: 0;
+          transform: translate(0, -50%);
+          opacity: 0;
+          transition: opacity .3s ease, bottom .3s ease, width .3s ease;
+        }
+      }
+      &.is-active {
+        .Menu__link-text {
+          &::after {
+            left: size(-3);
+            opacity: 1;
+          }
+        }
+      }
+    }
   }
   &::before {
     @include pseudo();
@@ -97,7 +183,7 @@
     height: var(--max-circle);
     opacity: 0;
     z-index: -1;
-    transition: width .3s ease, height .3s ease, transform .45s ease, opacity .1s .3s;
+    transition: width .5s .3s ease, height .5s .3s ease, transform .5s .3s ease, opacity .5s .5s ease;
   }
   .Menu__icon {
     color: transparent;
@@ -153,6 +239,7 @@
   /* ==================================== */
   //  IS Active
   &.is-active {
+    transition: width 0s 0s, height 0s 0s;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
@@ -178,78 +265,20 @@
       }
     }
     .Menu__items {
-      display: flex !important;
-      width: 100%;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-      grid-column: columns;
-      @include at_least(tablet) {
-        grid-column: column 3 / span 2;
-      }
-      @include at_least(desktop) {
-        grid-column: column 6 / span 2;
-      }
-      counter-reset: menuItemCount;
       .Menu__link {
-        counter-increment: menuItemCount;
-        position: relative;
-        color: rgba(var(--white-blue-rgba-80));
-        text-decoration: none;
-        @include type-scale(hg);
-        @include at_least(desktop) {
-          @include type-scale(xl);
+        opacity: 1;
+        bottom: 0;
+        --transition-delay: .2s;
+        &:nth-child(2) {
+          --transition-delay: .4s;
         }
-        @include font(serif, italic);
-        margin: size(3);
-        &::before {
-          @include pseudo;
-          content: counter(menuItemCount, decimal-leading-zero);
-          bottom: size(-2);
-          left: 0;
-          @include font(mono);
-          @include type-scale(sm);
-          color: rgba(var(--white-blue-rgba-50));
+        &:nth-child(3) {
+          --transition-delay: .6s;
         }
-        &::after {
-          @include pseudo;
-          width: 0;
-          height: calc(100% + #{size(0)});
-          background-color: rgb(var(--blue-rgb));
-          top: size(2);
-          left: size(-1);
-          z-index: -1;
-          transition: all .4s ease;
+        &:nth-child(4) {
+          --transition-delay: .8s;
         }
-        &:hover {
-          color: rgb(var(--white-blue-rgb));
-          &::after {
-            width: calc(100% + #{size(2)});
-          }
-        }
-        .Menu__link-text {
-          position: relative;
-          &::after {
-            @include pseudo();
-            width: 4px;
-            height: 4px;
-            background: rgba(var(--white-blue-rgba-50));
-            border-radius: 100%;
-            top: 50%;
-            left: 0;
-            transform: translate(0, -50%);
-            opacity: 0;
-            transition: opacity .3s ease, bottom .3s ease, width .3s ease;
-          }
-        }
-        &.is-active {
-          .Menu__link-text {
-            &::after {
-              left: size(-3);
-              opacity: 1;
-            }
-          }
-        }
+        transition: opacity .5s var(--transition-delay, 1.5s) ease, bottom .5s var(--transition-delay, 1.5s) ease;
       }
     }
   }
