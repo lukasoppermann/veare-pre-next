@@ -70,7 +70,7 @@
   grid-template-rows:
     [margin-top full-height-start] var(--baseline)
     [rows-start]
-    repeat(13, [row] minmax(var(--min-row-height), var(--max-row-height)))
+    repeat(12, [row] minmax(var(--min-row-height), var(--max-row-height)))
     [rows-end margin-bottom] var(--baseline) [full-height-end];
 }
 .Grid--columns {

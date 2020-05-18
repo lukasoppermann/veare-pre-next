@@ -6,7 +6,7 @@
     position: relative;
     z-index: 5;
     overflow: hidden;
-    grid-row: row 1 / -3;
+    grid-row: row 1 / -2;
     grid-column: column 5 / span 5;
     @include max-width('s') {
       grid-column: column 4 / span 5;
@@ -17,7 +17,7 @@
   }
   .Header__background {
     grid-column: full-width;
-    grid-row: row 1 / -3;
+    grid-row: row 1 / -2;
     background-color: rgb(var(--sand-grey-rgb));
     --origin-start: right;
     animation: .75s var(--easeInOutQuint) forwards .5s blockFill;

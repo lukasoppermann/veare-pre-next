@@ -78,7 +78,7 @@
             position: relative;
             z-index: 0;
             display: flex;
-            @include font(mono);
+            @include font(mono, bold);
             @include type-scale(xs);
             color: rgba(var(--white-blue-rgba-50));
             padding-left: 0;
@@ -291,7 +291,7 @@
       }
       p,
       h6 {
-        @include font(mono);
+        @include font(mono, bold);
         @include type-scale(sm);
         margin-bottom: 0;
         margin-top: 0;
