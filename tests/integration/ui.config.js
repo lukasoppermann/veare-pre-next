@@ -26,38 +26,31 @@ module.exports = {
   cases: {
     menu: {
       path: '/home',
-      folder: 'menu',
-      sections: 1
+      folder: 'menu'
     },
     home: {
       path: '/',
-      folder: 'home',
-      sections: 8
+      folder: 'home'
     },
     nyon: {
       path: '/work/nyon',
-      folder: 'work-nyon',
-      sections: 10
+      folder: 'work-nyon'
     },
     copra: {
       path: '/work/copra',
-      folder: 'work-copra',
-      sections: 15
+      folder: 'work-copra'
     },
     privacy: {
       path: '/privacy',
-      folder: 'privacy',
-      sections: 16
+      folder: 'privacy'
     },
     blog: {
       path: '/blog',
-      folder: 'blog',
-      sections: 3
+      folder: 'blog'
     },
     post: {
       path: '/blog/framer-x-a-review',
-      folder: 'blog-framer',
-      sections: 3
+      folder: 'blog-framer'
     }
   }
 }
