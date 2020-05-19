@@ -100,10 +100,12 @@
         display: inline-block;
         margin-top: size(3);
         position: relative;
-        &::before {
+        @include underlineFill(rgb(var(--veare-orange-rgb)), rgb(var(--veare-orange-rgb)), 0);
+        padding-right: size(2);
+        &::after {
           @include pseudo();
           top: 0;
-          right: size(-2);
+          right: 2px;
           width: 10px;
           height: 10px;
           content: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12px' height='10px' viewBox='0 0 9 8' fill='rgb(33, 37, 41)'><path d='M4.53553 0L8.07107 3.53553L4.53553 7.07107L3.82843 6.36396L6.19238 4.00001H0V3.00001H6.12133L3.82843 0.707107L4.53553 0Z' /></svg>");
