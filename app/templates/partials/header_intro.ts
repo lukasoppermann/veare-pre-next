@@ -10,7 +10,7 @@ export default html`
   <figure class="Header--intro__headline">
     ${fs.readFileSync('./resources/svgs/interaction-is-everything.svg')}
   </figure>
-  <h2 class="Header--intro__slogan">Designing experiences with a focus on usability.</h2>
+  <h2 class="Header--intro__slogan">Designing experiences with a focus on usability</h2>
   <div class="Header--intro__services">
     <div class="Header--intro__services__description">
       <h2 class="Header--intro__services__veare">veare</h2>

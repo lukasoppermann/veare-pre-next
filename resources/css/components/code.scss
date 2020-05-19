@@ -35,8 +35,7 @@ pre > .code {
   }
   .Code__file-or-path {
     color: rgba(var(--sand-grey-rgb), .6);
-    font-family: monospace;
-    font-weight: bold;
+    @include font(mono, bold);
     background: rgba(0, 0, 0, .2);
     position: absolute;
     top: 0;

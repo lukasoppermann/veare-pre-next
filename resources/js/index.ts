@@ -22,7 +22,7 @@ Promise.all([revFileList, fetchInjectLoaded])
     const body = document.querySelector('body')
     // load webfont and view intro once downloaded
     fetchInject([
-      'https://fonts.googleapis.com/css?family=Montserrat:700|Noto+Serif:400,400i,400b|Source+Sans+Pro:400,600|Source+Code+Pro:400,600'
+      'https://fonts.googleapis.com/css?family=Montserrat:700|Noto+Serif:400,400i,400b|Source+Sans+Pro:400,600|Source+Code+Pro:600'
     ])
       .then(() => {
         if (body !== null) {

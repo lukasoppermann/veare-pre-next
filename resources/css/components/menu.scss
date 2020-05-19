@@ -59,9 +59,9 @@
         &::after {
           bottom: size(-1);
           opacity: 1;
-          &:not(.is-active) {
-            background: rgba(var(--black-rgba-25));
-          }
+        }
+        &:not(.is-active)::after {
+          background: rgba(var(--black-rgba-30));
         }
       }
     }
@@ -126,7 +126,7 @@
         content: counter(menuItemCount, decimal-leading-zero);
         bottom: size(-2);
         left: 0;
-        @include font(mono);
+        @include font(mono, bold);
         @include type-scale(sm);
         color: rgba(var(--white-blue-rgba-50));
       }
