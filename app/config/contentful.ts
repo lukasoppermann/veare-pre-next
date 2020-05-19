@@ -9,13 +9,13 @@ export default {
   accessToken: {
     development: process.env.CONTENTFUL_TOKEN_PREVIEW,
     production: process.env.CONTENTFUL_TOKEN,
-    test: process.env.CONTENTFUL_TOKEN
+    test: process.env.CONTENTFUL_TOKEN_PREVIEW
   },
   webhookUser: process.env.CONTENTFUL_HOOK_USER,
   webhookPassword: process.env.CONTENTFUL_HOOK_PW,
   host: {
     development: 'preview.contentful.com',
     production: 'cdn.contentful.com',
-    test: 'cdn.contentful.com'
+    test: 'preview.contentful.com'
   }
 }
