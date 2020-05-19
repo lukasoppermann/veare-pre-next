@@ -32,9 +32,25 @@
       @include smaller_than(tablet) {
         grid-column-start: columns;
         grid-column-end: span 2;
-      }
-      &.Grid {
-        display: block;
+        order: 0;
+        &:nth-child(2) {
+          order: 3;
+        }
+        &:nth-child(3) {
+          order: 4;
+        }
+        &:nth-child(4) {
+          order: 2;
+          border-top: 1px solid rgba(var(--black-rgba-15));
+          margin-top: size(4);
+          :nth-child(4) {
+            order: -1;
+            a {
+              margin-top: 0;
+              margin-bottom: size(4);
+            }
+          }
+        }
       }
       // -----------------------------
       // Border left
@@ -52,11 +68,18 @@
       // -----------------------------
       // Block content
       // -----
+      display: flex;
+      flex-direction: column;
       padding-top: size(5);
       position: relative;
+      * {
+        order: 0;
+      }
       h6 {
         margin-top: 0;
+        display: none;
         @include at_least(tablet) {
+          display: block;
           position: absolute;
           margin-top: size(-5);
         }
@@ -66,6 +89,8 @@
         @include type-scale(sm);
       }
       h4 {
+        display: inline-block;
+        position: relative;
         margin-top: 0;
         @include font(mono, bold);
         @include type-scale(sm);
@@ -76,7 +101,7 @@
           width: 2px;
           height: size(5);
           background-color: rgba(var(--veare-orange-rgb));
-          top: size(5.5);
+          top: 0;
           left: size(-1.5);
         }
       }
