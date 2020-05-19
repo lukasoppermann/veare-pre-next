@@ -1,7 +1,7 @@
 {
   "name": "veare",
   "description": "veare website",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "main": "app/server.ts",
   "repository": {
     "type": "git",
@@ -112,9 +112,9 @@
     "verbose": false,
     "testTimeout": 15000,
     "testMatch": [
-     "**/tests/integration/!(skip.)*.test.[jt]s?(x)",
-     "**/tests/unit/!(skip.)*.test.[jt]s?(x)"
-   ]
+      "**/tests/integration/!(skip.)*.test.[jt]s?(x)",
+      "**/tests/unit/!(skip.)*.test.[jt]s?(x)"
+    ]
   },
   "scripts": {
     "start": "ts-node-dev --respawn $npm_package_main --pretty",
