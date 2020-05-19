@@ -180,15 +180,15 @@
       [full-bleed-start margin-left]
       minmax(0, 1fr)
       [column full-width-start sidebar-left-start sidebar-left full-content-start columns-start]
-      minmax(53px, 95px)
+      minmax(48px, 95px)
       [column sidebar-left]
-      minmax(53px, 95px)
+      minmax(48px, 95px)
       [column sidebar-left-end sidebar-left]
-      repeat(8, [column] minmax(53px, 95px))
+      repeat(8, [column] minmax(48px, 95px))
       [column sidebar-right sidebar-right-start]
-      minmax(53px, 95px)
+      minmax(48px, 95px)
       [column sidebar-right]
-      minmax(53px, 95px)
+      minmax(48px, 95px)
       [column sidebar-right sidebar-right-end full-content-end full-width-end  columns-end]
       minmax(0, 1fr)
       [margin-right full-bleed-end];

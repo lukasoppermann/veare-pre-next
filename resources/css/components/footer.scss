@@ -338,7 +338,7 @@
       grid-column: columns;
       justify-items: center;
       text-align: center;
-      @include at_least(tablet) {
+      @include at_least(desktop) {
         grid-column: column / column 2;
         grid-row: auto;
       }
@@ -356,7 +356,7 @@
       flex-wrap: wrap;
       @include font(sans);
       @include type-scale(sm);
-      @include at_least(tablet) {
+      @include at_least(desktop) {
         margin-top: 0;
         grid-column: column 2 / columns;
         justify-content: flex-end;

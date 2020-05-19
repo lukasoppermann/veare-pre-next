@@ -1,6 +1,9 @@
 .Page__index {
   .Index__resume {
-    margin-top: size(5);
+    align-items: start;
+    @include at_least(tablet) {
+      margin-top: size(4);
+    }
     &::after {
       @include pseudo();
       position: relative;
@@ -17,23 +20,34 @@
       // -----------------------------
       // Spacing in grid
       // -----
+      grid-column-end: span 3;
       &:first-child {
         grid-column-start: columns;
       }
-      grid-column-end: span 3;
+      @include smaller_than(desktop) {
+        &:nth-child(3) {
+          grid-column-start: columns;
+        }
+      }
+      @include smaller_than(tablet) {
+        grid-column-start: columns;
+        grid-column-end: span 2;
+      }
       &.Grid {
         display: block;
       }
       // -----------------------------
       // Border left
       // -----
-      &:nth-child(2)::before {
-        @include pseudo();
-        width: 1px;
-        height: 100%;
-        background-color: rgba(var(--black-rgba-15));
-        top: 0;
-        left: size(-2);
+      @include at_least(tablet) {
+        &:nth-child(2)::before {
+          @include pseudo();
+          width: 1px;
+          height: calc(100% + #{size(2)});
+          background-color: rgba(var(--black-rgba-15));
+          top: 0;
+          left: size(-2);
+        }
       }
       // -----------------------------
       // Block content
@@ -41,8 +55,11 @@
       padding-top: size(5);
       position: relative;
       h6 {
-        position: absolute;
-        margin-top: size(-5);
+        margin-top: 0;
+        @include at_least(tablet) {
+          position: absolute;
+          margin-top: size(-5);
+        }
         margin-bottom: size(3);
         color: rgba(var(--black-rgba-65));
         @include font(mono, bold);
@@ -68,6 +85,7 @@
         @include font(mono, bold);
         @include type-scale(xs);
         color: rgba(var(--black-rgba-65));
+        text-transform: none;
       }
       h5 + p {
         margin-top: size(1);
@@ -81,6 +99,15 @@
         @include type-scale(sm);
         display: inline-block;
         margin-top: size(3);
+        position: relative;
+        &::before {
+          @include pseudo();
+          top: 0;
+          right: size(-2);
+          width: 10px;
+          height: 10px;
+          content: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12px' height='10px' viewBox='0 0 9 8' fill='rgb(33, 37, 41)'><path d='M4.53553 0L8.07107 3.53553L4.53553 7.07107L3.82843 6.36396L6.19238 4.00001H0V3.00001H6.12133L3.82843 0.707107L4.53553 0Z' /></svg>");
+        }
       }
     }
   }
