@@ -3,9 +3,11 @@ const { toMatchImageSnapshot } = require('jest-image-snapshot')
 const config = require('./ui.config.js')
 let browser
 let page
+let currentCase
 
-module.exports = (viewport, viewportWidth, viewportHeight, currentCase) => {
+module.exports = (caseName, beforeFn = null, testFn = null) => {
   beforeAll(async () => {
+    currentCase = config.cases[caseName]
     // start Puppeteer with a custom configuration, see above the setup
     browser = await puppeteer.launch({
       ignoreHTTPSErrors: true,
@@ -13,9 +15,12 @@ module.exports = (viewport, viewportWidth, viewportHeight, currentCase) => {
       args: ['--no-sandbox', '--disable-setuid-sandbox'],
     })
     expect.extend({ toMatchImageSnapshot })
+    // load page
     page = await browser.newPage()
-
-    await page.goto(`http://localhost:3300${currentCase.path}`)
+    await page.goto(`http://localhost:3300${currentCase.path}`, {waitUntil: 'load'});
+    // add special testing css
+    await page.addStyleTag({content: 'body{--max-row-height: 59px;}'})
+    // scroll to bottom and back up
     await page.waitFor(1000)
     await page.evaluate(() => {
       window.scrollTo(0, Number.MAX_SAFE_INTEGER)
@@ -25,31 +30,36 @@ module.exports = (viewport, viewportWidth, viewportHeight, currentCase) => {
       window.scrollBy(0, 0)
     })
     await page.waitFor(500)
+    // run fn if defined
+    if (beforeFn !== null) {
+      await beforeFn(page)
+    }
   })
 
-  test.each(Array.from(Array(currentCase.sections), (_, i) => i))(`Screenshot: ${currentCase.path} %i of ${currentCase.sections}`, async i => {
-    // reset port
+  test.each(config.viewports)(`Testing viewport: %s`, async (viewport, viewportWidth, viewportHeight) => {
+    // run fn if defined
+    if (testFn !== null) {
+      await testFn(page, {
+        name: viewport,
+        width: viewportWidth,
+        height: viewportHeight
+      })
+    }
+    // set viewport
     await page.setViewport({
       width: viewportWidth,
       height: viewportHeight,
       deviceScaleFactor: 1
     })
-    // wait for css to adjust
-    await page.waitFor(500)
-    // set scroll location
-    let scrollHeight = i * viewportHeight
-    // scroll
-    await page.evaluate(scrollHeight => {
-      window.scrollTo(0, scrollHeight)
-    }, scrollHeight)
-    // take screenshot
+    // take full screen screenshot
     let image = await page.screenshot({
-      path: `${config.testSnaps}/${currentCase.folder}/${viewport}-${i}.png`,
-      type: 'png'
+      path: `${config.testSnaps}/${currentCase.folder}/${viewport}.png`,
+      type: 'png',
+      fullPage: true
     })
     // compare screenshot
     expect(image).toMatchImageSnapshot(config.setConfig({
-      filename: `${viewport}-${i}`,
+      filename: `${viewport}`,
       snapshotPath: `${config.basePath}/baseline/${currentCase.folder}`,
       diffPath: `${config.testSnaps}/${currentCase.folder}`
     }))
