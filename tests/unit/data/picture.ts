@@ -1,6 +1,7 @@
 import { transformTestData } from './transformTestData'
 import asset from './asset'
 import richText from './richText'
+
 export default {
   raw: {
     sys: {
