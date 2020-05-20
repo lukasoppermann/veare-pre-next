@@ -69,6 +69,7 @@
     "lit-html": "^1.1.2",
     "memory-cache": "^0.2.0",
     "reading-time": "^1.2.0",
+    "ts-jest": "^26.0.0",
     "ts-node": "^8.10.1",
     "tslib": "^2.0.0",
     "typescript": "^3.9.2"
@@ -109,8 +110,12 @@
     "setupFilesAfterEnv": [
       "./tests/integration/ui.setup.js"
     ],
-    "verbose": false,
+    "verbose": true,
     "testTimeout": 15000,
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "moduleFileExtensions": ["ts", "js"],
     "testMatch": [
       "**/tests/integration/!(skip.)*.test.[jt]s?(x)",
       "**/tests/unit/!(skip.)*.test.[jt]s?(x)"
@@ -137,6 +142,7 @@
     "tsc": "tsc --noEmit --pretty",
     "standard": "standardx 'app.js' 'resources/js/*.ts' 'app/**/*.js' 'app/**/*.ts' | snazzy",
     "test:integration": "jest tests/integration --detectOpenHandles",
+    "test:unit": "jest tests/unit --coverage",
     "test:js": "npm run tsc && jest tests/unit && npm run standard",
     "test": "npm run test:js && npm run test:css",
     "removeCompiled": "branch=$(git branch | grep \\* | cut -d ' ' -f2) && if test \"$branch\" != \"master\" ; then git reset HEAD public/ ; fi"
