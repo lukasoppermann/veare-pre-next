@@ -112,6 +112,8 @@
     ],
     "verbose": true,
     "testTimeout": 15000,
+    "collectCoverage": true,
+    "coverageDirectory": "./tests/unit/coverage",
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
     },
