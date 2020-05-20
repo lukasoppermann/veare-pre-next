@@ -1,6 +1,10 @@
-// import transformer, { getField, __testing } from '../../app/transformer/transformer'
-import { __testing, getField } from '../../app/transformer/transformer'
+// import { transformerInterface } from '../../types/transformer'
+import transformer, { __testing, getField } from '../../app/transformer/transformer'
+import { transformedDataInterface } from '../../types/transformer'
 /* global test expect */
+/* ====================================
+    transformOrNull
+==================================== */
 describe("Testing transformOrNull", () => {
   test("transformOrNull should throw error when missing transformner", () => {
     // wrapper fn needed so jest can catch error
@@ -60,7 +64,9 @@ describe("Testing transformOrNull", () => {
     expect(shouldBeTransformed).toBe('correct')
   })
 })
-
+/* ====================================
+    getField
+==================================== */
 describe("Testing getField", () => {
   test("getField should throw error if missing data argument", () => {
     // wrapper fn needed so jest can catch error
@@ -105,28 +111,89 @@ describe("Testing getField", () => {
     expect(catchError).toThrowError(new Error(`Invalid fieldName provided: "fieldName in Array"`))
   })
 
-  test("getField should throw error if fieldName does not exist", () => {
+  test("getField should return null if fieldName does not exist", () => {
     // wrapper fn needed so jest can catch error
-    const catchError = () => {
-      // @ts-ignore
-      getField({
+    const test_getField = getField({
         fields: {
           'testField': 20
         }
-      // @ts-ignore
-    }, 'wrongFieldName')
-    }
+      }, 'wrongFieldName')
     // assertion
-    expect(catchError).toThrowError(new Error(`Invalid fieldName provided: "wrongFieldName"`))
+    expect(test_getField).toBe(null)
   })
 
-  test.todo("getField should return default value if provided & field is null")
-  test.todo("getField should return value for fieldName in only the first language")
+  test("getField should return null value if no default value provided & field is null", () => {
+    // wrapper fn needed so jest can catch error
+    const test_getField = getField({
+        fields: {
+          'testField': {
+            'en-US': null
+          }
+        }
+      }, 'testField')
+    // assertion
+    expect(test_getField).toBe(null)
+  })
+
+  test("getField should return default value if provided & field is null", () => {
+    // wrapper fn needed so jest can catch error
+    const test_getField = getField({
+        fields: {
+          'testField': null
+        }
+      }, 'testField', 'defaultValue')
+    // assertion
+    expect(test_getField).toBe('defaultValue')
+  })
+
+  test("getField should return value for fieldName in only the first language", () => {
+    // wrapper fn needed so jest can catch error
+    const test_getField = getField({
+        fields: {
+          'testField': {
+            'en-US': 'correct data',
+            'de-DE': 'wrong data'
+          }
+        }
+      }, 'testField')
+    // assertion
+    expect(test_getField).toBe('correct data')
+  })
 })
-// export const getField = (data, fieldName: string, defaultValue: any = null) => {
-//   const field = data.fields[fieldName]
-//   if (typeof field !== 'object') {
-//     return defaultValue || null
-//   }
-//   return field[Object.keys(field)[0]]
-// }
+/* ====================================
+    TRANSFORMER
+==================================== */
+const mockTransformer = async (data): Promise<transformedDataInterface> => {
+  // return format
+  return <transformedDataInterface>{
+    id: 'mock',
+    createdAt: 'mock',
+    updatedAt: 'mock',
+    contentType: 'mock',
+    fields: data.fields
+  }
+}
+describe("Testing transformer default fn", () => {
+  test("transformer returns an array if only one item is provided", () => {
+    // wrapper fn needed so jest can catch error
+    return transformer({
+      fields: {
+        'test': 'data'
+      }
+    }, (data) => {
+      return mockTransformer(data)
+    }).then(resultData => {
+      // assertion
+      expect(resultData).toEqual([{
+        "contentType": "mock",
+        "createdAt": "mock",
+        "fields": {
+          "test": 'data',
+        },
+        "id": "mock",
+        "updatedAt": "mock"
+      }])
+    })
+
+  })
+})

@@ -1,17 +1,6 @@
 import { transformerInterface } from '../../types/transformer'
 
-const transformData = async (items, transformer): Promise<Array<any>> => {
-  if (!Array.isArray(items)) {
-    items = [items]
-  }
-
-  return Promise.all(
-    // run transformer on all items
-    items.map((item) => transformOrNull(item, transformer), this))
-    // remove items that are null
-    .then(items => items.filter(item => item !== null)
-    )
-}
+const language = 'en-US'
 
 const transformOrNull = (item, transformer) => {
   if (typeof transformer !== 'function') {
@@ -23,8 +12,21 @@ const transformOrNull = (item, transformer) => {
   return null
 }
 
-export default async (data: Object, transformer: transformerInterface) => {
-  return transformData(data, transformer)
+const makeArray = (item: any): any[] => {
+  // if item is not an arry, make it one
+  if (!Array.isArray(item)) {
+    item = [item]
+  }
+  // return array
+  return item
+}
+
+export default async (items: Object, transformer: transformerInterface): Promise<Array<any>> => {
+  return Promise.all(
+    // run transformer on all items
+    makeArray(items).map((item) => transformOrNull(item, transformer), this))
+    // remove items that are null
+    .then(items => items.filter(item => item !== null))
 }
 
 export const getField = (data, fieldName: string, defaultValue: any = null) => {
@@ -37,10 +39,11 @@ export const getField = (data, fieldName: string, defaultValue: any = null) => {
     throw new Error(`Invalid fieldName provided: "${fieldName}"`)
   }
   const field = data.fields[fieldName]
-  if (typeof field !== 'object') {
+  if (field === null || typeof field !== 'object' || !Object.prototype.hasOwnProperty.call(field, language)) {
     return defaultValue || null
   }
-  return field[Object.keys(field)[0]]
+  // return value
+  return field[language]
 }
 
 export const __testing = {
