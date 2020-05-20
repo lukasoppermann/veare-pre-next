@@ -173,27 +173,60 @@ const mockTransformer = async (data): Promise<transformedDataInterface> => {
     fields: data.fields
   }
 }
+
+const rawData = {
+  fields: {
+    'test': 'data'
+  }
+}
+
+const transformedResult = [{
+  "contentType": "mock",
+  "createdAt": "mock",
+  "fields": {
+    "test": 'data',
+  },
+  "id": "mock",
+  "updatedAt": "mock"
+}]
+// ----
+// Tests
 describe("Testing transformer default fn", () => {
   test("transformer returns an array if only one item is provided", () => {
     // wrapper fn needed so jest can catch error
-    return transformer({
-      fields: {
-        'test': 'data'
-      }
-    }, (data) => {
+    return transformer(rawData, (data) => {
       return mockTransformer(data)
     }).then(resultData => {
       // assertion
-      expect(resultData).toEqual([{
-        "contentType": "mock",
-        "createdAt": "mock",
-        "fields": {
-          "test": 'data',
-        },
-        "id": "mock",
-        "updatedAt": "mock"
-      }])
+      expect(resultData).toEqual(transformedResult)
     })
+  })
 
+  test("transformer returns an array if an array is provided", () => {
+    // wrapper fn needed so jest can catch error
+    return transformer([{
+      fields: {
+        'test': 'data'
+      }
+    }], (data) => {
+      return mockTransformer(data)
+    }).then(resultData => {
+      // assertion
+      expect(resultData).toEqual(transformedResult)
+    })
+  })
+
+  test("transformer removes null values from results", () => {
+    // wrapper fn needed so jest can catch error
+    return transformer([{
+      fields: {
+        'test': 'data'
+      }
+    }, null], (data) => {
+      return mockTransformer(data)
+    }).then(resultData => {
+      // assertion
+      expect(resultData).toEqual(transformedResult)
+    })
   })
 })
