@@ -5,7 +5,7 @@ import { transformedDataInterface } from '../../types/transformer'
 /* ====================================
     transformOrNull
 ==================================== */
-describe("Testing transformOrNull", () => {
+describe("transformer: transformOrNull", () => {
   test("transformOrNull should throw error when missing transformner", () => {
     // wrapper fn needed so jest can catch error
     const catchError = () => {
@@ -67,7 +67,7 @@ describe("Testing transformOrNull", () => {
 /* ====================================
     getField
 ==================================== */
-describe("Testing getField", () => {
+describe("transformer: getField", () => {
   test("getField should throw error if missing data argument", () => {
     // wrapper fn needed so jest can catch error
     const catchError = () => {
@@ -191,7 +191,7 @@ const transformedResult = [{
 }]
 // ----
 // Tests
-describe("Testing transformer default fn", () => {
+describe("transformer: transformer default fn", () => {
   test("transformer returns an array if only one item is provided", () => {
     // wrapper fn needed so jest can catch error
     return transformer(rawData, (data) => {
