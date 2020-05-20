@@ -114,6 +114,10 @@
     "testTimeout": 15000,
     "collectCoverage": true,
     "coverageDirectory": "./tests/unit/coverage",
+    "collectCoverageFrom": [
+      "./app/transformer/*.ts",
+      "./app/services/*.ts"
+    ],
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
     },
