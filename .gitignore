@@ -4,5 +4,6 @@
 /logs
 /.cache
 /tests/integration/test_snaps
+/tests/unit/coverage
 .DS_Store
 __diff_output__
