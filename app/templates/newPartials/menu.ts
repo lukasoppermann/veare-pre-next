@@ -1,4 +1,5 @@
 const { html } = require('@popeindustries/lit-html-server')
+const fs = require('fs')
 
 const menuItems = activePath => html`
   <a href="/" class="Menu__link${activePath === '/home' ? ' is-active' : ''}"><span class="Menu__link-text">Index</span></a>
@@ -8,7 +9,8 @@ const menuItems = activePath => html`
 `
 
 export default (activePath, hideOnLoad: boolean = false) => html`
-  <menu class="Menu GridNew" activePath="${activePath}">
+  <menu class="Menu Grid-32" activePath="${activePath}">
+    <a class="veare-wordmark" href="/home" aria-label="Go to homepage" name="header home link">${fs.readFileSync('./resources/svgs/veare-wordmark.svg')}</a>
     <nav class="Menu__items" style="${hideOnLoad !== false ? 'opacity: 0;' : ''}">
       ${menuItems(activePath)}
     </nav>

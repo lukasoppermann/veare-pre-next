@@ -8,10 +8,28 @@
   margin: 0;
   position: relative;
   background-color: rgb(var(--white-rgb));
+  .veare-wordmark {
+    grid-row: 1;
+    grid-column: 2 / span 2;
+    margin-left: size(-2);
+    @include at_least(desktop) {
+      grid-column: sidebar-left 1 / span 2;
+      margin-left: size(-2);
+    }
+    width: size(10);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    svg {
+      height: size(3);
+      width: size(10);
+    }
+  }
   &.loaded .Menu__items {
     opacity: 1 !important;
   }
   .Menu__items {
+    grid-row: 1;
     margin-right: size(-2);
     transition: opacity 1s .2s ease;
     display: none;
@@ -20,13 +38,13 @@
     }
     align-items: center;
     justify-content: flex-end;
-    grid-column: columns / span 5;
+    grid-column: column -6 / span 4;
     @include at_least(desktop) {
-      grid-column: columns / span 11;
+      grid-column: column -7 / span 5;
     }
-    @include at_least(extra) {
-      grid-column-end: span 12;
-    }
+    // @include at_least(extra) {
+    //   grid-column-end: span 12;
+    // }
     .Menu__link {
       text-decoration: none;
       @include font(sans, bold);

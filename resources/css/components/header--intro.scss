@@ -1,27 +1,55 @@
 .Header--intro {
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto;
   border: none;
-  min-height: calc(100vh - #{size(12)}); // - menu height + gutter
+  // min-height: calc(100vh - #{size(12)}); // - menu height + gutter
+  padding-bottom: size(4);
 
   /* ====================================
     Info Boxes
   ==================================== */
   .Header--intro__info {
     position: relative;
-    grid-row: 1;
-    grid-column-end: span 3;
     z-index: 1;
+    grid-column: columns;
+    max-width: 360px;
     &:nth-child(1) {
-      grid-column-start: columns;
+      grid-row: 2;
     }
     &:nth-child(2) {
-      grid-column-start: column 4;
+      grid-row: 3;
     }
     &:nth-child(3) {
-      grid-column-start: column 7;
+      grid-row: 4;
+    }
+    @include at_least(tablet) {
+      grid-column-end: span 2;
+      &:nth-child(1) {
+        grid-row: 1;
+        grid-column-start: columns;
+      }
+      &:nth-child(2) {
+        grid-row: 1;
+        grid-column-start: column 3;
+      }
+      &:nth-child(3) {
+        grid-row: 1;
+        grid-column-start: column 5;
+      }
+    }
+    @include at_least(desktop) {
+      grid-column-end: span 3;
+      &:nth-child(2) {
+        grid-column-start: column 4;
+      }
+      &:nth-child(3) {
+        grid-column-start: column 7;
+      }
     }
     h5 {
-      margin-top: size(5);
+      margin-top: size(3);
+      @include at_least(desktop) {
+        margin-top: size(5);
+      }
       @include font(mono, bold);
       @include type-scale(sm);
       text-transform: uppercase;
@@ -59,9 +87,10 @@
     Background
   ==================================== */
   .Header__background {
-    grid-row: 1 / 4;
+    grid-row: 1 / 5;
     grid-column: full-width;
     width: calc(100% + #{size(6)}); // + 1.5 * gutter
+    height: calc(100% + #{size(4)});
     margin-left: size(-3); // .75 * gutter
     @include at_least(1600px) {
       width: calc(100% + #{size(8)}); // + 2 * gutter
@@ -79,24 +108,37 @@
   ==================================== */
   .Header--intro__headline {
     display: flex;
-    margin-top: size(14);
     position: relative;
     z-index: 10;
     justify-content: flex-start;
     align-items: flex-start;
     box-sizing: border-box;
     fill: rgb(var(--black-rgb));
-    grid-row: 2;
-    grid-column: sidebar-left 1 / span 9;
-    @include max-width('s') {
-      grid-column: column 1 / span 6;
-      // grid-row: row 5 / span 4;
-      margin: 0 var(--hs-m);
+    grid-row: 1;
+    grid-column: columns;
+    margin-top: size(4);
+    padding-bottom: size(5);
+    &::before {
+      @include pseudo();
+      width: size(10);
+      bottom: 0;
+      background-color: rgb(var(--veare-orange-rgb));
+      height: size(1);
     }
-    @include max-width('xs') {
-      grid-column: columns;
-      // grid-row: row 4 / span 4;
+    @include at_least(tablet) {
+      grid-row: 4;
     }
+    // grid-column: sidebar-left 1 / span 9;
+    //     margin-top: size(14);
+    // @include max-width('s') {
+    //   grid-column: column 1 / span 6;
+    //   // grid-row: row 5 / span 4;
+    //   margin: 0 var(--hs-m);
+    // }
+    // @include max-width('xs') {
+    //   grid-column: columns;
+    //   // grid-row: row 4 / span 4;
+    // }
     svg {
       height: 100%;
       width: 100%;
