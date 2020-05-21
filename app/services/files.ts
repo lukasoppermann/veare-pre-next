@@ -1,16 +1,7 @@
+import { revFilesInterface } from '../../types/revFiles'
 const fs = require('fs')
 // get revisioned files in object
-const getRevFiles = (): {
-  css: {
-    [key: string]: string
-  },
-  js: {
-    [key: string]: string
-  },
-  media: {
-    [key: string]: string
-  }
-} => {
+const getRevFiles = (): revFilesInterface => {
   // get revisioned files
   const revFiles = JSON.parse(fs.readFileSync('public/rev-manifest.json', 'utf8'))
   // create files structure
@@ -29,17 +20,7 @@ const getRevFiles = (): {
 // set revisionedFiles
 let revisionedFiles = getRevFiles()
 
-module.exports = (refresh: boolean = false): {
-  css: {
-    [key: string]: string
-  },
-  js: {
-    [key: string]: string
-  },
-  media: {
-    [key: string]: string
-  }
-} => {
+module.exports = (refresh: boolean = false): revFilesInterface => {
   // if refresh is true, refresh revisioned files
   if (refresh !== false) {
     revisionedFiles = getRevFiles()
