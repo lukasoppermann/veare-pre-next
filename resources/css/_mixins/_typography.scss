@@ -1,0 +1,25 @@
+/*
+  Get a value from the typographic scale for your font
+ */
+@mixin type-scale($size, $lineHeightFactor: null) {
+  font-size: var(--ts-size-#{$size});
+  @if $lineHeightFactor == null {
+    line-height: calc(var(--ts-size-#{$size}) * var(--ts-line-height-#{$size}));
+  }
+  @elseif {
+    line-height: calc(var(--ts-size-#{$size}) * #{$lineHeightFactor});
+  }
+}
+
+/*
+  Get font family
+ */
+@mixin font($type: sans, $weight: regular, $style: normal) {
+  @if $weight == italic {
+    $weight: regular;
+    $style: italic;
+  }
+  font-family: var(--font-#{$type});
+  font-weight: var(--font-#{$type}-weight-#{$weight});
+  font-style: var(--font-#{$type}-style-#{$style});
+}

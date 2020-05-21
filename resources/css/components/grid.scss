@@ -13,7 +13,6 @@
 .Grid {
   width: 100%;
   display: grid;
-  grid-template-rows: auto;
   grid-auto-rows: auto;
   grid-template-columns:
     [full-bleed-start]
