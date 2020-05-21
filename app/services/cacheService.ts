@@ -49,7 +49,6 @@ const memoryCacheWrapper = (): cacheServiceInterface => {
   return cache
 }
 
-// if (env !== 'development')
 // keep original on production
 let usedCache = memoryCache
 
