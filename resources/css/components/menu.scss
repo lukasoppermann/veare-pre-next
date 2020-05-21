@@ -87,7 +87,7 @@
 }
 .Menu__overlay {
   pointer-events: none;
-  width: size(8);
+  width: 100%;
   height: size(8);
   position: fixed;
   top: 0;
@@ -211,13 +211,11 @@
     font-size: 0.1px;
     cursor: pointer;
     overflow: hidden;
-    position: absolute;
-    top: 0;
-    right: 0;
     z-index: 100;
     pointer-events: all;
-    width: size(6);
-    height: size(6);
+    grid-column: column -2 / span 1;
+    width: calc(100% + #{size(4)});
+    height: size(8);
     transition: fill .3s ease;
     &::before,
     &::after {

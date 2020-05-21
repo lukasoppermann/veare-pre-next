@@ -15,7 +15,7 @@ export default (activePath, hideOnLoad: boolean = false) => html`
       ${menuItems(activePath)}
     </nav>
   </menu>
-  <menu class="Menu__overlay GridNew">
+  <menu class="Menu__overlay Grid-32">
     <a class="Menu__icon"></a>
     <nav class="Menu__items" style="display: none;">
       ${menuItems(activePath)}
