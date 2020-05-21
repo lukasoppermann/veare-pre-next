@@ -8,5 +8,4 @@ describe("blockTransformer", () => {
       expect(resultData).toStrictEqual([block.transformed])
     })
   })
-
 })

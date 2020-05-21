@@ -19,7 +19,12 @@ const flatCacheWrapper = (): cacheServiceInterface => {
     return true
   }
   // cache get
-  cache.get = key => cache.data.getKey(key)
+  cache.get = key => cache._data.getKey(key)
+  // cache delete
+  cache.delete = key => {
+    cache._data.removeKey(key)
+    cache._data.save()
+  }
   // return cache
   return cache
 }
@@ -35,7 +40,11 @@ const memoryCacheWrapper = (): cacheServiceInterface => {
   }
   // cache get
   cache.get = key => memoryCache.get(key)
-
+  // cache delete
+  cache.delete = key => {
+    flatCacheForOffline.delete(key)
+    memoryCache.del(key)
+  }
   // return cache
   return cache
 }
@@ -55,3 +64,7 @@ if (env === 'development') {
 }
 
 export default () => usedCache
+export const __testing = {
+  flatCacheWrapper: flatCacheWrapper,
+  memoryCacheWrapper: memoryCacheWrapper
+}

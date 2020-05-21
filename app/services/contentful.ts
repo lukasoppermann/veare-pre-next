@@ -1,4 +1,5 @@
 import cache from './cacheService'
+import client from './client'
 import { transformedDataInterface } from '../../types/transformer'
 // transformer
 import articleTransformer from '../transformer/articleTransformer'
@@ -22,8 +23,6 @@ const transformerFunctions = {
   picture: pictureTransformer,
   project: projectTransformer
 }
-// utils
-const client = require('./client')
 
 export default async () => {
   // get all entries
