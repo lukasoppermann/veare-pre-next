@@ -2,6 +2,10 @@
   grid-template-rows: auto 1fr auto;
   border: none;
   min-height: calc(100vh - #{size(12)}); // - menu height + gutter
+
+  /* ====================================
+    Info Boxes
+  ==================================== */
   .Header--intro__info {
     position: relative;
     grid-row: 1;
@@ -29,13 +33,20 @@
       color: rgba(var(--black-rgba-65));
     }
   }
+
+  /* ====================================
+    Picture Lukas
+  ==================================== */
   .Header__Picture--Lukas-Oppermann {
+    display: flex;
+    align-items: center;
     opacity: 0;
     animation: 4s var(--easeOutQuint) 1.75s forwards fadeIn;
     position: relative;
     z-index: 5;
     overflow: hidden;
     grid-column: column 8 / span 5;
+    grid-row: 1 / -1;
     @include max-width('s') {
       grid-column: column 4 / span 5;
     }
@@ -43,17 +54,29 @@
       display: none;
     }
   }
+
+  /* ====================================
+    Background
+  ==================================== */
   .Header__background {
-    grid-column: full-width;
     grid-row: 1 / 4;
-    width: calc(100% + #{size(8)}); // + 2 * gutter
-    margin-left: size(-4); // 1 * gutter
+    grid-column: full-width;
+    width: calc(100% + #{size(6)}); // + 1.5 * gutter
+    margin-left: size(-3); // .75 * gutter
+    @include at_least(1600px) {
+      width: calc(100% + #{size(8)}); // + 2 * gutter
+      margin-left: size(-4); // 1 * gutter
+    }
     background-color: rgb(var(--sand-grey-rgb));
     --origin-start: right;
     animation: .75s var(--easeInOutQuint) forwards .5s blockFill;
     transform: scaleX(0);
     z-index: 0;
   }
+
+  /* ====================================
+    Headline (svg)
+  ==================================== */
   .Header--intro__headline {
     display: flex;
     margin-top: size(14);
@@ -80,9 +103,6 @@
       path {
         fill: rgb(var(--black-rgb));
       }
-      // flex: 1;
-      // flex-basis: 100%;
-      // z-index: 10;
     }
     #interaction {
       animation: var(--animation-appear);
@@ -110,6 +130,10 @@
       animation: .5s var(--easeInOutQuint) 1.35s forwards blockFill;
     }
   }
+
+  /* ====================================
+    Bottom Info
+  ==================================== */
   .Header--intro__slogan {
     opacity: 0;
     animation: 1.5s var(--easeOutQuint) 1.5s forwards fadeSlideIn;
@@ -117,6 +141,16 @@
     grid-column: sidebar-left 1 / span 3;
     font-size: var(--size-xl);
     grid-row: 3;
+    padding-top: size(2);
+    margin-top: size(2);
+    margin-bottom: size(8);
+    &::before {
+      @include pseudo();
+      width: size(10);
+      top: 0;
+      background-color: rgb(var(--veare-orange-rgb));
+      height: size(1);
+    }
     @include max-width('l') {
       font-size: var(--size-l);
     }
@@ -135,34 +169,33 @@
     font-weight: 400;
     color: rgb(var(--black-rgb));
     line-height: 130%;
-    margin: 0;
   }
   .Header--intro__services {
-    display: none;
     opacity: 0;
     animation: 1.5s var(--easeOutQuint) 1.75s forwards fadeSlideIn;
     font-family: var(--font-source-sans);
     font-weight: normal;
     position: relative;
     z-index: 10;
-    // grid-row: row 10 / span 2;
-    grid-column: column 2 / span 3;
-    @include max-width(1300) {
-      grid-column: column 4 / span 3;
-    }
-    @include max-width('s') {
-      grid-column: column 5 / span 3;
-    }
-    @include max-width('xs') {
-      grid-column: columns;
-      padding-left: var(--hs-m);
-      font-size: var(--size-xl);
-      // grid-row: row 11 / span 2;
-    }
+    grid-column: column 4 / span 3;
+    grid-row: 3;
+    padding-top: size(2);
+    margin-top: size(2);
+    margin-bottom: size(8);
+    // @include max-width(1300) {
+    //   grid-column: column 4 / span 3;
+    // }
+    // @include max-width('s') {
+    //   grid-column: column 5 / span 3;
+    // }
+    // @include max-width('xs') {
+    //   grid-column: columns;
+    //   padding-left: var(--hs-m);
+    //   font-size: var(--size-xl);
+    // }
   }
   .Header--intro__roles {
-    display: none;
-    // display: flex;
+    display: flex;
     flex-direction: column;
     max-width: 100%;
     font-family: var(--font-noto-serif);
@@ -181,7 +214,6 @@
     padding: 0;
   }
   .Header--intro__services__description {
-    display: none;
     position: absolute;
     top: calc(-1 * var(--size-l));
     color: rgba(var(--black-rgba-50));
@@ -194,8 +226,7 @@
     }
   }
   h2.Header--intro__services__veare {
-    display: none;
-    // display: inline;
+    display: inline;
     color: rgba(var(--black-rgba-50));
     font-size: var(--size-m) !important;
     font-weight: var(--font-source-sans-regular);

@@ -31,11 +31,11 @@ export default html`
       Creative Direction
     </h1>
   </div>
-  <!-- <figure class="Header__Picture--Lukas-Oppermann">
+  <figure class="Header__Picture--Lukas-Oppermann">
     <picture>
       <img src="/${cache().get('files').media['media/lukas-oppermann@2x.png']}" alt="Lukas Oppermann" loading="lazy"/>
     </picture>
-  </figure> -->
+  </figure>
   <div class="Header__background"></div>
 </header>
 `
