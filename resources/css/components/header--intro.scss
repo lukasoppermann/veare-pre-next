@@ -1,89 +1,164 @@
 .Header--intro {
+  --max-grid-rows: 7;
+  grid-template-rows: auto;
   border: none;
+  // min-height: calc(100vh - #{size(12)}); // - menu height + gutter
+  padding-bottom: size(4);
+
+  /* ====================================
+    Info Boxes
+  ==================================== */
+  .Header--intro__info {
+    --fadeSlideIn-translateY: 10%;
+    opacity: 0;
+    position: relative;
+    z-index: 2;
+    grid-column: columns;
+    max-width: 360px;
+    &:nth-child(1) {
+      animation: 1.25s var(--easeOutQuint) 1s forwards fadeSlideIn;
+      grid-row: 2;
+    }
+    &:nth-child(2) {
+      animation: 1.25s var(--easeOutQuint) 1.25s forwards fadeSlideIn;
+      grid-row: 3;
+    }
+    &:nth-child(3) {
+      animation: 1.25s var(--easeOutQuint) 1.5s forwards fadeSlideIn;
+      grid-row: 4;
+    }
+    @include at_least(tablet) {
+      grid-column-end: span 2;
+      &:nth-child(1) {
+        grid-row: 1;
+        grid-column-start: columns;
+      }
+      &:nth-child(2) {
+        grid-row: 1;
+        grid-column-start: column 3;
+      }
+      &:nth-child(3) {
+        grid-row: 1;
+        grid-column-start: column 5;
+      }
+    }
+    @include at_least(desktop) {
+      grid-column-end: span 4;
+      &:nth-child(2) {
+        grid-column-start: column 5;
+      }
+      &:nth-child(3) {
+        grid-column-start: column 9;
+      }
+    }
+    @include at_least(large) {
+      grid-column-end: span 3;
+      &:nth-child(2) {
+        grid-column-start: column 4;
+      }
+      &:nth-child(3) {
+        grid-column-start: column 7;
+      }
+    }
+    h5 {
+      margin-top: size(3);
+      @include at_least(desktop) {
+        margin-top: size(5);
+      }
+      @include font(mono, bold);
+      @include type-scale(sm);
+      text-transform: uppercase;
+    }
+    p {
+      margin-top: size(1);
+      @include font(sans);
+      @include type-scale(sm);
+      color: rgba(var(--black-rgba-65));
+    }
+  }
+
+  /* ====================================
+    Picture Lukas
+  ==================================== */
   .Header__Picture--Lukas-Oppermann {
+    display: none;
+    align-items: center;
     opacity: 0;
     animation: 4s var(--easeOutQuint) 1.75s forwards fadeIn;
     position: relative;
-    z-index: 5;
+    z-index: 1;
     overflow: hidden;
-    grid-row: row 1 / -2;
-    grid-column: column 5 / span 5;
-    @include max-width('s') {
-      grid-column: column 4 / span 5;
-    }
-    @include max-width('xs') {
-      display: none;
+    grid-column: column 8 / span 5;
+    grid-row: 1 / var(--max-grid-rows);
+    @include at_least(desktop) {
+      display: flex;
     }
   }
+
+  /* ====================================
+    Background
+  ==================================== */
   .Header__background {
+    grid-row: 1 / var(--max-grid-rows);
     grid-column: full-width;
-    grid-row: row 1 / -2;
+    width: calc(100% + #{size(6)}); // + 1.5 * gutter
+    height: calc(100% + #{size(4)});
+    margin-left: size(-3); // .75 * gutter
+    @include at_least(1600px) {
+      width: calc(100% + #{size(8)}); // + 2 * gutter
+      margin-left: size(-4); // 1 * gutter
+    }
     background-color: rgb(var(--sand-grey-rgb));
     --origin-start: right;
     animation: .75s var(--easeInOutQuint) forwards .5s blockFill;
     transform: scaleX(0);
-    z-index: 1;
+    z-index: 0;
   }
-  .Logo {
-    grid-column: margin-left / span 2;
-    grid-row: row 1 / span 3;
-    @include max-width('l') {
-      grid-column: sidebar-left / span 2;
-    }
-    @include max-width('s') {
-      grid-column: column 1 / span 2;
-    }
-    @include max-width('xs') {
-      grid-row: row 2 / span 2;
-    }
-    margin: var(--column-gap) 0 0 var(--column-gap);
-    z-index: 100;
-    max-height: 150px;
-    svg {
-      width: auto;
-      height: 100%;
-    }
-    #veareLogoLine {
-      stroke-dasharray: 340px;
-      stroke-dashoffset: 340px;
-      animation: 1.25s ease forwards .25s strokeDashoffset;
-    }
-    #veareLogoShadowLine {
-      stroke-dasharray: 30px;
-      stroke-dashoffset: 30px;
-      animation: .25s ease forwards .75s strokeDashoffset;
-    }
-  }
+
+  /* ====================================
+    Headline (svg)
+  ==================================== */
   .Header--intro__headline {
-    margin: 0;
+    --fadeSlideIn-translateY: 0%;
+    --fadeSlideIn-translateX: 5%;
+    opacity: 0;
+    animation: 1.5s var(--easeOutQuint) 1s forwards fadeSlideIn;
+    display: flex;
     position: relative;
     z-index: 10;
-    display: flex;
     justify-content: flex-start;
-    align-items: flex-end;
-    max-height: calc(var(--max-row-height) * 4 + var(--baseline) * 3);
+    align-items: flex-start;
     box-sizing: border-box;
     fill: rgb(var(--black-rgb));
-    grid-row: row 5 / span 4;
-    grid-column: sidebar-left 1 / span 6;
-    @include max-width(1300) {
-      grid-column: sidebar-left 2 / span 6;
+    grid-row: 1;
+    grid-column: columns;
+    margin-top: size(4);
+    padding-bottom: size(5);
+    &::before {
+      @include pseudo();
+      width: size(10);
+      bottom: 0;
+      background-color: rgb(var(--veare-orange-rgb));
+      height: size(1);
     }
-    @include max-width('s') {
-      grid-column: column 1 / span 6;
-      grid-row: row 5 / span 4;
-      margin: 0 var(--hs-m);
+    @include at_least(tablet) {
+      &::before {
+        display: none;
+      }
+      grid-row: 4;
+      margin-top: size(8);
     }
-    @include max-width('xs') {
-      grid-column: columns;
-      grid-row: row 4 / span 4;
+    @include at_least(desktop) {
+      grid-row: 2;
+      grid-column: columns / 11;
+      margin-top: size(12);
     }
     svg {
-      flex: 1;
-      flex-basis: 100%;
-      max-height: 100%;
-      max-width: 100%;
-      z-index: 10;
+      height: 100%;
+      width: 100%;
+      path {
+        fill: rgb(var(--black-rgb));
+      }
     }
     #interaction {
       animation: var(--animation-appear);
@@ -111,94 +186,76 @@
       animation: .5s var(--easeInOutQuint) 1.35s forwards blockFill;
     }
   }
+
+  /* ====================================
+    Bottom Info
+  ==================================== */
   .Header--intro__slogan {
+    display: block;
+    position: relative;
     opacity: 0;
     animation: 1.5s var(--easeOutQuint) 1.5s forwards fadeSlideIn;
     z-index: 10;
-    grid-column: sidebar-left 1 / span 3;
-    font-size: var(--size-xl);
-    grid-row: row 10 / span 2;
-    @include max-width(1300) {
-      grid-column: sidebar-left 2 / span 3;
-    }
-    @include max-width('l') {
-      font-size: var(--size-l);
-    }
-    @include max-width('s') {
-      grid-column: column / span 3;
-      padding-left: var(--hs-m);
-    }
-    @include max-width('xs') {
-      max-width: 350px;
-      grid-column: columns;
-      padding-left: var(--hs-m);
-      font-size: var(--size-xl);
-      grid-row: row 9 / span 2;
-    }
-    font-family: var(--font-source-sans);
-    font-weight: 400;
+    @include type-scale(md);
+    @include font(serif, italic);
+    padding-top: size(2);
+    margin-top: size(6);
     color: rgb(var(--black-rgb));
-    line-height: 130%;
-    margin: 0;
-  }
-  .Header--intro__services {
-    opacity: 0;
-    animation: 1.5s var(--easeOutQuint) 1.75s forwards fadeSlideIn;
-    font-family: var(--font-source-sans);
-    font-weight: normal;
-    position: relative;
-    z-index: 10;
-    grid-row: row 10 / span 2;
-    grid-column: column 2 / span 3;
-    @include max-width(1300) {
-      grid-column: column 4 / span 3;
+    grid-column: columns;
+    grid-row: 5;
+    &::before {
+      @include pseudo();
+      width: 100%;
+      height: 1px;
+      background-color: rgba(var(--black-rgba-15));
+      top: 0;
     }
-    @include max-width('s') {
-      grid-column: column 5 / span 3;
+    @include at_least(landscape) {
+      max-width: 360px;
+      @include type-scale(lg);
     }
-    @include max-width('xs') {
-      grid-column: columns;
-      padding-left: var(--hs-m);
-      font-size: var(--size-xl);
-      grid-row: row 11 / span 2;
+    @include at_least(tablet) {
+      &::before {
+        width: size(14);
+        top: size(-1);
+        background-color: rgb(var(--veare-orange-rgb));
+        height: size(1.5);
+      }
+      border-top: none;
+      grid-column: columns / span 3;
+      margin-bottom: size(4);
+      margin-top: size(4);
+    }
+    @include at_least(desktop) {
+      grid-row: 3;
+      grid-column: columns / span 4;
     }
   }
   .Header--intro__roles {
+    opacity: 0;
+    animation: 1.5s var(--easeOutQuint) 1.75s forwards fadeSlideIn;
     display: flex;
     flex-direction: column;
+    position: relative;
+    z-index: 10;
+    padding-top: size(2);
     max-width: 100%;
-    font-family: var(--font-noto-serif);
-    font-style: italic;
-    font-weight: 400;
+    @include font(sans);
+    @include type-scale(md);
     color: rgb(var(--black-rgb));
-    font-size: var(--size-xl);
-    @include max-width('l') {
-      font-size: var(--size-l);
-    }
-    @include max-width('s') {
-      font-size: calc(var(--size-l) - 1px);
-    }
     line-height: 130%;
-    margin: 0;
-    padding: 0;
-  }
-  .Header--intro__services__description {
-    position: absolute;
-    top: calc(-1 * var(--size-l));
-    color: rgba(var(--black-rgba-50));
-    font-size: var(--size-m);
-    line-height: 100% !important;
-    @include max-width('xs') {
-      position: relative;
-      top: auto;
-      margin-bottom: 4px;
+    grid-column: columns;
+    grid-row: 6;
+    @include at_least(tablet) {
+      grid-column: column 4 / span 3;
+      grid-row: 5;
+      @include type-scale(lg);
+      margin-bottom: size(4);
+      margin-top: size(4);
     }
-  }
-  h2.Header--intro__services__veare {
-    display: inline;
-    color: rgba(var(--black-rgba-50));
-    font-size: var(--size-m) !important;
-    font-weight: var(--font-source-sans-regular);
-    line-height: 100% !important;
+    @include at_least(desktop) {
+      grid-row: 3;
+      grid-column: column 5 / span 4;
+    }
   }
 }

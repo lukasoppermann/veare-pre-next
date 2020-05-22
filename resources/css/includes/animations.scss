@@ -41,11 +41,11 @@
 }
 @keyframes fadeSlideIn {
   0% {
-    transform: translateY(50%);
+    transform: translate(var(--fadeSlideIn-translateX, 0%), var(--fadeSlideIn-translateY, 50%));
     opacity: 0;
   }
   100% {
-    transform: translateY(0);
+    transform: translate(0, 0);
     opacity: 1;
   }
 }
