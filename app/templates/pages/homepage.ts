@@ -1,6 +1,6 @@
 import layout from '../layout'
 import footer from '../newPartials/footer'
-import headerIntro from '../partials/header_intro'
+import headerIntro from '../newPartials/header_intro'
 import { templateInterface } from '../../../types/template'
 
 const { html } = require('@popeindustries/lit-html-server')

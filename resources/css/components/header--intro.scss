@@ -151,7 +151,7 @@
     @include at_least(desktop) {
       grid-row: 2;
       grid-column: columns / 11;
-      margin-top: size(15);
+      margin-top: size(12);
     }
     svg {
       height: 100%;
@@ -223,7 +223,7 @@
       }
       border-top: none;
       grid-column: columns / span 3;
-      margin-bottom: size(6);
+      margin-bottom: size(4);
       margin-top: size(4);
     }
     @include at_least(desktop) {
@@ -250,7 +250,7 @@
       grid-column: column 4 / span 3;
       grid-row: 5;
       @include type-scale(lg);
-      margin-bottom: size(6);
+      margin-bottom: size(4);
       margin-top: size(4);
     }
     @include at_least(desktop) {
