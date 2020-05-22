@@ -29,6 +29,10 @@ const getRevFiles = (revFilesParam:filesObjectInterface|undefined = undefined): 
 // set revisionedFiles
 let revisionedFiles = getRevFiles()
 
+const getFile = file => {
+  // revisionedFiles
+}
+
 module.exports = (refresh: boolean = false): revFilesInterface => {
   // if refresh is true, refresh revisioned files
   if (refresh !== false) {
