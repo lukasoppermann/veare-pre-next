@@ -207,14 +207,19 @@
     transition: width .5s .3s ease, height .5s .3s ease, transform .5s .3s ease, opacity .5s .5s ease;
   }
   .Menu__icon {
+    display: block;
     color: transparent;
     font-size: 0.1px;
     cursor: pointer;
     overflow: hidden;
     z-index: 100;
     pointer-events: all;
-    grid-column: column -2 / span 1;
-    width: calc(100% + #{size(4)});
+    position: absolute;
+    right: 0;
+    top: 0;
+    // grid-column: column -2 / span 1;
+    // width: calc(100% + #{size(4)});
+    width: size(8);
     height: size(8);
     transition: fill .3s ease;
     &::before,
