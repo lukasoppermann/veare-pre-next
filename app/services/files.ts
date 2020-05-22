@@ -1,9 +1,18 @@
-import { revFilesInterface } from '../../types/revFiles'
+import { revFilesInterface, filesObjectInterface } from '../../types/revFiles'
 const fs = require('fs')
+
+const retriveRevFiles = (revFiles:filesObjectInterface|undefined): filesObjectInterface => {
+  if (revFiles === undefined) {
+    revFiles = <filesObjectInterface>JSON.parse(fs.readFileSync('public/rev-manifest.json', 'utf8'))
+  }
+  // return revFiles as filesObjectInterface
+  return revFiles
+}
+
 // get revisioned files in object
-const getRevFiles = (): revFilesInterface => {
+const getRevFiles = (revFilesParam:filesObjectInterface|undefined = undefined): revFilesInterface => {
   // get revisioned files
-  const revFiles = JSON.parse(fs.readFileSync('public/rev-manifest.json', 'utf8'))
+  const revFiles = retriveRevFiles(revFilesParam)
   // create files structure
   const files = {
     css: {},
@@ -25,7 +34,6 @@ module.exports = (refresh: boolean = false): revFilesInterface => {
   if (refresh !== false) {
     revisionedFiles = getRevFiles()
   }
-
   // return files
   return revisionedFiles
 }
