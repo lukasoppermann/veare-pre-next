@@ -54,6 +54,7 @@
       position: relative;
       display: inline-block;
       padding: 0 size(2);
+      cursor: pointer;
       &::after {
         @include pseudo();
         width: 4px;
