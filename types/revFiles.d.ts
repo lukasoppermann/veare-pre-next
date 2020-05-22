@@ -9,3 +9,7 @@ export interface revFilesInterface {
     [key: string]: string
   }
 }
+
+export interface filesObjectInterface {
+    [key: string]: string
+}
