@@ -19,8 +19,6 @@ describe("revisionedFiles", () => {
       }).css['css/style.css']).toBe('css/style-f99403de4da7b8dfd5d2a7f48e0d5edd.css')
       expect(revisionedFiles().css['css/style.css']).toBe('css/style-f99403de4da7b8dfd5d2a7f48e0d5edd.css')
   })
-
-  test.todo("test if caching & refreshing files works")
 })
 
 describe("revFile", () => {

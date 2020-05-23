@@ -121,3 +121,8 @@ export default async (richText: richTextDocument) => {
     anchors: anchors
   }
 }
+
+export const __testing = {
+  convertHyperlinks: convertHyperlinks,
+  convertEmbeddedEntries: convertEmbeddedEntries
+}
