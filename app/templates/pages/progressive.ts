@@ -1,4 +1,4 @@
-import files, { revFile, embedFile } from '../../services/files'
+import { revisionedFiles, revFile, embedFile } from '../../services/files'
 import meta from '../meta'
 import headerIntro from '../newPartials/header_intro'
 import menu from '../newPartials/menu'
@@ -42,8 +42,8 @@ export default () => html`
   <script>
     ${unsafeHTML(embedFile(path.resolve(__dirname, '../../../public/' + revFile('js/appNamespace.js'))))}
     app.files = {
-      js: ${unsafeHTML(JSON.stringify(files().js))},
-      css: ${unsafeHTML(JSON.stringify(files().css))}
+      js: ${unsafeHTML(JSON.stringify(revisionedFiles().js))},
+      css: ${unsafeHTML(JSON.stringify(revisionedFiles().css))}
     }
     ${unsafeHTML(embedFile(path.resolve(__dirname, '../../../public/' + revFile('js/frontend.js'))))}
   </script>

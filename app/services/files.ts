@@ -1,25 +1,10 @@
 import { revFilesInterface, filesObjectInterface } from '../../types/revFiles'
 const fs = require('fs')
 // variable to store revisioned files
-const revisionedFiles: revFilesInterface = {
+const revisionedFilesObject: revFilesInterface = {
   css: {},
   js: {},
   media: {}
-}
-/**
- * getRevFiles
- * @description get revisioned files in object
- * @param  revFilesParam   [description]
- * @return                 [description]
- */
-// get revisioned files in object
-const indexRevFiles = (revFilesParam:filesObjectInterface|undefined = undefined): void => {
-  // get revisioned files
-  const revFiles = revFilesParam !== undefined ? revFilesParam : <filesObjectInterface>JSON.parse(fs.readFileSync('public/rev-manifest.json', 'utf8'))
-  // add revisioned files to structure
-  Object.keys(revFiles).map(key => {
-    revisionedFiles[key.slice(0, key.indexOf('/'))][key] = revFiles[key]
-  })
 }
 /**
  * get revisioned file object
@@ -27,13 +12,16 @@ const indexRevFiles = (revFilesParam:filesObjectInterface|undefined = undefined)
  * @param  refresh [description]
  * @return         [description]
  */
-export default (refresh: boolean = false): revFilesInterface => {
+export const revisionedFiles = (revFiles:filesObjectInterface|null = null): revFilesInterface => {
   // if refresh is true, refresh revisioned files
-  if (refresh !== false) {
-    indexRevFiles()
+  if (revFiles !== null) {
+    // add revisioned files to structure
+    Object.keys(revFiles).map(key => {
+      revisionedFilesObject[key.slice(0, key.indexOf('/'))][key] = revFiles[key]
+    })
   }
   // return files
-  return revisionedFiles
+  return revisionedFilesObject
 }
 /**
  * revFile
@@ -45,9 +33,9 @@ export const revFile = (filename: string): string|null => {
   // get folder from beginning of filename
   const folder = filename.split('/')[0]
   // check if folder and filename exist in object
-  if (Object.prototype.hasOwnProperty.call(revisionedFiles, folder) && Object.prototype.hasOwnProperty.call(revisionedFiles[folder], filename)) {
+  if (Object.prototype.hasOwnProperty.call(revisionedFilesObject, folder) && Object.prototype.hasOwnProperty.call(revisionedFilesObject[folder], filename)) {
     // return revisioned filename string
-    return revisionedFiles[folder][filename]
+    return revisionedFilesObject[folder][filename]
   }
   // return null
   return null
@@ -71,9 +59,3 @@ export const embedFile = (filename: string): string|void => {
     return fs.readFileSync(filename)
   }
 }
-
-export const __testing = {
-  indexRevFiles: indexRevFiles
-}
-// set revisionedFiles
-indexRevFiles()

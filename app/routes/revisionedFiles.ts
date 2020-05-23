@@ -1,9 +1,9 @@
 // get revisioned files
-import files from '../services/files'
+import { revisionedFiles } from '../services/files'
 
 module.exports = (_req, res) => {
   res.json({
-    css: files().css,
-    js: files().js
+    css: revisionedFiles().css,
+    js: revisionedFiles().js
   })
 }
