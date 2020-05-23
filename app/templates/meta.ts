@@ -1,5 +1,5 @@
+import { revFile } from '../services/files'
 const { html } = require('@popeindustries/lit-html-server')
-const files = require('../services/files')()
 const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
 export default (title?: string, og?: any) =>
   html`<title>vea.re Lead UI/UX Design ${title || '& Creative Direction'}</title>
@@ -14,11 +14,11 @@ export default (title?: string, og?: any) =>
   <meta name="theme-color" content="rgb(240, 170, 30)" />
   <meta property="og:locale" content="en_US" />
   ${repeat(og || [], (ogProperty) => html`<meta property="${ogProperty.property}" content="${ogProperty.value}" />\n`)}
-  <link rel="icon" href="/${files.media['media/veare-icon-32.png']}" type="image/png" />
-  <link rel="icon" href="/${files.media['media/veare-icon-32.png']}" type="image/png" sizes="32x32" />
-  <link rel="icon" href="/${files.media['media/veare-icon-96.png']}" type="image/png" sizes="96x96" />
-  <link rel="apple-touch-icon" href="/${files.media['media/veare-icon-120.png']}">
-  <link rel="apple-touch-icon" sizes="152x152" href="/${files.media['media/veare-icon-152.png']}">
-  <link rel="apple-touch-icon" sizes="167x167" href="/${files.media['media/veare-icon-168.png']}">
-  <link rel="apple-touch-icon" sizes="180x180" href="/${files.media['media/veare-icon-180.png']}">
+  <link rel="icon" href="/${revFile('media/veare-icon-32.png')}" type="image/png" />
+  <link rel="icon" href="/${revFile('media/veare-icon-32.png')}" type="image/png" sizes="32x32" />
+  <link rel="icon" href="/${revFile('media/veare-icon-96.png')}" type="image/png" sizes="96x96" />
+  <link rel="apple-touch-icon" href="/${revFile('media/veare-icon-120.png')}">
+  <link rel="apple-touch-icon" sizes="152x152" href="/${revFile('media/veare-icon-152.png')}">
+  <link rel="apple-touch-icon" sizes="167x167" href="/${revFile('media/veare-icon-168.png')}">
+  <link rel="apple-touch-icon" sizes="180x180" href="/${revFile('media/veare-icon-180.png')}">
   <link rel="manifest" href="/manifest.json" />`

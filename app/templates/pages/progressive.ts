@@ -1,12 +1,10 @@
-import cacheService from '../../services/cacheService'
+import files, { revFile, embedFile } from '../../services/files'
 import meta from '../meta'
 import headerIntro from '../newPartials/header_intro'
 import menu from '../newPartials/menu'
 const { html } = require('@popeindustries/lit-html-server')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
-const fs = require('fs')
 const path = require('path')
-const cache = cacheService()
 
 export default () => html`
 <!DOCTYPE html>
@@ -39,15 +37,15 @@ export default () => html`
     }
   ])}
   <style>
-    ${unsafeHTML(fs.readFileSync(path.resolve(__dirname, '../../../public/' + cache.get('files').css['css/slim.css'])))}
+    ${unsafeHTML(embedFile(path.resolve(__dirname, '../../../public/' + revFile('css/slim.css'))))}
   </style>
   <script>
-    ${unsafeHTML(fs.readFileSync(path.resolve(__dirname, '../../../public/' + cache.get('files').js['js/appNamespace.js'])))}
+    ${unsafeHTML(embedFile(path.resolve(__dirname, '../../../public/' + revFile('js/appNamespace.js'))))}
     app.files = {
-      js: ${unsafeHTML(JSON.stringify(cache.get('files').js))},
-      css: ${unsafeHTML(JSON.stringify(cache.get('files').css))}
+      js: ${unsafeHTML(JSON.stringify(files().js))},
+      css: ${unsafeHTML(JSON.stringify(files().css))}
     }
-    ${unsafeHTML(fs.readFileSync(path.resolve(__dirname, '../../../public/' + cache.get('files').js['js/frontend.js'])))}
+    ${unsafeHTML(embedFile(path.resolve(__dirname, '../../../public/' + revFile('js/frontend.js'))))}
   </script>
   </head>
   <body>

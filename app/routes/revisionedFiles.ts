@@ -1,9 +1,9 @@
 // get revisioned files
-import cache from '../services/cacheService'
+import files from '../services/files'
 
 module.exports = (_req, res) => {
   res.json({
-    css: cache().get('files').css,
-    js: cache().get('files').js
+    css: files().css,
+    js: files().js
   })
 }

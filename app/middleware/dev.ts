@@ -1,12 +1,12 @@
-import cache from '../services/cacheService'
+// import cache from '../services/cacheService'
+import files from '../services/files'
 const express = require('express')
 const router = express.Router()
-const revFiles = require('../services/files')
 
 router.use((_req, _res, next) => {
   console.debug('Running dev middleware')
-  // add files to cache
-  cache().put('files', revFiles(true))
+  // update files
+  files(true)
   next()
 })
 

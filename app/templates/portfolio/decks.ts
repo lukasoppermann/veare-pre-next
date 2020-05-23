@@ -1,11 +1,10 @@
-import cacheService from '../../services/cacheService'
-const cache = cacheService()
+import { revFile } from '../../services/files'
 const { html } = require('@popeindustries/lit-html-server')
 
 export default html`
 <div class="Grid portfolio-item--old">
   <section class="stage type-full" style="background-color: rgb(246,245,243)">
-    <img class="full-width image" src="/${cache.get('files').media['media/decks-stage.jpg']}" alt="Decks" />
+    <img class="full-width image" src="/${revFile('media/decks-stage.jpg')}" alt="Decks" />
   </section>
   <section>
     <a class="portfolio-link-back" href="/home#portfolio">← Back</a>
@@ -28,7 +27,7 @@ export default html`
     </div>
   </section>
   <section class="portfolio-item--old--image">
-    <img class="u-full-width" src="/${cache.get('files').media['media/decks-mobile-file-interface.jpg']}" alt="interface concept for file system on mobile and desktop.">
+    <img class="u-full-width" src="/${revFile('media/decks-mobile-file-interface.jpg')}" alt="interface concept for file system on mobile and desktop.">
     <div class="portfolio-item--old--image__description">
       <p>Tag search and file attributes on the mobile version of decks.</p>
     </div>

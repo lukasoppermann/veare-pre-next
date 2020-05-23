@@ -1,8 +1,8 @@
 import articlePreview from './article_preview'
 import cache from '../../services/cacheService'
+import { embedFile } from '../../services/files'
 const { html } = require('@popeindustries/lit-html-server')
 const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
-const fs = require('fs')
 // get latest 4 articles
 const articles = cache().get('article').slice(0, 4)
 
@@ -24,7 +24,7 @@ export default html`
       <h6 class="Footer__contact__say-hi">Schedule a call or just say&nbsp;hi&nbsp;<span class="smilie">👋</span></h6>
       <a class="Footer__contact__email" target="_blank" rel="noopener" href="mailto:lukas@vea.re?subject=Hey 👋,%20what&apos;s%20up?&body=Great%20to%20hear%20from%20you,%20how%20can%20I%20help?">lukas@vea.re</a>
 
-      <a class="Footer__contact__cv" target="_blank" rel="noopener" href="https://drive.google.com/open?id=10K9F9o0hokq4iPAbF5mseKJn_yflt19k">${fs.readFileSync('./resources/svgs/file-download.svg')}Download my full CV (pdf)</a>
+      <a class="Footer__contact__cv" target="_blank" rel="noopener" href="https://drive.google.com/open?id=10K9F9o0hokq4iPAbF5mseKJn_yflt19k">${embedFile('./resources/svgs/file-download.svg')}Download my full CV (pdf)</a>
     </div>
   </section>
   <section class="Footer__connect Grid-32">
@@ -48,7 +48,7 @@ export default html`
   </section>
   <section class="Footer__legal Grid-32">
     <hr />
-    <a class="veare-wordmark" href="/home" aria-label="Go to homepage" name="footer home link">${fs.readFileSync('./resources/svgs/veare-wordmark.svg')}</a>
+    <a class="veare-wordmark" href="/home" aria-label="Go to homepage" name="footer home link">${embedFile('./resources/svgs/veare-wordmark.svg')}</a>
     <div class="Footer__legal__info">
       <a href="/">Index</a>
       <a href="/blog">Writing</a>

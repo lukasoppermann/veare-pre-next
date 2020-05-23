@@ -1,11 +1,10 @@
-import cacheService from '../../services/cacheService'
-const cache = cacheService()
+import { revFile } from '../../services/files'
 const { html } = require('@popeindustries/lit-html-server')
 
 export default html`
 <div class="Grid portfolio-item--old">
   <section class="stage type-full" style="background-color: rgb(246,245,243)">
-    <img class="full-width image" src="/${cache.get('files').media['media/open-everything-stage.jpg']}" alt="Open Everything" />
+    <img class="full-width image" src="/${revFile('media/open-everything-stage.jpg')}" alt="Open Everything" />
   </section>
   <section>
     <a class="portfolio-link-back" href="/home#portfolio">← Back</a>
@@ -28,8 +27,8 @@ export default html`
     </div>
   </section>
   <section class="portfolio-item--old--two-images">
-    <img src="/${cache.get('files').media['media/open-everything-magazine-print-design-cover.jpg']}" />
-    <img src="/${cache.get('files').media['media/open-everything-magazine-print-design-content.jpg']}" />
+    <img src="/${revFile('media/open-everything-magazine-print-design-cover.jpg')}" />
+    <img src="/${revFile('media/open-everything-magazine-print-design-content.jpg')}" />
   </section>
 </div>
 `

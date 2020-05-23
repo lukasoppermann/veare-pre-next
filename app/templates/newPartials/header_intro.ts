@@ -1,5 +1,5 @@
+import { embedFile } from '../../services/files'
 const { html } = require('@popeindustries/lit-html-server')
-const fs = require('fs')
 
 export default html`
 <header class="Header--intro Grid-32">
@@ -17,7 +17,7 @@ export default html`
     <p>— my approach of building products based on validated user needs & measured impact.</p>
   </div>
   <figure class="Header--intro__headline">
-    ${fs.readFileSync('./resources/svgs/solving-problems-is-my-passion.svg')}
+    ${embedFile('./resources/svgs/solving-problems-is-my-passion.svg')}
   </figure>
   <h2 class="Header--intro__slogan">Designing experiences with a focus on usability</h2>
   <h1 class="Header--intro__roles">
