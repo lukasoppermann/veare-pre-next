@@ -9,6 +9,11 @@
   position: relative;
   background-color: rgb(var(--white-rgb));
   .veare-wordmark {
+    opacity: 0;
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-delay: .25s;
+    animation-fill-mode: forwards;
     grid-row: 1;
     grid-column: 2 / span 2;
     margin-left: size(-2);

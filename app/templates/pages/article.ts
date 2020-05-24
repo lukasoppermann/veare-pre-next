@@ -1,9 +1,9 @@
+// get correct filesnames after appending unique string
+import { revFile } from '../../services/files'
 import layout from '../layout'
 import { templateInterface } from '../../../types/template'
 const { html } = require('@popeindustries/lit-html-server')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
-// get correct filesnames after appending unique string
-const files = require('../../services/files')
 // export template
 export default (article, req): templateInterface => layout(html`
   <div class="Article Grid">
@@ -31,6 +31,6 @@ export default (article, req): templateInterface => layout(html`
 `, {
   bodyClass: 'Page-Type__Article',
   head: html`
-  <link type="text/css" href="/${files().css['css/blog.css']}" rel="stylesheet" />
+  <link type="text/css" href="/${revFile('css/blog.css')}" rel="stylesheet" />
   `
 }, req)

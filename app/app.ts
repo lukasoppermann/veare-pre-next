@@ -1,11 +1,12 @@
-import cache from './services/cacheService'
+import { revisionedFiles } from './services/files'
 const express = require('express')
+const fs = require('fs')
 const app = express()
 
 export default async () => {
   // ---------------------------------- //
-  // Add files to cache
-  cache().put('files', require('./services/files')())
+  // load files into revisioned files
+  revisionedFiles(JSON.parse(fs.readFileSync('public/rev-manifest.json', 'utf8')))
   // works with caching
   app.set('view cache', false) // should be enabled by default if process.env.NODE_ENV === "production"
   // ---------------------------------- //

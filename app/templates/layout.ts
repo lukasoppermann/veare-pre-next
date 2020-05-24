@@ -1,11 +1,9 @@
 import meta from './meta'
+import { revFile, embedFile } from '../services/files'
 import footer from './newPartials/footer'
 import menu from './newPartials/menu'
 const { html } = require('@popeindustries/lit-html-server')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
-// get correct filesnames after appending unique string
-const files = require('../services/files')
-const fs = require('fs')
 //
 export default (content: string, options: { [prop: string]: any; } = {}, req) => {
   if (req.query.partial === 'true') {
@@ -16,11 +14,11 @@ export default (content: string, options: { [prop: string]: any; } = {}, req) =>
     <html lang="en" prefix="og: http://ogp.me/ns#">
     <head>
       ${meta(options.title || undefined, options.og || [])}
-      <link type="text/css" href="/${files().css['css/litApp.css']}" rel="stylesheet" />
-      <link type="text/css" href="/${files().css['css/app.css']}" rel="stylesheet" />
+      <link type="text/css" href="/${revFile('css/litApp.css')}" rel="stylesheet" />
+      <link type="text/css" href="/${revFile('css/app.css')}" rel="stylesheet" />
       <link rel="preconnect" href="http://images.ctfassets.net">
       <link rel="preconnect" href="https://fonts.googleapis.com">
-      <script>${unsafeHTML(fs.readFileSync('./public/' + files().js['js/index.js']))}
+      <script>${unsafeHTML(embedFile('./public/' + revFile('js/index.js')))}
       </script>
       ${options.head || ''}
     </head>

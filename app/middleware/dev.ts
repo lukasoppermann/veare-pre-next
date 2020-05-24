@@ -1,12 +1,12 @@
-import cache from '../services/cacheService'
+import { revisionedFiles } from '../services/files'
 const express = require('express')
+const fs = require('fs')
 const router = express.Router()
-const revFiles = require('../services/files')
 
 router.use((_req, _res, next) => {
   console.debug('Running dev middleware')
-  // add files to cache
-  cache().put('files', revFiles(true))
+  // update files
+  revisionedFiles(JSON.parse(fs.readFileSync('public/rev-manifest.json', 'utf8')))
   next()
 })
 
