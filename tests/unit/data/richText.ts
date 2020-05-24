@@ -45,7 +45,7 @@ export default {
               environment: { sys: { id: 'master', type: 'Link', linkType: 'Environment' } }
             },
             fields: {
-              cmsTitle: { 'en-US': 'About + Resume Hello Block' },
+              cmsTitle: { 'en-US': 'About + Resume Hello' },
               content: { 'en-US': {
                   nodeType: 'document',
                   data: {},
@@ -59,7 +59,7 @@ export default {
                           value: 'Hello',
                           data: {},
                           marks: []
-                        },
+                        }
                       ]
                     }
                   ]
@@ -70,8 +70,25 @@ export default {
         },
         content: [],
         nodeType: 'embedded-entry-block'
+      },
+      {
+        content: [
+          {
+            marks: [],
+            nodeType: 'text',
+            value: '',
+            data: {},
+          },
+        ],
+        data: {},
+        nodeType: 'hr'
       }
     ]
   },
-  transformed: "<p>Hello<a name=\"design\">Design</a></p>"
+  transformed: `<p>Hello<a name="design">Design</a></p>
+
+<div class="Block Grid ">
+  <p>Hello</p>
+</div>
+<div class="Rule--horizontal"><hr></div>`
 } as transformTestData

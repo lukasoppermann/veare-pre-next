@@ -1,4 +1,4 @@
-import { __testing } from '../../app/services/convertRichText' // convertRichText,
+import convertRichText, { __testing } from '../../app/services/convertRichText'
 import blockTransformer from '../../app/transformer/blockTransformer'
 import blockTemplate from '../../app/templates/newPartials/block'
 import richText from './data/richText'
@@ -58,5 +58,10 @@ describe("convertEmbeddedEntries", () => {
 })
 
 describe("richText default export service", () => {
-  test.todo("testing richText service")
+  test('convert richText', () => {
+    return convertRichText(richText.raw).then(result => {
+      expect(result.anchors).toStrictEqual(["design"])
+      expect(result.html).toStrictEqual(richText.transformed)
+    })
+  })
 })

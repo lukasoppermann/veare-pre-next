@@ -1,5 +1,6 @@
 import { transformTestData } from './transformTestData'
-import richText from './richText'
+// import richText from './richText'
+
 export default {
   raw: {
     sys: {
@@ -16,7 +17,40 @@ export default {
       cmsTitle: { 'en-US': 'About + Resume' },
       slug: { 'en-US': 'about-resume' },
       classes: {'en-US': [ 'Grid-32', 'Index__resume' ] },
-      content: { 'en-US': richText.raw }
+      content: {
+        'en-US': {
+          nodeType: 'document',
+          data: {},
+          content: [
+            {
+              nodeType: 'paragraph',
+              data: {},
+              content: [
+                {
+                  nodeType: 'text',
+                  value: 'Hello',
+                  data: {},
+                  marks: []
+                },
+                {
+                  nodeType: 'hyperlink',
+                  data: {
+                    uri: 'name=#design'
+                  },
+                  content: [
+                    {
+                      data: {},
+                      marks: [],
+                      value: 'Design',
+                      nodeType: 'text'
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
     }
   },
   transformed: {
@@ -27,7 +61,7 @@ export default {
     fields: {
       slug: 'about-resume',
       classes: 'Grid-32 Index__resume',
-      content: richText.transformed
+      content: "<p>Hello<a name=\"design\">Design</a></p>"
     }
   }
 } as transformTestData
