@@ -62,7 +62,7 @@ const convertHyperlinks = (node, next, anchors) => {
  * @param  embeddedEntriesFn Object with functions
  * @return                   [description]
  */
-const convertEmbeddedEntries = async (richText: richTextDocument, templates: {[key: string]: Function}): Promise<Array<any>> => {
+const convertEmbeddedEntries = async (richText: richTextDocument, templates: {[key: string]: Function}, transformerFunctions: {[key: string]: Function}): Promise<Array<any>> => {
   // return if richText is empty
   if (richText === null) {
     return []
@@ -86,7 +86,7 @@ const convertEmbeddedEntries = async (richText: richTextDocument, templates: {[k
             html: await renderToString(templates[node.data.target.sys.contentType.sys.id](transfomedData[0].fields))
           }
         } catch (e) {
-          console.error(`🚨 \x1b[31mError: Trying to convert and render of type "${node.data.target.sys.contentType.sys.id}"\x1b[0m`)
+          console.error(`🚨 \x1b[31mError: Trying to convert and render embedded entry of type "${node.data.target.sys.contentType.sys.id}"\x1b[0m \n Error: ${e}`)
         }
       })
   )
@@ -98,7 +98,7 @@ const convertEmbeddedEntries = async (richText: richTextDocument, templates: {[k
  */
 export default async (richText: richTextDocument) => {
   // get all converted embedded-entries
-  const embedded = await convertEmbeddedEntries(richText, templates)
+  const embedded = await convertEmbeddedEntries(richText, templates, transformerFunctions)
   // reset anchor variable
   const anchors: Array<String> = []
   // convert richText as HTML

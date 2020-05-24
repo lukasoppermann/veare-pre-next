@@ -1,4 +1,7 @@
 import { __testing } from '../../app/services/convertRichText' // convertRichText,
+import blockTransformer from '../../app/transformer/blockTransformer'
+import blockTemplate from '../../app/templates/newPartials/block'
+import richText from './data/richText'
 
 describe("convertHyperlinks", () => {
   const anchors: Array<String> = []
@@ -8,12 +11,6 @@ describe("convertHyperlinks", () => {
       uri: 'http://vea.re'
     }
   }
-  // const nodeMockLink = {
-  //   content: 'link text',
-  //   data: {
-  //     uri: 'http://vea.re'
-  //   }
-  // }
   const nextMock = value => value;
   test('test normal hyperlink transformation', () => {
     expect(anchors.length).toBe(0)
@@ -37,9 +34,29 @@ describe("convertHyperlinks", () => {
 })
 
 describe("convertEmbeddedEntries", () => {
-  test.todo("testing convertEmbeddedEntries")
+  const mockTransformers = {
+    block: blockTransformer
+  }
+  const mockTemplates = {
+    block: blockTemplate
+  }
+
+  test('null provieded as richText', () => {
+    //@ts-ignore
+    __testing.convertEmbeddedEntries(null).then(result => {
+      expect(result).toStrictEqual([])
+    })
+  })
+
+  test('valid richText conversion', () => {
+    return __testing.convertEmbeddedEntries(richText.raw, mockTemplates, mockTransformers).then(result => {
+       expect(result[0].html.trim()).toStrictEqual(`<div class="Block Grid ">
+  <p>Hello</p>
+</div>`)
+    })
+  })
 })
 
-describe("richText service", () => {
+describe("richText default export service", () => {
   test.todo("testing richText service")
 })
