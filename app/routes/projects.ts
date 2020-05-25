@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
   // get slug
   const slug = req.path.replace(/^\/|\/$/g, '')
   // return one project
-  const content = cache().get('project')
+  const content = cache.get('project')
   // get this page
   const projectContent = content.find((item: any) => item.fields.slug === slug)
   // redirect home if param is neither slug nor alias

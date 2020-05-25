@@ -4,7 +4,7 @@ import { embedFile } from '../../services/files'
 const { html } = require('@popeindustries/lit-html-server')
 const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
 // get latest 4 articles
-const articles = cache().get('article').slice(0, 4)
+const articles = cache.get('article').slice(0, 4)
 
 export default html`
 <footer class="Footer">

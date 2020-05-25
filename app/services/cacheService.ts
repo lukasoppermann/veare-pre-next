@@ -4,11 +4,10 @@ const memoryCache = require('memory-cache')
 const flatCache = require('flat-cache')
 const path = require('path')
 
-const env = process.env.NODE_ENV || 'development'
-const online = require('dns-sync').resolve(config.host[env])
-
 const flatCacheWrapper = (): cacheServiceInterface => {
-  const cache = {} as any
+  const cache = {
+    cacheType: 'flatCache'
+  } as any
   // store data
   cache._data = flatCache.load('offlineDbCache', path.resolve('./.cache'))
   // define access methods
@@ -30,7 +29,9 @@ const flatCacheWrapper = (): cacheServiceInterface => {
 }
 
 const memoryCacheWrapper = (): cacheServiceInterface => {
-  const cache = {} as any
+  const cache = {
+    cacheType: 'memoryCache'
+  } as any
   const flatCacheForOffline = flatCacheWrapper()
   // define access methods
   // cache PUT
@@ -49,21 +50,31 @@ const memoryCacheWrapper = (): cacheServiceInterface => {
   return cache
 }
 
-// keep original on production
-let usedCache = memoryCache
-
-if (env === 'development') {
+// get the right cachre
+const getUsedCache = (env:string, online:string|null): cacheServiceInterface => {
+  // keep original on production
+  // production or testing
+  if (env !== 'development') {
+    return memoryCacheWrapper()
+  }
+  // development
   if (online === null) {
     console.info(`"${config.host[env]}" not available, using file cache…`)
-    usedCache = flatCacheWrapper()
+    return flatCacheWrapper()
   } else {
     console.info(`Database available at "${config.host[env]}", refreshing file cache…`)
-    usedCache = memoryCacheWrapper()
+    return memoryCacheWrapper()
   }
 }
 
-export default () => usedCache
+// get environment and online state
+/* istanbul ignore next */
+const env = process.env.NODE_ENV || 'development'
+const online = require('dns-sync').resolve(config.host[env])
+
+export default getUsedCache(env, online)
 export const __testing = {
   flatCacheWrapper: flatCacheWrapper,
-  memoryCacheWrapper: memoryCacheWrapper
+  memoryCacheWrapper: memoryCacheWrapper,
+  getUsedCache: getUsedCache
 }

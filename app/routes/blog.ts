@@ -4,10 +4,10 @@ import cache from '../services/cacheService'
 const { renderToString } = require('@popeindustries/lit-html-server')
 
 module.exports = {
-  index: async (req, res) => res.send(await renderToString(blog(cache().get('article'), req))),
+  index: async (req, res) => res.send(await renderToString(blog(cache.get('article'), req))),
   get: async (req, res) => {
     // get articles from cache
-    const content = cache().get('article')
+    const content = cache.get('article')
     // get individual article
     const articleContent = content.find((item: any) => item.fields.slug === req.params[0]).fields
     // if content exists
