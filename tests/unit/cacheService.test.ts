@@ -56,3 +56,39 @@ describe("memoryCacheWrapper", () => {
     expect(memoryCache.get('memoryTest')).toBe(null)
   })
 })
+
+describe("getUsedCache", () => {
+  beforeEach(() => {
+    // disable console.info during test
+    jest.spyOn(console, 'info').mockImplementation(() => {})
+  })
+
+  const getUsedCache = __testing.getUsedCache
+
+  test("getUsedCache in production", () => {
+    const cache = getUsedCache('production', null)
+    // assertion
+    expect(cache.cacheType).toBe("memoryCache")
+    expect(cache).toHaveProperty("get")
+    expect(cache).toHaveProperty("put")
+    expect(cache).toHaveProperty("delete")
+  })
+
+  test("getUsedCache in development offline", () => {
+    const cache = getUsedCache('development', null)
+    // assertion
+    expect(cache.cacheType).toBe("flatCache")
+    expect(cache).toHaveProperty("get")
+    expect(cache).toHaveProperty("put")
+    expect(cache).toHaveProperty("delete")
+  })
+
+  test("getUsedCache in development online", () => {
+    const cache = getUsedCache('development', "123.12.23")
+    // assertion
+    expect(cache.cacheType).toBe("memoryCache")
+    expect(cache).toHaveProperty("get")
+    expect(cache).toHaveProperty("put")
+    expect(cache).toHaveProperty("delete")
+  })
+})

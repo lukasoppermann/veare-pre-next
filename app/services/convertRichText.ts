@@ -86,6 +86,7 @@ const convertEmbeddedEntries = async (richText: richTextDocument, templates: {[k
             html: await renderToString(templates[node.data.target.sys.contentType.sys.id](transfomedData[0].fields))
           }
         } catch (e) {
+          /* istanbul ignore next */
           console.error(`🚨 \x1b[31mError: Trying to convert and render embedded entry of type "${node.data.target.sys.contentType.sys.id}"\x1b[0m \n Error: ${e}`)
         }
       })
@@ -108,6 +109,7 @@ export default async (richText: richTextDocument) => {
         try {
           return embedded.find((entry: any) => entry.id === node.data.target.sys.id).html
         } catch (e) {
+          /* istanbul ignore next */
           console.error('🚨 ERROR: ', node.data.target, e)
         }
       },

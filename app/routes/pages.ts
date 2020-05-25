@@ -15,7 +15,7 @@ module.exports = async (req, res, template: string = 'page') => {
   // get slug
   const slug = req.path.replace(/^\/|\/$/g, '')
   // get content
-  const content = cache().get('page')
+  const content = cache.get('page')
   // get this page
   const pageContent = content.find((item: any) => item.fields.slug === slug).fields
   // return final page

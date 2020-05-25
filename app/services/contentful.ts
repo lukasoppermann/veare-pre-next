@@ -41,7 +41,7 @@ export default async () => {
   content.article = transformArticles(content.article)
   // cache content
   return Object.keys(content).forEach(contentType => {
-    cache().put(contentType, content[contentType])
+    cache.put(contentType, content[contentType])
   })
 }
 
