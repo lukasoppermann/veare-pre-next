@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import config from '../config/contentful'
 const contentful = require('contentful')
 

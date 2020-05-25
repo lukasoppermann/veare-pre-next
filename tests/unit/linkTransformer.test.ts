@@ -9,4 +9,17 @@ describe("linkTransformer", () => {
     })
   })
 
+  test("testing linkTransformer with targetBlank false", () => {
+    // prepare test
+    const linkRaw = link.raw
+    linkRaw.fields.targetBlank['en-US'] = false;
+    const linkTransformed = link.transformed
+    linkTransformed.fields.target = "_self";
+    linkTransformed.fields.rel = "";
+    // assertion
+    return linkTransformer(linkRaw).then(resultData => {
+      expect(resultData).toStrictEqual([linkTransformed])
+    })
+  })
+
 })
