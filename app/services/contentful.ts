@@ -45,7 +45,7 @@ export default async () => {
   const content = sortContentByType(contentTypes, entries)
   // transform Articles
   /* istanbul ignore next */
-  content.article = sortByField(content.article, getFieldRawDateAsIso)
+  content.article = sortByFieldDesc(content.article, getFieldRawDateAsIso)
   // cache content
   return Object.keys(content).forEach(contentType => {
     cache.put(contentType, content[contentType])
@@ -80,7 +80,7 @@ const transformEntries = async entries => {
   return Promise.all(transformedEntries).then((entries: Array<transformedDataInterface>) => entries.map(entry => entry[0]))
 }
 
-const sortByField = (entries, getFieldToCompare) => {
+const sortByFieldDesc = (entries, getFieldToCompare) => {
   return entries.sort((a, b) => {
     a = getFieldToCompare(a)
     b = getFieldToCompare(b)
@@ -95,6 +95,6 @@ const sortByField = (entries, getFieldToCompare) => {
 }
 
 export const __testing = {
-  sortByField: sortByField,
+  sortByFieldDesc: sortByFieldDesc,
   getFieldRawDateAsIso: getFieldRawDateAsIso
 }
