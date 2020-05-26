@@ -25,7 +25,7 @@ const transformerFunctions = {
 }
 
 const getFieldRawDateAsIso = data => new Date(data.fields.rawdate)
-
+/* istanbul ignore next */
 export default async () => {
   // get all entries
   /* istanbul ignore next */
