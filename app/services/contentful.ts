@@ -24,22 +24,30 @@ const transformerFunctions = {
   project: projectTransformer
 }
 
+const getFieldRawDateAsIso = data => new Date(data.fields.rawdate)
+/* istanbul ignore next */
 export default async () => {
   // get all entries
+  /* istanbul ignore next */
   const entriesPromise = client.getEntries({
     limit: 1000,
     order: 'sys.createdAt',
     locale: '*'
-  }).then(entries => transformEntries(entries))
+  }).then(entries => transformEntries(entries, transformerFunctions))
   // get all content types
+  /* istanbul ignore next */
   const contentTypesPromise = client.getContentTypes()
   // await content
+  /* istanbul ignore next */
   const [entries, contentTypes] = await Promise.all([entriesPromise, contentTypesPromise])
   // sort content
+  /* istanbul ignore next */
   const content = sortContentByType(contentTypes, entries)
   // transform Articles
-  content.article = transformArticles(content.article)
+  /* istanbul ignore next */
+  content.article = sortByFieldDesc(content.article, getFieldRawDateAsIso)
   // cache content
+  /* istanbul ignore next */
   return Object.keys(content).forEach(contentType => {
     cache.put(contentType, content[contentType])
   })
@@ -66,23 +74,30 @@ const sortContentByType = (contentTypes, entries): {
   return content
 }
 
-const transformEntries = async entries => {
+const transformEntries = async (entries, transformerFunctions) => {
   // transform all entries
   const transformedEntries: [transformedDataInterface] = entries.items.map(entry => transformerFunctions[entry.sys.contentType.sys.id](entry))
   // await all transformations and make sure to extract the items from the array
   return Promise.all(transformedEntries).then((entries: Array<transformedDataInterface>) => entries.map(entry => entry[0]))
 }
 
-const transformArticles = articles => {
-  return articles.sort((a, b) => {
-    const dateA = new Date(a.fields.rawdate)
-    const dateB = new Date(b.fields.rawdate)
-    if (dateA < dateB) {
+const sortByFieldDesc = (entries, getFieldToCompare) => {
+  return entries.sort((a, b) => {
+    a = getFieldToCompare(a)
+    b = getFieldToCompare(b)
+    if (a < b) {
       return 1
     }
-    if (dateA > dateB) {
+    if (a > b) {
       return -1
     }
     return 0
   })
+}
+
+export const __testing = {
+  sortByFieldDesc: sortByFieldDesc,
+  getFieldRawDateAsIso: getFieldRawDateAsIso,
+  sortContentByType: sortContentByType,
+  transformEntries: transformEntries
 }
