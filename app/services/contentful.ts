@@ -33,7 +33,7 @@ export default async () => {
     limit: 1000,
     order: 'sys.createdAt',
     locale: '*'
-  }).then(entries => transformEntries(entries))
+  }).then(entries => transformEntries(entries, transformerFunctions))
   // get all content types
   /* istanbul ignore next */
   const contentTypesPromise = client.getContentTypes()
@@ -47,6 +47,7 @@ export default async () => {
   /* istanbul ignore next */
   content.article = sortByFieldDesc(content.article, getFieldRawDateAsIso)
   // cache content
+  /* istanbul ignore next */
   return Object.keys(content).forEach(contentType => {
     cache.put(contentType, content[contentType])
   })
@@ -73,7 +74,7 @@ const sortContentByType = (contentTypes, entries): {
   return content
 }
 
-const transformEntries = async entries => {
+const transformEntries = async (entries, transformerFunctions) => {
   // transform all entries
   const transformedEntries: [transformedDataInterface] = entries.items.map(entry => transformerFunctions[entry.sys.contentType.sys.id](entry))
   // await all transformations and make sure to extract the items from the array
@@ -96,5 +97,7 @@ const sortByFieldDesc = (entries, getFieldToCompare) => {
 
 export const __testing = {
   sortByFieldDesc: sortByFieldDesc,
-  getFieldRawDateAsIso: getFieldRawDateAsIso
+  getFieldRawDateAsIso: getFieldRawDateAsIso,
+  sortContentByType: sortContentByType,
+  transformEntries: transformEntries
 }
