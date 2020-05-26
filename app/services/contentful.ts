@@ -24,6 +24,8 @@ const transformerFunctions = {
   project: projectTransformer
 }
 
+const getFieldDate = data => new Date(data.fields.rawdate)
+
 export default async () => {
   // get all entries
   const entriesPromise = client.getEntries({
@@ -38,7 +40,7 @@ export default async () => {
   // sort content
   const content = sortContentByType(contentTypes, entries)
   // transform Articles
-  content.article = transformArticles(content.article)
+  content.article = sortByField(content.article, getFieldDate)
   // cache content
   return Object.keys(content).forEach(contentType => {
     cache.put(contentType, content[contentType])
@@ -73,14 +75,14 @@ const transformEntries = async entries => {
   return Promise.all(transformedEntries).then((entries: Array<transformedDataInterface>) => entries.map(entry => entry[0]))
 }
 
-const transformArticles = articles => {
-  return articles.sort((a, b) => {
-    const dateA = new Date(a.fields.rawdate)
-    const dateB = new Date(b.fields.rawdate)
-    if (dateA < dateB) {
+const sortByField = (entries, getFieldToCompare) => {
+  return entries.sort((a, b) => {
+    a = getFieldToCompare(a)
+    b = getFieldToCompare(b)
+    if (a < b) {
       return 1
     }
-    if (dateA > dateB) {
+    if (a > b) {
       return -1
     }
     return 0
