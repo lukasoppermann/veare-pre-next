@@ -40,8 +40,14 @@ describe("sortByFieldDesc", () => {
     const entries = [
     {
       fields: {
-        title: "Post 2",
+        title: "Post 3",
         rawdate: "2018-03-03"
+      }
+    },
+    {
+      fields: {
+        title: "Post 2",
+        rawdate: "2018-01-02"
       }
     },
     {
@@ -51,12 +57,14 @@ describe("sortByFieldDesc", () => {
       }
     }]
     // prep test
-    expect(entries[0].fields.title).toBe("Post 2")
-    expect(entries[1].fields.title).toBe("Post 1")
+    expect(entries[0].fields.title).toBe("Post 3")
+    expect(entries[1].fields.title).toBe("Post 2")
+    expect(entries[2].fields.title).toBe("Post 1")
     // run function
     const sorted = __testing.sortByFieldDesc(entries, __testing.getFieldRawDateAsIso)
     // assertion
-    expect(sorted[0].fields.title).toBe("Post 2")
-    expect(sorted[1].fields.title).toBe("Post 1")
+    expect(sorted[0].fields.title).toBe("Post 3")
+    expect(sorted[1].fields.title).toBe("Post 2")
+    expect(sorted[2].fields.title).toBe("Post 1")
   })
 })
