@@ -1,9 +1,5 @@
 .Page__privacy {
-  @include smaller_than(desktop) {
-    padding: 0 size(2);
-  }
-}
-.privacy section:first-of-type {
+  @extend .Grid;
   padding-top: size(4);
   padding-bottom: size(6);
 }
@@ -14,7 +10,10 @@
   h5,
   p,
   ul {
-    grid-column: columns / span 7;
+    grid-column: columns;
+    @include at_least(large) {
+      grid-column: column 3 / span 8;
+    }
   }
   p {
     color: rgba(var(--black-rgba-80));
@@ -46,6 +45,9 @@
   }
   .boxed-content {
     grid-column: columns;
+    @include at_least(large) {
+      grid-column: column 3 / span 8;
+    }
     box-shadow: inset 2px 0 rgb(var(--black-rgb)), 0 2px rgb(var(--black-rgb));
     padding: 0;
     display: grid;

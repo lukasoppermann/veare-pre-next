@@ -131,7 +131,10 @@ li {
   @media screen and (max-width: 900px) {
     margin-left: 20px;
   }
+  p:first-child {
+    margin-top: 0;
+  }
 }
 li:not(:first-child) {
-  margin-top: size(1);
+  margin-top: size(.5);
 }

@@ -1,8 +1,9 @@
 .Boxed-group {
   display: flex;
   justify-content: space-between;
-  @include max-width('xxs') {
-    flex-direction: column;
+  flex-direction: column;
+  @include at_least(landscape) {
+    flex-direction: row;
   }
   .Boxed-item {
     &:not(.Boxed-group) {

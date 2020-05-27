@@ -9,9 +9,9 @@
 }
 .Picture__Element--background,
 .Picture__Element--background--tilted {
-  padding: size(9);
-  @include max-width('s') {
-    padding: 0;
+  padding: 0;
+  @include at_least(desktop) {
+    padding: size(9);
   }
 }
 .Picture__Element--background--tilted {
@@ -32,7 +32,8 @@
 }
 .Picture__Element--background--tilted::after {
   transform: translateX(-50%) rotate(3deg);
-  @include max-width('s') {
-    display: none;
+  display: none;
+  @include at_least(desktop) {
+    display: block;
   }
 }
