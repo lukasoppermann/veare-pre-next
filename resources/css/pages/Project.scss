@@ -9,7 +9,7 @@
   margin-top: size(9);
 }
 .Project-card {
-  grid-column: sidebar-left 2 / span 7;
+  // grid-column: sidebar-left 2 / span 7;r
   margin-top: size(10);
   position: relative;
   display: flex;
@@ -153,6 +153,112 @@
   @include type-scale(lg);
   @include at_least(desktop) {
     @include type-scale(xxl);
+  }
+}
+
+/* ====================================
+    NEW Projects on Homepage
+==================================== */
+.Projects__cards-container {
+  .Project-excerpt {
+    &:not(:first-child) {
+      margin-top: size(4);
+    }
+    grid-column: full-bleed;
+    .Project-excerpt__title {
+      grid-row: 1;
+      grid-column: column 6 / span 5;
+      z-index: 100;
+      h2 {
+        margin-top: size(1);
+        @include type-scale(hg);
+      }
+    }
+    .Project-excerpt__challenge,
+    .Project-excerpt__solution,
+    .Project-excerpt__results,
+    .Project-excerpt__responsibilities,
+    .Project-excerpt__team {
+      grid-column: column 7 / span 6;
+      h6 {
+        @include font(mono);
+        @include type-scale(sm);
+        margin: 0;
+        margin-left: size(-1);
+        margin-top: size(3);
+      }
+      :not(li) > p {
+        margin-top: size(1);
+        @include type-scale(md);
+      }
+    }
+    .Project-excerpt__challenge {
+      grid-row: 2;
+    }
+    .Project-excerpt__solution {
+      grid-row: 3;
+    }
+    .Project-excerpt__results {
+      grid-row: 4;
+    }
+    .Project-excerpt__responsibilities {
+      grid-row: 5;
+      .Project-excerpt__responsibilities-list {
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(var(--list-row-count), auto);
+        li {
+          list-style: none;
+          margin-top: 0;
+          &::before {
+            @include pseudo(relative);
+            content: "¬ ";
+            content: "→ ";
+            content: "☞ ";
+            content: "✓ ";
+            content: "❑ ";
+            content: "☑︎ ";
+            content: "› ";
+            content: "— ";
+          }
+        }
+      }
+    }
+    .Project-excerpt__case_link {
+      grid-column: column 1 / span 6;
+      grid-row: 5;
+      z-index: 100;
+      justify-self: end;
+      align-self: end;
+      display: inline-block;
+      text-decoration: none;
+      padding: size(1) size(2);
+      margin: size(2);
+      color: rgb(var(--white-rgb));
+      background: rgb(var(--black-rgb));
+    }
+    // ====================================
+    // Image
+    .Project-excerpt__image-container {
+      z-index: 0;
+      grid-row: 1 / 6;
+      background-color: #c2e8e3; // for testing only
+      grid-column: sidebar-left 1 / span 6;
+      overflow: visible;
+      display: flex;
+      align-items: center;
+      padding-top: 0;
+      .Project-excerpt__image {
+        position: relative;
+        width: calc(100% + #{size(9)});
+        height: auto;
+        margin-left: size(-9);
+        img {
+          height: auto;
+        }
+      }
+    }
   }
 }
 
@@ -397,6 +503,16 @@
     PROJECT
 ==================================== */
 .Project .Page {
+  /* ====================================
+      Special Project styling
+  ==================================== */
+  &[slug="/work/copra"] {
+    --project-color: rgb(225, 70, 75);
+  }
+
+  /* ====================================
+      Default Project
+  ==================================== */
   @include smaller_than(desktop) {
     padding: 0 size(2);
   }

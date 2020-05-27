@@ -23,14 +23,15 @@ export default async (data) => {
         year: new Date(getField(data, 'durationStart')).getFullYear(),
         client: getField(data, 'client'),
         challenge: (await richText(getField(data, 'challenge'))).html,
+        solution: (await richText(getField(data, 'solution'))).html,
+        results: (await richText(getField(data, 'results'))).html,
+        responsibilities: getField(data, 'responsibilities', ''),
+        team: (await richText(getField(data, 'team'))).html,
         roleAndTeam: (await richText(getField(data, 'roleAndTeam'))).html,
         header: (await pictureTransformer(getField(data, 'header')))[0],
         previewImage: (await assetTransformer(getField(data, 'previewImage')))[0],
         content: content.html,
-        anchors: content.anchors,
-        variables: getField(data, 'variables', []).reduce(
-          (obj, item) => Object.assign(obj, { [item.key]: item.value }), {}
-        )
+        anchors: content.anchors
       }
     }
   })

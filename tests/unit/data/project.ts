@@ -23,12 +23,15 @@ export default {
       durationEnd: { 'en-US': '2017-08-01' },
       client: { 'en-US': 'Bosch' },
       challenge: { 'en-US': richText.raw },
+      solution: { 'en-US': richText.raw },
+      results: { 'en-US': richText.raw },
+      responsibilities: { 'en-US': ["UI/UX design", "leading the design team"] },
+      team: { 'en-US': richText.raw },
       roleAndTeam: { 'en-US': richText.raw },
       tableOfContent: { 'en-US': true },
       header: { 'en-US': picture.raw },
       previewImage: { 'en-US': asset.raw },
-      content: { 'en-US': richText.raw },
-      variables: { 'en-US': [ { key: 'color', value: '#E1464B', optionalParameter: null } ] }
+      content: { 'en-US': richText.raw }
     }
   },
   transformed: {
@@ -50,9 +53,12 @@ export default {
         "design",
       ],
       challenge: richText.transformed,
+      solution: richText.transformed,
+      results: richText.transformed,
+      responsibilities: ["UI/UX design", "leading the design team"],
+      team: richText.transformed,
       content: richText.transformed,
-      roleAndTeam: richText.transformed,
-      variables: { color: '#E1464B' }
+      roleAndTeam: richText.transformed
     }
   }
 } as transformTestData

@@ -6,12 +6,7 @@ const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsaf
 
 export default (project, req) => {
   return layout(html`
-  <style media="screen">
-    :root{
-      ${project.variables.color !== undefined ? '--project-color:' + project.variables.color + ';' : ''}
-    }
-  </style>
-  <header class="Header Header--project Grid">
+  <header class="Header Header--project Grid Grid--rows">
     <h2 class="Project__title">${project.title}</h2>
     ${picture(project.header.fields, 'eager')}
   </header>
@@ -73,9 +68,3 @@ export default (project, req) => {
     bodyClass: 'Page--work Project'
   }, req)
 }
-// TOC
-// ${repeat(project.chapters, (chapter) => {
-//   if (chapter.fields.slug !== undefined) {
-//     return html`<li class="Toc__chapter"><a class="Toc__chapter__link" href="#${chapter.fields.slug}"><div class="Toc__chapter__title">${chapter.fields.title}</div></a></li>`
-//   }
-// })}
