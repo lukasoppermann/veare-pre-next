@@ -114,7 +114,14 @@ export default async (richText: richTextDocument) => {
         }
       },
       [BLOCKS.HR]: () => '<div class="Rule--horizontal"><hr></div>',
-      [INLINES.HYPERLINK]: (node, next) => convertHyperlinks(node, next, anchors)
+      [INLINES.HYPERLINK]: (node, next) => convertHyperlinks(node, next, anchors),
+      [BLOCKS.PARAGRAPH]: (node, next) => {
+        // @ts-ignore
+        if (node.content[0].value.length > 0) {
+          return `<p>${next(node.content).replace('\n', '<br/>')}</p>`
+        }
+        return ''
+      }
     }
   })
   // return data object

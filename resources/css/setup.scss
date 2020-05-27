@@ -106,6 +106,9 @@ body {
 /* ====================================
   Base Elements
 ==================================== */
+p:empty {
+  display: none; // needed for contentful rich text
+}
 p {
   @include typography-paragraph-sans;
 }
