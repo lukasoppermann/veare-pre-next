@@ -2,14 +2,12 @@ import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
 import { Document as richTextDocument, BLOCKS, INLINES } from '@contentful/rich-text-types'
 // templates
 import block from '../templates/newPartials/block'
-import boxedContentSection from '../templates/newPartials/boxedContent'
 import code from '../templates/newPartials/code'
 import picture from '../templates/newPartials/picture'
 import projectPreview from '../templates/newPartials/projectPreview'
 import link from '../templates/newPartials/link'
 // Transformer
 import blockTransformer from '../transformer/blockTransformer'
-import boxedContentTransformer from '../transformer/boxedContentTransformer'
 import pictureTransformer from '../transformer/pictureTransformer'
 import codeTransformer from '../transformer/codeTransformer'
 import projectTransformer from '../transformer/projectTransformer'
@@ -20,7 +18,6 @@ const { renderToString } = require('@popeindustries/lit-html-server')
 // Transformer functions
 const transformerFunctions = {
   block: blockTransformer,
-  boxedContentSection: boxedContentTransformer,
   project: projectTransformer,
   code: codeTransformer,
   picture: pictureTransformer,
@@ -30,7 +27,6 @@ const transformerFunctions = {
 // templates functions for embeddedEntries
 const templates = {
   block: block,
-  boxedContentSection: boxedContentSection,
   project: projectPreview,
   code: code,
   picture: picture,

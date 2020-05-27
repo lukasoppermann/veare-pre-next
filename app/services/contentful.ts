@@ -5,7 +5,6 @@ import { transformedDataInterface } from '../../types/transformer'
 import articleTransformer from '../transformer/articleTransformer'
 import assetTransformer from '../transformer/assetTransformer'
 import blockTransformer from '../transformer/blockTransformer'
-import boxedContentTransformer from '../transformer/boxedContentTransformer'
 import codeTransformer from '../transformer/codeTransformer'
 import linkTransformer from '../transformer/linkTransformer'
 import pageTransformer from '../transformer/pageTransformer'
@@ -16,7 +15,6 @@ const transformerFunctions = {
   article: articleTransformer,
   asset: assetTransformer,
   block: blockTransformer,
-  boxedContentSection: boxedContentTransformer,
   code: codeTransformer,
   link: linkTransformer,
   page: pageTransformer,
@@ -61,7 +59,6 @@ const sortContentByType = (contentTypes, entries): {
   page?: any[];
   block?: any[];
   code?: any[];
-  boxedContentSection?: any[];
 } => {
   const content = {}
   // get type ids

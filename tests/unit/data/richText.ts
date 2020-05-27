@@ -11,7 +11,7 @@ export default {
         content: [
           {
             nodeType: 'text',
-            value: 'Hello',
+            value: 'Hello\nworld!',
             data: {},
             marks: []
           },
@@ -28,6 +28,18 @@ export default {
                 nodeType: 'text'
               }
             ]
+          }
+        ]
+      },
+      {
+        nodeType: 'paragraph',
+        data: {},
+        content: [
+          {
+            nodeType: 'text',
+            value: '',
+            data: {},
+            marks: []
           }
         ]
       },
@@ -85,7 +97,7 @@ export default {
       }
     ]
   },
-  transformed: `<p>Hello<a name="design">Design</a></p>
+  transformed: `<p>Hello<br/>world!<a name="design">Design</a></p>
 
 <div class="Block Grid ">
   <p>Hello</p>

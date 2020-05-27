@@ -76,7 +76,6 @@ describe("transformEntries", () => {
     article: mockTransformerFn,
     asset: mockTransformerFn,
     block: mockTransformerFn,
-    boxedContentSection: mockTransformerFn,
     code: mockTransformerFn,
     link: mockTransformerFn,
     page: mockTransformerFn,
@@ -103,8 +102,7 @@ describe("sortContentByType", () => {
     'textSection',
     'picture',
     'page',
-    'code',
-    'boxedContentSection'
+    'code'
   ];
 
   test("sortContentByType all correct", () => {
@@ -129,8 +127,7 @@ describe("sortContentByType", () => {
       null,
       { contentType: 'picture', count: 1 },
       { contentType: 'page', count: 1 },
-      { contentType: 'code', count: 1 },
-      null
+      { contentType: 'code', count: 1 }
     ])
   })
 

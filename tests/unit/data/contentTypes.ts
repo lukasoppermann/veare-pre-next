@@ -558,44 +558,6 @@ export default {
           omitted: false
         }
       ]
-    },
-    {
-      sys: {
-        space: {
-          sys: { type: 'Link', linkType: 'Space', id: '5dfliyp93yzg' }
-        },
-        type: 'ContentType',
-        id: 'boxedContentSection',
-        revision: 21,
-        createdAt: '2018-07-28T07:42:15.367Z',
-        updatedAt: '2019-01-01T09:31:45.615Z',
-        environment: {
-          sys: { id: 'master', type: 'Link', linkType: 'Environment' }
-        }
-      },
-      displayField: 'title',
-      name: 'Boxed Content',
-      description: '',
-      fields: [
-        {
-          id: 'title',
-          name: 'CMS Title',
-          type: 'Symbol',
-          localized: false,
-          required: true,
-          disabled: false,
-          omitted: false
-        },
-        {
-          id: 'items',
-          name: 'Items',
-          type: 'Object',
-          localized: false,
-          required: true,
-          disabled: false,
-          omitted: false
-        }
-      ]
     }
   ]
 }
