@@ -10,7 +10,7 @@
   .Picture:nth-of-type(2) {
     grid-column: columns;
     @include min-width('s') {
-      margin-top: calc(var(--baseline) * -15);
+      margin-top: size(-15);
       grid-column: column 4 / span 6;
       order: 4;
     }

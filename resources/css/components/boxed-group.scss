@@ -7,24 +7,24 @@
   .Boxed-item {
     &:not(.Boxed-group) {
       box-shadow: inset 2px 0 rgb(var(--black-rgb)), 0 2px rgb(var(--black-rgb));
-      padding: 0 var(--hs-s) var(--baseline);
+      padding: 0 var(--hs-s) size(1);
       flex-shrink: 0;
       flex-grow: 1;
       flex-basis: 0;
     }
     h5:not(:last-child) {
       @include typography-h6;
-      margin-top: var(--baseline) !important;
+      margin-top: size(1) !important;
       color: rgba(var(--black-rgba-50)) !important;
     }
     p {
-      margin-top: var(--baseline) !important;
+      margin-top: size(1) !important;
       color: rgb(var(--black-rgb)) !important;
     }
   }
 }
 .Boxed-group:not(.Boxed-group--nested) {
-  margin-top: var(--vs-xl);
+  margin-top: size(5);
   box-shadow: 0 2px rgb(var(--black-rgb)), 0 -2px rgb(var(--black-rgb)), inset -2px 0 rgb(var(--black-rgb)), inset 2px 0 rgb(var(--black-rgb));
 }
 .Boxed-group--nested {
@@ -33,7 +33,7 @@
   padding: 0;
 }
 .Boxed-group + * {
-  margin-top: var(--vs-xg);
+  margin-top: size(10);
 }
 @media (max-width: 800px) {
   .Boxed-group {

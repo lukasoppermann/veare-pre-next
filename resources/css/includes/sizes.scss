@@ -32,17 +32,6 @@
   --size-xxg: 120px;
 
   /* -------------------------
-    Vertical Spacing
-    ------------------------- */
-  --vs-s: calc(var(--baseline) * 1);
-  --vs-m: calc(var(--baseline) * 2);
-  --vs-l: calc(var(--baseline) * 3);
-  --vs-xl: calc(var(--baseline) * 5);
-  --vs-xxl: calc(var(--baseline) * 8);
-  --vs-g: calc(var(--baseline) * 9);
-  --vs-xg: calc(var(--baseline) * 10);
-
-  /* -------------------------
     Horizontal Spacing
     ------------------------- */
   --hs-xs: var(--size-xs);

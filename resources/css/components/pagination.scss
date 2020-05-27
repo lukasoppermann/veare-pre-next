@@ -3,8 +3,8 @@
   counter-reset: pagination;
 }
 .Pagination__item__link {
-  padding-top: calc(var(--vs-m) / 2);
-  padding-bottom: calc(var(--vs-m) / 2);
+  padding-top: size(1);
+  padding-bottom: size(1);
   text-decoration: none;
   display: flex;
 }

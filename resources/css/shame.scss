@@ -6,13 +6,13 @@
 }
 .Picture__Element--background,
 .Picture__Element--background--tilted {
-  padding: var(--vs-g);
+  padding: size(9);
   @include max-width('s') {
     padding: 0;
   }
 }
 .Picture__Element--background--tilted {
-  margin-top: calc(var(--baseline) * 6) !important;
+  margin-top: size(6) !important;
 }
 .Picture__Element--background::after,
 .Picture__Element--background--tilted::after {

@@ -118,7 +118,7 @@ p {
 ==================================== */
 ul,
 ol {
-  margin-top: calc(var(--baseline) * 2);
+  margin-top: size(2);
 }
 li {
   display: list-item;
@@ -128,5 +128,5 @@ li {
   }
 }
 li:not(:first-child) {
-  margin-top: var(--baseline);
+  margin-top: size(1);
 }
