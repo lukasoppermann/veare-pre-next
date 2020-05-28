@@ -18,7 +18,7 @@
   color: rgb(var(--black-rgb)) !important;
   order: 1;
   flex: 0 0 auto;
-  padding-right: var(--hs-xs);
+  padding-right: size(1);
   transition: all .2s var(--easeInOutQuad);
 }
 .Toc__chapter__title::after {
@@ -47,7 +47,7 @@
 .Toc__chapter__link::after {
   @include typography-h5;
   order: 3;
-  padding-left: var(--hs-xs);
+  padding-left: size(1);
   align-self: flex-end;
   flex: 0 0 auto;
   counter-increment: chapter;
@@ -60,11 +60,11 @@
 ==================================== */
 .Toc__chapter__link:hover .Toc__chapter__title {
   color: rgb(var(--blue-rgb)) !important;
-  padding-left: var(--hs-xs);
+  padding-left: size(1);
   transition: all .35s var(--easeInOutQuad);
 }
 .Toc__chapter__link:hover .Toc__chapter__title::after {
-  width: calc(100% - var(--hs-s));
+  width: calc(100% - #{size(1.5)});
   transition: all .35s var(--easeInOutQuad);
 }
 .Toc__chapter__link:hover::before {

@@ -53,6 +53,7 @@ html {
   font-size: 62.5%; /* sets 1rem = 10px */
   font-display: optional;
   -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
 
   /* ====================================
        Text Settings

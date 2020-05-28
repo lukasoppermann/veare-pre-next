@@ -7,7 +7,7 @@
   .Boxed-item {
     &:not(.Boxed-group) {
       box-shadow: inset 2px 0 rgb(var(--black-rgb)), 0 2px rgb(var(--black-rgb));
-      padding: 0 var(--hs-s) size(1);
+      padding: 0 size(1) size(1);
       flex-shrink: 0;
       flex-grow: 1;
       flex-basis: 0;

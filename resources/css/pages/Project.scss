@@ -134,10 +134,10 @@
   flex: 0 0 auto;
   align-self: center;
   height: 2px;
-  width: var(--hs-l);
+  width: size(5);
   transform: translateY(-1px);
   background: currentColor;
-  margin-right: var(--hs-xs);
+  margin-right: size(1);
 }
 .Project-card__title {
   font-family: var(--font-montserrat);
