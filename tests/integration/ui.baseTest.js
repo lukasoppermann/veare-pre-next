@@ -19,7 +19,7 @@ module.exports = (caseName, beforeFn = null, testFn = null) => {
     page = await browser.newPage()
     await page.goto(`http://localhost:3300${currentCase.path}`, {waitUntil: 'load'});
     // add special testing css
-    await page.addStyleTag({content: 'body{--max-row-height: 59px;}'})
+    await page.addStyleTag({content: `body {--max-row-height: 59px;}`})
     // scroll to bottom and back up
     await page.waitFor(1000)
     await page.evaluate(() => {
@@ -51,6 +51,13 @@ module.exports = (caseName, beforeFn = null, testFn = null) => {
       height: viewportHeight,
       deviceScaleFactor: 1
     })
+    // add special testing css
+    await page.addStyleTag({content: `
+      body {
+        --viewport-height: ${viewportHeight}px;
+      }
+    `})
+
     // take full screen screenshot
     let image = await page.screenshot({
       path: `${config.testSnaps}/${currentCase.folder}/${viewport}.png`,
