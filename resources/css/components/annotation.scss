@@ -3,8 +3,8 @@
   padding-top: size(2);
   margin-top: 0;
   @include max-width('s') {
-    @include baseline_top(2);
-    @include baseline_bottom(4);
+    margin-top: size(2);
+    margin-bottom: size(4);
     padding-top: 0;
   }
   p:nth-child(1n) {

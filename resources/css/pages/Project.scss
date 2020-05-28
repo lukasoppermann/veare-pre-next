@@ -344,7 +344,7 @@
     grid-column: columns;
     grid-row-start: auto;
     transform: rotate(0deg);
-    @include baseline_bottom(2);
+    margin-bottom: size(2);
   }
   counter-increment: titled-title-counter;
   @include typography-h5;

@@ -1,7 +1,7 @@
 .Rule--horizontal {
   display: block;
-  @include baseline_top(4);
-  @include baseline_bottom(4);
+  margin-top: size(2);
+  margin-bottom: size(4);
   hr {
     border: none;
     height: 2px;
