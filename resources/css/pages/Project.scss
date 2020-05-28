@@ -225,11 +225,10 @@
 }
 .Project-cards--small .Project-card__title,
 .Project-cards--small .Project-card__text::before {
-  font-size: var(--size-l);
-  line-height: calc(var(--baseline) * 3);
+  @include type-scale(md);
 }
 .Project-cards--small .Project-card__title {
-  margin-top: calc(var(--baseline) * 2);
+  margin-top: size(2);
   margin-bottom: -20px;
   transition: all .4s ease;
 }
@@ -325,7 +324,7 @@
   text-decoration: none;
   @include typography-h5;
   margin-top: var(--size-xl);
-  margin-bottom: var(--size-xxg);
+  margin-bottom: size(15);
 }
 // NEW Project page
 
@@ -334,7 +333,7 @@
 ==================================== */
 @mixin titled-title {
   display: flex;
-  height: calc(var(--baseline) * 2);
+  height: size(2);
   overflow: visible;
   grid-column-start: sidebar-left 1;
   width: 300px;
@@ -422,10 +421,13 @@
   h6 {
     @include titled-title;
     color: rgb(var(--black-rgb)) !important;
+    @include smaller_than(desktop) {
+      margin-top: size(10);
+    }
   }
   h6 + h5 {
     @include min-width('s') {
-      margin-top: var(--section-gap);
+      margin-top: size(8);
     }
   }
   :not(.Annotation) > p {
@@ -437,8 +439,7 @@
     hyphens: auto;
     overflow-wrap: break-word;
     @include max-width('xxs') {
-      font-size: var(--base-font);
-      line-height: calc(var(--baseline) * 4);
+      @include type-scale(md);
     }
     margin-top: size(3);
     p {
@@ -451,10 +452,10 @@
     }
   }
   p:not(:first-child) {
-    margin-top: calc(var(--baseline) * 2);
+    margin-top: size(2);
   }
   figure + p:not(:first-child) {
-    margin-top: calc(var(--baseline) * 4);
+    margin-top: size(4);
   }
   .Rule--horizontal {
     grid-column: columns;

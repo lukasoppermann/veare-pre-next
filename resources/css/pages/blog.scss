@@ -37,7 +37,7 @@
   }
 }
 .Article-list {
-  margin-top: var(--size-xxg);
+  margin-top: size(15);
   margin-bottom: var(--size-h);
 }
 .Article__preview {
@@ -262,7 +262,7 @@
     text-decoration: none;
     font-size: var(--size-l);
     border: 2px solid rgb(var(--black-rgb));
-    padding: var(--size-xs) var(--size-s);
+    padding: size(1) var(--size-s);
     transition: color .3s ease, background .3s ease;
     &:hover {
       background: rgb(var(--black-rgb));

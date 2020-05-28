@@ -52,11 +52,11 @@
 }
 .Pagination__item:hover:not(.active) .Pagination__item__link::after {
   opacity: 1;
-  transform: translate(calc(-100% - var(--size-xxs)), -10%);
+  transform: translate(calc(-100% - #{size(.5)}), -10%);
   transition: all .3s .2s var(--easeInOutQuad);
 }
 .Pagination__item:hover:not(.active) .Pagination__item__title {
   opacity: 1;
-  transform: translate(var(--size-xxs), -10%);
+  transform: translate(#{size(.5)}, -10%);
   transition: all .3s .2s var(--easeInOutQuad);
 }

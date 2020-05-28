@@ -9,10 +9,10 @@
     grid-column: columns;
     font-family: var(--font-noto-serif);
     font-style: italic;
-    font-size: var(--size-xh);
+    font-size: size(6);
     line-height: 130%;
     max-width: 112rem;
-    margin-top: var(--size-xxg);
+    margin-top: size(15);
     margin-bottom: var(--size-xl);
     text-align: left;
     @include max-width('s') {
@@ -96,6 +96,6 @@
     text-decoration: none;
     @include typography-h5;
     margin-top: var(--size-xl);
-    margin-bottom: var(--size-xxg);
+    margin-bottom: size(15);
   }
 }
