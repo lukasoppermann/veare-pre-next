@@ -70,7 +70,7 @@
       @include max-width('xxs') {
         @include type-scale(lg);
       }
-      @include baseline_top(3);
+      margin-top: size(3);
     }
   }
   .Annotation {

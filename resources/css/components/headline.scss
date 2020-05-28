@@ -6,7 +6,7 @@ h2 {
   font-weight: var(--font-source-sans-regular);
   font-size: var(--size-xxl);
   line-height: calc(var(--baseline) * 5);
-  @include baseline_top(3);
+  margin-top: size(3);
   color: rgb(var(--black-rgb));
 }
 h3 {
@@ -14,7 +14,7 @@ h3 {
   font-weight: var(--font-source-sans-semibold);
   font-size: var(--size-xl);
   line-height: calc(var(--baseline) * 4);
-  @include baseline_top(3);
+  margin-top: size(3);
   color: rgb(var(--black-rgb));
 }
 h4 {
@@ -22,16 +22,11 @@ h4 {
   font-weight: var(--font-source-sans-semibold);
   font-size: var(--size-l);
   line-height: calc(var(--baseline) * 3);
-  @include baseline_top(3);
+  margin-top: size(3);
   color: rgb(var(--black-rgb));
 }
 h5 {
   @include typography-h5;
-  @include baseline_top(3);
+  margin-top: size(3);
   color: rgb(var(--black-rgb));
 }
-// h6 {
-//   @include typography-h6;
-//   @include baseline_top(3);
-//   color: rgb(var(--black-rgb));
-// }

@@ -18,7 +18,7 @@
   .Picture + .Annotation {
     grid-column: columns;
     @include min-width('s') {
-      @include baseline_top(5);
+      margin-top: size(5);
     }
     &::before {
       display: none;

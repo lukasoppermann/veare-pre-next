@@ -349,7 +349,7 @@
   counter-increment: titled-title-counter;
   @include typography-h5;
   flex: 0 0 auto;
-  @include baseline_top(var(--section-gap));
+  margin-top: var(--section-gap);
   margin-bottom: 0;
   a {
     padding-right: size(1);
@@ -412,11 +412,11 @@
     }
   }
   h4 {
-    @include baseline_top(5);
+    margin-top: size(5);
   }
   h5 {
     @include typography-h5;
-    @include baseline_top(4);
+    margin-top: size(4);
     grid-column: columns;
   }
   h6 {
@@ -425,7 +425,7 @@
   }
   h6 + h5 {
     @include min-width('s') {
-      @include baseline_top(var(--section-gap));
+      margin-top: var(--section-gap);
     }
   }
   :not(.Annotation) > p {
@@ -440,7 +440,7 @@
       font-size: var(--base-font);
       line-height: calc(var(--baseline) * 4);
     }
-    @include baseline_top(3);
+    margin-top: size(3);
     p {
       color: rgb(var(--black-rgb));
       @include font(sans);

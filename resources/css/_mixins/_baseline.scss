@@ -1,3 +1,0 @@
-@mixin baseline_top($amount: 1) {
-  margin-top: calc(var(--baseline) * #{$amount});
-}
