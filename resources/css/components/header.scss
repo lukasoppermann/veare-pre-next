@@ -54,7 +54,10 @@
 }
 
 .Header--project {
-  max-height: calc(100vh - #{size(12)});
+  height: calc(50vh);
+  @include at_least(desktop) {
+    height: calc(100vh - #{size(12)});
+  }
   .Picture {
     grid-column: full-width !important;
     grid-row: row 1 / -1;
