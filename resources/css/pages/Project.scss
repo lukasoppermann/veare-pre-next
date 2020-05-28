@@ -371,7 +371,7 @@
     height: 2px;
     width: size(5);
     align-self: center;
-    transform: translateY(-1px);
+    transform: translateY(3px);
     background-color: rgb(var(--black-rgb));
   }
   &::after {
@@ -391,6 +391,9 @@
     PROJECT
 ==================================== */
 .Project .Page {
+  @include smaller_than(desktop) {
+    padding: 0 size(2);
+  }
   --section-gap: 12;
   --row-gap: 0;
   --rule-color: var(--project-color, rgb(var(--blue-rgb)));
