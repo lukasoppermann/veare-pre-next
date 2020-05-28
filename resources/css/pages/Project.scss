@@ -110,8 +110,10 @@
   }
 }
 .Project-card__text::before {
-  @include typography-title;
-  font-size: var(--size-xl);
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-montserrat-bold);
+  letter-spacing: .5px;
+  @include type-scale(xxl);
   color: inherit;
   display: block;
   content: counter(projects, decimal-leading-zero);
@@ -138,8 +140,9 @@
   margin-right: var(--hs-xs);
 }
 .Project-card__title {
-  @include typography-title;
-  font-size: var(--size-xl);
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-montserrat-bold);
+  @include type-scale(xxl);
   color: inherit;
 }
 
@@ -393,15 +396,19 @@
     }
   }
   .Project__title {
-    @include typography-title;
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-montserrat-bold);
+    letter-spacing: .5px;
+    @include type-scale(title);
     color: rgb(var(--white-rgb));
     margin: 0;
     position: absolute;
     z-index: 100;
     bottom: size(8);
-
-    @include max-width('s') {
-      left: var(--hs-xl);
+    @include smaller_than(desktop) {
+      @include type-scale(hg);
+      left: size(3);
+      bottom: size(2);
     }
   }
   h4 {
@@ -422,7 +429,8 @@
     }
   }
   :not(.Annotation) > p {
-    @include typography-paragraph-sans;
+    @include font(sans);
+    @include type-scale(md);
     color: rgba(var(--black-rgba-80));
   }
   blockquote {

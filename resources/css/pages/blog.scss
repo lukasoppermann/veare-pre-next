@@ -176,7 +176,10 @@
   }
   &__link::before {
     content: "READ →";
-    @include typography-uppercase;
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-montserrat-bold);
+    text-transform: uppercase;
+    letter-spacing: .5px;
     color: rgb(var(--white-rgb));
     font-size: 8rem;
     box-sizing: border-box;

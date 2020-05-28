@@ -89,7 +89,8 @@ body {
   width: 100vw;
   overflow-x: hidden; // used for tilted bg on images in projects
   // basic typography
-  @include typography-paragraph-sans;
+  @include font(sans);
+  @include type-scale(md);
   color: rgb(var(--black-rgb));
   &.testing * { // for ui tests
     transition: none !important;
@@ -110,7 +111,8 @@ p:empty {
   display: none; // needed for contentful rich text
 }
 p {
-  @include typography-paragraph-sans;
+  @include font(sans);
+  @include type-scale(md);
 }
 
 /* ====================================
@@ -122,7 +124,8 @@ ol {
 }
 li {
   display: list-item;
-  @include typography-paragraph-sans;
+  @include font(sans);
+  @include type-scale(md);
   @media screen and (max-width: 900px) {
     margin-left: 20px;
   }

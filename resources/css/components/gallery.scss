@@ -24,7 +24,8 @@
       display: none;
     }
     p {
-      @include typography-paragraph-sans;
+      @include font(sans);
+      @include type-scale(md);
     }
     h4,
     h5,
