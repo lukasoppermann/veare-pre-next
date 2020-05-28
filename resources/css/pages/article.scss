@@ -23,6 +23,21 @@
   h3,
   h4 {
     grid-column: columns;
+    @include font(sans);
+    color: rgb(var(--black-rgb));
+    margin-top: size(3);
+  }
+  h2 {
+    @include type-scale(xl);
+  }
+  h3 {
+    @include font(sans, bold);
+    @include type-scale(lg);
+    margin-top: size(3);
+  }
+  h4 {
+    @include type-scale(md);
+    margin-top: size(3);
   }
   p {
     grid-column: columns;
@@ -30,6 +45,10 @@
     @include type-scale(md);
     margin-bottom: size(2);
     color: rgba(var(--black-rgba-80));
+  }
+  .Picture + p,
+  .Annotation + p {
+    margin-top: size(4);
   }
   ul,
   ol {

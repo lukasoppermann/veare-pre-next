@@ -8,6 +8,7 @@
   position: absolute;
   left: 0;
   top: size(4);
+  padding: 0 size(2);
 }
 .c-portfolio {
   min-height: 100vh;
@@ -43,8 +44,10 @@
   @include type-scale(xxl);
   margin-bottom: size(3);
   margin-top: size(5);
+  padding: 0 size(2);
 }
 .o-headline--portfolio {
+  margin-bottom: size(3);
   font-family: var(--font-noto-serif);
   font-style: italic;
   width: 100%;
@@ -54,7 +57,6 @@
   display: inline-block;
   height: auto;
   margin-top: size(12);
-  margin-bottom: 0;
 }
 .o-project-info {
   display: flex;
@@ -226,6 +228,7 @@
   .o-headline--h2 {
     margin-top: size(5);
     margin-bottom: size(3);
+    padding: 0 size(2);
   }
   p:first-of-type {
     margin-top: size(3);
@@ -233,4 +236,7 @@
   p:last-of-type {
     margin-bottom: size(3);
   }
+}
+.c-section-portfolio-intro {
+  padding: 0 size(2);
 }

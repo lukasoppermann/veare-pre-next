@@ -62,6 +62,7 @@
     }
     h5 {
       margin-top: size(3);
+      color: rgb(var(--black-rgb));
       @include at_least(desktop) {
         margin-top: size(5);
       }

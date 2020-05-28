@@ -14,6 +14,31 @@
   p {
     color: rgba(var(--black-rgba-80));
   }
+  h2,
+  h3,
+  h4,
+  h5 {
+    @include font(sans);
+    color: rgb(var(--black-rgb));
+  }
+  h2 {
+    margin-top: size(3);
+    @include type-scale(xl);
+  }
+  h3 {
+    @include type-scale(lg);
+    margin-top: size(3);
+  }
+  h4 {
+    @include type-scale(md);
+    margin-top: size(3);
+  }
+  h5 {
+    @include type-scale(sm);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    margin-top: size(3);
+  }
   .boxed-content {
     grid-column: columns;
     box-shadow: inset 2px 0 rgb(var(--black-rgb)), 0 2px rgb(var(--black-rgb));

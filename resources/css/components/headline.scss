@@ -1,35 +1,13 @@
 /* ====================================
     New Headlines
 ==================================== */
-h2 {
-  font-family: var(--font-source-sans);
-  font-weight: var(--font-source-sans-regular);
-  font-size: size(4);
-  line-height: size(5);
-  margin-top: size(3);
-  color: rgb(var(--black-rgb));
-}
-h3 {
-  font-family: var(--font-source-sans);
-  font-weight: var(--font-source-sans-semibold);
-  @include type-scale(lg);
-  margin-top: size(3);
-  color: rgb(var(--black-rgb));
-}
-h4 {
-  font-family: var(--font-source-sans);
-  font-weight: var(--font-source-sans-semibold);
-  @include type-scale(md);
-  line-height: size(3);
-  margin-top: size(3);
-  color: rgb(var(--black-rgb));
-}
 h5 {
-  font-family: var(--font-montserrat);
-  font-weight: var(--font-montserrat-bold);
+  @include font(sans);
+  @include type-scale(sm);
   text-transform: uppercase;
   letter-spacing: .5px;
-  @include type-scale(sm);
   margin-top: size(3);
   color: rgb(var(--black-rgb));
+  color: red;
+  font-size: 100px;
 }

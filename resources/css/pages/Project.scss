@@ -429,8 +429,17 @@
       bottom: size(2);
     }
   }
+  h3 {
+    @include font(sans);
+    @include type-scale(lg);
+    margin-top: size(3);
+    color: rgb(var(--black-rgb));
+  }
   h4 {
     margin-top: size(5);
+    @include font(sans, bold);
+    @include type-scale(md);
+    color: rgb(var(--black-rgb));
   }
   h5 {
     font-family: var(--font-montserrat);
@@ -440,6 +449,7 @@
     @include type-scale(sm);
     margin-top: size(4);
     grid-column: columns;
+    color: rgb(var(--black-rgb));
   }
   h6 {
     @include titled-title;

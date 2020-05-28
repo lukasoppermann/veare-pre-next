@@ -222,12 +222,13 @@
     background: rgba(var(--blue-rgb), .95);
   }
   &__title {
+    @include font(sans, bold);
     @include type-scale(lg);
-    line-height: 125%;
     width: 100%;
     margin-top: 0;
     margin-bottom: 0;
     text-decoration: none;
+    color: rgb(var(--black-rgb));
   }
   &__excerpt {
     margin-top: 1rem;
