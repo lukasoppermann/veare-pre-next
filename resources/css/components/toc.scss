@@ -14,7 +14,11 @@
 }
 .Toc__chapter__title {
   position: relative;
-  @include typography-h5;
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-montserrat-bold);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  @include type-scale(sm);
   color: rgb(var(--black-rgb)) !important;
   order: 1;
   flex: 0 0 auto;
@@ -45,7 +49,11 @@
   transition: all .2s var(--easeInOutQuad);
 }
 .Toc__chapter__link::after {
-  @include typography-h5;
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-montserrat-bold);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  @include type-scale(sm);
   order: 3;
   padding-left: size(1);
   align-self: flex-end;

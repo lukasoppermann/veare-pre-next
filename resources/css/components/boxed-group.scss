@@ -13,7 +13,11 @@
       flex-basis: 0;
     }
     h5:not(:last-child) {
-      @include typography-h6;
+      font-family: var(--font-montserrat);
+      font-weight: var(--font-montserrat-bold);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      @include type-scale(xs);
       margin-top: size(1) !important;
       color: rgba(var(--black-rgba-50)) !important;
     }

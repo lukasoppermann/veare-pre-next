@@ -25,7 +25,11 @@ h4 {
   color: rgb(var(--black-rgb));
 }
 h5 {
-  @include typography-h5;
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-montserrat-bold);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  @include type-scale(sm);
   margin-top: size(3);
   color: rgb(var(--black-rgb));
 }

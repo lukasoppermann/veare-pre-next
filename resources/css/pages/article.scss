@@ -93,7 +93,11 @@
     display: block;
     grid-column: columns;
     text-decoration: none;
-    @include typography-h5;
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-montserrat-bold);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    @include type-scale(sm);
     margin-top: size(3);
     margin-bottom: size(15);
   }

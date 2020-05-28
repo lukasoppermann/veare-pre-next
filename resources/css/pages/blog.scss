@@ -66,8 +66,11 @@
   }
   &__date {
     flex: 0 1 auto;
-    @include typography-h6;
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-montserrat-bold);
     text-transform: uppercase;
+    letter-spacing: .5px;
+    @include type-scale(xs);
     color: rgba(var(--black-rgba-50));
     display: inline-block;
     position: relative;
@@ -106,7 +109,11 @@
     flex: 0 1 auto;
     position: relative;
     display: inline-block;
-    @include typography-h6;
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-montserrat-bold);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    @include type-scale(xs);
     padding-left: 0;
     padding-top: .8rem;
     box-sizing: border-box;
@@ -137,7 +144,11 @@
   }
   &__read-time {
     flex: 0 1 auto;
-    @include typography-h6;
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-montserrat-bold);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    @include type-scale(xs);
     color: rgba(var(--black-rgba-50));
     display: inline-block;
     position: relative;

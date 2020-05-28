@@ -77,19 +77,3 @@
   --font-mono: 'Source Code Pro', monospace;
   --font-mono-bold: 600;
 }
-@mixin typography-h5 {
-  font-family: var(--font-montserrat);
-  font-weight: var(--font-montserrat-bold);
-  text-transform: uppercase;
-  letter-spacing: .5px;
-  font-size: 16px;
-  line-height: size(2);
-}
-@mixin typography-h6 {
-  font-family: var(--font-montserrat);
-  font-weight: var(--font-montserrat-bold);
-  text-transform: uppercase;
-  letter-spacing: .5px;
-  font-size: 13px;
-  line-height: size(2);
-}

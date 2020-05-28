@@ -23,8 +23,12 @@
     grid-column-gap: 0;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     h5 {
+      font-family: var(--font-montserrat);
+      font-weight: var(--font-montserrat-bold);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      @include type-scale(xs);
       align-self: stretch;
-      @include typography-h6;
       display: inline-block;
       padding: size(1) size(1) size(1) size(2);
       margin-top: 0;

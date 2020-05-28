@@ -120,7 +120,11 @@
   font-feature-settings: "tnum", "zero";
 }
 .Project-card__client {
-  @include typography-h5;
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-montserrat-bold);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  @include type-scale(sm);
   margin-top: size(5);
   display: flex;
   color: inherit;
@@ -322,7 +326,11 @@
   display: block;
   grid-column: columns;
   text-decoration: none;
-  @include typography-h5;
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-montserrat-bold);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  @include type-scale(sm);
   margin-top: size(3);
   margin-bottom: size(15);
 }
@@ -346,7 +354,11 @@
     margin-bottom: size(2);
   }
   counter-increment: titled-title-counter;
-  @include typography-h5;
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-montserrat-bold);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  @include type-scale(sm);
   flex: 0 0 auto;
   margin-top: var(--section-gap);
   margin-bottom: 0;
@@ -363,7 +375,11 @@
     background-color: rgb(var(--black-rgb));
   }
   &::after {
-    @include typography-h5;
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-montserrat-bold);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    @include type-scale(sm);
     order: 3;
     padding-left: size(1);
     content: counter(titled-title-counter, decimal-leading-zero);
@@ -414,7 +430,11 @@
     margin-top: size(5);
   }
   h5 {
-    @include typography-h5;
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-montserrat-bold);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    @include type-scale(sm);
     margin-top: size(4);
     grid-column: columns;
   }

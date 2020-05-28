@@ -1,6 +1,10 @@
 .portfolio-link-back {
   text-decoration: none;
-  @include typography-h5;
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-montserrat-bold);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  @include type-scale(sm);
   position: absolute;
   left: 0;
   top: size(4);
