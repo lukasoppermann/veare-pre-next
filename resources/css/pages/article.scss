@@ -13,7 +13,7 @@
     line-height: 130%;
     max-width: 112rem;
     margin-top: size(15);
-    margin-bottom: var(--size-xl);
+    margin-bottom: size(3);
     text-align: left;
     @include max-width('s') {
       line-height: 110%;
@@ -29,7 +29,7 @@
     grid-column: columns;
     @include font(serif);
     @include type-scale(md);
-    margin-bottom: var(--size-l);
+    margin-bottom: size(2);
     color: rgba(var(--black-rgba-80));
   }
   ul,
@@ -60,8 +60,8 @@
     @include max-width('s') {
       grid-column: columns;
     }
-    margin-top: var(--size-xl);
-    margin-bottom: var(--size-xl);
+    margin-top: size(3);
+    margin-bottom: size(3);
     p {
       hyphens: auto;
       overflow-wrap: break-word;
@@ -75,8 +75,8 @@
   }
   .Annotation {
     @include max-width('s') {
-      margin-top: var(--size-s);
-      margin-bottom: var(--size-xl);
+      margin-top: size(2);
+      margin-bottom: size(4);
     }
   }
   .Article__publication-details,
@@ -88,14 +88,14 @@
     }
   }
   .Article__author {
-    margin-bottom: var(--size-xl);
+    margin-bottom: size(3);
   }
   .Article__back_link {
     display: block;
     grid-column: columns;
     text-decoration: none;
     @include typography-h5;
-    margin-top: var(--size-xl);
+    margin-top: size(3);
     margin-bottom: size(15);
   }
 }

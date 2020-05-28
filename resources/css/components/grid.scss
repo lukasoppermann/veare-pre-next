@@ -6,7 +6,7 @@
   --new-column-gap: 16px;
   --new-row-gap: 0;
   @include max-width('s') {
-    --column-gap: var(--size-m);
+    --column-gap: size(2);
   }
 }
 .Grid {

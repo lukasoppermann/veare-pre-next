@@ -82,7 +82,7 @@
   font-weight: var(--font-montserrat-bold);
   text-transform: uppercase;
   letter-spacing: .5px;
-  font-size: var(--size-m);
+  font-size: 16px;
   line-height: size(2);
 }
 @mixin typography-h6 {
@@ -90,6 +90,6 @@
   font-weight: var(--font-montserrat-bold);
   text-transform: uppercase;
   letter-spacing: .5px;
-  font-size: var(--size-s);
+  font-size: 13px;
   line-height: size(2);
 }

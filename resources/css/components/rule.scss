@@ -5,7 +5,7 @@
   hr {
     border: none;
     height: 2px;
-    width: var(--size-xxl);
+    width: size(4);
     background-color: var(--rule-color, rgb(var(--blue-rgb)));
     margin: 0;
   }

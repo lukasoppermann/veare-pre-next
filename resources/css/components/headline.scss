@@ -4,7 +4,7 @@
 h2 {
   font-family: var(--font-source-sans);
   font-weight: var(--font-source-sans-regular);
-  font-size: var(--size-xxl);
+  font-size: size(4);
   line-height: size(5);
   margin-top: size(3);
   color: rgb(var(--black-rgb));
@@ -12,15 +12,14 @@ h2 {
 h3 {
   font-family: var(--font-source-sans);
   font-weight: var(--font-source-sans-semibold);
-  font-size: var(--size-xl);
-  line-height: size(4);
+  @include type-scale(lg);
   margin-top: size(3);
   color: rgb(var(--black-rgb));
 }
 h4 {
   font-family: var(--font-source-sans);
   font-weight: var(--font-source-sans-semibold);
-  font-size: var(--size-l);
+  @include type-scale(md);
   line-height: size(3);
   margin-top: size(3);
   color: rgb(var(--black-rgb));

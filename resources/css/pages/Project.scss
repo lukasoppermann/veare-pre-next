@@ -323,7 +323,7 @@
   grid-column: columns;
   text-decoration: none;
   @include typography-h5;
-  margin-top: var(--size-xl);
+  margin-top: size(3);
   margin-bottom: size(15);
 }
 // NEW Project page

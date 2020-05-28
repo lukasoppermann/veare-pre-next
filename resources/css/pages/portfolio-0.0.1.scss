@@ -3,7 +3,7 @@
   @include typography-h5;
   position: absolute;
   left: 0;
-  top: var(--size-xxl);
+  top: size(4);
 }
 .c-portfolio {
   min-height: 100vh;
@@ -36,10 +36,9 @@
   display: block;
 }
 .o-headline--h2 {
-  font-size: var(--size-h);
-  line-height: 140%;
-  margin-bottom: var(--size-l);
-  margin-top: var(--size-h);
+  @include type-scale(xxl);
+  margin-bottom: size(3);
+  margin-top: size(5);
 }
 .o-headline--portfolio {
   font-family: var(--font-noto-serif);
@@ -56,17 +55,17 @@
 .o-project-info {
   display: flex;
   flex-direction: row;
-  padding-bottom: var(--size-xl);
+  padding-bottom: size(3);
 }
 .o-project-section-container {
-  padding: 0 var(--size-l) var(--size-g);
+  padding: 0 size(2.5) size(9);
 }
 .o-project-info__item {
   flex-shrink: 1;
   flex-grow: 0;
   flex-basis: auto;
-  padding-bottom: var(--size-xl);
-  margin-right: var(--size-xl);
+  padding-bottom: size(3);
+  margin-right: size(3);
 }
 .o-project-info__item:nth-child(3) {
   flex-grow: 1;
@@ -82,12 +81,12 @@
   }
 }
 .o-project-info__title {
-  font-size: var(--size-m);
+  @include type-scale(sm);
   color: rgba(var(--black-rgba-50));
   text-transform: uppercase;
 }
 .o-project-info__description {
-  font-size: var(--size-xl);
+  @include type-scale(lg);
   color: rgb(var(--black-rgb));
 }
 .o-project-section {
@@ -184,7 +183,7 @@
   }
   section.portfolio-item--old--copy {
     grid-column: column 3 / columns;
-    margin-bottom: var(--size-g);
+    margin-bottom: size(9);
     @include max-width('m') {
       grid-column: columns;
     }
@@ -194,19 +193,19 @@
   }
   section.portfolio-item--old--image {
     grid-column: columns;
-    margin-bottom: var(--size-g);
+    margin-bottom: size(9);
   }
   section.portfolio-item--old--image .portfolio-item--old--image__description {
-    margin-top: var(--size-m);
+    margin-top: size(2);
   }
   section.portfolio-item--old--two-images {
-    margin-bottom: var(--size-g);
+    margin-bottom: size(9);
     img:nth-child(1) {
       width: 59%;
       margin-right: 1%;
       @include max-width('m') {
         width: 100%;
-        margin-bottom: var(--size-m);
+        margin-bottom: size(2);
       }
     }
     img:nth-child(2) {
@@ -221,13 +220,13 @@
 .portfolio-item--old section.o-project-section-container {
   grid-column: full-bleed !important;
   .o-headline--h2 {
-    margin-top: var(--size-h);
-    margin-bottom: var(--size-xl);
+    margin-top: size(5);
+    margin-bottom: size(3);
   }
   p:first-of-type {
-    margin-top: var(--size-xl);
+    margin-top: size(3);
   }
   p:last-of-type {
-    margin-bottom: var(--size-xl);
+    margin-bottom: size(3);
   }
 }
