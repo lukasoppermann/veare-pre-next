@@ -106,7 +106,8 @@ export default async (richText: richTextDocument) => {
           return embedded.find((entry: any) => entry.id === node.data.target.sys.id).html
         } catch (e) {
           /* istanbul ignore next */
-          console.error('🚨 ERROR: ', node.data.target, e)
+          console.error('🚨 ERROR: ', e)
+          console.dir(node.data.target, { depth: null, colors: true })
         }
       },
       [BLOCKS.HR]: () => '<div class="Rule--horizontal"><hr></div>',

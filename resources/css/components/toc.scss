@@ -6,7 +6,7 @@
   margin-left: 0;
 }
 .Toc__chapter:not(:first-child) {
-  margin-top: var(--vs-m);
+  margin-top: size(.5);
 }
 .Toc__chapter__link {
   text-decoration: none;
@@ -14,20 +14,24 @@
 }
 .Toc__chapter__title {
   position: relative;
-  @include typography-h5;
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-montserrat-bold);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  @include type-scale(sm);
   color: rgb(var(--black-rgb)) !important;
   order: 1;
   flex: 0 0 auto;
-  padding-right: var(--hs-xs);
+  padding-right: size(1);
   transition: all .2s var(--easeInOutQuad);
 }
 .Toc__chapter__title::after {
   @include pseudo;
   width: 0;
-  height: calc(var(--baseline) * 2);
+  height: size(2);
   background-color: rgb(var(--blue-rgb));
   opacity: .25;
-  top: var(--baseline);
+  top: size(1);
   left: 0;
   color: rgb(var(--black-rgb)) !important;
 }
@@ -45,9 +49,13 @@
   transition: all .2s var(--easeInOutQuad);
 }
 .Toc__chapter__link::after {
-  @include typography-h5;
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-montserrat-bold);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  @include type-scale(sm);
   order: 3;
-  padding-left: var(--hs-xs);
+  padding-left: size(1);
   align-self: flex-end;
   flex: 0 0 auto;
   counter-increment: chapter;
@@ -60,11 +68,11 @@
 ==================================== */
 .Toc__chapter__link:hover .Toc__chapter__title {
   color: rgb(var(--blue-rgb)) !important;
-  padding-left: var(--hs-xs);
+  padding-left: size(1);
   transition: all .35s var(--easeInOutQuad);
 }
 .Toc__chapter__link:hover .Toc__chapter__title::after {
-  width: calc(100% - var(--hs-s));
+  width: calc(100% - #{size(1.5)});
   transition: all .35s var(--easeInOutQuad);
 }
 .Toc__chapter__link:hover::before {

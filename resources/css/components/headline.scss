@@ -2,27 +2,34 @@
     New Headlines
 ==================================== */
 h2 {
-  @include typography-h2;
-  @include baseline_top(3);
+  font-family: var(--font-source-sans);
+  font-weight: var(--font-source-sans-regular);
+  font-size: size(4);
+  line-height: size(5);
+  margin-top: size(3);
   color: rgb(var(--black-rgb));
 }
 h3 {
-  @include typography-h3;
-  @include baseline_top(3);
+  font-family: var(--font-source-sans);
+  font-weight: var(--font-source-sans-semibold);
+  @include type-scale(lg);
+  margin-top: size(3);
   color: rgb(var(--black-rgb));
 }
 h4 {
-  @include typography-h4;
-  @include baseline_top(3);
+  font-family: var(--font-source-sans);
+  font-weight: var(--font-source-sans-semibold);
+  @include type-scale(md);
+  line-height: size(3);
+  margin-top: size(3);
   color: rgb(var(--black-rgb));
 }
 h5 {
-  @include typography-h5;
-  @include baseline_top(3);
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-montserrat-bold);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  @include type-scale(sm);
+  margin-top: size(3);
   color: rgb(var(--black-rgb));
 }
-// h6 {
-//   @include typography-h6;
-//   @include baseline_top(3);
-//   color: rgb(var(--black-rgb));
-// }

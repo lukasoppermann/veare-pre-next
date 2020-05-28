@@ -3,14 +3,14 @@
 ==================================== */
 .Projects {
   counter-reset: projects;
-  margin-top: var(--vs-g);
+  margin-top: size(9);
 }
 .Project-cards {
-  margin-top: var(--vs-g);
+  margin-top: size(9);
 }
 .Project-card {
   grid-column: sidebar-left 2 / span 7;
-  margin-top: calc(var(--baseline) * 10);
+  margin-top: size(10);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -22,7 +22,7 @@
     grid-column: column 1 / span 7;
   }
   @include min-width('s') {
-    margin-top: var(--vs-xg);
+    margin-top: size(10);
     &:nth-child(2n) {
       grid-column-start: column 2;
     }
@@ -84,7 +84,7 @@
     position: relative;
     order: 2;
     background: rgb(var(--white-rgb));
-    padding: var(--vs-m);
+    padding: size(2);
     max-width: 500px;
     transform: translate(0, -60%);
   }
@@ -105,26 +105,32 @@
       margin-top: 9%;
     }
     .Project-card__text .Project-card__client {
-      margin-top: var(--vs-g);
+      margin-top: size(9);
     }
   }
 }
 .Project-card__text::before {
-  @include typography-title;
-  font-size: var(--size-xl);
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-montserrat-bold);
+  letter-spacing: .5px;
+  @include type-scale(xxl);
   color: inherit;
   display: block;
   content: counter(projects, decimal-leading-zero);
   font-feature-settings: "tnum", "zero";
 }
 .Project-card__client {
-  @include typography-h5;
-  margin-top: var(--vs-xl);
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-montserrat-bold);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  @include type-scale(sm);
+  margin-top: size(5);
   display: flex;
   color: inherit;
   transition: all .3s ease;
   @include max-width('s') {
-    margin-top: var(--vs-s);
+    margin-top: size(1);
   }
 }
 .Project-card__client::before {
@@ -132,14 +138,15 @@
   flex: 0 0 auto;
   align-self: center;
   height: 2px;
-  width: var(--hs-l);
+  width: size(5);
   transform: translateY(-1px);
   background: currentColor;
-  margin-right: var(--hs-xs);
+  margin-right: size(1);
 }
 .Project-card__title {
-  @include typography-title;
-  font-size: var(--size-xl);
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-montserrat-bold);
+  @include type-scale(xxl);
   color: inherit;
 }
 
@@ -147,7 +154,7 @@
     Project Cards Small
 ==================================== */
 .Project-cards--small {
-  margin-bottom: var(--vs-xg);
+  margin-bottom: size(10);
   --lazy-picture-object-fit: contain;
 }
 .Project-cards--small .Project-card {
@@ -217,16 +224,15 @@
 .Project-cards--small .Project-card:hover .Project-card__client {
   color: white;
   @include min-width('m') {
-    margin-top: var(--vs-l);
+    margin-top: size(3);
   }
 }
 .Project-cards--small .Project-card__title,
 .Project-cards--small .Project-card__text::before {
-  font-size: var(--size-l);
-  line-height: calc(var(--baseline) * 3);
+  @include type-scale(md);
 }
 .Project-cards--small .Project-card__title {
-  margin-top: calc(var(--baseline) * 2);
+  margin-top: size(2);
   margin-bottom: -20px;
   transition: all .4s ease;
 }
@@ -276,9 +282,14 @@
 /* ====================================
     PROJECT Page
 ==================================== */
+.Project {
+  .Boxed-group {
+    grid-column: columns;
+  }
+}
 .Project__challenge {
   hyphens: auto;
-  margin-top: var(--vs-xg);
+  margin-top: size(10);
   grid-column: column 1 / column 5;
   @include max-width('xs') {
     grid-column: columns;
@@ -288,7 +299,7 @@
   }
 }
 .Project__toc {
-  margin-top: var(--vs-xg);
+  margin-top: size(10);
   grid-column: column 6 / column 8;
   @include max-width('l') {
     grid-column: column 5 / column 8;
@@ -315,9 +326,13 @@
   display: block;
   grid-column: columns;
   text-decoration: none;
-  @include typography-h5;
-  margin-top: var(--size-xl);
-  margin-bottom: var(--size-xxg);
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-montserrat-bold);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  @include type-scale(sm);
+  margin-top: size(3);
+  margin-bottom: size(15);
 }
 // NEW Project page
 
@@ -326,7 +341,7 @@
 ==================================== */
 @mixin titled-title {
   display: flex;
-  height: calc(var(--baseline) * 2);
+  height: size(2);
   overflow: visible;
   grid-column-start: sidebar-left 1;
   width: 300px;
@@ -336,29 +351,37 @@
     grid-column: columns;
     grid-row-start: auto;
     transform: rotate(0deg);
-    @include baseline_bottom(2);
+    margin-bottom: size(2);
   }
   counter-increment: titled-title-counter;
-  @include typography-h5;
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-montserrat-bold);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  @include type-scale(sm);
   flex: 0 0 auto;
-  @include baseline_top(var(--section-gap));
+  margin-top: var(--section-gap);
   margin-bottom: 0;
   a {
-    padding-right: var(--vs-s);
+    padding-right: size(1);
   }
   &::before {
     @include pseudo("relative");
     order: 2;
     height: 2px;
-    width: var(--vs-xl);
+    width: size(5);
     align-self: center;
-    transform: translateY(-1px);
+    transform: translateY(3px);
     background-color: rgb(var(--black-rgb));
   }
   &::after {
-    @include typography-h5;
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-montserrat-bold);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    @include type-scale(sm);
     order: 3;
-    padding-left: var(--vs-s);
+    padding-left: size(1);
     content: counter(titled-title-counter, decimal-leading-zero);
     font-feature-settings: "tnum", "zero";
   }
@@ -368,6 +391,9 @@
     PROJECT
 ==================================== */
 .Project .Page {
+  @include smaller_than(desktop) {
+    padding: 0 size(2);
+  }
   --section-gap: 12;
   --row-gap: 0;
   --rule-color: var(--project-color, rgb(var(--blue-rgb)));
@@ -388,46 +414,57 @@
     }
   }
   .Project__title {
-    @include typography-title;
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-montserrat-bold);
+    letter-spacing: .5px;
+    @include type-scale(title);
     color: rgb(var(--white-rgb));
     margin: 0;
     position: absolute;
     z-index: 100;
-    bottom: var(--vs-xxl);
-
-    @include max-width('s') {
-      left: var(--hs-xl);
+    bottom: size(8);
+    @include smaller_than(desktop) {
+      @include type-scale(hg);
+      left: size(3);
+      bottom: size(2);
     }
   }
   h4 {
-    @include baseline_top(5);
+    margin-top: size(5);
   }
   h5 {
-    @include typography-h5;
-    @include baseline_top(4);
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-montserrat-bold);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    @include type-scale(sm);
+    margin-top: size(4);
     grid-column: columns;
   }
   h6 {
     @include titled-title;
     color: rgb(var(--black-rgb)) !important;
+    @include smaller_than(desktop) {
+      margin-top: size(10);
+    }
   }
   h6 + h5 {
     @include min-width('s') {
-      @include baseline_top(var(--section-gap));
+      margin-top: size(8);
     }
   }
   :not(.Annotation) > p {
-    @include typography-paragraph-sans;
+    @include font(sans);
+    @include type-scale(md);
     color: rgba(var(--black-rgba-80));
   }
   blockquote {
     hyphens: auto;
     overflow-wrap: break-word;
     @include max-width('xxs') {
-      font-size: var(--base-font);
-      line-height: calc(var(--baseline) * 4);
+      @include type-scale(md);
     }
-    @include baseline_top(3);
+    margin-top: size(3);
     p {
       color: rgb(var(--black-rgb));
       @include font(sans);
@@ -438,10 +475,10 @@
     }
   }
   p:not(:first-child) {
-    margin-top: calc(var(--baseline) * 2);
+    margin-top: size(2);
   }
   figure + p:not(:first-child) {
-    margin-top: calc(var(--baseline) * 4);
+    margin-top: size(4);
   }
   .Rule--horizontal {
     grid-column: columns;

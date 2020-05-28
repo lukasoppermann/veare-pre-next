@@ -1,13 +1,12 @@
 :root {
-  --max-row-height: calc((100vh - (16 * var(--baseline))) / 13);
   --min-row-height: 35px;
-  --row-gap: var(--baseline);
-  --column-gap: var(--base-font);
+  --row-gap: size(1);
+  --column-gap: 20px;
   --new-min-row-height: 32px;
   --new-column-gap: 16px;
   --new-row-gap: 0;
   @include max-width('s') {
-    --column-gap: var(--size-m);
+    --column-gap: size(2);
   }
 }
 .Grid {
@@ -64,13 +63,6 @@
       0
       [full-bleed-end margin-right];
   }
-}
-.Grid--rows {
-  grid-template-rows:
-    [margin-top full-height-start] var(--baseline)
-    [rows-start]
-    repeat(12, [row] minmax(var(--min-row-height), var(--max-row-height)))
-    [rows-end margin-bottom] var(--baseline) [full-height-end];
 }
 .Grid--columns {
   grid-column: columns;

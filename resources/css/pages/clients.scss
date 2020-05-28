@@ -1,12 +1,16 @@
 .clients {
-  margin-bottom: var(--size-g);
+  margin-bottom: size(9);
   grid-row-gap: 0 !important;
 }
 .clients h2 {
-  @include typography-h5;
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-montserrat-bold);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  @include type-scale(sm);
   grid-column: columns;
   text-align: center;
-  padding-top: var(--size-g);
+  padding-top: size(9);
 }
 .clients .Picture {
   margin-top: 0 !important;

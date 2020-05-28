@@ -53,6 +53,7 @@ html {
   font-size: 62.5%; /* sets 1rem = 10px */
   font-display: optional;
   -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
 
   /* ====================================
        Text Settings
@@ -80,6 +81,7 @@ html {
       Base css varibales
   ==================================== */
   --base-unit: .8rem;
+  --viewport-height: 100vh;
 }
 body {
   // sizing of the body element
@@ -89,7 +91,8 @@ body {
   width: 100vw;
   overflow-x: hidden; // used for tilted bg on images in projects
   // basic typography
-  @include typography-paragraph-sans;
+  @include font(sans);
+  @include type-scale(md);
   color: rgb(var(--black-rgb));
   &.testing * { // for ui tests
     transition: none !important;
@@ -110,7 +113,8 @@ p:empty {
   display: none; // needed for contentful rich text
 }
 p {
-  @include typography-paragraph-sans;
+  @include font(sans);
+  @include type-scale(md);
 }
 
 /* ====================================
@@ -118,15 +122,16 @@ p {
 ==================================== */
 ul,
 ol {
-  margin-top: calc(var(--baseline) * 2);
+  margin-top: size(2);
 }
 li {
   display: list-item;
-  @include typography-paragraph-sans;
+  @include font(sans);
+  @include type-scale(md);
   @media screen and (max-width: 900px) {
     margin-left: 20px;
   }
 }
 li:not(:first-child) {
-  margin-top: var(--baseline);
+  margin-top: size(1);
 }

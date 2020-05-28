@@ -37,12 +37,12 @@
   }
 }
 .Article-list {
-  margin-top: var(--size-xxg);
-  margin-bottom: var(--size-h);
+  margin-top: size(15);
+  margin-bottom: size(5);
 }
 .Article__preview {
   grid-column: columns;
-  margin: 0 auto var(--size-h) auto;
+  margin: 0 auto size(5) auto;
   max-width: 55rem;
   min-height: 15rem;
   list-style: none;
@@ -66,8 +66,11 @@
   }
   &__date {
     flex: 0 1 auto;
-    @include typography-h6;
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-montserrat-bold);
     text-transform: uppercase;
+    letter-spacing: .5px;
+    @include type-scale(xs);
     color: rgba(var(--black-rgba-50));
     display: inline-block;
     position: relative;
@@ -96,7 +99,7 @@
     position: absolute;
     display: block;
     color: rgb(var(--medium-grey-rgb));
-    font-size: var(--size-m);
+    @include type-scale(sm);
     background: transparent;
     right: .75rem;
     top: .8rem;
@@ -106,7 +109,11 @@
     flex: 0 1 auto;
     position: relative;
     display: inline-block;
-    @include typography-h6;
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-montserrat-bold);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    @include type-scale(xs);
     padding-left: 0;
     padding-top: .8rem;
     box-sizing: border-box;
@@ -129,7 +136,7 @@
     position: absolute;
     display: block;
     color: rgb(var(--medium-grey-rgb));
-    font-size: var(--size-m);
+    @include type-scale(sm);
     background: transparent;
     right: .75rem;
     top: .8rem;
@@ -137,7 +144,11 @@
   }
   &__read-time {
     flex: 0 1 auto;
-    @include typography-h6;
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-montserrat-bold);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    @include type-scale(xs);
     color: rgba(var(--black-rgba-50));
     display: inline-block;
     position: relative;
@@ -176,7 +187,10 @@
   }
   &__link::before {
     content: "READ →";
-    @include typography-uppercase;
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-montserrat-bold);
+    text-transform: uppercase;
+    letter-spacing: .5px;
     color: rgb(var(--white-rgb));
     font-size: 8rem;
     box-sizing: border-box;
@@ -208,7 +222,7 @@
     background: rgba(var(--blue-rgb), .95);
   }
   &__title {
-    font-size: var(--size-xl);
+    @include type-scale(lg);
     line-height: 125%;
     width: 100%;
     margin-top: 0;
@@ -217,7 +231,7 @@
   }
   &__excerpt {
     margin-top: 1rem;
-    padding-bottom: var(--size-m);
+    padding-bottom: size(2);
     @include font(serif, regular, italic);
     @include type-scale(md, 1.4);
     color: rgba(var(--black-rgba-50));
@@ -255,11 +269,11 @@
     color: rgb(var(--black-rgb));
     display: inline-block;
     line-height: 100%;
-    margin-top: var(--size-xl);
+    margin-top: size(3);
     text-decoration: none;
-    font-size: var(--size-l);
+    @include type-scale(md);
     border: 2px solid rgb(var(--black-rgb));
-    padding: var(--size-xs) var(--size-s);
+    padding: size(1) size(2);
     transition: color .3s ease, background .3s ease;
     &:hover {
       background: rgb(var(--black-rgb));

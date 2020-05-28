@@ -174,13 +174,13 @@
       }
       .Footer__contact__job-title {
         @include font(sans);
-        line-height: calc(var(--size-m) * 1.5);
+        line-height: size(3);
         color: rgba(var(--white-blue-rgba-50));
         margin-top: 0;
       }
       .Footer__contact__say-hi {
         @include font(sans);
-        line-height: calc(var(--size-m) * 1.5);
+        line-height: size(3);
         color: rgba(var(--white-blue-rgba-50));
         margin-top: size(4);
         margin-bottom: 0;
