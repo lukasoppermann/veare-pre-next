@@ -14,7 +14,6 @@ export default (content: string, options: { [prop: string]: any; } = {}, req) =>
     <html lang="en" prefix="og: http://ogp.me/ns#">
     <head>
       ${meta(options.title || undefined, options.og || [])}
-      <link type="text/css" href="/${revFile('css/litApp.css')}" rel="stylesheet" />
       <link type="text/css" href="/${revFile('css/app.css')}" rel="stylesheet" />
       <link rel="preconnect" href="http://images.ctfassets.net">
       <link rel="preconnect" href="https://fonts.googleapis.com">
