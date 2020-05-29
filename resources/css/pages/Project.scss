@@ -113,11 +113,14 @@
   font-family: var(--font-montserrat);
   font-weight: var(--font-montserrat-bold);
   letter-spacing: .5px;
-  @include type-scale(xxl);
   color: inherit;
   display: block;
   content: counter(projects, decimal-leading-zero);
   font-feature-settings: "tnum", "zero";
+  @include type-scale(lg);
+  @include at_least(desktop) {
+    @include type-scale(xxl);
+  }
 }
 .Project-card__client {
   font-family: var(--font-montserrat);
@@ -146,8 +149,11 @@
 .Project-card__title {
   font-family: var(--font-montserrat);
   font-weight: var(--font-montserrat-bold);
-  @include type-scale(xxl);
   color: inherit;
+  @include type-scale(lg);
+  @include at_least(desktop) {
+    @include type-scale(xxl);
+  }
 }
 
 /* ====================================

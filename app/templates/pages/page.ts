@@ -8,5 +8,6 @@ export default (page, req): templateInterface => layout(html`
     ${unsafeHTML(page.content)}
   </section>
 `, {
-  bodyClass: page.slug
+  bodyClass: page.slug,
+  pageClass: `Page__${page.slug}`
 }, req)

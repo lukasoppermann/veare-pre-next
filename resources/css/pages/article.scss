@@ -3,6 +3,9 @@
 @import "../includes/typography.scss";
 @import "../_mixins/mixins.scss";
 .Article {
+  @include smaller_than(desktop) {
+    padding: 0 size(2);
+  }
   h1 {
     color: rgb(var(--black-rgb));
     grid-column: columns;

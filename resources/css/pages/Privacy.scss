@@ -1,3 +1,8 @@
+.Page__privacy {
+  @include smaller_than(desktop) {
+    padding: 0 size(2);
+  }
+}
 .privacy section:first-of-type {
   padding-top: size(4);
   padding-bottom: size(6);

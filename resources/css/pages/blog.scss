@@ -36,6 +36,11 @@
     transform: translateY(0);
   }
 }
+.Page__blog {
+  @include smaller_than(desktop) {
+    padding: 0 size(2);
+  }
+}
 .Article-list {
   margin-top: size(15);
   margin-bottom: size(5);
