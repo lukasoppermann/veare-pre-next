@@ -113,11 +113,14 @@
   font-family: var(--font-montserrat);
   font-weight: var(--font-montserrat-bold);
   letter-spacing: .5px;
-  @include type-scale(xxl);
   color: inherit;
   display: block;
   content: counter(projects, decimal-leading-zero);
   font-feature-settings: "tnum", "zero";
+  @include type-scale(lg);
+  @include at_least(desktop) {
+    @include type-scale(xxl);
+  }
 }
 .Project-card__client {
   font-family: var(--font-montserrat);
@@ -146,8 +149,11 @@
 .Project-card__title {
   font-family: var(--font-montserrat);
   font-weight: var(--font-montserrat-bold);
-  @include type-scale(xxl);
   color: inherit;
+  @include type-scale(lg);
+  @include at_least(desktop) {
+    @include type-scale(xxl);
+  }
 }
 
 /* ====================================
@@ -429,8 +435,17 @@
       bottom: size(2);
     }
   }
+  h3 {
+    @include font(sans);
+    @include type-scale(lg);
+    margin-top: size(3);
+    color: rgb(var(--black-rgb));
+  }
   h4 {
     margin-top: size(5);
+    @include font(sans, bold);
+    @include type-scale(md);
+    color: rgb(var(--black-rgb));
   }
   h5 {
     font-family: var(--font-montserrat);
@@ -440,6 +455,7 @@
     @include type-scale(sm);
     margin-top: size(4);
     grid-column: columns;
+    color: rgb(var(--black-rgb));
   }
   h6 {
     @include titled-title;

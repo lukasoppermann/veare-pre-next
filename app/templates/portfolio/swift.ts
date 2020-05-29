@@ -33,10 +33,10 @@ export default html`
       <div class="Grid--columns">
         <img src="/${revFile('media/swift-logo.jpg')}" alt="Swift logo design" />
       </div>
-      <div class="old-project-grid-image-main">
+      <div class="shame-mg-top-2 old-project-grid-image-main">
         <img src="/${revFile('media/swift-logo-construction.jpg')}" alt="Swift logo constrcution" class="u-full-width" />
       </div>
-      <div class="old-project-grid-image-side">
+      <div class="shame-mg-top-2 old-project-grid-image-side">
         <img src="/${revFile('media/swift-logo-lockup.jpg')}" alt="Swift logo lockup" class="u-full-width" />
       </div>
       <div class="old-project-grid-text">
@@ -65,16 +65,16 @@ export default html`
       </div>
 
       <h3 class="o-headline--h2 o-headline--portfolio Grid--columns">Architecture & Vehicles</h3>
-      <div class="old-project-grid-image-main">
+      <div class="shame-mg-top-2 old-project-grid-image-main">
         <img src="/${revFile('media/swift-car.jpg')}" alt="vehicle with corporate colors & elements" class="u-full-width" />
       </div>
-      <div class="old-project-grid-image-side">
+      <div class="shame-mg-top-2 old-project-grid-image-side">
         <img src="/${revFile('media/swift-flags.jpg')}" alt="Swift flag design" class="u-full-width" />
       </div>
-      <div class="old-project-grid-image-side-start">
+      <div class="shame-mg-top-2 old-project-grid-image-side-start">
         <img src="/${revFile('media/swift-checkin.jpg')}" alt="swift help desk" class="u-full-width" />
       </div>
-      <div class="old-project-grid-image-main-right">
+      <div class="shame-mg-top-2 old-project-grid-image-main-right">
         <img src="/${revFile('media/swift-lounge.jpg')}" alt="swift passanger lounge" class="u-full-width" />
       </div>
     </div>

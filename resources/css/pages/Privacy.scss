@@ -1,3 +1,8 @@
+.Page__privacy {
+  @include smaller_than(desktop) {
+    padding: 0 size(2);
+  }
+}
 .privacy section:first-of-type {
   padding-top: size(4);
   padding-bottom: size(6);
@@ -13,6 +18,31 @@
   }
   p {
     color: rgba(var(--black-rgba-80));
+  }
+  h2,
+  h3,
+  h4,
+  h5 {
+    @include font(sans);
+    color: rgb(var(--black-rgb));
+  }
+  h2 {
+    margin-top: size(3);
+    @include type-scale(xl);
+  }
+  h3 {
+    @include type-scale(lg);
+    margin-top: size(3);
+  }
+  h4 {
+    @include type-scale(md);
+    margin-top: size(3);
+  }
+  h5 {
+    @include type-scale(sm);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    margin-top: size(3);
   }
   .boxed-content {
     grid-column: columns;
