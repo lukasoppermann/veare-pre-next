@@ -107,6 +107,7 @@ export default async (richText: richTextDocument) => {
         } catch (e) {
           /* istanbul ignore next */
           console.error('🚨 ERROR: ', e)
+          /* istanbul ignore next */
           console.dir(node.data.target, { depth: null, colors: true })
         }
       },
