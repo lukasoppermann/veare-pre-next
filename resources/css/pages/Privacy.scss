@@ -14,7 +14,10 @@
   h5,
   p,
   ul {
-    grid-column: columns / span 7;
+    grid-column: columns;
+    @include at_least(large) {
+      grid-column: column 3 / span 8;
+    }
   }
   p {
     color: rgba(var(--black-rgba-80));
@@ -46,6 +49,9 @@
   }
   .boxed-content {
     grid-column: columns;
+    @include at_least(large) {
+      grid-column: column 3 / span 8;
+    }
     box-shadow: inset 2px 0 rgb(var(--black-rgb)), 0 2px rgb(var(--black-rgb));
     padding: 0;
     display: grid;
