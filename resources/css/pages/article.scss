@@ -24,6 +24,9 @@
     @include at_least(desktop) {
       grid-column: column 3 / span 8;
     }
+    @include at_least(large) {
+      grid-column: column 4 / span 7;
+    }
   }
   h2,
   h3,
@@ -37,7 +40,7 @@
       grid-column: column 3 / span 8;
     }
     @include at_least(large) {
-      grid-column: column 4 / span 7;
+      grid-column: column 4 / span 6;
     }
   }
   h2 {
@@ -62,6 +65,9 @@
     @include at_least(desktop) {
       grid-column: column 3 / span 8;
     }
+    @include at_least(large) {
+      grid-column: column 4 / span 6;
+    }
   }
   .Picture + p,
   .Annotation + p {
@@ -72,7 +78,7 @@
     @include at_least(desktop) {
       grid-column: column 2 / span 9;
     }
-    @include at_least(extra) {
+    @include at_least(large) {
       grid-column: column 3 / span 8;
     }
   }
@@ -104,6 +110,9 @@
     @include at_least(desktop) {
       grid-column: column 3 / span 8;
     }
+    @include at_least(large) {
+      grid-column: column 4 / span 6;
+    }
   }
   blockquote {
     margin-top: size(3);
@@ -111,6 +120,9 @@
     grid-column: columns;
     @include at_least(desktop) {
       grid-column: sidebar-left 2 / span 9;
+    }
+    @include at_least(large) {
+      grid-column: column 3 / span 8;
     }
     p {
       hyphens: auto;
@@ -145,6 +157,9 @@
     grid-column: columns;
     @include at_least(desktop) {
       grid-column: column 3 / span 8;
+    }
+    @include at_least(large) {
+      grid-column: column 4 / span 7;
     }
     @include max-width('s') {
       text-align: center;
