@@ -71,7 +71,7 @@
 /* ====================================
     GRID with 32px gutter
 ==================================== */
-.Grid-32 {
+@mixin Grid {
   --column-gap: 32px;
   --row-gap: 0;
   display: grid;
@@ -139,4 +139,7 @@
   //     8px
   //     [full-bleed-end];
   // }
+}
+.Grid-32 {
+  @include Grid();
 }

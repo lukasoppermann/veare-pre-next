@@ -1,4 +1,7 @@
 .skills {
+  &.Grid {
+    @include Grid();
+  }
   grid-row-gap: 0;
   @include smaller_than(desktop) {
     padding: 0 size(2);
@@ -17,10 +20,11 @@
     @include max-width('m') {
       grid-column: sidebar-left 2 / span 3;
     }
-    @include max-width('s') {
-      grid-column: column 3 / span 3;
+    @include smaller_than(desktop) {
+      grid-row: 1;
+      grid-column: column 2 / span 4;
     }
-    @include max-width('xs') {
+    @include smaller_than(tablet) {
       grid-column: columns;
     }
     picture {
@@ -38,10 +42,10 @@
     @include max-width('m') {
       grid-column: column 3 / span 6;
     }
-    @include max-width('s') {
-      grid-column: column 2 / span 5;
+    @include smaller_than(desktop) {
+      grid-column: column 2 / span 4;
     }
-    @include max-width('xs') {
+    @include smaller_than(tablet) {
       grid-column: columns;
       margin-top: 0 !important;
     }
@@ -62,15 +66,10 @@
   }
 }
 .skills:nth-child(2n+1) .Picture {
-  order: 3;
-  grid-column: column 6 / span 3;
-  @include max-width('s') {
-    order: 1;
-    grid-column: column 3 / span 3;
-  }
-  @include max-width('xs') {
-    order: 1;
-    grid-column: columns;
+  order: 1;
+  @include at_least(desktop) {
+    order: 3;
+    grid-column: column 6 / span 3;
   }
 }
 .skills p:not(:first-child) {
@@ -79,14 +78,10 @@
 .skills:nth-child(2n+1) h2,
 .skills:nth-child(2n+1) blockquote,
 .skills:nth-child(2n+1) p {
-  grid-column: column / span 5;
-  @include max-width('m') {
-    grid-column: sidebar-left 2 / span 6;
-  }
-  @include max-width('s') {
-    grid-column: column 2 / span 5;
-  }
-  @include max-width('xs') {
-    grid-column: columns;
+  // @include max-width('m') {
+  //   grid-column: sidebar-left 2 / span 6;
+  // }
+  @include at_least(desktop) {
+    grid-column: column / span 5;
   }
 }
