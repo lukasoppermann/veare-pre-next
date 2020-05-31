@@ -47,30 +47,6 @@
         grid-column-start: column 5;
       }
     }
-    // @include at_least(large) {
-    //
-    // }
-    // &:nth-of-type(3n+1) {
-    //   @include at_least(tablet) {
-    //     grid-column-end: span 3;
-    //   }
-    //   grid-column: sidebar-left 2 / column 3;
-    //   @include max-width('s') {
-    //     grid-column: column 1 / span 3;
-    //   }
-    // }
-    // &:nth-of-type(3n+2) {
-    //   grid-column: column 3 / column 6;
-    //   @include max-width('s') {
-    //     grid-column: column 5 / span 3;
-    //   }
-    // }
-    // &:nth-of-type(3n) {
-    //   grid-column: column 6 / sidebar-right 2;
-    //   @include max-width('s') {
-    //     display: none;
-    //   }
-    // }
     &::before,
     &::after {
       @include pseudo();
