@@ -31,8 +31,8 @@
   }
 }
 .Grid > .Annotation {
-  grid-column: sidebar-right;
-  @include max-width('s') {
-    grid-column: columns;
+  grid-column: columns;
+  @include at_least(desktop) {
+    grid-column: sidebar-right;
   }
 }
