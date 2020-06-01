@@ -2,9 +2,6 @@
   --min-row-height: 35px;
   --row-gap: size(1);
   --column-gap: 20px;
-  --new-min-row-height: 32px;
-  --new-column-gap: 16px;
-  --new-row-gap: 0;
   @include max-width('s') {
     --column-gap: size(2);
   }
@@ -114,28 +111,6 @@
       minmax(0, 1fr)
       [margin-right full-bleed-end];
   }
-  // @include at_least(large) {
-  //   grid-template-columns:
-  //     [full-bleed-start]
-  //     8px
-  //     [margin-left full-width-start]
-  //     minmax(0, 1fr)
-  //     [column sidebar-left-start sidebar-left columns-start column]
-  //     minmax(64px, 95px)
-  //     [column sidebar-left]
-  //     minmax(64px, 95px)
-  //     [sidebar-left-end sidebar-left]
-  //     repeat(8, [column] minmax(64px, 95px))
-  //     [column sidebar-right sidebar-right-start]
-  //     minmax(64px, 95px)
-  //     [column sidebar-right]
-  //     minmax(64px, 95px)
-  //     [column sidebar-right sidebar-right-end columns-end]
-  //     minmax(0, 1fr)
-  //     [margin-right full-width-end]
-  //     8px
-  //     [full-bleed-end];
-  // }
 }
 .Grid-32 {
   @include Grid();

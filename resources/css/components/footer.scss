@@ -17,6 +17,7 @@
     Read & write
   ==================================== */
   .Footer__read-and-write {
+    @include Grid();
     padding: size(5) 0;
     @include at_least(mobile) {
       padding: size(10) 0;
@@ -266,6 +267,7 @@
     Social connect
   ==================================== */
   .Footer__connect {
+    @include Grid();
     width: 100%;
     grid-template-rows: 1px auto;
     align-items: center;
@@ -325,6 +327,7 @@
     Legal & Menu
   ==================================== */
   .Footer__legal {
+    @include Grid();
     width: 100%;
     grid-template-rows: 1px auto;
     align-items: center;

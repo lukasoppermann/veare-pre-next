@@ -8,7 +8,7 @@ const articles = cache.get('article').slice(0, 4)
 
 export default html`
 <footer class="Footer">
-  <section class="Footer__read-and-write Grid-32">
+  <section class="Footer__read-and-write">
     <h6 class="Footer__read__headline">Writing</h6>
     <ol class="Footer__read__articles">
       ${repeat(articles, (article) => html`<li itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">${articlePreview(article.fields)}</li>`)}
@@ -27,7 +27,7 @@ export default html`
       <a class="Footer__contact__cv" target="_blank" rel="noopener" href="https://drive.google.com/open?id=10K9F9o0hokq4iPAbF5mseKJn_yflt19k">${embedFile('./resources/svgs/file-download.svg')}Download my full CV (pdf)</a>
     </div>
   </section>
-  <section class="Footer__connect Grid-32">
+  <section class="Footer__connect">
     <hr />
     <div class="Footer__connect__block">
       <h6>Business</h6>
@@ -46,7 +46,7 @@ export default html`
       <p>$ git checkout my code projects on <a href="https://github.com/lukasoppermann" rel="noopener" target="_blank">Github</a></p>
     </div>
   </section>
-  <section class="Footer__legal Grid-32">
+  <section class="Footer__legal">
     <hr />
     <a class="veare-wordmark" href="/home" aria-label="Go to homepage" name="footer home link">${embedFile('./resources/svgs/veare-wordmark.svg')}</a>
     <div class="Footer__legal__info">
