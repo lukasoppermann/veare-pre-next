@@ -1,11 +1,14 @@
 .Annotation {
   position: relative;
-  padding-top: size(2);
-  margin-top: 0;
-  @include max-width('s') {
-    margin-top: size(2);
-    margin-bottom: size(4);
-    padding-top: 0;
+  padding-top: 0;
+  margin-top: size(2);
+  margin-bottom: size(4);
+  grid-column: columns;
+  @include at_least(desktop) {
+    grid-column: sidebar-right;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: size(2);
   }
   p:nth-child(1n) {
     @include font(sans);
@@ -28,11 +31,5 @@
     @include max-width('s') {
       display: none;
     }
-  }
-}
-.Grid > .Annotation {
-  grid-column: columns;
-  @include at_least(desktop) {
-    grid-column: sidebar-right;
   }
 }

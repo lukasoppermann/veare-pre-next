@@ -2,56 +2,86 @@
     PROJECT Page
 ==================================== */
 .Project {
-  .Boxed-group {
+  .Header {
+    @include Grid();
+    height: calc(var(--viewport-height) / 2);
+    @include at_least(desktop) {
+      height: calc(var(--viewport-height) - #{size(12)});
+    }
+    .Picture {
+      margin: 0;
+      margin-left: size(-3); // .75 * gutter
+      width: calc(100% + #{size(6)}); // + 1.5 * gutter
+      height: 100%;
+      grid-column: columns;
+      grid-row: 1;
+      background-color: var(--sand-grey-rgb);
+    }
+    .Project__title {
+      font-family: var(--font-montserrat);
+      font-weight: var(--font-montserrat-bold);
+      letter-spacing: .5px;
+      @include type-scale(title);
+      color: rgb(var(--white-rgb));
+      margin: 0;
+      padding-top: var(--viewport-height);
+      transform: translateY(-200px);
+      z-index: 100;
+      grid-column: columns;
+      grid-row: 1;
+      @include smaller_than(desktop) {
+        @include type-scale(hg);
+        padding-top: calc(var(--viewport-height) / 2);
+        transform: translateY(-80px);
+      }
+    }
+  }
+  article {
+    @include Grid();
+  }
+  h2,
+  h3,
+  h4,
+  h5,
+  p,
+  blockquote,
+  .Picture,
+  .Boxed-group,
+  .Rule--horizontal {
     grid-column: columns;
+    word-break: break-word;
+    @include at_least(desktop) {
+      grid-column: column 3 / span 8;
+      word-break: normal;
+    }
   }
-}
-.Project__challenge {
-  hyphens: auto;
-  margin-top: size(10);
-  grid-column: column 1 / column 5;
-  @include max-width('xs') {
+  .Project__challenge {
+    hyphens: auto;
+    margin-top: size(10);
     grid-column: columns;
+    @include at_least(desktop) {
+      grid-column: column 3 / span 5;
+    }
   }
-  h2 {
-    margin-top: 0;
-  }
-}
-.Project__toc {
-  margin-top: size(10);
-  grid-column: column 6 / column 8;
-  @include max-width('l') {
-    grid-column: column 5 / column 8;
-  }
-  @include max-width('xs') {
+  .Project__toc {
+    margin-top: size(10);
     grid-column: columns;
+    @include at_least(desktop) {
+      grid-column: column 8 / span 3;
+    }
   }
-}
-.Project__pagination {
-  z-index: 900;
-  top: 200px;
-  position: sticky;
-  margin-top: 0;
-}
-.Project__pagination-container {
-  display: block;
-  position: absolute;
-  margin-top: -4px; // to align with TOC
-  @include max-width('s') {
-    display: none;
+  .Project__back_link {
+    display: block;
+    grid-column: columns;
+    text-decoration: none;
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-montserrat-bold);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    @include type-scale(sm);
+    margin-top: size(3);
+    margin-bottom: size(15);
   }
-}
-.Project__back_link {
-  display: block;
-  grid-column: columns;
-  text-decoration: none;
-  font-family: var(--font-montserrat);
-  font-weight: var(--font-montserrat-bold);
-  text-transform: uppercase;
-  letter-spacing: .5px;
-  @include type-scale(sm);
-  margin-top: size(3);
-  margin-bottom: size(15);
 }
 // NEW Project page
 
@@ -79,7 +109,7 @@
   letter-spacing: .5px;
   @include type-scale(sm);
   flex: 0 0 auto;
-  margin-top: var(--section-gap);
+  margin-top: size(8);
   margin-bottom: 0;
   a {
     padding-right: size(1);
@@ -113,41 +143,8 @@
   @include smaller_than(desktop) {
     padding: 0 size(2);
   }
-  --section-gap: 12;
   --row-gap: 0;
   --rule-color: var(--project-color, rgb(var(--blue-rgb)));
-  h2,
-  h3,
-  h4,
-  h5,
-  p,
-  blockquote {
-    grid-column: columns / span 5;
-    @include max-width('m') {
-      word-break: break-word;
-      grid-column: columns / span 6;
-    }
-    @include max-width('xs') {
-      word-break: break-word;
-      grid-column: columns;
-    }
-  }
-  .Project__title {
-    font-family: var(--font-montserrat);
-    font-weight: var(--font-montserrat-bold);
-    letter-spacing: .5px;
-    @include type-scale(title);
-    color: rgb(var(--white-rgb));
-    margin: 0;
-    position: absolute;
-    z-index: 100;
-    bottom: size(8);
-    @include smaller_than(desktop) {
-      @include type-scale(hg);
-      left: size(3);
-      bottom: size(2);
-    }
-  }
   h3 {
     @include font(sans);
     @include type-scale(lg);
@@ -167,7 +164,6 @@
     letter-spacing: .5px;
     @include type-scale(sm);
     margin-top: size(4);
-    grid-column: columns;
     color: rgb(var(--black-rgb));
   }
   h6 {
@@ -208,9 +204,6 @@
   }
   figure + p:not(:first-child) {
     margin-top: size(4);
-  }
-  .Rule--horizontal {
-    grid-column: columns;
   }
   .Block {
     grid-column: full-bleed;

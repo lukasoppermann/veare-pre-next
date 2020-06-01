@@ -1,5 +1,4 @@
 const { html } = require('@popeindustries/lit-html-server')
-// const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 
 export default (item, loading = 'lazy') => {
@@ -19,5 +18,3 @@ export default (item, loading = 'lazy') => {
   : ''}
 `
 }
-// style="--aspect-ratio:${item.image.fields.details.image.width / item.image.fields.details.image.height}; ${item.backgroundColor !== null ? '--backgroundColor: ' + item.backgroundColor + ';' : ''}"
-// ${repeat(item.sources, (source) => html`<source media="${source.fields.mediaQuery}" type="image/webp" srcset="${source.fields.image.fields.url}?fm=webp">`)}
