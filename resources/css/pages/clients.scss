@@ -1,8 +1,6 @@
 .clients {
+  @include Grid();
   margin-bottom: size(9);
-  &.Grid {
-    @include Grid();
-  }
   h2 {
     font-family: var(--font-montserrat);
     font-weight: var(--font-montserrat-bold);

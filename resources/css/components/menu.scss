@@ -2,6 +2,7 @@
     MENU
 ==================================== */
 .Menu {
+  @include Grid();
   width: 100vw;
   height: size(8);
   padding: 0;
@@ -92,6 +93,7 @@
   }
 }
 .Menu__overlay {
+  @include Grid();
   pointer-events: none;
   width: 100%;
   height: size(8);

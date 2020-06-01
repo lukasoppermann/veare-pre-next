@@ -1,11 +1,5 @@
 .skills {
-  &.Grid {
-    @include Grid();
-  }
-  grid-row-gap: 0;
-  @include smaller_than(desktop) {
-    padding: 0 size(2);
-  }
+  @include Grid();
   &:nth-child(2n+1) {
     margin-top: size(7);
   }

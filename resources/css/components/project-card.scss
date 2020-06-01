@@ -2,9 +2,7 @@
     Project cards
 ==================================== */
 .Projects__cards-container {
-  &.Grid {
-    @include Grid();
-  }
+  @include Grid();
   .Project-card {
     grid-column: columns;
     @include at_least(desktop) {
@@ -18,7 +16,7 @@
     @include min-width('s') {
       margin-top: size(10);
       &:nth-child(2n) {
-        grid-column-start: column 4;
+        grid-column-start: column 5;
       }
     }
   }
