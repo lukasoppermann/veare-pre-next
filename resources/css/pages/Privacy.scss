@@ -1,6 +1,6 @@
 .Page__privacy {
-  @include smaller_than(desktop) {
-    padding: 0 size(2);
+  section {
+    @include Grid();
   }
 }
 .privacy section:first-of-type {

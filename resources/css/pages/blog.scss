@@ -37,9 +37,7 @@
   }
 }
 .Article-list {
-  &.Grid {
-    @include Grid();
-  }
+  @include Grid();
   margin-top: size(15);
   margin-bottom: size(5);
 }
