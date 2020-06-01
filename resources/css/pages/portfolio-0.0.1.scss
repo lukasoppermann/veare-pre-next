@@ -44,7 +44,6 @@
   @include type-scale(xxl);
   margin-bottom: size(3);
   margin-top: size(5);
-  padding: 0 size(2);
 }
 .o-headline--portfolio {
   margin-bottom: size(3);
@@ -64,7 +63,20 @@
   padding-bottom: size(3);
 }
 .o-project-section-container {
-  padding: 0 size(2.5) size(9);
+  @include Grid();
+  padding-bottom: size(9);
+  h3 {
+    grid-column: columns;
+    @include at_least(desktop) {
+      grid-column: column 3 / span 8;
+    }
+  }
+  .Grid--columns {
+    grid-column: columns;
+    @include at_least(desktop) {
+      grid-column: column 3 / span 8;
+    }
+  }
 }
 .o-project-info__item {
   flex-shrink: 1;
@@ -162,38 +174,42 @@
   }
 }
 .old-project-grid-image-side {
-  grid-column: column 5 / column 8;
-  @include max-width('m') {
-    grid-column: columns;
+  grid-column: columns;
+  @include at_least(desktop) {
+    grid-column: column 7 / span 4;
   }
 }
 .old-project-grid-image-side-start {
-  grid-column: column 1 / column 4;
-  @include max-width('m') {
-    grid-column: columns;
+  grid-column: columns;
+  @include at_least(desktop) {
+    grid-column: column 3 / span 4;
   }
 }
 .old-project-grid-image-centered {
-  grid-column: column 2 / column 7;
-  @include max-width('m') {
-    grid-column: columns;
+  grid-column: columns;
+  @include at_least(desktop) {
+    grid-column: column 3 / span 8;
   }
 }
 .Grid--full {
   grid-column: full-content;
 }
 .portfolio-item--old {
+  @include Grid();
   section {
-    grid-column: columns;
     position: relative;
-  }
-  section.portfolio-item--old--copy {
-    grid-column: column 3 / columns;
-    margin-bottom: size(9);
-    @include max-width('m') {
-      grid-column: columns;
+    grid-column: columns;
+    @include at_least(desktop) {
+      grid-column: column 3 / span 8;
     }
   }
+  // section.portfolio-item--old--copy {
+  //   grid-column: column 3 / columns;
+  //   margin-bottom: size(9);
+  //   @include max-width('m') {
+  //     grid-column: columns;
+  //   }
+  // }
   .stage {
     grid-column: full-bleed;
   }
@@ -228,7 +244,6 @@
   .o-headline--h2 {
     margin-top: size(5);
     margin-bottom: size(3);
-    padding: 0 size(2);
   }
   p:first-of-type {
     margin-top: size(3);
@@ -236,7 +251,4 @@
   p:last-of-type {
     margin-bottom: size(3);
   }
-}
-.c-section-portfolio-intro {
-  padding: 0 size(2);
 }
