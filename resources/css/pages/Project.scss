@@ -49,10 +49,8 @@
   .Boxed-group,
   .Rule--horizontal {
     grid-column: columns;
-    word-break: break-word;
     @include at_least(desktop) {
       grid-column: column 3 / span 8;
-      word-break: normal;
     }
   }
   .Project__challenge {
