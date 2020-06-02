@@ -18,7 +18,7 @@
   }
   .Picture + .Annotation {
     grid-column: columns;
-    @include min-width('s') {
+    @include at_least(desktop) {
       margin-top: size(5);
     }
     &::before {
@@ -41,7 +41,7 @@
     }
   }
   .Picture:nth-of-type(2) + .Annotation {
-    @include min-width('s') {
+    @include at_least(desktop) {
       order: 3;
       grid-column: sidebar-left 2 / span 4;
     }

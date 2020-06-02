@@ -92,16 +92,8 @@
   display: flex;
   height: size(2);
   overflow: visible;
-  grid-column-start: sidebar-left 1;
   width: 300px;
   transform-origin: top left;
-  transform: rotate(90deg) translateY(-100%);
-  @include max-width('s') {
-    grid-column: columns;
-    grid-row-start: auto;
-    transform: rotate(0deg);
-    margin-bottom: size(2);
-  }
   counter-increment: titled-title-counter;
   font-family: var(--font-montserrat);
   font-weight: var(--font-montserrat-bold);
@@ -110,7 +102,14 @@
   @include type-scale(sm);
   flex: 0 0 auto;
   margin-top: size(8);
-  margin-bottom: 0;
+  grid-column: columns;
+  transform: rotate(0deg);
+  margin-bottom: size(2);
+  @include at_least(desktop) {
+    grid-column: sidebar-left 1 / span 1;
+    transform: rotate(90deg) translateY(-100%);
+    margin-bottom: 0;
+  }
   a {
     padding-right: size(1);
   }
@@ -174,7 +173,7 @@
     }
   }
   h6 + h5 {
-    @include min-width('s') {
+    @include at_least(desktop) {
       margin-top: size(8);
     }
   }

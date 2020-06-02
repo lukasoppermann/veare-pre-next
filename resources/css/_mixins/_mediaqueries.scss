@@ -28,17 +28,3 @@ $breakpoints: (
     }
   }
 }
-
-@mixin min-width($width) {
-  // get correct width
-  @if map_has_key($breakpoints, $width) {
-    $width: map_get($breakpoints, $width);
-  }
-  // guard against erronious $width
-  @if type_of($width) == number {
-    // remove one px to make sure it works together with min
-    @media only screen and (min-width: $width) {
-      @content;
-    }
-  }
-}
