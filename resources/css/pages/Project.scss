@@ -177,7 +177,7 @@
       margin-top: size(8);
     }
   }
-  :not(.Annotation) > p {
+  :not(.Annotation, blockquote) > p {
     @include font(sans);
     @include type-scale(md);
     color: rgba(var(--black-rgba-80));
@@ -185,16 +185,13 @@
   blockquote {
     hyphens: auto;
     overflow-wrap: break-word;
-    @include max-width('xxs') {
-      @include type-scale(md);
-    }
     margin-top: size(3);
     p {
       color: rgb(var(--black-rgb));
       @include font(sans);
-      @include type-scale(xl);
-      @include max-width('xxs') {
-        @include type-scale(lg);
+      @include type-scale(lg);
+      @include at_least(landscape) {
+        @include type-scale(xl);
       }
     }
   }

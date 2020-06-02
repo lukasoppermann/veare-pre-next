@@ -1,9 +1,9 @@
 .Picture {
-  grid-column: columns;
+  grid-column: full-content;
   position: relative;
   z-index: 50;
-  @include max-width('m') {
-    grid-column: full-content;
+  @include at_least(desktop) {
+    grid-column: columns;
   }
   img {
     object-fit: cover;
@@ -18,9 +18,9 @@
     grid-column: columns;
   }
   &.Picture--wide {
-    grid-column: sidebar-left 2 / sidebar-right 2;
-    @include max-width('m') {
-      grid-column: full-content;
+    grid-column: full-content;
+    @include at_least(desktop) {
+      grid-column: sidebar-left 2 / sidebar-right 2;
     }
   }
   &.Picture--full-width {

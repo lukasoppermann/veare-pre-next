@@ -11,12 +11,12 @@
     padding-top: size(2);
   }
   p:nth-child(1n) {
-    @include font(sans);
-    @include type-scale(xs);
+    @include font(sans, regular, italic);
+    @include type-scale(md);
     color: rgba(var(--black-rgba-50));
-    @include max-width('s') {
-      @include font(sans, regular, italic);
-      @include type-scale(md);
+    @include at_least(desktop) {
+      @include font(sans);
+      @include type-scale(xs);
     }
   }
   &:not(:nth-child(2)) {
@@ -28,8 +28,9 @@
     height: 2px;
     width: 50%;
     background-color: rgb(var(--light-grey-rgb));
-    @include max-width('s') {
-      display: none;
+    display: none;
+    @include at_least(desktop) {
+      display: block;
     }
   }
 }

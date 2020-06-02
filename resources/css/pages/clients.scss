@@ -67,7 +67,7 @@
     }
     &:nth-of-type(3n+2)::before,
     &:nth-of-type(3n+2)::after {
-      @include max-width('s') {
+      @include smaller_than(desktop) {
         background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMSIgaGVpZ2h0PSIxMCI+ICA8cG9seWdvbiBmaWxsPSIjRThFOUU5IiBwb2ludHM9IjYgNC41IDEwLjUgNC41IDEwLjUgNS41IDYgNS41IDYgMTAgNSAxMCA1IDUuNSAuNSA1LjUgLjUgNC41IDUgNC41IDUgMCA2IDAiLz48L3N2Zz4=") no-repeat, url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMSIgaGVpZ2h0PSIxMCI+ICA8cG9seWdvbiBmaWxsPSIjRThFOUU5IiBwb2ludHM9IjYgNC41IDEwLjUgNC41IDEwLjUgNS41IDYgNS41IDYgMTAgNSAxMCA1IDUuNSAuNSA1LjUgLjUgNC41IDUgNC41IDUgMCA2IDAiLz48L3N2Zz4=") no-repeat right top;
       }
     }

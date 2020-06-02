@@ -203,13 +203,6 @@
       grid-column: column 3 / span 8;
     }
   }
-  // section.portfolio-item--old--copy {
-  //   grid-column: column 3 / columns;
-  //   margin-bottom: size(9);
-  //   @include max-width('m') {
-  //     grid-column: columns;
-  //   }
-  // }
   .stage {
     grid-column: full-bleed;
   }
