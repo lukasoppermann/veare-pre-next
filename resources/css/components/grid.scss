@@ -113,5 +113,6 @@
   }
 }
 .Grid-32 {
+  border: 1px solid red !important;
   @include Grid();
 }

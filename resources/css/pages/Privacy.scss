@@ -1,9 +1,5 @@
 .Page__privacy {
-  section {
-    @include Grid();
-  }
-}
-.privacy section:first-of-type {
+  @include Grid();
   padding-top: size(4);
   padding-bottom: size(6);
 }
