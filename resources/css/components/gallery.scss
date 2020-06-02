@@ -1,23 +1,24 @@
 .Gallery__two-pictures {
+  @extend .Grid;
   margin-bottom: 0;
   .Picture:nth-of-type(1) {
     grid-column: columns;
-    @include min-width('s') {
+    @include at_least(desktop) {
       order: 1;
-      grid-column: sidebar-left / span 6;
+      grid-column: sidebar-left / span 7;
     }
   }
   .Picture:nth-of-type(2) {
     grid-column: columns;
-    @include min-width('s') {
+    @include at_least(desktop) {
       margin-top: size(-15);
-      grid-column: column 4 / span 6;
+      grid-column: column 6 / span 7;
       order: 4;
     }
   }
   .Picture + .Annotation {
     grid-column: columns;
-    @include min-width('s') {
+    @include at_least(desktop) {
       margin-top: size(5);
     }
     &::before {
@@ -34,13 +35,13 @@
     }
   }
   .Picture:nth-of-type(1) + .Annotation {
-    @include min-width('s') {
-      grid-column: column 5 / span 4;
+    @include at_least(desktop) {
+      grid-column: column 8 / span 4;
       order: 2;
     }
   }
   .Picture:nth-of-type(2) + .Annotation {
-    @include min-width('s') {
+    @include at_least(desktop) {
       order: 3;
       grid-column: sidebar-left 2 / span 4;
     }

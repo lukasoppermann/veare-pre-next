@@ -1,8 +1,8 @@
 .Header--intro {
+  @extend .Grid;
   --max-grid-rows: 7;
   grid-template-rows: auto;
   border: none;
-  // min-height: calc(100vh - #{size(12)}); // - menu height + gutter
   padding-bottom: size(4);
 
   /* ====================================

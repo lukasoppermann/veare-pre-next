@@ -6,11 +6,11 @@ const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsaf
 
 export default (project, req) => {
   return layout(html`
-  <header class="Header Header--project Grid Grid--rows">
+  <header class="Header Header--project">
     <h2 class="Project__title">${project.title}</h2>
     ${picture(project.header.fields, 'eager')}
   </header>
-  <article class="Grid">
+  <article>
     <section class="Boxed-group">
       <div class="Boxed-item" style="flex-grow: 3">
         <h5>client</h5>

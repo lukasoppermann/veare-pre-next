@@ -99,7 +99,7 @@ export default {
   },
   transformed: `<p>Hello<br/>world!<a name="design">Design</a></p>
 
-<div class="Block Grid ">
+<div class="Block ">
   <p>Hello</p>
 </div>
 <div class="Rule--horizontal"><hr></div>`
