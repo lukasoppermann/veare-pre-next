@@ -18,7 +18,11 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    grid-column: columns;
+    grid-column-start: columns;
+    grid-column-end: span 1;
+    &:nth-of-type(2n) {
+      grid-column-start: column 2;
+    }
     @include at_least(tablet) {
       grid-column-start: columns;
       grid-column-end: span 3;
