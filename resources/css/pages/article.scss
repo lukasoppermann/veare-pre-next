@@ -9,17 +9,15 @@
     font-family: var(--font-noto-serif);
     font-style: italic;
     font-size: size(6);
-    line-height: 130%;
     max-width: 112rem;
     margin-top: size(15);
     margin-bottom: size(3);
-    text-align: left;
-    @include max-width('s') {
-      line-height: 110%;
-      text-align: center;
-    }
     grid-column: columns;
+    line-height: 110%;
+    text-align: center;
     @include at_least(desktop) {
+      text-align: left;
+      line-height: 130%;
       grid-column: column 3 / span 8;
     }
     @include at_least(large) {
@@ -89,11 +87,11 @@
   }
   li {
     list-style: none;
-    margin-left: 0;
     display: block;
     position: relative;
-    @include max-width('s') {
-      margin-left: 1.4em;
+    margin-left: 1.4em;
+    @include at_least(desktop) {
+      margin-left: 0;
     }
     &::before {
       content: "☞";
@@ -134,7 +132,7 @@
     }
   }
   .Annotation {
-    @include max-width('s') {
+    @include smaller_than(desktop) {
       margin-top: size(2);
       margin-bottom: size(4);
     }
@@ -153,14 +151,13 @@
   .Article__author {
     color: rgba(var(--black-rgba-80));
     grid-column: columns;
+    text-align: center;
     @include at_least(desktop) {
+      text-align: left;
       grid-column: column 3 / span 8;
     }
     @include at_least(large) {
       grid-column: column 4 / span 7;
-    }
-    @include max-width('s') {
-      text-align: center;
     }
   }
   .Article__author {

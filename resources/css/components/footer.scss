@@ -19,7 +19,7 @@
   .Footer__read-and-write {
     @extend .Grid;
     padding: size(5) 0;
-    @include at_least(mobile) {
+    @include at_least(landscape) {
       padding: size(10) 0;
     }
     .Footer__read__headline {
@@ -276,7 +276,7 @@
       margin-top: size(4);
       grid-column-end: span 2;
       grid-column-start: columns;
-      @include at_least(mobile) {
+      @include at_least(landscape) {
         grid-column-end: span 1;
         &:nth-of-type(2n) {
           grid-column-start: auto;
@@ -384,7 +384,7 @@
         }
         &:not(:first-child) {
           position: relative;
-          @include at_least(mobile) {
+          @include at_least(landscape) {
             margin-left: size(4);
             &::before {
               @include pseudo();

@@ -20,10 +20,7 @@ $_breakpoints: (
 
 @function _get_breakpoint($name: null) {
   @if $name != null {
-    @if map_has_key($breakpoints, $name) {
-      @return map_get($breakpoints, $name);
-    }
-    @elseif map_has_key($_breakpoints, $name) {
+    @if map_has_key($_breakpoints, $name) {
       @return map_get($_breakpoints, $name);
     }
     @return false;
@@ -48,6 +45,6 @@ $_breakpoints: (
     }
   }
   @elseif {
-    @error "Wrongly specified device with '#{$width}' use px width or one of the keys (landscape, tablet, desktop, large or extra)";
+    @error "Wrongly specified device with `#{$width}` use px width or one of the keys (landscape, tablet, desktop, large or extra)";
   }
 }
