@@ -3,7 +3,7 @@
 @import "../includes/typography.scss";
 @import "../_mixins/mixins.scss";
 .Article {
-  @include Grid();
+  @extend .Grid;
   h1 {
     color: rgb(var(--black-rgb));
     font-family: var(--font-noto-serif);

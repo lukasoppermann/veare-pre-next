@@ -63,7 +63,7 @@
   padding-bottom: size(3);
 }
 .o-project-section-container {
-  @include Grid();
+  @extend .Grid;
   padding-bottom: size(9);
   h3 {
     grid-column: columns;
@@ -152,7 +152,7 @@
   margin: 25px 0 30px;
 }
 
-.portfolio-item .grid [class*="span-"] {
+.portfolio-item [class*="span-"] {
   margin-bottom: 30px;
 }
 .old-project-grid-text {
@@ -195,7 +195,7 @@
   grid-column: full-content;
 }
 .portfolio-item--old {
-  @include Grid();
+  @extend .Grid;
   section {
     position: relative;
     grid-column: columns;

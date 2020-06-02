@@ -1,5 +1,5 @@
 .clients {
-  @include Grid();
+  @extend .Grid;
   margin-bottom: size(9);
   h2 {
     font-family: var(--font-montserrat);

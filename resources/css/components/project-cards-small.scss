@@ -2,7 +2,7 @@
     Project Cards Small
 ==================================== */
 .Project-cards--small {
-  @include Grid();
+  @extend .Grid;
   margin-top: size(9);
   margin-bottom: size(10);
   --lazy-picture-object-fit: contain;

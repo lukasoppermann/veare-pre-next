@@ -1,5 +1,5 @@
 .Page__privacy {
-  @include Grid();
+  @extend .Grid;
   padding-top: size(4);
   padding-bottom: size(6);
 }

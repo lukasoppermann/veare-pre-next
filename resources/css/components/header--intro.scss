@@ -1,5 +1,5 @@
 .Header--intro {
-  @include Grid();
+  @extend .Grid;
   --max-grid-rows: 7;
   grid-template-rows: auto;
   border: none;

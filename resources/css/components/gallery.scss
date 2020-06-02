@@ -1,5 +1,5 @@
 .Gallery__two-pictures {
-  @include Grid();
+  @extend .Grid;
   margin-bottom: 0;
   .Picture:nth-of-type(1) {
     grid-column: columns;

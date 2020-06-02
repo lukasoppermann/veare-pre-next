@@ -1,5 +1,5 @@
 .skills {
-  @include Grid();
+  @extend .Grid;
   &:nth-child(2n+1) {
     margin-top: size(7);
   }

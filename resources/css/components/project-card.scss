@@ -2,7 +2,7 @@
     Project cards
 ==================================== */
 .Projects__cards-container {
-  @include Grid();
+  @extend .Grid;
   .Project-card {
     grid-column: columns;
     @include at_least(desktop) {
