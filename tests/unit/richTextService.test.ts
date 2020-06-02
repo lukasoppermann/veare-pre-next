@@ -50,7 +50,7 @@ describe("convertEmbeddedEntries", () => {
 
   test('valid richText conversion', () => {
     return __testing.convertEmbeddedEntries(richText.raw, mockTemplates, mockTransformers).then(result => {
-       expect(result[0].html.trim()).toStrictEqual(`<div class="Block Grid ">
+       expect(result[0].html.trim()).toStrictEqual(`<div class="Block ">
   <p>Hello</p>
 </div>`)
     })

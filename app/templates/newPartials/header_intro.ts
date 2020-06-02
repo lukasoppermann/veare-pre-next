@@ -2,8 +2,7 @@ import { embedFile } from '../../services/files'
 const { html } = require('@popeindustries/lit-html-server')
 
 export default html`
-<header class="Header--intro Grid-32">
-
+<header class="Header--intro">
   <div class="Header--intro__info">
     <h5>Design</h5>
     <p>— a toolkit of methods to explore and address user needs & problems.</p>

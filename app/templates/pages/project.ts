@@ -11,11 +11,11 @@ export default (project, req) => {
       ${project.variables.color !== undefined ? '--project-color:' + project.variables.color + ';' : ''}
     }
   </style>
-  <header class="Header Header--project Grid">
+  <header class="Header">
     <h2 class="Project__title">${project.title}</h2>
     ${picture(project.header.fields, 'eager')}
   </header>
-  <article class="Grid">
+  <article>
     <section class="Boxed-group">
       <div class="Boxed-item" style="flex-grow: 3">
         <h5>client</h5>

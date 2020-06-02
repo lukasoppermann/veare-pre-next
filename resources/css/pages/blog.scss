@@ -36,17 +36,16 @@
     transform: translateY(0);
   }
 }
-.Page__blog {
-  @include smaller_than(desktop) {
-    padding: 0 size(2);
-  }
-}
 .Article-list {
+  @extend .Grid;
   margin-top: size(15);
   margin-bottom: size(5);
 }
 .Article__preview {
   grid-column: columns;
+  @include at_least(desktop) {
+    grid-column: column 4 / span 6;
+  }
   margin: 0 auto size(5) auto;
   max-width: 55rem;
   min-height: 15rem;

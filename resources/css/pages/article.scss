@@ -3,12 +3,9 @@
 @import "../includes/typography.scss";
 @import "../_mixins/mixins.scss";
 .Article {
-  @include smaller_than(desktop) {
-    padding: 0 size(2);
-  }
+  @extend .Grid;
   h1 {
     color: rgb(var(--black-rgb));
-    grid-column: columns;
     font-family: var(--font-noto-serif);
     font-style: italic;
     font-size: size(6);
@@ -21,14 +18,28 @@
       line-height: 110%;
       text-align: center;
     }
+    grid-column: columns;
+    @include at_least(desktop) {
+      grid-column: column 3 / span 8;
+    }
+    @include at_least(large) {
+      grid-column: column 4 / span 7;
+    }
   }
   h2,
   h3,
   h4 {
-    grid-column: columns;
     @include font(sans);
     color: rgb(var(--black-rgb));
     margin-top: size(3);
+    margin-bottom: size(2);
+    grid-column: columns;
+    @include at_least(desktop) {
+      grid-column: column 3 / span 8;
+    }
+    @include at_least(large) {
+      grid-column: column 4 / span 6;
+    }
   }
   h2 {
     @include type-scale(xl);
@@ -39,23 +50,42 @@
     margin-top: size(3);
   }
   h4 {
+    @include font(sans, bold);
     @include type-scale(md);
     margin-top: size(3);
   }
   p {
-    grid-column: columns;
     @include font(serif);
     @include type-scale(md);
     margin-bottom: size(2);
     color: rgba(var(--black-rgba-80));
+    grid-column: columns;
+    @include at_least(desktop) {
+      grid-column: column 3 / span 8;
+    }
+    @include at_least(large) {
+      grid-column: column 4 / span 6;
+    }
   }
   .Picture + p,
   .Annotation + p {
     margin-top: size(4);
   }
+  .Picture {
+    grid-column: columns;
+    @include at_least(desktop) {
+      grid-column: column 2 / span 9;
+    }
+    @include at_least(large) {
+      grid-column: column 3 / span 8;
+    }
+  }
   ul,
   ol {
     grid-column: columns;
+    @include at_least(desktop) {
+      grid-column: column 3 / span 8;
+    }
   }
   li {
     list-style: none;
@@ -75,21 +105,30 @@
   }
   .Rule--horizontal {
     grid-column: columns;
+    @include at_least(desktop) {
+      grid-column: column 3 / span 8;
+    }
+    @include at_least(large) {
+      grid-column: column 4 / span 6;
+    }
   }
   blockquote {
-    grid-column: sidebar-left 2 / columns;
-    @include max-width('s') {
-      grid-column: columns;
-    }
     margin-top: size(3);
     margin-bottom: size(3);
+    grid-column: columns;
+    @include at_least(desktop) {
+      grid-column: sidebar-left 2 / span 9;
+    }
+    @include at_least(large) {
+      grid-column: column 3 / span 8;
+    }
     p {
       hyphens: auto;
       overflow-wrap: break-word;
       @include font(sans);
-      @include type-scale(xl);
-      @include max-width('xxs') {
-        @include type-scale(lg);
+      @include type-scale(lg);
+      @include at_least(tablet) {
+        @include type-scale(xl);
       }
       margin-top: size(3);
     }
@@ -100,10 +139,26 @@
       margin-bottom: size(4);
     }
   }
+  .Code {
+    grid-column: column 3 / span 8;
+    @include smaller_than(large) {
+      grid-column: column 2 / span 10;
+    }
+    @include smaller_than(desktop) {
+      grid-column: full-bleed;
+      border-radius: 0;
+    }
+  }
   .Article__publication-details,
   .Article__author {
     color: rgba(var(--black-rgba-80));
     grid-column: columns;
+    @include at_least(desktop) {
+      grid-column: column 3 / span 8;
+    }
+    @include at_least(large) {
+      grid-column: column 4 / span 7;
+    }
     @include max-width('s') {
       text-align: center;
     }
@@ -113,7 +168,6 @@
   }
   .Article__back_link {
     display: block;
-    grid-column: columns;
     text-decoration: none;
     font-family: var(--font-montserrat);
     font-weight: var(--font-montserrat-bold);
@@ -122,5 +176,9 @@
     @include type-scale(sm);
     margin-top: size(3);
     margin-bottom: size(15);
+    grid-column: columns;
+    @include at_least(desktop) {
+      grid-column: column 3 / span 8;
+    }
   }
 }

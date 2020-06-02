@@ -1,5 +1,6 @@
 .Page__index {
   .Index__resume {
+    @extend .Grid;
     align-items: start;
     @include at_least(tablet) {
       margin-top: size(4);

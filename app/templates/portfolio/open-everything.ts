@@ -2,7 +2,7 @@ import { revFile } from '../../services/files'
 const { html } = require('@popeindustries/lit-html-server')
 
 export default html`
-<div class="Grid portfolio-item--old">
+<div class="portfolio-item--old">
   <section class="stage type-full" style="background-color: rgb(246,245,243)">
     <img class="full-width image" src="/${revFile('media/open-everything-stage.jpg')}" alt="Open Everything" />
   </section>

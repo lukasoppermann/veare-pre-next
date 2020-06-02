@@ -6,7 +6,7 @@ const { html } = require('@popeindustries/lit-html-server')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 // export template
 export default (article, req): templateInterface => layout(html`
-  <div class="Article Grid">
+  <div class="Article">
     <h1>${article.title}</h1>
     <div class="Article__publication-details">
         <time class="Article__time" itemprop="datePublished" datetime="${article.rawdate}">${article.date}</time> •&nbsp;

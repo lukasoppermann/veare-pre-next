@@ -9,13 +9,13 @@ const menuItems = activePath => html`
 `
 
 export default (activePath, hideOnLoad: boolean = false) => html`
-  <menu class="Menu Grid-32" activePath="${activePath}">
+  <menu class="Menu" activePath="${activePath}">
     <a style="opacity:0;" class="veare-wordmark" href="/home" aria-label="Go to homepage" name="header home link">${embedFile('./resources/svgs/veare-wordmark.svg')}</a>
     <nav class="Menu__items" style="${hideOnLoad !== false ? 'opacity: 0;' : ''}">
       ${menuItems(activePath)}
     </nav>
   </menu>
-  <menu class="Menu__overlay Grid-32">
+  <menu class="Menu__overlay">
     <a class="Menu__icon"></a>
     <nav class="Menu__items" style="display: none;">
       ${menuItems(activePath)}
