@@ -6,7 +6,7 @@ const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsaf
 
 export default (project, req) => {
   return layout(html`
-  <header class="Header Header--project">
+  <header class="Header">
     <h2 class="Project__title">${project.title}</h2>
     ${picture(project.header.fields, 'eager')}
   </header>

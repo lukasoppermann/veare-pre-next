@@ -3,7 +3,7 @@ const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsaf
 const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
 
 export default (project) => html`
-<section class="Project-excerpt Project-card Project-card__link Grid-32" projectSlug="${project.slug}">
+<section class="Project-excerpt Project-card Project-card__link" projectSlug="${project.slug}">
   <div class="Project-excerpt__title">
     <h4 class="Project-card__client">${project.client}</h4>
     <h2 class="Project-card__title">${project.subtitle}</h2>
@@ -22,8 +22,11 @@ export default (project) => html`
   </div>
   <div class="Project-excerpt__responsibilities">
     <h6>Responsibilities</h6>
-    <ul class="Project-excerpt__responsibilities-list" style="--list-row-count: ${Math.ceil(project.responsibilities.length / 2)}">
-      ${repeat(project.responsibilities, item => html`<li>${item}</li>`)}
+    <ul class="Project-excerpt__responsibilities-list">
+      ${repeat(project.responsibilities.slice(0, Math.ceil(project.responsibilities.length / 2)), item => html`<li>${item}</li>`)}
+    </ul>
+    <ul class="Project-excerpt__responsibilities-list">
+      ${repeat(project.responsibilities.slice(Math.ceil(project.responsibilities.length / 2)), item => html`<li>${item}</li>`)}
     </ul>
   </div>
   <a href="${project.slug}" class="Project-excerpt__case_link">View Case</a>
