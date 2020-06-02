@@ -137,6 +137,16 @@
     PROJECT
 ==================================== */
 .Project .Page {
+  /* ====================================
+      Special Project styling
+  ==================================== */
+  &[slug="/work/copra"] {
+    --project-color: rgb(225, 70, 75);
+  }
+
+  /* ====================================
+      Default Project
+  ==================================== */
   @include smaller_than(desktop) {
     padding: 0 size(2);
   }

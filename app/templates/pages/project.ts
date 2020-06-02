@@ -73,9 +73,3 @@ export default (project, req) => {
     bodyClass: 'Page--work Project'
   }, req)
 }
-// TOC
-// ${repeat(project.chapters, (chapter) => {
-//   if (chapter.fields.slug !== undefined) {
-//     return html`<li class="Toc__chapter"><a class="Toc__chapter__link" href="#${chapter.fields.slug}"><div class="Toc__chapter__title">${chapter.fields.title}</div></a></li>`
-//   }
-// })}
