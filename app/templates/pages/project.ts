@@ -6,11 +6,6 @@ const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsaf
 
 export default (project, req) => {
   return layout(html`
-  <style media="screen">
-    :root{
-      ${project.variables.color !== undefined ? '--project-color:' + project.variables.color + ';' : ''}
-    }
-  </style>
   <header class="Header">
     <h2 class="Project__title">${project.title}</h2>
     ${picture(project.header.fields, 'eager')}
@@ -23,15 +18,21 @@ export default (project, req) => {
       </div>
       <div class="Boxed-item" style="flex-grow: 2">
         <h5>year</h5>
-        <p>${project.year}</p>
+        <p><time datetime="${project.years.start}">${project.years.start}</time>${
+          (project.years.start !== project.years.end) ? html` – <time datetime="${project.years.end}">${project.years.end}</time>` : ''}<p>
       </div>
       <div class="Boxed-item" style="flex-grow: 4">
         <h5>role</h5>
-        ${project.roleAndTeam}
+        ${unsafeHTML(project.roleAndTeam)}
       </div>
     </section>
     <section class="Project__challenge">
+      <h5>Challenge</h5>
       ${unsafeHTML(project.challenge)}
+      <h5>Solution</h5>
+      ${unsafeHTML(project.solution)}
+      <h5>Results</h5>
+      ${unsafeHTML(project.results)}
     </section>
     <!-- {{!-- TOC --}} -->
     <ul class="Toc Project__toc" data-toc>

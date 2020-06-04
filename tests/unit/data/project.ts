@@ -20,15 +20,18 @@ export default {
       subtitle: { 'en-US': 'Bringing biking into the future' },
       slug: { 'en-US': 'work/nyon' },
       durationStart: { 'en-US': '2017-01-06' },
-      durationEnd: { 'en-US': '2017-08-01' },
+      durationEnd: { 'en-US': '2018-08-01' },
       client: { 'en-US': 'Bosch' },
       challenge: { 'en-US': richText.raw },
+      solution: { 'en-US': richText.raw },
+      results: { 'en-US': richText.raw },
+      responsibilities: { 'en-US': ["UI/UX design", "leading the design team"] },
+      team: { 'en-US': ["Design lead", "2 Developers", "Product Owner"] },
       roleAndTeam: { 'en-US': richText.raw },
       tableOfContent: { 'en-US': true },
       header: { 'en-US': picture.raw },
       previewImage: { 'en-US': asset.raw },
-      content: { 'en-US': richText.raw },
-      variables: { 'en-US': [ { key: 'color', value: '#E1464B', optionalParameter: null } ] }
+      content: { 'en-US': richText.raw }
     }
   },
   transformed: {
@@ -41,8 +44,16 @@ export default {
       title: 'Nyon',
       subtitle: 'Bringing biking into the future',
       durationStart: '2017-01-06',
-      durationEnd: '2017-08-01',
-      year: 2017,
+      durationEnd: '2018-08-01',
+      duration: {
+        month: 7,
+        totalWeeks: 81,
+        years: 1,
+      },
+      years: {
+        start: 2017,
+        end: 2018,
+      },
       client: 'Bosch',
       header: picture.transformed,
       previewImage: asset.transformed,
@@ -50,9 +61,12 @@ export default {
         "design",
       ],
       challenge: richText.transformed,
+      solution: richText.transformed,
+      results: richText.transformed,
+      responsibilities: ["UI/UX design", "leading the design team"],
+      team: ["Design lead", "2 Developers", "Product Owner"],
       content: richText.transformed,
-      roleAndTeam: richText.transformed,
-      variables: { color: '#E1464B' }
+      roleAndTeam: richText.transformed
     }
   }
 } as transformTestData

@@ -18,6 +18,25 @@ $_breakpoints: (
   }
 }
 
+@mixin is($breakpoint: null) {
+  // get breakpoint width
+  $breakpointWidth: _get_breakpoint($breakpoint);
+  // check if valid breakpoint
+  @if $breakpointWidth != false {
+    // get next breakpoint
+    $nextBreakpoint: _next_map_value($breakpoint, $_breakpoints);
+    // guard against erronious $width
+    @if type_of($breakpointWidth) == number and type_of($nextBreakpoint) == number {
+      // remove one px if using max-width
+      $breakpointWidth: $breakpointWidth - 0.02px;
+      $nextBreakpoint: $nextBreakpoint - 0.02px;
+      @media only screen and (min-width: $breakpointWidth) and (max-width: $nextBreakpoint) {
+        @content;
+      }
+    }
+  }
+}
+
 @function _get_breakpoint($name: null) {
   @if $name != null {
     @if map_has_key($_breakpoints, $name) {
@@ -32,9 +51,9 @@ $_breakpoints: (
 
 @mixin _mediaquery($width:null, $type:null, $substract: 0) {
   // get correct width
-  $breakpoint: _get_breakpoint($width);
-  @if $breakpoint != false {
-    $width: $breakpoint;
+  $breakpointWidth: _get_breakpoint($width);
+  @if $breakpointWidth != false {
+    $width: $breakpointWidth;
   }
   // guard against erronious $width
   @if type_of($width) == number {
@@ -47,4 +66,13 @@ $_breakpoints: (
   @elseif {
     @error "Wrongly specified device with `#{$width}` use px width or one of the keys (landscape, tablet, desktop, large or extra)";
   }
+}
+
+@function _next_map_value($currentValue, $map) {
+  // get current key from list
+  $keys: map-keys($map);
+  // find index of current value and add 1
+  $nextIndex: ( index($keys, $currentValue) ) + 1;
+  // return next value
+  @return nth(map-values($map), $nextIndex);
 }

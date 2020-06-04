@@ -81,6 +81,7 @@ html {
       Base css varibales
   ==================================== */
   --base-unit: .8rem;
+  --column-gap: 32px;
   --viewport-height: 100vh;
 }
 body {
@@ -122,19 +123,31 @@ p {
 ==================================== */
 ul,
 ol {
-  margin-top: size(2);
+  margin-top: size(1);
 }
 li {
   display: list-item;
   @include font(sans);
-  @include type-scale(md);
-  @media screen and (max-width: 900px) {
-    margin-left: 20px;
-  }
+  @include type-scale(md, 1.2);
+  margin-top: size(1);
   p:first-child {
     margin-top: 0;
   }
 }
-li:not(:first-child) {
-  margin-top: size(.5);
+.list-item {
+  list-style: none;
+  position: relative;
+  padding-left: size(3);
+  &::before {
+    @include pseudo(absolute);
+    left: 0;
+    // content: "¬ ";
+    // content: "→ ";
+    // content: "☞ ";
+    // content: "✓ ";
+    // content: "❑ ";
+    // content: "☑︎ ";
+    // content: "› ";
+    content: "— ";
+  }
 }
