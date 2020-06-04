@@ -48,9 +48,9 @@ module.exports = {
       path: '/blog',
       folder: 'blog'
     },
-    post: {
-      path: '/blog/framer-x-a-review',
-      folder: 'blog-framer'
+    article: {
+      path: '/blog/test-article',
+      folder: 'article'
     }
   }
 }
