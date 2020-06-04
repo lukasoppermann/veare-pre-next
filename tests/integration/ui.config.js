@@ -32,6 +32,10 @@ module.exports = {
       path: '/',
       folder: 'home'
     },
+    work: {
+      path: '/work/test-project',
+      folder: 'work'
+    },
     nyon: {
       path: '/work/nyon',
       folder: 'work-nyon'
