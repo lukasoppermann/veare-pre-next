@@ -84,7 +84,7 @@
     }
     .Project__toc {
       order: 1;
-      margin-top: size(10);
+      margin-top: size(5);
       grid-column: columns;
       @include at_least(desktop) {
         grid-column: column 8 / span 3;
