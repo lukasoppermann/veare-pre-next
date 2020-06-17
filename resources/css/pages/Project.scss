@@ -39,12 +39,14 @@
   article {
     @extend .Grid;
   }
+  h1,
   h2,
   h3,
   h4,
   h5,
   p,
-  blockquote,
+  ul,
+  ol,
   .Picture,
   .Boxed-group,
   .Rule--horizontal {
@@ -53,19 +55,40 @@
       grid-column: column 3 / span 8;
     }
   }
-  .Project__challenge {
-    hyphens: auto;
-    margin-top: size(10);
-    grid-column: columns;
-    @include at_least(desktop) {
-      grid-column: column 3 / span 5;
+  .Project__intro {
+    margin-top: size(5);
+    @extend .Grid;
+    grid-column: full-bleed;
+    .Project__challenge,
+    .Project__solution,
+    .Project__results {
+      :first-child {
+        margin-top: 0;
+      }
+      hyphens: auto;
+      margin-top: size(5);
+      order: 1;
+      grid-column: columns;
     }
-  }
-  .Project__toc {
-    margin-top: size(10);
-    grid-column: columns;
-    @include at_least(desktop) {
-      grid-column: column 8 / span 3;
+    .Project__challenge {
+      @include at_least(desktop) {
+        order: 0;
+        grid-column: column 3 / span 5;
+      }
+    }
+    .Project__solution,
+    .Project__results {
+      @include at_least(desktop) {
+        grid-column: column 3 / span 8;
+      }
+    }
+    .Project__toc {
+      order: 1;
+      margin-top: size(5);
+      grid-column: columns;
+      @include at_least(desktop) {
+        grid-column: column 8 / span 3;
+      }
     }
   }
   .Project__back_link {
@@ -152,6 +175,16 @@
   }
   --row-gap: 0;
   --rule-color: var(--project-color, rgb(var(--blue-rgb)));
+  h1 {
+    @include font(serif, italic);
+    @include type-scale(title);
+    margin-bottom: size(3);
+  }
+  h2 {
+    @include font(sans);
+    @include type-scale(xl);
+    margin-top: size(3);
+  }
   h3 {
     @include font(sans);
     @include type-scale(lg);
@@ -194,6 +227,13 @@
     hyphens: auto;
     overflow-wrap: break-word;
     margin-top: size(3);
+    grid-column: columns;
+    @include at_least(desktop) {
+      grid-column: column 3 / span 8;
+    }
+    @include at_least(extra) {
+      grid-column: column 3 / span 6;
+    }
     p {
       color: rgb(var(--black-rgb));
       @include font(sans);
@@ -203,8 +243,13 @@
       }
     }
   }
-  p:not(:first-child) {
-    margin-top: size(2);
+  p {
+    @include at_least(large) {
+      grid-column: column 3 / span 6;
+    }
+    &:not(:first-child) {
+      margin-top: size(2);
+    }
   }
   figure + p:not(:first-child) {
     margin-top: size(4);

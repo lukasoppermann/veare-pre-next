@@ -112,7 +112,7 @@
     ],
     "verbose": true,
     "testTimeout": 15000,
-    "collectCoverage": true,
+    "collectCoverage": false,
     "coverageDirectory": "./tests/unit/coverage",
     "collectCoverageFrom": [
       "./app/transformer/*.ts",

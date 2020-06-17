@@ -4,7 +4,7 @@ import { Document as richTextDocument, BLOCKS, INLINES } from '@contentful/rich-
 import block from '../templates/newPartials/block'
 import code from '../templates/newPartials/code'
 import picture from '../templates/newPartials/picture'
-import projectPreview from '../templates/newPartials/projectPreview'
+import projectExcerpt from '../templates/newPartials/project_excerpt'
 import link from '../templates/newPartials/link'
 // Transformer
 import blockTransformer from '../transformer/blockTransformer'
@@ -27,7 +27,7 @@ const transformerFunctions = {
 // templates functions for embeddedEntries
 const templates = {
   block: block,
-  project: projectPreview,
+  project: projectExcerpt,
   code: code,
   picture: picture,
   link: link

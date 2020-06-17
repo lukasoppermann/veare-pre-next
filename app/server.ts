@@ -1,7 +1,9 @@
 import contentful from './services/contentful'
+import config from './config/contentful'
 import makeApp from './app'
 
 const env = process.env.NODE_ENV || 'development'
+const online = require('dns-sync').resolve(config.host[env])
 
 const startServer = async () => {
   const app = await makeApp()
@@ -41,10 +43,14 @@ const startServer = async () => {
 }
 
 try {
-  // get content from contentful & run transformers
-  contentful()
-  // start server
-    .then(() => startServer())
+  if (online !== null) {
+    // get content from contentful & run transformers
+    contentful()
+    // start server
+      .then(() => startServer())
+  } else {
+    startServer()
+  }
 } catch (error) {
   // catch & print error
   console.error(`🚨 \x1b[31mError: ${error.code} when trying to connect to ${error.hostname}\x1b[0m`, error)

@@ -9,10 +9,10 @@ module.exports = {
     // get articles from cache
     const content = cache.get('article')
     // get individual article
-    const articleContent = content.find((item: any) => item.fields.slug === req.params[0]).fields
+    const requestedArticle = content.find((item: any) => item.fields.slug === req.params[0])
     // if content exists
-    if (articleContent) {
-      return res.send(await renderToString(article(articleContent, req)))
+    if (requestedArticle) {
+      return res.send(await renderToString(article(requestedArticle.fields, req)))
     }
     // if not content existds redirect to blog
     return res.redirect(301, req.protocol + '://' + req.headers.host + req.url.replace(req.params[0], ''))

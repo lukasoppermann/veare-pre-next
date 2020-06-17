@@ -6,11 +6,6 @@ const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsaf
 
 export default (project, req) => {
   return layout(html`
-  <style media="screen">
-    :root{
-      ${project.variables.color !== undefined ? '--project-color:' + project.variables.color + ';' : ''}
-    }
-  </style>
   <header class="Header">
     <h2 class="Project__title">${project.title}</h2>
     ${picture(project.header.fields, 'eager')}
@@ -23,20 +18,32 @@ export default (project, req) => {
       </div>
       <div class="Boxed-item" style="flex-grow: 2">
         <h5>year</h5>
-        <p>${project.year}</p>
+        <p><time datetime="${project.years.start}">${project.years.start}</time>${
+          (project.years.start !== project.years.end) ? html` – <time datetime="${project.years.end}">${project.years.end}</time>` : ''}<p>
       </div>
       <div class="Boxed-item" style="flex-grow: 4">
         <h5>role</h5>
-        ${project.roleAndTeam}
+        ${unsafeHTML(project.roleAndTeam)}
       </div>
     </section>
-    <section class="Project__challenge">
-      ${unsafeHTML(project.challenge)}
-    </section>
     <!-- {{!-- TOC --}} -->
-    <ul class="Toc Project__toc" data-toc>
-    ${repeat(project.anchors, (anchor) => html`<li class="Toc__chapter"><a class="Toc__chapter__link" href="#${anchor}"><div class="Toc__chapter__title">${anchor.replace(/-/g, ' ')}</div></a></li>`)}
-    </ul>
+    <section class="Project__intro">
+      <ul class="Toc Project__toc" data-toc>
+      ${repeat(project.anchors, (anchor) => html`<li class="Toc__chapter"><a class="Toc__chapter__link" href="#${anchor}"><div class="Toc__chapter__title">${anchor.replace(/-/g, ' ')}</div></a></li>`)}
+      </ul>
+      <div class="Project__challenge">
+        <h5>Challenge</h5>
+        ${unsafeHTML(project.challenge)}
+      </div>
+      <div class="Project__solution">
+        <h5>Solution</h5>
+        ${unsafeHTML(project.solution)}
+      </div>
+      <div class="Project__results">
+        <h5>Results</h5>
+        ${unsafeHTML(project.results)}
+      </div>
+    </section>
     ${unsafeHTML(project.content)}
     <a class="Project__back_link" href="/home#portfolio">← Back</a>
   </article>
