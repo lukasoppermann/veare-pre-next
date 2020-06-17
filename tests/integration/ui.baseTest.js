@@ -8,6 +8,7 @@ let currentCase
 module.exports = (caseName, beforeFn = null, testFn = null) => {
   beforeAll(async () => {
     currentCase = config.cases[caseName]
+    currentCase.options = currentCase.options || {}
     // start Puppeteer with a custom configuration, see above the setup
     browser = await puppeteer.launch({
       ignoreHTTPSErrors: true,
@@ -62,7 +63,7 @@ module.exports = (caseName, beforeFn = null, testFn = null) => {
     let image = await page.screenshot({
       path: `${config.testSnaps}/${currentCase.folder}/${viewport}.png`,
       type: 'png',
-      fullPage: true
+      fullPage: currentCase.options.fullPage !== undefined ? currentCase.options.fullPage : true
     })
     // compare screenshot
     expect(image).toMatchImageSnapshot(config.setConfig({

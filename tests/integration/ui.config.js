@@ -26,7 +26,10 @@ module.exports = {
   cases: {
     menu: {
       path: '/home',
-      folder: 'menu'
+      folder: 'menu',
+      options: {
+        fullPage: false
+      }
     },
     home: {
       path: '/',
