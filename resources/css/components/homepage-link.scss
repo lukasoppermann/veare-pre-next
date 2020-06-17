@@ -1,9 +1,9 @@
 
 .Homepage-link {
   @extend .Grid;
-  margin-top: size(8);
+  margin-top: size(5);
   @include at_least(desktop) {
-    &:nth-child(2n) {
+    &:nth-child(2n+1) {
       .Homepage-link__link {
         grid-column-start: column 5;
         .Project-card__text {
