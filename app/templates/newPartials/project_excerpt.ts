@@ -61,7 +61,10 @@ export default (project) => html`
       </time></dd>
     </dl>
     <!-- END: Details -->
-    <a href="${project.slug}" class="Project-excerpt__case_link">View Case</a>
+    ${project.slug.slice(0, 4) === 'work'
+      ? html`<a href="${project.slug}" class="Project-excerpt__case_link">View Case</a>`
+      : html`<a href="mailto:lukas@vea.re?subject=Hey 👋,%20what&apos;s%20up?&body=Great%20to%20hear%20from%20you,%20how%20can%20I%20help?" class="Project-excerpt__case_link">Get in touch</a>`
+    }
   </aside>
 </section>
 `

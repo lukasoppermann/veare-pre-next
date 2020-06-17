@@ -115,10 +115,7 @@ export default async (richText: richTextDocument) => {
       [INLINES.HYPERLINK]: (node, next) => convertHyperlinks(node, next, anchors),
       [BLOCKS.PARAGRAPH]: (node, next) => {
         // @ts-ignore
-        if (node.content[0].value.length > 0) {
-          return `<p>${next(node.content).replace('\n', '<br/>')}</p>`
-        }
-        return ''
+        return `<p>${next(node.content).replace('\n', '<br/>')}</p>`
       }
     }
   })
