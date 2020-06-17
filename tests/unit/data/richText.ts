@@ -97,7 +97,7 @@ export default {
       }
     ]
   },
-  transformed: `<p>Hello<br/>world!<a name="design">Design</a></p>
+  transformed: `<p>Hello<br/>world!<a name="design">Design</a></p><p></p>
 
 <div class="Block ">
   <p>Hello</p>

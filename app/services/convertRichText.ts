@@ -115,6 +115,10 @@ export default async (richText: richTextDocument) => {
       [INLINES.HYPERLINK]: (node, next) => convertHyperlinks(node, next, anchors),
       [BLOCKS.PARAGRAPH]: (node, next) => {
         // @ts-ignore
+        // if(node.content[0].value === '') {
+        //   console.log(node.content.reduce((accumulator, currentValue) => accumulator + currentValue.value, ''))
+        //   return next(node.content)
+        // }
         return `<p>${next(node.content).replace('\n', '<br/>')}</p>`
       }
     }
