@@ -46,9 +46,7 @@ export default async (data) => {
           end: +new Date(getField(data, 'durationEnd')).getFullYear()
         },
         client: getField(data, 'client'),
-        challenge: (await richText(getField(data, 'challenge'))).html,
-        solution: (await richText(getField(data, 'solution'))).html,
-        results: (await richText(getField(data, 'results'))).html,
+        approach: (await richText(getField(data, 'approach'))).html,
         responsibilities: getField(data, 'responsibilities', []),
         team: getField(data, 'team', []),
         roleAndTeam: (await richText(getField(data, 'roleAndTeam'))).html,

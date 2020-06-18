@@ -31,18 +31,7 @@ export default (project, req) => {
       <ul class="Toc Project__toc" data-toc>
       ${repeat(project.anchors, (anchor) => html`<li class="Toc__chapter"><a class="Toc__chapter__link" href="#${anchor}"><div class="Toc__chapter__title">${anchor.replace(/-/g, ' ')}</div></a></li>`)}
       </ul>
-      <div class="Project__challenge">
-        <h5>Challenge</h5>
-        ${unsafeHTML(project.challenge)}
-      </div>
-      <div class="Project__solution">
-        <h5>Solution</h5>
-        ${unsafeHTML(project.solution)}
-      </div>
-      <div class="Project__results">
-        <h5>Results</h5>
-        ${unsafeHTML(project.results)}
-      </div>
+      ${unsafeHTML(project.approach)}
     </section>
     ${unsafeHTML(project.content)}
     <a class="Project__back_link" href="/home#portfolio">← Back</a>

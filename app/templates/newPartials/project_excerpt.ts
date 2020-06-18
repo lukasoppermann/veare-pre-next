@@ -33,17 +33,8 @@ export default (project) => html`
   <!-- Details -->
   <div class="Project-excerpt__details">
     <!-- Challenge & solution -->
-    <div class="Project-excerpt__challenge">
-      <h6>Challenge</h6>
-      ${unsafeHTML(project.challenge)}
-    </div>
-    <div class="Project-excerpt__solution">
-      <h6>Solution</h6>
-      ${unsafeHTML(project.solution)}
-    </div>
-    <div class="Project-excerpt__results">
-      <h6>Results</h6>
-      ${unsafeHTML(project.results)}
+    <div class="Project-excerpt__approach">
+      ${unsafeHTML(project.approach)}
     </div>
   </div>
   <aside class="Project-excerpt__data">

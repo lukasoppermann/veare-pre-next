@@ -168,35 +168,25 @@
         margin-top: size(2);
       }
       // challenge & solution
-      .Project-excerpt__challenge,
-      .Project-excerpt__solution,
-      .Project-excerpt__results {
+      .Project-excerpt__approach {
         grid-row: 1;
         grid-column: columns;
-        // @include at_least(tablet) {
-        //   grid-column: columns / span 3;
-        // }
         @include at_least(desktop) {
           grid-column: column 6 / span 7;
+          p {
+            padding-left: size(1);
+          }
         }
         @include at_least(large) {
           grid-column: column 7 / span 6;
         }
       }
-      .Project-excerpt__solution {
-        grid-row: 2;
-      }
-      // Results
-      .Project-excerpt__results {
-        grid-row: 3;
-      }
     }
     // ====================================
-    .Project-excerpt__challenge,
-    .Project-excerpt__solution,
-    .Project-excerpt__results,
+    .Project-excerpt__approach,
     .Project-excerpt__responsibilities,
     .Project-excerpt__time {
+      h5,
       h6 {
         @include font(mono);
         @include type-scale(sm);
@@ -206,16 +196,6 @@
       :not(li) > p {
         margin-top: size(1);
       }
-    }
-    .Project-excerpt__challenge,
-    .Project-excerpt__solution,
-    .Project-excerpt__results {
-      p {
-        padding-left: size(1);
-      }
-    }
-    .Project-excerpt__challenge {
-      grid-row: 2;
     }
     // ====================================
     // Data
