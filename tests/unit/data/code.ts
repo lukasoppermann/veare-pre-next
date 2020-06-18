@@ -32,8 +32,8 @@ export default {
       fileOrPath: 'package.json',
       code: '<span class=\"hljs-string\">&quot;scripts&quot;</span>: {\n' +
         '\t…,\n' +
-        '<span class=\"hljs-string\">&quot;build&quot;</span>: <span class=\"hljs-string\">&quot;npm run build:js:watch &amp; npm run build:css:watch&quot;</span>,' +
-        '<span class=\"hljs-string\">&quot;start&quot;</span>: <span class=\"hljs-string\">&quot;node_modules/.bin/ttab -t &#x27;Node Server&#x27; &#x27;npm run supervisor&#x27; &amp; node_modules/.bin/ttab -t &#x27;Building assets&#x27; &#x27;npm run build&#x27;&quot;</span>' +
+        '\t<span class=\"hljs-string\">&quot;build&quot;</span>: <span class=\"hljs-string\">&quot;npm run build:js:watch &amp; npm run build:css:watch&quot;</span>,\n' +
+        '\t<span class=\"hljs-string\">&quot;start&quot;</span>: <span class=\"hljs-string\">&quot;node_modules/.bin/ttab -t &#x27;Node Server&#x27; &#x27;npm run supervisor&#x27; &amp; node_modules/.bin/ttab -t &#x27;Building assets&#x27; &#x27;npm run build&#x27;&quot;</span>\n' +
         '}',
       language: 'javascript'
     }
