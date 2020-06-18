@@ -2,6 +2,7 @@
 .Homepage-link {
   @extend .Grid;
   margin-top: size(5);
+  text-decoration: none;
   @include at_least(desktop) {
     &:nth-child(2n+1) {
       .Homepage-link__link {
@@ -18,13 +19,13 @@
   }
   .Homepage-link__link {
     grid-column: columns;
-    @include at_least(desktop) {
-      grid-column: sidebar-left 2 / span 7;
-    }
     position: relative;
     display: flex;
     flex-direction: column;
-    // counter-increment: projects;
+    text-decoration: none;
+    @include at_least(desktop) {
+      grid-column: sidebar-left 2 / span 7;
+    }
     @include at_least(desktop) {
       margin-top: size(10);
     }
@@ -63,23 +64,19 @@
         filter: grayscale(0%);
       }
     }
-    .Project-card__link {
-      text-decoration: none;
-    }
     .Project-card__text {
+      text-decoration: none;
       color: rgb(var(--black-rgb));
       z-index: 100;
-      max-width: 340px;
       position: relative;
-      margin-top: size(4);
+      margin-top: size(2);
       order: 2;
       transition: all .3s ease;
       transform: translate(0, 0);
-      text-decoration: none;
       background: rgb(var(--white-rgb));
       @include at_least(desktop) {
         background: transparent;
-        max-width: auto;
+        max-width: 340px;
         margin-top: 10%;
         padding: 0;
         position: absolute;
@@ -99,19 +96,6 @@
         }
       }
     }
-    // .Project-card__text::before {
-    //   font-family: var(--font-montserrat);
-    //   font-weight: var(--font-montserrat-bold);
-    //   letter-spacing: .5px;
-    //   color: inherit;
-    //   display: block;
-    //   // content: counter(projects, decimal-leading-zero);
-    //   font-feature-settings: "tnum", "zero";
-    //   @include type-scale(lg);
-    //   @include at_least(desktop) {
-    //     @include type-scale(xxl);
-    //   }
-    // }
     .Project-card__client {
       font-family: var(--font-montserrat);
       font-weight: var(--font-montserrat-bold);
