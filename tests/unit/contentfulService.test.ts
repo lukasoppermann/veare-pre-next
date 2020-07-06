@@ -6,7 +6,7 @@ describe("getFieldRawLastIterationAsIso", () => {
   test("getFieldRawLastIterationAsIso", () => {
     expect(__testing.getFieldRawLastIterationAsIso({
       fields: {
-        rawdate: "2018-01-02"
+        rawLastIteration: "2018-01-02"
       }
     }).toISOString()).toBe("2018-01-02T00:00:00.000Z")
   })
@@ -18,13 +18,13 @@ describe("sortByFieldDesc", () => {
     {
       fields: {
         title: "Post 1",
-        rawdate: "2018-02-01"
+        rawLastIteration: "2018-02-01"
       }
     },
     {
       fields: {
         title: "Post 2",
-        rawdate: "2018-03-03"
+        rawLastIteration: "2018-03-03"
       }
     }]
     // prep test

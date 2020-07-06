@@ -8,7 +8,6 @@ export default async (data) => {
   return transformer(data, async (data): Promise<transformedDataInterface> => {
     // transform richText
     const content = await richText(getField(data, 'content'))
-    console.debug(data.sys)
     // return format
     return <transformedDataInterface>{
       id: data.sys.id,
