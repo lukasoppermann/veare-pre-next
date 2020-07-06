@@ -11,13 +11,6 @@ export default (article, req): templateInterface => layout(html`
     <div class="Article__publication-details">
         <button class="tooltip__link">
           Last iteration <time class="Article__time" itemprop="datePublished" datetime="${article.rawLastIteration}">${article.lastIteration}</time>
-          <div class="tooltip__content">
-          ${article.firstVersion === undefined
-            ? html`This article has not been published yet.`
-            : html`This article was originally published on ${article.firstVersion}.`
-          }
-
-          </div>
         </button> •&nbsp;
         <time class="Article__read-time" datetime="${article.readingTime}m">${article.readingTime} min read</time>
     </div>

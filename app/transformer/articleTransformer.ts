@@ -23,7 +23,6 @@ export default async (data) => {
         title: getField(data, 'title'),
         // featuredImage: (await pictureTransformer(getField(data, 'featuredImage')))[0],
         rawLastIteration: getField(data, 'lastIteration'),
-        firstVersion: new Date(data.sys.createdAt).toLocaleDateString('en-US', { month: 'short', year: 'numeric', day: 'numeric' }),
         lastIteration: new Date(getField(data, 'lastIteration')).toLocaleDateString('en-US', { month: 'short', year: 'numeric', day: 'numeric' }),
         preview: getField(data, 'preview'),
         content: content.html,
