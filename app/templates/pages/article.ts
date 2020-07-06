@@ -9,8 +9,9 @@ export default (article, req): templateInterface => layout(html`
   <div class="Article">
     <h1>${article.title}</h1>
     <div class="Article__publication-details">
-        <time class="Article__time" itemprop="datePublished" datetime="${article.rawdate}">${article.date}</time> •&nbsp;
-        <time class="Article__read-time" datetime="${article.readingTime}m">${article.readingTime} min read</time>
+      Last iteration <time class="Article__time" itemprop="datePublished" datetime="${article.rawLastIteration}">${article.lastIteration}</time>
+      •&nbsp;
+      <time class="Article__read-time" datetime="${article.readingTime}m">${article.readingTime} min read</time>
     </div>
 
     <div class="Article__author">

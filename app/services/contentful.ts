@@ -22,7 +22,7 @@ const transformerFunctions = {
   project: projectTransformer
 }
 
-const getFieldRawDateAsIso = data => new Date(data.fields.rawdate)
+const getFieldRawLastIterationAsIso = data => new Date(data.fields.rawLastIteration)
 /* istanbul ignore next */
 export default async () => {
   // get all entries
@@ -43,7 +43,7 @@ export default async () => {
   const content = sortContentByType(contentTypes, entries)
   // transform Articles
   /* istanbul ignore next */
-  content.article = sortByFieldDesc(content.article, getFieldRawDateAsIso)
+  content.article = sortByFieldDesc(content.article, getFieldRawLastIterationAsIso)
   // cache content
   /* istanbul ignore next */
   return Object.keys(content).forEach(contentType => {
@@ -94,7 +94,7 @@ const sortByFieldDesc = (entries, getFieldToCompare) => {
 
 export const __testing = {
   sortByFieldDesc: sortByFieldDesc,
-  getFieldRawDateAsIso: getFieldRawDateAsIso,
+  getFieldRawLastIterationAsIso: getFieldRawLastIterationAsIso,
   sortContentByType: sortContentByType,
   transformEntries: transformEntries
 }

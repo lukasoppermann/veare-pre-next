@@ -2,11 +2,11 @@ import { __testing } from '../../app/services/contentful'
 import contentTypes from './data/contentTypes'
 import { contentfulEntriesRaw, contentfulEntriesTransformed } from './data/contentfulEntries'
 /* global test expect */
-describe("getFieldRawDateAsIso", () => {
-  test("getFieldRawDateAsIso", () => {
-    expect(__testing.getFieldRawDateAsIso({
+describe("getFieldRawLastIterationAsIso", () => {
+  test("getFieldRawLastIterationAsIso", () => {
+    expect(__testing.getFieldRawLastIterationAsIso({
       fields: {
-        rawdate: "2018-01-02"
+        rawLastIteration: "2018-01-02"
       }
     }).toISOString()).toBe("2018-01-02T00:00:00.000Z")
   })
@@ -18,20 +18,20 @@ describe("sortByFieldDesc", () => {
     {
       fields: {
         title: "Post 1",
-        rawdate: "2018-02-01"
+        rawLastIteration: "2018-02-01"
       }
     },
     {
       fields: {
         title: "Post 2",
-        rawdate: "2018-03-03"
+        rawLastIteration: "2018-03-03"
       }
     }]
     // prep test
     expect(entries[0].fields.title).toBe("Post 1")
     expect(entries[1].fields.title).toBe("Post 2")
     // run function
-    const sorted = __testing.sortByFieldDesc(entries, __testing.getFieldRawDateAsIso)
+    const sorted = __testing.sortByFieldDesc(entries, __testing.getFieldRawLastIterationAsIso)
     // assertion
     expect(sorted[0].fields.title).toBe("Post 2")
     expect(sorted[1].fields.title).toBe("Post 1")
@@ -62,7 +62,7 @@ describe("sortByFieldDesc", () => {
     expect(entries[1].fields.title).toBe("Post 2")
     expect(entries[2].fields.title).toBe("Post 1")
     // run function
-    const sorted = __testing.sortByFieldDesc(entries, __testing.getFieldRawDateAsIso)
+    const sorted = __testing.sortByFieldDesc(entries, __testing.getFieldRawLastIterationAsIso)
     // assertion
     expect(sorted[0].fields.title).toBe("Post 3")
     expect(sorted[1].fields.title).toBe("Post 2")
