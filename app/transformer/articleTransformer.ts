@@ -13,11 +13,9 @@ export default async (data) => {
     return <transformedDataInterface>{
       id: data.sys.id,
       createdAt: data.sys.createdAt,
-      firstPublishedAt: data.sys.firstPublishedAt,
       updatedAt: data.sys.updatedAt,
-      publishedAt: data.sys.publishedAt,
       contentType: data.sys.contentType.sys.id,
-      publishedVersions: data.sys.publishedCounter,
+      publishedVersions: data.sys.revision,
       fields: {
         slug: getField(data, 'slug'),
         title: getField(data, 'title'),
