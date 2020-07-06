@@ -11,7 +11,8 @@ module.exports = {
       customDiffDir: opts.diffPath,
       customSnapshotsDir: opts.snapshotPath,
       customSnapshotIdentifier: opts.filename,
-      noColors: true
+      noColors: true,
+      runInProcess: false
     }
   },
   viewports: [
