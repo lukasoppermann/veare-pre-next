@@ -59,28 +59,151 @@
     margin-top: size(5);
     @extend .Grid;
     grid-column: full-bleed;
-    @include at_least(desktop) {
+    .Project__approach {
+      grid-column: columns;
+      grid-row: 2;
       h5:first-of-type {
-        grid-row: 1;
-        grid-column: column 3 / span 5;
+        margin-top: size(4);
       }
-      p:first-of-type {
-        grid-row: 2;
+      @include at_least(tablet) {
+        grid-column: columns / span 4;
+      }
+      @include at_least(desktop) {
+        h5:first-of-type {
+          margin-top: size(1);
+        }
+        grid-row: 1 / 3;
         grid-column: column 3 / span 5;
       }
     }
     .Project__toc {
       grid-row: 1;
-      margin-top: size(4);
       grid-column: columns;
       @include at_least(desktop) {
-        grid-row: 1 / 3;
+        grid-row: 1;
         grid-column: column 8 / span 3;
       }
       li:first-child {
         margin-top: 0;
       }
     }
+    .Project__info {
+      grid-row: 3;
+      grid-column: columns;
+      border-bottom: 1px solid rgba(var(--black-rgba-15));
+      padding-bottom: size(3);
+      @include at_least(tablet) {
+        border-bottom: none;
+        padding-bottom: 0;
+        grid-row: 2;
+        grid-column: column 5 / span 2;
+      }
+      @include at_least(desktop) {
+        grid-column: column 8 / span 3;
+      }
+      .Project__info__team,
+      .Project__info__responsibilities,
+      .Project__info__time {
+        border-top: 1px solid rgba(var(--black-rgba-15));
+        margin-bottom: 0;
+        margin-top: size(3);
+        h5,
+        h6 {
+          @include font(mono);
+          @include type-scale(sm);
+          margin-bottom: size(2);
+          margin-top: size(3);
+        }
+        :not(li) > p {
+          margin-top: size(1);
+        }
+      }
+      .Project__info__time {
+        display: flex;
+        align-items: stretch;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        @include is(desktop) {
+          flex-direction: column;
+          justify-content: stretch;
+        }
+        dd,
+        dt {
+          order: 2;
+          width: calc(((100% - var(--column-gap)) / 2));
+          &:first-of-type {
+            padding-left: size(1);
+          }
+          @include at_least(desktop) {
+            width: 100%;
+            order: 1;
+            &:first-of-type {
+              padding-left: 0;
+            }
+          }
+          @include at_least(large) {
+            width: calc(((100% - var(--column-gap)) / 2));
+            order: 2;
+            &:first-of-type {
+              padding-left: size(1);
+            }
+          }
+        }
+        dt {
+          order: 1;
+          h6 {
+            color: rgba(var(--black-rgba-50));
+          }
+        }
+        dd {
+          margin-left: 0;
+          @include font(sans, bold);
+          @include type-scale(md);
+          color: rgba(var(--black-rgba-80));
+        }
+      }
+    }
+    .Project__info__team,
+    .Project__info__responsibilities {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      @include at_least(desktop) {
+        margin-left: 0;
+        align-self: start;
+        flex-direction: column;
+        justify-content: stretch;
+      }
+      h6 {
+        width: 100%;
+        margin: 0;
+        margin-bottom: size(1);
+      }
+      ul {
+        width: 100%;
+        margin-top: 0;
+        li {
+          @extend .list-item;
+          &::before {
+            color: rgba(var(--black-rgba-50));
+          }
+        }
+      }
+    }
+    // .Project__toc {
+    //   grid-row: 1;
+    //   margin-top: size(4);
+    //   grid-column: columns;
+    //   @include at_least(desktop) {
+    //     grid-row: 1 / 3;
+    //     grid-column: column 8 / span 3;
+    //   }
+    //   li:first-child {
+    //     margin-top: 0;
+    //   }
+    // }
   }
   .Project__back_link {
     display: block;
@@ -197,7 +320,7 @@
     margin-top: size(4);
     color: rgb(var(--black-rgb));
   }
-  h6 {
+  article > h6 {
     @include titled-title;
     color: rgb(var(--black-rgb)) !important;
     @include smaller_than(desktop) {
