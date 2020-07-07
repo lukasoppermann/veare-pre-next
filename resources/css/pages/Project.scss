@@ -192,18 +192,6 @@
         }
       }
     }
-    // .Project__toc {
-    //   grid-row: 1;
-    //   margin-top: size(4);
-    //   grid-column: columns;
-    //   @include at_least(desktop) {
-    //     grid-row: 1 / 3;
-    //     grid-column: column 8 / span 3;
-    //   }
-    //   li:first-child {
-    //     margin-top: 0;
-    //   }
-    // }
   }
   .Project__back_link {
     display: block;
