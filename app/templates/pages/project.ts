@@ -11,21 +11,6 @@ export default (project, req) => {
     ${picture(project.header.fields, 'eager')}
   </header>
   <article>
-    <!-- <section class="Boxed-group">
-      <div class="Boxed-item" style="flex-grow: 3">
-        <h5>client</h5>
-        <p>${project.client}</p>
-      </div>
-      <div class="Boxed-item" style="flex-grow: 2">
-        <h5>year</h5>
-        <p><time datetime="${project.years.start}">${project.years.start}</time>${
-          (project.years.start !== project.years.end) ? html` – <time datetime="${project.years.end}">${project.years.end}</time>` : ''}<p>
-      </div>
-      <div class="Boxed-item" style="flex-grow: 4">
-        <h5>role</h5>
-        ${unsafeHTML(project.roleAndTeam)}
-      </div>
-    </section> -->
     <!-- {{!-- TOC --}} -->
     <section class="Project__intro">
       <ul class="Toc Project__toc" data-toc>
