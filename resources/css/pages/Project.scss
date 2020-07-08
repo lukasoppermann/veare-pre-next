@@ -322,9 +322,13 @@
     grid-column: full-bleed;
   }
   .Project__title {
+    margin-bottom: size(5);
+    margin-top: size(5);
+    @include at_least(desktop) {
+      margin-top: size(1);
+    }
     &--title {
       @include type-scale(hg);
-      margin-bottom: size(3);
       margin-top: size(1);
       font-family: var(--font-montserrat); // replace with svg
       font-weight: var(--font-montserrat-bold);  // replace with svg
@@ -333,18 +337,15 @@
       }
     }
     &--client {
+      margin-top: 0;
       font-family: var(--font-montserrat);
       font-weight: var(--font-montserrat-bold);
       text-transform: uppercase;
       letter-spacing: .5px;
       @include type-scale(sm);
-      margin-top: size(5);
       display: flex;
       color: inherit;
       transition: all .3s ease;
-      @include at_least(desktop) {
-        margin-top: size(1);
-      }
       &::before {
         @include pseudo("relative");
         flex: 0 0 auto;

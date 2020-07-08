@@ -12,12 +12,14 @@ export default (project, req) => {
   <article>
     <!-- {{!-- TOC --}} -->
     <section class="Project__intro">
-      <ul class="Toc Project__toc" data-toc>
+      <ul class="Toc Project__toc">
         ${repeat(project.anchors, (anchor) => html`<li class="Toc__chapter"><a class="Toc__chapter__link" href="#${anchor}"><div class="Toc__chapter__title">${anchor.replace(/-/g, ' ')}</div></a></li>`)}
       </ul>
       <div class="Project__approach">
-        <h2 class="Project__title--client">${project.client}</h2>
-        <h1 class="Project__title--title">${project.subtitle}</h1>
+        <div class="Project__title">
+          <h2 class="Project__title--client">${project.client}</h2>
+          <h1 class="Project__title--title">${project.subtitle}</h1>
+        </div>
         ${unsafeHTML(project.approach)}
       </div>
       <aside class="Project__info">
