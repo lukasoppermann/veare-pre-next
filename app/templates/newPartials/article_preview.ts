@@ -6,7 +6,7 @@ export default (article) => html`
     <div class="details">
       <meta itemprop="author" content="Lukas Oppermann" />
       <meta itemprop="publisher" content="vea.re" />
-      <time itemprop="datePublished" class="date" datetime="${article.rawdate}">${article.date}</time>
+      <time itemprop="datePublished" class="date" datetime="${article.rawLastIteration}">${article.lastIteration}</time>
       <time class="read-time" datetime="${article.readingTime}m">${article.readingTime} min read</time>
       <link itemprop="mainEntityOfPage" href="${article.slug}" />
     </div>
