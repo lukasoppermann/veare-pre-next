@@ -16,8 +16,7 @@ export default {
       environment: { sys: { id: 'master', type: 'Link', linkType: 'Environment' } }
     },
     fields: {
-      title: { 'en-US': 'Nyon' },
-      subtitle: { 'en-US': 'Bringing biking into the future' },
+      title: { 'en-US': 'Bringing biking into the future' },
       slug: { 'en-US': 'work/nyon' },
       durationStart: { 'en-US': '2017-01-06' },
       durationEnd: { 'en-US': '2018-08-01' },
@@ -39,8 +38,7 @@ export default {
     contentType: 'project',
     fields: {
       slug: 'work/nyon',
-      title: 'Nyon',
-      subtitle: 'Bringing biking into the future',
+      title: 'Bringing biking into the future',
       durationStart: '2017-01-06',
       durationEnd: '2018-08-01',
       duration: {

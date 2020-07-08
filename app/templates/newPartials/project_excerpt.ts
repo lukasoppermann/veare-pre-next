@@ -16,7 +16,7 @@ export default (project) => html`
     <!-- TITLE -->
     <div class="Project-excerpt__title">
       <h4 class="Project-card__client">${project.client}</h4>
-      <h2 class="Project-card__title">${project.subtitle}</h2>
+      <h2 class="Project-card__title">${project.title}</h2>
     </div>
     <!-- Responsibilities -->
     <div class="Project-excerpt__responsibilities">
