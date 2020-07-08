@@ -17,24 +17,6 @@
       grid-row: 1;
       background-color: var(--sand-grey-rgb);
     }
-    .Project__title {
-      font-family: var(--font-montserrat);
-      font-weight: var(--font-montserrat-bold);
-      letter-spacing: .5px;
-      @include type-scale(title);
-      color: rgb(var(--white-rgb));
-      margin: 0;
-      padding-top: var(--viewport-height);
-      transform: translateY(-200px);
-      z-index: 100;
-      grid-column: columns;
-      grid-row: 1;
-      @include smaller_than(desktop) {
-        @include type-scale(hg);
-        padding-top: calc(var(--viewport-height) / 2);
-        transform: translateY(-80px);
-      }
-    }
   }
   article {
     @extend .Grid;
@@ -59,6 +41,7 @@
     margin-top: size(5);
     @extend .Grid;
     grid-column: full-bleed;
+    grid-template-rows: auto 1fr;
     .Project__approach {
       grid-column: columns;
       grid-row: 2;
@@ -92,6 +75,7 @@
       grid-column: columns;
       border-bottom: 1px solid rgba(var(--black-rgba-15));
       padding-bottom: size(3);
+      margin-top: size(4);
       @include at_least(tablet) {
         border-bottom: none;
         padding-bottom: 0;
@@ -99,6 +83,7 @@
         grid-column: column 5 / span 2;
       }
       @include at_least(desktop) {
+        margin-top: 0;
         grid-column: column 8 / span 3;
       }
       .Project__info__team,
@@ -124,30 +109,12 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
-        @include is(desktop) {
-          flex-direction: column;
-          justify-content: stretch;
-        }
         dd,
         dt {
-          order: 2;
-          width: calc(((100% - var(--column-gap)) / 2));
-          &:first-of-type {
-            padding-left: size(1);
-          }
-          @include at_least(desktop) {
-            width: 100%;
-            order: 1;
-            &:first-of-type {
-              padding-left: 0;
-            }
-          }
-          @include at_least(large) {
-            width: calc(((100% - var(--column-gap)) / 2));
-            order: 2;
-            &:first-of-type {
-              padding-left: size(1);
-            }
+          margin-left: 0;
+          width: calc(50% - var(--column-gap) / 2);
+          :nth-of-type(2) {
+            margin-left: var(--column-gap) / 2;
           }
         }
         dt {
@@ -157,7 +124,7 @@
           }
         }
         dd {
-          margin-left: 0;
+          order: 2;
           @include font(sans, bold);
           @include type-scale(md);
           color: rgba(var(--black-rgba-80));
@@ -277,11 +244,6 @@
   }
   --row-gap: 0;
   --rule-color: var(--project-color, rgb(var(--blue-rgb)));
-  h1 {
-    @include font(serif, italic);
-    @include type-scale(title);
-    margin-bottom: size(3);
-  }
   h2 {
     @include font(sans);
     @include type-scale(xl);
@@ -358,5 +320,41 @@
   }
   .Block {
     grid-column: full-bleed;
+  }
+  .Project__title {
+    &--title {
+      @include type-scale(hg);
+      margin-bottom: size(3);
+      margin-top: size(1);
+      font-family: var(--font-montserrat); // replace with svg
+      font-weight: var(--font-montserrat-bold);  // replace with svg
+      @include at_least(large) {
+        @include type-scale(title);
+      }
+    }
+    &--client {
+      font-family: var(--font-montserrat);
+      font-weight: var(--font-montserrat-bold);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      @include type-scale(sm);
+      margin-top: size(5);
+      display: flex;
+      color: inherit;
+      transition: all .3s ease;
+      @include at_least(desktop) {
+        margin-top: size(1);
+      }
+      &::before {
+        @include pseudo("relative");
+        flex: 0 0 auto;
+        align-self: center;
+        height: 2px;
+        width: size(5);
+        transform: translateY(-1px);
+        background: currentColor;
+        margin-right: size(1);
+      }
+    }
   }
 }

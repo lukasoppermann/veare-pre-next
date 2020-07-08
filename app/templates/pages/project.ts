@@ -7,7 +7,6 @@ const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsaf
 export default (project, req) => {
   return layout(html`
   <header class="Header">
-    <h2 class="Project__title">${project.title}</h2>
     ${picture(project.header.fields, 'eager')}
   </header>
   <article>
@@ -17,6 +16,8 @@ export default (project, req) => {
         ${repeat(project.anchors, (anchor) => html`<li class="Toc__chapter"><a class="Toc__chapter__link" href="#${anchor}"><div class="Toc__chapter__title">${anchor.replace(/-/g, ' ')}</div></a></li>`)}
       </ul>
       <div class="Project__approach">
+        <h2 class="Project__title--client">${project.client}</h2>
+        <h1 class="Project__title--title">${project.subtitle}</h1>
         ${unsafeHTML(project.approach)}
       </div>
       <aside class="Project__info">
