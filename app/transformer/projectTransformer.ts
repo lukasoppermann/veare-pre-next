@@ -37,7 +37,6 @@ export default async (data) => {
       fields: {
         slug: getField(data, 'slug'),
         title: getField(data, 'title'),
-        subtitle: getField(data, 'subtitle'),
         durationStart: getField(data, 'durationStart'),
         durationEnd: getField(data, 'durationEnd'),
         duration: duration(getField(data, 'durationStart'), getField(data, 'durationEnd')),

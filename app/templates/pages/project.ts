@@ -18,7 +18,7 @@ export default (project, req) => {
       <div class="Project__approach">
         <div class="Project__title">
           <h2 class="Project__title--client">${project.client}</h2>
-          <h1 class="Project__title--title">${project.subtitle}</h1>
+          <h1 class="Project__title--title">${project.title}</h1>
         </div>
         ${unsafeHTML(project.approach)}
       </div>
@@ -68,7 +68,7 @@ export default (project, req) => {
       },
       {
         property: 'og:description',
-        value: project.title + ' — ' + project.subtitle + ' / client: ' + project.client
+        value: project.title + ' / client: ' + project.client
       },
       {
         property: 'og:url',
