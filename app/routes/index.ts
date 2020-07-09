@@ -10,8 +10,6 @@ router.get(/^\/fragment\/menu$/, require('./menu'))
 // ## Home
 router.get(/^\/?$/, require('./home').progressive)
 router.get(/^\/home$/, (req, res) => require('./pages')(req, res, 'homepage'))
-// ## Portfolio
-router.use(/^\/portfolio\/([\w-]+)/, require('./portfolio'))
 // ## Privacy
 router.get('/privacy', (req, res) => require('./pages')(req, res, 'page'))
 // ## About
