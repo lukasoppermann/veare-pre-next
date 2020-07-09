@@ -1,177 +1,14 @@
 /* ====================================
     PROJECT Page
 ==================================== */
-.Project {
-  .Header {
-    @extend .Grid;
-    height: calc(var(--viewport-height) / 2);
-    @include at_least(desktop) {
-      height: calc(var(--viewport-height) - #{size(12)});
-    }
-    .Picture {
-      margin: 0;
-      margin-left: size(-3); // .75 * gutter
-      width: calc(100% + #{size(6)}); // + 1.5 * gutter
-      height: 100%;
-      grid-column: columns;
-      grid-row: 1;
-      background-color: var(--sand-grey-rgb);
-    }
-  }
-  article {
-    @extend .Grid;
-  }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  p,
-  ul,
-  ol,
-  .Picture,
-  .Boxed-group,
-  .Rule--horizontal {
-    grid-column: columns;
-    @include at_least(desktop) {
-      grid-column: column 3 / span 8;
-    }
-  }
-  .Project__intro {
-    margin-top: size(5);
-    @extend .Grid;
-    grid-column: full-bleed;
-    grid-template-rows: auto 1fr;
-    .Project__approach {
-      grid-column: columns;
-      grid-row: 2;
-      h5:first-of-type {
-        margin-top: size(4);
-      }
-      @include at_least(tablet) {
-        grid-column: columns / span 4;
-      }
-      @include at_least(desktop) {
-        h5:first-of-type {
-          margin-top: size(1);
-        }
-        grid-row: 1 / 3;
-        grid-column: column 3 / span 5;
-      }
-    }
-    .Project__toc {
-      grid-row: 1;
-      grid-column: columns;
-      @include at_least(desktop) {
-        grid-row: 1;
-        grid-column: column 8 / span 3;
-      }
-      li:first-child {
-        margin-top: 0;
-      }
-    }
-    .Project__info {
-      grid-row: 3;
-      grid-column: columns;
-      border-bottom: 1px solid rgba(var(--black-rgba-15));
-      padding-bottom: size(3);
-      margin-top: size(4);
-      @include at_least(tablet) {
-        border-bottom: none;
-        padding-bottom: 0;
-        grid-row: 2;
-        grid-column: column 5 / span 2;
-      }
-      @include at_least(desktop) {
-        margin-top: 0;
-        grid-column: column 8 / span 3;
-      }
-      .Project__info__team,
-      .Project__info__responsibilities,
-      .Project__info__time {
-        border-top: 1px solid rgba(var(--black-rgba-15));
-        margin-bottom: 0;
-        margin-top: size(3);
-        h5,
-        h6 {
-          @include font(mono);
-          @include type-scale(sm);
-          margin-bottom: size(2);
-          margin-top: size(3);
-        }
-        :not(li) > p {
-          margin-top: size(1);
-        }
-      }
-      .Project__info__time {
-        display: flex;
-        align-items: stretch;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        dd,
-        dt {
-          margin-left: 0;
-          width: calc(50% - var(--column-gap) / 2);
-          :nth-of-type(2) {
-            margin-left: var(--column-gap) / 2;
-          }
-        }
-        dt {
-          order: 1;
-          h6 {
-            color: rgba(var(--black-rgba-50));
-          }
-        }
-        dd {
-          order: 2;
-          @include font(sans, bold);
-          @include type-scale(md);
-          color: rgba(var(--black-rgba-80));
-        }
-      }
-    }
-    .Project__info__team,
-    .Project__info__responsibilities {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      @include at_least(desktop) {
-        margin-left: 0;
-        align-self: start;
-        flex-direction: column;
-        justify-content: stretch;
-      }
-      h6 {
-        width: 100%;
-        margin: 0;
-        margin-bottom: size(1);
-      }
-      ul {
-        width: 100%;
-        margin-top: 0;
-        li {
-          @extend .list-item;
-          &::before {
-            color: rgba(var(--black-rgba-50));
-          }
-        }
-      }
-    }
-  }
-  .Project__back_link {
-    display: block;
-    grid-column: columns;
-    text-decoration: none;
-    font-family: var(--font-montserrat);
-    font-weight: var(--font-montserrat-bold);
-    text-transform: uppercase;
-    letter-spacing: .5px;
-    @include type-scale(sm);
-    margin-top: size(3);
-    margin-bottom: size(15);
-  }
+.Project .Project__back_link {
+  display: block;
+  grid-column: columns;
+  text-decoration: none;
+  @include type-scale(md);
+  @include font(sans, bold);
+  margin-top: size(3);
+  margin-bottom: size(15);
 }
 // NEW Project page
 
@@ -228,7 +65,7 @@
 /* ====================================
     PROJECT
 ==================================== */
-.Project .Page {
+.Project { // .Page
   /* ====================================
       Special Project styling
   ==================================== */
@@ -239,11 +76,25 @@
   /* ====================================
       Default Project
   ==================================== */
-  @include smaller_than(desktop) {
-    padding: 0 size(2);
-  }
   --row-gap: 0;
   --rule-color: var(--project-color, rgb(var(--blue-rgb)));
+  article {
+    @extend .Grid;
+  }
+  h2,
+  h3,
+  h4,
+  h5,
+  p,
+  ul,
+  ol,
+  .Picture,
+  .Rule--horizontal {
+    grid-column: columns;
+    @include at_least(desktop) {
+      grid-column: column 3 / span 8;
+    }
+  }
   h2 {
     @include font(sans);
     @include type-scale(xl);
@@ -321,6 +172,30 @@
   .Block {
     grid-column: full-bleed;
   }
+
+  /* ====================================
+      Header
+  ==================================== */
+  .Header {
+    @extend .Grid;
+    height: calc(var(--viewport-height) / 2);
+    @include at_least(desktop) {
+      height: calc(var(--viewport-height) - #{size(12)});
+    }
+    .Picture {
+      margin: 0;
+      margin-left: size(-3);
+      width: calc(100% + #{size(6)});
+      height: 100%;
+      grid-column: columns;
+      grid-row: 1;
+      background-color: rgb(var(--sand-grey-rgb));
+    }
+  }
+
+  /* ====================================
+      Intro
+  ==================================== */
   .Project__title {
     margin-bottom: size(5);
     margin-top: size(5);
@@ -332,7 +207,7 @@
       margin-top: size(1);
       font-family: var(--font-montserrat); // replace with svg
       font-weight: var(--font-montserrat-bold);  // replace with svg
-      @include at_least(large) {
+      @include at_least(extra) {
         @include type-scale(title);
       }
     }
@@ -355,6 +230,127 @@
         transform: translateY(-1px);
         background: currentColor;
         margin-right: size(1);
+      }
+    }
+  }
+  .Project__intro {
+    margin-top: size(5);
+    @extend .Grid;
+    grid-column: full-bleed;
+    grid-template-rows: auto 1fr;
+    .Project__approach {
+      grid-column: columns;
+      grid-row: 2;
+      h5:first-of-type {
+        margin-top: size(4);
+      }
+      @include at_least(tablet) {
+        grid-column: columns / span 4;
+      }
+      @include at_least(desktop) {
+        h5:first-of-type {
+          margin-top: size(1);
+        }
+        grid-row: 1 / 3;
+        grid-column: column 3 / span 5;
+      }
+    }
+    .Project__toc {
+      grid-row: 1;
+      grid-column: columns;
+      @include at_least(desktop) {
+        grid-column: column 8 / span 3;
+      }
+      li:first-child {
+        margin-top: 0;
+      }
+    }
+    .Project__info {
+      grid-row: 3;
+      grid-column: columns;
+      border-bottom: 1px solid rgba(var(--black-rgba-15));
+      padding-bottom: size(3);
+      margin-top: size(4);
+      @include at_least(tablet) {
+        border-bottom: none;
+        padding-bottom: 0;
+        grid-row: 2;
+        grid-column: column 5 / span 2;
+      }
+      @include at_least(desktop) {
+        margin-top: 0;
+        grid-column: column 8 / span 3;
+      }
+      .Project__info__team,
+      .Project__info__responsibilities,
+      .Project__info__time {
+        border-top: 1px solid rgba(var(--black-rgba-15));
+        margin-bottom: 0;
+        margin-top: size(3);
+        h6 {
+          @include font(mono);
+          @include type-scale(sm);
+          margin-bottom: size(2);
+          margin-top: size(3);
+        }
+        :not(li) > p {
+          margin-top: size(1);
+        }
+      }
+      .Project__info__time {
+        display: flex;
+        align-items: stretch;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        dd,
+        dt {
+          margin-left: 0;
+          width: calc(50% - var(--column-gap) / 2);
+          :nth-of-type(2) {
+            margin-left: var(--column-gap) / 2;
+          }
+        }
+        dt {
+          order: 1;
+          h6 {
+            color: rgba(var(--black-rgba-50));
+          }
+        }
+        dd {
+          order: 2;
+          @include font(sans, bold);
+          @include type-scale(md);
+          color: rgba(var(--black-rgba-80));
+        }
+      }
+    }
+    .Project__info__team,
+    .Project__info__responsibilities {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      @include at_least(desktop) {
+        margin-left: 0;
+        align-self: start;
+        flex-direction: column;
+        justify-content: stretch;
+      }
+      h6 {
+        width: 100%;
+        margin: 0;
+        margin-bottom: size(1);
+      }
+      ul {
+        width: 100%;
+        margin-top: 0;
+        li {
+          @extend .list-item;
+          &::before {
+            color: rgba(var(--black-rgba-50));
+          }
+        }
       }
     }
   }
