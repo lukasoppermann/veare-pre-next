@@ -1,5 +1,6 @@
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
 import { Document as richTextDocument, BLOCKS, INLINES } from '@contentful/rich-text-types'
+import { richTextConverted } from '../../types/richText.d'
 // templates
 import block from '../templates/newPartials/block'
 import code from '../templates/newPartials/code'
@@ -63,7 +64,7 @@ const convertEmbeddedEntries = async (richText: richTextDocument, templates: {[k
   if (richText === null) {
     return []
   }
-  // await conversion to resolive
+  // await conversion to resolve
   return Promise.all(
     // all nodes from richText
     richText.content
@@ -93,13 +94,13 @@ const convertEmbeddedEntries = async (richText: richTextDocument, templates: {[k
  * @param  richText contentful
  * @return          [description]
  */
-export default async (richText: richTextDocument) => {
+export default async (richText: richTextDocument): Promise<richTextConverted> => {
   // get all converted embedded-entries
   const embedded = await convertEmbeddedEntries(richText, templates, transformerFunctions)
   // reset anchor variable
-  const anchors: Array<String> = []
+  const anchors: Array<string> = []
   // convert richText as HTML
-  const html: String = documentToHtmlString(richText, {
+  const html: string = documentToHtmlString(richText, {
     renderNode: {
       [BLOCKS.EMBEDDED_ENTRY]: (node) => {
         try {
@@ -113,14 +114,7 @@ export default async (richText: richTextDocument) => {
       },
       [BLOCKS.HR]: () => '<div class="Rule--horizontal"><hr></div>',
       [INLINES.HYPERLINK]: (node, next) => convertHyperlinks(node, next, anchors),
-      [BLOCKS.PARAGRAPH]: (node, next) => {
-        // @ts-ignore
-        // if(node.content[0].value === '') {
-        //   console.log(node.content.reduce((accumulator, currentValue) => accumulator + currentValue.value, ''))
-        //   return next(node.content)
-        // }
-        return `<p>${next(node.content).replace('\n', '<br/>')}</p>`
-      }
+      [BLOCKS.PARAGRAPH]: (node, next) => `<p>${next(node.content).replace('\n', '<br/>')}</p>`
     }
   })
   // return data object

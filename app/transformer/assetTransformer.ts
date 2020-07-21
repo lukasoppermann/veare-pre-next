@@ -1,10 +1,10 @@
-import { transformedDataInterface } from '../../types/transformer'
+import { transformedAsset } from '../../types/transformer'
 import transformer, { getField } from './transformer'
 
 export default async (data) => {
-  return transformer(data, async (data): Promise<transformedDataInterface> => {
+  return transformer(data, async (data): Promise<transformedAsset> => {
     // return format
-    return <transformedDataInterface>{
+    return <transformedAsset>{
       id: data.sys.id,
       createdAt: data.sys.createdAt,
       updatedAt: data.sys.updatedAt,

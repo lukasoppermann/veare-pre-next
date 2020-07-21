@@ -1,4 +1,4 @@
-import { transformedDataInterface } from '../../types/transformer'
+import { transformedPicture } from '../../types/transformer'
 import transformer, { getField } from './transformer'
 import assetTransformer from './assetTransformer'
 import richText from '../services/convertRichText'
@@ -10,9 +10,9 @@ const styles = {
 }
 
 export default async (data) => {
-  return transformer(data, async (data): Promise<transformedDataInterface> => {
+  return transformer(data, async (data): Promise<transformedPicture> => {
     // return format
-    return <transformedDataInterface>{
+    return <transformedPicture>{
       id: data.sys.id,
       createdAt: data.sys.createdAt,
       updatedAt: data.sys.updatedAt,
