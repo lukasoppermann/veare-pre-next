@@ -10,6 +10,11 @@ export default (project) => html`
     <figure class="Project-excerpt__image-container Project-card__image-container">
       <picture class="Project-card__image Project-excerpt__image">
         <source type="image/webp" srcset="${project.previewImage.fields.url}?fm=webp">
+        <source type="image/webp" srcset="${project.previewImage.fields.url}?fm=webp&w=1000" media="(min-width: 1200px)">
+        <source type="image/webp" srcset="${project.previewImage.fields.url}?fm=webp&w=750" media="(min-width: 992px)">
+        <source type="image/webp" srcset="${project.previewImage.fields.url}?fm=webp&w=930" media="(min-width: 768px)">
+        <source type="image/webp" srcset="${project.previewImage.fields.url}?fm=webp&w=700" media="(min-width: 577px)">
+        <source type="image/webp" srcset="${project.previewImage.fields.url}?fm=webp&w=500" media="(max-width: 576px)">
         <img height="${project.previewImage.fields.height}px" width="${project.previewImage.fields.width}px" src="${project.previewImage.fields.url}" alt="${project.previewImage.fields.title}" loading="lazy"/>
       </picture>
     </figure>
