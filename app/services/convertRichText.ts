@@ -96,7 +96,7 @@ const convertEmbeddedEntries = async (richText: richTextDocument, templates: {[k
  */
 export default async (richText: richTextDocument): Promise<richTextConverted> => {
   // get all converted embedded-entries
-  const embedded = await convertEmbeddedEntries(richText, templates, transformerFunctions)
+  const embedded = (await convertEmbeddedEntries(richText, templates, transformerFunctions)).filter(n => n)
   // reset anchor variable
   const anchors: Array<string> = []
   // convert richText as HTML
