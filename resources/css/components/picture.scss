@@ -16,6 +16,10 @@
   }
   &.Picture--center {
     grid-column: columns;
+    picture {
+      justify-content: center;
+      display: flex;
+    }
   }
   &.Picture--wide {
     grid-column: full-content;
@@ -24,6 +28,6 @@
     }
   }
   &.Picture--full-width {
-    grid-column: full-bleed;
+    grid-column: full-content;
   }
 }

@@ -45,10 +45,6 @@
   overflow: hidden;
   .Picture {
     height: var(--header-inner-height);
-    // margin: 0 !important;
-    img {
-      height: 100%;
-      width: 100%;
-    }
+    display: flex;
   }
 }
