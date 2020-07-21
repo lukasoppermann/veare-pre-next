@@ -26,7 +26,13 @@ export interface transformedAsset extends transformedDataInterface {
     description: string,
     url: string,
     fileName: string,
-    details: string,
+    details: {
+      size: number,
+      image: {
+        width: number,
+        height: number
+      }
+    },
     sizeInBytes: number,
     width: number,
     height: number,
