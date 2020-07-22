@@ -24,7 +24,7 @@ export default (item, loading = 'lazy') => {
 }
 
 const fallbackImage = (picture: transformedPicture, loading: 'eager' | 'lazy' = 'lazy') => html`
-  <img width="${picture.fields.sources[0].fields.width}" height="${picture.fields.sources[0].fields.height}" src="${picture.fields.sources[0].fields.url}" alt="${picture.fields.sources[0].fields.title}" loading="${loading}"/>
+  <img width="${picture.fields.image.fields.width}" height="${picture.fields.image.fields.height}" src="${picture.fields.image.fields.url}" alt="${picture.fields.image.fields.title}" loading="${loading}"/>
 `
 
 const pictureSource = (source: pictureSourceInterface) => html`

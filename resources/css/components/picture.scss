@@ -10,7 +10,7 @@
     object-position: top;
     position: relative;
     z-index: 50;
-    width: 100%;
+    min-width: 100%;
   }
   &:not(:first-child) {
     margin-top: size(3);

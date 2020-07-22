@@ -21,6 +21,11 @@ export default {
           asset.raw
         ]
       },
+      sources: {
+        'en-US': [
+          asset.raw
+        ]
+      },
       classes: { 'en-US': ['pictureClass'] },
       description: { 'en-US': richText.raw },
     }
@@ -35,6 +40,7 @@ export default {
       style: "center",
       classes: "pictureClass",
       description: richText.transformed,
+      image: asset.transformed,
       sources: [asset.transformed]
     }
   }
