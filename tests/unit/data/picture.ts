@@ -16,7 +16,7 @@ export default {
     },
     fields: {
       title: { 'en-US': 'Run you day — or your day will run you' },
-      sources: {
+      image: {
         'en-US': [
           asset.raw
         ]
