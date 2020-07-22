@@ -1,5 +1,5 @@
 import layout from '../layout'
-import picture from '../newPartials/picture'
+import { newPicture } from '../newPartials/picture'
 const { html } = require('@popeindustries/lit-html-server')
 const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
@@ -7,7 +7,13 @@ const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsaf
 export default (project, req) => {
   return layout(html`
   <header class="Header">
-    ${picture(project.header.fields, 'eager')}
+    ${newPicture(project.header, 'eager', [
+      {
+        type: 'image/webp',
+        srcset: [400, 800, 1600, 3200].map(size => `${project.header.fields.sources[0].fields.url}?fm=webp&w=${size} ${size}w`).join(', '),
+        sizes: '(min-width: 1560px) 1540px, 100vw'
+      }
+    ])}
   </header>
   <article>
     <!-- {{!-- TOC --}} -->

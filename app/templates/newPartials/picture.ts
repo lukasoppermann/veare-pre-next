@@ -1,5 +1,9 @@
+import { pictureSource as pictureSourceInterface } from '../../../types/pictureSource'
+import { transformedPicture } from '../../../types/transformer'
 const { html } = require('@popeindustries/lit-html-server')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
+const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
+const { ifDefined } = require('@popeindustries/lit-html-server/directives/if-defined.js')
 
 export default (item, loading = 'lazy') => {
   return html`
@@ -17,4 +21,29 @@ export default (item, loading = 'lazy') => {
       </div>`
   : ''}
 `
+}
+
+const fallbackImage = (picture: transformedPicture, loading: 'eager' | 'lazy' = 'lazy') => html`
+  <img width="${picture.fields.sources[0].fields.width}" height="${picture.fields.sources[0].fields.height}" src="${picture.fields.sources[0].fields.url}" alt="${picture.fields.sources[0].fields.title}" loading="${loading}"/>
+`
+
+const pictureSource = (source: pictureSourceInterface) => html`
+  <source type="${source.type}" srcset="${source.srcset}" media="${ifDefined(source.media)}" sizes="${ifDefined(source.sizes)}">
+`
+
+export const newPicture = (picture: transformedPicture, loading?: 'eager' | 'lazy', sources: Array<pictureSourceInterface> = []) => {
+  return html`
+    <figure class="Picture Picture--${picture.fields.style} ${picture.fields.classes}">
+        <picture>
+          ${repeat(sources, source => pictureSource(source))}
+          <!-- fallback img tag -->
+          ${fallbackImage(picture, loading)}
+        </picture>
+      </figure>
+      ${picture.fields.description
+        ? html`<div class="Annotation">
+            ${unsafeHTML(picture.fields.description)}
+          </div>`
+      : ''}
+    `
 }
