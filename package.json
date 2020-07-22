@@ -1,7 +1,7 @@
 {
   "name": "veare",
   "description": "veare website",
-  "version": "1.12.7",
+  "version": "1.12.8",
   "main": "app/server.ts",
   "repository": {
     "type": "git",
