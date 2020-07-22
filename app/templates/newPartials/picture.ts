@@ -35,10 +35,8 @@ export const newPicture = (picture: transformedPicture, loading?: 'eager' | 'laz
   return html`
     <figure class="Picture Picture--${picture.fields.style} ${picture.fields.classes}">
         <picture>
-          ${picture.fields.sources[0].fields.contentType !== 'image/svg+xml'
-          ? html`<source type="image/webp" srcset="${picture.fields.sources[0].fields.url}?fm=webp">` : ''}
-          <!-- fallback img tag -->
           ${repeat(sources, source => pictureSource(source))}
+          <!-- fallback img tag -->
           ${fallbackImage(picture, loading)}
         </picture>
       </figure>
