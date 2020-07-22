@@ -1,4 +1,4 @@
-import { transformedPicture } from '../../types/transformer'
+import { transformedPicture, transformedAsset } from '../../types/transformer'
 import transformer, { getField } from './transformer'
 import assetTransformer from './assetTransformer'
 import richText from '../services/convertRichText'
@@ -20,7 +20,8 @@ export default async (data) => {
       fields: {
         title: getField(data, 'title'),
         description: (await richText(getField(data, 'description'))).html,
-        sources: (await assetTransformer(getField(data, 'image'))),
+        image: <transformedAsset>(await assetTransformer(getField(data, 'image')))[0],
+        sources: <transformedAsset[]>(await assetTransformer(getField(data, 'sources'))),
         style: styles[getField(data, 'style')] || Object.values(styles)[0],
         classes: getField(data, 'classes', []).join(' ')
       }

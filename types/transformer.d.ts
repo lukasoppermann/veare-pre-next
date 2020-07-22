@@ -14,6 +14,7 @@ export interface transformedPicture extends transformedDataInterface {
    fields: {
     title: string,
     description: string,
+    image: transformedAsset,
     sources: transformedAsset[],
     style: string,
     classes: string

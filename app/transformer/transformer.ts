@@ -1,4 +1,4 @@
-import { transformerInterface } from '../../types/transformer'
+import { transformerInterface, transformedDataInterface } from '../../types/transformer'
 
 const language = 'en-US'
 
@@ -21,7 +21,7 @@ const makeArray = (item: any): any[] => {
   return item
 }
 
-export default async (items: Object, transformer: transformerInterface): Promise<Array<any>> => {
+export default async (items: Object, transformer: transformerInterface): Promise<Array<transformedDataInterface>> => {
   return Promise.all(
     // run transformer on all items
     makeArray(items).map((item) => transformOrNull(item, transformer), this))
