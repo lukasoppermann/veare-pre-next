@@ -1,5 +1,6 @@
 import { transformTestData } from './transformTestData'
 import asset from './asset'
+import pictureSource from './pictureSource'
 import richText from './richText'
 
 export default {
@@ -23,7 +24,7 @@ export default {
       },
       sources: {
         'en-US': [
-          asset.raw
+          pictureSource.raw
         ]
       },
       classes: { 'en-US': ['pictureClass'] },
@@ -41,7 +42,7 @@ export default {
       classes: "pictureClass",
       description: richText.transformed,
       image: asset.transformed,
-      sources: [asset.transformed]
+      sources: [pictureSource.transformed]
     }
   }
 } as transformTestData
