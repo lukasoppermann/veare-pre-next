@@ -11,13 +11,24 @@ export interface transformedDataInterface {
 }
 
 export interface transformedPicture extends transformedDataInterface {
+   fields: transformedPictureFields
+}
+
+export interface transformedPictureFields {
+  title: string,
+  description: string,
+  image: transformedAsset,
+  sources: transformedPictureSource[],
+  style: string,
+  classes: string
+}
+
+export interface transformedPictureSource extends transformedDataInterface {
    fields: {
-    title: string,
-    description: string,
-    image: transformedAsset,
-    sources: transformedAsset[],
-    style: string,
-    classes: string
+    srcset: string,
+    type: string,
+    sizes?: string,
+    media?: string
    }
 }
 

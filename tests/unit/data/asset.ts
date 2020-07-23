@@ -18,9 +18,9 @@ export default {
       title: { 'en-US': 'Run your day — or your day will run you' },
       file: {
         'en-US': {
-          url: '//images.ctfassets.net/5dfliyp93yzg/4NYI3g8nZzOPFlbyL3pSHe/72eadade99c58564e23a40bb2c83bcc1/run-your-day-presenter-veare.jpg',
+          url: '//images.ctfassets.net/5dfliyp93yzg/4NYI3g8nZzOPFlbyL3pSHe/72eadade99c58564e23a40bb2c83bcc1/run-your-day-presenter-veare_2x.jpg',
           details: { size: 208483, image: { width: 1600, height: 1000 } },
-          fileName: 'run-your-day-presenter-veare.jpg',
+          fileName: 'run-your-day-presenter-veare@2x.jpg',
           contentType: 'image/jpeg'
         }
       }
@@ -34,8 +34,8 @@ export default {
     fields: {
       title: 'Run your day — or your day will run you',
       description: null,
-      url: '//images.ctfassets.net/5dfliyp93yzg/4NYI3g8nZzOPFlbyL3pSHe/72eadade99c58564e23a40bb2c83bcc1/run-your-day-presenter-veare.jpg',
-      fileName: 'run-your-day-presenter-veare.jpg',
+      url: '//images.ctfassets.net/5dfliyp93yzg/4NYI3g8nZzOPFlbyL3pSHe/72eadade99c58564e23a40bb2c83bcc1/run-your-day-presenter-veare_2x.jpg',
+      fileName: 'run-your-day-presenter-veare@2x.jpg',
       details: { size: 208483, image: { width: 1600, height: 1000 } },
       sizeInBytes: 208483,
       width: 1600,

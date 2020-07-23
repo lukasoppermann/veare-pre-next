@@ -4,7 +4,7 @@ import { richTextConverted } from '../../types/richText.d'
 // templates
 import block from '../templates/newPartials/block'
 import code from '../templates/newPartials/code'
-import picture from '../templates/newPartials/picture'
+import { newPicture as picture } from '../templates/newPartials/picture'
 import projectExcerpt from '../templates/newPartials/project_excerpt'
 import link from '../templates/newPartials/link'
 // Transformer
@@ -107,9 +107,10 @@ export default async (richText: richTextDocument): Promise<richTextConverted> =>
           return embedded.find((entry: any) => entry.id === node.data.target.sys.id).html
         } catch (e) {
           /* istanbul ignore next */
-          console.error('🚨 ERROR: ', e)
+          // console.error('🚨 ERROR: ', e)
+          console.error('🚨 ERROR: ', embedded)
           /* istanbul ignore next */
-          console.dir(node.data.target, { depth: null, colors: true })
+          // console.dir(node.data.target, { depth: null, colors: true })
         }
       },
       [BLOCKS.HR]: () => '<div class="Rule--horizontal"><hr></div>',

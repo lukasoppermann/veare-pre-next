@@ -7,10 +7,10 @@ const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsaf
 export default (project, req) => {
   return layout(html`
   <header class="Header">
-    ${newPicture(project.header, 'eager', [
+    ${newPicture(project.header.fields, 'eager', [
       {
         type: 'image/webp',
-        srcset: [400, 800, 1600, 3200].map(size => `${project.header.fields.sources[0].fields.url}?fm=webp&w=${size} ${size}w`).join(', '),
+        srcset: [400, 800, 1600, 3200].map(size => `${project.header.fields.image.fields.url}?fm=webp&w=${size} ${size}w`).join(', '),
         sizes: '(min-width: 1560px) 1540px, 100vw'
       }
     ])}

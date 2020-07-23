@@ -9,6 +9,7 @@ import codeTransformer from '../transformer/codeTransformer'
 import linkTransformer from '../transformer/linkTransformer'
 import pageTransformer from '../transformer/pageTransformer'
 import pictureTransformer from '../transformer/pictureTransformer'
+import pictureSourceTransformer from '../transformer/pictureSourceTransformer'
 import projectTransformer from '../transformer/projectTransformer'
 // Transformer functions
 const transformerFunctions = {
@@ -19,6 +20,7 @@ const transformerFunctions = {
   link: linkTransformer,
   page: pageTransformer,
   picture: pictureTransformer,
+  pictureSource: pictureSourceTransformer,
   project: projectTransformer
 }
 
@@ -56,6 +58,7 @@ const sortContentByType = (contentTypes, entries): {
   project?: any[];
   link?: any[];
   picture?: any[];
+  pictureSource?: any[];
   page?: any[];
   block?: any[];
   code?: any[];
