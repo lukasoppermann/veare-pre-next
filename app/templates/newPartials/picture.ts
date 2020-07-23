@@ -1,5 +1,5 @@
 import { pictureSource as pictureSourceInterface } from '../../../types/pictureSource'
-import { transformedPicture } from '../../../types/transformer'
+import { transformedPictureFields } from '../../../types/transformer'
 const { html } = require('@popeindustries/lit-html-server')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
@@ -23,26 +23,26 @@ export default (item, loading = 'lazy') => {
 `
 }
 
-const fallbackImage = (picture: transformedPicture, loading: 'eager' | 'lazy' = 'lazy') => html`
-  <img width="${picture.fields.image.fields.width}" height="${picture.fields.image.fields.height}" src="${picture.fields.image.fields.url}" alt="${picture.fields.image.fields.title}" loading="${loading}"/>
+const fallbackImage = (picture: transformedPictureFields, loading: 'eager' | 'lazy' = 'lazy') => html`
+  <img width="${picture.image.fields.width}" height="${picture.image.fields.height}" src="${picture.image.fields.url}" alt="${picture.image.fields.title}" loading="${loading}"/>
 `
 
 const pictureSource = (source: pictureSourceInterface) => html`
   <source type="${source.type}" srcset="${source.srcset}" media="${ifDefined(source.media)}" sizes="${ifDefined(source.sizes)}">
 `
 
-export const newPicture = (picture: transformedPicture, loading?: 'eager' | 'lazy', sources: Array<pictureSourceInterface> = []) => {
+export const newPicture = (picture: transformedPictureFields, loading?: 'eager' | 'lazy', sources: Array<pictureSourceInterface> = []) => {
   return html`
-    <figure class="Picture Picture--${picture.fields.style} ${picture.fields.classes}">
+    <figure class="Picture Picture--${picture.style} ${picture.classes}">
         <picture>
-          ${repeat([...picture.fields.sources.map(source => source.fields), ...sources], source => pictureSource(source))}
+          ${repeat([...picture.sources.map(source => source.fields), ...sources], source => pictureSource(source))}
           <!-- fallback img tag -->
           ${fallbackImage(picture, loading)}
         </picture>
       </figure>
-      ${picture.fields.description
+      ${picture.description
         ? html`<div class="Annotation">
-            ${unsafeHTML(picture.fields.description)}
+            ${unsafeHTML(picture.description)}
           </div>`
       : ''}
     `

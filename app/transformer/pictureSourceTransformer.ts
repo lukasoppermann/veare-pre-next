@@ -11,7 +11,7 @@ export default async (data) => {
       id: data.sys.id,
       createdAt: data.sys.createdAt,
       updatedAt: data.sys.updatedAt,
-      // contentType: data.sys.contentType.sys.id,
+      contentType: data.sys.contentType.sys.id,
       fields: {
         media: <string>getField(data, 'media'),
         sizes: <string>getField(data, 'sizes'),

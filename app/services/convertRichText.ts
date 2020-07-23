@@ -4,7 +4,7 @@ import { richTextConverted } from '../../types/richText.d'
 // templates
 import block from '../templates/newPartials/block'
 import code from '../templates/newPartials/code'
-import picture from '../templates/newPartials/picture'
+import { newPicture as picture } from '../templates/newPartials/picture'
 import projectExcerpt from '../templates/newPartials/project_excerpt'
 import link from '../templates/newPartials/link'
 // Transformer

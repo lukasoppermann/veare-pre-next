@@ -11,14 +11,16 @@ export interface transformedDataInterface {
 }
 
 export interface transformedPicture extends transformedDataInterface {
-   fields: {
-    title: string,
-    description: string,
-    image: transformedAsset,
-    sources: transformedPictureSource[],
-    style: string,
-    classes: string
-   }
+   fields: transformedPictureFields
+}
+
+export interface transformedPictureFields {
+  title: string,
+  description: string,
+  image: transformedAsset,
+  sources: transformedPictureSource[],
+  style: string,
+  classes: string
 }
 
 export interface transformedPictureSource extends transformedDataInterface {
