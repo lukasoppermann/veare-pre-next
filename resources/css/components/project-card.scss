@@ -23,7 +23,7 @@
       --project-image-max-width: 800px;
       --project-color-tint-light: #ebe5d2;
       --project-image-desktop-columns: 8;
-      @include at_least(desktop) {
+      @include at_least(tablet) {
         --project-margin-top: #{size(11)};
       }
       @include at_least(large) {
