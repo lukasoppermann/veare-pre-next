@@ -35,7 +35,7 @@ export const newPicture = (picture: transformedPicture, loading?: 'eager' | 'laz
   return html`
     <figure class="Picture Picture--${picture.fields.style} ${picture.fields.classes}">
         <picture>
-          ${repeat(sources, source => pictureSource(source))}
+          ${repeat([...picture.fields.sources.map(source => source.fields), ...sources], source => pictureSource(source))}
           <!-- fallback img tag -->
           ${fallbackImage(picture, loading)}
         </picture>

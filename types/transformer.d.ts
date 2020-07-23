@@ -15,9 +15,18 @@ export interface transformedPicture extends transformedDataInterface {
     title: string,
     description: string,
     image: transformedAsset,
-    sources: transformedAsset[],
+    sources: transformedPictureSource[],
     style: string,
     classes: string
+   }
+}
+
+export interface transformedPictureSource extends transformedDataInterface {
+   fields: {
+    srcset: string,
+    type: string,
+    sizes?: string,
+    media?: string
    }
 }
 

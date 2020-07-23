@@ -109,7 +109,7 @@ export default async (richText: richTextDocument): Promise<richTextConverted> =>
           /* istanbul ignore next */
           console.error('🚨 ERROR: ', e)
           /* istanbul ignore next */
-          console.dir(node.data.target, { depth: null, colors: true })
+          // console.dir(node.data.target, { depth: null, colors: true })
         }
       },
       [BLOCKS.HR]: () => '<div class="Rule--horizontal"><hr></div>',
