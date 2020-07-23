@@ -107,7 +107,8 @@ export default async (richText: richTextDocument): Promise<richTextConverted> =>
           return embedded.find((entry: any) => entry.id === node.data.target.sys.id).html
         } catch (e) {
           /* istanbul ignore next */
-          console.error('🚨 ERROR: ', e)
+          // console.error('🚨 ERROR: ', e)
+          console.error('🚨 ERROR: ', embedded)
           /* istanbul ignore next */
           // console.dir(node.data.target, { depth: null, colors: true })
         }

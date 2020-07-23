@@ -9,12 +9,12 @@ export default (link) => html`
       </div>
       <figure class="Project-card__image-container">
         <picture class="Project-card__image">
-        <source type="image/webp" srcset="${link.picture.fields.sources[0].fields.url}?fm=webp&w=860" media="(min-width: 1200px)">
-        <source type="image/webp" srcset="${link.picture.fields.sources[0].fields.url}?fm=webp&w=780" media="(min-width: 992px)">
-        <source type="image/webp" srcset="${link.picture.fields.sources[0].fields.url}?fm=webp&w=930" media="(min-width: 768px)">
-        <source type="image/webp" srcset="${link.picture.fields.sources[0].fields.url}?fm=webp&w=700" media="(min-width: 577px)">
-        <source type="image/webp" srcset="${link.picture.fields.sources[0].fields.url}?fm=webp&w=500" media="(max-width: 576px)">
-        <img src="${link.picture.fields.sources[0].fields.url}" alt="${link.picture.fields.title}" loading="lazy"/>
+        <source type="image/webp" srcset="${link.picture.fields.image.fields.url}?fm=webp&w=860" media="(min-width: 1200px)">
+        <source type="image/webp" srcset="${link.picture.fields.image.fields.url}?fm=webp&w=780" media="(min-width: 992px)">
+        <source type="image/webp" srcset="${link.picture.fields.image.fields.url}?fm=webp&w=930" media="(min-width: 768px)">
+        <source type="image/webp" srcset="${link.picture.fields.image.fields.url}?fm=webp&w=700" media="(min-width: 577px)">
+        <source type="image/webp" srcset="${link.picture.fields.image.fields.url}?fm=webp&w=500" media="(max-width: 576px)">
+        <img src="${link.picture.fields.image.fields.url}" alt="${link.picture.fields.title}" loading="lazy"/>
         </picture>
       </figure>
     </a>

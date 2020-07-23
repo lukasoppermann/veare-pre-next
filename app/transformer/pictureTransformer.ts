@@ -22,6 +22,7 @@ export default async (data) => {
         title: getField(data, 'title'),
         description: (await richText(getField(data, 'description'))).html,
         image: <transformedAsset>(await assetTransformer(getField(data, 'image')))[0],
+        sources: [],
         // sources: <transformedPictureSource[]>(await pictureSourceTransformer(getField(data, 'sources'))),
         style: styles[getField(data, 'style')] || Object.values(styles)[0],
         classes: getField(data, 'classes', []).join(' ')

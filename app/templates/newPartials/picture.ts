@@ -9,10 +9,10 @@ export default (item, loading = 'lazy') => {
   return html`
   <figure class="Picture Picture--${item.style} ${item.classes}">
     <picture>
-      ${item.sources[0].fields.contentType !== 'image/svg+xml'
-      ? html`<source type="image/webp" srcset="${item.sources[0].fields.url}?fm=webp">` : ''}
+      ${item.image.fields.contentType !== 'image/svg+xml'
+      ? html`<source type="image/webp" srcset="${item.image.fields.url}?fm=webp">` : ''}
       <!-- fallback img tag -->
-      <img width="${item.sources[0].fields.details.image.width}" height="${item.sources[0].fields.details.image.height}" src="${item.sources[0].fields.url}" alt="${item.title}" loading="${loading}"/>
+      <img width="${item.image.fields.details.image.width}" height="${item.image.fields.details.image.height}" src="${item.image.fields.url}" alt="${item.title}" loading="${loading}"/>
     </picture>
   </figure>
   ${item.description
