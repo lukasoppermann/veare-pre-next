@@ -7,8 +7,8 @@ export default (project) => html`
   <!-- Info -->
   <div class="Project-excerpt__info">
     <!-- PICTURE -->
-    <figure class="Project-excerpt__image-container Project-card__image-container">
-      <picture class="Project-card__image Project-excerpt__image">
+    <figure class="Project-excerpt__image-container">
+      <picture class="Project-excerpt__image">
         <source type="image/webp" srcset="${project.previewImage.fields.url}?fm=webp&w=1000" media="(min-width: 1200px)">
         <source type="image/webp" srcset="${project.previewImage.fields.url}?fm=webp&w=750" media="(min-width: 992px)">
         <source type="image/webp" srcset="${project.previewImage.fields.url}?fm=webp&w=930" media="(min-width: 768px)">
