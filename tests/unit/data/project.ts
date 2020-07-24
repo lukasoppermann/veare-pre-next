@@ -1,7 +1,6 @@
 import { transformTestData } from './transformTestData'
 import richText from './richText'
 import picture from './picture'
-import asset from './asset'
 
 export default {
   raw: {
@@ -27,7 +26,7 @@ export default {
       roleAndTeam: { 'en-US': richText.raw },
       tableOfContent: { 'en-US': true },
       header: { 'en-US': picture.raw },
-      previewImage: { 'en-US': asset.raw },
+      previewImageNew: { 'en-US': picture.raw },
       content: { 'en-US': richText.raw }
     }
   },
@@ -52,7 +51,7 @@ export default {
       },
       client: 'Bosch',
       header: picture.transformed,
-      previewImage: asset.transformed,
+      previewImage: picture.transformed,
       anchors: [
         "design",
       ],

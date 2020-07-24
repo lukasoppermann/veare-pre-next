@@ -1,3 +1,4 @@
+import picture from '../newPartials/picture'
 const { html } = require('@popeindustries/lit-html-server')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
@@ -7,16 +8,13 @@ export default (project) => html`
   <!-- Info -->
   <div class="Project-excerpt__info">
     <!-- PICTURE -->
-    <figure class="Picture Project-excerpt__image-container">
-      <picture class="Project-excerpt__image">
-        <source type="image/webp" srcset="${project.previewImage.fields.url}?fm=webp&w=1000" media="(min-width: 1200px)">
-        <source type="image/webp" srcset="${project.previewImage.fields.url}?fm=webp&w=750" media="(min-width: 992px)">
-        <source type="image/webp" srcset="${project.previewImage.fields.url}?fm=webp&w=930" media="(min-width: 768px)">
-        <source type="image/webp" srcset="${project.previewImage.fields.url}?fm=webp&w=700" media="(min-width: 577px)">
-        <source type="image/webp" srcset="${project.previewImage.fields.url}?fm=webp&w=500" media="(max-width: 576px)">
-        <img height="${project.previewImage.fields.height}px" width="${project.previewImage.fields.width}px" src="${project.previewImage.fields.url}" alt="${project.previewImage.fields.title}" loading="lazy"/>
-      </picture>
-    </figure>
+    ${picture(project.previewImage.fields, 'lazy', [
+      {
+        type: 'image/webp',
+        srcset: [500, 1000, 1400, 2000].map(size => `${project.previewImage.fields.image.fields.url}?fm=webp&w=${size} ${size}w`).join(', '),
+        sizes: '(min-width: 1200px) 1000px, (min-width: 577px) 700px, 500px'
+      }
+    ])}
     <!-- TITLE -->
     <div class="Project-excerpt__title">
       <h4 class="Project-card__client">${project.client}</h4>

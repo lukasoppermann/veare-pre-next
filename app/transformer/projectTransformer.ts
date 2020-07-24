@@ -1,6 +1,5 @@
 import { transformedDataInterface } from '../../types/transformer'
 import transformer, { getField } from './transformer'
-import assetTransformer from './assetTransformer'
 import pictureTransformer from './pictureTransformer'
 import richText from '../services/convertRichText'
 // calc duration in month
@@ -50,7 +49,7 @@ export default async (data) => {
         team: getField(data, 'team', []),
         roleAndTeam: (await richText(getField(data, 'roleAndTeam'))).html,
         header: (await pictureTransformer(getField(data, 'header')))[0],
-        previewImage: (await assetTransformer(getField(data, 'previewImage')))[0],
+        previewImage: (await pictureTransformer(getField(data, 'previewImageNew')))[0],
         content: content.html,
         anchors: content.anchors
       }
