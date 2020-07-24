@@ -29,11 +29,10 @@
     @include at_least(desktop) {
       margin-top: size(10);
     }
-    .Project-card__image-container {
+    .Picture {
       position: relative;
       z-index: 1;
       order: 1;
-      padding-top: 62.5%;
       overflow: hidden;
       background-color: rgb(var(--white-blue-rgb));
       grid-column: columns;
