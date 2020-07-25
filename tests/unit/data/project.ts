@@ -26,7 +26,7 @@ export default {
       roleAndTeam: { 'en-US': richText.raw },
       tableOfContent: { 'en-US': true },
       header: { 'en-US': picture.raw },
-      previewImageNew: { 'en-US': picture.raw },
+      previewImage: { 'en-US': picture.raw },
       content: { 'en-US': richText.raw }
     }
   },

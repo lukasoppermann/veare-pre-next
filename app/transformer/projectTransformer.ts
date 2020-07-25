@@ -49,7 +49,7 @@ export default async (data) => {
         team: getField(data, 'team', []),
         roleAndTeam: (await richText(getField(data, 'roleAndTeam'))).html,
         header: (await pictureTransformer(getField(data, 'header')))[0],
-        previewImage: (await pictureTransformer(getField(data, 'previewImageNew')))[0],
+        previewImage: (await pictureTransformer(getField(data, 'previewImage')))[0],
         content: content.html,
         anchors: content.anchors
       }
