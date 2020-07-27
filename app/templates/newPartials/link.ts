@@ -8,13 +8,18 @@ export default (link) => html`
         <h4 class="Project-card__client">${link.subtitle}</h4>
         <h2 class="Project-card__title">${link.title}</h2>
       </div>
-      ${picture(link.picture.fields, 'lazy', [
+      ${picture(link.picture.fields,
         {
-          type: 'image/webp',
-          srcset: [500, 1000, 1600, 2000].map(size => `${link.picture.fields.image.fields.url}?fm=webp&w=${size} ${size}w`).join(', '),
-          sizes: '(min-width: 760px) 930px, 100vw'
+          loading: 'lazy',
+          sourcesFunction: (picture) => [
+            {
+              type: 'image/webp',
+              srcset: [500, 1000, 1600, 2000].map(size => `${picture.image.fields.url}?fm=webp&w=${size} ${size}w`).join(', '),
+              sizes: '(min-width: 760px) 930px, 100vw'
+            }
+          ]
         }
-      ])}
+      )}
     </a>
   </section>
   `

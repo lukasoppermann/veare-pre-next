@@ -13,13 +13,22 @@ const pictureSource = (source: pictureSourceInterface) => html`
   <source type="${source.type}" srcset="${source.srcset}" media="${ifDefined(source.media)}" sizes="${ifDefined(source.sizes)}">
 `
 
-export default (picture: transformedPictureFields, loading?: 'eager' | 'lazy', sources: Array<pictureSourceInterface> = []) => {
+type sourcesFunction = (picture: transformedPictureFields) => Array<pictureSourceInterface>;
+
+export default (picture: transformedPictureFields, options: { loading?: 'eager' | 'lazy', sourcesFunction?: sourcesFunction }) => {
+  // transform sources from cms
+  let sources = picture.sources.map(source => source.fields)
+  // merge sources if image is not svg with sourcesFunction output
+  if (picture.image.fields.contentType !== 'image/svg+xml' && typeof options.sourcesFunction === 'function') {
+    sources = [...sources, ...options.sourcesFunction(picture)]
+  }
+
   return html`
     <figure class="Picture Picture--${picture.style} ${picture.classes}">
         <picture>
-          ${repeat([...picture.sources.map(source => source.fields), ...sources], source => pictureSource(source))}
+          ${repeat(sources, source => pictureSource(source))}
           <!-- fallback img tag -->
-          ${fallbackImage(picture, loading)}
+          ${fallbackImage(picture, options.loading || 'lazy')}
         </picture>
       </figure>
       ${picture.description
