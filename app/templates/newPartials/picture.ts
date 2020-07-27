@@ -15,7 +15,7 @@ const pictureSource = (source: pictureSourceInterface) => html`
 
 type sourcesFunction = (picture: transformedPictureFields) => Array<pictureSourceInterface>;
 
-export default (picture: transformedPictureFields, options: { loading?: 'eager' | 'lazy', sourcesFunction?: sourcesFunction }) => {
+export default (picture: transformedPictureFields, options: { loading?: 'eager' | 'lazy', sourcesFunction?: sourcesFunction } = {}) => {
   // transform sources from cms
   let sources = picture.sources.map(source => source.fields)
   // merge sources if image is not svg with sourcesFunction output

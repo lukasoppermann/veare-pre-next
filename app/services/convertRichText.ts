@@ -75,12 +75,17 @@ const convertEmbeddedEntries = async (richText: richTextDocument, templates: {[k
         // run transformer on data
         try {
           const transfomedData = await transformerFunctions[node.data.target.sys.contentType.sys.id](node.data.target)
+          let templateOptions = {}
+          if (options[node.data.target.sys.contentType.sys.id] !== undefined) {
+            templateOptions = options[node.data.target.sys.contentType.sys.id]
+            console.debug(templateOptions)
+          }
           // return id & html
           return {
             // unique id of the node
             id: node.data.target.sys.id,
             // converted HTML
-            html: await renderToString(templates[node.data.target.sys.contentType.sys.id](transfomedData[0].fields, options[node.data.target.sys.contentType.sys.id] || undefined))
+            html: await renderToString(templates[node.data.target.sys.contentType.sys.id](transfomedData[0].fields, templateOptions))
           }
         } catch (e) {
           /* istanbul ignore next */
@@ -108,7 +113,7 @@ export default async (richText: richTextDocument, options?): Promise<richTextCon
         } catch (e) {
           /* istanbul ignore next */
           // console.error('🚨 ERROR: ', e)
-          console.error('🚨 ERROR: ', embedded)
+          // console.error('🚨 ERROR: ', embedded)
           /* istanbul ignore next */
           // console.dir(node.data.target, { depth: null, colors: true })
         }
