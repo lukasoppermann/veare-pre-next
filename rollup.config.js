@@ -9,7 +9,7 @@ let plugins = {
   plugins: [
     replace({
       '$Fetch_Inject_Version': process.env.FETCHINJECTVERSION,
-      '$googleFonts': 'Montserrat:700|Noto+Serif:400,400i,400b|Source+Sans+Pro:400,600|Source+Code+Pro:700',
+      '$googleFonts': 'Montserrat:700|Noto+Serif:400,400i,400b|Source+Sans+Pro:400,600|Source+Code+Pro:700&display=swap',
       delimiters: ['', '']
     }),
     typescript({
