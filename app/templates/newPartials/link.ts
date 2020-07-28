@@ -14,8 +14,8 @@ export default (link) => html`
           sourcesFunction: (picture) => [
             {
               type: 'image/webp',
-              srcset: [500, 1000, 1600, 2000].map(size => `${picture.image.fields.url}?fm=webp&w=${size} ${size}w`).join(', '),
-              sizes: '(min-width: 760px) 930px, 100vw'
+              srcset: [500, 800, 1100, 1400, 1700].map(size => `${picture.image.fields.url}?fm=webp&w=${size} ${size}w`).join(', '),
+              sizes: '(min-width: 1500px) 850px, (min-width: 1400px) 800px, (min-width: 1200px) 700px, (min-width: 992px) 550px, 100vw'
             }
           ]
         }
