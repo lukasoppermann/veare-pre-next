@@ -59,7 +59,7 @@ const convertHyperlinks = (node, next, anchors) => {
  * @param  embeddedEntriesFn Object with functions
  * @return                   [description]
  */
-const convertEmbeddedEntries = async (richText: richTextDocument, templates: {[key: string]: Function}, transformerFunctions: {[key: string]: Function}): Promise<Array<any>> => {
+const convertEmbeddedEntries = async (richText: richTextDocument, templates: {[key: string]: Function}, transformerFunctions: {[key: string]: Function}, options = {}): Promise<Array<any>> => {
   // return if richText is empty
   if (richText === null) {
     return []
@@ -75,12 +75,17 @@ const convertEmbeddedEntries = async (richText: richTextDocument, templates: {[k
         // run transformer on data
         try {
           const transfomedData = await transformerFunctions[node.data.target.sys.contentType.sys.id](node.data.target)
+          let templateOptions = {}
+          if (options[node.data.target.sys.contentType.sys.id] !== undefined) {
+            templateOptions = options[node.data.target.sys.contentType.sys.id]
+            console.debug(templateOptions)
+          }
           // return id & html
           return {
             // unique id of the node
             id: node.data.target.sys.id,
             // converted HTML
-            html: await renderToString(templates[node.data.target.sys.contentType.sys.id](transfomedData[0].fields))
+            html: await renderToString(templates[node.data.target.sys.contentType.sys.id](transfomedData[0].fields, templateOptions))
           }
         } catch (e) {
           /* istanbul ignore next */
@@ -94,9 +99,9 @@ const convertEmbeddedEntries = async (richText: richTextDocument, templates: {[k
  * @param  richText contentful
  * @return          [description]
  */
-export default async (richText: richTextDocument): Promise<richTextConverted> => {
+export default async (richText: richTextDocument, options?): Promise<richTextConverted> => {
   // get all converted embedded-entries
-  const embedded = await convertEmbeddedEntries(richText, templates, transformerFunctions)
+  const embedded = await convertEmbeddedEntries(richText, templates, transformerFunctions, options)
   // reset anchor variable
   const anchors: Array<string> = []
   // convert richText as HTML
@@ -108,7 +113,7 @@ export default async (richText: richTextDocument): Promise<richTextConverted> =>
         } catch (e) {
           /* istanbul ignore next */
           // console.error('🚨 ERROR: ', e)
-          console.error('🚨 ERROR: ', embedded)
+          // console.error('🚨 ERROR: ', embedded)
           /* istanbul ignore next */
           // console.dir(node.data.target, { depth: null, colors: true })
         }

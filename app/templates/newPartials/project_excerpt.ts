@@ -8,13 +8,18 @@ export default (project) => html`
   <!-- Info -->
   <div class="Project-excerpt__info">
     <!-- PICTURE -->
-    ${picture(project.previewImage.fields, 'lazy', [
+    ${picture(project.previewImage.fields,
       {
-        type: 'image/webp',
-        srcset: [500, 1000, 1400, 2000].map(size => `${project.previewImage.fields.image.fields.url}?fm=webp&w=${size} ${size}w`).join(', '),
-        sizes: '(min-width: 1200px) 1000px, (min-width: 577px) 700px, 500px'
+        loading: 'lazy',
+        sourcesFunction: (picture) => [
+        {
+          type: 'image/webp',
+          srcset: [500, 1000, 1400, 2000].map(size => `${picture.image.fields.url}?fm=webp&w=${size} ${size}w`).join(', '),
+          sizes: '(min-width: 1200px) 1000px, (min-width: 577px) 700px, 500px'
+        }
+        ]
       }
-    ])}
+    )}
     <!-- TITLE -->
     <div class="Project-excerpt__title">
       <h4 class="Project-card__client">${project.client}</h4>

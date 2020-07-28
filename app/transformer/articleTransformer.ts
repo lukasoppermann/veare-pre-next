@@ -7,7 +7,19 @@ const readingTime = require('reading-time')
 export default async (data) => {
   return transformer(data, async (data): Promise<transformedDataInterface> => {
     // transform richText
-    const content = await richText(getField(data, 'content'))
+    // const content = await richText(getField(data, 'content'))
+    const content = await richText(getField(data, 'content'), {
+      picture: {
+        loading: 'lazy',
+        sourcesFunction: (picture) => [
+          {
+            type: 'image/webp',
+            srcset: [500, 1000, 1400, 2000].map(size => `${picture.image.fields.url}?fm=webp&w=${size} ${size}w`).join(', '),
+            sizes: '(min-width: 1400px) 1000px, (min-width: 1000px) 900px, (min-width: 768px) 700px, 100vw'
+          }
+        ]
+      }
+    })
     // return format
     return <transformedDataInterface>{
       id: data.sys.id,
