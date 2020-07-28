@@ -75,10 +75,10 @@ const convertEmbeddedEntries = async (richText: richTextDocument, templates: {[k
         // run transformer on data
         try {
           const transfomedData = await transformerFunctions[node.data.target.sys.contentType.sys.id](node.data.target)
+          // set template options
           let templateOptions = {}
           if (options[node.data.target.sys.contentType.sys.id] !== undefined) {
             templateOptions = options[node.data.target.sys.contentType.sys.id]
-            console.debug(templateOptions)
           }
           // return id & html
           return {
