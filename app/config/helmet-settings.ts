@@ -9,9 +9,6 @@ export default {
     // includeSubDomains: true,
     // preload: false
   },
-  hidePoweredBy: {
-    setTo: 'PHP 4.2.0'
-  },
   xssFilter: {
     reportUri: 'https://veare.report-uri.com/r/d/xss/enforce'
   },
