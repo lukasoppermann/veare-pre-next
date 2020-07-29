@@ -80,29 +80,20 @@
   }
   ul,
   ol {
+    @include list;
     grid-column: columns;
     @include at_least(desktop) {
-      grid-column: column 4 / span 6;
+      grid-column: column 3 / span 8;
     }
-  }
-  ul {
-    grid-column: columns;
-    @include at_least(desktop) {
+    @include at_least(large) {
       grid-column: column 4 / span 6;
     }
     li {
-      list-style: none;
-      display: block;
-      position: relative;
-      @include at_least(desktop) {
-        margin-left: 0;
-      }
-      &::before {
-        content: "☞";
-        padding-left: 0;
-        font-size: 110%;
-      }
+      @include list-item;
     }
+  }
+  ol li {
+    @include list-item--ordered;
   }
   .Picture {
     grid-column: columns;

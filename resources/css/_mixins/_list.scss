@@ -1,0 +1,63 @@
+/* ====================================
+  LIST
+==================================== */
+@mixin list {
+  margin-top: size(1);
+  counter-reset: listCounter;
+  li {
+    @include list-item;
+  }
+}
+@mixin list-item {
+  counter-increment: listCounter;
+  position: relative;
+  display: list-item;
+  list-style: none;
+  @include font(sans);
+  @include type-scale(md, 1.2);
+  margin-top: size(1);
+  padding-left: 1.6em;
+  // @include at_least(large) {
+  //   transform: translateX(-1.6em);
+  // }
+  &::before {
+    @include pseudo(absolute);
+    color: currentColor;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    // for unordered lists
+    padding-left: .2em;
+    content: "— ";
+  }
+  p {
+    margin: 0 !important;
+  }
+}
+@mixin list-item--ordered {
+  &::before {
+    content: counter(listCounter, decimal-leading-zero);
+    @include type-scale(sm, 1.75);
+    @include font(mono);
+    padding-top: .2em;
+    color: rgb(var(--list-indicator-color, var(--blue-rgb, inherit)));
+  }
+}
+//
+// .list-item {
+//   list-style: none;
+//   position: relative;
+//   padding-left: size(3);
+//   &::before {
+//     @include pseudo(absolute);
+//     left: 0;
+//     // content: "¬ ";
+//     // content: "→ ";
+//     // content: "☞ ";
+//     // content: "✓ ";
+//     // content: "❑ ";
+//     // content: "☑︎ ";
+//     // content: "› ";
+//     content: "— ";
+//   }
+// }

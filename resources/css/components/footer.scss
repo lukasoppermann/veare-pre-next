@@ -51,6 +51,7 @@
       li {
         list-style-type: none;
         margin-left: 0;
+        margin-top: size(1);
         &::before {
           display: none;
         }

@@ -144,7 +144,7 @@
             width: 100%;
           }
           li {
-            @extend .list-item;
+            @include list-item;
             &::before {
               color: rgba(var(--white-blue-rgba-50));
             }
