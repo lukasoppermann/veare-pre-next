@@ -9,13 +9,15 @@
   h4,
   h5,
   p,
-  ul {
+  ul,
+  ol {
     grid-column: columns;
     @include at_least(large) {
       grid-column: column 3 / span 8;
     }
   }
-  p {
+  p,
+  li {
     color: rgba(var(--black-rgba-80));
   }
   h2,

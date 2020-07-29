@@ -84,10 +84,6 @@
     @include at_least(desktop) {
       grid-column: column 4 / span 6;
     }
-    li {
-      display: list-item;
-      position: relative;
-    }
   }
   ul {
     grid-column: columns;
@@ -101,20 +97,10 @@
       @include at_least(desktop) {
         margin-left: 0;
       }
-      p::before {
+      &::before {
         content: "☞";
-        position: absolute;
-        left: -1.4em;
-        top: .1em;
-        font-size: 130%;
-      }
-      li {
-        margin-left: 1em;
-        p::before {
-          top: -.05em;
-          left: -1em;
-          content: "◇";
-        }
+        padding-left: 0;
+        font-size: 110%;
       }
     }
   }

@@ -123,16 +123,50 @@ p {
 ul,
 ol {
   margin-top: size(1);
-}
-li {
-  display: list-item;
-  @include font(sans);
-  @include type-scale(md, 1.2);
-  margin-top: size(1);
-  p:first-child {
-    margin-top: 0;
+  li {
+    position: relative;
+    display: list-item;
+    list-style: none;
+    @include font(sans);
+    @include type-scale(md, 1.2);
+    margin-top: size(1);
+    padding-left: 1.6em;
+    @include at_least(large) {
+      transform: translateX(-1.6em);
+    }
+    &::before {
+      @include pseudo(absolute);
+      color: currentColor;
+      left: 0;
+      top: .2em;
+    }
+    p {
+      margin: 0 !important;
+    }
   }
 }
+ul {
+  li {
+    &::before {
+      padding-left: .2em;
+      content: "— ";
+    }
+  }
+}
+ol {
+  counter-reset: listCounter;
+  li {
+    counter-increment: listCounter;
+    @include type-scale(md, 1.2);
+    &::before {
+      content: counter(listCounter, decimal-leading-zero);
+      @include type-scale(sm, 1.75);
+      @include font(mono);
+      color: rgb(var(--list-indicator-color, var(--blue-rgb, inherit)));
+    }
+  }
+}
+
 .list-item {
   list-style: none;
   position: relative;
