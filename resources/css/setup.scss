@@ -123,30 +123,47 @@ p {
 ul,
 ol {
   margin-top: size(1);
-}
-li {
-  display: list-item;
-  @include font(sans);
-  @include type-scale(md, 1.2);
-  margin-top: size(1);
-  p:first-child {
-    margin-top: 0;
+  li {
+    display: list-item;
+    @include font(sans);
+    @include type-scale(md, 1.2);
+    margin-top: size(1);
+    p:first-child {
+      margin-top: 0;
+    }
+  }
+  .list-item {
+    list-style: none;
+    position: relative;
+    padding-left: size(3);
+    &::before {
+      @include pseudo(absolute);
+      left: 0;
+      // content: "¬ ";
+      // content: "→ ";
+      // content: "☞ ";
+      // content: "✓ ";
+      // content: "❑ ";
+      // content: "☑︎ ";
+      // content: "› ";
+      content: "— ";
+    }
   }
 }
-.list-item {
+ol {
   list-style: none;
-  position: relative;
-  padding-left: size(3);
-  &::before {
-    @include pseudo(absolute);
-    left: 0;
-    // content: "¬ ";
-    // content: "→ ";
-    // content: "☞ ";
-    // content: "✓ ";
-    // content: "❑ ";
-    // content: "☑︎ ";
-    // content: "› ";
-    content: "— ";
+  counter-reset: listCounter;
+  li {
+    counter-increment: listCounter;
+    @include type-scale(md, 1.2);
+    p::before {
+      @include pseudo(absolute);
+      @include type-scale(sm, 1.75);
+      left: -1.8em;
+      bottom: 0;
+      content: counter(listCounter, decimal-leading-zero);
+      @include font(mono);
+      color: rgb(var(--list-indicator-color, var(--blue-rgb, inherit)));
+    }
   }
 }
