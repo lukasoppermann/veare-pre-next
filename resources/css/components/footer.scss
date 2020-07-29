@@ -51,6 +51,9 @@
       li {
         list-style-type: none;
         margin-left: 0;
+        &::before {
+          display: none;
+        }
         .article__preview {
           text-decoration: none;
           &:not(:first-child) {
