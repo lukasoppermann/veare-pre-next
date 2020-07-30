@@ -1,12 +1,12 @@
 import contentful from './services/contentful'
 import config from './config/contentful'
-import makeApp from './app'
+import { fastifyApp } from './app'
 
 const env = process.env.NODE_ENV || 'development'
 const online = require('dns-sync').resolve(config.host[env])
 
 const startServer = async () => {
-  const app = await makeApp()
+  const app = await fastifyApp()
   // ------------------------
   // development server
   // ------------------------
