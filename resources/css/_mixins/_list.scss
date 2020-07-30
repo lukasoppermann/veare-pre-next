@@ -2,7 +2,7 @@
   LIST
 ==================================== */
 @mixin list {
-  margin-top: size(1);
+  margin: size(1) 0 size(2);
   counter-reset: listCounter;
   li {
     @include list-item;
@@ -24,8 +24,8 @@
     @include pseudo(absolute);
     color: currentColor;
     left: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 0;
+    padding-top: .1em;
     // for unordered lists
     padding-left: .2em;
     content: "— ";
