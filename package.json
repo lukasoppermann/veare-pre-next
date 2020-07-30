@@ -132,6 +132,7 @@
   "scripts": {
     "start": "ts-node-dev --respawn $npm_package_main --pretty",
     "server": "NODE_ENV=production forever start -c 'node_modules/.bin/ts-node' $npm_package_main -m 5000 --pretty",
+    "test-server": "NODE_ENV=production ENV_PATH='./.env' forever start -c 'node_modules/.bin/ts-node' $npm_package_main -m 5000 --pretty",
     "forever-stop": "forever stopall && forever list",
     "build": "npm run build:js:watch & npm run build:css:watch",
     "build:css:watch": "onchange -k -i 'resources/css/**/*.scss' -- npm run build:css",
