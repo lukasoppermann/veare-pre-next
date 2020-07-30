@@ -80,6 +80,25 @@
   --rule-color: var(--project-color, rgb(var(--blue-rgb)));
   article {
     @extend .Grid;
+    & > h6 {
+      @include titled-title;
+      color: rgb(var(--black-rgb)) !important;
+      @include smaller_than(desktop) {
+        margin-top: size(10);
+      }
+      & + h5 {
+        @include at_least(desktop) {
+          margin-top: size(8);
+        }
+      }
+    }
+    & > ul,
+    & > ol {
+      @include list;
+    }
+    & > ol li {
+      @include list-item--ordered;
+    }
   }
   h2,
   h3,
@@ -120,18 +139,6 @@
     @include type-scale(sm);
     margin-top: size(4);
     color: rgb(var(--black-rgb));
-  }
-  article > h6 {
-    @include titled-title;
-    color: rgb(var(--black-rgb)) !important;
-    @include smaller_than(desktop) {
-      margin-top: size(10);
-    }
-    & + h5 {
-      @include at_least(desktop) {
-        margin-top: size(8);
-      }
-    }
   }
   :not(.Annotation, blockquote) > p {
     @include font(sans);
@@ -343,10 +350,10 @@
         margin-bottom: size(1);
       }
       ul {
+        @include list;
         width: 100%;
         margin-top: 0;
         li {
-          @extend .list-item;
           &::before {
             color: rgba(var(--black-rgba-50));
           }
