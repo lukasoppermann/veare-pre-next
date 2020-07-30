@@ -107,9 +107,6 @@
     "globals": {
       "URL": "http://localhost:3300"
     },
-    "setupFilesAfterEnv": [
-      "./tests/integration/ui.setup.js"
-    ],
     "verbose": true,
     "testTimeout": 15000,
     "collectCoverage": false,
@@ -150,7 +147,7 @@
     "test:css": "stylelint resources/css",
     "tsc": "tsc --noEmit --pretty",
     "standard": "standardx 'app.js' 'resources/js/*.ts' 'app/**/*.js' 'app/**/*.ts' | snazzy",
-    "test:integration": "jest tests/integration --detectOpenHandles",
+    "test:integration": "jest tests/integration --detectOpenHandles --setupFilesAfterEnv=./tests/integration/ui.setup.js",
     "test:unit": "jest tests/unit --coverage",
     "test:js": "npm run tsc && jest tests/unit && npm run standard",
     "test": "npm run test:js && npm run test:css",
