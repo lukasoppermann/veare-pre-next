@@ -30,6 +30,8 @@ const startServer = async () => {
       // init fastify app with server factory
       const fastify = await fastifyApp({
         serverFactory: handler => glx.http2Server(null, (req, res) => {
+          console.info('did I get here?')
+          console.info(glx.http2Server.address())
           handler(req, res)
         })
       })
