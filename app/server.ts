@@ -34,7 +34,9 @@ const startServer = async () => {
         })
       })
       // listen to https port
-      fastify.listen(443, '0.0.0.0')
+      fastify.listen(443, '0.0.0.0', () => {
+        console.info('Listening on ', httpServer.address())
+      })
 
       const httpServer = glx.httpServer()
       httpServer.listen(80, '0.0.0.0', () => {
