@@ -5,5 +5,6 @@
 /.cache
 /tests/integration/test_snaps
 /tests/unit/coverage
+/greenlock.d
 .DS_Store
 __diff_output__
