@@ -29,7 +29,7 @@ const startServer = async () => {
     const fastifyServer = async (glx) => {
       // init fastify app with server factory
       const fastify = await fastifyApp({
-        serverFactory: handler => glx.http2Server((req, res) => {
+        serverFactory: handler => glx.http2Server(null, (req, res) => {
           handler(req, res)
         })
       })
