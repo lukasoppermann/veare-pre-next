@@ -6,11 +6,11 @@ const env = process.env.NODE_ENV || 'development'
 const online = require('dns-sync').resolve(config.host[env])
 
 const startServer = async () => {
-  const app = await fastifyApp()
   // ------------------------
   // development server
   // ------------------------
   if (env === 'development') {
+    const app = await fastifyApp()
     console.info('\u001b[36m############################ Reloaded ############################\u001b[0m')
     console.info('Environment: ' + process.env.NODE_ENV)
     console.info('✅ Listening on http://localhost:8080')
@@ -19,11 +19,29 @@ const startServer = async () => {
   // TEST server
   // ------------------------
   } else if (env === 'test') {
+    const app = await fastifyApp()
     app.listen('3300')
   // ------------------------
   // live server server
   // ------------------------
   } else {
+    // fastify function with greenlock http2 server
+    const fastifyServer = async (glx) => {
+      // init fastify app with server factory
+      const fastify = await fastifyApp({
+        serverFactory: handler => glx.http2Server((req, res) => {
+          handler(req, res)
+        })
+      })
+      // listen to https port
+      fastify.listen(443, '0.0.0.0')
+
+      const httpServer = glx.httpServer()
+      httpServer.listen(80, '0.0.0.0', () => {
+        console.info('Listening on ', httpServer.address())
+      })
+    }
+
     require('greenlock-express')
       .init({
         // path.join(__dirname, '/../')
@@ -32,13 +50,14 @@ const startServer = async () => {
         maintainerEmail: 'oppermann.lukas@gmail.com',
         // where to look for configuration
         // config file is uploded here via capistrano from config/greenlock-config.json
-        configDir: './../../shared/greenlock.d',
+        configDir: process.env.GREENLOCK_CONFIG || './../../shared/greenlock.d',
         // whether or not to run at cloudscale
         cluster: false
       })
       // Serves on 80 and 443
       // Get's SSL certificates magically!
-      .serve(app)
+      // .serve(app)
+      .ready(fastifyServer)
   }
 }
 

@@ -4,8 +4,8 @@ const Fastify = require('fastify')
 const fs = require('fs')
 const app = express()
 
-export const fastifyApp = async () => {
-  const fastify = Fastify()
+export const fastifyApp = async (opts?) => {
+  const fastify = Fastify(opts)
 
   revisionedFiles(JSON.parse(fs.readFileSync('public/rev-manifest.json', 'utf8')))
 

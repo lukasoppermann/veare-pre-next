@@ -7,3 +7,4 @@
 /tests/unit/coverage
 .DS_Store
 __diff_output__
+/greenlock.d
