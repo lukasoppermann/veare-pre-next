@@ -14,8 +14,6 @@ router.get(/^\/home$/, (req, res) => require('./pages')(req, res, 'homepage'))
 router.get('/privacy', (req, res) => require('./pages')(req, res, 'page'))
 // ## About
 router.get('/about', (_req, res) => { res.redirect('/#about') })
-// ## Contact
-router.get('/contact', (_req, res) => { res.redirect('/#contact') })
 // ## Blog
 router.get('/blog', require('./blog').index)
 router.get(/^\/blog\/([\w-]+)/, require('./blog').get)
