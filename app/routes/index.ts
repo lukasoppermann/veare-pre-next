@@ -12,8 +12,6 @@ router.get(/^\/?$/, require('./home').progressive)
 router.get(/^\/home$/, (req, res) => require('./pages')(req, res, 'homepage'))
 // ## Privacy
 router.get('/privacy', (req, res) => require('./pages')(req, res, 'page'))
-// ## About
-router.get('/about', (_req, res) => { res.redirect('/#about') })
 // ## Blog
 router.get('/blog', require('./blog').index)
 router.get(/^\/blog\/([\w-]+)/, require('./blog').get)
