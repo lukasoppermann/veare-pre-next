@@ -1,12 +1,14 @@
-import contentful from '../services/contentful'
-import contentfulConfig from '../config/contentful'
-const express = require('express')
-const router = express.Router()
-const basicAuth = require('express-basic-auth')
+import error404 from './404'
+import contentful from './contentful'
+import revisionedFiles from './revisionedFiles'
+// import menu from './menu'
+import project from './project'
+const app = require('express')
+const router = app.Router()
 /* =================
 // Normal Routes
 ================= */
-router.get(/^\/fragment\/menu$/, require('./menu'))
+// router.get(/^\/fragment\/menu$/, menu)
 // ## Home
 router.get(/^\/?$/, require('./home').progressive)
 router.get(/^\/home$/, (req, res) => require('./pages')(req, res, 'homepage'))
@@ -16,22 +18,15 @@ router.get('/privacy', (req, res) => require('./pages')(req, res, 'page'))
 router.get('/blog', require('./blog').index)
 router.get(/^\/blog\/([\w-]+)/, require('./blog').get)
 // ## Work
-router.get(/^\/work\/([\w-]+)/, require('./projects'))
+router.get(/^\/work\/([\w-]+)/, project)
 /* =================
 // UTILS
 ================= */
 // return revisioned files json
-router.use('/revisionedFiles', require('./revisionedFiles'))
+router.use('/revisionedFiles', revisionedFiles)
 // activate webhook
-router.post('/contentful', basicAuth({
-  users: {
-    [<string>contentfulConfig.webhookUser]: contentfulConfig.webhookPassword
-  }
-}), contentful)
-// log non-existent pages
-router.get('/:pageCalled', (req, res) => {
-  console.info('tried to retrieve non-existing page: ' + req.params.pageCalled)
-  res.redirect('/')
-})
+router.use('/contentful', contentful)
+// handle 404
+router.use(error404)
 
 module.exports = router
