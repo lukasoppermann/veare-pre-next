@@ -2,7 +2,9 @@ import error404 from './404'
 import contentful from './contentful'
 import revisionedFiles from './revisionedFiles'
 // import menu from './menu'
+import template from './template'
 import project from './project'
+import blog from './blog'
 import page from './page'
 const app = require('express')
 const router = app.Router()
@@ -11,15 +13,14 @@ const router = app.Router()
 ================= */
 // router.get(/^\/fragment\/menu$/, menu)
 // ## Home
-router.get(/^\/?$/, require('./home').progressive)
+router.get(/^\/?$/, (req, res, next) => template(req, res, next, 'progressive'))
 router.get(/^\/home$/, (req, res, next) => page(req, res, next, 'homepage'))
 // ## Privacy
 router.get('/privacy', (req, res, next) => page(req, res, next, 'page'))
 // ## Blog
-router.get('/blog', require('./blog').index)
-router.get(/^\/blog\/([\w-]+)/, require('./blog').get)
+router.use('/blog', blog)
 // ## Work
-router.get(/^\/work\/([\w-]+)/, project)
+router.use('/work', project)
 /* =================
 // UTILS
 ================= */

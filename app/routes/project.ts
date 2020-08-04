@@ -5,10 +5,9 @@ import cache from '../services/cacheService'
 const { renderToString } = require('@popeindustries/lit-html-server')
 
 const route: middleware = async (req, res, next) => {
-  // parse url
-  const url = new URL(req.url || '', `https://${req.headers.host}`)
   // get slug
-  const slug = url.pathname.replace(/^\/|\/$/g, '')
+  const slug = 'work/' + (req.url || '').replace(/^\/|\/$/g, '')
+  console.debug(slug)
   // return one project
   const content = cache.get('project')
   // get this page

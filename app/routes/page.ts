@@ -11,10 +11,8 @@ const templates: {[key:string]: templateInterface} = {
 }
 
 const route: middleware = async (req, res, _next, template: string = 'page') => {
-  // parse url
-  const url = new URL(req.url || '', `https://${req.headers.host}`)
   // get slug
-  const slug = url.pathname.replace(/^\/|\/$/g, '')
+  const slug = (req.url || '').replace(/^\/|\/$/g, '')
   // get content
   const content = cache.get('page')
   // get this page
