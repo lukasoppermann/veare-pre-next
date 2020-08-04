@@ -1,5 +1,7 @@
 import { revisionedFiles } from './services/files'
 import helmetSettings from './config/helmet-settings'
+// import routes from './routes/routes'
+const routes = require('./routes') // same error due to it trying to render footer before cache is set up
 const express = require('express')
 const fs = require('fs')
 const app = express()
@@ -31,7 +33,7 @@ export default async () => {
   }
   // ---------------------------------- //
   // ROUTES
-  app.use(require('./routes'))
+  app.use(routes)
 
   return app
 }

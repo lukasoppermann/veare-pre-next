@@ -7,7 +7,6 @@ const { renderToString } = require('@popeindustries/lit-html-server')
 const route: middleware = async (req, res, next) => {
   // get slug
   const slug = 'work/' + (req.url || '').replace(/^\/|\/$/g, '')
-  console.debug(slug)
   // return one project
   const content = cache.get('project')
   // get this page

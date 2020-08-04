@@ -6,13 +6,15 @@ import { templateInterface } from '../../../types/template'
 const { html } = require('@popeindustries/lit-html-server')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 
-export default (page, _req): templateInterface => {
+export default (page, req): templateInterface => {
+  const url = new URL(req.url, `https://${req.headers.host}`)
+
   return layout(html`
-    ${_req.query.partial === 'true' ? '' : headerIntro}
+    ${url.searchParams.get('partial') === 'true' ? '' : headerIntro}
     <main>
       ${unsafeHTML(page.content)}
     </main>
-    ${_req.query.partial === 'true' ? footer : ''}
+    ${url.searchParams.get('partial') === 'true' ? footer() : ''}
 `, {
     pageClass: 'Page__index',
     og: [
@@ -39,5 +41,5 @@ export default (page, _req): templateInterface => {
         value: 'Lukas Oppermann — Lead UI/UX Design & Creative Direction — vea.re'
       }
     ]
-  }, _req)
+  }, url)
 }

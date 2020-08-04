@@ -12,7 +12,7 @@ const templates: {[key:string]: templateInterface} = {
 
 const route: middleware = async (req, res, _next, template: string = 'page') => {
   // get slug
-  const slug = (req.url || '').replace(/^\/|\/$/g, '')
+  const slug = (req.url || '').replace(/^\/|\/$/g, '').split('?')[0]
   // get content
   const content = cache.get('page')
   // get this page
