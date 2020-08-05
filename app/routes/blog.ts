@@ -7,7 +7,7 @@ const { renderToString } = require('@popeindustries/lit-html-server')
 
 const route: middleware = async (req, res, _next) => {
   // parse url
-  const path = (req.url || '').replace(/^\/+|\/+$/g, '').substr(5)
+  const path = req.path.replace(/^\/+|\/+$/g, '').substr(5)
   // if path is "" show blog listing
   if (path.length === 0) {
     // set header format

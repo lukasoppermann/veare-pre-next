@@ -1,13 +1,13 @@
-import * as http from 'http'
+import { connectRequest } from '../../../app/services/request'
 export default {
-  raw: <http.IncomingMessage>{
-    url: '/work/nyon?partials=true',
+  raw: <connectRequest>{
+    originalUrl: '/work/nyon?partials=true',
     headers: {
       host: 'localhost:8080'
     }
   },
   transformed: {
-    url: '/work/nyon',
+    originalUrl: '/work/nyon',
     headers: {
       host: 'localhost:8080'
     },

@@ -2,11 +2,32 @@ import contentful from './services/contentful'
 import config from './config/contentful'
 import makeApp from './app'
 const http = require('http')
+const http2 = require('http2')
+const fs = require('fs')
 const env = process.env.NODE_ENV || 'development'
 const online = require('dns-sync').resolve(config.host[env])
 
 const startServer = async () => {
   const app = await makeApp()
+
+  const httpsWorker = glx => {
+    // Get the raw http2 server:
+    const tlsOptions = null
+    const http2Server = glx.http2Server(tlsOptions, app)
+
+    http2Server.listen(443, '0.0.0.0', () => {
+      console.info('Listening on', http2Server.address())
+    })
+
+    // Note:
+    // You must ALSO listen on port 80 for ACME HTTP-01 Challenges
+    // (the ACME and http->https middleware are loaded by glx.httpServer)
+    const httpServer = glx.httpServer()
+
+    httpServer.listen(80, '0.0.0.0', () => {
+      console.info('Listening on', httpServer.address())
+    })
+  }
   // ------------------------
   // development server
   // ------------------------
@@ -15,7 +36,10 @@ const startServer = async () => {
     console.info('Environment: ' + process.env.NODE_ENV)
     console.info('✅ Listening on http://localhost:8080')
     // app.listen('8080')
-    http.createServer(app).listen('8080')
+    http2.createSecureServer({
+      key: fs.readFileSync('./_certs/localhost-key.pem'),
+      cert: fs.readFileSync('./_certs/localhost.pem')
+    }, app).listen('8080')
   // ------------------------
   // TEST server
   // ------------------------
@@ -33,14 +57,13 @@ const startServer = async () => {
         // contact for security and critical bug notices
         maintainerEmail: 'oppermann.lukas@gmail.com',
         // where to look for configuration
-        // config file is uploded here via capistrano from config/greenlock-config.json
         configDir: './../../shared/greenlock.d',
         // whether or not to run at cloudscale
         cluster: false
       })
       // Serves on 80 and 443
       // Get's SSL certificates magically!
-      .serve(app)
+      .serve(httpsWorker)
   }
 }
 

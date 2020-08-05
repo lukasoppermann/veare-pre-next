@@ -1,8 +1,12 @@
-import * as http from 'http'
+import * as http2 from 'http2'
 import { requestInterface } from '../../types/request'
-export default (request: http.IncomingMessage): requestInterface => {
-  const url = new URL(request.url || '', `https://${request.headers.host}`)
 
+export interface connectRequest extends http2.Http2ServerRequest {
+  originalUrl: string
+}
+
+export default (request: connectRequest): requestInterface => {
+  const url = new URL(request.originalUrl, `https://${request.headers[':authority']}`)
   return Object.assign({
     path: url.pathname,
     parts: url.pathname.replace('/', '').split('/'),
