@@ -9,14 +9,15 @@ const online = require('dns-sync').resolve(config.host[env])
 
 const startServer = async () => {
   const app = await makeApp()
+
   const httpsWorker = glx => {
     // Get the raw http2 server:
     const tlsOptions = null
-    const http2Server = glx.http2Server(tlsOptions, (_req, res) => {
-      res.end('Hello, Encrypted World!')
-    })
+    const http2Server = glx.http2Server(tlsOptions, app)
 
-    http2Server.listen(443, '0.0.0.0', app)
+    http2Server.listen(443, '0.0.0.0', () => {
+      console.info('Listening on', http2Server.address())
+    })
 
     // Note:
     // You must ALSO listen on port 80 for ACME HTTP-01 Challenges
@@ -24,7 +25,7 @@ const startServer = async () => {
     const httpServer = glx.httpServer()
 
     httpServer.listen(80, '0.0.0.0', () => {
-      console.info('Listening on ', httpServer.address())
+      console.info('Listening on', httpServer.address())
     })
   }
   // ------------------------
