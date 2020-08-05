@@ -1,7 +1,7 @@
 import contentful from './services/contentful'
 import config from './config/contentful'
 import makeApp from './app'
-
+const http = require('http')
 const env = process.env.NODE_ENV || 'development'
 const online = require('dns-sync').resolve(config.host[env])
 
@@ -14,12 +14,14 @@ const startServer = async () => {
     console.info('\u001b[36m############################ Reloaded ############################\u001b[0m')
     console.info('Environment: ' + process.env.NODE_ENV)
     console.info('✅ Listening on http://localhost:8080')
-    app.listen('8080')
+    // app.listen('8080')
+    http.createServer(app).listen('8080')
   // ------------------------
   // TEST server
   // ------------------------
   } else if (env === 'test') {
-    app.listen('3300')
+    // app.listen('3300')
+    http.createServer(app).listen('3300')
   // ------------------------
   // live server server
   // ------------------------
