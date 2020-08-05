@@ -1,4 +1,5 @@
 import { middleware } from '../../types/middleware'
+import request from '../services/request'
 import error404 from './404'
 import contentful from './contentful'
 import revisionedFiles from './revisionedFiles'
@@ -7,17 +8,16 @@ import template from './template'
 import project from './project'
 import blog from './blog'
 import page from './page'
-// const app = require('express')
-// const router = app.Router()
 /* =================
 // Normal Routes
 ================= */
 // router.get(/^\/fragment\/menu$/, menu)
 const routing: middleware = async (req, res, next) => {
   // parse url
-  const path = (req.url || '').replace(/^\/+|\/+$/g, '')
+  req = request(req)
+  console.debug('route:' + req.parts[0], req.parts, req.path)
   // test path and call route
-  switch (path) {
+  switch (req.parts[0]) {
     case '':
       template(req, res, next, 'progressive')
       break
