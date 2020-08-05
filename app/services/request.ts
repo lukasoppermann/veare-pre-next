@@ -6,7 +6,7 @@ export interface connectRequest extends http2.Http2ServerRequest {
 }
 
 export default (request: connectRequest): requestInterface => {
-  const url = new URL(request.originalUrl, `https://${request.headers.host}`)
+  const url = new URL(request.originalUrl, `https://${request.headers[':authority']}`)
   return Object.assign({
     path: url.pathname,
     parts: url.pathname.replace('/', '').split('/'),
