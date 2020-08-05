@@ -15,7 +15,7 @@ import page from './page'
 const routing: middleware = async (req, res, next) => {
   // parse url
   req = request(req)
-  console.debug('route:' + req.parts[0], req.parts, req.path)
+
   // test path and call route
   switch (req.parts[0]) {
     case '':
