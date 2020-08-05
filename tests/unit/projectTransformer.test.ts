@@ -1,6 +1,6 @@
 import projectTransformer from '../../app/transformer/projectTransformer'
 import project from './data/project'
-/* global test expect */
+/* global test expect URL */
 describe("projectTransformer", () => {
   test("testing projectTransformer", () => {
     // assertion

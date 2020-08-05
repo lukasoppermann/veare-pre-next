@@ -9,9 +9,6 @@ export default {
     // includeSubDomains: true,
     // preload: false
   },
-  xssFilter: {
-    reportUri: 'https://veare.report-uri.com/r/d/xss/enforce'
-  },
   contentSecurityPolicy: {
     directives: {
       defaultSrc: ["'none'"],

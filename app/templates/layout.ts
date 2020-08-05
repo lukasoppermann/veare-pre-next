@@ -5,8 +5,8 @@ import menu from './newPartials/menu'
 const { html } = require('@popeindustries/lit-html-server')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 
-export default (content: string, options: { [prop: string]: any; } = {}, req) => {
-  if (req.query.partial === 'true') {
+export default (content: string, options: { [prop: string]: any; } = {}, url?) => {
+  if (url && url.searchParams && url.searchParams.get('partial') === 'true') {
     return html`${content}`
   }
   return html`
@@ -23,11 +23,11 @@ export default (content: string, options: { [prop: string]: any; } = {}, req) =>
     </head>
     <body class="${options.bodyClass || ''}${process.env.NODE_ENV === 'test' ? ' testing' : ''}">
       <!-- NEW STUFF -->
-      ${menu('/' + req.path.split('/')[1])}
-      <div class="Page ${options.pageClass || ''}" slug="${req.path}">
+      ${menu(url.pathname)}
+      <div class="Page ${options.pageClass || ''}" slug="${url.pathname}">
         ${content || ''}
       </div>
-      ${footer}
+      ${footer()}
     </body>
     </html>
 `

@@ -1,9 +1,8 @@
-// templates
+import { middleware } from '../../types/middleware'
 import { templateInterface } from '../../types/template'
 import page from '../templates/pages/page'
 import homepage from '../templates/pages/homepage'
 import cache from '../services/cacheService'
-
 const { renderToString } = require('@popeindustries/lit-html-server')
 
 const templates: {[key:string]: templateInterface} = {
@@ -11,13 +10,17 @@ const templates: {[key:string]: templateInterface} = {
   homepage: homepage
 }
 
-module.exports = async (req, res, template: string = 'page') => {
+const route: middleware = async (req, res, _next, template: string = 'page') => {
   // get slug
-  const slug = req.path.replace(/^\/|\/$/g, '')
+  const slug = (req.url || '').replace(/^\/|\/$/g, '').split('?')[0]
   // get content
   const content = cache.get('page')
   // get this page
   const pageContent = content.find((item: any) => item.fields.slug === slug).fields
-  // return final page
-  return res.send(await renderToString(templates[template](pageContent, req)))
+  // set header format
+  res.setHeader('Content-Type', 'text/html')
+  // return page
+  return res.end(await renderToString(templates[template](pageContent, req)))
 }
+
+export default route
