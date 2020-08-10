@@ -227,33 +227,6 @@ export default {
           omitted: false
         },
         {
-          id: 'challenge',
-          name: 'Challenge',
-          type: 'RichText',
-          localized: false,
-          required: true,
-          disabled: false,
-          omitted: false
-        },
-        {
-          id: 'roleAndTeam',
-          name: 'Role & team',
-          type: 'RichText',
-          localized: false,
-          required: true,
-          disabled: false,
-          omitted: false
-        },
-        {
-          id: 'tableOfContent',
-          name: 'Table of Content',
-          type: 'Boolean',
-          localized: false,
-          required: true,
-          disabled: false,
-          omitted: false
-        },
-        {
           id: 'header',
           name: 'Header',
           type: 'Link',

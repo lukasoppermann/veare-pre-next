@@ -23,8 +23,6 @@ export default {
       approach: { 'en-US': richText.raw },
       responsibilities: { 'en-US': ["UI/UX design", "leading the design team"] },
       team: { 'en-US': ["Design lead", "2 Developers", "Product Owner"] },
-      roleAndTeam: { 'en-US': richText.raw },
-      tableOfContent: { 'en-US': true },
       header: { 'en-US': picture.raw },
       previewImage: { 'en-US': picture.raw },
       content: { 'en-US': richText.raw }
@@ -58,8 +56,7 @@ export default {
       approach: richText.transformed,
       responsibilities: ["UI/UX design", "leading the design team"],
       team: ["Design lead", "2 Developers", "Product Owner"],
-      content: richText.transformed,
-      roleAndTeam: richText.transformed
+      content: richText.transformed
     }
   }
 } as transformTestData
