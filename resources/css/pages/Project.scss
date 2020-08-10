@@ -290,6 +290,7 @@
       }
       .Project__info__team,
       .Project__info__responsibilities,
+      .Project__info__platforms,
       .Project__info__time {
         border-top: 1px solid rgba(var(--black-rgba-15));
         margin-bottom: 0;
@@ -333,7 +334,8 @@
       }
     }
     .Project__info__team,
-    .Project__info__responsibilities {
+    .Project__info__responsibilities,
+    .Project__info__platforms {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;

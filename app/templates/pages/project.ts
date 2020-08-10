@@ -61,6 +61,13 @@ export default (project, req) => {
             ${repeat(project.responsibilities, item => html`<li>${item}</li>`)}
           </ul>
         </div>
+        <!-- Platforms -->
+        <div class="Project__info__platforms">
+          <h6>Platforms</h6>
+          <ul>
+            ${repeat(project.platforms, item => html`<li>${item}</li>`)}
+          </ul>
+        </div>
       </aside>
     </section>
     ${unsafeHTML(project.content)}
