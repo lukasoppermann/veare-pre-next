@@ -1,18 +1,20 @@
 name: Lighthouse audit live site
-on:
-  push:
-    branches: [ master ]
+on: [ pull_request ]
 
 jobs:
-  audit:
+  lighthouse-check:
     runs-on: ubuntu-latest
     steps:
-    - name: Audit live URL
-      uses: jakejarvis/lighthouse-action@master
-      with:
-        url: 'https://vea.re/'
-    - name: Upload results as an artifact
-      uses: actions/upload-artifact@master
-      with:
-        name: report
-        path: './report'
+      - uses: actions/checkout@master
+      - run: mkdir /tmp/artifacts
+      - name: Run Lighthouse
+        uses: foo-software/lighthouse-check-action@master
+        with:
+          accessToken: ${{ secrets.LIGHTHOUSE_CHECK_GITHUB_ACCESS_TOKEN }}
+          outputDirectory: /tmp/artifacts
+          urls: 'https://vea.re,https://vea.re/work/nyon,https://vea.re/blog/gestalt-principles-proximity'
+      - name: Upload artifacts
+        uses: actions/upload-artifact@master
+        with:
+          name: Lighthouse reports
+          path: /tmp/artifacts
