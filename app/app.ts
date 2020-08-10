@@ -5,7 +5,7 @@ const connect = require('connect')
 const fs = require('fs')
 const app = connect()
 // middleware
-// const compression = require('compression')
+const compression = require('compression')
 const hemlet = require('helmet')
 const serveStatic = require('serve-static')
 const bodyParser = require('body-parser')
@@ -17,7 +17,7 @@ export default () => {
   // ---------------------------------- //
   // MIDDLEWARE
   app.use(bodyParser.json({ type: 'application/*+json' }))
-  // app.use(compression())
+  app.use(compression())
   app.use(hemlet(helmetSettings))
   app.use(serveStatic('public', { maxAge: '365d', etag: false }))
   // ---------------------------------- //
