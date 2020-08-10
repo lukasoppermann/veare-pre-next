@@ -57,6 +57,7 @@ export default async (data) => {
         client: getField(data, 'client'),
         approach: (await richText(getField(data, 'approach'))).html,
         responsibilities: getField(data, 'responsibilities', []),
+        platforms: getField(data, 'platforms', []),
         team: getField(data, 'team', []),
         header: (await pictureTransformer(getField(data, 'header')))[0],
         previewImage: (await pictureTransformer(getField(data, 'previewImage')))[0],

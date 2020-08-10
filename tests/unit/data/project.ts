@@ -22,6 +22,7 @@ export default {
       client: { 'en-US': 'Bosch' },
       approach: { 'en-US': richText.raw },
       responsibilities: { 'en-US': ["UI/UX design", "leading the design team"] },
+      platforms: { 'en-US': ["Android", "Windows"] },
       team: { 'en-US': ["Design lead", "2 Developers", "Product Owner"] },
       header: { 'en-US': picture.raw },
       previewImage: { 'en-US': picture.raw },
@@ -55,6 +56,7 @@ export default {
       ],
       approach: richText.transformed,
       responsibilities: ["UI/UX design", "leading the design team"],
+      platforms: ["Android", "Windows"],
       team: ["Design lead", "2 Developers", "Product Owner"],
       content: richText.transformed
     }
