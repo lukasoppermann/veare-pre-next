@@ -181,4 +181,18 @@
       grid-column: column 3 / span 8;
     }
   }
+  .related-content-item {
+    grid-column: columns;
+    @include at_least(desktop) {
+      &.related-content-item--1 {
+        grid-column: column 4 / span 2;
+      }
+      &.related-content-item--2 {
+        grid-column: column 6 / span 2;
+      }
+      &.related-content-item--3 {
+        grid-column: column 8 / span 2;
+      }
+    }
+  }
 }
