@@ -7,7 +7,7 @@ export default {
     }
   },
   transformed: {
-    originalUrl: '/work/nyon',
+    originalUrl: '/work/nyon?partials=true',
     headers: {
       host: 'localhost:8080'
     },

@@ -1,12 +1,15 @@
 import * as http2 from 'http2'
 import { requestInterface } from '../../types/request'
+const nodeUrl = require('url')
 
 export interface connectRequest extends http2.Http2ServerRequest {
   originalUrl: string
 }
 
 export default (request: connectRequest): requestInterface => {
-  const url = new URL(request.originalUrl, `https://${request.headers[':authority']}`)
+  // const url = new URL(request.originalUrl, `https://${request.headers[':authority']}`)
+  const url = new nodeUrl.URL(`https://${request.headers[':authority']}${request.originalUrl}`)
+  // return request object
   return Object.assign({
     path: url.pathname,
     parts: url.pathname.replace('/', '').split('/'),
