@@ -10,8 +10,8 @@ on:
     branches: [ master ]
 
 jobs:
-  build-on-11:
-    name: build on Node v11 (like server)
+  build-on-14:
+    name: build on Node v14 (like server)
     runs-on: ubuntu-latest
 
     strategy:
