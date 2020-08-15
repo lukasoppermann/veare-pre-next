@@ -28,10 +28,11 @@ export default (article, req): templateInterface => layout(html`
     </div>
 
     ${unsafeHTML(article.content)}
-
-    ${repeat(article.relatedContent, (entry, index) => {
-      return html`<div class="related-content-item related-content-item--${index + 1}">${articlePreview(entry.fields)}</div>`
-    })}
+    <ul class="related-content">
+      ${repeat(article.relatedContent, (entry, index) => {
+        return html`<li class="related-content-item related-content-item--${index + 1}">${articlePreview(entry.fields)}</li>`
+      })}
+    </ul>
   </div>
 `, {
   bodyClass: 'Page-Type__Article',

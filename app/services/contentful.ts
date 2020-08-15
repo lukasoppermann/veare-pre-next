@@ -69,7 +69,7 @@ export default async () => {
     // attach related articles
     content.article.map(article => {
       // attach to article
-      article.fields.relatedContent = attachRelatedContent(article, content.article || [])
+      article.fields.relatedContent = attachRelatedContent(article, content.article || [], 2)
       return article
     })
   }
