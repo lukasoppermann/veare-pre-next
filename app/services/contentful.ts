@@ -25,6 +25,25 @@ const transformerFunctions = {
 }
 
 const getFieldRawLastIterationAsIso = data => new Date(data.fields.rawLastIteration)
+const randomBetween = (min, max) => Math.floor(Math.random() * (max - min) + min)
+
+const attachRelatedContent = (item, entries: any[], amount = 3): {} => {
+  // remove item from entries
+  entries = entries.filter(entry => entry.id !== item.id)
+  // return array of related content objects
+  return [...item.fields.relatedContent, ...new Array(amount)].slice(0, amount).map(id => {
+    // get random id if not present
+    id = id !== undefined ? id : entries[randomBetween(0, entries.length - 1)].id
+    // get index of defined id or random id in entries array
+    const index = entries.findIndex(entry => entry.id === id)
+    // store object from entry in const
+    const entryObject = entries[index]
+    // remove from entries array to avoid double entry
+    entries.splice(index, 1)
+    // return object
+    return entryObject
+  })
+}
 /* istanbul ignore next */
 export default async () => {
   // get all entries
@@ -45,8 +64,16 @@ export default async () => {
   const content = sortContentByType(contentTypes, entries)
   // transform Articles
   /* istanbul ignore next */
-  content.article = sortByFieldDesc(content.article, getFieldRawLastIterationAsIso)
-  // cache content
+  if (content.article !== undefined && content.article.length > 0) {
+    content.article = sortByFieldDesc(content.article, getFieldRawLastIterationAsIso)
+    // attach related articles
+    content.article.map(article => {
+      // attach to article
+      article.fields.relatedContent = attachRelatedContent(article, content.article || [], 2)
+      return article
+    })
+  }
+  // cache content by type
   /* istanbul ignore next */
   return Object.keys(content).forEach(contentType => {
     cache.put(contentType, content[contentType])
@@ -81,7 +108,7 @@ const transformEntries = async (entries, transformerFunctions) => {
   return Promise.all(transformedEntries).then((entries: Array<transformedDataInterface>) => entries.map(entry => entry[0]))
 }
 
-const sortByFieldDesc = (entries, getFieldToCompare) => {
+const sortByFieldDesc = (entries, getFieldToCompare): any[] => {
   return entries.sort((a, b) => {
     a = getFieldToCompare(a)
     b = getFieldToCompare(b)

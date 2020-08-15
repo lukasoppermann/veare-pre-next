@@ -18,6 +18,11 @@ export default {
       slug: { 'en-US': 'framer-x-a-review' },
       lastIteration: { 'en-US': '2018-12-04' },
       category: { 'en-US': 'technology' },
+      relatedContent: { 'en-US': [ {
+        sys: {
+          id: '1tf0GhGsh6EYqU88wqiE6q'
+        }
+      } ] },
       preview: {
         'en-US': 'Framer X is the latest software by the team at Framer. They are trying to solve “digital product design from start to finish”. They introduced some very novel and unique features. So let’s see if Framer X is right for you.'
       },
@@ -41,7 +46,8 @@ export default {
       preview: 'Framer X is the latest software by the team at Framer. They are trying to solve “digital product design from start to finish”. They introduced some very novel and unique features. So let’s see if Framer X is right for you.',
       content: richText.transformed,
       readingTime: 1,
-      category: 'technology'
+      category: 'technology',
+      relatedContent: ['1tf0GhGsh6EYqU88wqiE6q']
     }
   }
 } as transformTestData

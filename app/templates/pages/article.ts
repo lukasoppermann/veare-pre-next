@@ -1,9 +1,11 @@
 // get correct filesnames after appending unique string
+import articlePreview from '../newPartials/article_preview'
 import { revFile } from '../../services/files'
 import layout from '../layout'
 import { templateInterface } from '../../../types/template'
 const { html } = require('@popeindustries/lit-html-server')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
+const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
 // export template
 export default (article, req): templateInterface => layout(html`
   <div class="Article">
@@ -25,9 +27,12 @@ export default (article, req): templateInterface => layout(html`
         </span>
     </div>
 
-  ${unsafeHTML(article.content)}
-
-    <a class="Article__back_link" href="/blog">← Back</a>
+    ${unsafeHTML(article.content)}
+    <ul class="related-content">
+      ${repeat(article.relatedContent, (entry, index) => {
+        return html`<li class="related-content-item related-content-item--${index + 1}">${articlePreview(entry.fields)}</li>`
+      })}
+    </ul>
   </div>
 `, {
   bodyClass: 'Page-Type__Article',
