@@ -190,14 +190,22 @@
       color: rgba(var(--black-rgba-50));
       margin-top: size(-3);
     }
-    display: flex;
-    justify-content: space-between;
     border-top: 1px solid rgba(var(--black-rgba-15));
     margin-top: size(2);
     padding-top: size(4);
     margin-bottom: size(5);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    @include at_least(tablet) {
+      flex-direction: row;
+    }
     .related-content-item {
-      width: calc(50% - var(--column-gap) / 2);
+      width: 100%;
+      margin-bottom: size(3);
+      @include at_least(tablet) {
+        width: calc(50% - var(--column-gap) / 2);
+      }
       list-style-type: none;
       margin-left: 0;
       padding-left: 0;
