@@ -1,6 +1,7 @@
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
 import { Document as richTextDocument, BLOCKS, INLINES } from '@contentful/rich-text-types'
 import { richTextConverted } from '../../types/richText.d'
+import slugToUrl from './slugToUrl'
 // templates
 import block from '../templates/newPartials/block'
 import code from '../templates/newPartials/code'
@@ -52,22 +53,6 @@ const convertHyperlinks = (node, next, anchors) => {
   }
   // return normal link
   return `<a href="${node.data.uri}">${next(node.content)}</a>`
-}
-/**
- * convertHyperlinks
- * @param  node          richTextNode
- * @param  next
- * @return                   [description]
- */
-const convertEntryHyperlinks = (node, next) => {
-  const entryUrlPrefix = {
-    article: '/blog',
-    project: '/work',
-    page: ''
-  }
-  const url = `${entryUrlPrefix[node.data.target.sys.contentType.sys.id]}/${node.data.target.fields.slug['en-US']}`
-  // return normal link
-  return `<a href="${url}">${next(node.content)}</a>`
 }
 /**
  * asnyc convertEmbeddedEntries
@@ -136,7 +121,7 @@ export default async (richText: richTextDocument, options?): Promise<richTextCon
       },
       [BLOCKS.HR]: () => '<div class="Rule--horizontal"><hr></div>',
       [INLINES.HYPERLINK]: (node, next) => convertHyperlinks(node, next, anchors),
-      [INLINES.ENTRY_HYPERLINK]: (node, next) => convertEntryHyperlinks(node, next),
+      [INLINES.ENTRY_HYPERLINK]: (node, next) => `<a href="${slugToUrl(node.data.target.fields.slug['en-US'], node.data.target.sys.contentType.sys.id)}">${next(node.content)}</a>`,
       [BLOCKS.PARAGRAPH]: (node, next) => `<p>${next(node.content).replace('\n', '<br/>')}</p>`
     }
   })
