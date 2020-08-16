@@ -1,4 +1,5 @@
 import picture from '../newPartials/picture'
+import slugToUrl from '../../services/slugToUrl'
 const { html } = require('@popeindustries/lit-html-server')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
@@ -59,8 +60,8 @@ export default (project) => html`
       </time></dd>
     </dl>
     <!-- END: Details -->
-    ${project.slug.slice(0, 4) === 'work'
-      ? html`<a href="${project.slug}" class="Project-excerpt__case_link">View Case</a>`
+    ${project.slug !== null
+      ? html`<a href="${slugToUrl(project.slug, 'project')}" class="Project-excerpt__case_link">View Case</a>`
       : html`<a href="mailto:lukas@vea.re?subject=Hey 👋,%20what&apos;s%20up?&body=Great%20to%20hear%20from%20you,%20how%20can%20I%20help?" class="Project-excerpt__case_link">Get in touch</a>`
     }
   </aside>

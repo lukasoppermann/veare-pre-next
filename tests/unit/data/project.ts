@@ -16,7 +16,7 @@ export default {
     },
     fields: {
       title: { 'en-US': 'Bringing biking into the future' },
-      slug: { 'en-US': 'work/nyon' },
+      slug: { 'en-US': 'nyon' },
       durationStart: { 'en-US': '2017-01-06' },
       durationEnd: { 'en-US': '2018-08-01' },
       client: { 'en-US': 'Bosch' },
@@ -35,7 +35,7 @@ export default {
     updatedAt: '2020-04-28T20:20:54.885Z',
     contentType: 'project',
     fields: {
-      slug: 'work/nyon',
+      slug: 'nyon',
       title: 'Bringing biking into the future',
       durationStart: '2017-01-06',
       durationEnd: '2018-08-01',

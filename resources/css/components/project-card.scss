@@ -6,17 +6,17 @@
     /* ====================================
         Special Project styling
     ==================================== */
-    &[projectslug="work/nyon"] {
+    &[projectslug="nyon"] {
       --project-color-tint-light: #c2e8e3;
       --project-image-max-width: 800px;
       --project-image-max-height: 640px;
     }
-    &[projectslug="work/copra"] {
+    &[projectslug="copra"] {
       --project-color-tint-light: #f1dada;
       --project-image-max-width: 800px;
       --project-image-max-height: 640px;
     }
-    &[projectslug="lab1886"] {
+    &:first-child {
       --project-image-alignment: flex-start;
       --project-image-offset-y: -10%;
       --project-image-max-height: 800px;

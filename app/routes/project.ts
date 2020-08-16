@@ -1,3 +1,4 @@
+import appConfig from '../config/appConfig'
 import { middleware } from '../../types/middleware'
 import project from '../templates/pages/project'
 import error404 from './404'
@@ -6,7 +7,7 @@ const { renderToString } = require('@popeindustries/lit-html-server')
 
 const route: middleware = async (req, res, next) => {
   // get slug
-  const slug = req.path.substr(1) // remove slash from beginning of path
+  const slug = req.path.replace(`/${appConfig.content_url_prefixes.project}/`, '') // remove slash from beginning of path
   // return one project
   const content = cache.get('project')
   // get this page

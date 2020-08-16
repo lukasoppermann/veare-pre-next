@@ -1,3 +1,4 @@
+import slugToUrl from '../../services/slugToUrl'
 import layout from '../layout'
 import picture from '../newPartials/picture'
 const { html } = require('@popeindustries/lit-html-server')
@@ -90,7 +91,7 @@ export default (project, req) => {
       },
       {
         property: 'og:url',
-        value: 'https://vea.re/work/' + project.slug
+        value: 'https://vea.re' + slugToUrl(project.slug, 'project')
       },
       {
         property: 'og:image',
