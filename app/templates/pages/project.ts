@@ -95,7 +95,7 @@ export default (project, req) => {
       },
       {
         property: 'og:image',
-        value: 'https:' + project.previewImage.fields.url + '?fm=jpg'
+        value: 'https:' + project.previewImage.fields.image.fields.url + '?fm=jpg'
       }, {
         property: 'og:image:type',
         value: 'image/jpeg'
