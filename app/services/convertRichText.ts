@@ -54,6 +54,22 @@ const convertHyperlinks = (node, next, anchors) => {
   return `<a href="${node.data.uri}">${next(node.content)}</a>`
 }
 /**
+ * convertHyperlinks
+ * @param  node          richTextNode
+ * @param  next
+ * @return                   [description]
+ */
+const convertEntryHyperlinks = (node, next) => {
+  const entryUrlPrefix = {
+    article: '/blog',
+    project: '/work',
+    page: ''
+  }
+  const url = `${entryUrlPrefix[node.data.target.sys.contentType.sys.id]}/${node.data.target.fields.slug['en-US']}`
+  // return normal link
+  return `<a href="${url}">${next(node.content)}</a>`
+}
+/**
  * asnyc convertEmbeddedEntries
  * @param  richText          richTextDocument
  * @param  embeddedEntriesFn Object with functions
@@ -120,6 +136,7 @@ export default async (richText: richTextDocument, options?): Promise<richTextCon
       },
       [BLOCKS.HR]: () => '<div class="Rule--horizontal"><hr></div>',
       [INLINES.HYPERLINK]: (node, next) => convertHyperlinks(node, next, anchors),
+      [INLINES.ENTRY_HYPERLINK]: (node, next) => convertEntryHyperlinks(node, next),
       [BLOCKS.PARAGRAPH]: (node, next) => `<p>${next(node.content).replace('\n', '<br/>')}</p>`
     }
   })
