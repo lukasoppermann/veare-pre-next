@@ -1,11 +1,11 @@
-import { transformedFields } from '../../types/transformer'
+import { transformedLinkFields } from '../../types/transformer'
 import transformer, { getField } from './transformer'
 import pictureTransformer from './pictureTransformer'
 
 export default async (data) => {
   return transformer(data, async (data) => {
     // return format
-    return <transformedFields>{
+    return <transformedLinkFields>{
       title: getField(data, 'title'),
       subtitle: getField(data, 'subtitle'),
       link: getField(data, 'link'),

@@ -10,7 +10,7 @@ export default async (data) => {
     return <transformedFields>{
       media: <string>getField(data, 'media'),
       sizes: <string>getField(data, 'sizes'),
-      type: images[0].fields.contentType,
+      fileType: images[0].fields.fileType,
       srcset: images.map(image => image.fields.url + ' ' + require('path').parse(image.fields.fileName).name.split('@')[1]).join(', ')
     }
   })

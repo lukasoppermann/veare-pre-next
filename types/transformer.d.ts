@@ -34,7 +34,7 @@ export interface transformedPictureFields {
 export interface transformedPictureSource extends transformedDataInterface {
    fields: {
     srcset: string,
-    type: string,
+    fileType: string,
     sizes?: string,
     media?: string
    }
@@ -56,11 +56,12 @@ export interface transformedAsset extends transformedDataInterface {
     sizeInBytes: number,
     width: number,
     height: number,
-    contentType: string
+    fileType: string
   }
 }
 
 export interface transformedFields {
+  title?: string,
   slug?: string,
   classes?: string,
   content?: string,
@@ -77,4 +78,37 @@ export interface transformedBlockFields extends transformedFields {
   slug: string,
   classes: string,
   content: string
+}
+
+export interface transformedPageFields extends transformedFields {
+  slug: string,
+  title: string,
+  content: string
+}
+
+export interface transformedAssetFields extends transformedFields {
+    title: string,
+    description: string,
+    url: string,
+    fileName: string,
+    details: {
+      size: Number,
+      image: {
+        width: Number,
+        height: Number
+      }
+    },
+    sizeInBytes: Number,
+    width: Number,
+    height: Number,
+    fileType: string
+}
+export interface transformedLinkFields extends transformedFields {
+  title: string,
+  subtitle: string,
+  link: string,
+  target: '_blank' | '_self',
+  rel: 'noopener' | '',
+  picture: transformedPicture,
+  classes: string
 }

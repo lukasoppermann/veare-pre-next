@@ -11,7 +11,7 @@ export default async (data) => {
         loading: 'lazy',
         sourcesFunction: (picture) => [
           {
-            type: 'image/webp',
+            fileType: 'image/webp',
             srcset: [500, 1000, 1400, 2000].map(size => `${picture.image.fields.url}?fm=webp&w=${size} ${size}w`).join(', '),
             sizes: '(min-width: 1400px) 1000px, (min-width: 1000px) 900px, (min-width: 768px) 700px, 100vw'
           }

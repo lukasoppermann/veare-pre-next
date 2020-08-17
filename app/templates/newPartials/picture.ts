@@ -10,7 +10,7 @@ const fallbackImage = (picture: transformedPictureFields, loading: 'eager' | 'la
 `
 
 const pictureSource = (source: pictureSourceInterface) => html`
-  <source type="${source.type}" srcset="${source.srcset}" media="${ifDefined(source.media)}" sizes="${ifDefined(source.sizes)}">
+  <source type="${source.fileType}" srcset="${source.srcset}" media="${ifDefined(source.media)}" sizes="${ifDefined(source.sizes)}">
 `
 
 type sourcesFunction = (picture: transformedPictureFields) => Array<pictureSourceInterface>;
@@ -19,7 +19,7 @@ export default (picture: transformedPictureFields, options: { loading?: 'eager' 
   // transform sources from cms
   let sources = picture.sources.map(source => source.fields)
   // merge sources if image is not svg with sourcesFunction output
-  if (picture.image.fields.contentType !== 'image/svg+xml' && typeof options.sourcesFunction === 'function') {
+  if (picture.image.fields.fileType !== 'image/svg+xml' && typeof options.sourcesFunction === 'function') {
     sources = [...sources, ...options.sourcesFunction(picture)]
   }
 

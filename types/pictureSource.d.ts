@@ -1,6 +1,6 @@
 export interface pictureSource {
   srcset: string,
-  type: string,
+  fileType: string,
   sizes?: string,
   media?: string
 }
