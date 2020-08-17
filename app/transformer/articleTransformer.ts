@@ -1,10 +1,10 @@
-import { transformedDataInterface } from '../../types/transformer'
+import { transformedFields } from '../../types/transformer'
 import transformer, { getField } from './transformer'
 import richText from '../services/convertRichText'
 const readingTime = require('reading-time')
 
 export default async (data) => {
-  return transformer(data, async (data): Promise<transformedDataInterface> => {
+  return transformer(data, async (data) => {
     // transform richText
     const content = await richText(getField(data, 'content'), {
       picture: {
@@ -19,23 +19,17 @@ export default async (data) => {
       }
     })
     // return format
-    return <transformedDataInterface>{
-      id: data.sys.id,
-      createdAt: data.sys.createdAt,
-      updatedAt: data.sys.updatedAt,
-      contentType: data.sys.contentType.sys.id,
+    return <transformedFields>{
       publishedVersions: data.sys.revision,
-      fields: {
-        slug: getField(data, 'slug'),
-        title: getField(data, 'title'),
-        rawLastIteration: getField(data, 'lastIteration'),
-        lastIteration: new Date(getField(data, 'lastIteration')).toLocaleDateString('en-US', { month: 'short', year: 'numeric', day: 'numeric' }),
-        preview: getField(data, 'preview'),
-        content: content.html,
-        readingTime: Math.ceil(readingTime(content.html).time / 60000),
-        category: getField(data, 'category', 'design'),
-        relatedContent: getField(data, 'relatedContent', []).map(item => item.sys.id)
-      }
+      slug: getField(data, 'slug'),
+      title: getField(data, 'title'),
+      rawLastIteration: getField(data, 'lastIteration'),
+      lastIteration: new Date(getField(data, 'lastIteration')).toLocaleDateString('en-US', { month: 'short', year: 'numeric', day: 'numeric' }),
+      preview: getField(data, 'preview'),
+      content: content.html,
+      readingTime: Math.ceil(readingTime(content.html).time / 60000),
+      category: getField(data, 'category', 'design'),
+      relatedContent: getField(data, 'relatedContent', []).map(item => item.sys.id)
     }
   })
 }

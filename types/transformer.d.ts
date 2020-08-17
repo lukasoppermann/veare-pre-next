@@ -1,5 +1,11 @@
+import { contentfulContent } from './contentfulContent'
+
 export interface transformerInterface {
-  (rawData): Promise<transformedDataInterface>;
+  (rawContent: contentfulContent): Promise<transformedDataInterface>;
+}
+
+export interface fieldsTransformerInterface {
+  (rawContent: contentfulContent): Promise<transformedFields>;
 }
 
 export interface transformedDataInterface {
@@ -7,8 +13,10 @@ export interface transformedDataInterface {
   createdAt: string,
   updatedAt: string,
   contentType: string,
+  type: 'Entry' | 'Asset',
   fields: any
 }
+
 
 export interface transformedPicture extends transformedDataInterface {
    fields: transformedPictureFields
@@ -50,4 +58,23 @@ export interface transformedAsset extends transformedDataInterface {
     height: number,
     contentType: string
   }
+}
+
+export interface transformedFields {
+  slug?: string,
+  classes?: string,
+  content?: string,
+  [key: string]: any
+}
+
+export interface transformedCodeFields extends transformedFields {
+  fileOrPath: string,
+  code: string,
+  language: string
+}
+
+export interface transformedBlockFields extends transformedFields {
+  slug: string,
+  classes: string,
+  content: string
 }

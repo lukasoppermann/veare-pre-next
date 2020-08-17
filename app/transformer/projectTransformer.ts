@@ -1,4 +1,4 @@
-import { transformedDataInterface } from '../../types/transformer'
+import { transformedFields } from '../../types/transformer'
 import transformer, { getField } from './transformer'
 import pictureTransformer from './pictureTransformer'
 import richText from '../services/convertRichText'
@@ -24,7 +24,7 @@ const duration = (startDate, endDate) => {
 }
 
 export default async (data) => {
-  return transformer(data, async (data): Promise<transformedDataInterface> => {
+  return transformer(data, async (data) => {
     // transform richText
     const content = await richText(getField(data, 'content'), {
       picture: {
@@ -39,31 +39,25 @@ export default async (data) => {
       }
     })
     // return format
-    return <transformedDataInterface>{
-      id: data.sys.id,
-      createdAt: data.sys.createdAt,
-      updatedAt: data.sys.updatedAt,
-      contentType: data.sys.contentType.sys.id,
-      fields: {
-        slug: getField(data, 'slug'),
-        title: getField(data, 'title'),
-        durationStart: getField(data, 'durationStart'),
-        durationEnd: getField(data, 'durationEnd'),
-        duration: duration(getField(data, 'durationStart'), getField(data, 'durationEnd')),
-        years: {
-          start: +new Date(getField(data, 'durationStart')).getFullYear(),
-          end: +new Date(getField(data, 'durationEnd')).getFullYear()
-        },
-        client: getField(data, 'client'),
-        approach: (await richText(getField(data, 'approach'))).html,
-        responsibilities: getField(data, 'responsibilities', []),
-        platforms: getField(data, 'platforms', []),
-        team: getField(data, 'team', []),
-        header: (await pictureTransformer(getField(data, 'header')))[0],
-        previewImage: (await pictureTransformer(getField(data, 'previewImage')))[0],
-        content: content.html,
-        anchors: content.anchors
-      }
+    return <transformedFields>{
+      slug: getField(data, 'slug'),
+      title: getField(data, 'title'),
+      durationStart: getField(data, 'durationStart'),
+      durationEnd: getField(data, 'durationEnd'),
+      duration: duration(getField(data, 'durationStart'), getField(data, 'durationEnd')),
+      years: {
+        start: +new Date(getField(data, 'durationStart')).getFullYear(),
+        end: +new Date(getField(data, 'durationEnd')).getFullYear()
+      },
+      client: getField(data, 'client'),
+      approach: (await richText(getField(data, 'approach'))).html,
+      responsibilities: getField(data, 'responsibilities', []),
+      platforms: getField(data, 'platforms', []),
+      team: getField(data, 'team', []),
+      header: (await pictureTransformer(getField(data, 'header')))[0],
+      previewImage: (await pictureTransformer(getField(data, 'previewImage')))[0],
+      content: content.html,
+      anchors: content.anchors
     }
   })
 }

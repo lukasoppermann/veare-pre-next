@@ -1,24 +1,18 @@
-import { transformedDataInterface } from '../../types/transformer'
+import { transformedFields } from '../../types/transformer'
 import transformer, { getField } from './transformer'
 import pictureTransformer from './pictureTransformer'
 
 export default async (data) => {
-  return transformer(data, async (data): Promise<transformedDataInterface> => {
+  return transformer(data, async (data) => {
     // return format
-    return <transformedDataInterface>{
-      id: data.sys.id,
-      createdAt: data.sys.createdAt,
-      updatedAt: data.sys.updatedAt,
-      contentType: data.sys.contentType.sys.id,
-      fields: {
-        title: getField(data, 'title'),
-        subtitle: getField(data, 'subtitle'),
-        link: getField(data, 'link'),
-        target: getField(data, 'targetBlank') ? '_blank' : '_self',
-        rel: getField(data, 'targetBlank') ? 'noopener' : '',
-        picture: (await pictureTransformer(getField(data, 'picture')))[0],
-        classes: getField(data, 'cssClasses', []).join(' ')
-      }
+    return <transformedFields>{
+      title: getField(data, 'title'),
+      subtitle: getField(data, 'subtitle'),
+      link: getField(data, 'link'),
+      target: getField(data, 'targetBlank') ? '_blank' : '_self',
+      rel: getField(data, 'targetBlank') ? 'noopener' : '',
+      picture: (await pictureTransformer(getField(data, 'picture')))[0],
+      classes: getField(data, 'cssClasses', []).join(' ')
     }
   })
 }
