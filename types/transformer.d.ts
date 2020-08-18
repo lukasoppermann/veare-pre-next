@@ -14,7 +14,15 @@ export interface transformedDataInterface {
   updatedAt: string,
   contentType: string,
   type: 'Entry' | 'Asset',
-  fields: any
+  fields: transformedCodeFields |
+    transformedLinkFields |
+    transformedPictureFields |
+    transformedPictureSourceFields |
+    transformedBlockFields |
+    transformedPageFields |
+    transformedArticleFields |
+    transformedProjectFields |
+    transformedAssetFields
 }
 
 
@@ -36,23 +44,7 @@ export interface transformedPictureSource extends transformedDataInterface {
 }
 
 export interface transformedAsset extends transformedDataInterface {
-  fields: {
-    title: string,
-    description: string,
-    url: string,
-    fileName: string,
-    details: {
-      size: number,
-      image: {
-        width: number,
-        height: number
-      }
-    },
-    sizeInBytes: number,
-    width: number,
-    height: number,
-    fileType: string
-  }
+  fields: transformedAssetFields
 }
 
 export interface transformedFields {
