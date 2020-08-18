@@ -1,4 +1,4 @@
-import { transformedFields, transformedAsset } from '../../types/transformer'
+import { transformedPictureSourceFields, transformedAsset } from '../../types/transformer'
 import transformer, { getField } from './transformer'
 import assetTransformer from './assetTransformer'
 
@@ -7,7 +7,7 @@ export default async (data) => {
     const images = <transformedAsset[]>(await assetTransformer(getField(data, 'images')))
 
     // return format
-    return <transformedFields>{
+    return <transformedPictureSourceFields>{
       media: <string>getField(data, 'media'),
       sizes: <string>getField(data, 'sizes'),
       fileType: images[0].fields.fileType,

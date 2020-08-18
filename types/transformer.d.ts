@@ -32,12 +32,7 @@ export interface transformedPictureFields {
 }
 
 export interface transformedPictureSource extends transformedDataInterface {
-   fields: {
-    srcset: string,
-    fileType: string,
-    sizes?: string,
-    media?: string
-   }
+   fields: transformedPictureSourceFields
 }
 
 export interface transformedAsset extends transformedDataInterface {
@@ -111,4 +106,56 @@ export interface transformedLinkFields extends transformedFields {
   rel: 'noopener' | '',
   picture: transformedPicture,
   classes: string
+}
+
+export interface transformedArticleFields extends transformedFields {
+  slug: string,
+  title: string,
+  publishedVersions: Number,
+  rawLastIteration: string,
+  lastIteration: string,
+  preview: string,
+  content: string,
+  readingTime: Number,
+  category: 'category' | 'design',
+  relatedContent: string[]
+}
+
+export interface transformedPictureSourceFields extends transformedFields {
+   srcset: string,
+   fileType: string,
+   sizes?: string,
+   media?: string
+}
+export interface transformedPictureFields extends transformedFields {
+  title: string,
+  description: string,
+  image: transformedAsset,
+  sources: transformedPictureSource[],
+  style: string,
+  classes: string
+}
+export interface transformedProjectFields extends transformedFields {
+  slug: string,
+  title: string,
+  durationStart: string,
+  durationEnd: string,
+  duration: {
+    totalWeeks: Number,
+    years: Number,
+    month: Number
+  },
+  years: {
+    start: Number,
+    end: Number
+  },
+  client: string,
+  approach: string,
+  responsibilities: string[],
+  platforms: string[],
+  team: string[],
+  header: transformedPicture,
+  previewImage: transformedPicture,
+  content: string,
+  anchors: string[]
 }

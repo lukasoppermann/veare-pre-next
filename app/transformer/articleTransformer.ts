@@ -1,4 +1,4 @@
-import { transformedFields } from '../../types/transformer'
+import { transformedArticleFields } from '../../types/transformer'
 import transformer, { getField } from './transformer'
 import richText from '../services/convertRichText'
 const readingTime = require('reading-time')
@@ -19,7 +19,7 @@ export default async (data) => {
       }
     })
     // return format
-    return <transformedFields>{
+    return <transformedArticleFields>{
       publishedVersions: data.sys.revision,
       slug: getField(data, 'slug'),
       title: getField(data, 'title'),

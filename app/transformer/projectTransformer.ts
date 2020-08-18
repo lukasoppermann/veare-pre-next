@@ -1,4 +1,4 @@
-import { transformedFields } from '../../types/transformer'
+import { transformedProjectFields } from '../../types/transformer'
 import transformer, { getField } from './transformer'
 import pictureTransformer from './pictureTransformer'
 import richText from '../services/convertRichText'
@@ -39,7 +39,7 @@ export default async (data) => {
       }
     })
     // return format
-    return <transformedFields>{
+    return <transformedProjectFields>{
       slug: getField(data, 'slug'),
       title: getField(data, 'title'),
       durationStart: getField(data, 'durationStart'),
