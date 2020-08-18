@@ -14,7 +14,8 @@ export interface transformedDataInterface {
   updatedAt: string,
   contentType: string,
   type: 'Entry' | 'Asset',
-  fields: transformedCodeFields |
+  fields: transformedFields |
+    transformedCodeFields |
     transformedLinkFields |
     transformedPictureFields |
     transformedPictureSourceFields |
