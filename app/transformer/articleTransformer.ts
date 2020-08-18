@@ -20,7 +20,6 @@ export default async (data) => {
     })
     // return format
     return <transformedArticleFields>{
-      publishedVersions: data.sys.revision,
       slug: getField(data, 'slug'),
       title: getField(data, 'title'),
       rawLastIteration: getField(data, 'lastIteration'),

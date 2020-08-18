@@ -104,7 +104,6 @@ export interface transformedLinkFields extends transformedFields {
 export interface transformedArticleFields extends transformedFields {
   slug: string,
   title: string,
-  publishedVersions: Number,
   rawLastIteration: string,
   lastIteration: string,
   preview: string,
