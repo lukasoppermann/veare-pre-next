@@ -34,6 +34,7 @@ export default {
     createdAt: '2018-02-08T18:16:47.717Z',
     updatedAt: '2020-04-28T20:20:54.885Z',
     contentType: 'project',
+    type: 'Entry',
     fields: {
       slug: 'nyon',
       title: 'Bringing biking into the future',

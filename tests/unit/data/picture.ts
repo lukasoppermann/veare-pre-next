@@ -36,6 +36,7 @@ export default {
     createdAt: '2020-04-29T15:02:42.387Z',
     updatedAt: '2020-04-29T15:03:48.321Z',
     contentType: 'picture',
+    type: 'Entry',
     fields: {
       title: 'Run you day — or your day will run you',
       style: "center",

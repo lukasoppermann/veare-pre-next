@@ -16,6 +16,7 @@ const startServer = async () => {
     const http2Server = glx.http2Server(tlsOptions, app)
 
     http2Server.listen(443, '0.0.0.0', () => {
+      console.debug(http2Server.address())
       console.info('Listening on', http2Server.address())
     })
 
@@ -34,7 +35,7 @@ const startServer = async () => {
   if (env === 'development') {
     console.info('\u001b[36m############################ Reloaded ############################\u001b[0m')
     console.info('Environment: ' + process.env.NODE_ENV)
-    console.info('✅ Listening on http://localhost:8080')
+    console.info('✅ Listening on https://localhost:8080')
     // app.listen('8080')
     http2.createSecureServer({
       key: fs.readFileSync('./_certs/localhost-key.pem'),

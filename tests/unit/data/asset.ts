@@ -30,7 +30,8 @@ export default {
     id: '4NYI3g8nZzOPFlbyL3pSHe',
     createdAt: '2020-04-29T15:02:57.813Z',
     updatedAt: '2020-04-29T15:12:02.919Z',
-    contentType: 'Asset',
+    type: 'Asset',
+    contentType: 'asset',
     fields: {
       title: 'Run your day — or your day will run you',
       description: null,
@@ -40,7 +41,7 @@ export default {
       sizeInBytes: 208483,
       width: 1600,
       height: 1000,
-      contentType: 'image/jpeg'
+      fileType: 'image/jpeg'
     }
   }
 } as transformTestData

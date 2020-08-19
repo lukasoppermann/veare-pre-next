@@ -28,6 +28,7 @@ export default {
     createdAt: '2019-12-03T22:07:18.216Z',
     updatedAt: '2019-12-03T22:07:38.500Z',
     contentType: 'code',
+    type: 'Entry',
     fields: {
       fileOrPath: 'package.json',
       code: '<span class=\"hljs-string\">&quot;scripts&quot;</span>: {\n' +

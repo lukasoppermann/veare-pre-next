@@ -1,5 +1,4 @@
-import { pictureSource as pictureSourceInterface } from '../../../types/pictureSource'
-import { transformedPictureFields } from '../../../types/transformer'
+import { transformedPictureFields, transformedPictureSourceFields } from '../../../types/transformer'
 const { html } = require('@popeindustries/lit-html-server')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
@@ -9,17 +8,17 @@ const fallbackImage = (picture: transformedPictureFields, loading: 'eager' | 'la
   <img width="${picture.image.fields.width}" height="${picture.image.fields.height}" src="${picture.image.fields.url}" alt="${picture.image.fields.title}" loading="${loading}"/>
 `
 
-const pictureSource = (source: pictureSourceInterface) => html`
-  <source type="${source.type}" srcset="${source.srcset}" media="${ifDefined(source.media)}" sizes="${ifDefined(source.sizes)}">
+const pictureSource = (source: transformedPictureSourceFields) => html`
+  <source type="${source.fileType}" srcset="${source.srcset}" media="${ifDefined(source.media)}" sizes="${ifDefined(source.sizes)}">
 `
 
-type sourcesFunction = (picture: transformedPictureFields) => Array<pictureSourceInterface>;
+type sourcesFunction = (picture: transformedPictureFields) => Array<transformedPictureSourceFields>;
 
 export default (picture: transformedPictureFields, options: { loading?: 'eager' | 'lazy', sourcesFunction?: sourcesFunction } = {}) => {
   // transform sources from cms
   let sources = picture.sources.map(source => source.fields)
   // merge sources if image is not svg with sourcesFunction output
-  if (picture.image.fields.contentType !== 'image/svg+xml' && typeof options.sourcesFunction === 'function') {
+  if (picture.image.fields.fileType !== 'image/svg+xml' && typeof options.sourcesFunction === 'function') {
     sources = [...sources, ...options.sourcesFunction(picture)]
   }
 

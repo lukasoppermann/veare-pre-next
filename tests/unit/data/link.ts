@@ -33,6 +33,7 @@ export default {
     createdAt: '2020-04-29T14:56:42.805Z',
     updatedAt: '2020-04-29T15:05:24.398Z',
     contentType: 'link',
+    type: 'Entry',
     fields: {
       title: 'After hours & side projects ',
       subtitle: 'Behance',

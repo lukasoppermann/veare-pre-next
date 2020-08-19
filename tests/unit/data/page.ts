@@ -24,6 +24,7 @@ export default {
     createdAt: '2018-02-05T07:04:38.785Z',
     updatedAt: '2020-05-19T12:42:35.026Z',
     contentType: 'page',
+    type: 'Entry',
     fields: {
       slug: 'home',
       title: 'Home',

@@ -14,7 +14,7 @@ export default (project) => html`
         loading: 'lazy',
         sourcesFunction: (picture) => [
         {
-          type: 'image/webp',
+          fileType: 'image/webp',
           srcset: [500, 1000, 1400, 2000].map(size => `${picture.image.fields.url}?fm=webp&w=${size} ${size}w`).join(', '),
           sizes: '(min-width: 1200px) 1000px, (min-width: 577px) 700px, 500px'
         }

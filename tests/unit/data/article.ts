@@ -34,10 +34,10 @@ export default {
   },
   transformed: {
     id: '1tf0GhGsh6EYqU88wqiE6q',
-    publishedVersions: 26,
     createdAt: '2018-12-03T09:59:05.298Z',
     updatedAt: '2020-04-28T20:06:31.633Z',
     contentType: 'article',
+    type: 'Entry',
     fields: {
       slug: 'framer-x-a-review',
       title: 'Framer X — a review',
