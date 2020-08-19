@@ -28,14 +28,15 @@ export default {
     id: '4Q4GshagFQPy8TktScHr1o',
     createdAt: '2020-04-29T15:02:42.387Z',
     updatedAt: '2020-04-29T15:03:48.321Z',
+    type: 'Entry',
     contentType: 'pictureSource',
     fields: {
       media: '(max-width: 320px)',
       sizes: '100vw',
-      type: 'image/jpeg',
+      fileType: 'image/jpeg',
       srcset: asset.transformed.fields.url + ' ' + require('path').parse(asset.transformed.fields.fileName).name.split('@')[1]
               + ', '
-              + asset.transformed.fields.url + ' ' + require('path').parse(asset.transformed.fields.fileName).name.split('@')[1] 
+              + asset.transformed.fields.url + ' ' + require('path').parse(asset.transformed.fields.fileName).name.split('@')[1]
     }
   }
 } as transformTestData

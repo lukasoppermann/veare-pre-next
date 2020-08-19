@@ -40,7 +40,7 @@ export const getField = (data: contentfulContent, fieldName: string, defaultValu
  * @param  transformer [description]
  * @return             [description]
  */
-export default async (items: contentfulContent, fieldTransformer: fieldsTransformerInterface): Promise<Array<transformedDataInterface|null>> => {
+export default async (items: contentfulContent|contentfulContent[], fieldTransformer: fieldsTransformerInterface): Promise<Array<transformedDataInterface|null>> => {
   return Promise.all(
     // run transformer on all items
     makeArray(items).map(item => transformOrNull(item, fieldTransformer), this))

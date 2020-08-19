@@ -1,6 +1,5 @@
-// import { transformerInterface } from '../../types/transformer'
+import codeData from './data/code'
 import transformer, { __testing, getField } from '../../app/transformer/transformer'
-import { transformedDataInterface } from '../../types/transformer'
 /* global test expect */
 /* ====================================
     transformOrNull
@@ -18,6 +17,7 @@ describe("transformer: transformOrNull", () => {
 
   test("transformOrNull should return null when given a string", () => {
     const wrongType = 'string'
+    // @ts-ignore
     const shouldBeNull = __testing.transformOrNull(wrongType, () => 'mock')
     // assertion
     expect(shouldBeNull).toBe(null)
@@ -25,6 +25,7 @@ describe("transformer: transformOrNull", () => {
 
   test("transformOrNull should return null when given an array", () => {
     const wrongType = ['string']
+    // @ts-ignore
     const shouldBeNull = __testing.transformOrNull(wrongType, () => 'mock')
     // assertion
     expect(shouldBeNull).toBe(null)
@@ -32,6 +33,7 @@ describe("transformer: transformOrNull", () => {
 
   test("transformOrNull should return null when given a number", () => {
     const wrongType = 13
+    // @ts-ignore
     const shouldBeNull = __testing.transformOrNull(wrongType, () => 'mock')
     // assertion
     expect(shouldBeNull).toBe(null)
@@ -39,6 +41,7 @@ describe("transformer: transformOrNull", () => {
 
   test("transformOrNull should return null when given null", () => {
     const wrongType = null
+    // @ts-ignore
     const shouldBeNull = __testing.transformOrNull(wrongType, () => 'mock')
     // assertion
     expect(shouldBeNull).toBe(null)
@@ -48,20 +51,16 @@ describe("transformer: transformOrNull", () => {
     const wrongObj = {
       'wrong': 'object'
     }
+    // @ts-ignore
     const shouldBeNull = __testing.transformOrNull(wrongObj, () => 'mock')
     // assertion
     expect(shouldBeNull).toBe(null)
   })
 
-  test("transformOrNull should run transformer on object", () => {
-    const item = {
-      'fields': {
-        'is': 'correct'
-      }
-    }
-    const shouldBeTransformed = __testing.transformOrNull(item, item => item.fields.is)
+  test("transformOrNull should run transformer on object", async () => {
+    const shouldBeTransformed = __testing.transformOrNull(codeData.raw, item => item.fields.language['en-US'])
     // assertion
-    expect(shouldBeTransformed).toBe('correct')
+    expect((await shouldBeTransformed || {fields: {language: null}}).fields).toBe(codeData.raw.fields.language['en-US'])
   })
 })
 /* ====================================
@@ -113,49 +112,37 @@ describe("transformer: getField", () => {
 
   test("getField should return null if fieldName does not exist", () => {
     // wrapper fn needed so jest can catch error
-    const test_getField = getField({
-        fields: {
-          'testField': 20
-        }
-      }, 'wrongFieldName')
+    const test_getField = getField(codeData.raw, 'wrongFieldName')
     // assertion
     expect(test_getField).toBe(null)
   })
 
   test("getField should return null value if no default value provided & field is null", () => {
+    const data = codeData.raw
+    data.title = null
     // wrapper fn needed so jest can catch error
-    const test_getField = getField({
-        fields: {
-          'testField': {
-            'en-US': null
-          }
-        }
-      }, 'testField')
+    const test_getField = getField(data, 'title')
     // assertion
     expect(test_getField).toBe(null)
   })
 
   test("getField should return default value if provided & field is null", () => {
+    const data = codeData.raw
+    data.title = null
     // wrapper fn needed so jest can catch error
-    const test_getField = getField({
-        fields: {
-          'testField': null
-        }
-      }, 'testField', 'defaultValue')
+    const test_getField = getField(data, 'title', 'defaultValue')
     // assertion
     expect(test_getField).toBe('defaultValue')
   })
 
   test("getField should return value for fieldName in only the first language", () => {
+    const data = codeData.raw
+    data.fields.title = {
+      'en-US': 'correct data',
+      'de-DE': 'wrong data'
+    }
     // wrapper fn needed so jest can catch error
-    const test_getField = getField({
-        fields: {
-          'testField': {
-            'en-US': 'correct data',
-            'de-DE': 'wrong data'
-          }
-        }
-      }, 'testField')
+    const test_getField = getField(data, 'title')
     // assertion
     expect(test_getField).toBe('correct data')
   })
@@ -163,70 +150,40 @@ describe("transformer: getField", () => {
 /* ====================================
     TRANSFORMER
 ==================================== */
-const mockTransformer = async (data): Promise<transformedDataInterface> => {
-  // return format
-  return <transformedDataInterface>{
-    id: 'mock',
-    createdAt: 'mock',
-    updatedAt: 'mock',
-    contentType: 'mock',
-    fields: data.fields
-  }
+const mockResultData = {
+  contentType: codeData.transformed.contentType,
+  createdAt: codeData.transformed.createdAt,
+  updatedAt: codeData.transformed.updatedAt,
+  id: codeData.transformed.id,
+  type: codeData.transformed.type,
+  fields: codeData.raw.fields
 }
-
-const rawData = {
-  fields: {
-    'test': 'data'
-  }
-}
-
-const transformedResult = [{
-  "contentType": "mock",
-  "createdAt": "mock",
-  "fields": {
-    "test": 'data',
-  },
-  "id": "mock",
-  "updatedAt": "mock"
-}]
-// ----
 // Tests
 describe("transformer: transformer default fn", () => {
   test("transformer returns an array if only one item is provided", () => {
     // wrapper fn needed so jest can catch error
-    return transformer(rawData, (data) => {
-      return mockTransformer(data)
-    }).then(resultData => {
+    // @ts-ignore
+    return transformer(codeData.raw, data => data.fields).then(resultData => {
       // assertion
-      expect(resultData).toEqual(transformedResult)
+      expect(resultData).toEqual([mockResultData])
     })
   })
 
   test("transformer returns an array if an array is provided", () => {
     // wrapper fn needed so jest can catch error
-    return transformer([{
-      fields: {
-        'test': 'data'
-      }
-    }], (data) => {
-      return mockTransformer(data)
-    }).then(resultData => {
+    // @ts-ignore
+    return transformer([codeData.raw], data => data.fields).then(resultData => {
       // assertion
-      expect(resultData).toEqual(transformedResult)
+      expect(resultData).toEqual([mockResultData])
     })
   })
 
   test("transformer removes null values from results", () => {
     // wrapper fn needed so jest can catch error
-    return transformer([{
-      fields: {
-        'test': 'data'
-      }
-    }, null], (data) => {
-      return mockTransformer(data)
-    }).then(resultData => {
+    // @ts-ignore
+    return transformer([codeData.raw, null], data => data.fields).then(resultData => {
       // assertion
-      expect(resultData).toEqual(transformedResult)
+      expect(resultData).toEqual([mockResultData])
     })
   })
 })

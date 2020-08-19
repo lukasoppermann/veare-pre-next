@@ -58,6 +58,7 @@ export default {
     createdAt: '2020-05-18T11:49:19.547Z',
     updatedAt: '2020-05-19T12:28:29.774Z',
     contentType: 'block',
+    type: 'Entry',
     fields: {
       slug: 'about-resume',
       classes: 'Grid-32 Index__resume',
