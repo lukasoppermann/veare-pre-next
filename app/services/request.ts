@@ -7,12 +7,12 @@ export interface connectRequest extends http2.Http2ServerRequest {
 }
 
 export default (request: connectRequest): requestInterface => {
-  // const url = new URL(request.originalUrl, `https://${request.headers[':authority']}`)
   const url = new nodeUrl.URL(`https://${request.headers[':authority']}${request.originalUrl}`)
+
   // return request object
   return Object.assign({
-    path: url.pathname,
-    parts: url.pathname.replace('/', '').split('/'),
+    path: url.pathname.replace(/(\/$)/mg, ''),
+    parts: url.pathname.replace(/(^\/|\/$)/mg, '').split('/'),
     // @ts-ignore
     parameters: Object.fromEntries(url.searchParams.entries())
   }, request)
