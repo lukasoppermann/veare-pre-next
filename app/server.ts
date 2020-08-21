@@ -45,6 +45,8 @@ const startServer = async () => {
   // TEST server
   // ------------------------
   } else if (env === 'test') {
+    console.info('\u001b[36m############################ Running tests ############################\u001b[0m')
+    console.info('Environment: ' + process.env.NODE_ENV)
     // app.listen('3300')
     http.createServer(app).listen('3300')
   // ------------------------

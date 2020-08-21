@@ -105,9 +105,6 @@
   },
   "jest": {
     "preset": "jest-puppeteer",
-    "globals": {
-      "URL": "http://localhost:3300"
-    },
     "verbose": true,
     "testTimeout": 15000,
     "collectCoverage": false,
