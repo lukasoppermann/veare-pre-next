@@ -1,6 +1,7 @@
 import { revisionedFiles } from './services/files'
 import helmetSettings from './config/helmet-settings'
 import routes from './routes/routes'
+import devMiddleware from './middleware/dev'
 const connect = require('connect')
 const fs = require('fs')
 const app = connect()
@@ -24,7 +25,7 @@ export default () => {
   // ---------------------------------- //
   // Dev Middleware
   if (env === 'development') {
-    app.use(require('./middleware/dev.ts'))
+    app.use(devMiddleware)
   }
   // ---------------------------------- //
   // ROUTES
