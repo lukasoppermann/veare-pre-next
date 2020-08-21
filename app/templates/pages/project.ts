@@ -104,6 +104,7 @@ export default (project, req) => {
         value: project.header.fields.title
       }
     ],
-    bodyClass: 'Page--work Project'
+    bodyClass: 'Page--work Project',
+    pageClass: 'Page__Project'
   }, req)
 }

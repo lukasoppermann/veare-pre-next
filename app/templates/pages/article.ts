@@ -36,6 +36,7 @@ export default (article, req): templateInterface => layout(html`
   </div>
 `, {
   bodyClass: 'Page-Type__Article',
+  pageClass: 'Page__Article',
   head: html`
   <link type="text/css" href="/${revFile('css/blog.css')}" rel="stylesheet" />
   `
