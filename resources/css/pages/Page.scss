@@ -1,0 +1,58 @@
+.Page:not(.Page__index):not(.Page__blog) {
+  @extend .Grid;
+  padding-top: size(4);
+  padding-bottom: size(6);
+  & > h1,
+  & > h2,
+  & > h3,
+  & > h4,
+  & > h5,
+  & > p,
+  & > ul,
+  & > ol {
+    grid-column: columns;
+    @include at_least(large) {
+      grid-column: column 3 / span 8;
+    }
+  }
+  & > ul:not([class]),
+  & > ol:not([class]) {
+    @include list;
+  }
+  ol li:not([class]) {
+    @include list-item--ordered;
+  }
+  & > h1,
+  & > h2,
+  & > h3,
+  & > h4,
+  & > h5 {
+    @include font(sans);
+    color: rgb(var(--black-rgb));
+  }
+  & > h1 {
+    @include type-scale(hg);
+    margin-top: size(1);
+    @include at_least(extra) {
+      @include type-scale(title);
+    }
+  }
+  & > h2 {
+    margin-top: size(3);
+    @include type-scale(xl);
+  }
+  & > h3 {
+    @include type-scale(lg);
+    margin-top: size(3);
+  }
+  & > h4 {
+    @include type-scale(md);
+    margin-top: size(3);
+  }
+  & > h5 {
+    @include type-scale(sm);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    margin-top: size(3);
+  }
+}
