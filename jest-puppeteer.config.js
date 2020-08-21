@@ -5,7 +5,7 @@ module.exports = {
         devtools: true
     },
     server: {
-      command: "npm run start",
+      command: "NODE_ENV=test npm run start",
       port: 3300,
       launchTimeout: 180000
     }

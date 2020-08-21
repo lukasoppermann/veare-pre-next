@@ -4,6 +4,7 @@ import routes from './routes/routes'
 const connect = require('connect')
 const fs = require('fs')
 const app = connect()
+const env = process.env.NODE_ENV || 'development'
 // middleware
 const compression = require('compression')
 const hemlet = require('helmet')
@@ -22,7 +23,7 @@ export default () => {
   app.use(serveStatic('public', { maxAge: '365d', etag: false }))
   // ---------------------------------- //
   // Dev Middleware
-  if (process.env.NODE_ENV === 'development') {
+  if (env === 'development') {
     app.use(require('./middleware/dev.ts'))
   }
   // ---------------------------------- //
