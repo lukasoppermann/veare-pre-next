@@ -24,7 +24,7 @@
       --project-color-tint-light: #ebe5d2;
       --project-image-desktop-columns: 8;
       @include at_least(tablet) {
-        --project-margin-top: #{size(11)};
+        --project-margin-top: #{size(15)};
       }
       @include at_least(large) {
         --project-margin-top: #{size(18)};
