@@ -124,6 +124,7 @@
         .link-show-all {
           @include font(sans);
           @include type-scale(sm);
+          color: rgb(var(--white-blue-rgb));
           @include fillSide(rgb(var(--blue-rgb)));
           padding: 2px 0;
         }
