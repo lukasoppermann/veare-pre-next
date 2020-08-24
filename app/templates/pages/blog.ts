@@ -6,12 +6,12 @@ const { html } = require('@popeindustries/lit-html-server')
 const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
 // get correct filesnames after appending unique string
 export default (articles, req): templateInterface => layout(html`
-  <ul class="Article-list" itemscope itemtype="http://schema.org/Blog">
+  <div class="Article-list" itemscope itemtype="http://schema.org/Blog">
     ${repeat(articles, (article) => preview(article))}
-    <li class="Article__more_on_medium Article__preview">
+    <div class="Article__more_on_medium Article__preview">
       <a href="https://medium.com/@lukasoppermann" target="_blank">More articles on medium</a>
-    </li>
-  </ul>
+    </div>
+  </div>
 `, {
   head: html`
   <link type="text/css" href="/${revFile('css/blog.css')}" rel="stylesheet" />
