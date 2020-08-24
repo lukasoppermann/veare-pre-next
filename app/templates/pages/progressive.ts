@@ -50,7 +50,7 @@ export default () => html`
   </head>
   <body>
     ${menu('/home', true)}
-    <div class="Page Page__index">
+    <div class="Page Page__index" slug="/home">
       ${headerIntro}
     </div>
   </body>

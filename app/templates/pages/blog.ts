@@ -15,6 +15,5 @@ export default (articles, req): templateInterface => layout(html`
 `, {
   head: html`
   <link type="text/css" href="/${revFile('css/blog.css')}" rel="stylesheet" />
-  `,
-  pageUnwrap: true
+  `
 }, req)

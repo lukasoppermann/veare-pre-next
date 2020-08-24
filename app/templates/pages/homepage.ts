@@ -16,7 +16,6 @@ export default (page, req): templateInterface => {
       ${req.parameters.partial === 'true' ? footer() : ''}
     </div>
 `, {
-    pageUnwrap: true,
     og: [
       {
         property: 'og:type',

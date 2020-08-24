@@ -24,9 +24,7 @@ export default (content: string, options: { [prop: string]: any; } = {}, req?) =
     <body class="${options.bodyClass || ''}${process.env.NODE_ENV === 'test' ? ' testing' : ''}">
       <!-- NEW STUFF -->
       ${menu(req.path)}
-      ${options.pageUnwrap !== true ? html`<div class="Page ${options.pageClass || ''}" slug="${req.path}">` : ''}
-        ${content || ''}
-        ${options.pageUnwrap !== true ? html`</div>` : ''}
+      ${content || ''}
       ${footer()}
     </body>
     </html>
