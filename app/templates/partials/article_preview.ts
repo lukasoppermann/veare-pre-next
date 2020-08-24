@@ -1,7 +1,7 @@
 const { html } = require('@popeindustries/lit-html-server')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 export default (article) => html`
-<li class="Article__preview o-article-preview--${article.fields.category}" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+<div class="Article__preview o-article-preview--${article.fields.category}" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
     <div class="Article__preview__meta">
         <meta itemprop="author" content="Lukas Oppermann" />
         <meta itemprop="publisher" content="vea.re" />
@@ -16,5 +16,5 @@ export default (article) => html`
         <h3 class="Article__preview__title" itemprop="name headline">${article.fields.title}</h3>
         <p class="Article__preview__excerpt" itemprop="description">${article.fields.preview}</p>
     </a>
-</li>
+</div>
 `
