@@ -4,8 +4,10 @@ const { html } = require('@popeindustries/lit-html-server')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 
 export default (page, req): templateInterface => layout(html`
-  ${unsafeHTML(page.content)}
+  <div class="Page Page__${page.slug}" slug="${req.path}">
+    ${unsafeHTML(page.content)}
+  </div>
 `, {
   bodyClass: page.slug,
-  pageClass: `Page__${page.slug}`
+  pageUnwrap: true
 }, req)
