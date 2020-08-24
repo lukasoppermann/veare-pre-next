@@ -1,4 +1,4 @@
-.Page:not(.Page__index):not(.Page__blog):not(.Page__Article):not(.Page__Project) {
+.Page:not(.Page__index):not(.Page__Article):not(.Page__Project) {
   @extend .Grid;
   padding-top: size(4);
   padding-bottom: size(6);

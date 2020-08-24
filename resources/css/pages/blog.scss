@@ -37,9 +37,8 @@
   }
 }
 .Article-list {
-  @extend .Grid;
-  margin-top: size(15);
-  margin-bottom: size(5);
+  padding-top: size(15) !important;
+  padding-bottom: size(5) !important;
 }
 .Article__preview {
   grid-column: columns;
