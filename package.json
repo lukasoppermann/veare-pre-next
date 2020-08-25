@@ -14,6 +14,8 @@
   },
   "homepage": "https://github.com/lukasoppermann/veare#readme",
   "devDependencies": {
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "@rollup/plugin-replace": "^2.3.3",
     "@types/jest": "^26.0.10",
     "@types/jest-image-snapshot": "^3.1.0",
     "@types/puppeteer": "^3.0.1",
@@ -32,8 +34,6 @@
     "pre-commit": "^1.2.2",
     "puppeteer": "^5.2.1",
     "rollup": "^2.26.5",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-replace": "^2.2.0",
     "rollup-plugin-terser": "^7.0.0",
     "rollup-plugin-typescript": "^1.0.1",
     "snazzy": "^8.0.0",

@@ -1,8 +1,8 @@
 // import uglify from 'rollup-plugin-uglify-es'
 import { terser } from 'rollup-plugin-terser' // uglify alternative
-import replace from 'rollup-plugin-replace'
+import replace from '@rollup/plugin-replace'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
 const typescript = require('rollup-plugin-typescript')
-const nodeResolve = require('rollup-plugin-node-resolve')
 const glob = require('glob')
 
 let plugins = {
