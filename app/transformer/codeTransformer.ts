@@ -1,6 +1,6 @@
 import { transformedCodeFields } from '../../types/transformer'
 import transformer, { getField } from './transformer'
-import hljs = require('highlight.js')
+const hljs = require('highlight.js')
 
 export default async (data) => {
   return transformer(data, async (data) => {
