@@ -109,7 +109,6 @@ export interface transformedArticleFields extends transformedFields {
   rawLastIteration: string,
   lastIteration: string,
   description: string,
-  preview: string,
   content: string,
   readingTime: Number,
   category: 'category' | 'design',
