@@ -17,9 +17,6 @@
   @include type-scale(md, 1.2);
   margin-top: size(1);
   padding-left: 1.6em;
-  // @include at_least(large) {
-  //   transform: translateX(-1.6em);
-  // }
   &::before {
     @include pseudo(absolute);
     color: currentColor;
@@ -43,6 +40,12 @@
     color: rgb(var(--list-indicator-color, var(--blue-rgb, inherit)));
   }
 }
+@mixin list--left-outdented {
+  @include at_least(large) {
+    transform: translateX(-1.6em);
+  }
+}
+
 //
 // .list-item {
 //   list-style: none;

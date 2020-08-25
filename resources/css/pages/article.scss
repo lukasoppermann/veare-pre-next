@@ -92,6 +92,10 @@
       @include list-item;
     }
   }
+  & > ul:not([class]),
+  & > ol:not([class]) {
+    @include list--left-outdented;
+  }
   ol li {
     @include list-item--ordered;
   }

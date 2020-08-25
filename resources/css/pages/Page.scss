@@ -16,6 +16,10 @@
     }
     @include list;
   }
+  & > ul:not([class]),
+  & > ol:not([class]) {
+    @include list--left-outdented;
+  }
   ol li:not([class]) {
     @include list-item--ordered;
   }
