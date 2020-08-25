@@ -13,7 +13,7 @@ export default (content: string, options: { [prop: string]: any; } = {}, req?) =
     <!DOCTYPE html>
     <html lang="en" prefix="og: http://ogp.me/ns#">
     <head>
-      ${meta(options.title || undefined, options.og || [])}
+      ${meta(options.title, options.description, options.og || [])}
       <link type="text/css" href="/${revFile('css/app.css')}" rel="stylesheet" />
       <link rel="preconnect" href="http://images.ctfassets.net" crossorigin>
       <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>

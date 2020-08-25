@@ -24,7 +24,7 @@ export default async (data) => {
       title: getField(data, 'title'),
       rawLastIteration: getField(data, 'lastIteration'),
       lastIteration: new Date(getField(data, 'lastIteration')).toLocaleDateString('en-US', { month: 'short', year: 'numeric', day: 'numeric' }),
-      seoDescription: getField(data, 'seoDescription'),
+      description: getField(data, 'seoDescription'),
       preview: getField(data, 'preview'),
       content: content.html,
       readingTime: Math.ceil(readingTime(content.html).time / 60000),

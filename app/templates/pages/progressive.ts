@@ -12,7 +12,7 @@ export default () => html`
 <head>
   <link rel="preconnect" href="http://images.ctfassets.net" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  ${meta('& Creative Direction – Lukas Oppermann', [
+  ${meta('& Creative Direction – Lukas Oppermann', undefined, [
     {
       property: 'og:type',
       value: 'website'

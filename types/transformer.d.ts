@@ -108,7 +108,7 @@ export interface transformedArticleFields extends transformedFields {
   title: string,
   rawLastIteration: string,
   lastIteration: string,
-  seoDescription: string,
+  description: string,
   preview: string,
   content: string,
   readingTime: Number,

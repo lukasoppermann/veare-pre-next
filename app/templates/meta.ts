@@ -1,13 +1,13 @@
 import { revFile } from '../services/files'
 const { html } = require('@popeindustries/lit-html-server')
 const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
-export default (title?: string, og?: any) =>
+export default (title?: string, description?: string, og?: any) =>
   html`<title>vea.re Lead UI/UX Design ${title || '& Creative Direction'}</title>
   <meta name="apple-mobile-web-app-title" content="veare" />
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   <meta name="copyright" content="${new Date().getUTCFullYear()}" />
   <meta name="robots" content="index,follow" />
-  <meta name="description" content="Lukas Oppermann is a design lead & creative director from berlin, germany. He loves creating experiences with a focus on usability.">
+  <meta name="description" content="${description || 'Lukas Oppermann is a design lead and creative director from berlin, germany. He loves creating experiences with a focus on usability.'}">
   <meta http-equiv="X-UA-Compatible" content="chrome=1" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
