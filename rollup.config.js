@@ -1,8 +1,7 @@
-// import uglify from 'rollup-plugin-uglify-es'
 import { terser } from 'rollup-plugin-terser' // uglify alternative
 import replace from '@rollup/plugin-replace'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
-const typescript = require('rollup-plugin-typescript')
+import typescript from '@rollup/plugin-typescript'
 const glob = require('glob')
 
 let plugins = {
@@ -11,6 +10,12 @@ let plugins = {
       '$Fetch_Inject_Version': process.env.FETCHINJECTVERSION,
       '$googleFonts': 'Montserrat:700|Noto+Serif:400,400i,400b|Source+Sans+Pro:400,600|Source+Code+Pro:700&display=swap',
       delimiters: ['', '']
+    }),
+    nodeResolve({
+      mainFields: ['module', 'jsnext:main'],
+      browser: true,
+      extensions: ['.js', '.json'],
+      preferBuiltins: false
     }),
     typescript({
       target: 'ES6',
@@ -25,12 +30,6 @@ let plugins = {
         'es6',
         'es2016'
       ]
-    }),
-    nodeResolve({
-      mainFields: ['module', 'jsnext:main'],
-      browser: true,
-      extensions: ['.js', '.json'],
-      preferBuiltins: false
     }),
     terser()
   ]

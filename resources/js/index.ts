@@ -21,6 +21,7 @@ Promise.all([revFileList, fetchInjectLoaded])
     // load critical layout components
     const body = document.querySelector('body')
     // load webfont and view intro once downloaded
+    // @ts-ignore
     fetchInject([
       'https://fonts.googleapis.com/css?family=$googleFonts'
     ])
@@ -35,6 +36,7 @@ Promise.all([revFileList, fetchInjectLoaded])
       })
 
     // load responsiveMenu
+    // @ts-ignore
     fetchInject([
       `${baseUrl}/${json.js['js/responsiveMenu.js']}`,
       `${baseUrl}/${json.js['js/rest.js']}`

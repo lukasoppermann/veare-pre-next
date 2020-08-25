@@ -1,4 +1,5 @@
 /* global ga */
+// @ts-nocheck
 export default (window) => {
   if (window.location.hostname !== 'localhost') {
     (function (i, s, o, g, r, a, m) {
