@@ -65,7 +65,7 @@
     @include font(serif);
     @include type-scale(md);
     margin-bottom: size(2);
-    color: rgba(var(--black-rgba-80));
+    color: rgba(var(--black-rgba-85));
     grid-column: columns;
     @include at_least(desktop) {
       grid-column: column 3 / span 8;
@@ -152,7 +152,7 @@
   }
   .Article__publication-details,
   .Article__author {
-    color: rgba(var(--black-rgba-80));
+    color: rgba(var(--black-rgba-85));
     grid-column: columns;
     text-align: center;
     @include at_least(desktop) {
