@@ -16,6 +16,7 @@ export default {
     fields: {
       title: { 'en-US': 'Home' },
       slug: { 'en-US': 'home' },
+      lastIteration: { 'en-US': '2018-12-04' },
       content: { 'en-US': richText.raw }
     }
   },
@@ -28,6 +29,8 @@ export default {
     fields: {
       slug: 'home',
       title: 'Home',
+      rawLastIteration: '2018-12-04',
+      lastIteration: 'Dec 4, 2018',
       content: richText.transformed
     }
   }

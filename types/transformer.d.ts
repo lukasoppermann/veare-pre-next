@@ -71,6 +71,8 @@ export interface transformedBlockFields extends transformedFields {
 export interface transformedPageFields extends transformedFields {
   slug: string,
   title: string,
+  rawLastIteration: string,
+  lastIteration: string,
   content: string
 }
 
@@ -106,6 +108,7 @@ export interface transformedArticleFields extends transformedFields {
   title: string,
   rawLastIteration: string,
   lastIteration: string,
+  seoDescription: string,
   preview: string,
   content: string,
   readingTime: Number,

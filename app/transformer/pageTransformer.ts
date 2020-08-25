@@ -10,6 +10,8 @@ export default async (data) => {
     return <transformedPageFields>{
       slug: getField(data, 'slug'),
       title: getField(data, 'title'),
+      rawLastIteration: getField(data, 'lastIteration'),
+      lastIteration: new Date(getField(data, 'lastIteration')).toLocaleDateString('en-US', { month: 'short', year: 'numeric', day: 'numeric' }),
       content: content.html
     }
   })
