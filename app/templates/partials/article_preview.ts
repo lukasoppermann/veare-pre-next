@@ -14,7 +14,7 @@ export default (article) => html`
     <a itemprop="url" class="Article__preview__link" title="Read: ${article.fields.title}" href="/blog/${article.fields.slug}">
     <link itemprop="mainEntityOfPage" href="${article.fields.slug}" />
         <h3 class="Article__preview__title" itemprop="name headline">${article.fields.title}</h3>
-        <p class="Article__preview__excerpt" itemprop="description">${article.fields.preview}</p>
+        <p class="Article__preview__excerpt" itemprop="description">${article.fields.description}</p>
     </a>
 </div>
 `
