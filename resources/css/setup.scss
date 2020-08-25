@@ -115,4 +115,5 @@ p:empty {
 p {
   @include font(sans);
   @include type-scale(md);
+  color: rgba(var(--black-rgba-80));
 }
