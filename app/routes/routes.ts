@@ -4,7 +4,7 @@ import error404 from './404'
 import contentful from './contentful'
 import revisionedFiles from './revisionedFiles'
 // import menu from './menu'
-import template from './template'
+// import template from './template'
 import project from './project'
 import blog from './blog'
 import page from './page'
@@ -19,7 +19,8 @@ const routing: middleware = async (req, res, next) => {
   // test path and call route
   switch (req.parts[0]) {
     case '':
-      template(req, res, next, 'progressive')
+      // template(req, res, next, 'progressive')
+      page(req, res, next, 'homepage')
       break
     case 'home':
       page(req, res, next, 'homepage')

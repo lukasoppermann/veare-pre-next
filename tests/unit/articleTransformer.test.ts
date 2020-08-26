@@ -1,5 +1,5 @@
 import articleTransformer from '../../app/transformer/articleTransformer'
-import article from './data/article'
+import article from './data/articleTestData'
 /* global test expect */
 describe("articleTransformer", () => {
   test("testing articleTransformer", () => {

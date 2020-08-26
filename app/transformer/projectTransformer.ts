@@ -42,6 +42,7 @@ export default async (data) => {
     return <transformedProjectFields>{
       title: getField(data, 'title'),
       slug: getField(data, 'slug'),
+      description: getField(data, 'description'),
       durationStart: getField(data, 'durationStart'),
       durationEnd: getField(data, 'durationEnd'),
       duration: duration(getField(data, 'durationStart'), getField(data, 'durationEnd')),

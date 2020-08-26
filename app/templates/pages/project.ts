@@ -78,6 +78,7 @@ export default (project, req) => {
   </div> 
 `, {
     title: project.title,
+    description: project.description,
     og: [
       {
         property: 'og:type',

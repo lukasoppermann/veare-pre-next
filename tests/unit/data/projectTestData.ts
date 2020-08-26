@@ -17,6 +17,7 @@ export default {
     fields: {
       title: { 'en-US': 'Bringing biking into the future' },
       slug: { 'en-US': 'nyon' },
+      description: { 'en-US': 'Seo description for Nyon — Bringing biking into the future' },
       durationStart: { 'en-US': '2017-01-06' },
       durationEnd: { 'en-US': '2018-08-01' },
       client: { 'en-US': 'Bosch' },
@@ -38,6 +39,7 @@ export default {
     fields: {
       slug: 'nyon',
       title: 'Bringing biking into the future',
+      description: 'Seo description for Nyon — Bringing biking into the future',
       durationStart: '2017-01-06',
       durationEnd: '2018-08-01',
       duration: {

@@ -17,6 +17,9 @@ export default {
       title: { 'en-US': 'Home' },
       slug: { 'en-US': 'home' },
       lastIteration: { 'en-US': '2018-12-04' },
+      description: {
+        'en-US': 'Framer X introduces some very novel and unique features. So let’s see if Framer X is right for you.'
+      },
       content: { 'en-US': richText.raw }
     }
   },
@@ -31,6 +34,7 @@ export default {
       title: 'Home',
       rawLastIteration: '2018-12-04',
       lastIteration: 'Dec 4, 2018',
+      description: 'Framer X introduces some very novel and unique features. So let’s see if Framer X is right for you.',
       content: richText.transformed
     }
   }

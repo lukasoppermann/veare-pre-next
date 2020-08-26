@@ -26,7 +26,6 @@ export interface transformedDataInterface {
     transformedAssetFields
 }
 
-
 export interface transformedPicture extends transformedDataInterface {
    fields: transformedPictureFields
 }
@@ -68,13 +67,6 @@ export interface transformedBlockFields extends transformedFields {
   content: string
 }
 
-export interface transformedPageFields extends transformedFields {
-  slug: string,
-  title: string,
-  rawLastIteration: string,
-  lastIteration: string,
-  content: string
-}
 
 export interface transformedAssetFields extends transformedFields {
     title: string,
@@ -103,23 +95,11 @@ export interface transformedLinkFields extends transformedFields {
   classes: string
 }
 
-export interface transformedArticleFields extends transformedFields {
-  slug: string,
-  title: string,
-  rawLastIteration: string,
-  lastIteration: string,
-  description: string,
-  content: string,
-  readingTime: Number,
-  category: 'category' | 'design',
-  relatedContent: string[]
-}
-
 export interface transformedPictureSourceFields extends transformedFields {
-   srcset: string,
-   fileType: string,
-   sizes?: string,
-   media?: string
+  srcset: string,
+  fileType: string,
+  sizes?: string,
+  media?: string
 }
 export interface transformedPictureFields extends transformedFields {
   title: string,
@@ -150,6 +130,29 @@ export interface transformedProjectFields extends transformedFields {
   team: string[],
   header: transformedPicture,
   previewImage: transformedPicture,
+  description: string,
   content: string,
   anchors: string[]
+}
+
+
+export interface transformedPageFields extends transformedFields {
+  slug: string,
+  title: string,
+  rawLastIteration: string,
+  lastIteration: string,
+  description: string,
+  content: string
+}
+
+export interface transformedArticleFields extends transformedFields {
+  slug: string,
+  title: string,
+  rawLastIteration: string,
+  lastIteration: string,
+  description: string,
+  content: string,
+  readingTime: Number,
+  category: 'category' | 'design',
+  relatedContent: string[]
 }

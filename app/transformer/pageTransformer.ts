@@ -12,6 +12,7 @@ export default async (data) => {
       title: getField(data, 'title'),
       rawLastIteration: getField(data, 'lastIteration'),
       lastIteration: new Date(getField(data, 'lastIteration')).toLocaleDateString('en-US', { month: 'short', year: 'numeric', day: 'numeric' }),
+      description: getField(data, 'description'),
       content: content.html
     }
   })
