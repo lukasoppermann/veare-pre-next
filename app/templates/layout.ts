@@ -5,7 +5,16 @@ import menu from './newPartials/menu'
 const { html } = require('@popeindustries/lit-html-server')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 
-export default (content: string, options: { [prop: string]: any; } = {}, req?) => {
+export default (content: string, options: {
+  title?: string,
+  description?: string,
+  og?: {
+    [prop: string]: any;
+  },
+  head?: string,
+  bodyClass?: string,
+  [prop: string]: any;
+} = {}, req?) => {
   if (req.parameters.partial === 'true') {
     return html`${content}`
   }
