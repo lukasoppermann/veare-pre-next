@@ -52,7 +52,7 @@ const convertHyperlinks = (node, next, anchors) => {
     return `<a name="${name}">${next(node.content)}</a>`
   }
   // return normal link
-  return `<a href="${node.data.uri}">${next(node.content)}</a>`
+  return `<a href="${node.data.uri}" rel="noopener noreferrer nofollow" target="_blank">${next(node.content)}</a>`
 }
 /**
  * asnyc convertEmbeddedEntries
