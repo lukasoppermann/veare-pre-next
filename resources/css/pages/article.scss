@@ -31,7 +31,6 @@
   h6 {
     @include font(sans);
     color: rgb(var(--black-rgb));
-    margin-top: size(3);
     margin-bottom: size(2);
     grid-column: columns;
     @include at_least(desktop) {
@@ -39,6 +38,14 @@
     }
     @include at_least(large) {
       grid-column: column 4 / span 6;
+    }
+    p + &,
+    ul + &,
+    ol + &,
+    picture + &,
+    blockquote + &,
+    .Code + & {
+      margin-top: size(3);
     }
   }
   h2 {
