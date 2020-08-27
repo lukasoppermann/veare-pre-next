@@ -1,5 +1,4 @@
 import { transformTestData } from './transformTestData'
-// import richText from './richText'
 
 export default {
   raw: {

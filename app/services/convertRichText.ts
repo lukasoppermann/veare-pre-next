@@ -34,6 +34,8 @@ const templates = {
   picture: picture,
   link: link
 }
+// test if link is internal
+const isInternal = link => link.substr(0, 1) === '/' && link.substr(1, 2) !== '/'
 /**
  * convertHyperlinks
  * @param  node          richTextNode
@@ -51,7 +53,11 @@ const convertHyperlinks = (node, next, anchors) => {
     // return anchor link with name tag
     return `<a name="${name}">${next(node.content)}</a>`
   }
-  // return normal link
+  // return internal link
+  if (isInternal(node.data.uri)) {
+    return `<a href="${node.data.uri}">${next(node.content)}</a>`
+  }
+  // return external
   return `<a href="${node.data.uri}" rel="noopener noreferrer nofollow" target="_blank">${next(node.content)}</a>`
 }
 /**

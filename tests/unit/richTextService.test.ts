@@ -1,7 +1,7 @@
 import convertRichText, { __testing } from '../../app/services/convertRichText'
 import blockTransformer from '../../app/transformer/blockTransformer'
 import blockTemplate from '../../app/templates/newPartials/block'
-import richText from './data/richText'
+import richText from './data/richTextTestData'
 
 describe("convertHyperlinks", () => {
   const anchors: Array<String> = []
@@ -14,7 +14,7 @@ describe("convertHyperlinks", () => {
   const nextMock = value => value;
   test('test normal hyperlink transformation', () => {
     expect(anchors.length).toBe(0)
-    expect(__testing.convertHyperlinks(nodeMock, nextMock, anchors)).toBe('<a href="http://vea.re">link text</a>')
+    expect(__testing.convertHyperlinks(nodeMock, nextMock, anchors)).toBe('<a href="http://vea.re" rel="noopener noreferrer nofollow" target="_blank">link text</a>')
     expect(anchors.length).toBe(0)
   })
 
@@ -26,9 +26,9 @@ describe("convertHyperlinks", () => {
   })
 
   test('test wrong anchor hyperlink transformation', () => {
-    nodeMock.data.uri = 'name=anchor-Name'
+    nodeMock.data.uri = '/anchor-Name'
     expect(anchors.length).toBe(1)
-    expect(__testing.convertHyperlinks(nodeMock, nextMock, anchors)).toBe('<a href="name=anchor-Name">link text</a>')
+    expect(__testing.convertHyperlinks(nodeMock, nextMock, anchors)).toBe('<a href="/anchor-Name">link text</a>')
     expect(anchors.length).toBe(1)
   })
 })

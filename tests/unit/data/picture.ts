@@ -1,7 +1,7 @@
 import { transformTestData } from './transformTestData'
 import asset from './asset'
 import pictureSource from './pictureSource'
-import richText from './richText'
+import richText from './richTextTestData'
 
 export default {
   raw: {
