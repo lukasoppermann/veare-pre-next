@@ -20,10 +20,10 @@ export default html`
   </div>
   <nav class="responsive-menu__items">
     <a class="responsive-menu__item" href="/">Home</a>
-    <a class="responsive-menu__item" href="/home#portfolio">Portfolio</a>
-    <a class="responsive-menu__item" href="/home#about">About</a>
+    <a class="responsive-menu__item" href="/#portfolio">Portfolio</a>
+    <a class="responsive-menu__item" href="/#about">About</a>
     <a class="responsive-menu__item" href="/blog/">Blog</a>
-    <a class="responsive-menu__item" href="/home#contact">Contact</a>
+    <a class="responsive-menu__item" href="/#contact">Contact</a>
   </nav>
   <footer>
     <a href="/privacy" class="responsive-menu__footer-item">imprint</a>

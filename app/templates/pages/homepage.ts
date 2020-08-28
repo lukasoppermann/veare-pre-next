@@ -1,5 +1,4 @@
 import layout from '../layout'
-import footer from '../newPartials/footer'
 import headerIntro from '../newPartials/header_intro'
 import { templateInterface } from '../../../types/template'
 
@@ -9,11 +8,8 @@ const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsaf
 export default (page, req): templateInterface => {
   return layout(html`
     <div class="Page Page__index" slug="${req.path}">
-      ${req.parameters.partial === 'true' ? '' : headerIntro}
-      <main>
-        ${unsafeHTML(page.content)}
-      </main>
-      ${req.parameters.partial === 'true' ? footer() : ''}
+      ${headerIntro}
+      ${unsafeHTML(page.content)}
     </div>
 `, {
     og: [

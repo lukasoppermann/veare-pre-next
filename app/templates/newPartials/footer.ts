@@ -50,7 +50,7 @@ export default () => {
     </section>
     <section class="Footer__legal">
       <hr />
-      <a class="veare-wordmark" href="/home" aria-label="Go to homepage" name="footer home link">${embedFile('./resources/svgs/veare-wordmark.svg')}</a>
+      <a class="veare-wordmark" href="/" aria-label="Go to homepage" name="footer home link">${embedFile('./resources/svgs/veare-wordmark.svg')}</a>
       <div class="Footer__legal__info">
         <a href="/">Index</a>
         <a href="/blog">Writing</a>

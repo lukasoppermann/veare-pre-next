@@ -1,5 +1,5 @@
 import basicAuth from '../../app/services/basicAuth'
-import requestData from './data/request'
+import requestData from './data/requestTestData'
 /* global test expect */
 // @ts-ignore
 
