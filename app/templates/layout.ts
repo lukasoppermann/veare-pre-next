@@ -15,9 +15,6 @@ export default (content: string, options: {
   bodyClass?: string,
   [prop: string]: any;
 } = {}, req?) => {
-  if (req.parameters.partial === 'true') {
-    return html`${content}`
-  }
   return html`
     <!DOCTYPE html>
     <html lang="en" prefix="og: http://ogp.me/ns#">
