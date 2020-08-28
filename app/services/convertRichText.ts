@@ -14,6 +14,7 @@ import pictureTransformer from '../transformer/pictureTransformer'
 import codeTransformer from '../transformer/codeTransformer'
 import projectTransformer from '../transformer/projectTransformer'
 import linkTransformer from '../transformer/linkTransformer'
+import tokenTransformer from '../transformer/tokenTransformer'
 
 const { renderToString } = require('@popeindustries/lit-html-server')
 
@@ -23,7 +24,8 @@ const transformerFunctions = {
   project: projectTransformer,
   code: codeTransformer,
   picture: pictureTransformer,
-  link: linkTransformer
+  link: linkTransformer,
+  token: tokenTransformer
 }
 
 // templates functions for embeddedEntries

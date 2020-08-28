@@ -55,6 +55,11 @@ export interface transformedFields {
   [key: string]: any
 }
 
+export interface transformedTokenFields extends transformedFields {
+  tokenType: 'placeholder',
+  value: string
+}
+
 export interface transformedCodeFields extends transformedFields {
   fileOrPath: string,
   code: string,
