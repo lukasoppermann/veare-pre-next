@@ -11,6 +11,7 @@ import pageTransformer from '../transformer/pageTransformer'
 import pictureTransformer from '../transformer/pictureTransformer'
 import pictureSourceTransformer from '../transformer/pictureSourceTransformer'
 import projectTransformer from '../transformer/projectTransformer'
+import tokenTransformer from '../transformer/tokenTransformer'
 // Transformer functions
 const transformerFunctions = {
   article: articleTransformer,
@@ -21,7 +22,8 @@ const transformerFunctions = {
   page: pageTransformer,
   picture: pictureTransformer,
   pictureSource: pictureSourceTransformer,
-  project: projectTransformer
+  project: projectTransformer,
+  token: tokenTransformer
 }
 
 const getFieldRawLastIterationAsIso = data => new Date(data.fields.rawLastIteration)
@@ -89,6 +91,7 @@ const sortContentByType = (contentTypes, entries): {
   page?: any[];
   block?: any[];
   code?: any[];
+  token?: any[];
 } => {
   const content = {}
   // get type ids
