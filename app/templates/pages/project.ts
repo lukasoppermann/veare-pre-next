@@ -73,7 +73,7 @@ export default (project, req) => {
         </aside>
       </section>
       ${unsafeHTML(project.content)}
-      <a class="Project__back_link" href="/home#portfolio">← Back</a>
+      <a class="Project__back_link" href="/#portfolio">← Back</a>
     </article>
   </div> 
 `, {
