@@ -8,6 +8,7 @@ import code from '../templates/newPartials/code'
 import picture from '../templates/newPartials/picture'
 import projectExcerpt from '../templates/newPartials/project_excerpt'
 import link from '../templates/newPartials/link'
+import placeholderContent from '../templates/newPartials/placeholderContent'
 // Transformer
 import blockTransformer from '../transformer/blockTransformer'
 import pictureTransformer from '../transformer/pictureTransformer'
@@ -61,6 +62,14 @@ const convertHyperlinks = (node, next, anchors) => {
   }
   // return external
   return `<a href="${node.data.uri}" rel="noopener noreferrer nofollow" target="_blank">${next(node.content)}</a>`
+}
+const embeddedToken = async (token: any) => {
+  // token.sys.id
+  const tokenType = token.fields.tokenType['en-US'].toLowerCase()
+  const tokenValue = token.fields.value['en-US']
+  if (tokenType === 'placeholder') {
+    return placeholderContent(tokenValue)
+  }
 }
 /**
  * asnyc convertEmbeddedEntries
@@ -118,6 +127,10 @@ export default async (richText: richTextDocument, options?): Promise<richTextCon
     renderNode: {
       [BLOCKS.EMBEDDED_ENTRY]: (node) => {
         try {
+          if (node.data.target.sys.contentType.sys.id === 'token') {
+            return embeddedToken(node.data.target)
+          }
+          // for all other embeds
           return embedded.find((entry: any) => entry.id === node.data.target.sys.id).html
         } catch (e) {
           /* istanbul ignore next */
