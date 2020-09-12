@@ -111,11 +111,39 @@ body {
 /* ====================================
   Base Elements
 ==================================== */
+// ----------------
+// Paragraph
+//
 p:empty {
   display: none; // needed for contentful rich text
 }
-p {
+p:not([class]) {
   @include font(sans);
   @include type-scale(md);
   color: rgba(var(--black-rgba-85));
+  grid-column: columns;
+  @include at_least(large) {
+    grid-column: column 3 / span 8;
+  }
 }
+// ----------------
+// Lists
+//
+ul:not([class]),
+ol:not([class]) {
+  grid-column: columns;
+  @include at_least(large) {
+    grid-column: column 3 / span 8;
+  }
+  @include list;
+}
+:not(ul):not(ol) > ul:not([class]),
+:not(ul):not(ol) > ol:not([class]) {
+  @include list--left-outdented;
+}
+ol li:not([class]) {
+  @include list-item--ordered;
+}
+// ----------------
+// Lists
+//

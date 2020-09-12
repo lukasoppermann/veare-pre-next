@@ -2,27 +2,27 @@
   @extend .Grid;
   padding-top: size(4);
   padding-bottom: size(6);
-  p:not([class]) {
-    grid-column: columns;
-    @include at_least(large) {
-      grid-column: column 3 / span 8;
-    }
-  }
-  ul:not([class]),
-  ol:not([class]) {
-    grid-column: columns;
-    @include at_least(large) {
-      grid-column: column 3 / span 8;
-    }
-    @include list;
-  }
-  & > ul:not([class]),
-  & > ol:not([class]) {
-    @include list--left-outdented;
-  }
-  ol li:not([class]) {
-    @include list-item--ordered;
-  }
+  // p:not([class]) {
+  //   grid-column: columns;
+  //   @include at_least(large) {
+  //     grid-column: column 3 / span 8;
+  //   }
+  // }
+  // ul:not([class]),
+  // ol:not([class]) {
+  //   grid-column: columns;
+  //   @include at_least(large) {
+  //     grid-column: column 3 / span 8;
+  //   }
+  //   @include list;
+  // }
+  // & > ul:not([class]),
+  // & > ol:not([class]) {
+  //   @include list--left-outdented;
+  // }
+  // ol li:not([class]) {
+  //   @include list-item--ordered;
+  // }
   h1,
   h2,
   h3,
