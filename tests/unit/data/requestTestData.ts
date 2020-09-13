@@ -1,7 +1,6 @@
 export default {
   raw: {
     originalUrl: '/work/test/nyon?partials=true',
-    uri: 'http://localhost:8080',
     headers: {
       host: 'localhost:8080',
       Authorization: 'Basic ' + new Buffer(`validUser:validPw`).toString('base64')
