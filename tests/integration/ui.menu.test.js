@@ -2,7 +2,7 @@
 const currentCase = 'menu'
 const beforeFn = async (page) => {
   await page.$eval('.Menu__icon', elem => elem.click())
-  await page.waitFor(100)
+  await page.waitForTimeout(100)
 }
 const testFn = async (page, viewport) => {
   const maxCircle = viewport.width > viewport.height ? viewport.width : viewport.height;
@@ -15,7 +15,7 @@ const testFn = async (page, viewport) => {
       height: ${viewport.height}px;
     }
   `})
-  await page.waitFor(3000)
+  await page.waitForTimeout(3000)
 }
 // run test
 describe('Testing Page: ' + currentCase, () => require('./ui.baseTest.js')(currentCase, beforeFn, testFn))

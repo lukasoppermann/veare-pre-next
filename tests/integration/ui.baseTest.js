@@ -22,15 +22,15 @@ module.exports = (caseName, beforeFn = null, testFn = null) => {
     // add special testing css
     await page.addStyleTag({content: `body {--max-row-height: 59px;}`})
     // scroll to bottom and back up
-    await page.waitFor(1000)
+    await page.waitForTimeout(1000)
     await page.evaluate(() => {
       window.scrollTo(0, Number.MAX_SAFE_INTEGER)
     })
-    await page.waitFor(500)
+    await page.waitForTimeout(500)
     await page.evaluate(() => {
       window.scrollBy(0, 0)
     })
-    await page.waitFor(500)
+    await page.waitForTimeout(500)
     // run fn if defined
     if (beforeFn !== null) {
       await beforeFn(page)

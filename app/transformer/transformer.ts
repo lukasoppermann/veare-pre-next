@@ -3,7 +3,7 @@ import { contentfulContent } from '../../types/contentfulContent'
 import appConfig from '../config/appConfig'
 import baseTransformer from './baseTransformer'
 // set language to use for extracting content
-const language = appConfig.contentfulLanguage || 'en-US'
+const language = appConfig.contentfulLanguage
 
 const transformOrNull = (item: contentfulContent, fieldTransformer) => {
   if (typeof fieldTransformer !== 'function') {
