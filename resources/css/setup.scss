@@ -185,3 +185,11 @@ h6:not([class]) {
   @include font(sans, bold);
   @include type-scale(sm);
 }
+// ----------------
+// MAIN
+//
+main {
+  @extend .Grid;
+  padding-top: size(4);
+  padding-bottom: size(6);
+}
