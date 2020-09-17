@@ -7,10 +7,10 @@ const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsaf
 
 export default (page, req): templateInterface => {
   return layout(html`
-    <div class="Page Page__index" slug="${req.path}">
+    <main class="Page__index" slug="${req.path}">
       ${headerIntro}
       ${unsafeHTML(page.content)}
-    </div>
+    </main>
 `, {
     og: [
       {

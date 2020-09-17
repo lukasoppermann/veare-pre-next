@@ -92,12 +92,6 @@ body {
     animation-duration: 0s !important;
   }
 }
-.Page { // replace maybe with MAIN??`
-  position: relative;
-  background: rgb(var(--white-rgb));
-  width: 100vw;
-  overflow: hidden;
-}
 
 /* ====================================
   Base Elements
@@ -189,7 +183,12 @@ h6:not([class]) {
 // MAIN
 //
 main {
-  @extend .Grid;
-  padding-top: size(4);
+  position: relative;
+  background: rgb(var(--white-rgb));
+  width: 100vw;
+  overflow: hidden;
   padding-bottom: size(6);
+  &:not(.Page__index):not(.Page__Project):not(.Page__Article) {
+    @extend .Grid;
+  }
 }

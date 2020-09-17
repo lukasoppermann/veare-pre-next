@@ -8,7 +8,7 @@ const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsaf
 const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
 // export template
 export default (article, req): templateInterface => layout(html`
-  <div class="Page Page__Article" slug="${req.path}">
+  <main class="Page__Article" slug="${req.path}">
     <div class="Article">
       <h1>${article.title}</h1>
       <div class="Article__publication-details">
@@ -35,7 +35,7 @@ export default (article, req): templateInterface => layout(html`
         })}
       </ul>
     </div>
-  </div>
+      </main>
 `, {
   description: article.description,
   bodyClass: 'Page-Type__Article',

@@ -7,7 +7,7 @@ const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsaf
 
 export default (project, req) => {
   return layout(html`
-  <div class="Page Page__Project" slug="${req.path}">
+  <main class="Page__Project" slug="${req.path}">
     <header class="Header">
       ${picture(project.header.fields,
         {
@@ -75,7 +75,7 @@ export default (project, req) => {
       ${unsafeHTML(project.content)}
       <a class="Project__back_link" href="/#portfolio">← Back</a>
     </article>
-  </div> 
+  </main> 
 `, {
     title: project.title,
     description: project.description,
