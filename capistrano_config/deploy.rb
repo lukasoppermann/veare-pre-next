@@ -1,7 +1,8 @@
 # config valid only for Capistrano 3.1
 # lock '3.10.1'
 # lock '3.11.0'
-lock '3.13.0'
+# lock '3.13.0'
+lock '3.14.1'
 set :stages, ["production"]
 set :default_stage, "production"
 set :ssh_options, {:forward_agent => true}

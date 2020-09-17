@@ -6,6 +6,17 @@
 
 ## Setup local dev environment
 
+### publishing to server
+
+#### 1. setup ssh key with server
+#### 2. Install capistrano
+```bash
+# install capistrano
+sudo gem install capistrano
+# install capistrano npm
+sudo gem install capistrano-npm
+```
+
 ### Use mkcert to create a cert for localhost
 ```
 brew install mkcert
