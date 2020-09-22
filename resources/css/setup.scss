@@ -163,6 +163,7 @@ h3:not([class]) {
   @include type-scale(lg);
 }
 h4:not([class]) {
+  @include font(sans, bold);
   @include type-scale(md);
 }
 h5:not([class]) {

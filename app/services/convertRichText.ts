@@ -17,6 +17,7 @@ import linkTransformer from '../transformer/linkTransformer'
 import tokenTransformer from '../transformer/tokenTransformer'
 
 const { renderToString } = require('@popeindustries/lit-html-server')
+const htmlEscape = require('he')
 
 // Transformer functions
 const transformerFunctions = {
@@ -104,6 +105,17 @@ const convertEmbeddedEntries = async (richText: richTextDocument, templates: {[k
   )
 }
 /**
+ * renderParagaph
+ * return the paragraph in a p tag with some
+ * rendered changes
+ * @param  content string
+ * @return  string
+ */
+const renderParagaph = (node, next): string => {
+  return `<p>${next(node.content).replace('\n', '<br/>')}</p>`
+}
+
+/**
  * async convertRichText
  * @param  richText contentful
  * @return          [description]
@@ -130,12 +142,12 @@ export default async (richText: richTextDocument, options?): Promise<richTextCon
       [BLOCKS.HR]: () => '<div class="Rule--horizontal"><hr></div>',
       [INLINES.HYPERLINK]: (node, next) => convertHyperlinks(node, next, anchors),
       [INLINES.ENTRY_HYPERLINK]: (node, next) => `<a href="${slugToUrl(node.data.target.fields.slug['en-US'], node.data.target.sys.contentType.sys.id)}">${next(node.content)}</a>`,
-      [BLOCKS.PARAGRAPH]: (node, next) => `<p>${next(node.content).replace('\n', '<br/>')}</p>`
+      [BLOCKS.PARAGRAPH]: (node, next) => renderParagaph(node, next)
     }
   })
   // return data object
   return {
-    html: html,
+    html: htmlEscape.decode(html),
     anchors: anchors
   }
 }

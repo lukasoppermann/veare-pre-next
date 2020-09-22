@@ -1,0 +1,11 @@
+.Page__now {
+  .Picture.now-title-image {
+    grid-column: columns;
+    @include at_least(large) {
+      grid-column: column 3 / span 6;
+    }
+    max-width: 400px;
+    margin-top: size(10);
+    margin-bottom: size(6);
+  }
+}

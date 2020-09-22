@@ -34,3 +34,11 @@
     display: block;
   }
 }
+s.done {
+  position: relative;
+  &::after {
+    @include pseudo();
+    right: -20px;
+    content: "✓";
+  }
+}
