@@ -122,10 +122,6 @@ ol:not([class]) {
   }
   @include list;
 }
-:not(ul):not(ol) > ul:not([class]),
-:not(ul):not(ol) > ol:not([class]) {
-  @include list--left-outdented;
-}
 ol li:not([class]) {
   @include list-item--ordered;
 }
