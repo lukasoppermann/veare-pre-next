@@ -42,3 +42,8 @@ s.done {
     content: "✓";
   }
 }
+.Page__privacy {
+  .Page__lastupdated {
+    display: none;
+  }
+}

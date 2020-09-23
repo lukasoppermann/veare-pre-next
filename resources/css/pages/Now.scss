@@ -1,5 +1,6 @@
 .Page__now {
   .Picture.now-title-image {
+    order: -2; // to incorporate lastupdated date
     grid-column: columns;
     width: 100%;
     display: flex;
@@ -12,6 +13,27 @@
     margin-bottom: size(6);
     picture {
       max-width: 400px;
+    }
+  }
+  .Page__lastupdated {
+    order: -1; // to position
+    @include type-scale(xs);
+    @include font(mono, bold);
+    margin-bottom: size(1);
+    color: rgba(var(--black-rgba-50));
+    grid-column: columns;
+    text-transform: lowercase;
+    @include at_least(desktop) {
+      grid-column: column 2 / span 5;
+    }
+    @include at_least(large) {
+      grid-column: column 3 / span 5;
+    }
+    &::before {
+      content: "[Last updated ";
+    }
+    &::after {
+      content: "]";
     }
   }
   .now-lists {

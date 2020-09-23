@@ -5,8 +5,9 @@ const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsaf
 
 export default (page, req): templateInterface => layout(html`
   <main class="Page__${page.slug}" slug="${req.path}">
+    <time class="Page__lastupdated" itemprop="datePublished" datetime="${page.rawLastIteration}">${page.lastIteration}</time>
     ${unsafeHTML(page.content)}
-</main>
+  </main>
 `, {
   description: page.description,
   bodyClass: page.slug
