@@ -54,6 +54,7 @@ export default () => {
       <div class="Footer__legal__info">
         <a href="/">Index</a>
         <a href="/blog">Writing</a>
+        <a href="/now">Now</a>
         <a href="/privacy">Imprint & privacy policy</a>
         <small class="Footer__copyright">Copyright ${new Date().getFullYear()} — Lukas&nbsp;Oppermann</small>
       </div>
