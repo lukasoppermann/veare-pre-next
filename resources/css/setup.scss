@@ -128,34 +128,20 @@ ol li:not([class]) {
 // ----------------
 // Headlines
 //
-main {
-  position: relative;
-  background: rgb(var(--white-rgb));
-  width: 100vw;
-  overflow: hidden;
-  padding-bottom: size(6);
-  &:not(.Page__index):not(.Page__Project):not(.Page__Article) {
-    @extend .Grid;
-  }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    &:not([class]) {
-      font-size: 100%;
-      font-weight: normal;
-      grid-column: columns;
-      @include at_least(large) {
-        grid-column: column 3 / span 8;
-      }
-      @include font(sans);
-      color: rgb(var(--black-rgb));
-      margin-top: size(3);
-      & + p {
-        margin-top: size(2);
-      }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  &:not([class]) {
+    font-size: 100%;
+    font-weight: normal;
+    @include font(sans);
+    color: rgb(var(--black-rgb));
+    margin-top: size(3);
+    & + p {
+      margin-top: size(2);
     }
   }
 }
@@ -185,4 +171,17 @@ h5:not([class]) {
 h6:not([class]) {
   @include font(sans, bold);
   @include type-scale(sm);
+}
+// ----------------
+// MAIN
+//
+main {
+  position: relative;
+  background: rgb(var(--white-rgb));
+  width: 100vw;
+  overflow: hidden;
+  padding-bottom: size(6);
+  &:not(.Page__index):not(.Page__Project):not(.Page__Article) {
+    @extend .Grid;
+  }
 }
