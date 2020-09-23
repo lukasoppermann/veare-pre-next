@@ -23,7 +23,7 @@ export default () => {
         <h2 class="Footer__contact__lukas">Lukas Oppermann</h2>
         <h3 class="Footer__contact__job-title">Creative Director &<br /> Lead UI/UX Designer</h3>
 
-        <h6 class="Footer__contact__say-hi">Schedule a call or just say&nbsp;hi&nbsp;<span class="smilie">👋</span></h6>
+        <h6 class="Footer__contact__say-hi">Schedule a call or say&nbsp;hi&nbsp;<span class="smilie">👋</span></h6>
         <a class="Footer__contact__email" target="_blank" rel="noopener" href="mailto:lukas@vea.re?subject=Hey 👋,%20what&apos;s%20up?&body=Great%20to%20hear%20from%20you,%20how%20can%20I%20help?">lukas@vea.re</a>
 
         <a class="Footer__contact__cv" target="_blank" rel="noopener" href="https://drive.google.com/open?id=10K9F9o0hokq4iPAbF5mseKJn_yflt19k">${embedFile('./resources/svgs/file-download.svg')}Download my full CV (pdf)</a>
