@@ -64,6 +64,9 @@
         }
         .article__preview {
           text-decoration: none;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
           &:not(:first-child) {
             margin-top: size(3);
           }
@@ -75,6 +78,7 @@
             z-index: 0;
             color: rgb(var(--white-blue-rgb));
             margin-top: 0;
+            white-space: normal;
             &::after {
               @include pseudo;
               width: 0;
@@ -87,9 +91,10 @@
             }
           }
           .details {
+            margin-top: 2px;
             position: relative;
             z-index: 0;
-            display: flex;
+            display: inline-flex;
             @include font(mono, bold);
             @include type-scale(xs);
             color: rgba(var(--white-blue-rgba-50));
