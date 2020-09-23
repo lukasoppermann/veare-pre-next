@@ -104,52 +104,20 @@
         }
       }
       .Project-excerpt__responsibilities {
-        z-index: 50;
+        @include aside-box;
         grid-row: 3;
         grid-column: columns;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        background: rgb(var(--black-rgb));
-        color: rgb(var(--white-blue-rgb));
         width: calc(100% + var(--column-gap) * 2);
         margin: size(3) 0 size(4);
         margin-left: calc(-1 * var(--column-gap));
-        padding: var(--column-gap);
         @include at_least(desktop) {
+          margin-left: 0;
           grid-row: 2;
           grid-column: column 1 / span 4;
-          margin-left: 0;
-          align-self: start;
-          flex-direction: column;
-          justify-content: stretch;
         }
         @include at_least(large) {
-          grid-column: column 2 / span 3;
           margin-left: calc(-1 * var(--column-gap));
-        }
-        h6 {
-          width: 100%;
-          margin: 0;
-          margin-bottom: size(1);
-          color: rgba(var(--white-blue-rgba-50));
-        }
-        ul {
-          width: 100%;
-          margin-top: 0;
-          @include at_least(tablet) {
-            width: calc((100% - var(--column-gap)) / 2);
-          }
-          @include at_least(desktop) {
-            width: 100%;
-          }
-          li {
-            @include list-item;
-            &::before {
-              color: rgba(var(--white-blue-rgba-50));
-            }
-          }
+          grid-column: column 2 / span 3;
         }
       }
     }

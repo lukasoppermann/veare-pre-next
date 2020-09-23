@@ -1,0 +1,44 @@
+@mixin aside-box {
+  z-index: 50;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background: rgb(var(--black-rgb));
+  color: rgb(var(--white-blue-rgb));
+  padding: var(--column-gap);
+  @include at_least(desktop) {
+    align-self: start;
+    flex-direction: column;
+    justify-content: stretch;
+  }
+  h6 {
+    width: 100%;
+    margin: 0;
+    margin-bottom: size(1);
+    color: rgba(var(--white-blue-rgba-50));
+    &:not(:first-child) {
+      margin-top: size(3);
+    }
+  }
+  ul {
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    @include at_least(tablet) {
+      width: calc((100% - var(--column-gap)) / 2);
+    }
+    @include at_least(desktop) {
+      width: 100%;
+    }
+    li {
+      @include list-item;
+      &::before {
+        color: rgba(var(--white-blue-rgba-50));
+      }
+      p {
+        color: inherit;
+      }
+    }
+  }
+}

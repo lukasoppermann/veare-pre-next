@@ -97,6 +97,7 @@
     }
     li {
       @include list-item;
+      @include type-scale(md);
     }
   }
   & > ul:not([class]),

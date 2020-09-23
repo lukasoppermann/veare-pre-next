@@ -14,4 +14,28 @@
       max-width: 400px;
     }
   }
+  .now-lists {
+    grid-column: columns;
+    @include at_least(desktop) {
+      grid-column: column 2 / span 5;
+    }
+    @include at_least(large) {
+      grid-column: column 3 / span 5;
+    }
+  }
+  .now-books-and-topics {
+    grid-column: columns;
+    @include at_least(desktop) {
+      grid-column: column 7 / span 5;
+    }
+    @include at_least(large) {
+      grid-column: column 8 / span 4;
+    }
+    @include aside-box;
+    i {
+      display: block;
+      color: rgba(var(--white-blue-rgba-50));
+      @include type-scale(sm);
+    }
+  }
 }
