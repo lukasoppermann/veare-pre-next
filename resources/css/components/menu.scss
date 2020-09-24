@@ -4,11 +4,11 @@
 .Menu {
   @extend .Grid;
   width: 100vw;
-  height: size(8);
+  height: var(--menu-height);
   padding: 0;
   margin: 0;
   position: relative;
-  background-color: var(--whites-pure);
+  background-color: var(--background-color-default);
   .veare-wordmark {
     opacity: 0;
     animation-name: fadeIn;
@@ -27,6 +27,7 @@
     display: flex;
     align-items: center;
     svg {
+      fill: var(--text-color-default);
       height: size(3);
       width: size(10);
     }
@@ -62,11 +63,12 @@
       display: inline-block;
       padding: 0 size(2);
       cursor: pointer;
+      color: var(--text-color-default);
       &::after {
         @include pseudo();
         width: 4px;
         height: 4px;
-        background: rgb(var(--black-rgb));
+        background: var(--text-color-default);
         border-radius: 100%;
         left: 50%;
         transform: translate(-50%, 0);
@@ -81,13 +83,13 @@
         }
       }
       &:hover {
-        color: rgba(var(--black-rgba-85));
+        color: var(--text-color-intense);
         &::after {
           bottom: size(-1);
           opacity: 1;
         }
         &:not(.is-active)::after {
-          background: var(--medium-grey);
+          background: var(--text-color-extra-soft);
         }
       }
     }
@@ -245,7 +247,7 @@
       top: size(3.5);
       right: size(3);
       transform-origin: bottom left;
-      background-color: rgb(var(--black-rgb));
+      background-color: var(--text-color-default);
       height: 2px;
       width: size(3);
       transition: background .3s ease, transform .2s .15s ease, width .15s ease, right .3s ease;

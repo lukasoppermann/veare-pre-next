@@ -86,7 +86,7 @@ body {
   // basic typography
   @include font(sans);
   @include type-scale(md);
-  color: var(--blacks-pure);
+  color: var(--text-color-default);
   &.testing * { // for ui tests
     transition: none !important;
     animation-duration: 0s !important;
@@ -105,7 +105,7 @@ p:empty {
 p:not([class]) {
   @include font(sans);
   @include type-scale(md);
-  color: rgba(var(--black-rgba-85));
+  color: var(--text-color-default);
   grid-column: columns;
   @include at_least(large) {
     grid-column: column 3 / span 8;
@@ -179,7 +179,7 @@ h6:not([class]) {
 //
 main {
   position: relative;
-  background: var(--whites-pure);
+  background: var(--background-color-default);
   width: 100vw;
   overflow: hidden;
   padding-bottom: size(6);

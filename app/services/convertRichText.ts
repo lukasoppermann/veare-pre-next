@@ -38,32 +38,6 @@ const templates = {
   picture: picture,
   link: link
 }
-// test if link is internal
-const isInternal = link => link.substr(0, 1) === '/' && link.substr(1, 2) !== '/'
-/**
- * convertHyperlinks
- * @param  node          richTextNode
- * @param  next
- * @return                   [description]
- */
-const convertHyperlinks = (node, next, anchors) => {
-  // split uri
-  const uri = node.data.uri.split('#')
-  // test if link is anchor
-  if (uri[0] === 'name=') {
-    const name = uri[1].toLowerCase().replace(/\s/g, '-').replace(/[^&-A-Za-z0-9]/g, '')
-    // store anchor in data store
-    anchors.push(name)
-    // return anchor link with name tag
-    return `<a name="${name}">${next(node.content)}</a>`
-  }
-  // return internal link
-  if (isInternal(node.data.uri)) {
-    return `<a href="${node.data.uri}">${next(node.content)}</a>`
-  }
-  // return external
-  return `<a href="${node.data.uri}" rel="noopener noreferrer nofollow" target="_blank">${next(node.content)}</a>`
-}
 /**
  * asnyc convertEmbeddedEntries
  * @param  richText          richTextDocument
@@ -143,6 +117,60 @@ const addAttr = (attribute: string, attributeValue?: string | string[]) => {
     return ` ${attribute}="${attributeValue}"`
   }
   return ''
+}
+// test if link is internal
+const isInternal = link => link.substr(0, 1) === '/' && link.substr(1, 2) !== '/'
+/**
+ * convertHyperlinks
+ * @param  node          richTextNode
+ * @param  next
+ * @return                   [description]
+ */
+const convertHyperlinks = (node, next, anchors) => {
+  // split uri
+  const uri = node.data.uri.split('#')
+  // test if link is anchor
+  if (uri[0] === 'name=') {
+    const name = uri[1].toLowerCase().replace(/\s/g, '-').replace(/[^&-A-Za-z0-9]/g, '')
+    // store anchor in data store
+    anchors.push(name)
+    // return anchor link with name tag
+    return `<a name="${name}">${next(node.content)}</a>`
+  }
+  // return internal link
+  if (isInternal(node.data.uri)) {
+    return `<a href="${node.data.uri}">${next(node.content)}</a>`
+  }
+  // return external
+  return `<a href="${node.data.uri}" rel="noopener noreferrer nofollow" target="_blank">${next(node.content)}</a>`
+}
+/**
+ * convertAssetLink
+ * @param  node          richTextNode
+ * @param  next
+ * @return                   [description]
+ */
+const convertAssetLink = (node, next) => {
+  // prep content
+  let content = next(node.content)
+  // get attribute portion {anything here}
+  const attr = extractAttributes(content)
+  // remove attributes e.g. {.class}
+  content = removeAttribute(content)
+  // return link
+  return `<a ${addAttr('class', attr.classes)} href="${node.data.target.fields.file['en-US'].url}" target="_blank" title="${node.data.target.fields.file['en-US'].fileName}">${content}</a>`
+}
+/**
+ * convertEntryLink
+ * @param  node          richTextNode
+ * @param  next
+ * @return                   [description]
+ */
+const convertEntryLink = (node, next): string => {
+  // convert the slug of the post to a valid url
+  const url = slugToUrl(node.data.target.fields.slug['en-US'], node.data.target.sys.contentType.sys.id)
+  // return hyperlink
+  return `<a href="${url}">${next(node.content)}</a>`
 }
 /**
  * renderParagaph
@@ -226,7 +254,8 @@ export default async (richText: richTextDocument, options?): Promise<richTextCon
       },
       [BLOCKS.HR]: () => '<div class="Rule--horizontal"><hr></div>',
       [INLINES.HYPERLINK]: (node, next) => convertHyperlinks(node, next, anchors),
-      [INLINES.ENTRY_HYPERLINK]: (node, next) => `<a href="${slugToUrl(node.data.target.fields.slug['en-US'], node.data.target.sys.contentType.sys.id)}">${next(node.content)}</a>`,
+      [INLINES.ENTRY_HYPERLINK]: (node, next) => convertEntryLink(node, next),
+      [INLINES.ASSET_HYPERLINK]: (node, next) => convertAssetLink(node, next),
       [BLOCKS.PARAGRAPH]: (node, next) => renderParagaph(node, next),
       [BLOCKS.QUOTE]: (node, next) => renderBlockquote(node, next),
       // [BLOCKS.OL_LIST]: (node, next) =>
