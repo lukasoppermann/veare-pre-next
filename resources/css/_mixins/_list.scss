@@ -20,6 +20,7 @@
   &::before {
     @include pseudo(absolute);
     color: currentColor;
+    color: rgb(var(--list-indicator-color));
     left: 0;
     top: 0;
     margin-top: -.05em;
@@ -37,7 +38,8 @@
     @include type-scale(sm, 1.75);
     @include font(mono);
     padding-top: .2em;
-    color: rgb(var(--list-indicator-color, var(--blue-rgb, inherit)));
+    color: inherit;
+    color: rgb(var(--list-indicator-color, var(--blue-rgb)));
   }
 }
 @mixin list--left-outdented {

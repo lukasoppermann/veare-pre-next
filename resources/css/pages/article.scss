@@ -96,8 +96,12 @@
       grid-column: column 4 / span 6;
     }
     li {
+      --list-indicator-color: var(--blue-rgb);
       @include list-item;
       @include type-scale(md);
+      &::before {
+        @include font(sans, bold);
+      }
     }
   }
   & > ul:not([class]),
