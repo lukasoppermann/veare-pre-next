@@ -148,6 +148,37 @@
         @include type-scale(xl);
       }
       margin-top: size(3);
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+    &.quote--md {
+      position: relative;
+      @include at_least(desktop) {
+        grid-column: sidebar-left 3 / span 9;
+      }
+      @include at_least(large) {
+        grid-column: column 4 / span 7;
+      }
+      &::before {
+        @include pseudo('absolute');
+        display: block;
+        top: 0;
+        width: 2px;
+        height: calc(100%);
+        background-color: rgb(var(--blue-rgb));
+        left: size(-2);
+        @include at_least(desktop) {
+          left: size(-3);
+        }
+      }
+      p {
+        @include font(sans, italic);
+        @include type-scale(md);
+        @include at_least(tablet) {
+          @include type-scale(lg);
+        }
+      }
     }
   }
   .Annotation {
