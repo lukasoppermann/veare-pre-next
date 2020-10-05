@@ -19,6 +19,7 @@ import tokenTransformer from '../transformer/tokenTransformer'
 const { renderToString } = require('@popeindustries/lit-html-server')
 const htmlEscape = require('he')
 
+const attributesRegex = /^\s*\{([^}]+)\}\s*/g
 // Transformer functions
 const transformerFunctions = {
   block: blockTransformer,
@@ -105,6 +106,45 @@ const convertEmbeddedEntries = async (richText: richTextDocument, templates: {[k
   )
 }
 /**
+ * Parses attribute section {.class} and returns items in object
+ * @param content string
+ */
+const extractAttributes = (content: string): {
+  classes: string[] | undefined
+} => {
+  // prep return object
+  const attr = {
+    classes: undefined
+  }
+  // extract attributes
+  const attributes = content.match(attributesRegex)
+  if (attributes !== null) {
+    const attributeArray = attributes[0].trim().replace(/{|}/g, '').split(' ')
+    // @ts-ignore
+    attr.classes = attributeArray.filter(item => item.substr(0, 1) === '.').map(item => item.substr(1))
+  }
+  // return content
+  return attr
+}
+/**
+ * Removes attribute from string
+ * @param content string
+ */
+const removeAttribute = (content: string): string => content.replace(attributesRegex, '')
+/**
+ * Removes attribute from string
+ * @param content string
+ */
+const addAttr = (attribute: string, attributeValue?: string | string[]) => {
+  if (attributeValue !== undefined) {
+    if (Array.isArray(attributeValue)) {
+      attributeValue = attributeValue.join(' ')
+    }
+    return ` ${attribute}="${attributeValue}"`
+  }
+  return ''
+}
+/**
  * renderParagaph
  * return the paragraph in a p tag with some
  * rendered changes
@@ -112,9 +152,31 @@ const convertEmbeddedEntries = async (richText: richTextDocument, templates: {[k
  * @return  string
  */
 const renderParagaph = (node, next): string => {
-  return `<p>${next(node.content).replace('\n', '<br/>')}</p>`
+  // prep content
+  const content = next(node.content)
+  // get attribute portion {anything here}
+  const attr = extractAttributes(content)
+  // return paragraph
+  return `<p${addAttr('class', attr.classes)}>${removeAttribute(content).replace('\n', '<br/>')}</p>`
 }
 
+/**
+ * renderParagaph
+ * return the paragraph in a p tag with some
+ * rendered changes
+ * @param  content string
+ * @return  string
+ */
+const renderBlockquote = (node, next): string => {
+  // get attr from first p
+  const attr = extractAttributes(node.content[0].content[0].value)
+  // remove attribute from first p
+  node.content[0].content[0].value = removeAttribute(node.content[0].content[0].value)
+  // prep content
+  const content = next(node.content)
+  // add classes if defined
+  return `<blockquote${addAttr('class', attr.classes)}>${content}</blockquote>`
+}
 /**
  * async convertRichText
  * @param  richText contentful
@@ -142,7 +204,8 @@ export default async (richText: richTextDocument, options?): Promise<richTextCon
       [BLOCKS.HR]: () => '<div class="Rule--horizontal"><hr></div>',
       [INLINES.HYPERLINK]: (node, next) => convertHyperlinks(node, next, anchors),
       [INLINES.ENTRY_HYPERLINK]: (node, next) => `<a href="${slugToUrl(node.data.target.fields.slug['en-US'], node.data.target.sys.contentType.sys.id)}">${next(node.content)}</a>`,
-      [BLOCKS.PARAGRAPH]: (node, next) => renderParagaph(node, next)
+      [BLOCKS.PARAGRAPH]: (node, next) => renderParagaph(node, next),
+      [BLOCKS.QUOTE]: (node, next) => renderBlockquote(node, next)
     }
   })
   // return data object
