@@ -5,11 +5,10 @@ module.exports = {
   // jest-image-snapshot custom configuration in order to save screenshots and compare the with the baseline
   setConfig: opts => {
     return {
-      comparisonMethod: 'ssim',
       customDiffDir: opts.diffPath,
       customSnapshotsDir: opts.snapshotPath,
       customSnapshotIdentifier: opts.filename,
-      blur: 2,
+      blur: 0,
       failureThreshold: 0.01,
       failureThresholdType: 'percent'
     }
@@ -34,6 +33,10 @@ module.exports = {
     home: {
       path: '/',
       folder: 'home'
+    },
+    now: {
+      path: '/now',
+      folder: 'now'
     },
     work: {
       path: '/work/test-project',

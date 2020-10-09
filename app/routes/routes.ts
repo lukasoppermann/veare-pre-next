@@ -29,6 +29,9 @@ const routing: middleware = async (req, res, next) => {
     case 'now':
       page(req, res, next, 'page')
       break
+    case 'designsystem':
+      page(req, res, next, 'designsystem')
+      break
     case 'blog':
       blog(req, res, next)
       break

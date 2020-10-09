@@ -29,9 +29,6 @@
   h4,
   h5,
   h6 {
-    @include font(sans);
-    color: rgb(var(--black-rgb));
-    margin-bottom: size(2);
     grid-column: columns;
     @include at_least(desktop) {
       grid-column: column 3 / span 8;

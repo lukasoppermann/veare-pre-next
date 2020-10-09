@@ -137,15 +137,20 @@ h6 {
   &:not([class]) {
     font-size: 100%;
     font-weight: normal;
-    @include font(sans);
+    @include font(sans, bold);
     color: rgb(var(--black-rgb));
     margin-top: size(3);
+    grid-column: columns;
+    @include at_least(large) {
+      grid-column: column 3 / span 8;
+    }
     & + p {
       margin-top: size(2);
     }
   }
 }
 h1:not([class]) {
+  @include font(sans);
   @include type-scale(hg);
   margin-top: size(1);
   @include at_least(extra) {
@@ -159,17 +164,14 @@ h3:not([class]) {
   @include type-scale(lg);
 }
 h4:not([class]) {
-  @include font(sans, bold);
   @include type-scale(md);
 }
 h5:not([class]) {
-  @include font(sans, bold);
   @include type-scale(sm);
   text-transform: uppercase;
   letter-spacing: .5px;
 }
 h6:not([class]) {
-  @include font(sans, bold);
   @include type-scale(sm);
 }
 // ----------------

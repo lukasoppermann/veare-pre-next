@@ -2,12 +2,14 @@ import { middleware } from '../../types/middleware'
 import { templateInterface } from '../../types/template'
 import page from '../templates/pages/page'
 import homepage from '../templates/pages/homepage'
+import designsystem from '../templates/pages/designSystem'
 import cache from '../services/cacheService'
 const { renderToString } = require('@popeindustries/lit-html-server')
 
 const templates: {[key:string]: templateInterface} = {
   page: page,
-  homepage: homepage
+  homepage: homepage,
+  designsystem: designsystem
 }
 
 const route: middleware = async (req, res, _next, template: string = 'page') => {
