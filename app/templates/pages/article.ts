@@ -1,4 +1,5 @@
 // get correct filesnames after appending unique string
+import slugToUrl from '../../services/slugToUrl'
 import articlePreview from '../newPartials/article_preview'
 import { revFile } from '../../services/files'
 import layout from '../layout'
@@ -39,6 +40,56 @@ export default (article, req): templateInterface => layout(html`
 `, {
   description: article.description,
   bodyClass: 'Page-Type__Article',
+  og: [
+    {
+      property: 'og:type',
+      value: 'website'
+    },
+    {
+      property: 'og:title',
+      value: article.title
+    },
+    {
+      property: 'og:description',
+      value: article.description
+    },
+    {
+      property: 'og:url',
+      value: 'https://vea.re' + slugToUrl(article.slug, 'article')
+    }
+    // {
+    //   property: 'og:image',
+    //   value: 'https:' + 'project.previewImage.fields.image.fields.url' + '?fm=jpg'
+    // }, {
+    //   property: 'og:image:type',
+    //   value: 'image/jpeg'
+    // }, {
+    //   property: 'og:image:alt',
+    //   value: 'project.header.fields.title'
+    // }
+  ],
+  twitter: [
+    {
+      property: 'twitter:card',
+      value: 'summary_large_image'
+    },
+    {
+      property: 'twitter:title',
+      value: article.title
+    },
+    {
+      property: 'twitter:description',
+      value: article.description
+    },
+    {
+      property: 'twitter:url',
+      value: 'https://vea.re' + slugToUrl(article.slug, 'article')
+    }//,
+    // {
+    //   property: 'twitter:image',
+    //   value: 'https:' + 'project.previewImage.fields.image.fields.url' + '?fm=jpg'
+    // }
+  ],
   head: html`
   <link type="text/css" href="/${revFile('css/blog.css')}" rel="stylesheet" />
   `
