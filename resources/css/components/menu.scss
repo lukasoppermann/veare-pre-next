@@ -36,7 +36,7 @@
   }
   .Menu__items {
     grid-row: 1;
-    margin-right: size(-2);
+    margin-right: size(4);
     transition: opacity 1s .2s ease;
     display: none;
     @include at_least(tablet) {
@@ -46,11 +46,12 @@
     justify-content: flex-end;
     grid-column: column -6 / span 4;
     @include at_least(desktop) {
-      grid-column: column -7 / span 5;
+      grid-column: column -6 / span 5;
     }
-    // @include at_least(extra) {
-    //   grid-column-end: span 12;
-    // }
+    @include _mediaquery (1650px, min) {
+      margin-right: size(-4);
+    }
+
     .Menu__link {
       text-decoration: none;
       @include font(sans, bold);
