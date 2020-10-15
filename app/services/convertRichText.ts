@@ -153,11 +153,34 @@ const addAttr = (attribute: string, attributeValue?: string | string[]) => {
  */
 const renderParagaph = (node, next): string => {
   // prep content
-  const content = next(node.content)
+  let content = next(node.content)
   // get attribute portion {anything here}
   const attr = extractAttributes(content)
+  // remove attributes e.g. {.class} and replace '\n' with <br/>
+  content = removeAttribute(content).replace('\n', '<br/>')
+  // escape html
+  content = htmlEscape.decode(content)
   // return paragraph
-  return `<p${addAttr('class', attr.classes)}>${removeAttribute(content).replace('\n', '<br/>')}</p>`
+  return `<p${addAttr('class', attr.classes)}>${content}</p>`
+}
+/**
+ * renderListItem
+ * return the paragraph in a p tag with some
+ * rendered changes
+ * @param  content string
+ * @return  string
+ */
+const renderListItem = (node, next): string => {
+  // prep content
+  let content = next(node.content)
+  // get attribute portion {anything here}
+  const attr = extractAttributes(content)
+  // remove attributes e.g. {.class}
+  content = removeAttribute(content)
+  // escape html
+  content = htmlEscape.decode(content)
+  // return paragraph
+  return `<li${addAttr('class', attr.classes)}>${content}</li>`
 }
 
 /**
@@ -173,7 +196,7 @@ const renderBlockquote = (node, next): string => {
   // remove attribute from first p
   node.content[0].content[0].value = removeAttribute(node.content[0].content[0].value)
   // prep content
-  const content = next(node.content)
+  const content = htmlEscape.decode(next(node.content))
   // add classes if defined
   return `<blockquote${addAttr('class', attr.classes)}>${content}</blockquote>`
 }
@@ -205,12 +228,15 @@ export default async (richText: richTextDocument, options?): Promise<richTextCon
       [INLINES.HYPERLINK]: (node, next) => convertHyperlinks(node, next, anchors),
       [INLINES.ENTRY_HYPERLINK]: (node, next) => `<a href="${slugToUrl(node.data.target.fields.slug['en-US'], node.data.target.sys.contentType.sys.id)}">${next(node.content)}</a>`,
       [BLOCKS.PARAGRAPH]: (node, next) => renderParagaph(node, next),
-      [BLOCKS.QUOTE]: (node, next) => renderBlockquote(node, next)
+      [BLOCKS.QUOTE]: (node, next) => renderBlockquote(node, next),
+      // [BLOCKS.OL_LIST]: (node, next) =>
+      // [BLOCKS.UL_LIST]: (node, next) =>
+      [BLOCKS.LIST_ITEM]: (node, next) => renderListItem(node, next)
     }
   })
   // return data object
   return {
-    html: htmlEscape.decode(html),
+    html: html,
     anchors: anchors
   }
 }
