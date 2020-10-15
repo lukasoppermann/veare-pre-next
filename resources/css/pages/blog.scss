@@ -96,16 +96,11 @@
   &.o-article-preview--technology .Article__preview__date::before {
     background: rgb(var(--blue-rgb));
   }
-  &.o-article-preview--design .Article__preview__date::before {
-    background: rgba(var(--green-rgb), .95);
-  }
-  &.o-article-preview--life .Article__preview__date::before {
-    background: rgb(var(--red-rgb));
-  }
+
   &__date::after {
     position: absolute;
     display: block;
-    color: rgb(var(--medium-grey-rgb));
+    color: var(--medium-grey);
     @include type-scale(sm);
     background: transparent;
     right: .75rem;
@@ -129,20 +124,15 @@
     text-decoration: none;
     padding-right: 2rem;
   }
-  &.o-article-preview--life .Article__preview__category {
-    color: rgb(var(--red-rgb));
-  }
   &.o-article-preview--code .Article__preview__category,
   &.o-article-preview--technology .Article__preview__category {
     color: rgb(var(--blue-rgb));
   }
-  &.o-article-preview--design .Article__preview__category {
-    color: rgb(var(--green-rgb));
-  }
+
   &__category::after {
     position: absolute;
     display: block;
-    color: rgb(var(--medium-grey-rgb));
+    color: var(--medium-grey);
     @include type-scale(sm);
     background: transparent;
     right: .75rem;
@@ -215,12 +205,6 @@
     opacity: 1;
     transition: opacity .4s .1s ease, top .5s ease, left .5s ease;
   }
-  &.o-article-preview--life .Article__preview__link::before {
-    background: rgba(var(--red-rgb), .95);
-  }
-  &.o-article-preview--design .Article__preview__link::before {
-    background: rgba(var(--green-rgb), .95);
-  }
   &.o-article-preview--technology .Article__preview__category {
     color: rgb(var(--blue-rgb));
   }
@@ -259,12 +243,12 @@
 }
 @media (max-width: 600px) {
   .Article__preview {
-    border-bottom: .1rem solid rgb(var(--light-grey-rgb));
+    border-bottom: .1rem solid var(--light-grey);
     margin: 0 auto 2.5rem auto;
   }
 }
 .Article__more_on_medium {
-  border-top: 1px solid rgb(var(--light-grey-rgb));
+  border-top: 1px solid var(--light-grey);
   @media (max-width: 600px) {
     border: none;
   }

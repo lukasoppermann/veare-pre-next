@@ -102,7 +102,7 @@
           @include pseudo();
           width: 2px;
           height: size(5);
-          background-color: rgba(var(--veare-orange-rgb));
+          background-color: var(--veare-orange);
           top: 0;
           left: size(-1.5);
         }
@@ -127,7 +127,7 @@
         display: inline-block;
         margin-top: size(3);
         position: relative;
-        @include underlineFill(rgb(var(--veare-orange-rgb)), rgb(var(--veare-orange-rgb)), 0);
+        @include underlineFill(var(--veare-orange), var(--veare-orange), 0);
         padding-right: size(2);
         &::after {
           @include pseudo();

@@ -5,7 +5,7 @@
   hr {
     border: none;
     height: 1px;
-    background-color: rgb(var(--dark-grey-rgb));
+    background-color: var(--dark-grey);
     margin: 0;
     grid-column: columns;
   }
@@ -164,7 +164,7 @@
         font-weight: bold;
         @include type-scale(xl);
         padding-top: size(5);
-        border-top: 1px solid rgb(var(--dark-grey-rgb));
+        border-top: 1px solid var(--dark-grey);
         text-transform: none;
         margin-top: 0;
         margin-bottom: size(3);

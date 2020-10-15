@@ -109,7 +109,7 @@
       width: calc(100% + #{size(8)}); // + 2 * gutter
       margin-left: size(-4); // 1 * gutter
     }
-    background-color: rgb(var(--sand-grey-rgb));
+    background-color: var(--sand-grey);
     --origin-start: right;
     animation: .75s var(--easeInOutQuint) forwards .5s blockFill;
     transform: scaleX(0);
@@ -139,7 +139,7 @@
       @include pseudo();
       width: size(10);
       bottom: 0;
-      background-color: rgb(var(--veare-orange-rgb));
+      background-color: var(--veare-orange);
       height: size(1);
     }
     @include at_least(tablet) {
@@ -167,7 +167,7 @@
     }
     #interactionBlockRect {
       transform: scaleX(0);
-      fill: rgb(var(--veare-orange-rgb));
+      fill: var(--veare-orange);
       animation: 1.25s var(--easeInOutQuint) 1s blockReveal;
     }
     #isEverything {
@@ -177,12 +177,12 @@
     }
     #isEverythingBlockRect {
       --origin-end: 75% top;
-      fill: rgb(var(--veare-orange-rgb));
+      fill: var(--veare-orange);
       transform: scaleX(0);
       animation: 1s var(--easeInOutQuint) 1.25s blockReveal;
     }
     #lineBlockRect {
-      fill: rgb(var(--veare-orange-rgb));
+      fill: var(--veare-orange);
       transform: scaleX(0);
       animation: .5s var(--easeInOutQuint) 1.35s forwards blockFill;
     }
@@ -219,7 +219,7 @@
       &::before {
         width: size(14);
         top: size(-1);
-        background-color: rgb(var(--veare-orange-rgb));
+        background-color: var(--veare-orange);
         height: size(1.5);
       }
       border-top: none;

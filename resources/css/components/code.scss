@@ -14,7 +14,7 @@
 pre > code,
 pre > .code {
   hyphens: none;
-  background: rgb(var(--dark-grey-rgb));
+  background: var(--dark-grey);
 }
 
 /* ====================================
@@ -23,13 +23,13 @@ pre > .code {
 .Code {
   position: relative;
   white-space: unset;
-  background: rgb(var(--dark-grey-rgb));
+  background: var(--dark-grey);
   border-radius: 3px;
   overflow: hidden;
   code,
   pre {
     hyphens: none;
-    background: rgb(var(--dark-grey-rgb));
+    background: var(--dark-grey);
   }
   pre {
     padding: size(3) size(2) size(2);
@@ -38,8 +38,9 @@ pre > .code {
   .Code__file-or-path {
     @include font(mono, bold);
     @include type-scale(sm);
-    color: rgba(var(--sand-grey-rgb), .6);
-    background: rgba(0, 0, 0, .2);
+    color: var(--sand-grey);
+    background: rgba(0, 0, 0, .4);
+    opacity: 0.5;
     position: absolute;
     top: 0;
     right: 0;
@@ -58,7 +59,7 @@ pre > .code {
   }
   .Code__file-or-path::before {
     z-index: 11;
-    background: rgb(var(--dark-grey-rgb));
+    background: var(--dark-grey);
     border-top-right-radius: 10px;
   }
 }
