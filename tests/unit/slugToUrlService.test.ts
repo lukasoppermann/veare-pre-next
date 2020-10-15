@@ -16,9 +16,10 @@ describe("slugToUrl", () => {
 
   test("testing slugToUrl service with wrong content type", () => {
     function catchError() {
-      slugToUrl('slug', 'projects')
+      // @ts-ignore
+      slugToUrl('slug', 'wrongType')
     }
     // assertion
-    expect(catchError).toThrowError(new Error(`🚨 \x1b[31mError converting slug, undefined prefix requested: "projects"\x1b[0m`))
+    expect(catchError).toThrowError(new Error(`🚨 \x1b[31mError converting slug, undefined prefix requested: "wrongType"\x1b[0m`))
   })
 })
