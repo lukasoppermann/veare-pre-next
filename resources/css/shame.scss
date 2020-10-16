@@ -36,6 +36,7 @@
 }
 s.done {
   position: relative;
+  margin-right: 20px;
   &::after {
     @include pseudo();
     right: -20px;
