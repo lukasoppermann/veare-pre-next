@@ -143,7 +143,7 @@
       transition: opacity .3s var(--transition-delay, 1.5s) ease, bottom .3s var(--transition-delay, 1.5s) ease;
       counter-increment: menuItemCount;
       position: relative;
-      color: rgba(var(--white-blue-rgba-80));
+      color: var(--whites-tint);
       text-decoration: none;
       @include type-scale(hg);
       @include at_least(desktop) {
@@ -171,12 +171,17 @@
         transition: all .4s ease;
       }
       &:hover {
-        color: rgb(var(--white-blue-rgb));
+        opacity: 1;
+        color: var(--whites-tint);
         &::after {
           width: calc(100% + #{size(2)});
         }
+        .Menu__link-text {
+          opacity: 1;
+        }
       }
       .Menu__link-text {
+        opacity: .75;
         position: relative;
         &::after {
           @include pseudo();

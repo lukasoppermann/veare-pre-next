@@ -6,13 +6,22 @@
   --blue-rgb: 40, 80, 235;
 
   /**
+   * Whites
+   */
+  --whites-pure: rgb(255, 255, 255);
+  --whites-tint: rgb(245, 246, 250);
+
+  /**
+   * Neutrals
+   */
+
+  /**
    * White & Black
    */
   --white-rgb: 255, 255, 255;
   --white-blue-rgb: 245, 246, 250;
   --white-blue-rgba-25: var(--white-blue-rgb), .25;
   --white-blue-rgba-50: var(--white-blue-rgb), .5;
-  --white-blue-rgba-80: var(--white-blue-rgb), .8;
   --black-rgb: 33, 37, 41;
   --black-rgba-15: var(--black-rgb), .15;
   --black-rgba-50: var(--black-rgb), .5;
