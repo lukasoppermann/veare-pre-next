@@ -172,7 +172,7 @@
     transition: opacity .4s ease, top .5s ease, left .5s ease;
   }
   &__link::after {
-    background: rgb(var(--black-rgb));
+    background: var(--whites-pure);
     height: calc(100% + 2rem);
   }
   &__link:hover::after {
@@ -191,7 +191,7 @@
     color: rgb(var(--white-rgb));
     font-size: 8rem;
     box-sizing: border-box;
-    padding: 3rem;
+    padding: 5rem 3rem 3rem;
   }
   &__link:hover::before {
     top: -4rem;
@@ -208,7 +208,7 @@
   &.o-article-preview--technology .Article__preview__category {
     color: rgb(var(--blue-rgb));
   }
-  &.o-article-preview--code .Article__preview__link::before,
+  &.o-article-preview--design .Article__preview__link::before,
   &.o-article-preview--technology .Article__preview__link::before {
     background: rgba(var(--blue-rgb), .95);
   }
@@ -219,7 +219,7 @@
     margin-top: 0;
     margin-bottom: 0;
     text-decoration: none;
-    color: rgb(var(--black-rgb));
+    color: var(--blacks-pure);
   }
   &__excerpt {
     margin-top: 1rem;
@@ -258,18 +258,18 @@
   align-items: flex-start;
   justify-content: center;
   a {
-    color: rgb(var(--black-rgb));
+    color: var(--blacks-pure);
     display: inline-block;
     line-height: 100%;
     margin-top: size(3);
     text-decoration: none;
     @include type-scale(md);
-    border: 2px solid rgb(var(--black-rgb));
+    border: 2px solid var(--blacks-pure);
     padding: size(1) size(2);
     transition: color .3s ease, background .3s ease;
     &:hover {
-      background: rgb(var(--black-rgb));
-      color: rgb(var(--white-rgb));
+      background: var(--blacks-pure);
+      color: var(--whites-pure);
     }
   }
 }

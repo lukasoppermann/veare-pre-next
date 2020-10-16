@@ -19,7 +19,7 @@
   text-transform: uppercase;
   letter-spacing: .5px;
   @include type-scale(sm);
-  color: rgb(var(--black-rgb)) !important;
+  color: var(--blacks-pure) !important;
   order: 1;
   flex: 0 0 auto;
   padding-right: size(1);
@@ -33,7 +33,7 @@
   opacity: .25;
   top: size(1);
   left: 0;
-  color: rgb(var(--black-rgb)) !important;
+  color: var(--blacks-pure) !important;
 }
 .Toc__chapter__link::before {
   @include pseudo("relative");
@@ -42,8 +42,8 @@
   align-self: center;
   height: 2px;
   transform: translateY(-1px);
-  background-color: rgb(var(--black-rgb));
-  background-image: linear-gradient(90deg, rgb(var(--black-rgb)) 0%, rgb(var(--black-rgb)) 50%, rgb(var(--blue-rgb)) 50%, rgb(var(--blue-rgb)) 100%);
+  background-color: var(--blacks-pure);
+  background-image: linear-gradient(90deg, var(--blacks-pure) 0%, var(--blacks-pure) 50%, rgb(var(--blue-rgb)) 50%, rgb(var(--blue-rgb)) 100%);
   background-size: 200% 100%;
   background-position: 0% 0%;
   transition: all .2s var(--easeInOutQuad);
