@@ -71,7 +71,7 @@
         left: 50%;
         transform: translate(-50%, 0);
         opacity: 0;
-        transition: opacity .3s ease, bottom .3s ease, width .3s ease;
+        transition: opacity .3s ease, bottom .3s ease, width .3s ease, background .3s ease;
         bottom: 0;
       }
       &.is-active {
@@ -87,7 +87,7 @@
           opacity: 1;
         }
         &:not(.is-active)::after {
-          background: rgba(var(--black-rgba-30));
+          background: var(--medium-grey);
         }
       }
     }
