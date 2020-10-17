@@ -6,7 +6,7 @@
     border: none;
     height: 2px;
     width: size(4);
-    background-color: var(--rule-color, rgb(var(--blue-rgb)));
+    background-color: var(--rule-color, var(--blue));
     margin: 0;
   }
 }

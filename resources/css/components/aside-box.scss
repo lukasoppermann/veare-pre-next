@@ -5,7 +5,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   background: rgb(var(--black-rgb));
-  color: rgb(var(--white-blue-rgb));
+  color: var(--whites-tint);
   padding: var(--column-gap);
   @include at_least(desktop) {
     align-self: start;

@@ -9,9 +9,6 @@
     margin: 0;
     grid-column: columns;
   }
-  h4 {
-    color: rgba(var(--white-blue-rgb), .25);
-  }
 
   /* ====================================
     Read & write
@@ -27,7 +24,7 @@
       @include font(serif, regular, italic);
       @include type-scale(lg);
       font-weight: normal;
-      color: rgb(var(--white-blue-rgb));
+      color: var(--whites-tint);
       text-transform: none;
       margin-top: 0;
       margin-bottom: size(3);
@@ -52,7 +49,7 @@
       @include at_least(large) {
         grid-column: column 4 / span 4;
       }
-      color: rgb(var(--white-blue-rgb));
+      color: var(--whites-tint);
       li {
         list-style-type: none;
         margin-left: 0;
@@ -76,14 +73,14 @@
             display: inline-block;
             position: relative;
             z-index: 0;
-            color: rgb(var(--white-blue-rgb));
+            color: var(--whites-tint);
             margin-top: 0;
             white-space: normal;
             &::after {
               @include pseudo;
               width: 0;
               height: calc(100% + #{size(1)});
-              background-color: rgb(var(--blue-rgb));
+              background-color: var(--blue);
               top: size(2);
               left: size(-1);
               z-index: -1;
@@ -106,7 +103,7 @@
               left: size(.5);
               width: 0;
               height: 2px;
-              background-color: rgb(var(--white-blue-rgb));
+              background-color: var(--whites-tint);
               transition: width .1s ease;
             }
           }
@@ -114,13 +111,13 @@
             @include pseudo("relative");
             content: "•";
             padding: 0 size(1);
-            color: rgba(var(--white-blue-rgba-25));
+            color: var(--neutrals-700);
           }
           // article preview hover
           &:hover {
             .details {
               padding-left: size(3);
-              color: rgb(var(--white-blue-rgb));
+              color: var(--whites-tint);
               &::before {
                 width: size(2);
                 transition: width .3s ease .075s;
@@ -134,8 +131,8 @@
         .link-show-all {
           @include font(sans);
           @include type-scale(sm);
-          color: rgb(var(--white-blue-rgb));
-          @include fillSide(rgb(var(--blue-rgb)));
+          color: var(--whites-tint);
+          @include fillSide(var(--blue));
           padding: 2px 0;
         }
       }
@@ -159,7 +156,7 @@
       }
       .Footer__contact__headline {
         align-self: stretch;
-        color: rgb(var(--white-blue-rgb));
+        color: var(--whites-tint);
         @include font(sans);
         font-weight: bold;
         @include type-scale(xl);
@@ -185,7 +182,7 @@
         }
       }
       .Footer__contact__lukas {
-        color: rgb(var(--white-blue-rgb));
+        color: var(--whites-tint);
         @include font(sans);
         font-weight: bold;
         margin-top: 0;
@@ -204,20 +201,20 @@
         margin-bottom: 0;
         text-transform: none;
         .smilie {
-          color: rgb(var(--white-blue-rgb));
+          color: var(--whites-tint);
         }
       }
       .Footer__contact__email {
-        color: rgb(var(--white-blue-rgb));
+        color: var(--whites-tint);
         text-decoration: none;
         margin-top: size(.5);
-        @include underlineFill(rgb(var(--blue-rgb)));
+        @include underlineFill(var(--blue));
       }
       .Footer__contact__cv {
         color: rgba(var(--white-blue-rgba-50));
         text-decoration: none;
         display: inline-block;
-        @include fillSide(rgb(var(--blue-rgb)), 2px, 0);
+        @include fillSide(var(--blue), 2px, 0);
         margin-top: size(4);
         margin-left: 28px;
         @include at_least(tablet) {
@@ -239,8 +236,7 @@
             height: 19px;
           }
           rect {
-            fill: rgb(var(--white-blue-rgb));
-            fill: rgb(var(--blue-rgb));
+            fill: var(--blue);
             height: 0;
             transition: height .3s ease;
           }
@@ -255,17 +251,17 @@
           }
         }
         &:hover {
-          color: rgb(var(--white-blue-rgb));
+          color: var(--whites-tint);
           svg {
             fill: rgba(var(--white-blue-rgba-50));
             rect {
               height: 100%;
             }
             .paper {
-              fill: rgb(var(--blue-rgb));
+              fill: var(--blue);
             }
             .arrow {
-              fill: rgb(var(--white-blue-rgb));
+              fill: var(--whites-tint);
             }
             .shadow {
               fill: rgba(0, 0, 0, 0.3);
@@ -318,7 +314,7 @@
         }
       }
       h6 {
-        color: rgb(var(--white-blue-rgb));
+        color: var(--whites-tint);
         text-transform: uppercase;
         @include at_least(desktop) {
           margin-bottom: size(1);
@@ -331,9 +327,9 @@
           max-width: 180px;
         }
         a {
-          color: rgb(var(--white-blue-rgb));
+          color: var(--whites-tint);
           text-decoration: none;
-          @include underlineFill(rgb(var(--blue-rgb)), rgba(var(--white-blue-rgba-25)), 0);
+          @include underlineFill(var(--blue), var(--neutrals-500), 0);
         }
       }
     }
@@ -350,7 +346,7 @@
     // height: size(15);
     .veare-wordmark {
       position: relative;
-      fill: rgb(var(--white-blue-rgb));
+      fill: var(--whites-tint);
       margin-top: size(4);
       margin-bottom: size(5);
       grid-row: -1;
@@ -383,7 +379,7 @@
       }
       .Footer__copyright,
       a {
-        color: rgba(var(--white-blue-rgba-50));
+        color: var(--neutrals-500);
         text-decoration: none;
         padding: size(2) 0;
         font-size: inherit;
@@ -407,7 +403,7 @@
               content: "/";
               padding: 0 size(1.5);
               left: size(-4);
-              color: rgba(var(--white-blue-rgba-25));
+              color: var(--neutrals-700);
             }
             &:hover::before {
               text-decoration: none;
@@ -416,11 +412,11 @@
         }
         &:hover {
           text-decoration: none;
-          color: rgb(var(--white-blue-rgb));
+          color: var(--whites-tint);
         }
       }
       .Footer__copyright {
-        color: rgb(var(--white-blue-rgb));
+        color: var(--whites-tint);
         @include smaller_than(tablet) {
           margin-top: size(3);
           width: 100%;
@@ -431,7 +427,7 @@
             @include pseudo("relative");
             content: "•";
             padding: 0 size(2);
-            color: rgba(var(--white-blue-rgba-25));
+            color: var(--neutrals-700);
           }
         }
       }

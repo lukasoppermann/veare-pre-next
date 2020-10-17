@@ -29,7 +29,7 @@
   @include pseudo;
   width: 0;
   height: size(2);
-  background-color: rgb(var(--blue-rgb));
+  background-color: var(--blue);
   opacity: .25;
   top: size(1);
   left: 0;
@@ -43,7 +43,7 @@
   height: 2px;
   transform: translateY(-1px);
   background-color: var(--blacks-pure);
-  background-image: linear-gradient(90deg, var(--blacks-pure) 0%, var(--blacks-pure) 50%, rgb(var(--blue-rgb)) 50%, rgb(var(--blue-rgb)) 100%);
+  background-image: linear-gradient(90deg, var(--blacks-pure) 0%, var(--blacks-pure) 50%, var(--blue) 50%, var(--blue) 100%);
   background-size: 200% 100%;
   background-position: 0% 0%;
   transition: all .2s var(--easeInOutQuad);
@@ -67,7 +67,7 @@
     Animated Hover State
 ==================================== */
 .Toc__chapter__link:hover .Toc__chapter__title {
-  color: rgb(var(--blue-rgb)) !important;
+  color: var(--blue) !important;
   padding-left: size(1);
   transition: all .35s var(--easeInOutQuad);
 }
@@ -80,6 +80,6 @@
   transition: all .35s .1s var(--easeInOutQuad);
 }
 .Toc__chapter__link:hover::after {
-  color: rgb(var(--blue-rgb));
+  color: var(--blue);
   transition: all .35s .2s var(--easeInOutQuad);
 }

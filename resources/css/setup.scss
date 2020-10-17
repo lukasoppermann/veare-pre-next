@@ -179,7 +179,7 @@ h6:not([class]) {
 //
 main {
   position: relative;
-  background: rgb(var(--white-rgb));
+  background: var(--whites-pure);
   width: 100vw;
   overflow: hidden;
   padding-bottom: size(6);

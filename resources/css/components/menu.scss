@@ -8,7 +8,7 @@
   padding: 0;
   margin: 0;
   position: relative;
-  background-color: rgb(var(--white-rgb));
+  background-color: var(--whites-pure);
   .veare-wordmark {
     opacity: 0;
     animation-name: fadeIn;
@@ -164,7 +164,7 @@
         @include pseudo;
         width: 0;
         height: calc(100% + #{size(0)});
-        background-color: rgb(var(--blue-rgb));
+        background-color: var(--blue);
         top: size(2);
         left: size(-1);
         z-index: -1;
@@ -269,7 +269,7 @@
       &::before,
       &::after {
         width: size(2);
-        background-color: rgb(var(--white-blue-rgb));
+        background-color: var(--whites-tint);
       }
       &::after {
         right: size(4);
@@ -294,7 +294,7 @@
       &::before,
       &::after {
         width: size(3) !important;
-        background-color: rgb(var(--white-blue-rgb));
+        background-color: var(--whites-tint);
         transition: background .3s ease, transform .2s .15s ease, width .15s ease;
       }
       &::before {

@@ -93,7 +93,7 @@
       grid-column: column 4 / span 6;
     }
     li {
-      --list-indicator-color: var(--blue-rgb);
+      --list-indicator-color: var(--blue);
       @include list-item;
       @include type-scale(md);
       &::before {
@@ -163,7 +163,7 @@
         top: 0;
         width: 2px;
         height: calc(100%);
-        background-color: rgb(var(--blue-rgb));
+        background-color: var(--blue);
         left: size(-2);
         @include at_least(desktop) {
           left: size(-3);
@@ -287,7 +287,7 @@
             left: size(.5);
             width: 0;
             height: 2px;
-            background-color: rgb(var(--blue-rgb));
+            background-color: var(--blue);
             transition: width .1s ease;
           }
         }
@@ -301,7 +301,7 @@
         &:hover {
           .details {
             padding-left: size(3);
-            color: rgb(var(--blue-rgb));
+            color: var(--blue);
             &::before {
               width: size(2);
               transition: width .3s ease .075s;
