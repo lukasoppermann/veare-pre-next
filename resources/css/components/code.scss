@@ -26,6 +26,8 @@ pre > .code {
   background: var(--dark-grey);
   border-radius: 3px;
   overflow: hidden;
+  margin-top: size(1);
+  margin-bottom: size(4);
   code,
   pre {
     hyphens: none;

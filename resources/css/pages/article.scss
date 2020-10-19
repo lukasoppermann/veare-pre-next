@@ -109,6 +109,7 @@
     @include list-item--ordered;
   }
   .Picture {
+    margin-bottom: size(4);
     grid-column: columns;
     @include at_least(desktop) {
       grid-column: column 2 / span 9;
