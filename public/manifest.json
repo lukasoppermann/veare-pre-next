@@ -2,7 +2,7 @@
 	"name": "veare – UI/UX design",
 	"short_name": "veare",
 	"icons": [{
-		"src": "google-touch-icon.png",
+		"src": "veare-google-touch-icon-512.png",
 		"sizes": "512x512"
 	}],
 	"start_url": "/?utm_source=homescreen",
