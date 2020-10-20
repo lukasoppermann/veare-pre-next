@@ -81,9 +81,6 @@
     "tslib": "^2.0.2",
     "typescript": "^4.0.3"
   },
-  "config": {
-    "moveFilesJs": "node_modules/fetch-inject/dist/fetch-inject.min.js"
-  },
   "eslintConfig": {
     "rules": {
       "no-unused-vars": "off",
@@ -143,7 +140,7 @@
     "css:rev": "node-file-rev public/css/*.css --manifest=public/rev-manifest.json --root=public/",
     "build:js:watch": "onchange -k -i 'resources/js/*.ts' 'resources/ts/*/*.ts' -- npm run build:js",
     "build:js": "rm -f public/js/* && npm run js:compile && npm run js:rev && npm run js:move",
-    "js:move": "cp $npm_package_config_moveFilesJs public/js/",
+    "js:move": "cp node_modules/fetch-inject/dist/fetch-inject.min.js public/js/",
     "js:compile": "rollup --config --environment FETCHINJECTVERSION:$(npm list --depth=0 | grep fetch-inject | sed 's/[^0-9.]*\\([0-9.]*\\).*/\\1/')",
     "js:rev": "node-file-rev public/js/*.js --manifest=public/rev-manifest.json --root=public/",
     "copy": "copyfiles --up 1 resources/{robots.txt,manifest.json,favicon.ico,*.png,*.jpg,svgs/*.svg} public",
