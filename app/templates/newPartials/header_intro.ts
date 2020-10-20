@@ -16,7 +16,7 @@ export default html`
     <p>— my approach of building products based on validated user needs & measured impact.</p>
   </div>
   <figure class="Header--intro__headline">
-    ${embedFile('./resources/svgs/solving-problems-is-my-passion.svg')}
+    ${embedFile('./public/svgs/solving-problems-is-my-passion.svg')}
   </figure>
   <h2 class="Header--intro__slogan">Designing experiences with a focus on usability</h2>
   <h1 class="Header--intro__roles">

@@ -27,7 +27,7 @@ export default (page, req): templateInterface => {
         value: 'https://vea.re'
       }, {
         property: 'og:image',
-        value: 'https://vea.re/media/veare-open-graph.jpg'
+        value: 'https://vea.re/veare-open-graph.jpg'
       }, {
         property: 'og:image:type',
         value: 'image/jpeg'

@@ -4,5 +4,6 @@ export default {
     article: 'blog',
     project: 'work',
     page: ''
-  }
+  },
+  primaryColor: '#f0aa1e'
 }
