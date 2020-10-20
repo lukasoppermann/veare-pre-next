@@ -5,7 +5,7 @@
     }
     @media (prefers-color-scheme: dark) {
         #bg {
-            fill: #000;
+            fill: #0f1013;
         }
     }
 </style>
