@@ -17,7 +17,9 @@ module.exports = shipit => {
         'node_modules', 
         'resources',
         'logs', 
-        'tests'
+        'tests',
+        'jest-puppeteer.config.js',
+        'rollup.config.js'
       ]
     },
     production: {
