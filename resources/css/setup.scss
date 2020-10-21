@@ -86,7 +86,7 @@ body {
   // basic typography
   @include font(sans);
   @include type-scale(md);
-  color: rgb(var(--black-rgb));
+  color: var(--blacks-pure);
   &.testing * { // for ui tests
     transition: none !important;
     animation-duration: 0s !important;
