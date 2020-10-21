@@ -44,12 +44,15 @@
     "pre-commit": "^1.2.2",
     "rollup": "^2.29.0",
     "rollup-plugin-terser": "^7.0.2",
+    "shipit-cli": "^5.3.0",
+    "shipit-deploy": "^5.3.0",
     "snazzy": "^8.0.0",
     "standardx": "^5.0.0",
     "stylelint": "^13.7.2",
     "stylelint-config-standard": "^20.0.0",
     "ts-node-dev": "1.0.0",
-    "typescript-lit-html-plugin": "^0.9.0"
+    "typescript-lit-html-plugin": "^0.9.0",
+    "ts-jest": "^26.4.1"
   },
   "dependencies": {
     "@contentful/rich-text-html-renderer": "^14.1.1",
@@ -74,13 +77,9 @@
     "memory-cache": "^0.2.0",
     "reading-time": "^1.2.0",
     "serve-static": "^1.14.1",
-    "ts-jest": "^26.4.1",
     "ts-node": "^9.0.0",
     "tslib": "^2.0.2",
     "typescript": "^4.0.3"
-  },
-  "config": {
-    "moveFilesJs": "node_modules/fetch-inject/dist/fetch-inject.min.js"
   },
   "eslintConfig": {
     "rules": {
@@ -141,7 +140,7 @@
     "css:rev": "node-file-rev public/css/*.css --manifest=public/rev-manifest.json --root=public/",
     "build:js:watch": "onchange -k -i 'resources/js/*.ts' 'resources/ts/*/*.ts' -- npm run build:js",
     "build:js": "rm -f public/js/* && npm run js:compile && npm run js:rev && npm run js:move",
-    "js:move": "cp $npm_package_config_moveFilesJs public/js/",
+    "js:move": "cp node_modules/fetch-inject/dist/fetch-inject.min.js public/js/",
     "js:compile": "rollup --config --environment FETCHINJECTVERSION:$(npm list --depth=0 | grep fetch-inject | sed 's/[^0-9.]*\\([0-9.]*\\).*/\\1/')",
     "js:rev": "node-file-rev public/js/*.js --manifest=public/rev-manifest.json --root=public/",
     "copy": "copyfiles --up 1 resources/{robots.txt,manifest.json,favicon.ico,*.png,*.jpg,svgs/*.svg} public",
