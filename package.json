@@ -152,7 +152,8 @@
     "test:unit": "jest tests/unit --coverage",
     "test:js": "npm run tsc && npm run test:unit && npm run standard",
     "test": "npm run test:js && npm run test:css",
-    "removeCompiled": "branch=$(git branch | grep \\* | cut -d ' ' -f2) && if test \"$branch\" != \"master\" ; then git reset HEAD public/ ; fi"
+    "removeCompiled": "branch=$(git branch | grep \\* | cut -d ' ' -f2) && if test \"$branch\" != \"master\" ; then git reset HEAD public/ ; fi",
+    "deploy": "shipit production deploy"
   },
   "pre-commit": [
     "standard",
