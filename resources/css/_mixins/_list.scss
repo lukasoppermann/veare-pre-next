@@ -12,7 +12,7 @@
   counter-increment: listCounter;
   position: relative;
   display: list-item;
-  list-style: none;
+  list-style: none; // decimal-leading-zero
   @include font(sans);
   @include type-scale(md, 1.2);
   margin-top: size(1);

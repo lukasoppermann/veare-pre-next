@@ -105,8 +105,13 @@
   & > ol:not([class]) {
     @include list--left-outdented;
   }
-  ol li {
-    @include list-item--ordered;
+  & > ol:not([class]) {
+    > li {
+      @include list-item--ordered;
+    }
+  }
+  li > ol > li {
+    @include list-item;
   }
   .Picture {
     margin-bottom: size(4);
