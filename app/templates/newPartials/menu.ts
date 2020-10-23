@@ -11,7 +11,7 @@ const menuItems = activePath => html`
 
 export default (activePath, hideOnLoad: boolean = false) => html`
   <menu class="Menu" activePath="${activePath}">
-    <a style="opacity:0;" class="veare-wordmark" href="/" aria-label="Go to homepage" name="header home link">${embedFile('./resources/svgs/veare-wordmark.svg')}</a>
+    <a style="opacity:0;" class="veare-wordmark" href="/" aria-label="Go to homepage" name="header home link">${embedFile('./public/svgs/veare-wordmark.svg')}</a>
     <nav class="Menu__items" style="${hideOnLoad !== false ? 'opacity: 0;' : ''}">
       ${menuItems(activePath)}
     </nav>
