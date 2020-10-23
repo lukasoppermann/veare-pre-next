@@ -1,0 +1,14 @@
+:root.dark-mode,
+:root .about-lukas-oppermann { // constantly set about to dark mode
+  --background-color-default: var(--blacks-pure);
+  --background-color-secondary: var(--blue);
+  //
+  --text-color-intense: var(--whites-pure);
+  --text-color-default: var(--neutrals-200); // maybe tone down and use black for intense
+  --text-color-soft: var(--neutrals-500);
+  --text-color-extra-soft: var(--neutrals-800);
+  //
+  --text-color-secondary: var(--blue);
+  // gradients
+  --gradient-transparent-bg-color: linear-gradient(to bottom, transparent, var(--background-color-default) 95%);
+}
