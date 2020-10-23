@@ -1,6 +1,7 @@
 :root.dark-mode,
 :root .about-lukas-oppermann { // constantly set about to dark mode
   --background-color-default: var(--blacks-pure);
+  --background-color-dark: var(--neutrals-950);
   --background-color-secondary: var(--blue);
   //
   --text-color-intense: var(--whites-pure);

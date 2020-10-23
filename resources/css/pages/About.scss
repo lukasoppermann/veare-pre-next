@@ -5,17 +5,17 @@
   }
   //
   .about__picture {
+    order: -1;
     grid-column: full-bleed;
-    grid-row: 1 / span 2;
     height: 70vh;
     margin-top: 0;
     @include at_least(tablet) {
       grid-column: columns;
     }
     @include at_least(desktop) {
+      order: auto;
       height: calc(100vh - var(--menu-height));
       grid-column: column 6 / -1;
-      grid-row: 1 / span 4;
       min-height: 400px;
       max-height: 1000px;
     }
@@ -36,16 +36,16 @@
     }
   }
   .about__intro-quote {
+    margin-top: -15vh;
     z-index: 10;
-    grid-row: 2;
     grid-column: columns;
-    margin-top: 55vh;
     @include at_least(tablet) {
       grid-column: columns / span 5;
     }
     @include at_least(desktop) {
       margin-top: 0;
-      grid-row: 2 / 4;
+      position: absolute;
+      top: 20vh;
       grid-column: columns / 9;
     }
     p {
@@ -77,8 +77,9 @@
     padding: size(6) 0 size(4);
     grid-column: columns;
     @include at_least(desktop) {
+      position: absolute;
+      top: 75vh;
       padding: size(1) 0;
-      grid-row-start: 4;
       grid-column-start: column 6;
       width: 272px;
     }
@@ -124,6 +125,9 @@
     margin-top: size(10);
     margin-bottom: size(4);
   }
+  .Page__about-lukas-oppermann > p {
+    padding-bottom: size(2);
+  }
   p {
     color: var(--text-color-soft);
     grid-column: columns;
@@ -149,6 +153,7 @@
     grid-column: columns;
     margin-top: size(8);
     @include at_least(desktop) {
+      grid-row: 4 / 7;
       margin-top: 0;
       grid-column: column 7 / span 6;
     }
@@ -172,6 +177,6 @@
   .Footer {
     padding-top: size(20);
     // bottom to top
-    background: linear-gradient(to bottom, var(--background-color-default), rgb(var(--black-rgb)) 70%);
+    background: linear-gradient(to bottom, var(--background-color-default), var(--background-color-dark) 70%);
   }
 }

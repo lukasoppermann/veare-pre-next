@@ -1,7 +1,7 @@
 .Footer {
   width: 100vw;
   grid-column: full-bleed;
-  background: rgb(var(--black-rgb));
+  background: var(--background-color-dark);
   hr {
     border: none;
     height: 1px;
