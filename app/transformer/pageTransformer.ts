@@ -9,7 +9,14 @@ const getEmbeddedBlocks = (content: any[]) => {
   return content
     .filter(item => item.nodeType === 'embedded-entry-block' &&
       ['block', 'picture'].includes(item.data.target.sys.contentType.sys.id)
+<<<<<<< HEAD
     ).map(item => item.data.target.sys.id)
+=======
+    ).map(item => ({
+      contentType: item.data.target.sys.contentType.sys.id,
+      id: item.data.target.sys.id
+    }))
+>>>>>>> 47660ba... working on introducing embeddedBlocks to page type
 }
 /**
  * Page Transformer
@@ -17,6 +24,7 @@ const getEmbeddedBlocks = (content: any[]) => {
 export default async (data) => {
   return transformer(data, async (data) => {
     // transform richText
+
     const content = await richText(getField(data, 'content'))
     // return format
     return <transformedPageFields>{
