@@ -26,7 +26,8 @@ export default async (data) => {
       lastIteration: new Date(getField(data, 'lastIteration')).toLocaleDateString('en-US', { month: 'short', year: 'numeric', day: 'numeric' }),
       description: getField(data, 'description'),
       content: content.html,
-      embeddedBlocks: getEmbeddedBlocks(getField(data, 'content').content)
+      embeddedBlocks: getEmbeddedBlocks(getField(data, 'content').content),
+      embeddedBlocksBySlug: {}
     }
   })
 }
@@ -37,7 +38,17 @@ export default async (data) => {
  */
 export const postPagesTransformer = (pages: any[], entries) => {
   return pages.map(page => {
-    page.fields.embeddedBlocks = page.fields.embeddedBlocks.map(id => entries.find(entry => id === entry.id))
+    // map blocks to ids & to embeddedBlocksBySlug
+    page.fields.embeddedBlocks = page.fields.embeddedBlocks.map(id => {
+      // get current ids block
+      const block = entries.find(entry => id === entry.id)
+      // add to embeddedBlocksBySlug object
+      if (block.fields.slug !== null) {
+        page.fields.embeddedBlocksBySlug[block.fields.slug] = block
+      }
+      // return block
+      return block
+    })
     // return entry with transformeds content
     return page
   })

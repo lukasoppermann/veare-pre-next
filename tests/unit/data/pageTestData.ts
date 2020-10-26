@@ -38,7 +38,8 @@ export default {
       content: richText.transformed,
       embeddedBlocks: [
         "xrJu5xG2PHpyuCmaAXs5b"
-      ]
+      ],
+      embeddedBlocksBySlug: {}
     }
   }
 } as transformTestData

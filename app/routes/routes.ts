@@ -27,7 +27,7 @@ const routing: middleware = async (req, res, next) => {
       page(req, res, next, 'page')
       break
     case 'about-lukas-oppermann':
-      page(req, res, next, 'page')
+      page(req, res, next, 'about')
       break
     case 'now':
       page(req, res, next, 'page')

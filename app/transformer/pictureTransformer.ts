@@ -15,6 +15,7 @@ export default async (data) => {
     // return format
     return <transformedPictureFields>{
       title: getField(data, 'title'),
+      slug: getField(data, 'slug'),
       description: (await richText(getField(data, 'description'))).html,
       image: <transformedAsset>(await assetTransformer(getField(data, 'image')))[0],
       sources: <transformedPictureSource[]>(await pictureSourceTransformer(getField(data, 'sources'))),
