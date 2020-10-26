@@ -9,10 +9,7 @@ const getEmbeddedBlocks = (content: any[]) => {
   return content
     .filter(item => item.nodeType === 'embedded-entry-block' &&
       ['block', 'picture'].includes(item.data.target.sys.contentType.sys.id)
-    ).map(item => ({
-      contentType: item.data.target.sys.contentType.sys.id,
-      id: item.data.target.sys.id
-    }))
+    ).map(item => item.data.target.sys.id)
 }
 /**
  * Page Transformer
@@ -20,7 +17,6 @@ const getEmbeddedBlocks = (content: any[]) => {
 export default async (data) => {
   return transformer(data, async (data) => {
     // transform richText
-
     const content = await richText(getField(data, 'content'))
     // return format
     return <transformedPageFields>{
@@ -32,5 +28,17 @@ export default async (data) => {
       content: content.html,
       embeddedBlocks: getEmbeddedBlocks(getField(data, 'content').content)
     }
+  })
+}
+
+/**
+ * @function postPagesTransformer — attach related articles & sort by last iteration date
+ * @param {array} pages
+ */
+export const postPagesTransformer = (pages: any[], entries) => {
+  return pages.map(page => {
+    page.fields.embeddedBlocks = page.fields.embeddedBlocks.map(id => entries.find(entry => id === entry.id))
+    // return entry with transformeds content
+    return page
   })
 }

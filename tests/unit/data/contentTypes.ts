@@ -348,35 +348,6 @@ export default {
           sys: { type: 'Link', linkType: 'Space', id: '5dfliyp93yzg' }
         },
         type: 'ContentType',
-        id: 'textSection',
-        revision: 34,
-        createdAt: '2018-01-21T13:43:29.741Z',
-        updatedAt: '2020-04-27T15:23:08.471Z',
-        environment: {
-          sys: { id: 'master', type: 'Link', linkType: 'Environment' }
-        }
-      },
-      displayField: 'textType',
-      name: 'Text',
-      description: 'A text block',
-      fields: [
-        {
-          id: 'textType',
-          name: 'Text Type',
-          type: 'Symbol',
-          localized: false,
-          required: true,
-          disabled: false,
-          omitted: false
-        }
-      ]
-    },
-    {
-      sys: {
-        space: {
-          sys: { type: 'Link', linkType: 'Space', id: '5dfliyp93yzg' }
-        },
-        type: 'ContentType',
         id: 'picture',
         revision: 11,
         createdAt: '2020-04-23T10:44:41.827Z',

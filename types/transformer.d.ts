@@ -147,7 +147,8 @@ export interface transformedPageFields extends transformedFields {
   rawLastIteration: string,
   lastIteration: string,
   description: string,
-  content: string
+  content: string,
+  embeddedBlocks: any[]
 }
 
 export interface transformedArticleFields extends transformedFields {
