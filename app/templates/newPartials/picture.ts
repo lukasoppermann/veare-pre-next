@@ -5,7 +5,7 @@ const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js
 const { ifDefined } = require('@popeindustries/lit-html-server/directives/if-defined.js')
 
 const fallbackImage = (picture: transformedPictureFields, loading: 'eager' | 'lazy' = 'lazy') => html`
-  <img width="${picture.image.fields.width}" height="${picture.image.fields.height}" src="${picture.image.fields.url}" alt="${picture.image.fields.title}" loading="${loading}"/>
+  <img width="${picture.image.fields.width}" height="${picture.image.fields.height}" src="${picture.image.fields.url}" alt="${picture.title}" loading="${loading}"/>
 `
 
 const pictureSource = (source: transformedPictureSourceFields) => html`
