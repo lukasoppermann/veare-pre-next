@@ -31,6 +31,7 @@ export default (title?: string, description?: string, og?: any, twitter?: any) =
   <!-- End Google Tag Manager -->
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-7074034-1"></script>
+  <script async src="https://cdn.jsdelivr.net/npm/uuid@latest/dist/umd/uuidv4.min.js"></script>
   <script>
     const GA_MEASUREMENT_ID = 'UA-7074034-1'
     window.dataLayer = window.dataLayer || [];
