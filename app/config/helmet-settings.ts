@@ -12,10 +12,10 @@ export default {
   contentSecurityPolicy: {
     directives: {
       defaultSrc: ["'none'"],
-      scriptSrc: ["'self'", "'unsafe-inline'", 'www.google-analytics.com', 'www.googletagmanager.com'],
+      scriptSrc: ["'self'", "'unsafe-inline'", 'www.google-analytics.com', 'www.googletagmanager.com', 'plausible.io'],
       styleSrc: ["'self'", "'unsafe-inline'", 'fonts.googleapis.com'],
       imgSrc: ["'self'", 'www.google-analytics.com', 'images.contentful.com', 'images.ctfassets.net', 'data:'],
-      connectSrc: ["'self'", 'apis.google.com', 'fonts.googleapis.com', 'www.google-analytics.com'],
+      connectSrc: ["'self'", 'apis.google.com', 'fonts.googleapis.com', 'www.google-analytics.com', 'plausible.io'],
       fontSrc: ["'self'", 'fonts.gstatic.com', 'fonts.googleapis.com'],
       objectSrc: ["'none'"],
       frameAncestors: ["'none'"],
