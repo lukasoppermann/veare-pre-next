@@ -16,7 +16,8 @@ export default {
       environment: { sys: {} }
     },
     fields: {
-      title: { 'en-US': 'Run you day — or your day will run you' },
+      title: { 'en-US': 'Run your day — or your day will run you' },
+      slug: { 'en-US': 'run-your-day' },
       image: {
         'en-US': [
           asset.raw
@@ -38,7 +39,8 @@ export default {
     contentType: 'picture',
     type: 'Entry',
     fields: {
-      title: 'Run you day — or your day will run you',
+      title: 'Run your day — or your day will run you',
+      slug: 'run-your-day',
       style: "center",
       classes: "pictureClass",
       description: richText.transformed,

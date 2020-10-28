@@ -2,12 +2,12 @@ import cache from './cacheService'
 import client from './client'
 import { transformedDataInterface } from '../../types/transformer'
 // transformer
-import articleTransformer from '../transformer/articleTransformer'
+import articleTransformer, { postArticlesTransformer } from '../transformer/articleTransformer'
 import assetTransformer from '../transformer/assetTransformer'
 import blockTransformer from '../transformer/blockTransformer'
 import codeTransformer from '../transformer/codeTransformer'
 import linkTransformer from '../transformer/linkTransformer'
-import pageTransformer from '../transformer/pageTransformer'
+import pageTransformer, { postPagesTransformer } from '../transformer/pageTransformer'
 import pictureTransformer from '../transformer/pictureTransformer'
 import pictureSourceTransformer from '../transformer/pictureSourceTransformer'
 import projectTransformer from '../transformer/projectTransformer'
@@ -25,56 +25,26 @@ const transformerFunctions = {
   project: projectTransformer,
   token: tokenTransformer
 }
-
-const getFieldRawLastIterationAsIso = data => new Date(data.fields.rawLastIteration)
-const randomBetween = (min, max) => Math.floor(Math.random() * (max - min) + min)
-
-const attachRelatedContent = (item, entries: any[], amount = 3): {} => {
-  // remove item from entries
-  entries = entries.filter(entry => entry.id !== item.id)
-  // return array of related content objects
-  return [...item.fields.relatedContent, ...new Array(amount)].slice(0, amount).map(id => {
-    // get random id if not present
-    id = id !== undefined ? id : entries[randomBetween(0, entries.length - 1)].id
-    // get index of defined id or random id in entries array
-    const index = entries.findIndex(entry => entry.id === id)
-    // store object from entry in const
-    const entryObject = entries[index]
-    // remove from entries array to avoid double entry
-    entries.splice(index, 1)
-    // return object
-    return entryObject
-  })
-}
 /* istanbul ignore next */
 export default async () => {
-  // get all entries
   /* istanbul ignore next */
-  const entriesPromise = client.getEntries({
-    limit: 1000,
-    order: 'sys.createdAt',
-    locale: '*'
-  }).then(entries => transformEntries(entries, transformerFunctions))
-  // get all content types
-  /* istanbul ignore next */
-  const contentTypesPromise = client.getContentTypes()
-  // await content
-  /* istanbul ignore next */
-  const [entries, contentTypes] = await Promise.all([entriesPromise, contentTypesPromise])
+  const [entries, contentTypes] = await Promise.all([
+    // get all entries
+    client.getEntries({
+      limit: 1000,
+      order: 'sys.createdAt',
+      locale: '*'
+    }).then(entries => transformEntries(entries, transformerFunctions)),
+    // get all content types
+    client.getContentTypes()
+  ])
   // sort content
   /* istanbul ignore next */
   const content = sortContentByType(contentTypes, entries)
-  // transform Articles
+  // post transform content
   /* istanbul ignore next */
-  if (content.article !== undefined && content.article.length > 0) {
-    content.article = sortByFieldDesc(content.article, getFieldRawLastIterationAsIso)
-    // attach related articles
-    content.article.map(article => {
-      // attach to article
-      article.fields.relatedContent = attachRelatedContent(article, content.article || [], 2)
-      return article
-    })
-  }
+  content.article = postArticlesTransformer(content.article)
+  content.page = postPagesTransformer(content.page, entries)
   // cache content by type
   /* istanbul ignore next */
   return Object.keys(content).forEach(contentType => {
@@ -83,17 +53,27 @@ export default async () => {
 }
 
 const sortContentByType = (contentTypes, entries): {
-  article?: any[];
-  project?: any[];
-  link?: any[];
-  picture?: any[];
-  pictureSource?: any[];
-  page?: any[];
-  block?: any[];
-  code?: any[];
-  token?: any[];
+  article: any[];
+  project: any[];
+  link: any[];
+  picture: any[];
+  pictureSource: any[];
+  page: any[];
+  block: any[];
+  code: any[];
+  token: any[];
 } => {
-  const content = {}
+  const content = {
+    article: [],
+    project: [],
+    page: [],
+    link: [],
+    picture: [],
+    pictureSource: [],
+    block: [],
+    code: [],
+    token: []
+  }
   // get type ids
   contentTypes.items.forEach(item => {
   // get content by type
@@ -111,23 +91,7 @@ const transformEntries = async (entries, transformerFunctions) => {
   return Promise.all(transformedEntries).then((entries: Array<transformedDataInterface>) => entries.map(entry => entry[0]))
 }
 
-const sortByFieldDesc = (entries, getFieldToCompare): any[] => {
-  return entries.sort((a, b) => {
-    a = getFieldToCompare(a)
-    b = getFieldToCompare(b)
-    if (a < b) {
-      return 1
-    }
-    if (a > b) {
-      return -1
-    }
-    return 0
-  })
-}
-
 export const __testing = {
-  sortByFieldDesc: sortByFieldDesc,
-  getFieldRawLastIterationAsIso: getFieldRawLastIterationAsIso,
   sortContentByType: sortContentByType,
   transformEntries: transformEntries
 }

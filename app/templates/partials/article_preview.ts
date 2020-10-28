@@ -6,8 +6,9 @@ export default (article) => html`
         <meta itemprop="author" content="Lukas Oppermann" />
         <meta itemprop="publisher" content="vea.re" />
         <time itemprop="datePublished" class="Article__preview__date" datetime="${article.fields.rawLastIteration}">${article.fields.lastIteration}</time>
-        ${!article.fields.category ? ''
-          : unsafeHTML('<a href="" class="Article__preview__category Article__preview__category--' + article.fields.category + '">' + article.fields.category + '</a>')
+        ${!article.fields.category
+            ? ''
+            : unsafeHTML('<a href="" class="Article__preview__category Article__preview__category--' + article.fields.category + '">' + article.fields.category + '</a>')
         }
         <time class="Article__preview__read-time" datetime="${article.fields.readingTime}m">${article.fields.readingTime} min read</time>
     </div>

@@ -58,6 +58,7 @@ export default {
             },
             fields: {
               cmsTitle: { 'en-US': 'About + Resume Hello' },
+              slug: { 'en-US': 'about-resume' },
               content: { 'en-US': {
                   nodeType: 'document',
                   data: {},
@@ -98,7 +99,7 @@ export default {
     ]
   },
   transformed: `<p>Hello<br/>world!<a name="design">Design</a></p><p></p>
-
+<a class=\"link__anchor\" name=\"about-resume\"></a>
 <div class="Block ">
   <p>Hello</p>
 </div>

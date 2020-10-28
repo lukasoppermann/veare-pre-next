@@ -50,7 +50,8 @@ describe("convertEmbeddedEntries", () => {
 
   test('valid richText conversion', () => {
     return __testing.convertEmbeddedEntries(richText.raw, mockTemplates, mockTransformers).then(result => {
-       expect(result[0].html.trim()).toStrictEqual(`<div class="Block ">
+      expect(result[0].html.trim()).toStrictEqual(`<a class="link__anchor" name="about-resume"></a>
+<div class="Block ">
   <p>Hello</p>
 </div>`)
     })

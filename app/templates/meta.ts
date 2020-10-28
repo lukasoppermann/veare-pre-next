@@ -23,10 +23,45 @@ export default (title?: string, description?: string, og?: any, twitter?: any) =
   <link rel="apple-touch-icon" href="/veare-apple-touch-icon-180.png">
   <link rel="manifest" href="/manifest.json" />
   <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  <!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-K6KBJZG');</script>
+  })(window,document,'script','dataLayer','GTM-K6KBJZG');</script> -->
   <!-- End Google Tag Manager -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-7074034-1"></script>
+  <script>
+    const GA_MEASUREMENT_ID = 'UA-7074034-1'
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    // without cookies
+    // defines window.localstorage key
+      const GA_LOCAL_STORAGE_KEY = 'ga:clientId'
+
+      // checks if localstorage is available
+      if (window.localStorage) {
+        // checks if user was already connected and loads client_id from localstorage
+        if (localStorage.getItem(GA_LOCAL_STORAGE_KEY)) {
+          // creates new tracker with same client_id as the last time the user visited
+          gtag('js', new Date())
+          gtag('config', GA_MEASUREMENT_ID, {
+            send_page_view: true,
+            client_storage: 'none',
+            client_id: localStorage.getItem(GA_LOCAL_STORAGE_KEY),
+          })
+        } else {
+          // creates client_id and saves it in localStorage -> currently random number better would be a uuid
+          window.localStorage.setItem(GA_LOCAL_STORAGE_KEY, uuidv4())
+          // creates new tracker with the new client_id
+          gtag('js', new Date())
+          gtag('config', GA_MEASUREMENT_ID, {
+            send_page_view: true,
+            client_storage: 'none',
+            client_id: localStorage.getItem(GA_LOCAL_STORAGE_KEY),
+          })
+        }
+      }
+  </script>
   `

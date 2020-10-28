@@ -35,7 +35,11 @@ export default {
       rawLastIteration: '2018-12-04',
       lastIteration: 'Dec 4, 2018',
       description: 'Framer X introduces some very novel and unique features. So let’s see if Framer X is right for you.',
-      content: richText.transformed
+      content: richText.transformed,
+      embeddedBlocks: [
+        "xrJu5xG2PHpyuCmaAXs5b"
+      ],
+      embeddedBlocksBySlug: {}
     }
   }
 } as transformTestData
