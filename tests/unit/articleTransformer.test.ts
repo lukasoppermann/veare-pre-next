@@ -25,12 +25,8 @@ describe("getFieldRawLastIterationAsIso", () => {
 describe("randomBetween", () => {
   test("randomBetween", () => {
     const randomA = __testing.randomBetween(1,100)
-    const randomB = __testing.randomBetween(1, 100)
     // compare
-    expect(randomA).not.toBe(randomB)
     expect(randomA).toBeGreaterThanOrEqual(1)
     expect(randomA).toBeLessThan(101)
-    expect(randomB).toBeGreaterThanOrEqual(1)
-    expect(randomB).toBeLessThan(101)
   })
 })
