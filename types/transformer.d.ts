@@ -79,15 +79,15 @@ export interface transformedAssetFields extends transformedFields {
     url: string,
     fileName: string,
     details: {
-      size: Number,
+      size: number,
       image: {
-        width: Number,
-        height: Number
+        width: number,
+        height: number
       }
     },
-    sizeInBytes: Number,
-    width: Number,
-    height: Number,
+    sizeInBytes: number,
+    width: number,
+    height: number,
     fileType: string
 }
 export interface transformedLinkFields extends transformedFields {
@@ -120,13 +120,13 @@ export interface transformedProjectFields extends transformedFields {
   durationStart: string,
   durationEnd: string,
   duration: {
-    totalWeeks: Number,
-    years: Number,
-    month: Number
+    totalWeeks: number,
+    years: number,
+    month: number
   },
   years: {
-    start: Number,
-    end: Number
+    start: number,
+    end: number
   },
   client: string,
   approach: string,
@@ -158,7 +158,7 @@ export interface transformedArticleFields extends transformedFields {
   lastIteration: string,
   description: string,
   content: string,
-  readingTime: Number,
+  readingTime: number,
   category: 'category' | 'design',
   relatedContent: string[]
 }

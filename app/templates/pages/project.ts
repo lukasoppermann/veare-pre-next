@@ -1,3 +1,5 @@
+import { requestInterface } from '../../../types/request'
+import { transformedProjectFields } from '../../../types/transformer'
 import slugToUrl from '../../services/slugToUrl'
 import layout from '../layout'
 import picture from '../newPartials/picture'
@@ -5,7 +7,7 @@ const { html } = require('@popeindustries/lit-html-server')
 const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 
-export default (project, req) => {
+export default (project: transformedProjectFields, req: requestInterface) => {
   return layout(html`
   <main class="Page__Project" slug="${req.path}">
     <header class="Header">

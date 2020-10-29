@@ -4,11 +4,13 @@ import articlePreview from '../newPartials/article_preview'
 import { revFile } from '../../services/files'
 import layout from '../layout'
 import { templateInterface } from '../../../types/template'
+import { transformedArticleFields } from '../../../types/transformer'
+import { requestInterface } from '../../../types/request'
 const { html } = require('@popeindustries/lit-html-server')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
 // export template
-export default (article, req): templateInterface => layout(html`
+export default (article: transformedArticleFields, req: requestInterface): templateInterface => layout(html`
   <main class="Page__Article" slug="${req.path}">
     <div class="Article">
       <h1>${article.title}</h1>
@@ -38,6 +40,7 @@ export default (article, req): templateInterface => layout(html`
     </div>
       </main>
 `, {
+  title: article.title,
   description: article.description,
   bodyClass: 'Page-Type__Article',
   og: [

@@ -16,7 +16,7 @@ export const revisionedFiles = (revFiles:filesObjectInterface|null = null): revF
   // if refresh is true, refresh revisioned files
   if (revFiles !== null) {
     // add revisioned files to structure
-    Object.keys(revFiles).map(key => {
+    Object.keys(revFiles).forEach(key => {
       revisionedFilesObject[key.slice(0, key.indexOf('/'))][key] = revFiles[key]
     })
   }

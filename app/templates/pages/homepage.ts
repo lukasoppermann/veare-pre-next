@@ -1,17 +1,20 @@
 import layout from '../layout'
 import headerIntro from '../newPartials/header_intro'
 import { templateInterface } from '../../../types/template'
+import { requestInterface } from '../../../types/request'
+import { transformedPageFields } from '../../../types/transformer'
 
 const { html } = require('@popeindustries/lit-html-server')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 
-export default (page, req): templateInterface => {
+export default (page: transformedPageFields, req: requestInterface): templateInterface => {
   return layout(html`
     <main class="Page__index" slug="${req.path}">
       ${headerIntro}
       ${unsafeHTML(page.content)}
     </main>
 `, {
+    title: page.title,
     og: [
       {
         property: 'og:type',
