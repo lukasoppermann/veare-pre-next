@@ -2,8 +2,6 @@ import { middleware } from '../../types/middleware'
 import request from '../services/request'
 import error404 from './404'
 import contentful from './contentful'
-import revisionedFiles from './revisionedFiles'
-// import menu from './menu'
 import project from './project'
 import blog from './blog'
 import page from './page'
@@ -40,9 +38,6 @@ const routing: middleware = async (req, res, next) => {
       break
     case 'work':
       project(req, res, next)
-      break
-    case 'revisionedFiles':
-      revisionedFiles(req, res, next)
       break
     case 'contentful':
       contentful(req, res, next)
