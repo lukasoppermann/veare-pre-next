@@ -9,6 +9,7 @@ const env = process.env.NODE_ENV || 'development'
 // middleware
 const compression = require('compression')
 const hemlet = require('helmet')
+const cookies = require('connect-cookies')
 const serveStatic = require('serve-static')
 const bodyParser = require('body-parser')
 
@@ -21,6 +22,7 @@ export default () => {
   app.use(bodyParser.json({ type: 'application/*+json' }))
   app.use(compression())
   app.use(hemlet(helmetSettings))
+  app.use(cookies())
   app.use(serveStatic('public', { maxAge: '365d', etag: false }))
   // ---------------------------------- //
   // Dev Middleware
