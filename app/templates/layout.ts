@@ -29,8 +29,8 @@ export default (content: string, options: {
     </head>
     <body class="${options.bodyClass || ''}${process.env.NODE_ENV === 'test' ? ' testing' : ''}">
       <!-- Google Tag Manager (noscript) -->
-      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K6KBJZG"
-      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <!-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K6KBJZG"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
       <!-- End Google Tag Manager (noscript) -->
       <!-- NEW STUFF -->
       ${menu(req.path)}
