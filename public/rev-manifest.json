@@ -2,8 +2,7 @@
   "css/base.css": "css/base-d41d8cd98f00b204e9800998ecf8427e.css",
   "css/blog.css": "css/blog-6947ac9fab79c6d655b39266ae80b2dd.css",
   "css/app.css": "css/app-986c69fb7dedd09b45bed7c82530f6d9.css",
-  "js/index.js": "js/index-909799e0048a891f9c87d002978b8399.js",
   "js/responsiveMenu.js": "js/responsiveMenu-67d965eb7f31ecdc5057d318aafb4f67.js",
   "js/rest.js": "js/rest-6f1f864999028210c095189c7aacc96f.js",
-  "js/analytics.js": "js/analytics-6889964126875a5826f3a19a1c51c4b5.js"
+  "js/index.js": "js/index-909799e0048a891f9c87d002978b8399.js"
 }
