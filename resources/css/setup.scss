@@ -112,6 +112,17 @@ p:not([class]) {
   }
 }
 // ----------------
+// blockquote
+//
+blockquote {
+  grid-column: columns;
+  p,
+  p:not([class]) {
+    @include font(sans, italic);
+    @include type-scale(lg);
+  }
+}
+// ----------------
 // Lists
 //
 ul:not([class]),
@@ -124,6 +135,12 @@ ol:not([class]) {
 }
 ol li:not([class]) {
   @include list-item--ordered;
+}
+// ----------------
+// HR
+//
+.Rule--horizontal {
+  grid-column: columns;
 }
 // ----------------
 // Headlines
