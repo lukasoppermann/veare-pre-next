@@ -2,9 +2,9 @@ import appConfig from '../config/appConfig'
 const { html } = require('@popeindustries/lit-html-server')
 const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
 export default (title?: string, description?: string, og?: any, twitter?: any) =>
-  html`<title>vea.re Lead UI/UX Design ${title || '& Creative Direction'}</title>
+  html`<title>Lukas Oppermann Lead UI/UX Design • ${title || 'and Creative Direction'}</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-  <meta name="title" content="${title || 'vea.re Lead UI/UX Design & Creative Direction'}">
+  <meta name="title" content="${title} • Lukas Oppermann — Lead UI/UX Design & Creative Direction">
   <meta name="description" content="${description || 'Lukas Oppermann is a design lead and creative director from berlin, germany. He loves creating experiences with a focus on usability.'}">
   <meta name="copyright" content="${new Date().getUTCFullYear()}" />
   <meta name="robots" content="index,follow" />

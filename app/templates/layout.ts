@@ -6,15 +6,15 @@ const { html } = require('@popeindustries/lit-html-server')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 
 export default (content: string, options: {
-  title?: string,
-  description?: string,
-  og?: {
+    title: string,
+    description?: string,
+    og?: {
+      [prop: string]: any;
+    },
+    head?: string,
+    bodyClass?: string,
     [prop: string]: any;
-  },
-  head?: string,
-  bodyClass?: string,
-  [prop: string]: any;
-} = {}, req?) => {
+  }, req) => {
   return html`
     <!DOCTYPE html>
     <html lang="en" prefix="og: http://ogp.me/ns#">
