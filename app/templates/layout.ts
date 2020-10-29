@@ -1,9 +1,8 @@
 import meta from './meta'
-import { revFile, embedFile } from '../services/files'
+import { revFile } from '../services/files'
 import footer from './newPartials/footer'
 import menu from './newPartials/menu'
 const { html } = require('@popeindustries/lit-html-server')
-const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 
 export default (content: string, options: {
     title: string,
@@ -23,14 +22,14 @@ export default (content: string, options: {
       <link type="text/css" href="/${revFile('css/app.css')}" rel="stylesheet" />
       <link rel="preconnect" href="http://images.ctfassets.net" crossorigin>
       <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-      <script>${unsafeHTML(embedFile('./public/' + revFile('js/index.js')))}
-      </script>
+      <script async defer src="/${revFile('js/responsiveMenu.js')}"></script>
+      <link href="https://fonts.googleapis.com/css?family=Montserrat:700|Noto+Serif:400,400i,400b|Source+Sans+Pro:400,600|Source+Code+Pro:700&display=swap" rel="stylesheet">
       ${options.head || ''}
     </head>
     <body class="${options.bodyClass || ''}${process.env.NODE_ENV === 'test' ? ' testing' : ''}">
       <!-- Google Tag Manager (noscript) -->
-      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K6KBJZG"
-      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <!-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K6KBJZG"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
       <!-- End Google Tag Manager (noscript) -->
       <!-- NEW STUFF -->
       ${menu(req.path)}
