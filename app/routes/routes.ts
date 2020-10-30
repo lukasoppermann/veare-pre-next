@@ -2,9 +2,7 @@ import { middleware } from '../../types/middleware'
 import request from '../services/request'
 import error404 from './404'
 import contentful from './contentful'
-import analytics from '../services/analytics'
-import config from '../config/appConfig'
-import { v4 as uuidv4 } from 'uuid'
+import googleAnalytics from '../services/googleAnalytics'
 import project from './project'
 import blog from './blog'
 import page from './page'
@@ -15,35 +13,8 @@ import page from './page'
 const routing: middleware = async (req, res, next) => {
   // parse url
   req = request(req)
-  // send analyics tracker
-  if (!req.cookies.get('veareNoTracking') &&
-  (req.parts[0] === undefined || [
-    '',
-    'home',
-    'blog',
-    'work',
-    'privacy',
-    'now',
-    'about-lukas-oppermann'
-  ].includes(req.parts[0]))
-  ) {
-    // get user id from cookies
-    let userId = req.cookies.get('pageId')
-    // if user id is not in cookie, create and add cookie
-    if (!userId) {
-      userId = uuidv4()
-      req.cookies.set('pageId', userId)
-    }
-    // set user for analytics
-    analytics.identify(userId)
-    // send page view
-    analytics.page({
-      title: req.path || 'home',
-      // @ts-ignore
-      href: config.baseUrl,
-      path: req.path || '/'
-    })
-  }
+  // send analytics
+  googleAnalytics(req)
   // test path and call route
   switch (req.parts[0]) {
     case '':

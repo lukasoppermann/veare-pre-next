@@ -1,7 +1,7 @@
 {
   "name": "veare",
   "description": "veare website",
-  "version": "2.6.0",
+  "version": "2.6.1",
   "main": "app/server.ts",
   "repository": {
     "type": "git",
@@ -61,6 +61,7 @@
     "@types/cookies": "^0.7.5",
     "@types/highlight.js": "^9.12.4",
     "@types/node": "^14.14.6",
+    "@types/uuid": "^8.3.0",
     "analytics": "^0.5.5",
     "basic-auth": "^2.0.1",
     "body-parser": "^1.19.0",
