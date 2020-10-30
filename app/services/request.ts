@@ -1,9 +1,11 @@
 import * as http2 from 'http2'
+import cookies from 'connect-cookies'
 import { requestInterface } from '../../types/request'
 const nodeUrl = require('url')
 
 export interface connectRequest extends http2.Http2ServerRequest {
-  originalUrl: string
+  originalUrl: string,
+  cookies: cookies
 }
 
 export default (request: connectRequest): requestInterface => {
