@@ -4,8 +4,25 @@ const { html } = require('@popeindustries/lit-html-server')
 const { unsafeHTML } = require('@popeindustries/lit-html-server/directives/unsafe-html.js')
 const { repeat } = require('@popeindustries/lit-html-server/directives/repeat.js')
 
+const isLink = url => url.substr(0, 4) === 'http'
+/**
+ * parseProjectLink
+ * @param slug
+ */
+const parseProjectLink = slug => {
+  if (slug === null) {
+    return html`<a href="mailto:lukas@vea.re?subject=Hey 👋,%20what&apos;s%20up?&body=Great%20to%20hear%20from%20you,%20how%20can%20I%20help?" class="Project-excerpt__case_link">Get in touch</a>`
+  }
+  // if link
+  if (isLink(slug)) {
+    return html`<a href="${slug}" target="_blank" class="Project-excerpt__case_link">View Project</a>`
+  }
+  // slug
+  return html`<a href="${slugToUrl(slug, 'project')}" class="Project-excerpt__case_link">View Project</a>`
+}
+
 export default (project) => html`
-<section class="Project-excerpt Project-card Project-card__link" projectSlug="${project.slug}">
+<section class="Project-excerpt Project-card Project-card__link ${project.classes}" projectSlug="${project.slug}">
   <!-- Info -->
   <div class="Project-excerpt__info">
     <!-- PICTURE -->
@@ -60,10 +77,7 @@ export default (project) => html`
       </time></dd>
     </dl>
     <!-- END: Details -->
-    ${project.slug !== null
-      ? html`<a href="${slugToUrl(project.slug, 'project')}" class="Project-excerpt__case_link">View Case</a>`
-      : html`<a href="mailto:lukas@vea.re?subject=Hey 👋,%20what&apos;s%20up?&body=Great%20to%20hear%20from%20you,%20how%20can%20I%20help?" class="Project-excerpt__case_link">Get in touch</a>`
-    }
+    ${parseProjectLink(project.slug)}
   </aside>
 </section>
 `

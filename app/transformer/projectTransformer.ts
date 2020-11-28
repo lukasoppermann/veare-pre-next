@@ -58,7 +58,8 @@ export default async (data) => {
       header: (await pictureTransformer(getField(data, 'header')))[0],
       previewImage: (await pictureTransformer(getField(data, 'previewImage')))[0],
       content: content.html,
-      anchors: content.anchors
+      anchors: content.anchors,
+      classes: getField(data, 'classes', []).join(' ')
     }
   })
 }

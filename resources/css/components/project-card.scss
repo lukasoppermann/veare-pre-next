@@ -16,6 +16,9 @@
       --project-image-max-width: 800px;
       --project-image-max-height: 640px;
     }
+    &.Project__design-tokens {
+      --project-color-tint-light: #fccf2b;
+    }
     &:first-child {
       --project-image-alignment: flex-start;
       --project-image-offset-y: -10%;

@@ -27,7 +27,8 @@ export default {
       team: { 'en-US': ["Design lead", "2 Developers", "Product Owner"] },
       header: { 'en-US': picture.raw },
       previewImage: { 'en-US': picture.raw },
-      content: { 'en-US': richText.raw }
+      content: { 'en-US': richText.raw },
+      classes: {'en-US': [ 'project__class', 'project__class-subclass' ] },
     }
   },
   transformed: {
@@ -61,7 +62,8 @@ export default {
       responsibilities: ["UI/UX design", "leading the design team"],
       platforms: ["Android", "Windows"],
       team: ["Design lead", "2 Developers", "Product Owner"],
-      content: richText.transformed
+      content: richText.transformed,
+      classes: "project__class project__class-subclass"
     }
   }
 } as transformTestData
