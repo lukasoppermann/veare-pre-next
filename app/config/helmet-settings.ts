@@ -23,7 +23,7 @@ export default {
       manifestSrc: ["'self'"],
       frameSrc: ["'none'"],
       workerSrc: ["'self'"],
-      formAction: ["'none'"],
+      formAction: ['vea.us1.list-manage.com/'],
       baseUri: ["'none'"],
       reportUri: 'https://veare.report-uri.com/r/d/csp/enforce'
     }
