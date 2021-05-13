@@ -188,6 +188,7 @@
     height: calc(var(--viewport-height) / 2);
     @include at_least(desktop) {
       height: calc(var(--viewport-height) - #{size(12)});
+      max-height: 800px;
     }
     .Picture {
       margin: 0;
